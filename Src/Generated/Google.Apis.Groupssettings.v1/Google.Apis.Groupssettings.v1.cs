@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>Groups Settings API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160525 (510)
+ *      <tr><th>API Rev<td>20170607 (888)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/groups-settings/get_started'>
  *              https://developers.google.com/google-apps/groups-settings/get_started</a>
@@ -589,7 +589,7 @@ namespace Google.Apis.Groupssettings.v1.Data
         public virtual string WhoCanLeaveGroup { get; set; } 
 
         /// <summary>Permissions to post messages to the group. Possible values are: NONE_CAN_POST ALL_MANAGERS_CAN_POST
-        /// ALL_MEMBERS_CAN_POST ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST</summary>
+        /// ALL_MEMBERS_CAN_POST ALL_OWNERS_CAN_POST ALL_IN_DOMAIN_CAN_POST ANYONE_CAN_POST</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("whoCanPostMessage")]
         public virtual string WhoCanPostMessage { get; set; } 
 

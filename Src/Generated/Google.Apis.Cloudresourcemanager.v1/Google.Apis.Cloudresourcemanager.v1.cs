@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170605 (886)
+ *      <tr><th>API Rev<td>20170607 (888)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -3663,7 +3663,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allValues")]
         public virtual string AllValues { get; set; } 
 
-        /// <summary>List of values allowed  at this resource. an only be set if no values are set for `denied_values`
+        /// <summary>List of values allowed  at this resource. Can only be set if no values are set for `denied_values`
         /// and `all_values` is set to `ALL_VALUES_UNSPECIFIED`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
         public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; } 

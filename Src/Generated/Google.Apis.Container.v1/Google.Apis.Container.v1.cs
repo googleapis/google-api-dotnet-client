@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170430 (850)
+ *      <tr><th>API Rev<td>20170526 (876)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -2667,7 +2667,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
         public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; } 
 
-        /// <summary>The resource labels for the cluster to use to annotate any related GCE resources.</summary>
+        /// <summary>The resource labels for the cluster to use to annotate any related Google Compute Engine
+        /// resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
 
@@ -2979,7 +2980,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
         /// <summary>Whether the nodes are created as preemptible VM instances. See:
-        /// https://cloud.google.com/compute/docs/instances/preemptible for more inforamtion about preemptible VM
+        /// https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; } 

@@ -1,10 +1,14 @@
 {
+  "kind": "discovery#restDescription",
+  "description": "API for managing lightweight user-provided functions executed in response to events.",
+  "servicePath": "",
+  "rootUrl": "https://cloudfunctions.googleapis.com/",
   "basePath": "",
   "ownerDomain": "google.com",
   "name": "cloudfunctions",
   "batchPath": "batch",
-  "documentationLink": "https://cloud.google.com/functions",
   "revision": "20170529",
+  "documentationLink": "https://cloud.google.com/functions",
   "id": "cloudfunctions:v1",
   "title": "Google Cloud Functions API",
   "ownerName": "Google",
@@ -12,49 +16,21 @@
   "version_module": "True",
   "resources": {},
   "parameters": {
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "$.xgafv": {
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format."
-    },
-    "callback": {
-      "type": "string",
-      "location": "query",
-      "description": "JSONP"
-    },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query"
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
     },
     "access_token": {
       "description": "OAuth access token.",
@@ -62,9 +38,9 @@
       "location": "query"
     },
     "key": {
+      "type": "string",
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
     },
     "quotaUser": {
       "location": "query",
@@ -78,44 +54,73 @@
       "location": "query"
     },
     "oauth_token": {
-      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "bearer_token": {
-      "location": "query",
       "description": "OAuth bearer token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "upload_protocol": {
-      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
+      "default": "true"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
       "location": "query"
     }
   },
   "schemas": {
     "OperationMetadataV1Beta2": {
+      "description": "Metadata describing an Operation",
+      "type": "object",
       "properties": {
         "target": {
           "description": "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1",
           "type": "string"
         },
         "request": {
+          "description": "The original request that started the operation.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          },
-          "description": "The original request that started the operation.",
-          "type": "object"
+          }
         },
         "type": {
-          "type": "string",
           "enumDescriptions": [
             "Unknown operation type.",
             "Triggered by CreateFunction call",
@@ -128,12 +133,11 @@
             "UPDATE_FUNCTION",
             "DELETE_FUNCTION"
           ],
-          "description": "Type of operation."
+          "description": "Type of operation.",
+          "type": "string"
         }
       },
-      "id": "OperationMetadataV1Beta2",
-      "description": "Metadata describing an Operation",
-      "type": "object"
+      "id": "OperationMetadataV1Beta2"
     }
   },
   "protocol": "rest",
@@ -143,9 +147,5 @@
   },
   "version": "v1",
   "baseUrl": "https://cloudfunctions.googleapis.com/",
-  "canonicalName": "Cloud Functions",
-  "kind": "discovery#restDescription",
-  "description": "API for managing lightweight user-provided functions executed in response to events.",
-  "servicePath": "",
-  "rootUrl": "https://cloudfunctions.googleapis.com/"
+  "canonicalName": "Cloud Functions"
 }

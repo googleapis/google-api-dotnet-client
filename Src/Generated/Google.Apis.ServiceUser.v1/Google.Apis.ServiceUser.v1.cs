@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170526 (876)
+ *      <tr><th>API Rev<td>20170602 (883)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -688,13 +688,13 @@ namespace Google.Apis.ServiceUser.v1
             }
 
 
-            /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Requested size of the next page of data.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -721,18 +721,18 @@ namespace Google.Apis.ServiceUser.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1368,7 +1368,7 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines the HTTP configuration for a service. It contains a list of HttpRule, each specifying the
+    /// <summary>Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the
     /// mapping of an RPC method to one or more HTTP REST API methods.</summary>
     public class Http : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1389,10 +1389,10 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`HttpRule` defines the mapping of an RPC method to one or more HTTP REST APIs.  The mapping determines
-    /// what portions of the request message are populated from the path, query parameters, or body of the HTTP request.
-    /// The mapping is typically specified as an `google.api.http` annotation, see "google/api/annotations.proto" for
-    /// details.
+    /// <summary>`HttpRule` defines the mapping of an RPC method to one or more HTTP REST API methods. The mapping
+    /// specifies how different portions of the RPC request message are mapped to URL path, URL query parameters, and
+    /// HTTP request body. The mapping is typically specified as an `google.api.http` annotation on the RPC method, see
+    /// "google/api/annotations.proto" for details.
     ///
     /// The mapping consists of a field specifying the path template and method kind.  The path template can refer to
     /// fields in the request message, as in the example below which describes a REST GET operation on a resource
@@ -1475,11 +1475,11 @@ namespace Google.Apis.ServiceUser.v1.Data
     ///
     /// The rules for mapping HTTP path, query parameters, and body fields to the request message are as follows:
     ///
-    /// 1. The `body` field specifies either `*` or a field path, or is omitted. If omitted, it assumes there is no HTTP
-    /// body. 2. Leaf fields (recursive expansion of nested messages in the request) can be classified into three types:
-    /// (a) Matched in the URL template. (b) Covered by body (if body is `*`, everything except (a) fields; else
-    /// everything under the body field) (c) All other fields. 3. URL query parameters found in the HTTP request are
-    /// mapped to (c) fields. 4. Any body sent with an HTTP request can contain only (b) fields.
+    /// 1. The `body` field specifies either `*` or a field path, or is omitted. If omitted, it indicates there is no
+    /// HTTP request body. 2. Leaf fields (recursive expansion of nested messages in the request) can be classified into
+    /// three types: (a) Matched in the URL template. (b) Covered by body (if body is `*`, everything except (a) fields;
+    /// else everything under the body field) (c) All other fields. 3. URL query parameters found in the HTTP request
+    /// are mapped to (c) fields. 4. Any body sent with an HTTP request can contain only (b) fields.
     ///
     /// The syntax of the path template is as follows:
     ///
@@ -1487,24 +1487,27 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath = IDENT { "." IDENT } ; Verb     = ":"
     /// LITERAL ;
     ///
-    /// The syntax `*` matches a single path segment. It follows the semantics of [RFC
-    /// 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String Expansion.
+    /// The syntax `*` matches a single path segment. The syntax `**` matches zero or more path segments, which must be
+    /// the last part of the path except the `Verb`. The syntax `LITERAL` matches literal text in the path.
     ///
-    /// The syntax `**` matches zero or more path segments. It follows the semantics of [RFC
-    /// 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.3 Reserved Expansion. NOTE: it must be the last segment
-    /// in the path except the Verb.
+    /// The syntax `Variable` matches part of the URL path as specified by its template. A variable template must not
+    /// contain other variables. If a variable matches a single path segment, its template may be omitted, e.g. `{var}`
+    /// is equivalent to `{var=*}`.
     ///
-    /// The syntax `LITERAL` matches literal text in the URL path.
+    /// If a variable contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is
+    /// expanded into a URL path, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. Such variables show up in
+    /// the Discovery Document as `{var}`.
     ///
-    /// The syntax `Variable` matches the entire path as specified by its template; this nested template must not
-    /// contain further variables. If a variable matches a single path segment, its template may be omitted, e.g.
-    /// `{var}` is equivalent to `{var=*}`.
+    /// If a variable contains one or more path segments, such as `"{var=foo}"` or `"{var=**}"`, when such a variable is
+    /// expanded into a URL path, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. Such variables show up
+    /// in the Discovery Document as `{+var}`.
     ///
-    /// NOTE: the field paths in variables and in the `body` must not refer to repeated fields or map fields.
+    /// NOTE: While the single segment variable matches the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570)
+    /// Section 3.2.2 Simple String Expansion, the multi segment variable **does not** match RFC 6570 Reserved
+    /// Expansion. The reason is that the Reserved Expansion does not expand special characters like `?` and `#`, which
+    /// would lead to invalid URLs.
     ///
-    /// Use CustomHttpPattern to specify any HTTP method that is not included in the `pattern` field, such as HEAD, or
-    /// "*" to leave the HTTP method unspecified for a given URL path rule. The wild-card rule is useful for services
-    /// that provide content to Web (HTML) clients.</summary>
+    /// NOTE: the field paths in variables and in the `body` must not refer to repeated fields or map fields.</summary>
     public class HttpRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional HTTP bindings for the selector. Nested bindings must not contain an
@@ -1518,7 +1521,9 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; } 
 
-        /// <summary>Custom pattern is used for defining custom verbs.</summary>
+        /// <summary>The custom pattern is used for specifying an HTTP method that is not included in the `pattern`
+        /// field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful
+        /// for services that provide content to Web (HTML) clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual CustomHttpPattern Custom { get; set; } 
 
@@ -2504,8 +2509,7 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The id of the Google developer project that owns the service. Members of this project can manage
-        /// the service configuration, manage consumption of the service, etc.</summary>
+        /// <summary>The Google project that owns this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerProjectId")]
         public virtual string ProducerProjectId { get; set; } 
 
@@ -2528,7 +2532,7 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("systemTypes")]
         public virtual System.Collections.Generic.IList<Type> SystemTypes { get; set; } 
 
-        /// <summary>The product title associated with this service.</summary>
+        /// <summary>The product title for this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 

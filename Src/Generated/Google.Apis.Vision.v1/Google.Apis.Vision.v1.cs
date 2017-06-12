@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170523 (873)
+ *      <tr><th>API Rev<td>20170606 (887)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -740,9 +740,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Set of detected entity features.</summary>
     public class EntityAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Image region to which this entity belongs. Currently not produced for `LABEL_DETECTION` features.
-        /// For `TEXT_DETECTION` (OCR), `boundingPoly`s are produced for the entire text detected in an image region,
-        /// followed by `boundingPoly`s for each word within the detected text.</summary>
+        /// <summary>Image region to which this entity belongs. Not produced for `LABEL_DETECTION` features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual BoundingPoly BoundingPoly { get; set; } 
 

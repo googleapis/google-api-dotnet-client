@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170601 (882)
+ *      <tr><th>API Rev<td>20170606 (887)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -964,6 +964,13 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
+                    /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may
+                    /// assign a maximum.
+                    ///
+                    /// The server may return fewer than the specified number of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Requested submission states. If specified, returned student submissions match one of
                     /// the specified submission states.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
@@ -986,13 +993,6 @@ namespace Google.Apis.Classroom.v1
                         [Google.Apis.Util.StringValueAttribute("RECLAIMED_BY_STUDENT")]
                         RECLAIMEDBYSTUDENT,
                     }
-
-                    /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may
-                    /// assign a maximum.
-                    ///
-                    /// The server may return fewer than the specified number of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1064,18 +1064,18 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "states", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "states",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "states", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "states",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2090,6 +2090,25 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
+                /// <summary>Restriction on the work status to return. Only courseWork that matches is returned. If
+                /// unspecified, items with a work status of `PUBLISHED` is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("courseWorkStates", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<CourseWorkStatesEnum> CourseWorkStates { get; set; }
+
+                /// <summary>Restriction on the work status to return. Only courseWork that matches is returned. If
+                /// unspecified, items with a work status of `PUBLISHED` is returned.</summary>
+                public enum CourseWorkStatesEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("COURSE_WORK_STATE_UNSPECIFIED")]
+                    COURSEWORKSTATEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
+                    PUBLISHED,
+                    [Google.Apis.Util.StringValueAttribute("DRAFT")]
+                    DRAFT,
+                    [Google.Apis.Util.StringValueAttribute("DELETED")]
+                    DELETED,
+                }
+
                 /// <summary>Optional sort ordering for results. A comma-separated list of fields with an optional sort
                 /// direction keyword. Supported fields are `updateTime` and `dueDate`. Supported direction keywords are
                 /// `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `dueDate
@@ -2110,25 +2129,6 @@ namespace Google.Apis.Classroom.v1
                 /// The server may return fewer than the specified number of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Restriction on the work status to return. Only courseWork that matches is returned. If
-                /// unspecified, items with a work status of `PUBLISHED` is returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("courseWorkStates", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<CourseWorkStatesEnum> CourseWorkStates { get; set; }
-
-                /// <summary>Restriction on the work status to return. Only courseWork that matches is returned. If
-                /// unspecified, items with a work status of `PUBLISHED` is returned.</summary>
-                public enum CourseWorkStatesEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("COURSE_WORK_STATE_UNSPECIFIED")]
-                    COURSEWORKSTATEUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("PUBLISHED")]
-                    PUBLISHED,
-                    [Google.Apis.Util.StringValueAttribute("DRAFT")]
-                    DRAFT,
-                    [Google.Apis.Util.StringValueAttribute("DELETED")]
-                    DELETED,
-                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2164,6 +2164,15 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "courseWorkStates", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkStates",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
@@ -2185,15 +2194,6 @@ namespace Google.Apis.Classroom.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "courseWorkStates", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseWorkStates",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5202,6 +5202,13 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
+        /// <summary>The Calendar ID for a calendar that all course members can see, to which Classroom adds events for
+        /// course work and announcements in the course.
+        ///
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarId")]
+        public virtual string CalendarId { get; set; } 
+
         /// <summary>The email address of a Google group containing all members of the course. This group does not
         /// accept email and can only be used for permissions.
         ///
@@ -5453,6 +5460,10 @@ namespace Google.Apis.Classroom.v1.Data
         /// course work with a `work_type` of `MULTIPLE_CHOICE_QUESTION`, and it must not be set otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("multipleChoiceQuestion")]
         public virtual MultipleChoiceQuestion MultipleChoiceQuestion { get; set; } 
+
+        /// <summary>Optional timestamp when this course work is scheduled to be published.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledTime")]
+        public virtual object ScheduledTime { get; set; } 
 
         /// <summary>Status of this course work. If unspecified, the default state is `DRAFT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -6229,6 +6240,12 @@ namespace Google.Apis.Classroom.v1.Data
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
         public virtual string PhotoUrl { get; set; } 
+
+        /// <summary>Whether or not the user is a verified teacher
+        ///
+        /// Read-only</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedTeacher")]
+        public virtual System.Nullable<bool> VerifiedTeacher { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

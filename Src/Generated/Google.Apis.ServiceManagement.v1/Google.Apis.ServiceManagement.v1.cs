@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170526 (876)
+ *      <tr><th>API Rev<td>20170602 (883)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1394,6 +1394,10 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
+                /// <summary>The max number of items to include in the response list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
                 /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
                 /// filter='status=SUCCESS' -- To limit the results to those in
@@ -1405,10 +1409,6 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The max number of items to include in the response list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1444,6 +1444,15 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1456,15 +1465,6 @@ namespace Google.Apis.ServiceManagement.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2081,6 +2081,10 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Include services produced by the specified project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProducerProjectId { get; set; }
+
             /// <summary>Include services consumed by the specified consumer.
             ///
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
@@ -2094,10 +2098,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Requested size of the next page of data.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Include services produced by the specified project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProducerProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2124,6 +2124,15 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "producerProjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "producerProjectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
@@ -2145,15 +2154,6 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "producerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "producerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2700,6 +2700,12 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined independently.
+        /// This field is GOOGLE_INTERNAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -3274,6 +3280,38 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in [Common Expression Language](http://go/api-expr) syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single field of a message type.</summary>
     public class Field : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3408,7 +3446,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Defines the HTTP configuration for a service. It contains a list of HttpRule, each specifying the
+    /// <summary>Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the
     /// mapping of an RPC method to one or more HTTP REST API methods.</summary>
     public class Http : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3429,10 +3467,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>`HttpRule` defines the mapping of an RPC method to one or more HTTP REST APIs.  The mapping determines
-    /// what portions of the request message are populated from the path, query parameters, or body of the HTTP request.
-    /// The mapping is typically specified as an `google.api.http` annotation, see "google/api/annotations.proto" for
-    /// details.
+    /// <summary>`HttpRule` defines the mapping of an RPC method to one or more HTTP REST API methods. The mapping
+    /// specifies how different portions of the RPC request message are mapped to URL path, URL query parameters, and
+    /// HTTP request body. The mapping is typically specified as an `google.api.http` annotation on the RPC method, see
+    /// "google/api/annotations.proto" for details.
     ///
     /// The mapping consists of a field specifying the path template and method kind.  The path template can refer to
     /// fields in the request message, as in the example below which describes a REST GET operation on a resource
@@ -3515,11 +3553,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
     ///
     /// The rules for mapping HTTP path, query parameters, and body fields to the request message are as follows:
     ///
-    /// 1. The `body` field specifies either `*` or a field path, or is omitted. If omitted, it assumes there is no HTTP
-    /// body. 2. Leaf fields (recursive expansion of nested messages in the request) can be classified into three types:
-    /// (a) Matched in the URL template. (b) Covered by body (if body is `*`, everything except (a) fields; else
-    /// everything under the body field) (c) All other fields. 3. URL query parameters found in the HTTP request are
-    /// mapped to (c) fields. 4. Any body sent with an HTTP request can contain only (b) fields.
+    /// 1. The `body` field specifies either `*` or a field path, or is omitted. If omitted, it indicates there is no
+    /// HTTP request body. 2. Leaf fields (recursive expansion of nested messages in the request) can be classified into
+    /// three types: (a) Matched in the URL template. (b) Covered by body (if body is `*`, everything except (a) fields;
+    /// else everything under the body field) (c) All other fields. 3. URL query parameters found in the HTTP request
+    /// are mapped to (c) fields. 4. Any body sent with an HTTP request can contain only (b) fields.
     ///
     /// The syntax of the path template is as follows:
     ///
@@ -3527,24 +3565,27 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// Variable ; Variable = "{" FieldPath [ "=" Segments ] "}" ; FieldPath = IDENT { "." IDENT } ; Verb     = ":"
     /// LITERAL ;
     ///
-    /// The syntax `*` matches a single path segment. It follows the semantics of [RFC
-    /// 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.2 Simple String Expansion.
+    /// The syntax `*` matches a single path segment. The syntax `**` matches zero or more path segments, which must be
+    /// the last part of the path except the `Verb`. The syntax `LITERAL` matches literal text in the path.
     ///
-    /// The syntax `**` matches zero or more path segments. It follows the semantics of [RFC
-    /// 6570](https://tools.ietf.org/html/rfc6570) Section 3.2.3 Reserved Expansion. NOTE: it must be the last segment
-    /// in the path except the Verb.
+    /// The syntax `Variable` matches part of the URL path as specified by its template. A variable template must not
+    /// contain other variables. If a variable matches a single path segment, its template may be omitted, e.g. `{var}`
+    /// is equivalent to `{var=*}`.
     ///
-    /// The syntax `LITERAL` matches literal text in the URL path.
+    /// If a variable contains exactly one path segment, such as `"{var}"` or `"{var=*}"`, when such a variable is
+    /// expanded into a URL path, all characters except `[-_.~0-9a-zA-Z]` are percent-encoded. Such variables show up in
+    /// the Discovery Document as `{var}`.
     ///
-    /// The syntax `Variable` matches the entire path as specified by its template; this nested template must not
-    /// contain further variables. If a variable matches a single path segment, its template may be omitted, e.g.
-    /// `{var}` is equivalent to `{var=*}`.
+    /// If a variable contains one or more path segments, such as `"{var=foo}"` or `"{var=**}"`, when such a variable is
+    /// expanded into a URL path, all characters except `[-_.~/0-9a-zA-Z]` are percent-encoded. Such variables show up
+    /// in the Discovery Document as `{+var}`.
     ///
-    /// NOTE: the field paths in variables and in the `body` must not refer to repeated fields or map fields.
+    /// NOTE: While the single segment variable matches the semantics of [RFC 6570](https://tools.ietf.org/html/rfc6570)
+    /// Section 3.2.2 Simple String Expansion, the multi segment variable **does not** match RFC 6570 Reserved
+    /// Expansion. The reason is that the Reserved Expansion does not expand special characters like `?` and `#`, which
+    /// would lead to invalid URLs.
     ///
-    /// Use CustomHttpPattern to specify any HTTP method that is not included in the `pattern` field, such as HEAD, or
-    /// "*" to leave the HTTP method unspecified for a given URL path rule. The wild-card rule is useful for services
-    /// that provide content to Web (HTML) clients.</summary>
+    /// NOTE: the field paths in variables and in the `body` must not refer to repeated fields or map fields.</summary>
     public class HttpRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Additional HTTP bindings for the selector. Nested bindings must not contain an
@@ -3558,7 +3599,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("body")]
         public virtual string Body { get; set; } 
 
-        /// <summary>Custom pattern is used for defining custom verbs.</summary>
+        /// <summary>The custom pattern is used for specifying an HTTP method that is not included in the `pattern`
+        /// field, such as HEAD, or "*" to leave the HTTP method unspecified for this rule. The wild-card rule is useful
+        /// for services that provide content to Web (HTML) clients.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("custom")]
         public virtual CustomHttpPattern Custom { get; set; } 
 
@@ -4370,8 +4413,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
-        /// `role`. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -4729,8 +4772,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The id of the Google developer project that owns the service. Members of this project can manage
-        /// the service configuration, manage consumption of the service, etc.</summary>
+        /// <summary>The Google project that owns this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("producerProjectId")]
         public virtual string ProducerProjectId { get; set; } 
 
@@ -4753,7 +4795,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("systemTypes")]
         public virtual System.Collections.Generic.IList<Type> SystemTypes { get; set; } 
 
-        /// <summary>The product title associated with this service.</summary>
+        /// <summary>The product title for this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
@@ -5018,8 +5060,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Strategy that specifies how Google Service Control should select different versions of service
-    /// configurations based on traffic percentage.
+    /// <summary>Strategy that specifies how clients of Google Service Controller want to send traffic to use different
+    /// config versions. This is generally used by API proxy to split traffic based on your configured precentage for
+    /// each config version.
     ///
     /// One example of how to gradually rollout a new service configuration using this strategy: Day 1
     ///

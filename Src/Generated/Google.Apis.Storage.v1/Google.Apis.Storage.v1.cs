@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170510 (860)
+ *      <tr><th>API Rev<td>20170531 (881)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -368,7 +368,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -459,7 +459,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -543,7 +543,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -622,7 +622,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -706,7 +706,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -805,7 +805,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -918,7 +918,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1034,7 +1034,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1134,7 +1134,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1581,7 +1581,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1707,7 +1707,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1794,7 +1794,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Permissions { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1958,7 +1958,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2180,7 +2180,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2271,7 +2271,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2355,7 +2355,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2444,7 +2444,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2548,7 +2548,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2647,7 +2647,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2759,7 +2759,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("notification", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Notification { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2848,7 +2848,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("notification", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Notification { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2932,7 +2932,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3011,7 +3011,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3123,7 +3123,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3245,7 +3245,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3360,7 +3360,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3470,7 +3470,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3585,7 +3585,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3715,7 +3715,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3888,7 +3888,13 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
+            /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
+            /// kms_key_name value, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string KmsKeyName { get; set; }
+
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3962,6 +3968,15 @@ namespace Google.Apis.Storage.v1
                     "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
                     {
                         Name = "ifMetagenerationMatch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "kmsKeyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "kmsKeyName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4176,7 +4191,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("sourceGeneration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> SourceGeneration { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -4469,7 +4484,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -4646,7 +4661,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -4848,7 +4863,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -4971,6 +4986,12 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
+            /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
+            /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
+            /// kms_key_name value, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string KmsKeyName { get; set; }
+
             /// <summary>Name of the object. Required when the object metadata is not otherwise provided. Overrides the
             /// object metadata's name value, if any. For information about how to URL encode object names to be path
             /// safe, see Encoding URI Path Parts.</summary>
@@ -5022,7 +5043,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5105,6 +5126,15 @@ namespace Google.Apis.Storage.v1
                     "ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
                     {
                         Name = "ifMetagenerationNotMatch",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "kmsKeyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "kmsKeyName",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5292,6 +5322,12 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
+            /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
+            /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
+            /// kms_key_name value, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string KmsKeyName { get; set; }
+
             /// <summary>Name of the object. Required when the object metadata is not otherwise provided. Overrides the
             /// object metadata's name value, if any. For information about how to URL encode object names to be path
             /// safe, see Encoding URI Path Parts.</summary>
@@ -5343,7 +5379,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5419,7 +5455,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5630,7 +5666,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5811,6 +5847,12 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("destinationObject", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DestinationObject { get; private set; }
 
+            /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
+            /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
+            /// kms_key_name value, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinationKmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DestinationKmsKeyName { get; set; }
+
             /// <summary>Apply a predefined set of access controls to the destination object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("destinationPredefinedAcl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<DestinationPredefinedAclEnum> DestinationPredefinedAcl { get; set; }
@@ -5916,7 +5958,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("sourceGeneration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> SourceGeneration { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5983,6 +6025,15 @@ namespace Google.Apis.Storage.v1
                         Name = "destinationObject",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "destinationKmsKeyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "destinationKmsKeyName",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -6155,7 +6206,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6274,7 +6325,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6454,7 +6505,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6698,7 +6749,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project number to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6939,6 +6990,11 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultObjectAcl")]
         public virtual System.Collections.Generic.IList<ObjectAccessControl> DefaultObjectAcl { get; set; } 
 
+        /// <summary>Encryption configuration used by default for newly inserted objects, when no encryption config is
+        /// specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
+        public virtual Bucket.EncryptionData Encryption { get; set; } 
+
         /// <summary>HTTP 1.1 Entity tag for the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
@@ -7074,6 +7130,15 @@ namespace Google.Apis.Storage.v1.Data
             /// user-agent to share across domains.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("responseHeader")]
             public virtual System.Collections.Generic.IList<string> ResponseHeader { get; set; } 
+
+        }    
+
+        /// <summary>Encryption configuration used by default for newly inserted objects, when no encryption config is
+        /// specified.</summary>
+        public class EncryptionData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
+            public virtual string DefaultKmsKeyName { get; set; } 
 
         }    
 
@@ -7529,6 +7594,10 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The kind of item this is. For objects, this is always storage#object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
 
         /// <summary>MD5 hash of the data; encoded using base64. For more information about using the MD5 hash, see
         /// Hashes and ETags: Best Practices.</summary>
