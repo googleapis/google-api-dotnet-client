@@ -44,7 +44,11 @@ def GetDiscoveryDocuments(destination_dir):
 
     api_url = api['discoveryRestUrl']
     api_request = urllib2.Request(api_url, headers=headers)
-    api_json = urllib2.urlopen(api_request)
+    try:
+      api_json = urllib2.urlopen(api_request)
+    except urllib2.HTTPError:
+      print(filename + " FAILED TO DOWNLOAD")
+      continue
 
     # Use binary mode to ensure the file is written exactly as received.
     with open(filename, 'wb') as discovery_file:
