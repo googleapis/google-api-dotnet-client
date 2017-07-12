@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.Dataproc.v1alpha1 Client Library</Title>
-    <Version>1.27.1.873</Version>
+    <Title>Google.Apis.CloudTrace.v2 Client Library</Title>
+    <Version>1.27.1.916</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -12,7 +12,7 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <Description>
-      Google APIs Client Library for working with Dataproc v1alpha1.
+      Google APIs Client Library for working with Cloudtrace v2.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -30,7 +30,7 @@
       - UWP (will build, but is known not to work at runtime)
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/dataproc/v1alpha1
+      https://developers.google.com/api-client-library/dotnet/apis/cloudtrace/v2
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated

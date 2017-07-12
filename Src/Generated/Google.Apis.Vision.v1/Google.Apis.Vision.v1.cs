@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170606 (887)
+ *      <tr><th>API Rev<td>20170706 (917)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -110,6 +110,9 @@ namespace Google.Apis.Vision.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>Apply machine learning models to understand and label images</summary>
+            public static string CloudVision = "https://www.googleapis.com/auth/cloud-vision";
 
         }
 
@@ -1195,8 +1198,8 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170531 (881)
+ *      <tr><th>API Rev<td>20170705 (916)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -877,8 +877,8 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
     /// <summary>Download line items response.</summary>
     public class DownloadLineItemsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Retrieved line items in CSV format. Refer to  Entity Write File Format or  Structured Data File
-        /// Format for more information on file formats.</summary>
+        /// <summary>Retrieved line items in CSV format. For more information about file formats, see  Entity Write File
+        /// Format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual string LineItems { get; set; } 
 

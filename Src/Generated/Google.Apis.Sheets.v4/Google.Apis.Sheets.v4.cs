@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20170602 (883)
+ *      <tr><th>API Rev<td>20170707 (918)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -815,9 +815,39 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The A1 notation of the values to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
+                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
+                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("dateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<DateTimeRenderOptionEnum> DateTimeRenderOption { get; set; }
+
+                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
+                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                public enum DateTimeRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
+                    SERIALNUMBER,
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
+                    FORMATTEDSTRING,
+                }
+
+                /// <summary>How values should be represented in the output. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ValueRenderOptionEnum> ValueRenderOption { get; set; }
+
+                /// <summary>How values should be represented in the output. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                public enum ValueRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
+                    FORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
+                    UNFORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
+                    FORMULA,
+                }
 
                 /// <summary>The major dimension that results should use.
                 ///
@@ -842,39 +872,9 @@ namespace Google.Apis.Sheets.v4
                     COLUMNS,
                 }
 
-                /// <summary>How values should be represented in the output. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ValueRenderOptionEnum> ValueRenderOption { get; set; }
-
-                /// <summary>How values should be represented in the output. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                public enum ValueRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
-                }
-
-                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
-                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                [Google.Apis.Util.RequestParameterAttribute("dateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<DateTimeRenderOptionEnum> DateTimeRenderOption { get; set; }
-
-                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
-                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                public enum DateTimeRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
-                }
+                /// <summary>The A1 notation of the values to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -910,18 +910,9 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "ranges", new Google.Apis.Discovery.Parameter
+                        "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "ranges",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
+                            Name = "dateTimeRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -937,9 +928,18 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                        "majorDimension", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "dateTimeRenderOption",
+                            Name = "majorDimension",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "ranges", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ranges",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1139,6 +1139,40 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
+                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
+                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("dateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<DateTimeRenderOptionEnum> DateTimeRenderOption { get; set; }
+
+                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
+                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                public enum DateTimeRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
+                    SERIALNUMBER,
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
+                    FORMATTEDSTRING,
+                }
+
+                /// <summary>How values should be represented in the output. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ValueRenderOptionEnum> ValueRenderOption { get; set; }
+
+                /// <summary>How values should be represented in the output. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                public enum ValueRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
+                    FORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
+                    UNFORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
+                    FORMULA,
+                }
+
                 /// <summary>The major dimension that results should use.
                 ///
                 /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
@@ -1160,40 +1194,6 @@ namespace Google.Apis.Sheets.v4
                     ROWS,
                     [Google.Apis.Util.StringValueAttribute("COLUMNS")]
                     COLUMNS,
-                }
-
-                /// <summary>How values should be represented in the output. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ValueRenderOptionEnum> ValueRenderOption { get; set; }
-
-                /// <summary>How values should be represented in the output. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                public enum ValueRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
-                }
-
-                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
-                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                [Google.Apis.Util.RequestParameterAttribute("dateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<DateTimeRenderOptionEnum> DateTimeRenderOption { get; set; }
-
-                /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
-                /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                public enum DateTimeRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
                 }
 
 
@@ -1239,9 +1239,9 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
+                        "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "majorDimension",
+                            Name = "dateTimeRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1257,9 +1257,9 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                        "majorDimension", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "dateTimeRenderOption",
+                            Name = "majorDimension",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1644,14 +1644,14 @@ namespace Google.Apis.Sheets.v4
             [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SpreadsheetId { get; private set; }
 
-            /// <summary>The ranges to retrieve from the spreadsheet.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
-
             /// <summary>True if grid data should be returned. This parameter is ignored if a field mask was set in the
             /// request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("includeGridData", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeGridData { get; set; }
+
+            /// <summary>The ranges to retrieve from the spreadsheet.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1687,18 +1687,18 @@ namespace Google.Apis.Sheets.v4
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "ranges", new Google.Apis.Discovery.Parameter
+                    "includeGridData", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "ranges",
+                        Name = "includeGridData",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "includeGridData", new Google.Apis.Discovery.Parameter
+                    "ranges", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "includeGridData",
+                        Name = "ranges",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2057,8 +2057,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual ChartData Domain { get; set; } 
 
-        /// <summary>True to reverse the order of the domain values (horizontal axis). Not applicable to Gauge, Geo,
-        /// Histogram, Org, Pie, Radar, and Treemap charts.</summary>
+        /// <summary>True to reverse the order of the domain values (horizontal axis).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reversed")]
         public virtual System.Nullable<bool> Reversed { get; set; } 
 
@@ -2467,7 +2466,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual System.Collections.Generic.IList<CandlestickData> Data { get; set; } 
 
         /// <summary>The domain data (horizontal axis) for the candlestick chart.  String data will be treated as
-        /// discrete labels, other data will be treated as continous values.</summary>
+        /// discrete labels, other data will be treated as continuous values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual CandlestickDomain Domain { get; set; } 
 
@@ -2511,6 +2510,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The data of the CandlestickDomain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual ChartData Data { get; set; } 
+
+        /// <summary>True to reverse the order of the domain values (horizontal axis).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reversed")]
+        public virtual System.Nullable<bool> Reversed { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4111,6 +4114,17 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Randomizes the order of the rows in a range.</summary>
+    public class RandomizeRangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range to randomize.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual GridRange Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Updates all cells in the range to the values in the given Cell object. Only the fields listed in the
     /// fields field are updated; others are unchanged.
     ///
@@ -4267,6 +4281,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Pastes data (HTML or delimited) into a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pasteData")]
         public virtual PasteDataRequest PasteData { get; set; } 
+
+        /// <summary>Randomizes the order of the rows in a range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("randomizeRange")]
+        public virtual RandomizeRangeRequest RandomizeRange { get; set; } 
 
         /// <summary>Repeats a single cell across a range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repeatCell")]

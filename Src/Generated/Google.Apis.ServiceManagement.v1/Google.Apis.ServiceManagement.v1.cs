@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170602 (883)
+ *      <tr><th>API Rev<td>20170630 (911)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -471,13 +471,13 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>Not used.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Not used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
 
             /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
             /// is 100.</summary>
@@ -518,18 +518,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "name",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "name", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "name",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1908,6 +1908,10 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
+            /// <summary>The id of the service configuration resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConfigId { get; set; }
+
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1920,10 +1924,6 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
-            /// <summary>The id of the service configuration resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConfigId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1959,18 +1959,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "configId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "configId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "configId",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2081,10 +2081,6 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Include services produced by the specified project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProducerProjectId { get; set; }
-
             /// <summary>Include services consumed by the specified consumer.
             ///
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
@@ -2098,6 +2094,10 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Requested size of the next page of data.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Include services produced by the specified project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProducerProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2124,15 +2124,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "producerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "producerProjectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
@@ -2154,6 +2145,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "producerProjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "producerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2757,6 +2757,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class CloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>True if the log is for a permission of type DATA_READ or ADMIN_READ.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isReadPermissionType")]
+        public virtual System.Nullable<bool> IsReadPermissionType { get; set; } 
+
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
@@ -3291,7 +3295,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Textual representation of an expression in [Common Expression Language](http://go/api-expr) syntax.
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
         ///
         /// The application context of the containing message determines which well-known feature set of CEL is
         /// supported.</summary>
@@ -3755,7 +3759,22 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies what kind of log the caller must write</summary>
+    /// <summary>Specifies what kind of log the caller must write Increment a streamz counter with the specified metric
+    /// and field names.
+    ///
+    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
+    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
+    ///
+    /// Field names correspond to IAM request parameters and field values are their respective values.
+    ///
+    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
+    /// (empty string), resulting in one aggretated counter with no field.
+    ///
+    /// Examples: counter { metric: "/debug_access_count"  field: "iam_principal" } ==> increment counter
+    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
+    ///
+    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
+    /// decrementing the counter * incrementing it by anything other than 1</summary>
     public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud audit options.</summary>
@@ -5182,6 +5201,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// Refer to selector for syntax details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selector")]
         public virtual string Selector { get; set; } 
+
+        /// <summary>True, if the method should skip service control. If so, no control plane feature (like quota and
+        /// billing) will be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipServiceControl")]
+        public virtual System.Nullable<bool> SkipServiceControl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

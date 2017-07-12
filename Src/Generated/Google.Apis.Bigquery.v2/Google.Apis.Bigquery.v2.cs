@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170604 (885)
+ *      <tr><th>API Rev<td>20170622 (903)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -4242,6 +4242,10 @@ namespace Google.Apis.Bigquery.v2.Data
             /// <summary>A reference uniquely identifying the table.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
             public virtual TableReference TableReference { get; set; } 
+
+            /// <summary>[Experimental] The time-based partitioning for this table.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
+            public virtual TimePartitioning TimePartitioning { get; set; } 
 
             /// <summary>The type of table. Possible values are: TABLE, VIEW.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]

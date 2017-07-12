@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Google Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170530 (880)
+ *      <tr><th>API Rev<td>20170621 (902)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -2609,7 +2609,7 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Textual representation of an expression in [Common Expression Language](http://go/api-expr) syntax.
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
         ///
         /// The application context of the containing message determines which well-known feature set of CEL is
         /// supported.</summary>
@@ -2747,7 +2747,22 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies what kind of log the caller must write</summary>
+    /// <summary>Specifies what kind of log the caller must write Increment a streamz counter with the specified metric
+    /// and field names.
+    ///
+    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
+    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
+    ///
+    /// Field names correspond to IAM request parameters and field values are their respective values.
+    ///
+    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
+    /// (empty string), resulting in one aggretated counter with no field.
+    ///
+    /// Examples: counter { metric: "/debug_access_count"  field: "iam_principal" } ==> increment counter
+    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
+    ///
+    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
+    /// decrementing the counter * incrementing it by anything other than 1</summary>
     public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud audit options.</summary>

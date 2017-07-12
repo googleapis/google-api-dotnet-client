@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170607 (888)
+ *      <tr><th>API Rev<td>20170710 (921)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -990,6 +990,10 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
+            /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -997,10 +1001,6 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>The maximum number of items to return. This is a suggestion for the server.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1027,6 +1027,15 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1039,15 +1048,6 @@ namespace Google.Apis.CloudResourceManager.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1354,8 +1354,10 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Gets the access control policy for an Organization resource. May be empty if no such policy or
-        /// resource exists. The `resource` field should be the organization's resource name, e.g.
-        /// "organizations/123".</summary>
+        /// resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
+        /// specified organization</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -1365,8 +1367,10 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Gets the access control policy for an Organization resource. May be empty if no such policy or
-        /// resource exists. The `resource` field should be the organization's resource name, e.g.
-        /// "organizations/123".</summary>
+        /// resource exists. The `resource` field should be the organization's resource name, e.g. "organizations/123".
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.organizations.getIamPolicy` on the
+        /// specified organization</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -1641,7 +1645,10 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Searches Organization resources that are visible to the user and satisfy the specified filter. This
         /// method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end
-        /// of the results.</summary>
+        /// of the results.
+        ///
+        /// Search will only return organizations on which the user has the permission
+        /// `resourcemanager.organizations.get`</summary>
         /// <param name="body">The body of the request.</param>
         public virtual SearchRequest Search(Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsRequest body)
         {
@@ -1650,7 +1657,10 @@ namespace Google.Apis.CloudResourceManager.v1
 
         /// <summary>Searches Organization resources that are visible to the user and satisfy the specified filter. This
         /// method returns Organizations in an unspecified order. New Organizations do not necessarily appear at the end
-        /// of the results.</summary>
+        /// of the results.
+        ///
+        /// Search will only return organizations on which the user has the permission
+        /// `resourcemanager.organizations.get`</summary>
         public class SearchRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.SearchOrganizationsResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -1697,7 +1707,10 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
-        /// `resource` field should be the organization's resource name, e.g. "organizations/123".</summary>
+        /// `resource` field should be the organization's resource name, e.g. "organizations/123".
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the
+        /// specified organization</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -1707,7 +1720,10 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Sets the access control policy on an Organization resource. Replaces any existing policy. The
-        /// `resource` field should be the organization's resource name, e.g. "organizations/123".</summary>
+        /// `resource` field should be the organization's resource name, e.g. "organizations/123".
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.organizations.setIamPolicy` on the
+        /// specified organization</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -1843,7 +1859,9 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
-        /// the organization's resource name, e.g. "organizations/123".</summary>
+        /// the organization's resource name, e.g. "organizations/123".
+        ///
+        /// There are no permissions required for making this API call.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -1853,7 +1871,9 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified Organization. The `resource` field should be
-        /// the organization's resource name, e.g. "organizations/123".</summary>
+        /// the organization's resource name, e.g. "organizations/123".
+        ///
+        /// There are no permissions required for making this API call.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2005,7 +2025,10 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Our SLO permits Project creation to take up to 30 seconds at the 90th percentile. As of 2016-08-29, we are
         /// observing 6 seconds 50th percentile latency. 95th percentile latency is around 11 seconds. We recommend
-        /// polling at the 5th second with an exponential backoff.</summary>
+        /// polling at the 5th second with an exponential backoff.
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent
+        /// for the new project.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.CloudResourceManager.v1.Data.Project body)
         {
@@ -2018,7 +2041,10 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Our SLO permits Project creation to take up to 30 seconds at the 90th percentile. As of 2016-08-29, we are
         /// observing 6 seconds 50th percentile latency. 95th percentile latency is around 11 seconds. We recommend
-        /// polling at the 5th second with an exponential backoff.</summary>
+        /// polling at the 5th second with an exponential backoff.
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.projects.create` on the specified parent
+        /// for the new project.</summary>
         public class CreateRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Operation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -2375,7 +2401,10 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
-        /// or the resource does not exist.</summary>
+        /// or the resource does not exist.
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the
+        /// project</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2385,7 +2414,10 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
-        /// or the resource does not exist.</summary>
+        /// or the resource does not exist.
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the
+        /// project</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -2541,20 +2573,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
-            /// than requested. If unspecified, server picks an appropriate default.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
             /// fields eligible for filtering are:
             ///
@@ -2568,9 +2586,30 @@ namespace Google.Apis.CloudResourceManager.v1
             /// |labels.color:red|The project's label `color` has the value `red`.| |labels.color:redlabels.size:big|The
             /// project's label `color` has the value `red` and its label `size` has the value `big`.
             ///
+            /// If you specify a filter that has both `parent.type` and `parent.id`, then the
+            /// `resourcemanager.projects.list` permission is checked on the parent. If the user has this permission,
+            /// all projects under the parent will be returned after remaining filters have been applied. If the user
+            /// lacks this permission, then all projects for which the user has the `resourcemanager.projects.get`
+            /// permission will be returned after remaining filters have been applied. If no filter is specified, the
+            /// call will return projects for which the user has `resourcemanager.projects.get` permissions.
+            ///
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// than requested. If unspecified, server picks an appropriate default.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2597,6 +2636,15 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2609,15 +2657,6 @@ namespace Google.Apis.CloudResourceManager.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2793,7 +2832,10 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Note: Removing service accounts from policies or changing their roles can render services completely
         /// inoperable. It is important to understand how the service account is being used before removing or updating
-        /// its roles.</summary>
+        /// its roles.
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the
+        /// project</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2832,7 +2874,10 @@ namespace Google.Apis.CloudResourceManager.v1
         ///
         /// Note: Removing service accounts from policies or changing their roles can render services completely
         /// inoperable. It is important to understand how the service account is being used before removing or updating
-        /// its roles.</summary>
+        /// its roles.
+        ///
+        /// Authorization requires the Google IAM permission `resourcemanager.projects.setIamPolicy` on the
+        /// project</summary>
         public class SetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2967,7 +3012,9 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Returns permissions that a caller has on the specified Project.</summary>
+        /// <summary>Returns permissions that a caller has on the specified Project.
+        ///
+        /// There are no permissions required for making this API call.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2976,7 +3023,9 @@ namespace Google.Apis.CloudResourceManager.v1
             return new TestIamPermissionsRequest(service, body, resource);
         }
 
-        /// <summary>Returns permissions that a caller has on the specified Project.</summary>
+        /// <summary>Returns permissions that a caller has on the specified Project.
+        ///
+        /// There are no permissions required for making this API call.</summary>
         public class TestIamPermissionsRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -4183,8 +4232,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

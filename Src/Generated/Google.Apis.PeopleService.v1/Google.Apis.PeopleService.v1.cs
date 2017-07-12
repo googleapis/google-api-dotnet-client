@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170608 (889)
+ *      <tr><th>API Rev<td>20170710 (921)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.PeopleService.v1
         public PeopleServiceService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            contactGroups = new ContactGroupsResource(this);
             people = new PeopleResource(this);
         }
 
@@ -138,6 +139,14 @@ namespace Google.Apis.PeopleService.v1
         }
 
 
+
+        private readonly ContactGroupsResource contactGroups;
+
+        /// <summary>Gets the ContactGroups resource.</summary>
+        public virtual ContactGroupsResource ContactGroups
+        {
+            get { return contactGroups; }
+        }
 
         private readonly PeopleResource people;
 
@@ -364,6 +373,551 @@ namespace Google.Apis.PeopleService.v1
         }
     }
 
+    /// <summary>The "contactGroups" collection of methods.</summary>
+    public class ContactGroupsResource
+    {
+        private const string Resource = "contactGroups";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ContactGroupsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            members = new MembersResource(service);
+
+        }
+
+        private readonly MembersResource members;
+
+        /// <summary>Gets the Members resource.</summary>
+        public virtual MembersResource Members
+        {
+            get { return members; }
+        }
+
+        /// <summary>The "members" collection of methods.</summary>
+        public class MembersResource
+        {
+            private const string Resource = "members";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MembersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Modify the members of a contact group owned by the authenticated user.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="resourceName">The resource name of the contact group to modify.</param>
+            public virtual ModifyRequest Modify(Google.Apis.PeopleService.v1.Data.ModifyContactGroupMembersRequest body, string resourceName)
+            {
+                return new ModifyRequest(service, body, resourceName);
+            }
+
+            /// <summary>Modify the members of a contact group owned by the authenticated user.</summary>
+            public class ModifyRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ModifyContactGroupMembersResponse>
+            {
+                /// <summary>Constructs a new Modify request.</summary>
+                public ModifyRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.ModifyContactGroupMembersRequest body, string resourceName)
+                    : base(service)
+                {
+                    ResourceName = resourceName;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource name of the contact group to modify.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ResourceName { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.PeopleService.v1.Data.ModifyContactGroupMembersRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "modify"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+resourceName}/members:modify"; }
+                }
+
+                /// <summary>Initializes Modify parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "resourceName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resourceName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^contactGroups/[^/]+$",
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>Get a list of contact groups owned by the authenticated user by specifying a list of contact group
+        /// resource names.</summary>
+        public virtual BatchGetRequest BatchGet()
+        {
+            return new BatchGetRequest(service);
+        }
+
+        /// <summary>Get a list of contact groups owned by the authenticated user by specifying a list of contact group
+        /// resource names.</summary>
+        public class BatchGetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.BatchGetContactGroupsResponse>
+        {
+            /// <summary>Constructs a new BatchGet request.</summary>
+            public BatchGetRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Specifies the maximum number of members to return for each group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxMembers { get; set; }
+
+            /// <summary>The resource names of the contact groups to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "batchGet"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/contactGroups:batchGet"; }
+            }
+
+            /// <summary>Initializes BatchGet parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "maxMembers", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxMembers",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Create a new contact group owned by the authenticated user.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.PeopleService.v1.Data.CreateContactGroupRequest body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Create a new contact group owned by the authenticated user.</summary>
+        public class CreateRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ContactGroup>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.CreateContactGroupRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.CreateContactGroupRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/contactGroups"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Delete an existing contact group owned by the authenticated user by specifying a contact group
+        /// resource name.</summary>
+        /// <param name="resourceName">The resource name of the contact group to delete.</param>
+        public virtual DeleteRequest Delete(string resourceName)
+        {
+            return new DeleteRequest(service, resourceName);
+        }
+
+        /// <summary>Delete an existing contact group owned by the authenticated user by specifying a contact group
+        /// resource name.</summary>
+        public class DeleteRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                InitParameters();
+            }
+
+
+            /// <summary>The resource name of the contact group to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+            /// <summary>Set to true to also delete the contacts in the specified group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deleteContacts", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DeleteContacts { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resourceName}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^contactGroups/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "deleteContacts", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deleteContacts",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Get a specific contact group owned by the authenticated user by specifying a contact group resource
+        /// name.</summary>
+        /// <param name="resourceName">The resource name of the contact group to get.</param>
+        public virtual GetRequest Get(string resourceName)
+        {
+            return new GetRequest(service, resourceName);
+        }
+
+        /// <summary>Get a specific contact group owned by the authenticated user by specifying a contact group resource
+        /// name.</summary>
+        public class GetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ContactGroup>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                InitParameters();
+            }
+
+
+            /// <summary>The resource name of the contact group to get.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+            /// <summary>Specifies the maximum number of members to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxMembers { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resourceName}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^contactGroups/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "maxMembers", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxMembers",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>List all contact groups owned by the authenticated user. Members of the contact groups are not
+        /// populated.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>List all contact groups owned by the authenticated user. Members of the contact groups are not
+        /// populated.</summary>
+        public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListContactGroupsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
+            /// the sync token was created will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
+
+            /// <summary>The next_page_token value returned from a previous call to
+            /// [ListContactGroups](/people/api/rest/v1/contactgroups/list). Requests the next page of
+            /// resources.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of resources to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/contactGroups"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Update the name of an existing contact group owned by the authenticated user.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceName">The resource name for the contact group, assigned by the server. An ASCII string, in the
+        /// form of `contactGroups/`.</param>
+        public virtual UpdateRequest Update(Google.Apis.PeopleService.v1.Data.UpdateContactGroupRequest body, string resourceName)
+        {
+            return new UpdateRequest(service, body, resourceName);
+        }
+
+        /// <summary>Update the name of an existing contact group owned by the authenticated user.</summary>
+        public class UpdateRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ContactGroup>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.UpdateContactGroupRequest body, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The resource name for the contact group, assigned by the server. An ASCII string, in the form
+            /// of `contactGroups/`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.UpdateContactGroupRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resourceName}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^contactGroups/[^/]+$",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "people" collection of methods.</summary>
     public class PeopleResource
     {
@@ -404,14 +958,18 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Provides a list of the authenticated user's contacts merged with any linked profiles.</summary>
+            /// <summary>Provides a list of the authenticated user's contacts merged with any connected profiles.
+            ///
+            /// The request throws a 400 error if 'personFields' is not specified.</summary>
             /// <param name="resourceName">The resource name to return connections for. Only `people/me` is valid.</param>
             public virtual ListRequest List(string resourceName)
             {
                 return new ListRequest(service, resourceName);
             }
 
-            /// <summary>Provides a list of the authenticated user's contacts merged with any linked profiles.</summary>
+            /// <summary>Provides a list of the authenticated user's contacts merged with any connected profiles.
+            ///
+            /// The request throws a 400 error if 'personFields' is not specified.</summary>
             public class ListRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.ListConnectionsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -436,8 +994,8 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Required. Comma-separated list of person fields to be included in the response. Each path
-                /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
+                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
+                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object RequestMaskIncludeField { get; set; }
 
@@ -450,6 +1008,16 @@ namespace Google.Apis.PeopleService.v1
                 /// changed since the sync token was created will be returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SyncToken { get; set; }
+
+                /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Valid
+                /// values are:
+                ///
+                /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
+                /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
+                /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
+                /// relationshipStatuses * residences * skills * taglines * urls</summary>
+                [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object PersonFields { get; set; }
 
                 /// <summary>The order in which the connections should be sorted. Defaults to
                 /// `LAST_MODIFIED_ASCENDING`.</summary>
@@ -547,6 +1115,15 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "personFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "personFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "sortOrder", new Google.Apis.Discovery.Parameter
                         {
                             Name = "sortOrder",
@@ -560,20 +1137,150 @@ namespace Google.Apis.PeopleService.v1
             }
         }
 
+        /// <summary>Create a new contact and return the person resource for that contact.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateContactRequest CreateContact(Google.Apis.PeopleService.v1.Data.Person body)
+        {
+            return new CreateContactRequest(service, body);
+        }
+
+        /// <summary>Create a new contact and return the person resource for that contact.</summary>
+        public class CreateContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
+        {
+            /// <summary>Constructs a new CreateContact request.</summary>
+            public CreateContactRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.Person body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The resource name of the owning person resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.Person Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createContact"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/people:createContact"; }
+            }
+
+            /// <summary>Initializes CreateContact parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Delete a contact person. Any non-contact data will not be deleted.</summary>
+        /// <param name="resourceName">The resource name of the contact to delete.</param>
+        public virtual DeleteContactRequest DeleteContact(string resourceName)
+        {
+            return new DeleteContactRequest(service, resourceName);
+        }
+
+        /// <summary>Delete a contact person. Any non-contact data will not be deleted.</summary>
+        public class DeleteContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new DeleteContact request.</summary>
+            public DeleteContactRequest(Google.Apis.Services.IClientService service, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                InitParameters();
+            }
+
+
+            /// <summary>The resource name of the contact to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteContact"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resourceName}:deleteContact"; }
+            }
+
+            /// <summary>Initializes DeleteContact parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^people/[^/]+$",
+                    });
+            }
+
+        }
+
         /// <summary>Provides information about a person by specifying a resource name. Use `people/me` to indicate the
-        /// authenticated user.</summary>
+        /// authenticated user.
+        ///
+        /// The request throws a 400 error if 'personFields' is not specified.</summary>
         /// <param name="resourceName">The resource name of the person to provide information about.
         ///
-        /// - To get information about the authenticated user, specify `people/me`. - To get information about any user, specify
-        /// the resource name that   identifies the user, such as the resource names returned by
-        /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).</param>
+        /// - To get information about the authenticated user, specify `people/me`. - To get information about a google account,
+        /// specify `people/`. - To get information about a contact, specify the resource name that   identifies the contact as
+        /// returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list).</param>
         public virtual GetRequest Get(string resourceName)
         {
             return new GetRequest(service, resourceName);
         }
 
         /// <summary>Provides information about a person by specifying a resource name. Use `people/me` to indicate the
-        /// authenticated user.</summary>
+        /// authenticated user.
+        ///
+        /// The request throws a 400 error if 'personFields' is not specified.</summary>
         public class GetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -587,13 +1294,24 @@ namespace Google.Apis.PeopleService.v1
 
             /// <summary>The resource name of the person to provide information about.
             ///
-            /// - To get information about the authenticated user, specify `people/me`. - To get information about any
-            /// user, specify the resource name that identifies the user, such as the resource names returned by
+            /// - To get information about the authenticated user, specify `people/me`. - To get information about a
+            /// google account, specify `people/`. - To get information about a contact, specify the resource name that
+            /// identifies the contact as returned by
             /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
-            /// <summary>Required. Comma-separated list of person fields to be included in the response. Each path
+            /// <summary>**Required.** A field mask to restrict which fields on the person are returned. Valid values
+            /// are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
+            /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
+            /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
+            /// relationshipStatuses * residences * skills * taglines * urls</summary>
+            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object PersonFields { get; set; }
+
+            /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
@@ -632,6 +1350,15 @@ namespace Google.Apis.PeopleService.v1
                         Pattern = @"^people/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "personFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "personFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMask.includeField",
@@ -645,14 +1372,18 @@ namespace Google.Apis.PeopleService.v1
         }
 
         /// <summary>Provides information about a list of specific people by specifying a list of requested resource
-        /// names. Use `people/me` to indicate the authenticated user.</summary>
+        /// names. Use `people/me` to indicate the authenticated user.
+        ///
+        /// The request throws a 400 error if 'personFields' is not specified.</summary>
         public virtual GetBatchGetRequest GetBatchGet()
         {
             return new GetBatchGetRequest(service);
         }
 
         /// <summary>Provides information about a list of specific people by specifying a list of requested resource
-        /// names. Use `people/me` to indicate the authenticated user.</summary>
+        /// names. Use `people/me` to indicate the authenticated user.
+        ///
+        /// The request throws a 400 error if 'personFields' is not specified.</summary>
         public class GetBatchGetRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.GetPeopleResponse>
         {
             /// <summary>Constructs a new GetBatchGet request.</summary>
@@ -663,7 +1394,17 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Required. Comma-separated list of person fields to be included in the response. Each path
+            /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Valid values
+            /// are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
+            /// events * genders * imClients * interests * locales * memberships * metadata * names * nicknames *
+            /// occupations * organizations * phoneNumbers * photos * relations * relationshipInterests *
+            /// relationshipStatuses * residences * skills * taglines * urls</summary>
+            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object PersonFields { get; set; }
+
+            /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
@@ -699,6 +1440,15 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "personFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "personFields",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMask.includeField",
@@ -711,6 +1461,110 @@ namespace Google.Apis.PeopleService.v1
                     "resourceNames", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resourceNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Update contact data for an existing contact person. Any non-contact data will not be modified.
+        ///
+        /// The request throws a 400 error if `updatePersonFields` is not specified.
+        ///
+        /// The request throws a 400 error if `person.metadata.sources` is not specified for the contact to be updated.
+        ///
+        /// The request throws a 412 error if `person.metadata.sources.etag` is different than the contact's etag, which
+        /// indicates the contact has changed since its data was read. Clients should get the latest person and re-apply
+        /// their updates to the latest person.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resourceName">The resource name for the person, assigned by the server. An ASCII string with a max
+        /// length of 27 characters, in the form of `people/`.</param>
+        public virtual UpdateContactRequest UpdateContact(Google.Apis.PeopleService.v1.Data.Person body, string resourceName)
+        {
+            return new UpdateContactRequest(service, body, resourceName);
+        }
+
+        /// <summary>Update contact data for an existing contact person. Any non-contact data will not be modified.
+        ///
+        /// The request throws a 400 error if `updatePersonFields` is not specified.
+        ///
+        /// The request throws a 400 error if `person.metadata.sources` is not specified for the contact to be updated.
+        ///
+        /// The request throws a 412 error if `person.metadata.sources.etag` is different than the contact's etag, which
+        /// indicates the contact has changed since its data was read. Clients should get the latest person and re-apply
+        /// their updates to the latest person.</summary>
+        public class UpdateContactRequest : PeopleServiceBaseServiceRequest<Google.Apis.PeopleService.v1.Data.Person>
+        {
+            /// <summary>Constructs a new UpdateContact request.</summary>
+            public UpdateContactRequest(Google.Apis.Services.IClientService service, Google.Apis.PeopleService.v1.Data.Person body, string resourceName)
+                : base(service)
+            {
+                ResourceName = resourceName;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The resource name for the person, assigned by the server. An ASCII string with a max length of
+            /// 27 characters, in the form of `people/`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ResourceName { get; private set; }
+
+            /// <summary>**Required.** A field mask to restrict which fields on the person are updated. Valid values
+            /// are:
+            ///
+            /// * addresses * biographies * birthdays * braggingRights * emailAddresses * events * genders * imClients *
+            /// interests * locales * names * nicknames * occupations * organizations * phoneNumbers * relations *
+            /// residences * skills * urls</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updatePersonFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdatePersonFields { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.PeopleService.v1.Data.Person Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateContact"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resourceName}:updateContact"; }
+            }
+
+            /// <summary>Initializes UpdateContact parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resourceName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^people/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "updatePersonFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updatePersonFields",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -801,6 +1655,17 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response to a batch get contact groups request.</summary>
+    public class BatchGetContactGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of responses for each requested contact group resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responses")]
+        public virtual System.Collections.Generic.IList<ContactGroupResponse> Responses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A person's short biography.</summary>
     public class Biography : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -855,6 +1720,50 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A contact group.</summary>
+    public class ContactGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the resource. Used for web cache
+        /// validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The read-only name translated and formatted in the viewer's account locale or the `Accept-Language`
+        /// HTTP header locale for system groups names. Group names set by the owner are the same as name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formattedName")]
+        public virtual string FormattedName { get; set; } 
+
+        /// <summary>The read-only contact group type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
+        public virtual string GroupType { get; set; } 
+
+        /// <summary>The total number of contacts in the group irrespective of max members in specified in the
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberCount")]
+        public virtual System.Nullable<int> MemberCount { get; set; } 
+
+        /// <summary>The list of contact person resource names that are members of the contact group. The field is not
+        /// populated for LIST requests and can only be updated through the
+        /// [ModifyContactGroupMembers](/people/api/rest/v1/contactgroups/members/modify).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberResourceNames")]
+        public virtual System.Collections.Generic.IList<string> MemberResourceNames { get; set; } 
+
+        /// <summary>Metadata about the contact group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual ContactGroupMetadata Metadata { get; set; } 
+
+        /// <summary>The contact group name set by the group owner or a system provided name for system
+        /// groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The resource name for the contact group, assigned by the server. An ASCII string, in the form of
+        /// `contactGroups/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+    }    
+
     /// <summary>A Google contact group membership.</summary>
     public class ContactGroupMembership : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -864,6 +1773,41 @@ namespace Google.Apis.PeopleService.v1.Data
         /// *  `myContacts` *  `starred` *  A numerical ID for user-created groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactGroupId")]
         public virtual string ContactGroupId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The read-only metadata about a contact group.</summary>
+    public class ContactGroupMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if the contact group resource has been deleted. Populated only for
+        /// [`ListContactGroups`](/people/api/rest/v1/contactgroups/list) requests that include a sync token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
+        public virtual System.Nullable<bool> Deleted { get; set; } 
+
+        /// <summary>The time the group was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for a specific contact group.</summary>
+    public class ContactGroupResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contact group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
+        public virtual ContactGroup ContactGroup { get; set; } 
+
+        /// <summary>The original requested resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedResourceName")]
+        public virtual string RequestedResourceName { get; set; } 
+
+        /// <summary>The status of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -885,6 +1829,17 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The URL of the cover photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to create a new contact group.</summary>
+    public class CreateContactGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contact group to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
+        public virtual ContactGroup ContactGroup { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -952,6 +1907,18 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1108,10 +2075,33 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
         public virtual System.Nullable<int> TotalItems { get; set; } 
 
-        /// <summary>DEPRECATED(Please use total_items). The total number of people in the list without
+        /// <summary>**DEPRECATED** (Please use totalItems) The total number of people in the list without
         /// pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalPeople")]
         public virtual System.Nullable<int> TotalPeople { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response to a list contact groups request.</summary>
+    public class ListContactGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of contact groups. Members of the contact groups are not populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactGroups")]
+        public virtual System.Collections.Generic.IList<ContactGroup> ContactGroups { get; set; } 
+
+        /// <summary>The token that can be used to retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The token that can be used to retrieve changes since the last request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextSyncToken")]
+        public virtual string NextSyncToken { get; set; } 
+
+        /// <summary>The total number of items in the list without pagination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalItems")]
+        public virtual System.Nullable<int> TotalItems { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1147,6 +2137,33 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>Metadata about the membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to modify an existing contact group's members.</summary>
+    public class ModifyContactGroupMembersRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource names of the contact people to add in the form of in the form `people/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToAdd")]
+        public virtual System.Collections.Generic.IList<string> ResourceNamesToAdd { get; set; } 
+
+        /// <summary>The resource names of the contact people to remove in the form of in the form of
+        /// `people/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToRemove")]
+        public virtual System.Collections.Generic.IList<string> ResourceNamesToRemove { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response to a modify contact group members request.</summary>
+    public class ModifyContactGroupMembersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contact people resource names that were not found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notFoundResourceNames")]
+        public virtual System.Collections.Generic.IList<string> NotFoundResourceNames { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1331,11 +2348,13 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<Address> Addresses { get; set; } 
 
-        /// <summary>DEPRECATED(Please read person.age_ranges instead). The person's age range.</summary>
+        /// <summary>**DEPRECATED** (Please use `person.ageRanges` instead)**
+        ///
+        /// The person's read-only age range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRange")]
         public virtual string AgeRange { get; set; } 
 
-        /// <summary>The person's age ranges.</summary>
+        /// <summary>The person's read-only age ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRanges")]
         public virtual System.Collections.Generic.IList<AgeRangeType> AgeRanges { get; set; } 
 
@@ -1351,7 +2370,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("braggingRights")]
         public virtual System.Collections.Generic.IList<BraggingRights> BraggingRights { get; set; } 
 
-        /// <summary>The person's cover photos.</summary>
+        /// <summary>The person's read-only cover photos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coverPhotos")]
         public virtual System.Collections.Generic.IList<CoverPhoto> CoverPhotos { get; set; } 
 
@@ -1384,11 +2403,11 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locales")]
         public virtual System.Collections.Generic.IList<Locale> Locales { get; set; } 
 
-        /// <summary>The person's group memberships.</summary>
+        /// <summary>The person's read-only group memberships.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; } 
 
-        /// <summary>Metadata about the person.</summary>
+        /// <summary>Read-only metadata about the person.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual PersonMetadata Metadata { get; set; } 
 
@@ -1412,7 +2431,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
         public virtual System.Collections.Generic.IList<PhoneNumber> PhoneNumbers { get; set; } 
 
-        /// <summary>The person's photos.</summary>
+        /// <summary>The person's read-only photos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photos")]
         public virtual System.Collections.Generic.IList<Photo> Photos { get; set; } 
 
@@ -1420,11 +2439,11 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<Relation> Relations { get; set; } 
 
-        /// <summary>The kind of relationship the person is looking for.</summary>
+        /// <summary>The person's read-only relationship interests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipInterests")]
         public virtual System.Collections.Generic.IList<RelationshipInterest> RelationshipInterests { get; set; } 
 
-        /// <summary>The person's relationship statuses.</summary>
+        /// <summary>The person's read-only relationship statuses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipStatuses")]
         public virtual System.Collections.Generic.IList<RelationshipStatus> RelationshipStatuses { get; set; } 
 
@@ -1441,7 +2460,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("skills")]
         public virtual System.Collections.Generic.IList<Skill> Skills { get; set; } 
 
-        /// <summary>The person's taglines.</summary>
+        /// <summary>The person's read-only taglines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taglines")]
         public virtual System.Collections.Generic.IList<Tagline> Taglines { get; set; } 
 
@@ -1464,8 +2483,9 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedPeopleResourceNames")]
         public virtual System.Collections.Generic.IList<string> LinkedPeopleResourceNames { get; set; } 
 
-        /// <summary>DEPRECATED(Please read person.metadata.sources.profile_metadata instead). The type of the person
-        /// object.</summary>
+        /// <summary>**DEPRECATED** (Please use `person.metadata.sources.profileMetadata.objectType` instead)
+        ///
+        /// The type of the person object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; } 
 
@@ -1488,8 +2508,9 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>The response for a single person</summary>
     public class PersonResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>DEPRECATED(Please use status instead). [HTTP 1.1 status
-        /// code](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</summary>
+        /// <summary>**DEPRECATED** (Please use status instead)
+        ///
+        /// [HTTP 1.1 status code] (http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpStatusCode")]
         public virtual System.Nullable<int> HttpStatusCode { get; set; } 
 
@@ -1523,7 +2544,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string CanonicalForm { get; set; } 
 
         /// <summary>The read-only type of the phone number translated and formatted in the viewer's account locale or
-        /// the the `Accept-Language` HTTP header locale.</summary>
+        /// the `Accept-Language` HTTP header locale.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedType")]
         public virtual string FormattedType { get; set; } 
 
@@ -1571,6 +2592,10 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The profile object type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; } 
+
+        /// <summary>The user types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userTypes")]
+        public virtual System.Collections.Generic.IList<string> UserTypes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1689,8 +2714,10 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>The source of a field.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web cache
-        /// validation. Only populated in person.metadata.sources.</summary>
+        /// <summary>**Only populated in `person.metadata.sources`.**
+        ///
+        /// The [HTTP entity tag](https://en.wikipedia.org/wiki/HTTP_ETag) of the source. Used for web cache
+        /// validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
@@ -1698,13 +2725,21 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Metadata about a source of type PROFILE.</summary>
+        /// <summary>**Only populated in `person.metadata.sources`.**
+        ///
+        /// Metadata about a source of type PROFILE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profileMetadata")]
         public virtual ProfileMetadata ProfileMetadata { get; set; } 
 
         /// <summary>The source type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>**Only populated in `person.metadata.sources`.**
+        ///
+        /// Last update timestamp of this source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
 
     }    
 
@@ -1757,8 +2792,8 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -1781,6 +2816,17 @@ namespace Google.Apis.PeopleService.v1.Data
         /// <summary>The tagline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to update an existing contact group. Only the name can be updated.</summary>
+    public class UpdateContactGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The contact group to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
+        public virtual ContactGroup ContactGroup { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

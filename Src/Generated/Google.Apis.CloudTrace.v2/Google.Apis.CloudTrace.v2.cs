@@ -19,23 +19,23 @@
 
 /**
  * \brief
- *   Google Tracing API Version v2
+ *   Stackdriver Trace API Version v2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/trace'>Google Tracing API</a>
+ *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170531 (881)
+ *      <tr><th>API Rev<td>20170705 (916)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
- *      <tr><th>Discovery Name<td>tracing
+ *      <tr><th>Discovery Name<td>cloudtrace
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Tracing API can be found at
+ * The complete API documentation for using Stackdriver Trace API can be found at
  * <a href='https://cloud.google.com/trace'>https://cloud.google.com/trace</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -43,10 +43,10 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Tracing.v2
+namespace Google.Apis.CloudTrace.v2
 {
-    /// <summary>The Tracing Service.</summary>
-    public class TracingService : Google.Apis.Services.BaseClientService
+    /// <summary>The CloudTrace Service.</summary>
+    public class CloudTraceService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
         public const string Version = "v2";
@@ -56,12 +56,12 @@ namespace Google.Apis.Tracing.v2
             Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
 
         /// <summary>Constructs a new service.</summary>
-        public TracingService() :
+        public CloudTraceService() :
             this(new Google.Apis.Services.BaseClientService.Initializer()) {}
 
         /// <summary>Constructs a new service.</summary>
         /// <param name="initializer">The service initializer.</param>
-        public TracingService(Google.Apis.Services.BaseClientService.Initializer initializer)
+        public CloudTraceService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
             projects = new ProjectsResource(this);
@@ -76,13 +76,13 @@ namespace Google.Apis.Tracing.v2
         /// <summary>Gets the service name.</summary>
         public override string Name
         {
-            get { return "tracing"; }
+            get { return "cloudtrace"; }
         }
 
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://tracing.googleapis.com/"; }
+            get { return "https://cloudtrace.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -95,7 +95,7 @@ namespace Google.Apis.Tracing.v2
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://tracing.googleapis.com/batch"; }
+            get { return "https://cloudtrace.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
@@ -105,7 +105,7 @@ namespace Google.Apis.Tracing.v2
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Tracing API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Stackdriver Trace API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -130,11 +130,11 @@ namespace Google.Apis.Tracing.v2
         }
     }
 
-    ///<summary>A base abstract class for Tracing requests.</summary>
-    public abstract class TracingBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    ///<summary>A base abstract class for CloudTrace requests.</summary>
+    public abstract class CloudTraceBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
     {
-        ///<summary>Constructs a new TracingBaseServiceRequest instance.</summary>
-        protected TracingBaseServiceRequest(Google.Apis.Services.IClientService service)
+        ///<summary>Constructs a new CloudTraceBaseServiceRequest instance.</summary>
+        protected CloudTraceBaseServiceRequest(Google.Apis.Services.IClientService service)
             : base(service)
         {
         }
@@ -221,7 +221,7 @@ namespace Google.Apis.Tracing.v2
         [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UploadProtocol { get; set; }
 
-        /// <summary>Initializes Tracing parameter list.</summary>
+        /// <summary>Initializes CloudTrace parameter list.</summary>
         protected override void InitParameters()
         {
             base.InitParameters();
@@ -412,20 +412,20 @@ namespace Google.Apis.Tracing.v2
 
                 /// <summary>Creates a new Span.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name of Span in the format `projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID`.
-                /// `TRACE_ID` is a unique identifier for a trace within a project and is a base16-encoded, case-insensitive string and
-                /// is required to be 32 char long. `SPAN_ID` is a unique identifier for a span within a trace. It is a base 16-encoded,
-                /// case-insensitive string of a 8-bytes array and is required to be 16 char long.</param>
-                public virtual CreateRequest Create(Google.Apis.Tracing.v2.Data.Span body, string name)
+                /// <param name="name">The resource name of the span in the following format:
+                ///
+                ///     projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.
+                /// [SPAN_ID] is a unique identifier for a span within a trace, assigned when the span is created.</param>
+                public virtual CreateRequest Create(Google.Apis.CloudTrace.v2.Data.Span body, string name)
                 {
                     return new CreateRequest(service, body, name);
                 }
 
                 /// <summary>Creates a new Span.</summary>
-                public class CreateRequest : TracingBaseServiceRequest<Google.Apis.Tracing.v2.Data.Span>
+                public class CreateRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Span>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Tracing.v2.Data.Span body, string name)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTrace.v2.Data.Span body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -434,17 +434,17 @@ namespace Google.Apis.Tracing.v2
                     }
 
 
-                    /// <summary>The resource name of Span in the format
-                    /// `projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID`. `TRACE_ID` is a unique identifier for a
-                    /// trace within a project and is a base16-encoded, case-insensitive string and is required to be 32
-                    /// char long. `SPAN_ID` is a unique identifier for a span within a trace. It is a base 16-encoded,
-                    /// case-insensitive string of a 8-bytes array and is required to be 16 char long.</summary>
+                    /// <summary>The resource name of the span in the following format:
+                    ///
+                    /// projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a
+                    /// project. [SPAN_ID] is a unique identifier for a span within a trace, assigned when the span is
+                    /// created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Tracing.v2.Data.Span Body { get; set; }
+                    Google.Apis.CloudTrace.v2.Data.Span Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -491,8 +491,9 @@ namespace Google.Apis.Tracing.v2
             /// existing spans results undefined behavior. If the name does not match, a new trace is created with given
             /// set of spans.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Name of the project where the spans belong to. Format is `projects/PROJECT_ID`.</param>
-            public virtual BatchWriteRequest BatchWrite(Google.Apis.Tracing.v2.Data.BatchWriteSpansRequest body, string name)
+            /// <param name="name">Required. Name of the project where the spans belong. The format is
+            /// `projects/PROJECT_ID`.</param>
+            public virtual BatchWriteRequest BatchWrite(Google.Apis.CloudTrace.v2.Data.BatchWriteSpansRequest body, string name)
             {
                 return new BatchWriteRequest(service, body, name);
             }
@@ -501,10 +502,10 @@ namespace Google.Apis.Tracing.v2
             /// you send matches that of an existing trace, new spans are added to the existing trace. Attempt to update
             /// existing spans results undefined behavior. If the name does not match, a new trace is created with given
             /// set of spans.</summary>
-            public class BatchWriteRequest : TracingBaseServiceRequest<Google.Apis.Tracing.v2.Data.Empty>
+            public class BatchWriteRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Empty>
             {
                 /// <summary>Constructs a new BatchWrite request.</summary>
-                public BatchWriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Tracing.v2.Data.BatchWriteSpansRequest body, string name)
+                public BatchWriteRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTrace.v2.Data.BatchWriteSpansRequest body, string name)
                     : base(service)
                 {
                     Name = name;
@@ -513,13 +514,14 @@ namespace Google.Apis.Tracing.v2
                 }
 
 
-                /// <summary>Name of the project where the spans belong to. Format is `projects/PROJECT_ID`.</summary>
+                /// <summary>Required. Name of the project where the spans belong. The format is
+                /// `projects/PROJECT_ID`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Tracing.v2.Data.BatchWriteSpansRequest Body { get; set; }
+                Google.Apis.CloudTrace.v2.Data.BatchWriteSpansRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -561,7 +563,7 @@ namespace Google.Apis.Tracing.v2
             }
 
             /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
-            /// <param name="parent">ID of the Cloud project where the trace data is stored which is
+            /// <param name="parent">Required. The project where the trace data is stored. The format is
             /// `projects/PROJECT_ID`.</param>
             public virtual ListRequest List(string parent)
             {
@@ -569,7 +571,7 @@ namespace Google.Apis.Tracing.v2
             }
 
             /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
-            public class ListRequest : TracingBaseServiceRequest<Google.Apis.Tracing.v2.Data.ListTracesResponse>
+            public class ListRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.ListTracesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -580,49 +582,49 @@ namespace Google.Apis.Tracing.v2
                 }
 
 
-                /// <summary>ID of the Cloud project where the trace data is stored which is
+                /// <summary>Required. The project where the trace data is stored. The format is
                 /// `projects/PROJECT_ID`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>An optional filter for the request. Example: `version_label_key:a
-                /// some_label:some_label_key` returns traces from version `a` and has `some_label` with
-                /// `some_label_key`.</summary>
+                /// <summary>Optional. A single field used to sort the returned traces. Only the following field names
+                /// can be used:
+                ///
+                /// *   `trace_id`: the trace's ID field *   `name`:  the root span's resource name *   `duration`: the
+                /// difference between the root span's start time and end time *   `start`:  the start time of the root
+                /// span
+                ///
+                /// Sorting is in ascending order unless `desc` is appended to the sort field name. Example: `"name
+                /// desc"`).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Opional. Return only traces that match this [trace filter](/trace/docs/trace-filters).
+                /// Example:
+                ///
+                /// "label:/http/url root:/_ah/background my_label:17"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>End of the time interval (inclusive) during which the trace data was collected from the
-                /// application.</summary>
+                /// <summary>Optional. Do not return traces whose start time is later than this time.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
 
-                /// <summary>Start of the time interval (inclusive) during which the trace data was collected from the
-                /// application.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
-
-                /// <summary>Token identifying the page of results to return. If provided, use the value of the
-                /// `next_page_token` field from a previous request. Optional.</summary>
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method.  `page_token` must be the value of `next_page_token` from the previous response.  The
+                /// values of other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Maximum number of traces to return. If not specified or <= 0, the implementation selects a
-                /// reasonable value. The implementation may return fewer traces than the requested page size.
-                /// Optional.</summary>
+                /// <summary>Optional. Do not return traces whose end time is earlier than this time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of `next_page_token` in the response indicates that more results might be
+                /// available, even if fewer than the maximum number of results is returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
-                ///
-                /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
-                /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
-                /// root span)
-                ///
-                /// Descending order can be specified by appending `desc` to the sort field (for example, `name desc`).
-                ///
-                /// Only one sort field is permitted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -658,6 +660,15 @@ namespace Google.Apis.Tracing.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -676,18 +687,18 @@ namespace Google.Apis.Tracing.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -702,21 +713,12 @@ namespace Google.Apis.Tracing.v2
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
                 }
 
             }
 
             /// <summary>Returns a list of spans within a trace.</summary>
-            /// <param name="parent">ID of the trace for which to list child spans. Format is
+            /// <param name="parent">Required: The resource name of the trace containing the spans to list. The format is
             /// `projects/PROJECT_ID/traces/TRACE_ID`.</param>
             public virtual ListSpansRequest ListSpans(string parent)
             {
@@ -724,7 +726,7 @@ namespace Google.Apis.Tracing.v2
             }
 
             /// <summary>Returns a list of spans within a trace.</summary>
-            public class ListSpansRequest : TracingBaseServiceRequest<Google.Apis.Tracing.v2.Data.ListSpansResponse>
+            public class ListSpansRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.ListSpansResponse>
             {
                 /// <summary>Constructs a new ListSpans request.</summary>
                 public ListSpansRequest(Google.Apis.Services.IClientService service, string parent)
@@ -735,13 +737,14 @@ namespace Google.Apis.Tracing.v2
                 }
 
 
-                /// <summary>ID of the trace for which to list child spans. Format is
+                /// <summary>Required: The resource name of the trace containing the spans to list. The format is
                 /// `projects/PROJECT_ID/traces/TRACE_ID`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Token identifying the page of results to return. If provided, use the value of the
-                /// `nextPageToken` field from a previous request. Optional.</summary>
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. `page_token` must be the value of `next_page_token` from the previous response. The
+                /// values of other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -794,14 +797,13 @@ namespace Google.Apis.Tracing.v2
     }
 }
 
-namespace Google.Apis.Tracing.v2.Data
+namespace Google.Apis.CloudTrace.v2.Data
 {    
 
-    /// <summary>Text annotation with a set of attributes. A maximum of 32 annotations are allowed per Span.</summary>
+    /// <summary>Text annotation with a set of attributes.</summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of attributes on the annotation. A maximum of 4 attributes are allowed per
-        /// Annotation.</summary>
+        /// <summary>A set of attributes on the annotation. There is a limit of 4 attributes per Annotation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; } 
 
@@ -814,18 +816,18 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The allowed types for the value side of an attribute key:value pair.</summary>
+    /// <summary>The allowed types for [VALUE] in a `[KEY]:[VALUE]` attribute.</summary>
     public class AttributeValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A boolean value.</summary>
+        /// <summary>A Boolean value represented by `true` or `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
         public virtual System.Nullable<bool> BoolValue { get; set; } 
 
-        /// <summary>An integer value.</summary>
+        /// <summary>A 64-bit signed integer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
         public virtual System.Nullable<long> IntValue { get; set; } 
 
-        /// <summary>A string value (up to 256 bytes).</summary>
+        /// <summary>A string up to 256 bytes long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual TruncatableString StringValue { get; set; } 
 
@@ -833,21 +835,20 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Attributes of a span with a key:value format.</summary>
+    /// <summary>A set of attributes, each in the format `[KEY]:[VALUE]`.</summary>
     public class Attributes : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The maximum key length is 128 bytes (attributes are dropped if the key size is larger than the
-        /// maximum allowed). The value can be a string (up to 256 bytes), integer, or boolean (true/false). Some common
-        /// pair examples:
+        /// <summary>The set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string
+        /// up to 256 bytes, an integer, or the Boolean values `true` and `false`. For example:
         ///
-        /// "/instance_id": "my-instance" "/zone": "us-central1-a" "/grpc/peer_address": "ip:port" (dns, etc.)
-        /// "/grpc/deadline": "Duration" "/http/user_agent" "/http/request_bytes": 300 "/http/response_bytes": 1200
-        /// "/http/url": google.com/apis "abc.com/myattribute": true</summary>
+        /// "/instance_id": "my-instance" "/http/user_agent": "" "/http/request_bytes": 300 "abc.com/myattribute":
+        /// true</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
         public virtual System.Collections.Generic.IDictionary<string,AttributeValue> AttributeMap { get; set; } 
 
-        /// <summary>The number of dropped attributes after the maximum size was enforced. If 0 then no attributes were
-        /// dropped.</summary>
+        /// <summary>The number of attributes that were discarded. Attributes can be discarded because their keys are
+        /// too long or because there are too many attributes. If this value is 0 then all attributes are
+        /// valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedAttributesCount")]
         public virtual System.Nullable<int> DroppedAttributesCount { get; set; } 
 
@@ -878,19 +879,20 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A pointer from this span to another span in a different `Trace` within the same service project or
-    /// within a different service project. Used (for example) in batching operations, where a single batch handler
-    /// processes multiple requests from different traces or when receives a request from a different service
-    /// project.</summary>
+    /// <summary>A pointer from the current span to another span in the same trace or in a different trace. For example,
+    /// this can be used in batching operations, where a single batch handler processes multiple requests from different
+    /// traces or when the handler receives a request from a different project.</summary>
     public class Link : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>`SPAN_ID` is a unique identifier for a span within a trace. It is a base16-encoded, case-
-        /// insensitive string of a 8-bytes array and is required to be 16 char long.</summary>
+        /// <summary>A set of attributes on the link. There is a limit of 32 attributes per link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual Attributes Attributes { get; set; } 
+
+        /// <summary>`SPAN_ID` identifies a span within a trace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; } 
 
-        /// <summary>`TRACE_ID` is a unique identifier for a trace within a project. It is a base16-encoded, case-
-        /// insensitive string of a 16-bytes array and is required to be 32 char long.</summary>
+        /// <summary>`TRACE_ID` identifies a trace within a project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceId")]
         public virtual string TraceId { get; set; } 
 
@@ -906,8 +908,8 @@ namespace Google.Apis.Tracing.v2.Data
     /// trace.</summary>
     public class Links : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of dropped links after the maximum size was enforced. If 0 then no links were
-        /// dropped.</summary>
+        /// <summary>The number of dropped links after the maximum size was enforced. If this value is 0, then no links
+        /// were dropped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedLinksCount")]
         public virtual System.Nullable<int> DroppedLinksCount { get; set; } 
 
@@ -922,12 +924,12 @@ namespace Google.Apis.Tracing.v2.Data
     /// <summary>The response message for the `ListSpans` method.</summary>
     public class ListSpansResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If defined, indicates that there are more spans that match the request. Pass this as the value of
-        /// `pageToken` in a subsequent request to retrieve additional spans.</summary>
+        /// <summary>If defined, indicates that there might be more spans that match the request. Pass this as the value
+        /// of `pageToken` in a subsequent request to retrieve additional spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The requested spans if there are any in the specified trace.</summary>
+        /// <summary>The requested spans, if there are any in the specified trace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spans")]
         public virtual System.Collections.Generic.IList<Span> Spans { get; set; } 
 
@@ -938,8 +940,9 @@ namespace Google.Apis.Tracing.v2.Data
     /// <summary>The response message for the `ListTraces` method.</summary>
     public class ListTracesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If defined, indicates that there are more traces that match the request and that this value should
-        /// be passed to the next request to continue retrieving additional traces.</summary>
+        /// <summary>If there might be more results than those appearing in this response, then `next_page_token` is
+        /// included.  To get the next set of results, call this method again using the value of `next_page_token` as
+        /// `page_token`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -954,13 +957,12 @@ namespace Google.Apis.Tracing.v2.Data
     /// <summary>Binary module.</summary>
     public class Module : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Build_id is a unique identifier for the module, usually a hash of its contents (up to 128
-        /// characters).</summary>
+        /// <summary>A unique identifier for the module, usually a hash of its contents (up to 128 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildId")]
         public virtual TruncatableString BuildId { get; set; } 
 
-        /// <summary>E.g. main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up to 256
-        /// characters).</summary>
+        /// <summary>For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up
+        /// to 256 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("module")]
         public virtual TruncatableString ModuleValue { get; set; } 
 
@@ -968,8 +970,7 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An event describing an RPC message sent/received on the network. A maximum of 128 network events are
-    /// allowed per Span.</summary>
+    /// <summary>An event describing an RPC message sent or received on the network.</summary>
     public class NetworkEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An identifier for the message, which must be unique in this span.</summary>
@@ -980,9 +981,7 @@ namespace Google.Apis.Tracing.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageSize")]
         public virtual System.Nullable<ulong> MessageSize { get; set; } 
 
-        /// <summary>If available, this is the kernel time:
-        ///
-        /// *  For sent messages, this is the time at which the first bit was sent. *  For received messages, this is
+        /// <summary>For sent messages, this is the time at which the first bit was sent. For received messages, this is
         /// the time at which the last bit was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
         public virtual object Time { get; set; } 
@@ -996,25 +995,30 @@ namespace Google.Apis.Tracing.v2.Data
     }    
 
     /// <summary>A span represents a single operation within a trace. Spans can be nested to form a trace tree. Often, a
-    /// trace contains a root span that describes the end-to-end latency and, optionally, one or more subspans for its
-    /// sub-operations. (A trace could alternatively contain multiple root spans, or none at all.) Spans do not need to
-    /// be contiguous. There may be gaps and/or overlaps between spans in a trace.</summary>
+    /// trace contains a root span that describes the end-to-end latency, and one or more subspans for its sub-
+    /// operations. A trace can also contain multiple root spans, or none at all. Spans do not need to be
+    /// contiguousthere may be gaps or overlaps between spans in a trace.</summary>
     public class Span : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A set of attributes on the span. A maximum of 32 attributes are allowed per Span.</summary>
+        /// <summary>A set of attributes on the span. There is a limit of 32 attributes per span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual Attributes Attributes { get; set; } 
 
-        /// <summary>Description of the operation in the span. It is sanitized and displayed in the Stackdriver Trace
-        /// tool in the {% dynamic print site_values.console_name %}. The display_name may be a method name or some
-        /// other per-call site name. For the same executable and the same call point, a best practice is to use a
-        /// consistent operation name, which makes it easier to correlate cross-trace spans. The maximum length for the
-        /// display_name is 128 bytes.</summary>
+        /// <summary>An optional number of child spans that were generated while this span was active. If set, allows
+        /// implementation to detect missing child spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childSpanCount")]
+        public virtual System.Nullable<long> ChildSpanCount { get; set; } 
+
+        /// <summary>A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description
+        /// in the {% dynamic print site_values.console_name %}. For example, the display name can be a qualified method
+        /// name or a file name and a line number where the operation is called. A best practice is to use the same
+        /// display name within an application and at the same call point. This makes it easier to correlate spans in
+        /// different traces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual TruncatableString DisplayName { get; set; } 
 
-        /// <summary>End time of the span. On the client side, this is the local machine clock time at which the span
-        /// execution was ended; on the server side, this is the time at which the server application handler stopped
+        /// <summary>The end time of the span. On the client side, this is the time kept by the local machine where the
+        /// span execution ends. On the server side, this is the time when the server application handler stops
         /// running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
@@ -1023,20 +1027,24 @@ namespace Google.Apis.Tracing.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("links")]
         public virtual Links Links { get; set; } 
 
-        /// <summary>The resource name of Span in the format `projects/PROJECT_ID/traces/TRACE_ID/spans/SPAN_ID`.
-        /// `TRACE_ID` is a unique identifier for a trace within a project and is a base16-encoded, case-insensitive
-        /// string and is required to be 32 char long. `SPAN_ID` is a unique identifier for a span within a trace. It is
-        /// a base 16-encoded, case-insensitive string of a 8-bytes array and is required to be 16 char long.</summary>
+        /// <summary>The resource name of the span in the following format:
+        ///
+        /// projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.
+        /// [SPAN_ID] is a unique identifier for a span within a trace, assigned when the span is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>ID of parent span which is a base 16-encoded, case-insensitive string of a 8-bytes array and is
-        /// required to be 16 char long. If this is a root span, the value must be empty.</summary>
+        /// <summary>The [SPAN_ID] of this span's parent span. If this is a root span, then this field must be
+        /// empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentSpanId")]
         public virtual string ParentSpanId { get; set; } 
 
-        /// <summary>Unique identifier for a span within a trace. It is a base 16-encoded, case-insensitive string of a
-        /// 8-bytes array and is required.</summary>
+        /// <summary>A highly recommended but not required flag that identifies when a trace crosses a process boundary.
+        /// True when the parent_span belongs to the same process as the current span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sameProcessAsParentSpan")]
+        public virtual System.Nullable<bool> SameProcessAsParentSpan { get; set; } 
+
+        /// <summary>The [SPAN_ID] portion of the span's resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; } 
 
@@ -1044,8 +1052,8 @@ namespace Google.Apis.Tracing.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
         public virtual StackTrace StackTrace { get; set; } 
 
-        /// <summary>Start time of the span. On the client side, this is the local machine clock time at which the span
-        /// execution was started; on the server side, this is the time at which the server application handler started
+        /// <summary>The start time of the span. On the client side, this is the time kept by the local machine where
+        /// the span execution starts. On the server side, this is the time when the server's application handler starts
         /// running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
@@ -1054,7 +1062,8 @@ namespace Google.Apis.Tracing.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
 
-        /// <summary>A maximum of 32 annotations and 128 network events are allowed per Span.</summary>
+        /// <summary>The included time events. There can be up to 32 annotations and 128 network events per
+        /// span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeEvents")]
         public virtual TimeEvents TimeEvents { get; set; } 
 
@@ -1065,34 +1074,35 @@ namespace Google.Apis.Tracing.v2.Data
     /// <summary>Represents a single stack frame in a stack trace.</summary>
     public class StackFrame : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Column number is important in JavaScript (anonymous functions). May not be available in some
-        /// languages.</summary>
+        /// <summary>The column number where the function call appears, if available. This is important in JavaScript
+        /// because of its anonymous functions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnNumber")]
         public virtual System.Nullable<long> ColumnNumber { get; set; } 
 
-        /// <summary>The filename of the file containing this frame (up to 256 characters).</summary>
+        /// <summary>The name of the source file where the function call appears (up to 256 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual TruncatableString FileName { get; set; } 
 
-        /// <summary>The fully-qualified name that uniquely identifies this function or method (up to 1024
-        /// characters).</summary>
+        /// <summary>The fully-qualified name that uniquely identifies the function or method that is active in this
+        /// frame (up to 1024 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
         public virtual TruncatableString FunctionName { get; set; } 
 
-        /// <summary>Line number of the frame.</summary>
+        /// <summary>The line number in `file_name` where the function call appears.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
         public virtual System.Nullable<long> LineNumber { get; set; } 
 
-        /// <summary>Binary module the code is loaded from.</summary>
+        /// <summary>The binary module from where the code was loaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadModule")]
         public virtual Module LoadModule { get; set; } 
 
-        /// <summary>Used when the function name is [mangled](http://www.avabodh.com/cxxin/namemangling.html). May be
-        /// fully-qualified (up to 1024 characters).</summary>
+        /// <summary>An un-mangled function name, if `function_name` is
+        /// [mangled](http://www.avabodh.com/cxxin/namemangling.html). The name can be fully-qualified (up to 1024
+        /// bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalFunctionName")]
         public virtual TruncatableString OriginalFunctionName { get; set; } 
 
-        /// <summary>The version of the deployed source code (up to 128 characters).</summary>
+        /// <summary>The version of the deployed source code (up to 128 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
         public virtual TruncatableString SourceVersion { get; set; } 
 
@@ -1100,15 +1110,15 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents collection of StackFrames that can be truncated.</summary>
+    /// <summary>A collection of stack frames, which can be truncated.</summary>
     public class StackFrames : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of dropped stack frames after the maximum size was enforced. If 0 then no frames were
-        /// dropped.</summary>
+        /// <summary>The number of stack frames that were dropped because there were too many stack frames. If this
+        /// value is 0, then no stack frames were dropped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedFramesCount")]
         public virtual System.Nullable<int> DroppedFramesCount { get; set; } 
 
-        /// <summary>Stack frames in this stack trace.</summary>
+        /// <summary>Stack frames in this call stack.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frame")]
         public virtual System.Collections.Generic.IList<StackFrame> Frame { get; set; } 
 
@@ -1116,7 +1126,7 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>StackTrace collected in a trace.</summary>
+    /// <summary>A call stack appearing in a trace.</summary>
     public class StackTrace : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Stack frames in this stack trace. A maximum of 128 frames are allowed.</summary>
@@ -1200,7 +1210,7 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A time-stamped annotation in the Span.</summary>
+    /// <summary>A time-stamped annotation or network event in the Span.</summary>
     public class TimeEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>One or more key:value pairs.</summary>
@@ -1223,13 +1233,13 @@ namespace Google.Apis.Tracing.v2.Data
     /// either user-supplied key:value pairs, or details of an RPC message sent/received on the network.</summary>
     public class TimeEvents : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of dropped annotations after the maximum size was enforced. If 0 then no annotations
-        /// were dropped.</summary>
+        /// <summary>The number of dropped annotations in all the included time events. If the value is 0, then no
+        /// annotations were dropped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedAnnotationsCount")]
         public virtual System.Nullable<int> DroppedAnnotationsCount { get; set; } 
 
-        /// <summary>The number of dropped network events after the maximum size was enforced. If 0 then no annotations
-        /// were dropped.</summary>
+        /// <summary>The number of dropped network events in all the included time events. If the value is 0, then no
+        /// network events were dropped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("droppedNetworkEventsCount")]
         public virtual System.Nullable<int> DroppedNetworkEventsCount { get; set; } 
 
@@ -1245,9 +1255,10 @@ namespace Google.Apis.Tracing.v2.Data
     /// of spans, each representing an operation and including time information and operation details.</summary>
     public class Trace : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource name of Trace in the format `projects/PROJECT_ID/traces/TRACE_ID`. `TRACE_ID` is a
-        /// unique identifier for a trace within a project and is a base16-encoded, case-insensitive string and is
-        /// required to be 32 char long.</summary>
+        /// <summary>The resource name of the trace in the following format:
+        ///
+        /// projects/[PROJECT_ID]/traces/TRACE_ID is a unique identifier for a trace within a project. The ID is
+        /// assigned when the trace is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1255,15 +1266,18 @@ namespace Google.Apis.Tracing.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a string value that might be truncated.</summary>
+    /// <summary>Represents a string that might be shortened to a specified length.</summary>
     public class TruncatableString : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of characters truncated from the original string value. If 0 it means that the string
-        /// value was not truncated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("truncatedCharacterCount")]
-        public virtual System.Nullable<int> TruncatedCharacterCount { get; set; } 
+        /// <summary>The number of bytes removed from the original string. If this value is 0, then the string was not
+        /// shortened.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("truncatedByteCount")]
+        public virtual System.Nullable<int> TruncatedByteCount { get; set; } 
 
-        /// <summary>The truncated string value. E.g. for a string attribute this may have up to 256 bytes.</summary>
+        /// <summary>The shortened string. For example, if the original string was 500 bytes long and the limit of the
+        /// string was 128 bytes, then this value contains the first 128 bytes of the 500-byte string. Note that
+        /// truncation always happens on the character boundary, to ensure that truncated string is still valid UTF8. In
+        /// case of multi-byte characters, size of truncated string can be less than truncation limit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 

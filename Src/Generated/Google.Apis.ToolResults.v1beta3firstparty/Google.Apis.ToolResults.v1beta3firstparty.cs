@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results firstparty API</a>
  *      <tr><th>API Version<td>v1beta3firstparty
- *      <tr><th>API Rev<td>20170609 (890)
+ *      <tr><th>API Rev<td>20170707 (918)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3323,6 +3323,23 @@ namespace Google.Apis.ToolResults.v1beta3firstparty.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class AppStartTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The time from app start to reaching the developer-reported "fully drawn" time. This is
+        /// only stored if the app includes a call to Activity.reportFullyDrawn(). See
+        /// https://developer.android.com/topic/performance/launch-time.html#time-full</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullyDrawnTime")]
+        public virtual Duration FullyDrawnTime { get; set; } 
+
+        /// <summary>The time from app start to the first displayed activity being drawn, as reported in Logcat. See
+        /// https://developer.android.com/topic/performance/launch-time.html#time-initial</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initialDisplayTime")]
+        public virtual Duration InitialDisplayTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Encapsulates the metadata for basic sample series represented by a line chart</summary>
     public class BasicPerfSampleSeries : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3802,6 +3819,9 @@ namespace Google.Apis.ToolResults.v1beta3firstparty.Data
     /// <summary>A summary of perf metrics collected and performance environment info</summary>
     public class PerfMetricsSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("appStartTime")]
+        public virtual AppStartTime AppStartTime { get; set; } 
+
         /// <summary>A tool results execution ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; } 
@@ -3994,8 +4014,8 @@ namespace Google.Apis.ToolResults.v1beta3firstparty.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details. There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<Any> Details { get; set; } 
 

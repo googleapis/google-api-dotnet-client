@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Dataproc API Version v1alpha1
+ *   Google Cloud Dataproc API Version v1beta2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
- *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20170523 (873)
+ *      <tr><th>API Version<td>v1beta2
+ *      <tr><th>API Rev<td>20170707 (918)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -43,13 +43,13 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Dataproc.v1alpha1
+namespace Google.Apis.Dataproc.v1beta2
 {
     /// <summary>The Dataproc Service.</summary>
     public class DataprocService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1alpha1";
+        public const string Version = "v1beta2";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
@@ -64,7 +64,6 @@ namespace Google.Apis.Dataproc.v1alpha1
         public DataprocService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
-            operations = new OperationsResource(this);
             projects = new ProjectsResource(this);
         }
 
@@ -115,14 +114,6 @@ namespace Google.Apis.Dataproc.v1alpha1
         }
 
 
-
-        private readonly OperationsResource operations;
-
-        /// <summary>Gets the Operations resource.</summary>
-        public virtual OperationsResource Operations
-        {
-            get { return operations; }
-        }
 
         private readonly ProjectsResource projects;
 
@@ -349,328 +340,6 @@ namespace Google.Apis.Dataproc.v1alpha1
         }
     }
 
-    /// <summary>The "operations" collection of methods.</summary>
-    public class OperationsResource
-    {
-        private const string Resource = "operations";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public OperationsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
-        /// google.rpc.Code.UNIMPLEMENTED. Clients may use Operations.GetOperation or other methods to check whether the
-        /// cancellation succeeded or the operation completed despite cancellation.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the operation resource to be cancelled.</param>
-        public virtual CancelRequest Cancel(Google.Apis.Dataproc.v1alpha1.Data.CancelOperationRequest body, string name)
-        {
-            return new CancelRequest(service, body, name);
-        }
-
-        /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns
-        /// google.rpc.Code.UNIMPLEMENTED. Clients may use Operations.GetOperation or other methods to check whether the
-        /// cancellation succeeded or the operation completed despite cancellation.</summary>
-        public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Empty>
-        {
-            /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.CancelOperationRequest body, string name)
-                : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the operation resource to be cancelled.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Dataproc.v1alpha1.Data.CancelOperationRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "cancel"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1alpha1/{+name}:cancel"; }
-            }
-
-            /// <summary>Initializes Cancel parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Deletes a long-running operation. It indicates the client is no longer interested in the operation
-        /// result. It does not cancel the operation.</summary>
-        /// <param name="name">The name of the operation resource to be deleted.</param>
-        public virtual DeleteRequest Delete(string name)
-        {
-            return new DeleteRequest(service, name);
-        }
-
-        /// <summary>Deletes a long-running operation. It indicates the client is no longer interested in the operation
-        /// result. It does not cancel the operation.</summary>
-        public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Empty>
-        {
-            /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the operation resource to be deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "delete"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "DELETE"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1alpha1/{+name}"; }
-            }
-
-            /// <summary>Initializes Delete parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Gets the latest state of a long-running operation. Clients may use this method to poll the
-        /// operation result at intervals as recommended by the API service.</summary>
-        /// <param name="name">The operation resource name.</param>
-        public virtual GetRequest Get(string name)
-        {
-            return new GetRequest(service, name);
-        }
-
-        /// <summary>Gets the latest state of a long-running operation. Clients may use this method to poll the
-        /// operation result at intervals as recommended by the API service.</summary>
-        public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-
-            /// <summary>The operation resource name.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "get"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1alpha1/{+name}"; }
-            }
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns google.rpc.Code.UNIMPLEMENTED.</summary>
-        /// <param name="name">The operation collection name.</param>
-        public virtual ListRequest List(string name)
-        {
-            return new ListRequest(service, name);
-        }
-
-        /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support this
-        /// method, it returns google.rpc.Code.UNIMPLEMENTED.</summary>
-        public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.ListOperationsResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-
-            /// <summary>The operation collection name.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>The standard List page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The standard List page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Required A JSON object that contains filters for the list operation, in the format
-            /// {"key1":"value1","key2":"value2", ..., }. Possible keys include project_id, cluster_name, and
-            /// operation_state_matcher.If project_id is set, requests the list of operations that belong to the
-            /// specified Google Cloud Platform project ID. This key is required.If cluster_name is set, requests the
-            /// list of operations that were submitted to the specified cluster name. This key is optional.If
-            /// operation_state_matcher is set, requests the list of operations that match one of the following status
-            /// options: ALL, ACTIVE, or NON_ACTIVE.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "list"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1alpha1/{+name}"; }
-            }
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations$",
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-    }
-
     /// <summary>The "projects" collection of methods.</summary>
     public class ProjectsResource
     {
@@ -709,6 +378,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                 this.service = service;
                 clusters = new ClustersResource(service);
                 jobs = new JobsResource(service);
+                operations = new OperationsResource(service);
 
             }
 
@@ -736,21 +406,22 @@ namespace Google.Apis.Dataproc.v1alpha1
                 }
 
 
-                /// <summary>Request to create a cluster in a project.</summary>
+                /// <summary>Creates a cluster in a project.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the cluster belongs
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the request.</param>
-                public virtual CreateRequest Create(Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string region)
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
+                /// request.</param>
+                public virtual CreateRequest Create(Google.Apis.Dataproc.v1beta2.Data.Cluster body, string projectId, string region)
                 {
                     return new CreateRequest(service, body, projectId, region);
                 }
 
-                /// <summary>Request to create a cluster in a project.</summary>
-                public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
+                /// <summary>Creates a cluster in a project.</summary>
+                public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string region)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.Cluster body, string projectId, string region)
                         : base(service)
                     {
                         ProjectId = projectId;
@@ -760,18 +431,18 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the cluster belongs
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the cluster belongs
                     /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.Cluster Body { get; set; }
+                    Google.Apis.Dataproc.v1beta2.Data.Cluster Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -791,7 +462,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -821,19 +492,19 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
 
-                /// <summary>Request to delete a cluster in a project.</summary>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the cluster belongs
+                /// <summary>Deletes a cluster in a project.</summary>
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
                 /// request.</param>
-                /// <param name="clusterName">Required The cluster name.</param>
+                /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual DeleteRequest Delete(string projectId, string region, string clusterName)
                 {
                     return new DeleteRequest(service, projectId, region, clusterName);
                 }
 
-                /// <summary>Request to delete a cluster in a project.</summary>
-                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
+                /// <summary>Deletes a cluster in a project.</summary>
+                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string region, string clusterName)
@@ -846,16 +517,16 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the cluster belongs
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the cluster belongs
                     /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Required The cluster name.</summary>
+                    /// <summary>Required. The cluster name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
@@ -875,7 +546,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -914,19 +585,122 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
 
-                /// <summary>Request to get the resource representation for a cluster in a project.</summary>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the cluster belongs
+                /// <summary>Gets cluster diagnostic information. After the operation completes, the Operation.response
+                /// field contains DiagnoseClusterOutputLocation.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
                 /// request.</param>
-                /// <param name="clusterName">Required The cluster name.</param>
+                /// <param name="clusterName">Required. The cluster name.</param>
+                public virtual DiagnoseRequest Diagnose(Google.Apis.Dataproc.v1beta2.Data.DiagnoseClusterRequest body, string projectId, string region, string clusterName)
+                {
+                    return new DiagnoseRequest(service, body, projectId, region, clusterName);
+                }
+
+                /// <summary>Gets cluster diagnostic information. After the operation completes, the Operation.response
+                /// field contains DiagnoseClusterOutputLocation.</summary>
+                public class DiagnoseRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Diagnose request.</summary>
+                    public DiagnoseRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.DiagnoseClusterRequest body, string projectId, string region, string clusterName)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Region = region;
+                        ClusterName = clusterName;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the cluster belongs
+                    /// to.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Region { get; private set; }
+
+                    /// <summary>Required. The cluster name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterName { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.DiagnoseClusterRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "diagnose"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose"; }
+                    }
+
+                    /// <summary>Initializes Diagnose parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "region", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "region",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets the resource representation for a cluster in a project.</summary>
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
+                /// to.</param>
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="clusterName">Required. The cluster name.</param>
                 public virtual GetRequest Get(string projectId, string region, string clusterName)
                 {
                     return new GetRequest(service, projectId, region, clusterName);
                 }
 
-                /// <summary>Request to get the resource representation for a cluster in a project.</summary>
-                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Cluster>
+                /// <summary>Gets the resource representation for a cluster in a project.</summary>
+                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Cluster>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string projectId, string region, string clusterName)
@@ -939,16 +713,16 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the cluster belongs
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the cluster belongs
                     /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Required The cluster name.</summary>
+                    /// <summary>Required. The cluster name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
@@ -968,7 +742,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1007,17 +781,18 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
 
-                /// <summary>Request a list of all regions/{region}/clusters in a project.</summary>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the cluster belongs
+                /// <summary>Lists all regions/{region}/clusters in a project.</summary>
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the cluster belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the request.</param>
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
+                /// request.</param>
                 public virtual ListRequest List(string projectId, string region)
                 {
                     return new ListRequest(service, projectId, region);
                 }
 
-                /// <summary>Request a list of all regions/{region}/clusters in a project.</summary>
-                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.ListClustersResponse>
+                /// <summary>Lists all regions/{region}/clusters in a project.</summary>
+                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.ListClustersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string projectId, string region)
@@ -1029,27 +804,34 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the cluster belongs
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the cluster belongs
                     /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional A filter constraining which clusters to list. Valid filters contain label
-                    /// terms such as: labels.key1 = val1 AND (-labels.k2 = val2 OR labels.k3 = val3)</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>The standard List page token.</summary>
+                    /// <summary>Optional. The standard List page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>The standard List page size.</summary>
+                    /// <summary>Optional. The standard List page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
+                    /// have the following syntax:field = value AND field = value ...where field is one of status.state,
+                    /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
+                    /// status.state can be one of the following: ACTIVE, INACTIVE, CREATING, RUNNING, ERROR, DELETING,
+                    /// or UPDATING. ACTIVE contains the CREATING, UPDATING, and RUNNING states. INACTIVE contains the
+                    /// DELETING and ERROR states. clusterName is the name of the cluster provided at creation time.
+                    /// Only the logical AND operator is supported; space-separated items are treated as having an
+                    /// implicit AND operator.Example filter:status.state = ACTIVE AND clusterName = mycluster AND
+                    /// labels.env = staging AND labels.starred = *</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1067,7 +849,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1094,15 +876,6 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1120,27 +893,36 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
 
-                /// <summary>Request to update a cluster in a project.</summary>
+                /// <summary>Updates a cluster in a project.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project the cluster belongs to.</param>
-                ///
-                /// <param name="region">Required The Dataproc region in which to handle the request.</param>
-                /// <param
-                /// name="clusterName">Required The cluster name.</param>
-                public virtual PatchRequest Patch(Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string region, string clusterName)
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project the cluster belongs
+                /// to.</param>
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
+                /// request.</param>
+                /// <param name="clusterName">Required. The cluster name.</param>
+                public virtual PatchRequest Patch(Google.Apis.Dataproc.v1beta2.Data.Cluster body, string projectId, string region, string clusterName)
                 {
                     return new PatchRequest(service, body, projectId, region, clusterName);
                 }
 
-                /// <summary>Request to update a cluster in a project.</summary>
-                public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Operation>
+                /// <summary>Updates a cluster in a project.</summary>
+                public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Cluster body, string projectId, string region, string clusterName)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.Cluster body, string projectId, string region, string clusterName)
                         : base(service)
                     {
                         ProjectId = projectId;
@@ -1151,30 +933,34 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project the cluster belongs to.</summary>
+                    /// <summary>Required. The ID of the Google Cloud Platform project the cluster belongs to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Required The cluster name.</summary>
+                    /// <summary>Required. The cluster name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
-                    /// <summary>Required Specifies the path, relative to Cluster, of the field to update. For example,
+                    /// <summary>Required. Specifies the path, relative to Cluster, of the field to update. For example,
                     /// to change the number of workers in a cluster to 5, the update_mask parameter would be specified
-                    /// as "configuration.worker_configuration.num_instances," and the PATCH request body would specify
-                    /// the new value, as follows: { "configuration":{ "workerConfiguration":{ "numInstances":"5" } } }
-                    /// Note: Currently, configuration.worker_configuration.num_instances is the only field that can be
-                    /// updated.</summary>
+                    /// as config.worker_config.num_instances, and the PATCH request body would specify the new value,
+                    /// as follows: { "config":{ "workerConfig":{ "numInstances":"5" } } } Similarly, to change the
+                    /// number of preemptible workers in a cluster to 5, the update_mask parameter would be
+                    /// config.secondary_worker_config.num_instances, and the PATCH request body would be set as
+                    /// follows: { "config":{ "secondaryWorkerConfig":{ "numInstances":"5" } } } Note: currently only
+                    /// some fields can be updated: |Mask|Purpose| |labels|Updates labels|
+                    /// |config.worker_config.num_instances|Resize primary worker group|
+                    /// |config.secondary_worker_config.num_instances|Resize secondary worker group|</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.Cluster Body { get; set; }
+                    Google.Apis.Dataproc.v1beta2.Data.Cluster Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1194,7 +980,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/clusters/{clusterName}"; }
                     }
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1267,24 +1053,24 @@ namespace Google.Apis.Dataproc.v1alpha1
 
 
                 /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
-                /// regions/{region}/jobs:list or regions/{region}/jobs:get.</summary>
+                /// regions/{region}/jobs.list or regions/{region}/jobs.get.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the job belongs
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
                 /// request.</param>
-                /// <param name="jobId">Required The job ID.</param>
-                public virtual CancelRequest Cancel(Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest body, string projectId, string region, string jobId)
+                /// <param name="jobId">Required. The job ID.</param>
+                public virtual CancelRequest Cancel(Google.Apis.Dataproc.v1beta2.Data.CancelJobRequest body, string projectId, string region, string jobId)
                 {
                     return new CancelRequest(service, body, projectId, region, jobId);
                 }
 
                 /// <summary>Starts a job cancellation request. To access the job resource after cancellation, call
-                /// regions/{region}/jobs:list or regions/{region}/jobs:get.</summary>
-                public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
+                /// regions/{region}/jobs.list or regions/{region}/jobs.get.</summary>
+                public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Job>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
-                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest body, string projectId, string region, string jobId)
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.CancelJobRequest body, string projectId, string region, string jobId)
                         : base(service)
                     {
                         ProjectId = projectId;
@@ -1295,21 +1081,22 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the job belongs to.</summary>
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Required The job ID.</summary>
+                    /// <summary>Required. The job ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.CancelJobRequest Body { get; set; }
+                    Google.Apis.Dataproc.v1beta2.Data.CancelJobRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1329,7 +1116,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel"; }
                     }
 
                     /// <summary>Initializes Cancel parameter list.</summary>
@@ -1370,11 +1157,11 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 /// <summary>Deletes the job from the project. If the job is active, the delete fails, and the response
                 /// returns FAILED_PRECONDITION.</summary>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the job belongs
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
                 /// request.</param>
-                /// <param name="jobId">Required The job ID.</param>
+                /// <param name="jobId">Required. The job ID.</param>
                 public virtual DeleteRequest Delete(string projectId, string region, string jobId)
                 {
                     return new DeleteRequest(service, projectId, region, jobId);
@@ -1382,7 +1169,7 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 /// <summary>Deletes the job from the project. If the job is active, the delete fails, and the response
                 /// returns FAILED_PRECONDITION.</summary>
-                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
+                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string projectId, string region, string jobId)
@@ -1395,15 +1182,16 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the job belongs to.</summary>
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Required The job ID.</summary>
+                    /// <summary>Required. The job ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
@@ -1423,7 +1211,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1463,18 +1251,18 @@ namespace Google.Apis.Dataproc.v1alpha1
                 }
 
                 /// <summary>Gets the resource representation for a job in a project.</summary>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the job belongs
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
                 /// request.</param>
-                /// <param name="jobId">Required The job ID.</param>
+                /// <param name="jobId">Required. The job ID.</param>
                 public virtual GetRequest Get(string projectId, string region, string jobId)
                 {
                     return new GetRequest(service, projectId, region, jobId);
                 }
 
                 /// <summary>Gets the resource representation for a job in a project.</summary>
-                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
+                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Job>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string projectId, string region, string jobId)
@@ -1487,15 +1275,16 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the job belongs to.</summary>
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Required The job ID.</summary>
+                    /// <summary>Required. The job ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
@@ -1515,7 +1304,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1555,43 +1344,77 @@ namespace Google.Apis.Dataproc.v1alpha1
                 }
 
                 /// <summary>Lists regions/{region}/jobs in a project.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the job belongs
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the request.</param>
-                public virtual ListRequest List(Google.Apis.Dataproc.v1alpha1.Data.ListJobsRequest body, string projectId, string region)
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
+                /// request.</param>
+                public virtual ListRequest List(string projectId, string region)
                 {
-                    return new ListRequest(service, body, projectId, region);
+                    return new ListRequest(service, projectId, region);
                 }
 
                 /// <summary>Lists regions/{region}/jobs in a project.</summary>
-                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.ListJobsResponse>
+                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.ListJobsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.ListJobsRequest body, string projectId, string region)
+                    public ListRequest(Google.Apis.Services.IClientService service, string projectId, string region)
                         : base(service)
                     {
                         ProjectId = projectId;
                         Region = region;
-                        Body = body;
                         InitParameters();
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the job belongs to.</summary>
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. Specifies enumerated categories of jobs to list (default = match ALL
+                    /// jobs).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("jobStateMatcher", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<JobStateMatcherEnum> JobStateMatcher { get; set; }
 
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.ListJobsRequest Body { get; set; }
+                    /// <summary>Optional. Specifies enumerated categories of jobs to list (default = match ALL
+                    /// jobs).</summary>
+                    public enum JobStateMatcherEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("ALL")]
+                        ALL,
+                        [Google.Apis.Util.StringValueAttribute("ACTIVE")]
+                        ACTIVE,
+                        [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
+                        NONACTIVE,
+                    }
 
-                    ///<summary>Returns the body of the request.</summary>
-                    protected override object GetBody() { return Body; }
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
+
+                    /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
+                    /// the following syntax:field = value AND field = value ...where field is status.state or
+                    /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
+                    /// either ACTIVE or INACTIVE. Only the logical AND operator is supported; space-separated items are
+                    /// treated as having an implicit AND operator.Example filter:status.state = ACTIVE AND labels.env =
+                    /// staging AND labels.starred = *</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1602,13 +1425,13 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the HTTP method.</summary>
                     public override string HttpMethod
                     {
-                        get { return "POST"; }
+                        get { return "GET"; }
                     }
 
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs:list"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1634,27 +1457,72 @@ namespace Google.Apis.Dataproc.v1alpha1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "jobStateMatcher", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "jobStateMatcher",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
 
                 /// <summary>Updates a job in a project.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the job belongs
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
                 /// request.</param>
-                /// <param name="jobId">Required The job ID.</param>
-                public virtual PatchRequest Patch(Google.Apis.Dataproc.v1alpha1.Data.Job body, string projectId, string region, string jobId)
+                /// <param name="jobId">Required. The job ID.</param>
+                public virtual PatchRequest Patch(Google.Apis.Dataproc.v1beta2.Data.Job body, string projectId, string region, string jobId)
                 {
                     return new PatchRequest(service, body, projectId, region, jobId);
                 }
 
                 /// <summary>Updates a job in a project.</summary>
-                public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
+                public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Job>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.Job body, string projectId, string region, string jobId)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.Job body, string projectId, string region, string jobId)
                         : base(service)
                     {
                         ProjectId = projectId;
@@ -1665,19 +1533,20 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the job belongs to.</summary>
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Required The job ID.</summary>
+                    /// <summary>Required. The job ID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string JobId { get; private set; }
 
-                    /// <summary>Required Specifies the path, relative to Job, of the field to update. For example, to
+                    /// <summary>Required. Specifies the path, relative to Job, of the field to update. For example, to
                     /// update the labels of a Job the update_mask parameter would be specified as labels, and the PATCH
                     /// request body would specify the new value. Note: Currently, labels is the only field that can be
                     /// updated.</summary>
@@ -1686,7 +1555,7 @@ namespace Google.Apis.Dataproc.v1alpha1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.Job Body { get; set; }
+                    Google.Apis.Dataproc.v1beta2.Data.Job Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1706,7 +1575,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs/{jobId}"; }
                     }
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1756,19 +1625,20 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 /// <summary>Submits a job to a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="projectId">Required The ID of the Google Cloud Platform project that the job belongs
+                /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
-                /// <param name="region">Required The Dataproc region in which to handle the request.</param>
-                public virtual SubmitRequest Submit(Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest body, string projectId, string region)
+                /// <param name="region">Required. The Cloud Dataproc region in which to handle the
+                /// request.</param>
+                public virtual SubmitRequest Submit(Google.Apis.Dataproc.v1beta2.Data.SubmitJobRequest body, string projectId, string region)
                 {
                     return new SubmitRequest(service, body, projectId, region);
                 }
 
                 /// <summary>Submits a job to a cluster.</summary>
-                public class SubmitRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1alpha1.Data.Job>
+                public class SubmitRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Job>
                 {
                     /// <summary>Constructs a new Submit request.</summary>
-                    public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest body, string projectId, string region)
+                    public SubmitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.SubmitJobRequest body, string projectId, string region)
                         : base(service)
                     {
                         ProjectId = projectId;
@@ -1778,17 +1648,18 @@ namespace Google.Apis.Dataproc.v1alpha1
                     }
 
 
-                    /// <summary>Required The ID of the Google Cloud Platform project that the job belongs to.</summary>
+                    /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs
+                    /// to.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ProjectId { get; private set; }
 
-                    /// <summary>Required The Dataproc region in which to handle the request.</summary>
+                    /// <summary>Required. The Cloud Dataproc region in which to handle the request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1alpha1.Data.SubmitJobRequest Body { get; set; }
+                    Google.Apis.Dataproc.v1beta2.Data.SubmitJobRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1808,7 +1679,7 @@ namespace Google.Apis.Dataproc.v1alpha1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v1alpha1/projects/{projectId}/regions/{region}/jobs:submit"; }
+                        get { return "v1beta2/projects/{projectId}/regions/{region}/jobs:submit"; }
                     }
 
                     /// <summary>Initializes Submit parameter list.</summary>
@@ -1838,23 +1709,359 @@ namespace Google.Apis.Dataproc.v1alpha1
 
                 }
             }
+            private readonly OperationsResource operations;
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations
+            {
+                get { return operations; }
+            }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                /// Code.CANCELLED.</summary>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(string name)
+                {
+                    return new CancelRequest(service, name);
+                }
+
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
+                /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
+                /// Code.CANCELLED.</summary>
+                public class CancelRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "cancel"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+name}:cancel"; }
+                    }
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
+                /// interested in the operation result. It does not cancel the operation. If the server doesn't support
+                /// this method, it returns google.rpc.Code.UNIMPLEMENTED.</summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
+                /// interested in the operation result. It does not cancel the operation. If the server doesn't support
+                /// this method, it returns google.rpc.Code.UNIMPLEMENTED.</summary>
+                public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "delete"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "DELETE"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
+                /// operation result at intervals as recommended by the API service.</summary>
+                public class GetRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
+                /// support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override
+                /// the binding to use different resource name schemes, such as users/operations. To override the
+                /// binding, API services can add a binding such as "/v1/{name=users}/operations" to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(service, name);
+                }
+
+                /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
+                /// support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override
+                /// the binding to use different resource name schemes, such as users/operations. To override the
+                /// binding, API services can add a binding such as "/v1/{name=users}/operations" to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
+                public class ListRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+name}"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations$",
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
         }
     }
 }
 
-namespace Google.Apis.Dataproc.v1alpha1.Data
+namespace Google.Apis.Dataproc.v1beta2.Data
 {    
 
     /// <summary>Specifies the type and number of accelerator cards attached to the instances of an instance group (see
     /// GPUs on Compute Engine).</summary>
-    public class AcceleratorConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    public class AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of the accelerator cards of this type exposed to this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
         public virtual System.Nullable<int> AcceleratorCount { get; set; } 
 
-        /// <summary>Full or partial URI of the accelerator type resource to expose to this instance. See Google Compute
-        /// Engine AcceleratorTypes( /compute/docs/reference/beta/acceleratorTypes)</summary>
+        /// <summary>Full URL, partial URI, or short name of the accelerator type resource to expose to this instance.
+        /// See Google Compute Engine AcceleratorTypes( /compute/docs/reference/beta/acceleratorTypes)Examples *
+        /// https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-
+        /// tesla-k80 * projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 * nvidia-
+        /// tesla-k80</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorTypeUri")]
         public virtual string AcceleratorTypeUri { get; set; } 
 
@@ -1869,56 +2076,46 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request message for Operations.CancelOperation.</summary>
-    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Describes the identifying information, configuration, and status of a cluster of Google Compute Engine
+    /// <summary>Describes the identifying information, config, and status of a cluster of Google Compute Engine
     /// instances.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required The cluster name. Cluster names within a project must be unique. Names from deleted
+        /// <summary>Required. The cluster name. Cluster names within a project must be unique. Names of deleted
         /// clusters can be reused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when
+        /// <summary>Output-only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when
         /// it creates the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
 
-        /// <summary>Required The cluster configuration. It may differ from a user's initial configuration due to Cloud
-        /// Dataproc setting of default values and updating clusters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
-        public virtual ClusterConfiguration Configuration { get; set; } 
+        /// <summary>Required. The cluster config. Note that Cloud Dataproc may set default values, and values may
+        /// change when clusters are updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual ClusterConfig Config { get; set; } 
 
-        /// <summary>Output-only The timestamp of cluster creation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
-        /// <summary>Optional The labels to associate with this cluster.Label keys must be between 1 and 63 characters
-        /// long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be
-        /// between 1 and 63 characters long, and must conform to the following PCRE regular expression:
-        /// \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 64 labels can be associated with a given cluster.</summary>
+        /// <summary>Optional. The labels to associate with this cluster. Label keys must contain 1 to 63 characters,
+        /// and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if
+        /// present, must contain 1 to 63 characters, and must conform to RFC 1035
+        /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Contains cluster daemon metrics such as HDFS and YARN stats.</summary>
+        /// <summary>Contains cluster daemon metrics such as HDFS and YARN stats.Beta Feature: This report is available
+        /// for testing purposes only. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual ClusterMetrics Metrics { get; set; } 
 
-        /// <summary>Required The Google Cloud Platform project ID that the cluster belongs to.</summary>
+        /// <summary>Required. The Google Cloud Platform project ID that the cluster belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Output-only Cluster status.</summary>
+        /// <summary>Output-only. Cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ClusterStatus Status { get; set; } 
 
-        /// <summary>Output-only Previous cluster statuses.</summary>
+        /// <summary>Output-only. The previous cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<ClusterStatus> StatusHistory { get; set; } 
 
@@ -1926,80 +2123,53 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The cluster configuration.</summary>
-    public class ClusterConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>The cluster config.</summary>
+    public class ClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional A Google Cloud Storage staging bucket used for sharing generated SSH keys and
-        /// configuration. If you do not specify a staging bucket, Cloud Dataproc will determine an appropriate Cloud
-        /// Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine
-        /// zone where your cluster is deployed, then it will create and manage this project-level, per-location bucket
-        /// for you.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("configurationBucket")]
-        public virtual string ConfigurationBucket { get; set; } 
+        /// <summary>Optional. A Google Cloud Storage staging bucket used for sharing generated SSH keys and config. If
+        /// you do not specify a staging bucket, Cloud Dataproc will determine an appropriate Cloud Storage location
+        /// (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone where your
+        /// cluster is deployed, and then it will create and manage this project-level, per-location bucket for
+        /// you.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
+        public virtual string ConfigBucket { get; set; } 
 
-        /// <summary>Optional The shared Google Compute Engine configuration settings for all instances in a
+        /// <summary>Required. The shared Google Compute Engine config settings for all instances in a
         /// cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gceClusterConfiguration")]
-        public virtual GceClusterConfiguration GceClusterConfiguration { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("gceClusterConfig")]
+        public virtual GceClusterConfig GceClusterConfig { get; set; } 
 
-        /// <summary>Deprecated The Google Compute Engine configuration settings for cluster resources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gceConfiguration")]
-        public virtual GceConfiguration GceConfiguration { get; set; } 
-
-        /// <summary>Optional Commands to execute on each node after configuration is completed. By default, executables
-        /// are run on master and all worker nodes. You can test a node's role metadata to run an executable on a master
-        /// or worker node, as shown below: ROLE=$(/usr/share/google/get_metadata_value attributes/role) if [[ "${ROLE}"
-        /// == 'Master' ]]; then ... master specific actions ... else ... worker specific actions ... fi </summary>
+        /// <summary>Optional. Commands to execute on each node after config is completed. By default, executables are
+        /// run on master and all worker nodes. You can test a node's role metadata to run an executable on a master or
+        /// worker node, as shown below using curl (you can also use wget): ROLE=$(curl -H Metadata-Flavor:Google
+        /// http://metadata/computeMetadata/v1beta2/instance/attributes/dataproc-role) if [[ "${ROLE}" == 'Master' ]];
+        /// then ... master specific actions ... else ... worker specific actions ... fi </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initializationActions")]
         public virtual System.Collections.Generic.IList<NodeInitializationAction> InitializationActions { get; set; } 
 
-        /// <summary>Optional The Google Compute Engine configuration settings for the master instance in a
+        /// <summary>Optional. The Google Compute Engine config settings for the master instance in a cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
+        public virtual InstanceGroupConfig MasterConfig { get; set; } 
+
+        /// <summary>Optional. The Google Compute Engine config settings for additional worker instances in a
         /// cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("masterConfiguration")]
-        public virtual InstanceGroupConfiguration MasterConfiguration { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
+        public virtual InstanceGroupConfig SecondaryWorkerConfig { get; set; } 
 
-        /// <summary>Deprecated The configuration settings of master node disk options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("masterDiskConfiguration")]
-        public virtual DiskConfiguration MasterDiskConfiguration { get; set; } 
+        /// <summary>Optional. The config settings for software inside the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
+        public virtual SoftwareConfig SoftwareConfig { get; set; } 
 
-        /// <summary>Deprecated The Master's hostname. Dataproc derives the name from cluster_name if not set by user
-        /// (recommended practice is to let Dataproc derive the name). Derived master name example: hadoop-m.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("masterName")]
-        public virtual string MasterName { get; set; } 
-
-        /// <summary>Deprecated The number of worker nodes in the cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numWorkers")]
-        public virtual System.Nullable<int> NumWorkers { get; set; } 
-
-        /// <summary>Optional The Google Compute Engine configuration settings for additional worker instances in a
-        /// cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfiguration")]
-        public virtual InstanceGroupConfiguration SecondaryWorkerConfiguration { get; set; } 
-
-        /// <summary>Optional The configuration settings for software inside the cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("softwareConfiguration")]
-        public virtual SoftwareConfiguration SoftwareConfiguration { get; set; } 
-
-        /// <summary>Optional The Google Compute Engine configuration settings for worker instances in a
-        /// cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workerConfiguration")]
-        public virtual InstanceGroupConfiguration WorkerConfiguration { get; set; } 
-
-        /// <summary>Deprecated The configuration settings of worker node disk options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workerDiskConfiguration")]
-        public virtual DiskConfiguration WorkerDiskConfiguration { get; set; } 
-
-        /// <summary>Deprecated The list of worker node names. Dataproc derives the names from cluster_name and
-        /// num_workers if not set by user (recommended practice is to let Dataproc derive the name). Derived worker
-        /// node name example: hadoop-w-0.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("workers")]
-        public virtual System.Collections.Generic.IList<string> Workers { get; set; } 
+        /// <summary>Optional. The Google Compute Engine config settings for worker instances in a cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
+        public virtual InstanceGroupConfig WorkerConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains cluster daemon metrics, such as HDFS and YARN stats.</summary>
+    /// <summary>Contains cluster daemon metrics, such as HDFS and YARN stats.Beta Feature: This report is available for
+    /// testing purposes only. It may be changed before final release.</summary>
     public class ClusterMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The HDFS metrics.</summary>
@@ -2079,19 +2249,19 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>The status of a cluster and its instances.</summary>
     public class ClusterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional details of cluster's state.</summary>
+        /// <summary>Output-only. Optional details of cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
 
-        /// <summary>The cluster's state.</summary>
+        /// <summary>Output-only. The cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Time when this state was entered.</summary>
+        /// <summary>Output-only. Time when this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
-        /// <summary>Output-only Additional state information that includes status reported by the agent.</summary>
+        /// <summary>Output-only. Additional state information that includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
         public virtual string Substate { get; set; } 
 
@@ -2099,40 +2269,24 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The location where output from diagnostic command can be found.</summary>
-    public class DiagnoseClusterOutputLocation : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>A request to collect cluster diagnostic information.</summary>
+    public class DiagnoseClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The Google Cloud Storage URI of the diagnostic output. This will be a plain text file
-        /// with summary of collected diagnostics.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
-        public virtual string OutputUri { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The location of diagnostic output.</summary>
-    public class DiagnoseClusterResults : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Specifies the config of disk options for a group of VM instances.</summary>
+    public class DiskConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. The Google Cloud Storage URI of the diagnostic output. The output report is a plain
-        /// text file with a summary of collected diagnostics.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
-        public virtual string OutputUri { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Specifies the configuration of disk options for a group of VM instances.</summary>
-    public class DiskConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional Size in GB of the boot disk (default is 500GB).</summary>
+        /// <summary>Optional. Size in GB of the boot disk (default is 500GB).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; } 
 
-        /// <summary>Optional Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot
-        /// disk is used to store runtime logs, and HDFS data. If one or more SSDs are attached, this runtime bulk data
-        /// is spread across them, and the boot disk contains only basic configuration and installed binaries.</summary>
+        /// <summary>Optional. Number of attached SSDs, from 0 to 4 (default is 0). If SSDs are not attached, the boot
+        /// disk is used to store runtime logs and HDFS (https://hadoop.apache.org/docs/r1.2.1/hdfs_user_guide.html)
+        /// data. If one or more SSDs are attached, this runtime bulk data is spread across them, and the boot disk
+        /// contains only basic config and installed binaries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numLocalSsds")]
         public virtual System.Nullable<int> NumLocalSsds { get; set; } 
 
@@ -2150,30 +2304,33 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Common configuration settings for resources of Google Compute Engine cluster instances, applicable to
-    /// all instances in the cluster.</summary>
-    public class GceClusterConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Common config settings for resources of Google Compute Engine cluster instances, applicable to all
+    /// instances in the cluster.</summary>
+    public class GceClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, all instances in the cluser will only have internal IP addresses. By default, clusters are
-        /// not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each
-        /// instance. This restriction can only be enabled for subnetwork enabled networks, and all off-cluster
-        /// dependencies must be configured to be accessible without external IP addresses.</summary>
+        /// <summary>Optional. If true, all instances in the cluster will only have internal IP addresses. By default,
+        /// clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned
+        /// to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and
+        /// all off-cluster dependencies must be configured to be accessible without external IP addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalIpOnly")]
         public virtual System.Nullable<bool> InternalIpOnly { get; set; } 
 
-        /// <summary>The Google Compute Engine metadata entries to add to all instances.</summary>
+        /// <summary>The Google Compute Engine metadata entries to add to all instances (see Project and instance
+        /// metadata (https://cloud.google.com/compute/docs/storing-retrieving-
+        /// metadata#project_and_instance_metadata)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
 
-        /// <summary>The Google Compute Engine network to be used for machine communications. Cannot be specified with
-        /// subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the project
-        /// is used, if it exists. Cannot be a "Custom Subnet Network" (see
-        /// https://cloud.google.com/compute/docs/subnetworks for more information). Example:
-        /// compute.googleapis.com/projects/[project_id]/regions/global/default.</summary>
+        /// <summary>Optional. The Google Compute Engine network to be used for machine communications. Cannot be
+        /// specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network
+        /// of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks for more
+        /// information).A full URL, partial URI, or short name are valid. Examples:
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
+        /// projects/[project_id]/regions/global/default default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; } 
 
-        /// <summary>Optional The service account of the instances. Defaults to the default Google Compute Engine
+        /// <summary>Optional. The service account of the instances. Defaults to the default Google Compute Engine
         /// service account. Custom service accounts need permissions equivalent to the folloing IAM roles:
         /// roles/logging.logWriter roles/storage.objectAdmin(see https://cloud.google.com/compute/docs/access/service-
         /// accounts#custom_service_accounts for more information). Example:
@@ -2181,23 +2338,32 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 
-        /// <summary>The service account scopes included in Google Compute Engine instances. Must include
-        /// devstorage.full_control to enable the Google Cloud Storage connector. Example "auth.googleapis.com/compute"
-        /// and "auth.googleapis.com/devstorage.full_control".</summary>
+        /// <summary>Optional. The URIs of service account scopes to be included in Google Compute Engine instances. The
+        /// following base set of scopes is always included: https://www.googleapis.com/auth/cloud.useraccounts.readonly
+        /// https://www.googleapis.com/auth/devstorage.read_write https://www.googleapis.com/auth/logging.writeIf no
+        /// scopes are specified, the following defaults are also provided: https://www.googleapis.com/auth/bigquery
+        /// https://www.googleapis.com/auth/bigtable.admin.table https://www.googleapis.com/auth/bigtable.data
+        /// https://www.googleapis.com/auth/devstorage.full_control</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
         public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; } 
 
-        /// <summary>The Google Compute Engine subnetwork to be used for machine communications. Cannot be specified
-        /// with network_uri. Example: compute.googleapis.com/projects/[project_id]/regions/us-east1/sub0.</summary>
+        /// <summary>Optional. The Google Compute Engine subnetwork to be used for machine communications. Cannot be
+        /// specified with network_uri.A full URL, partial URI, or short name are valid. Examples:
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0
+        /// projects/[project_id]/regions/us-east1/sub0 sub0</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
         public virtual string SubnetworkUri { get; set; } 
 
-        /// <summary>The Google Compute Engine tags to add to all instances.</summary>
+        /// <summary>The Google Compute Engine tags to add to all instances (see Tagging instances).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
-        /// <summary>Required The zone where the Google Compute Engine cluster will be located. Example:
-        /// "compute.googleapis.com/projects/project_id /zones/us-east1-a".</summary>
+        /// <summary>Optional. The zone where the Google Compute Engine cluster will be located. On a create request, it
+        /// is required in the "global" region. If omitted in a non-global Cloud Dataproc region, the service will pick
+        /// a zone in the corresponding GCE region. On a get request, zone will always be present.A full URL, partial
+        /// URI, or short name are valid. Examples:
+        /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone]
+        /// us-central1-f</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zoneUri")]
         public virtual string ZoneUri { get; set; } 
 
@@ -2205,80 +2371,47 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deprecated Common configuration settings for resources of Google Compute Engine cluster instances,
-    /// applicable to all instances in the cluster.</summary>
-    public class GceConfiguration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Deprecated The Google Compute Engine image resource used for cluster instances. Example:
-        /// "compute.googleapis.com/projects/debian-cloud /global/images/backports-debian-7-wheezy-v20140904".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; } 
-
-        /// <summary>Deprecated The Google Compute Engine machine type used for cluster instances. Example:
-        /// "compute.googleapis.com/projects/project_id /zones/us-east1-a/machineTypes/n1-standard-2".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("machineTypeUri")]
-        public virtual string MachineTypeUri { get; set; } 
-
-        /// <summary>Deprecated The Google Compute Engine network to be used for machine communications. Inbound SSH
-        /// connections are necessary to complete cluster configuration. Example
-        /// "compute.googleapis.com/projects/project_id /zones/us-east1-a/default".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
-        public virtual string NetworkUri { get; set; } 
-
-        /// <summary>Deprecated The service account scopes included in Google Compute Engine instances. Must include
-        /// devstorage.full_control to enable the Google Cloud Storage connector. Example "auth.googleapis.com/compute"
-        /// and "auth.googleapis.com/devstorage.full_control".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
-        public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; } 
-
-        /// <summary>Deprecated The zone where the Google Compute Engine cluster will be located. Example:
-        /// "compute.googleapis.com/projects/project_id /zones/us-east1-a".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zoneUri")]
-        public virtual string ZoneUri { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A Cloud Dataproc job for running Hadoop MapReduce jobs on YARN.</summary>
+    /// <summary>A Cloud Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current
+    /// /hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN
+    /// (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).</summary>
     public class HadoopJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and
+        /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of Hadoop drivers and
         /// tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, or .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
         public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
 
-        /// <summary>Optional The arguments to pass to the driver. Do not include arguments, such as -libjars or
+        /// <summary>Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or
         /// -Dfoo=bar, that can be set as job properties, since a collision may occur that causes an incorrect job
         /// submission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
-        /// <summary>Optional HCFS URIs of files to be copied to the working directory of Hadoop drivers and distributed
-        /// tasks. Useful for naively parallel tasks.</summary>
+        /// <summary>Optional. HCFS (Hadoop Compatible Filesystem) URIs of files to be copied to the working directory
+        /// of Hadoop drivers and distributed tasks. Useful for naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
         public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
 
-        /// <summary>Optional Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.</summary>
+        /// <summary>Optional. Jar file URIs to add to the CLASSPATHs of the Hadoop driver and tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
         public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
 
-        /// <summary>Optional The runtime log configuration for job execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfiguration")]
-        public virtual LoggingConfiguration LoggingConfiguration { get; set; } 
+        /// <summary>Optional. The runtime log config for job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; } 
 
         /// <summary>The name of the driver's main class. The jar file containing the class must be in the default
         /// CLASSPATH or specified in jar_file_uris.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
         public virtual string MainClass { get; set; } 
 
-        /// <summary>The Hadoop Compatible Filesystem (HCFS) URI of the jar file containing the main class. Examples:
-        /// gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar  hdfs:/tmp/test-samples/custom-
-        /// wordcount.jar  file:home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar</summary>
+        /// <summary>The HCFS URI of the jar file containing the main class. Examples:  'gs://foo-bucket/analytics-
+        /// binaries/extract-useful-metrics-mr.jar'  'hdfs:/tmp/test-samples/custom-wordcount.jar'  'file:home/usr/lib
+        /// /hadoop-mapreduce/hadoop-mapreduce-examples.jar'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
         public virtual string MainJarFileUri { get; set; } 
 
-        /// <summary>Optional A mapping of property names to values, used to configure Hadoop. Properties that conflict
+        /// <summary>Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict
         /// with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop
         /// /conf-site and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -2288,20 +2421,20 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Cloud Dataproc job for running Hive queries on YARN.</summary>
+    /// <summary>A Cloud Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.</summary>
     public class HiveJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional Whether to continue executing queries if a query fails. The default value is false.
+        /// <summary>Optional. Whether to continue executing queries if a query fails. The default value is false.
         /// Setting to true can be useful when executing independent parallel queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continueOnFailure")]
         public virtual System.Nullable<bool> ContinueOnFailure { get; set; } 
 
-        /// <summary>Optional HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce
+        /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATH of the Hive server and Hadoop MapReduce
         /// (MR) tasks. Can contain Hive SerDes and UDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
         public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
 
-        /// <summary>Optional A mapping of property names and values, used to configure Hive. Properties that conflict
+        /// <summary>Optional. A mapping of property names and values, used to configure Hive. Properties that conflict
         /// with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop
         /// /conf-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -2315,8 +2448,8 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
         public virtual QueryList QueryList { get; set; } 
 
-        /// <summary>Optional Mapping of query variable names to values (equivalent to the Hive command: 'SET
-        /// name="value";').</summary>
+        /// <summary>Optional. Mapping of query variable names to values (equivalent to the Hive command: SET
+        /// name="value";).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
         public virtual System.Collections.Generic.IDictionary<string,string> ScriptVariables { get; set; } 
 
@@ -2324,45 +2457,48 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The configuration settings for Google Compute Engine resources in an instance group, such as a master
-    /// or worker group.</summary>
-    public class InstanceGroupConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Optional. The config settings for Google Compute Engine resources in an instance group, such as a
+    /// master or worker group.</summary>
+    public class InstanceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional The Google Compute Engine accelerator configuration for these instances.</summary>
+        /// <summary>Optional. The Google Compute Engine accelerator configuration for these instances.Beta Feature:
+        /// This feature is still under development. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
-        public virtual System.Collections.Generic.IList<AcceleratorConfiguration> Accelerators { get; set; } 
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
 
-        /// <summary>Disk option configuration settings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("diskConfiguration")]
-        public virtual DiskConfiguration DiskConfiguration { get; set; } 
+        /// <summary>Optional. Disk option config settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
+        public virtual DiskConfig DiskConfig { get; set; } 
 
-        /// <summary>Output-only The Google Compute Engine image resource used for cluster instances. Inferred from
-        /// SoftwareConfiguration.image_version. Example: "compute.googleapis.com/projects/debian-cloud /global/images
-        /// /backports-debian-7-wheezy-v20140904".</summary>
+        /// <summary>Output-only. The Google Compute Engine image resource used for cluster instances. Inferred from
+        /// SoftwareConfig.image_version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 
-        /// <summary>The list of instance names. Dataproc derives the names from cluster_name, num_instances, and the
-        /// instance group if not set by user (recommended practice is to let Dataproc derive the name).</summary>
+        /// <summary>Optional. The list of instance names. Cloud Dataproc derives the names from cluster_name,
+        /// num_instances, and the instance group if not set by user (recommended practice is to let Cloud Dataproc
+        /// derive the name).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceNames")]
         public virtual System.Collections.Generic.IList<string> InstanceNames { get; set; } 
 
-        /// <summary>Specifies that this instance group contains Preemptible Instances.</summary>
+        /// <summary>Optional. Specifies that this instance group contains preemptible instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isPreemptible")]
         public virtual System.Nullable<bool> IsPreemptible { get; set; } 
 
-        /// <summary>The Google Compute Engine machine type used for cluster instances. Example:
-        /// "compute.googleapis.com/projects/project_id /zones/us-east1-a/machineTypes/n1-standard-2".</summary>
+        /// <summary>Optional. The Google Compute Engine machine type used for cluster instances.A full URL, partial
+        /// URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones
+        /// /us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
+        /// n1-standard-2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeUri")]
         public virtual string MachineTypeUri { get; set; } 
 
-        /// <summary>Output-only The configuration for Google Compute Engine Instance Group Manager that manages this
-        /// group. This is only used for preemptible instance groups.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfiguration")]
-        public virtual ManagedGroupConfiguration ManagedGroupConfiguration { get; set; } 
+        /// <summary>Output-only. The config for Google Compute Engine Instance Group Manager that manages this group.
+        /// This is only used for preemptible instance groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
+        public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
 
-        /// <summary>The number of VM instances in the instance group. For master instance groups, must be set to
-        /// 1.</summary>
+        /// <summary>Optional. The number of VM instances in the instance group. For master instance groups, must be set
+        /// to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numInstances")]
         public virtual System.Nullable<int> NumInstances { get; set; } 
 
@@ -2373,25 +2509,15 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>A Cloud Dataproc job resource.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only If present, the location of miscellaneous control files which may be used as part of
+        /// <summary>Output-only. If present, the location of miscellaneous control files which may be used as part of
         /// job setup and handling. If not present, control files may be placed in the same location as
         /// driver_output_uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverControlFilesUri")]
         public virtual string DriverControlFilesUri { get; set; } 
 
-        /// <summary>Output-only A URI pointing to the location of the stdin of the job's driver program, only set if
-        /// the job is interactive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driverInputResourceUri")]
-        public virtual string DriverInputResourceUri { get; set; } 
-
-        /// <summary>Output-only A URI pointing to the location of the stdout of the job's driver program.</summary>
+        /// <summary>Output-only. A URI pointing to the location of the stdout of the job's driver program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverOutputResourceUri")]
         public virtual string DriverOutputResourceUri { get; set; } 
-
-        /// <summary>Output-only A URI pointing to the location of the mixed stdout/stderr of the job's driver
-        /// programfor example, gs://sysbucket123/foo-cluster/jobid-123/driver/output.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driverOutputUri")]
-        public virtual string DriverOutputUri { get; set; } 
 
         /// <summary>Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
@@ -2401,15 +2527,10 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
         public virtual HiveJob HiveJob { get; set; } 
 
-        /// <summary>Optional If set to true, then the driver's stdin will be kept open and driver_input_uri will be set
-        /// to provide a path at which additional input can be sent to the driver.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("interactive")]
-        public virtual System.Nullable<bool> Interactive { get; set; } 
-
-        /// <summary>Optional The labels to associate with this job.Label keys must be between 1 and 63 characters long,
-        /// and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and
-        /// 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more
-        /// than 64 labels can be associated with a given job.</summary>
+        /// <summary>Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and
+        /// must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present,
+        /// must contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No
+        /// more than 32 labels can be associated with a job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -2417,7 +2538,7 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
         public virtual PigJob PigJob { get; set; } 
 
-        /// <summary>Required Job information, including how, when, and where to run the job.</summary>
+        /// <summary>Required. Job information, including how, when, and where to run the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
         public virtual JobPlacement Placement { get; set; } 
 
@@ -2425,13 +2546,13 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
         public virtual PySparkJob PysparkJob { get; set; } 
 
-        /// <summary>Optional The fully-qualified reference to the job, which can be used to obtain the equivalent REST
+        /// <summary>Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST
         /// path of the job resource. If this property is not specified when a job is created, the server generates a
         /// job_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reference")]
         public virtual JobReference Reference { get; set; } 
 
-        /// <summary>Optional Job scheduling configuration.</summary>
+        /// <summary>Optional. Job scheduling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual JobScheduling Scheduling { get; set; } 
 
@@ -2443,21 +2564,17 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
-        /// <summary>Output-only The job status. Additional application-specific status information may be contained in
+        /// <summary>Output-only. The job status. Additional application-specific status information may be contained in
         /// the type_job and yarn_applications fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual JobStatus Status { get; set; } 
 
-        /// <summary>Output-only The previous job status.</summary>
+        /// <summary>Output-only. The previous job status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<JobStatus> StatusHistory { get; set; } 
 
-        /// <summary>Output-only The email address of the user submitting the job. For jobs submitted on the cluster,
-        /// the address is username@hostname.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("submittedBy")]
-        public virtual string SubmittedBy { get; set; } 
-
-        /// <summary>Output-only The collection of Yarn applications spun up by this job.</summary>
+        /// <summary>Output-only. The collection of YARN applications spun up by this job.Beta Feature: This report is
+        /// available for testing purposes only. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnApplications")]
         public virtual System.Collections.Generic.IList<YarnApplication> YarnApplications { get; set; } 
 
@@ -2465,14 +2582,15 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Cloud Dataproc job configuration.</summary>
+    /// <summary>Cloud Dataproc job config.</summary>
     public class JobPlacement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required The name of the cluster where the job will be submitted.</summary>
+        /// <summary>Required. The name of the cluster where the job will be submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only A cluster UUID generated by the Dataproc service when the job is submitted.</summary>
+        /// <summary>Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is
+        /// submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
 
@@ -2483,14 +2601,14 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>Encapsulates the full scoping used to reference a job.</summary>
     public class JobReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required The job ID, which must be unique within the project. The job ID is generated by the server
-        /// upon job submission or provided by the user as a means to perform retries without creating duplicate jobs.
-        /// The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-). The maximum
-        /// length is 100 characters.</summary>
+        /// <summary>Optional. The job ID, which must be unique within the project. The job ID is generated by the
+        /// server upon job submission or provided by the user as a means to perform retries without creating duplicate
+        /// jobs. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The
+        /// maximum length is 100 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
 
-        /// <summary>Required The ID of the Google Cloud Platform project that the job belongs to.</summary>
+        /// <summary>Required. The ID of the Google Cloud Platform project that the job belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -2502,7 +2620,7 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// changed before final release.</summary>
     public class JobScheduling : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional Maximum number of times per hour a driver may be restarted as a result of driver
+        /// <summary>Optional. Maximum number of times per hour a driver may be restarted as a result of driver
         /// terminating with non-zero code before job is reported failed.A job may be reported as thrashing if driver
         /// exits with non-zero code 4 times within 10 minute window.Maximum value is 10.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFailuresPerHour")]
@@ -2515,31 +2633,20 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>Cloud Dataproc job status.</summary>
     public class JobStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional Job state details, such as an error description if the state is ERROR.</summary>
+        /// <summary>Output-only. Optional job state details, such as an error description if the state is
+        /// ERROR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
 
-        /// <summary>The time when the job completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
-
-        /// <summary>The time of the job request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
-
-        /// <summary>The time when the server started the job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
-
-        /// <summary>Required A state message specifying the overall job state.</summary>
+        /// <summary>Output-only. A state message specifying the overall job state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only The time when this state was entered.</summary>
+        /// <summary>Output-only. The time when this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
-        /// <summary>Output-only Additional state information, which includes status reported by the agent.</summary>
+        /// <summary>Output-only. Additional state information, which includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
         public virtual string Substate { get; set; } 
 
@@ -2550,11 +2657,12 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>The list of all clusters in a project.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The clusters in the project.</summary>
+        /// <summary>Output-only. The clusters in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
         public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; } 
 
-        /// <summary>The standard List next-page token.</summary>
+        /// <summary>Output-only. This token is included in the response if there are more results to fetch. To fetch
+        /// additional results, provide this value as the page_token in a subsequent ListClustersRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -2562,44 +2670,14 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A request to list jobs in a project.</summary>
-    public class ListJobsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional If set, the returned jobs list includes only jobs that were submitted to the named
-        /// cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
-
-        /// <summary>Optional A filter constraining which jobs to list. Valid filters contain job state and label terms
-        /// such as: labels.key1 = val1 AND (labels.k2 = val2 OR labels.k3 = val3)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
-
-        /// <summary>Optional Specifies enumerated categories of jobs to list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jobStateMatcher")]
-        public virtual string JobStateMatcher { get; set; } 
-
-        /// <summary>Optional The number of results to return in each response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; } 
-
-        /// <summary>Optional The page token, returned by a previous call, to request the next page of
-        /// results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A response to a request to list jobs in a project.</summary>
+    /// <summary>A list of jobs in a project.</summary>
     public class ListJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only Jobs list.</summary>
+        /// <summary>Output-only. Jobs list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
         public virtual System.Collections.Generic.IList<Job> Jobs { get; set; } 
 
-        /// <summary>Optional This token is included in the response if there are more results to fetch. To fetch
+        /// <summary>Optional. This token is included in the response if there are more results to fetch. To fetch
         /// additional results, provide this value as the page_token in a subsequent ListJobsRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -2615,7 +2693,7 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>A list of operations that match the specified filter in the request.</summary>
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
 
@@ -2623,11 +2701,11 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The runtime logging configuration of the job.</summary>
-    public class LoggingConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>The runtime logging config of the job.</summary>
+    public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The per-package log levels for the driver. This may include 'root' package name to configure
-        /// rootLogger. Examples:  com.google = FATAL, root = INFO, org.apache = DEBUG</summary>
+        /// <summary>The per-package log levels for the driver. This may include "root" package name to configure
+        /// rootLogger. Examples:  'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverLogLevels")]
         public virtual System.Collections.Generic.IDictionary<string,string> DriverLogLevels { get; set; } 
 
@@ -2636,13 +2714,13 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     }    
 
     /// <summary>Specifies the resources used to actively manage an instance group.</summary>
-    public class ManagedGroupConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    public class ManagedGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The name of Instance Group Manager managing this group.</summary>
+        /// <summary>Output-only. The name of the Instance Group Manager for this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupManagerName")]
         public virtual string InstanceGroupManagerName { get; set; } 
 
-        /// <summary>Output-only The name of Instance Template used for Managed Instance Group.</summary>
+        /// <summary>Output-only. The name of the Instance Template used for the Managed Instance Group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplateName")]
         public virtual string InstanceTemplateName { get; set; } 
 
@@ -2654,11 +2732,11 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// completion.</summary>
     public class NodeInitializationAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required Google Cloud Storage URI of executable file.</summary>
+        /// <summary>Required. Google Cloud Storage URI of executable file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executableFile")]
         public virtual string ExecutableFile { get; set; } 
 
-        /// <summary>Optional Amount of time executable has to complete. Default is 10 minutes. Cluster creation fails
+        /// <summary>Optional. Amount of time executable has to complete. Default is 10 minutes. Cluster creation fails
         /// with an explanatory error message (the name of the executable that caused the error and the exceeded timeout
         /// period) if the executable is not completed at end of the timeout period.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionTimeout")]
@@ -2668,33 +2746,35 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An asynchronous operation in a project that runs over a given cluster. Used to track the progress of a
-    /// user request that is running asynchronously. Examples include creating a cluster, updating a cluster, and
-    /// deleting a cluster.</summary>
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Indicates if the operation is done. If true, the operation is complete and the result is available.
-        /// If false, the operation is still in progress.</summary>
+        /// <summary>If the value is false, it means the operation is still in progress. If true, the operation is
+        /// completed, and either error or response is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>The error result of the operation in case of failure.</summary>
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
-        /// <summary>The name of the operation resource, in the format
-        /// projects/project_id/operations/operation_id</summary>
+        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
+        /// If you use the default HTTP mapping, the name should have the format of
+        /// operations/some/unique/name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The operation response. If the called method returns no data on success, the response is
-        /// google.protobuf.Empty. If the called method is Get,Create or Update, the response is the resource. For all
-        /// other methods, the response type is a concatenation of the method name and "Response". For example, if the
-        /// called method is TakeSnapshot(), the response type is TakeSnapshotResponse.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as Delete, the response is google.protobuf.Empty. If the original method is standard
+        /// Get/Create/Update, the response should be the resource. For other methods, the response should have the type
+        /// XxxResponse, where Xxx is the original method name. For example, if the original method name is
+        /// TakeSnapshot(), the inferred response type is TakeSnapshotResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2702,106 +2782,24 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Metadata describing the operation.</summary>
-    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name of the cluster for the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
-        public virtual string ClusterName { get; set; } 
-
-        /// <summary>Cluster UUId for the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
-        public virtual string ClusterUuid { get; set; } 
-
-        /// <summary>Output-only Short description of operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>A message containing any operation metadata details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
-
-        /// <summary>The time that the operation completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
-
-        /// <summary>A message containing the detailed operation state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
-        public virtual string InnerState { get; set; } 
-
-        /// <summary>The time that the operation was requested.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
-
-        /// <summary>Output-only The operation type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
-        public virtual string OperationType { get; set; } 
-
-        /// <summary>The time that the operation was started by the server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; } 
-
-        /// <summary>A message containing the operation state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>Output-only Current operation status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual OperationStatus Status { get; set; } 
-
-        /// <summary>Output-only Previous operation status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
-        public virtual System.Collections.Generic.IList<OperationStatus> StatusHistory { get; set; } 
-
-        /// <summary>Output-only Errors encountered during operation execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
-        public virtual System.Collections.Generic.IList<string> Warnings { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The status of the operation.</summary>
-    public class OperationStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A message containing any operation metadata details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual string Details { get; set; } 
-
-        /// <summary>A message containing the detailed operation state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
-        public virtual string InnerState { get; set; } 
-
-        /// <summary>A message containing the operation state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
-        /// <summary>The time this state was entered.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
-        public virtual object StateStartTime { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A Cloud Dataproc job for running Pig queries on YARN.</summary>
+    /// <summary>A Cloud Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.</summary>
     public class PigJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional Whether to continue executing queries if a query fails. The default value is false.
+        /// <summary>Optional. Whether to continue executing queries if a query fails. The default value is false.
         /// Setting to true can be useful when executing independent parallel queries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continueOnFailure")]
         public virtual System.Nullable<bool> ContinueOnFailure { get; set; } 
 
-        /// <summary>Optional HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce (MR)
-        /// tasks. Can contain Pig UDFs.</summary>
+        /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATH of the Pig Client and Hadoop MapReduce
+        /// (MR) tasks. Can contain Pig UDFs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
         public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
 
-        /// <summary>Optional The runtime log configuration for job execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfiguration")]
-        public virtual LoggingConfiguration LoggingConfiguration { get; set; } 
+        /// <summary>Optional. The runtime log config for job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; } 
 
-        /// <summary>Optional A mapping of property names to values, used to configure Pig. Properties that conflict
+        /// <summary>Optional. A mapping of property names to values, used to configure Pig. Properties that conflict
         /// with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/hadoop
         /// /conf-site.xml, /etc/pig/conf/pig.properties, and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -2815,8 +2813,8 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
         public virtual QueryList QueryList { get; set; } 
 
-        /// <summary>Optional Mapping of query variable names to values (equivalent to the Pig command:
-        /// "name=value").</summary>
+        /// <summary>Optional. Mapping of query variable names to values (equivalent to the Pig command:
+        /// name=[value]).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
         public virtual System.Collections.Generic.IDictionary<string,string> ScriptVariables { get; set; } 
 
@@ -2824,44 +2822,44 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Cloud Dataproc job for running PySpark applications on YARN.</summary>
+    /// <summary>A Cloud Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-
+    /// programming-guide.html) applications on YARN.</summary>
     public class PySparkJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz,
+        /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz,
         /// .tgz, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
         public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
 
-        /// <summary>Optional The arguments to pass to the driver. Do not include arguments, such as --conf, that can be
-        /// set as job properties, since a collision may occur that causes an incorrect job submission.</summary>
+        /// <summary>Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can
+        /// be set as job properties, since a collision may occur that causes an incorrect job submission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
-        /// <summary>Optional HCFS URIs of files to be copied to the working directory of Python drivers and distributed
-        /// tasks. Useful for naively parallel tasks.</summary>
+        /// <summary>Optional. HCFS URIs of files to be copied to the working directory of Python drivers and
+        /// distributed tasks. Useful for naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
         public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
 
-        /// <summary>Optional HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.</summary>
+        /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
         public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
 
-        /// <summary>Optional The runtime log configuration for job execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfiguration")]
-        public virtual LoggingConfiguration LoggingConfiguration { get; set; } 
+        /// <summary>Optional. The runtime log config for job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; } 
 
-        /// <summary>Required The Hadoop Compatible Filesystem (HCFS) URI of the main Python file to use as the driver.
-        /// Must be a .py file.</summary>
+        /// <summary>Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainPythonFileUri")]
         public virtual string MainPythonFileUri { get; set; } 
 
-        /// <summary>Optional A mapping of property names to values, used to configure PySpark. Properties that conflict
-        /// with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf
-        /// /spark-defaults.conf and classes in user code.</summary>
+        /// <summary>Optional. A mapping of property names to values, used to configure PySpark. Properties that
+        /// conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in
+        /// /etc/spark/conf/spark-defaults.conf and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
 
-        /// <summary>Optional HCFS file URIs of Python files to pass to the PySpark framework. Supported file types:
+        /// <summary>Optional. HCFS file URIs of Python files to pass to the PySpark framework. Supported file types:
         /// .py, .egg, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonFileUris")]
         public virtual System.Collections.Generic.IList<string> PythonFileUris { get; set; } 
@@ -2873,7 +2871,7 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     /// <summary>A list of queries to run on a cluster.</summary>
     public class QueryList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required The queries to execute. You do not need to terminate a query with a semicolon. Multiple
+        /// <summary>Required. The queries to execute. You do not need to terminate a query with a semicolon. Multiple
         /// queries can be specified in one string by separating each with a semicolon. Here is an example of an Cloud
         /// Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [
         /// "query1", "query2", "query3;query4", ] } } </summary>
@@ -2884,18 +2882,19 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies the selection and configuration of software inside the cluster.</summary>
-    public class SoftwareConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Specifies the selection and config of software inside the cluster.</summary>
+    public class SoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional The version of software inside the cluster. It must match the regular expression
-        /// 0-9+.0-9+. If unspecified it will default to latest version.</summary>
+        /// <summary>Optional. The version of software inside the cluster. It must match the regular expression
+        /// [0-9]+\.[0-9]+. If unspecified, it defaults to the latest version (see Cloud Dataproc Versioning).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageVersion")]
         public virtual string ImageVersion { get; set; } 
 
-        /// <summary>Optional The properties to set on daemon configuration files.Property keys are specified in
-        /// "prefix:property" format, such as "core:fs.defaultFS". The following are supported prefixes and their
-        /// mappings:  core - core-site.xml  hdfs - hdfs-site.xml  mapred - mapred-site.xml  yarn - yarn-site.xml  hive
-        /// - hive-site.xml  pig - pig.properties  spark - spark-defaults.conf</summary>
+        /// <summary>Optional. The properties to set on daemon config files.Property keys are specified in
+        /// prefix:property format, such as core:fs.defaultFS. The following are supported prefixes and their mappings:
+        /// capacity-scheduler: capacity-scheduler.xml core: core-site.xml distcp: distcp-default.xml hdfs: hdfs-
+        /// site.xml hive: hive-site.xml mapred: mapred-site.xml pig: pig.properties spark: spark-defaults.conf yarn:
+        /// yarn-site.xml</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
 
@@ -2903,42 +2902,43 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Cloud Dataproc job for running Spark applications on YARN.</summary>
+    /// <summary>A Cloud Dataproc job for running Apache Spark (http://spark.apache.org/) applications on
+    /// YARN.</summary>
     public class SparkJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional HCFS URIs of archives to be extracted in the working directory of Spark drivers and tasks.
-        /// Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
+        /// <summary>Optional. HCFS URIs of archives to be extracted in the working directory of Spark drivers and
+        /// tasks. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveUris")]
         public virtual System.Collections.Generic.IList<string> ArchiveUris { get; set; } 
 
-        /// <summary>Optional The arguments to pass to the driver. Do not include arguments, such as --conf, that can be
-        /// set as job properties, since a collision may occur that causes an incorrect job submission.</summary>
+        /// <summary>Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can
+        /// be set as job properties, since a collision may occur that causes an incorrect job submission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; } 
 
-        /// <summary>Optional HCFS URIs of files to be copied to the working directory of Spark drivers and distributed
+        /// <summary>Optional. HCFS URIs of files to be copied to the working directory of Spark drivers and distributed
         /// tasks. Useful for naively parallel tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileUris")]
         public virtual System.Collections.Generic.IList<string> FileUris { get; set; } 
 
-        /// <summary>Optional HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.</summary>
+        /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Spark driver and tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
         public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
 
-        /// <summary>Optional The runtime log configuration for job execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfiguration")]
-        public virtual LoggingConfiguration LoggingConfiguration { get; set; } 
+        /// <summary>Optional. The runtime log config for job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; } 
 
         /// <summary>The name of the driver's main class. The jar file that contains the class must be in the default
         /// CLASSPATH or specified in jar_file_uris.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
         public virtual string MainClass { get; set; } 
 
-        /// <summary>The Hadoop Compatible Filesystem (HCFS) URI of the jar file that contains the main class.</summary>
+        /// <summary>The HCFS URI of the jar file that contains the main class.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
         public virtual string MainJarFileUri { get; set; } 
 
-        /// <summary>Optional A mapping of property names to values, used to configure Spark. Properties that conflict
+        /// <summary>Optional. A mapping of property names to values, used to configure Spark. Properties that conflict
         /// with values set by the Cloud Dataproc API may be overwritten. Can include properties set in /etc/spark/conf
         /// /spark-defaults.conf and classes in user code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -2948,19 +2948,19 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Cloud Dataproc job for running Spark SQL queries.</summary>
+    /// <summary>A Cloud Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.</summary>
     public class SparkSqlJob : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional HCFS URIs of jar files to be added to the Spark CLASSPATH.</summary>
+        /// <summary>Optional. HCFS URIs of jar files to be added to the Spark CLASSPATH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
         public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; } 
 
-        /// <summary>Optional The runtime log configuration for job execution.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfiguration")]
-        public virtual LoggingConfiguration LoggingConfiguration { get; set; } 
+        /// <summary>Optional. The runtime log config for job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; } 
 
-        /// <summary>Optional A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties
-        /// that conflict with values set by the Cloud Dataproc API may be overwritten.</summary>
+        /// <summary>Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf.
+        /// Properties that conflict with values set by the Cloud Dataproc API may be overwritten.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string,string> Properties { get; set; } 
 
@@ -2972,7 +2972,7 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryList")]
         public virtual QueryList QueryList { get; set; } 
 
-        /// <summary>Optional Mapping of query variable names to values (equivalent to the Spark SQL command: SET
+        /// <summary>Optional. Mapping of query variable names to values (equivalent to the Spark SQL command: SET
         /// name="value";).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scriptVariables")]
         public virtual System.Collections.Generic.IDictionary<string,string> ScriptVariables { get; set; } 
@@ -3023,10 +3023,10 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A job submission request.</summary>
+    /// <summary>A request to submit a job.</summary>
     public class SubmitJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required The job resource.</summary>
+        /// <summary>Required. The job resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual Job Job { get; set; } 
 
@@ -3035,22 +3035,23 @@ namespace Google.Apis.Dataproc.v1alpha1.Data
     }    
 
     /// <summary>A YARN application created by a job. Application information is a subset of
-    /// org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.</summary>
+    /// org.apache.hadoop.yarn.proto.YarnProtos.ApplicationReportProto.Beta Feature: This report is available for
+    /// testing purposes only. It may be changed before final release.</summary>
     public class YarnApplication : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required The application name.</summary>
+        /// <summary>Required. The application name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required The numerical progress of the application, from 1 to 100.</summary>
+        /// <summary>Required. The numerical progress of the application, from 1 to 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual System.Nullable<float> Progress { get; set; } 
 
-        /// <summary>Required The application state.</summary>
+        /// <summary>Required. The application state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Optional The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides
+        /// <summary>Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides
         /// application-specific information. The URL uses the internal hostname, and requires a proxy server for
         /// resolution and, possibly, access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingUrl")]

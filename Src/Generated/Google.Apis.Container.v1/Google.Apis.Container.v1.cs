@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170526 (876)
+ *      <tr><th>API Rev<td>20170627 (908)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -428,6 +428,125 @@ namespace Google.Apis.Container.v1
 
                     }
 
+
+                    /// <summary>Sets the autoscaling settings of a specific node pool.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectId">The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</param>
+                    /// <param name="zone">The name of the Google
+                    /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                    /// <param
+                    /// name="clusterId">The name of the cluster to upgrade.</param>
+                    /// <param name="nodePoolId">The name of the node
+                    /// pool to upgrade.</param>
+                    public virtual AutoscalingRequest Autoscaling(Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                    {
+                        return new AutoscalingRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                    }
+
+                    /// <summary>Sets the autoscaling settings of a specific node pool.</summary>
+                    public class AutoscalingRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Autoscaling request.</summary>
+                        public AutoscalingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            Zone = zone;
+                            ClusterId = clusterId;
+                            NodePoolId = nodePoolId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The Google Developers Console [project ID or project
+                        /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
+                        /// which the cluster resides.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Zone { get; private set; }
+
+                        /// <summary>The name of the cluster to upgrade.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ClusterId { get; private set; }
+
+                        /// <summary>The name of the node pool to upgrade.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string NodePoolId { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Container.v1.Data.SetNodePoolAutoscalingRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "autoscaling"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/autoscaling"; }
+                        }
+
+                        /// <summary>Initializes Autoscaling parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "zone", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "zone",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
 
                     /// <summary>Creates a node pool for a cluster.</summary>
                     /// <param name="body">The body of the request.</param>
@@ -1088,6 +1207,347 @@ namespace Google.Apis.Container.v1
                         }
 
                     }
+
+                    /// <summary>Sets the size of a specific node pool.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectId">The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</param>
+                    /// <param name="zone">The name of the Google
+                    /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                    /// <param
+                    /// name="clusterId">The name of the cluster to update.</param>
+                    /// <param name="nodePoolId">The name of the node
+                    /// pool to update.</param>
+                    public virtual SetSizeRequest SetSize(Google.Apis.Container.v1.Data.SetNodePoolSizeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                    {
+                        return new SetSizeRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                    }
+
+                    /// <summary>Sets the size of a specific node pool.</summary>
+                    public class SetSizeRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new SetSize request.</summary>
+                        public SetSizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNodePoolSizeRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            Zone = zone;
+                            ClusterId = clusterId;
+                            NodePoolId = nodePoolId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The Google Developers Console [project ID or project
+                        /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
+                        /// which the cluster resides.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Zone { get; private set; }
+
+                        /// <summary>The name of the cluster to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ClusterId { get; private set; }
+
+                        /// <summary>The name of the node pool to update.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string NodePoolId { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Container.v1.Data.SetNodePoolSizeRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "setSize"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize"; }
+                        }
+
+                        /// <summary>Initializes SetSize parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "zone", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "zone",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Updates the version and/or image type of a specific node pool.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="projectId">The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</param>
+                    /// <param name="zone">The name of the Google
+                    /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                    /// <param
+                    /// name="clusterId">The name of the cluster to upgrade.</param>
+                    /// <param name="nodePoolId">The name of the node
+                    /// pool to upgrade.</param>
+                    public virtual UpdateRequest Update(Google.Apis.Container.v1.Data.UpdateNodePoolRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                    {
+                        return new UpdateRequest(service, body, projectId, zone, clusterId, nodePoolId);
+                    }
+
+                    /// <summary>Updates the version and/or image type of a specific node pool.</summary>
+                    public class UpdateRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Update request.</summary>
+                        public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateNodePoolRequest body, string projectId, string zone, string clusterId, string nodePoolId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            Zone = zone;
+                            ClusterId = clusterId;
+                            NodePoolId = nodePoolId;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The Google Developers Console [project ID or project
+                        /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
+                        /// which the cluster resides.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Zone { get; private set; }
+
+                        /// <summary>The name of the cluster to upgrade.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ClusterId { get; private set; }
+
+                        /// <summary>The name of the node pool to upgrade.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string NodePoolId { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Container.v1.Data.UpdateNodePoolRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "update"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/update"; }
+                        }
+
+                        /// <summary>Initializes Update parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "zone", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "zone",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "nodePoolId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "nodePoolId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+
+                /// <summary>Sets the addons of a specific cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param
+                /// name="clusterId">The name of the cluster to upgrade.</param>
+                public virtual AddonsRequest Addons(Google.Apis.Container.v1.Data.SetAddonsConfigRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new AddonsRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Sets the addons of a specific cluster.</summary>
+                public class AddonsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Addons request.</summary>
+                    public AddonsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetAddonsConfigRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster to upgrade.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetAddonsConfigRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "addons"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/addons"; }
+                    }
+
+                    /// <summary>Initializes Addons parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
                 }
 
                 /// <summary>Completes master IP rotation.</summary>
@@ -1683,6 +2143,418 @@ namespace Google.Apis.Container.v1
 
                 }
 
+                /// <summary>Sets the locations of a specific cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param
+                /// name="clusterId">The name of the cluster to upgrade.</param>
+                public virtual LocationsRequest Locations(Google.Apis.Container.v1.Data.SetLocationsRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new LocationsRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Sets the locations of a specific cluster.</summary>
+                public class LocationsRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Locations request.</summary>
+                    public LocationsRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLocationsRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster to upgrade.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetLocationsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "locations"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations"; }
+                    }
+
+                    /// <summary>Initializes Locations parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the logging service of a specific cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param
+                /// name="clusterId">The name of the cluster to upgrade.</param>
+                public virtual LoggingRequest Logging(Google.Apis.Container.v1.Data.SetLoggingServiceRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new LoggingRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Sets the logging service of a specific cluster.</summary>
+                public class LoggingRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Logging request.</summary>
+                    public LoggingRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetLoggingServiceRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster to upgrade.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetLoggingServiceRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "logging"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/logging"; }
+                    }
+
+                    /// <summary>Initializes Logging parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Updates the master of a specific cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param
+                /// name="clusterId">The name of the cluster to upgrade.</param>
+                public virtual MasterRequest Master(Google.Apis.Container.v1.Data.UpdateMasterRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new MasterRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Updates the master of a specific cluster.</summary>
+                public class MasterRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Master request.</summary>
+                    public MasterRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.UpdateMasterRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster to upgrade.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.UpdateMasterRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "master"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/master"; }
+                    }
+
+                    /// <summary>Initializes Master parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the monitoring service of a specific cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param
+                /// name="clusterId">The name of the cluster to upgrade.</param>
+                public virtual MonitoringRequest Monitoring(Google.Apis.Container.v1.Data.SetMonitoringServiceRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new MonitoringRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Sets the monitoring service of a specific cluster.</summary>
+                public class MonitoringRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Monitoring request.</summary>
+                    public MonitoringRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMonitoringServiceRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster to upgrade.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetMonitoringServiceRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "monitoring"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/monitoring"; }
+                    }
+
+                    /// <summary>Initializes Monitoring parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
                 /// <summary>Sets labels on a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">The Google Developers Console [project ID or project
@@ -1858,6 +2730,109 @@ namespace Google.Apis.Container.v1
                     }
 
                     /// <summary>Initializes SetMasterAuth parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Enables/Disables Network Policy for a cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://developers.google.com/console/help/new/#projectnumber).</param>
+                /// <param name="zone">The name
+                /// of the Google Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                ///
+                /// <param name="clusterId">The name of the cluster.</param>
+                public virtual SetNetworkPolicyRequest SetNetworkPolicy(Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new SetNetworkPolicyRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Enables/Disables Network Policy for a cluster.</summary>
+                public class SetNetworkPolicyRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new SetNetworkPolicy request.</summary>
+                    public SetNetworkPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetNetworkPolicyRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://developers.google.com/console/help/new/#projectnumber).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetNetworkPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setNetworkPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setNetworkPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetNetworkPolicy parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -2529,6 +3504,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for client certificates on the cluster.</summary>
+    public class ClientCertificateConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Issue a client certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueClientCertificate")]
+        public virtual System.Nullable<bool> IssueClientCertificate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Google Container Engine cluster.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2603,6 +3589,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
         public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; } 
 
+        /// <summary>Configuration for cluster IP allocation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAllocationPolicy")]
+        public virtual IPAllocationPolicy IpAllocationPolicy { get; set; } 
+
         /// <summary>The fingerprint of the set of labels for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
         public virtual string LabelFingerprint { get; set; } 
@@ -2646,6 +3636,10 @@ namespace Google.Apis.Container.v1.Data
         /// which the cluster is connected. If left unspecified, the `default` network will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
+
+        /// <summary>Configuration options for the NetworkPolicy feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPolicy")]
+        public virtual NetworkPolicy NetworkPolicy { get; set; } 
 
         /// <summary>Parameters used in creating the cluster's nodes. See `nodeConfig` for the description of its
         /// properties. For requests, this field should only be used in lieu of a "node_pool" object, since this
@@ -2826,6 +3820,72 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for controlling how IPs are allocated in the cluster.</summary>
+    public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IP address range for the cluster pod IPs. If this field is set, then
+        /// `cluster.cluster_ipv4_cidr` must be left blank.
+        ///
+        /// This field is only applicable when `use_ip_aliases` is true.
+        ///
+        /// Set to blank to have a range will be chosen with the default size.
+        ///
+        /// Set to /netmask (e.g. `/14`) to have a range be chosen with a specific netmask.
+        ///
+        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
+        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
+        /// range to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
+        public virtual string ClusterIpv4Cidr { get; set; } 
+
+        /// <summary>Whether a new subnetwork will be created automatically for the cluster.
+        ///
+        /// This field is only applicable when `use_ip_aliases` is true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createSubnetwork")]
+        public virtual System.Nullable<bool> CreateSubnetwork { get; set; } 
+
+        /// <summary>The IP address range of the instance IPs in this cluster.
+        ///
+        /// This is applicable only if `create_subnetwork` is true.
+        ///
+        /// Set to blank to have a range will be chosen with the default size.
+        ///
+        /// Set to /netmask (e.g. `/14`) to have a range be chosen with a specific netmask.
+        ///
+        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
+        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
+        /// range to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4Cidr")]
+        public virtual string NodeIpv4Cidr { get; set; } 
+
+        /// <summary>The IP address range of the services IPs in this cluster. If blank, a range will be automatically
+        /// chosen with the default size.
+        ///
+        /// This field is only applicable when `use_ip_aliases` is true.
+        ///
+        /// Set to blank to have a range will be chosen with the default size.
+        ///
+        /// Set to /netmask (e.g. `/14`) to have a range be chosen with a specific netmask.
+        ///
+        /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
+        /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
+        /// range to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4Cidr")]
+        public virtual string ServicesIpv4Cidr { get; set; } 
+
+        /// <summary>A custom subnetwork name to be used if `create_subnetwork` is true.  If this field is empty, then
+        /// an automatic name will choosen for the new subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworkName")]
+        public virtual string SubnetworkName { get; set; } 
+
+        /// <summary>Whether alias IPs will be used for pod IPs in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useIpAliases")]
+        public virtual System.Nullable<bool> UseIpAliases { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for the legacy Attribute Based Access Control authorization mode.</summary>
     public class LegacyAbac : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2890,6 +3950,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
         public virtual string ClientCertificate { get; set; } 
 
+        /// <summary>Configuration for client certificate authentication on the cluster.  If no configuration is
+        /// specified, a client certificate is issued.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificateConfig")]
+        public virtual ClientCertificateConfig ClientCertificateConfig { get; set; } 
+
         /// <summary>[Output only] Base64-encoded private key used by clients to authenticate to the cluster
         /// endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
@@ -2910,6 +3975,22 @@ namespace Google.Apis.Container.v1.Data
         /// later, you can disable basic authentication by providing an empty username.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-
+    /// networking/networkpolicies/</summary>
+    public class NetworkPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether network policy is enabled on the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The selected network policy provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("provider")]
+        public virtual string Provider { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3174,6 +4255,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>SetAddonsConfigRequest sets the addons associated with the cluster.</summary>
+    public class SetAddonsConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired configurations for the various addons available to run in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addonsConfig")]
+        public virtual AddonsConfig AddonsConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>SetLabelsRequest sets the Google Cloud Platform labels on a Google Container Engine cluster, which will
     /// in turn set them for Google Compute Engine resources used by that cluster</summary>
     public class SetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -3204,6 +4296,35 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>SetLocationsRequest sets the locations of the cluster.</summary>
+    public class SetLocationsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired list of Google Compute Engine [locations](/compute/docs/zones#available) in which the
+        /// cluster's nodes should be located. Changing the locations a cluster is in will result in nodes being either
+        /// created or removed from the cluster, depending on whether locations are being added or removed.
+        ///
+        /// This list must always include the cluster's primary zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<string> Locations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetLoggingServiceRequest sets the logging service of a cluster.</summary>
+    public class SetLoggingServiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The logging service the cluster should use to write metrics. Currently available options:
+        ///
+        /// * "logging.googleapis.com" - the Google Cloud Logging service * "none" - no metrics will be exported from
+        /// the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
+        public virtual string LoggingService { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>SetMasterAuthRequest updates the admin password of a cluster.</summary>
     public class SetMasterAuthRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3219,12 +4340,59 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>SetMonitoringServiceRequest sets the monitoring service of a cluster.</summary>
+    public class SetMonitoringServiceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
+        ///
+        /// * "monitoring.googleapis.com" - the Google Cloud Monitoring service * "none" - no metrics will be exported
+        /// from the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringService")]
+        public virtual string MonitoringService { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetNetworkPolicyRequest enables/disables network policy for a cluster.</summary>
+    public class SetNetworkPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration options for the NetworkPolicy feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPolicy")]
+        public virtual NetworkPolicy NetworkPolicy { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetNodePoolAutoscalingRequest sets the autoscaler settings of a node pool.</summary>
+    public class SetNodePoolAutoscalingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Autoscaling configuration for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
+        public virtual NodePoolAutoscaling Autoscaling { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>SetNodePoolManagementRequest sets the node management properties of a node pool.</summary>
     public class SetNodePoolManagementRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>NodeManagement configuration for the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual NodeManagement Management { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetNodePoolSizeRequest sets the size a node pool.</summary>
+    public class SetNodePoolSizeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired node count for the pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3244,6 +4412,34 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>A description of the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual ClusterUpdate Update { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>UpdateMasterRequest updates the master of the cluster.</summary>
+    public class UpdateMasterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Kubernetes version to change the master to. The only valid value is the latest supported
+        /// version. Use "-" to have the server automatically select the latest version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterVersion")]
+        public virtual string MasterVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>UpdateNodePoolRequests update a node pool's image and/or version.</summary>
+    public class UpdateNodePoolRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired image type for the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
+        public virtual string ImageType { get; set; } 
+
+        /// <summary>The Kubernetes version to change the nodes to (typically an upgrade). Use `-` to upgrade to the
+        /// latest version supported by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeVersion")]
+        public virtual string NodeVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

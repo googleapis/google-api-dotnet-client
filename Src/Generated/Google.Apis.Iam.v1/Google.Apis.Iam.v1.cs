@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Google Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170526 (876)
+ *      <tr><th>API Rev<td>20170707 (918)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -1721,8 +1721,8 @@ namespace Google.Apis.Iam.v1.Data
     /// guide](https://cloud.google.com/iam).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
-        /// `role`. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -1896,7 +1896,10 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The private key data. Only provided in `CreateServiceAccountKey` responses.</summary>
+        /// <summary>The private key data. Only provided in `CreateServiceAccountKey` responses. Make sure to keep the
+        /// private key data secure because it allows for the assertion of the service account identity. When decoded,
+        /// the private key data can be used to authenticate with Google API client libraries and with gcloud auth
+        /// activate-service-account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeyData")]
         public virtual string PrivateKeyData { get; set; } 
 

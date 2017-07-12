@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170531 (881)
+ *      <tr><th>API Rev<td>20170627 (908)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -387,8 +387,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Claims the website of a Merchant Center sub-account. This method can only be called for multi-
-        /// client accounts.</summary>
+        /// <summary>Claims the website of a Merchant Center sub-account. This method can only be called for accounts to
+        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
+        /// account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account whose website is claimed.</param>
@@ -397,8 +398,9 @@ namespace Google.Apis.ShoppingContent.v2
             return new ClaimwebsiteRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Claims the website of a Merchant Center sub-account. This method can only be called for multi-
-        /// client accounts.</summary>
+        /// <summary>Claims the website of a Merchant Center sub-account. This method can only be called for accounts to
+        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
+        /// account is a multi-client account.</summary>
         public class ClaimwebsiteRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountsClaimWebsiteResponse>
         {
             /// <summary>Constructs a new Claimwebsite request.</summary>

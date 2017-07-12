@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170530 (880)
+ *      <tr><th>API Rev<td>20170709 (920)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -374,20 +374,20 @@ namespace Google.Apis.DLP.v2beta1
         }
 
 
-        /// <summary>Find potentially sensitive info in a list of strings. This method has limits on input size,
+        /// <summary>Finds potentially sensitive info in a list of strings. This method has limits on input size,
         /// processing time, and output size.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual InspectRequest Inspect(Google.Apis.DLP.v2beta1.Data.InspectContentRequest body)
+        public virtual InspectRequest Inspect(Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1InspectContentRequest body)
         {
             return new InspectRequest(service, body);
         }
 
-        /// <summary>Find potentially sensitive info in a list of strings. This method has limits on input size,
+        /// <summary>Finds potentially sensitive info in a list of strings. This method has limits on input size,
         /// processing time, and output size.</summary>
-        public class InspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.InspectContentResponse>
+        public class InspectRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1InspectContentResponse>
         {
             /// <summary>Constructs a new Inspect request.</summary>
-            public InspectRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.InspectContentRequest body)
+            public InspectRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1InspectContentRequest body)
                 : base(service)
             {
                 Body = body;
@@ -397,7 +397,7 @@ namespace Google.Apis.DLP.v2beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DLP.v2beta1.Data.InspectContentRequest Body { get; set; }
+            Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1InspectContentRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -429,20 +429,20 @@ namespace Google.Apis.DLP.v2beta1
 
         }
 
-        /// <summary>Redact potentially sensitive info from a list of strings. This method has limits on input size,
+        /// <summary>Redacts potentially sensitive info from a list of strings. This method has limits on input size,
         /// processing time, and output size.</summary>
         /// <param name="body">The body of the request.</param>
-        public virtual RedactRequest Redact(Google.Apis.DLP.v2beta1.Data.RedactContentRequest body)
+        public virtual RedactRequest Redact(Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1RedactContentRequest body)
         {
             return new RedactRequest(service, body);
         }
 
-        /// <summary>Redact potentially sensitive info from a list of strings. This method has limits on input size,
+        /// <summary>Redacts potentially sensitive info from a list of strings. This method has limits on input size,
         /// processing time, and output size.</summary>
-        public class RedactRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.RedactContentResponse>
+        public class RedactRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1RedactContentResponse>
         {
             /// <summary>Constructs a new Redact request.</summary>
-            public RedactRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.RedactContentRequest body)
+            public RedactRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1RedactContentRequest body)
                 : base(service)
             {
                 Body = body;
@@ -452,7 +452,7 @@ namespace Google.Apis.DLP.v2beta1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DLP.v2beta1.Data.RedactContentRequest Body { get; set; }
+            Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1RedactContentRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -530,17 +530,17 @@ namespace Google.Apis.DLP.v2beta1
             /// the operation completed despite cancellation.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the operation resource to be cancelled.</param>
-            public virtual CancelRequest Cancel(Google.Apis.DLP.v2beta1.Data.CancelOperationRequest body, string name)
+            public virtual CancelRequest Cancel(Google.Apis.DLP.v2beta1.Data.GoogleLongrunningCancelOperationRequest body, string name)
             {
                 return new CancelRequest(service, body, name);
             }
 
             /// <summary>Cancels an operation. Use the get method to check whether the cancellation succeeded or whether
             /// the operation completed despite cancellation.</summary>
-            public class CancelRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.Empty>
+            public class CancelRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
-                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.CancelOperationRequest body, string name)
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.GoogleLongrunningCancelOperationRequest body, string name)
                     : base(service)
                 {
                     Name = name;
@@ -555,7 +555,7 @@ namespace Google.Apis.DLP.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DLP.v2beta1.Data.CancelOperationRequest Body { get; set; }
+                Google.Apis.DLP.v2beta1.Data.GoogleLongrunningCancelOperationRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -596,18 +596,18 @@ namespace Google.Apis.DLP.v2beta1
 
             }
 
-            /// <summary>Schedule a job scanning content in a Google Cloud Platform data repository.</summary>
+            /// <summary>Schedules a job scanning content in a Google Cloud Platform data repository.</summary>
             /// <param name="body">The body of the request.</param>
-            public virtual CreateRequest Create(Google.Apis.DLP.v2beta1.Data.CreateInspectOperationRequest body)
+            public virtual CreateRequest Create(Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1CreateInspectOperationRequest body)
             {
                 return new CreateRequest(service, body);
             }
 
-            /// <summary>Schedule a job scanning content in a Google Cloud Platform data repository.</summary>
-            public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.Operation>
+            /// <summary>Schedules a job scanning content in a Google Cloud Platform data repository.</summary>
+            public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.CreateInspectOperationRequest body)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1CreateInspectOperationRequest body)
                     : base(service)
                 {
                     Body = body;
@@ -617,7 +617,7 @@ namespace Google.Apis.DLP.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.DLP.v2beta1.Data.CreateInspectOperationRequest Body { get; set; }
+                Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1CreateInspectOperationRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -657,7 +657,7 @@ namespace Google.Apis.DLP.v2beta1
             }
 
             /// <summary>This method is not supported and the server returns `UNIMPLEMENTED`.</summary>
-            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.Empty>
+            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -719,7 +719,7 @@ namespace Google.Apis.DLP.v2beta1
 
             /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
-            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.Operation>
+            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -771,29 +771,15 @@ namespace Google.Apis.DLP.v2beta1
 
             }
 
-            /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`.
-            ///
-            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-            /// name includes the operations collection id, however overriding users must ensure the name binding is the
-            /// parent resource, without the operations collection id.</summary>
+            /// <summary>Fetch the list of long running operations.</summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists operations that match the specified filter in the request. If the server doesn't support
-            /// this method, it returns `UNIMPLEMENTED`.
-            ///
-            /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-            /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-            /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
-            /// name includes the operations collection id, however overriding users must ensure the name binding is the
-            /// parent resource, without the operations collection id.</summary>
-            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.ListOperationsResponse>
+            /// <summary>Fetch the list of long running operations.</summary>
+            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string name)
@@ -808,17 +794,17 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>The list page token.</summary>
+                /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -854,15 +840,6 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -875,6 +852,15 @@ namespace Google.Apis.DLP.v2beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -941,7 +927,7 @@ namespace Google.Apis.DLP.v2beta1
                 }
 
                 /// <summary>Returns list of results for given inspect operation result set id.</summary>
-                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.ListInspectFindingsResponse>
+                public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1ListInspectFindingsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string name)
@@ -957,22 +943,22 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Restrict findings to items that match. Supports info_type and likelihood. Examples:
-                    /// info_type=EMAIL_ADDRESS info_type=PHONE_NUMBER,EMAIL_ADDRESS likelihood=VERY_LIKELY
-                    /// likelihood=VERY_LIKELY,LIKELY info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The value returned by the last `ListInspectFindingsResponse`; indicates that this is a
                     /// continuation of a prior `ListInspectFindings` call, and that the system should return the next
                     /// page of data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Maximum number of results to return. If 0, the implementation select a reasonable
+                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
                     /// value.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood. Examples:
+                    /// info_type=EMAIL_ADDRESS info_type=PHONE_NUMBER,EMAIL_ADDRESS likelihood=VERY_LIKELY
+                    /// likelihood=VERY_LIKELY,LIKELY info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1008,15 +994,6 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1029,6 +1006,15 @@ namespace Google.Apis.DLP.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1089,7 +1075,7 @@ namespace Google.Apis.DLP.v2beta1
             }
 
             /// <summary>Returns sensitive information types for given category.</summary>
-            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.ListInfoTypesResponse>
+            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1ListInfoTypesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string category)
@@ -1163,7 +1149,7 @@ namespace Google.Apis.DLP.v2beta1
         }
 
         /// <summary>Returns the list of root categories of sensitive information.</summary>
-        public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.ListRootCategoriesResponse>
+        public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GooglePrivacyDlpV2beta1ListRootCategoriesResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -1221,14 +1207,58 @@ namespace Google.Apis.DLP.v2beta1.Data
 {    
 
     /// <summary>The request message for Operations.CancelOperation.</summary>
-    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleLongrunningCancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class GoogleLongrunningListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class GoogleLongrunningOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
+        /// completed, and either `error` or `response` is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; } 
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; } 
+
+        /// <summary>This field will contain an InspectOperationMetadata object. This will always be returned with the
+        /// Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+
+        /// <summary>The server-assigned name, The `name` should have the format of `inspect/operations/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>This field will contain an InspectOperationResult object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Info Type Category description.</summary>
-    public class CategoryDescription : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1CategoryDescription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Human readable form of the category name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1243,7 +1273,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Record key for a finding in a Cloud Storage file.</summary>
-    public class CloudStorageKey : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1CloudStorageKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Path to the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
@@ -1259,17 +1289,17 @@ namespace Google.Apis.DLP.v2beta1.Data
 
     /// <summary>Options defining a file or a set of files (path ending with *) within a Google Cloud Storage
     /// bucket.</summary>
-    public class CloudStorageOptions : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1CloudStorageOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("fileSet")]
-        public virtual FileSet FileSet { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1FileSet FileSet { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>A location in Cloud Storage.</summary>
-    public class CloudStoragePath : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1CloudStoragePath : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The url, in the format of `gs://bucket/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
@@ -1279,8 +1309,27 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents a color in the RGB color space.</summary>
+    public class GooglePrivacyDlpV2beta1Color : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blue")]
+        public virtual System.Nullable<float> Blue { get; set; } 
+
+        /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("green")]
+        public virtual System.Nullable<float> Green { get; set; } 
+
+        /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("red")]
+        public virtual System.Nullable<float> Red { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Container structure for the content to inspect.</summary>
-    public class ContentItem : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1ContentItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Content data to inspect or redact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
@@ -1300,11 +1349,11 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Request for scheduling a scan of a data subset from a Google Platform data repository.</summary>
-    public class CreateInspectOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1CreateInspectOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configuration for the inspector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1InspectConfig InspectConfig { get; set; } 
 
         /// <summary>Optional location to store findings. The bucket must already exist and the Google APIs service
         /// account for DLP must have write permission to write to the given bucket. Results are split over multiple csv
@@ -1315,61 +1364,49 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// Storage the next columns are: file_path start_offset For Cloud Datastore the next columns are: project_id
         /// namespace_id path column_name offset</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
-        public virtual OutputStorageConfig OutputConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1OutputStorageConfig OutputConfig { get; set; } 
 
         /// <summary>Specification of the data set to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageConfig")]
-        public virtual StorageConfig StorageConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1StorageConfig StorageConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Record key for a finding in Cloud Datastore.</summary>
-    public class DatastoreKey : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1DatastoreKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Datastore entity key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityKey")]
-        public virtual Key EntityKey { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1Key EntityKey { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Options defining a data set within Google Cloud Datastore.</summary>
-    public class DatastoreOptions : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1DatastoreOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The kind to process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual KindExpression Kind { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1KindExpression Kind { get; set; } 
 
         /// <summary>A partition ID identifies a grouping of entities. The grouping is always by project and namespace,
         /// however the namespace ID may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
-        public virtual PartitionId PartitionId { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1PartitionId PartitionId { get; set; } 
 
         /// <summary>Properties to scan. If none are specified, all properties will be scanned by default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projection")]
-        public virtual System.Collections.Generic.IList<Projection> Projection { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Projection> Projection { get; set; } 
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
-    public class Empty : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>General identifier of a data field in a storage service.</summary>
-    public class FieldId : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1FieldId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Column name describing the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnName")]
@@ -1380,7 +1417,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Set of files to scan.</summary>
-    public class FileSet : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1FileSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The url, in the format `gs:`. Trailing wildcard in the path is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -1391,7 +1428,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Container structure describing a single finding within a string or image.</summary>
-    public class Finding : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Timestamp when finding was detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -1399,7 +1436,7 @@ namespace Google.Apis.DLP.v2beta1.Data
 
         /// <summary>The specific type of info the string might be.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
 
         /// <summary>Estimate of how likely it is that the info_type is correct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
@@ -1407,7 +1444,7 @@ namespace Google.Apis.DLP.v2beta1.Data
 
         /// <summary>Location of the info found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual Location Location { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1Location Location { get; set; } 
 
         /// <summary>The specific string that may be potentially sensitive info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
@@ -1418,7 +1455,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Bounding box encompassing detected text within an image.</summary>
-    public class ImageLocation : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1ImageLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Height of the bounding box in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
@@ -1440,8 +1477,30 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for determing how redaction of images should occur.</summary>
+    public class GooglePrivacyDlpV2beta1ImageRedactionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Only one per info_type should be provided per request. If not specified, and redact_all_text is
+        /// false, the DLP API will redacts all text that it matches against all info_types that are found, but not
+        /// specified in another ImageRedactionConfig.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
+
+        /// <summary>If true, all text found in the image, regardless if it matches an info_type, is redacted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactAllText")]
+        public virtual System.Nullable<bool> RedactAllText { get; set; } 
+
+        /// <summary>The color to use when redacting content from an image. If not specified, the default is
+        /// black.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("redactionColor")]
+        public virtual GooglePrivacyDlpV2beta1Color RedactionColor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Type of information detected by the API.</summary>
-    public class InfoType : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1InfoType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the information type. For built-in info types, this is provided by the API call
         /// ListInfoTypes. For user-defined info types, this is provided by the user. All user-defined info types must
@@ -1454,11 +1513,11 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Info type description.</summary>
-    public class InfoTypeDescription : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1InfoTypeDescription : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of categories this info type belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual System.Collections.Generic.IList<CategoryDescription> Categories { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1CategoryDescription> Categories { get; set; } 
 
         /// <summary>Human readable form of the info type name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1472,11 +1531,26 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Statistics regarding a specific InfoType.</summary>
+    public class GooglePrivacyDlpV2beta1InfoTypeStatistics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of findings for this info type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; } 
+
+        /// <summary>The type of finding this stat is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration description of the scanning process. When used with redactContent only info_types and
     /// min_likelihood are currently used.</summary>
-    public class InspectConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1InspectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>When true, exclude type information of the findings.</summary>
+        /// <summary>When true, excludes type information of the findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeTypes")]
         public virtual System.Nullable<bool> ExcludeTypes { get; set; } 
 
@@ -1485,16 +1559,16 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeQuote")]
         public virtual System.Nullable<bool> IncludeQuote { get; set; } 
 
-        /// <summary>Restrict what info_types to look for. The values must correspond to InfoType values returned by
+        /// <summary>Restricts what info_types to look for. The values must correspond to InfoType values returned by
         /// ListInfoTypes or found in documentation. Empty info_types runs all enabled detectors.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<InfoType> InfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1InfoType> InfoTypes { get; set; } 
 
-        /// <summary>Limit the number of findings per content item.</summary>
+        /// <summary>Limits the number of findings per content item or long running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindings")]
         public virtual System.Nullable<int> MaxFindings { get; set; } 
 
-        /// <summary>Only return findings equal or above this threshold.</summary>
+        /// <summary>Only returns findings equal or above this threshold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
         public virtual string MinLikelihood { get; set; } 
 
@@ -1503,39 +1577,85 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Request to search for potentially sensitive info in a list of items.</summary>
-    public class InspectContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1InspectContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Configuration for the inspector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1InspectConfig InspectConfig { get; set; } 
 
         /// <summary>The list of items to inspect. Items in a single request are considered "related" unless
         /// inspect_config.independent_inputs is true. Up to 100 are allowed per request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ContentItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ContentItem> Items { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Results of inspecting a list of items.</summary>
-    public class InspectContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1InspectContentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Each content_item from the request has a result in this list, in the same order as the
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<InspectResult> Results { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1InspectResult> Results { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata returned within GetOperation for an inspect request.</summary>
+    public class GooglePrivacyDlpV2beta1InspectOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time which this request was started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("infoTypeStats")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1InfoTypeStatistics> InfoTypeStats { get; set; } 
+
+        /// <summary>Total size in bytes that were processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processedBytes")]
+        public virtual System.Nullable<long> ProcessedBytes { get; set; } 
+
+        /// <summary>The inspect config used to create the Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestInspectConfig")]
+        public virtual GooglePrivacyDlpV2beta1InspectConfig RequestInspectConfig { get; set; } 
+
+        /// <summary>Optional location to store findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOutputConfig")]
+        public virtual GooglePrivacyDlpV2beta1OutputStorageConfig RequestOutputConfig { get; set; } 
+
+        /// <summary>The storage config used to create the Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestStorageConfig")]
+        public virtual GooglePrivacyDlpV2beta1StorageConfig RequestStorageConfig { get; set; } 
+
+        /// <summary>Estimate of the number of bytes to process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalEstimatedBytes")]
+        public virtual System.Nullable<long> TotalEstimatedBytes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The operational data.</summary>
+    public class GooglePrivacyDlpV2beta1InspectOperationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
+        /// If you use the default HTTP mapping, the `name` should have the format of `inspect/results/{id}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>All the findings for a single scanned item.</summary>
-    public class InspectResult : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1InspectResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of findings for an item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("findings")]
-        public virtual System.Collections.Generic.IList<Finding> Findings { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Finding> Findings { get; set; } 
 
         /// <summary>If true, then this item might have more findings than were returned, and the findings returned are
         /// an arbitrary subset of all findings. The findings list might be truncated because the input items were too
@@ -1551,12 +1671,12 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>A unique identifier for a Datastore entity. If a key's partition ID or any of its path kinds or names
     /// are reserved/read-only, the key is reserved/read-only. A reserved/read-only key is forbidden in certain
     /// documented contexts.</summary>
-    public class Key : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1Key : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Entities are partitioned into subsets, currently identified by a project ID and namespace ID.
         /// Queries are scoped to a single partition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
-        public virtual PartitionId PartitionId { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1PartitionId PartitionId { get; set; } 
 
         /// <summary>The entity path. An entity path consists of one or more elements composed of a kind and a string or
         /// numerical identifier, which identify entities. The first element identifies a _root entity_, the second
@@ -1565,14 +1685,14 @@ namespace Google.Apis.DLP.v2beta1.Data
         ///
         /// A path can never be empty, and a path can have at most 100 elements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual System.Collections.Generic.IList<PathElement> Path { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1PathElement> Path { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>A representation of a Datastore kind.</summary>
-    public class KindExpression : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1KindExpression : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the kind.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1583,18 +1703,18 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Response to the ListInfoTypes request.</summary>
-    public class ListInfoTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1ListInfoTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Set of sensitive info types belonging to a category.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<InfoTypeDescription> InfoTypes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1InfoTypeDescription> InfoTypes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Response to the ListInspectFindings request.</summary>
-    public class ListInspectFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1ListInspectFindingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, indicates that there may be more results that match the request; this value should be
         /// passed in a new `ListInspectFindingsRequest`.</summary>
@@ -1603,100 +1723,57 @@ namespace Google.Apis.DLP.v2beta1.Data
 
         /// <summary>The results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual InspectResult Result { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for Operations.ListOperations.</summary>
-    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The standard List next-page token.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>A list of operations that matches the specified filter in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
-        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1InspectResult Result { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Response for ListRootCategories request.</summary>
-    public class ListRootCategoriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1ListRootCategoriesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of all into type categories supported by the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
-        public virtual System.Collections.Generic.IList<CategoryDescription> Categories { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1CategoryDescription> Categories { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Specifies the location of a finding within its source item.</summary>
-    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Zero-based byte offsets within a content item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byteRange")]
-        public virtual Range ByteRange { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1Range ByteRange { get; set; } 
 
         /// <summary>Character offsets within a content item, included when content type is a text. Default charset
         /// assumed to be UTF-8.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codepointRange")]
-        public virtual Range CodepointRange { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1Range CodepointRange { get; set; } 
 
         /// <summary>Field id of the field containing the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
-        public virtual FieldId FieldId { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1FieldId FieldId { get; set; } 
 
         /// <summary>Location within an image's pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageBoxes")]
-        public virtual System.Collections.Generic.IList<ImageLocation> ImageBoxes { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ImageLocation> ImageBoxes { get; set; } 
 
         /// <summary>Key of the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordKey")]
-        public virtual RecordKey RecordKey { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
-    public class Operation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("done")]
-        public virtual System.Nullable<bool> Done { get; set; } 
-
-        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual Status Error { get; set; } 
-
-        /// <summary>This field will contain an `InspectOperationMetadata` object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>The server-assigned name, The `name` should have the format of `inspect/operations/`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>This field will contain an `InspectOperationResult` object.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("response")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1RecordKey RecordKey { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Cloud repository for storing output.</summary>
-    public class OutputStorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1OutputStorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The path to a Google Cloud Storage location to store output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storagePath")]
-        public virtual CloudStoragePath StoragePath { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1CloudStoragePath StoragePath { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1706,7 +1783,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// project and namespace, however the namespace ID may be empty.
     ///
     /// A partition ID contains several dimensions: project ID and namespace ID.</summary>
-    public class PartitionId : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1PartitionId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceId")]
@@ -1723,7 +1800,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>A (kind, ID/name) pair used to construct a key path.
     ///
     /// If either name or ID is set, the element is complete. If neither is set, the element is incomplete.</summary>
-    public class PathElement : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1PathElement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The auto-allocated ID of the entity. Never equal to zero. Values less than zero are discouraged and
         /// may not be supported in the future.</summary>
@@ -1745,18 +1822,18 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>A representation of a Datastore property in a projection.</summary>
-    public class Projection : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1Projection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The property to project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual PropertyReference Property { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1PropertyReference Property { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>A reference to a property relative to the Datastore kind expressions.</summary>
-    public class PropertyReference : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1PropertyReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the property. If name includes "."s, it may be interpreted as a property name
         /// path.</summary>
@@ -1768,7 +1845,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Generic half-open interval [start, end)</summary>
-    public class Range : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1Range : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Index of the last character of the range (exclusive).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
@@ -1783,13 +1860,13 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Message for a unique key indicating a record that contains a finding.</summary>
-    public class RecordKey : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1RecordKey : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageKey")]
-        public virtual CloudStorageKey CloudStorageKey { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1CloudStorageKey CloudStorageKey { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreKey")]
-        public virtual DatastoreKey DatastoreKey { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1DatastoreKey DatastoreKey { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1797,47 +1874,79 @@ namespace Google.Apis.DLP.v2beta1.Data
 
     /// <summary>Request to search for potentially sensitive info in a list of items and replace it with a default or
     /// provided content.</summary>
-    public class RedactContentRequest : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1RedactContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The configuration for specifying what content to redact from images.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageRedactionConfigs")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ImageRedactionConfig> ImageRedactionConfigs { get; set; } 
+
         /// <summary>Configuration for the inspector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
-        public virtual InspectConfig InspectConfig { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1InspectConfig InspectConfig { get; set; } 
 
         /// <summary>The list of items to inspect. Up to 100 are allowed per request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ContentItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ContentItem> Items { get; set; } 
 
-        /// <summary>The strings to replace findings with. Must specify at least one.</summary>
+        /// <summary>The strings to replace findings text findings with. Must specify at least one of these or one
+        /// ImageRedactionConfig if redacting images.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceConfigs")]
-        public virtual System.Collections.Generic.IList<ReplaceConfig> ReplaceConfigs { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ReplaceConfig> ReplaceConfigs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     /// <summary>Results of redacting a list of items.</summary>
-    public class RedactContentResponse : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1RedactContentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The redacted content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ContentItem> Items { get; set; } 
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ContentItem> Items { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
-    public class ReplaceConfig : Google.Apis.Requests.IDirectResponseSchema
+    public class GooglePrivacyDlpV2beta1ReplaceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Type of information to replace. Only one ReplaceConfig per info_type should be provided. If
         /// ReplaceConfig does not have an info_type, the DLP API matches it against all info_types that are found but
         /// not specified in another ReplaceConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual InfoType InfoType { get; set; } 
+        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
 
         /// <summary>Content replacing sensitive information of given type. Max 256 chars.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceWith")]
         public virtual string ReplaceWith { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Shared message indicating Cloud storage type.</summary>
+    public class GooglePrivacyDlpV2beta1StorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage options specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOptions")]
+        public virtual GooglePrivacyDlpV2beta1CloudStorageOptions CloudStorageOptions { get; set; } 
+
+        /// <summary>Google Cloud Datastore options specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datastoreOptions")]
+        public virtual GooglePrivacyDlpV2beta1DatastoreOptions DatastoreOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1885,14 +1994,14 @@ namespace Google.Apis.DLP.v2beta1.Data
     ///
     /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
     /// stripping needed for security/privacy reasons.</summary>
-    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -1900,21 +2009,6 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Shared message indicating Cloud storage type.</summary>
-    public class StorageConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Google Cloud Storage options specification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOptions")]
-        public virtual CloudStorageOptions CloudStorageOptions { get; set; } 
-
-        /// <summary>Google Cloud Datastore options specification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("datastoreOptions")]
-        public virtual DatastoreOptions DatastoreOptions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

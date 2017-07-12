@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API V2Beta Methods</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20170501 (851)
+ *      <tr><th>API Rev<td>20170615 (896)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>
@@ -569,8 +569,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -578,8 +578,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -1321,8 +1321,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -1330,8 +1330,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -2137,8 +2137,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2146,8 +2146,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -2383,8 +2383,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2392,8 +2392,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -2643,8 +2643,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("deployment", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Deployment { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -2652,8 +2652,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3125,8 +3125,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3134,8 +3134,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3276,8 +3276,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("typeProvider", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TypeProvider { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3285,8 +3285,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3614,8 +3614,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter expression for filtering listed resources, in the form filter={expression}. Your
-            /// {expression} must be in the format: field_name comparison_string literal_string.
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
             ///
             /// The field_name is the name of the field you want to compare. Only atomic field types are supported
             /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
@@ -3623,8 +3623,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
             /// regular expression using RE2 syntax. The literal value must match the entire field.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use
-            /// filter=name ne example-instance.
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
             ///
             /// You can filter on nested fields. For example, you could filter on instances that have set the
             /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
@@ -3836,6 +3836,12 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined independently.
+        /// This field is GOOGLE_INTERNAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -4172,6 +4178,38 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ImportFile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contents of the file.</summary>
@@ -4213,9 +4251,24 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     /// <summary>Specifies what kind of log the caller must write</summary>
     public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Cloud audit options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
+        public virtual LogConfigCloudAuditOptions CloudAudit { get; set; } 
+
         /// <summary>Counter options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("counter")]
         public virtual LogConfigCounterOptions Counter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Write a Cloud Audit log</summary>
+    public class LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
+        public virtual string LogName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4531,8 +4584,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
-        /// `role`. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 

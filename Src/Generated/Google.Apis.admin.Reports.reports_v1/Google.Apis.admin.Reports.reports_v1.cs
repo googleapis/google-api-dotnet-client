@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>Admin Reports API</a>
  *      <tr><th>API Version<td>reports_v1
- *      <tr><th>API Rev<td>20170320 (809)
+ *      <tr><th>API Rev<td>20170622 (903)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>
  *              https://developers.google.com/admin-sdk/reports/</a>
@@ -399,7 +399,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)",
+                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)",
                     });
                 RequestParameters.Add(
                     "actorIpAddress", new Google.Apis.Discovery.Parameter
@@ -593,7 +593,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)",
+                        Pattern = @"(admin)|(calendar)|(drive)|(login)|(mobile)|(token)|(groups)|(saml)|(chat)|(gplus)|(rules)",
                     });
                 RequestParameters.Add(
                     "actorIpAddress", new Google.Apis.Discovery.Parameter
@@ -854,7 +854,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
-                        Pattern = @"(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)",
+                        Pattern = @"(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+,)*(((accounts)|(app_maker)|(apps_scripts)|(classroom)|(cros)|(gmail)|(calendar)|(docs)|(gplus)|(sites)|(device_management)|(drive)):[^,]+)",
                     });
             }
 

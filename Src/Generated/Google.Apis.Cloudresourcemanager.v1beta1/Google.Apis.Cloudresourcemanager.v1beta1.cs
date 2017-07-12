@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170607 (888)
+ *      <tr><th>API Rev<td>20170710 (921)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -537,6 +537,16 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
+            /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
+            /// where listing should continue. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Organizations to return in the response. This field is
+            /// optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>An optional query string used to filter the Organizations to return in the response. Filter
             /// rules are case-insensitive.
             ///
@@ -550,16 +560,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
-            /// where listing should continue. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Organizations to return in the response. This field is
-            /// optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -586,15 +586,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -607,6 +598,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1264,6 +1264,13 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// |NAME:howl|Equivalent to above.| |labels.color:*|The project has the label `color`.|
             /// |labels.color:red|The project's label `color` has the value `red`.| |labels.color:redlabels.size:big|The
             /// project's label `color` has the value `red` and its label `size` has the value `big`.
+            ///
+            /// If you specify a filter that has both `parent.type` and `parent.id`, then the
+            /// `resourcemanager.projects.list` permission is checked on the parent. If the user has this permission,
+            /// all projects under the parent will be returned after remaining filters have been applied. If the user
+            /// lacks this permission, then all projects for which the user has the `resourcemanager.projects.get`
+            /// permission will be returned after remaining filters have been applied. If no filter is specified, the
+            /// call will return projects for which the user has `resourcemanager.projects.get` permissions.
             ///
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]

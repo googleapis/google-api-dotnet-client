@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170605 (886)
+ *      <tr><th>API Rev<td>20170623 (904)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2528,7 +2528,8 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Exports a Google Doc to the requested MIME type and returns the exported content.</summary>
+        /// <summary>Exports a Google Doc to the requested MIME type and returns the exported content. Please note that
+        /// the exported content is limited to 10MB.</summary>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="mimeType">The MIME type of the format
         /// requested for this export.</param>
@@ -2537,7 +2538,8 @@ namespace Google.Apis.Drive.v2
             return new ExportRequest(service, fileId, mimeType);
         }
 
-        /// <summary>Exports a Google Doc to the requested MIME type and returns the exported content.</summary>
+        /// <summary>Exports a Google Doc to the requested MIME type and returns the exported content. Please note that
+        /// the exported content is limited to 10MB.</summary>
         public class ExportRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Export request.</summary>

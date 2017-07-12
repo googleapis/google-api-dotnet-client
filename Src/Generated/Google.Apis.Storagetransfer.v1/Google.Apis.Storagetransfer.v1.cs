@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage/transfer'>Google Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170605 (886)
+ *      <tr><th>API Rev<td>20170707 (918)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage/transfer'>
  *              https://cloud.google.com/storage/transfer</a>
@@ -983,14 +983,6 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The list page size. The max allowed value is 256.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>A list of query parameters specified as JSON text in the form of {\"project_id\" :
             /// \"my_project_id\", \"job_names\" : [\"jobid1\", \"jobid2\",...], \"operation_names\" : [\"opid1\",
             /// \"opid2\",...], \"transfer_statuses\":[\"status1\", \"status2\",...]}. Since `job_names`,
@@ -998,6 +990,14 @@ namespace Google.Apis.Storagetransfer.v1
             /// notation. `job_names`, `operation_names`, and `transfer_statuses` are optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The list page size. The max allowed value is 256.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1033,6 +1033,15 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = @"^transferOperations$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1045,15 +1054,6 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1585,8 +1585,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -1798,11 +1798,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// transfer.</summary>
     public class TransferOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether objects should be deleted from the source after they are transferred to the sink.</summary>
+        /// <summary>Whether objects should be deleted from the source after they are transferred to the sink.  Note
+        /// that this option and `deleteObjectsUniqueInSink` are mutually exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsFromSourceAfterTransfer")]
         public virtual System.Nullable<bool> DeleteObjectsFromSourceAfterTransfer { get; set; } 
 
-        /// <summary>Whether objects that exist only in the sink should be deleted.</summary>
+        /// <summary>Whether objects that exist only in the sink should be deleted.  Note that this option and
+        /// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteObjectsUniqueInSink")]
         public virtual System.Nullable<bool> DeleteObjectsUniqueInSink { get; set; } 
 

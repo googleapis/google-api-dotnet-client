@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170608 (889)
+ *      <tr><th>API Rev<td>20170711 (922)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -927,10 +927,6 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Token to provide to skip to a particular spot in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Number of results to return in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -938,6 +934,10 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>The raw filter text to constrain the results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>Token to provide to skip to a particular spot in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -973,15 +973,6 @@ namespace Google.Apis.CloudBuild.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -994,6 +985,15 @@ namespace Google.Apis.CloudBuild.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1482,6 +1482,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual Results Results { get; set; } 
 
+        /// <summary>Secrets to decrypt using Cloud KMS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
+        public virtual System.Collections.Generic.IList<Secret> Secrets { get; set; } 
+
         /// <summary>Describes where to find the source files to build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; } 
@@ -1547,6 +1551,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceProvenanceHash")]
         public virtual System.Collections.Generic.IList<string> SourceProvenanceHash { get; set; } 
 
+        /// <summary>SubstitutionOption to allow unmatch substitutions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("substitutionOption")]
+        public virtual string SubstitutionOption { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1598,6 +1606,11 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// available to use as the name for a later build step.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>A list of environment variables which are encrypted using a Cloud KMS crypto key. These values must
+        /// be specified in the build's secrets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
+        public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; } 
 
         /// <summary>The ID(s) of the step(s) that this build step depends on. This build step will not start until all
         /// the build steps in wait_for have completed successfully. If wait_for is empty, this build step will start
@@ -1844,6 +1857,26 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Secret pairs a set of secret environment variables containing encrypted values with the Cloud KMS key
+    /// to use to decrypt the value.</summary>
+    public class Secret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud KMS key name to use to decrypt these envs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
+        /// <summary>Map of environment variable name to its encrypted value.
+        ///
+        /// Secret environment variables must be unique across all of a build's secrets, and must be used by at least
+        /// one build step. Values can be at most 1 KB in size. There can be at most ten secret values across all of a
+        /// build's secrets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
+        public virtual System.Collections.Generic.IDictionary<string,string> SecretEnv { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Source describes the location of the source in a supported storage service.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1936,8 +1969,8 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170412 (832)
+ *      <tr><th>API Rev<td>20170703 (914)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -380,7 +380,108 @@ namespace Google.Apis.ManufacturerCenter.v1
             }
 
 
-            /// <summary>Gets the product from a Manufacturer Center account, including product issues.</summary>
+            /// <summary>Deletes the product from a Manufacturer Center account.</summary>
+            /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
+            ///
+            /// `account_id` - The ID of the Manufacturer Center account.</param>
+            /// <param name="name">Name in the format
+            /// `{target_country}:{content_language}:{product_id}`.
+            ///
+            /// `target_country`   - The target country of the product as a CLDR territory                      code (for example,
+            /// US).
+            ///
+            /// `content_language` - The content language of the product as a two-letter                      ISO 639-1 language
+            /// code (for example, en).
+            ///
+            /// `product_id`     -   The ID of the product. For more information, see
+            /// https://support.google.com/manufacturers/answer/6124116#id.</param>
+            public virtual DeleteRequest Delete(string parent, string name)
+            {
+                return new DeleteRequest(service, parent, name);
+            }
+
+            /// <summary>Deletes the product from a Manufacturer Center account.</summary>
+            public class DeleteRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string parent, string name)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Parent ID in the format `accounts/{account_id}`.
+                ///
+                /// `account_id` - The ID of the Manufacturer Center account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`.
+                ///
+                /// `target_country`   - The target country of the product as a CLDR territory code (for example, US).
+                ///
+                /// `content_language` - The content language of the product as a two-letter ISO 639-1 language code
+                /// (for example, en).
+                ///
+                /// `product_id`     -   The ID of the product. For more information, see
+                /// https://support.google.com/manufacturers/answer/6124116#id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/products/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets the product from a Manufacturer Center account, including product issues.
+            ///
+            /// A recently updated product takes some time to be processed before any changes are visible. While some
+            /// issues may be available once the product has been processed, other issues may take days to
+            /// appear.</summary>
             /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
             ///
             /// `account_id` - The ID of the Manufacturer Center account.</param>
@@ -400,7 +501,11 @@ namespace Google.Apis.ManufacturerCenter.v1
                 return new GetRequest(service, parent, name);
             }
 
-            /// <summary>Gets the product from a Manufacturer Center account, including product issues.</summary>
+            /// <summary>Gets the product from a Manufacturer Center account, including product issues.
+            ///
+            /// A recently updated product takes some time to be processed before any changes are visible. While some
+            /// issues may be available once the product has been processed, other issues may take days to
+            /// appear.</summary>
             public class GetRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Product>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -562,6 +667,129 @@ namespace Google.Apis.ManufacturerCenter.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Inserts or updates the product in a Manufacturer Center account.
+            ///
+            /// The checks at upload time are minimal. All required attributes need to be present for a product to be
+            /// valid. Issues may show up later after the API has accepted an update for a product and it is possible to
+            /// overwrite an existing valid product with an invalid product. To detect this, you should retrieve the
+            /// product and check it for issues once the updated version is available.
+            ///
+            /// Inserted or updated products first need to be processed before they can be retrieved. Until then, new
+            /// products will be unavailable, and retrieval of updated products will return the original state of the
+            /// product.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
+            ///
+            /// `account_id` - The ID of the Manufacturer Center account.</param>
+            /// <param name="name">Name in the format
+            /// `{target_country}:{content_language}:{product_id}`.
+            ///
+            /// `target_country`   - The target country of the product as a CLDR territory                      code (for example,
+            /// US).
+            ///
+            /// `content_language` - The content language of the product as a two-letter                      ISO 639-1 language
+            /// code (for example, en).
+            ///
+            /// `product_id`     -   The ID of the product. For more information, see
+            /// https://support.google.com/manufacturers/answer/6124116#id.</param>
+            public virtual UpdateRequest Update(Google.Apis.ManufacturerCenter.v1.Data.Product body, string parent, string name)
+            {
+                return new UpdateRequest(service, body, parent, name);
+            }
+
+            /// <summary>Inserts or updates the product in a Manufacturer Center account.
+            ///
+            /// The checks at upload time are minimal. All required attributes need to be present for a product to be
+            /// valid. Issues may show up later after the API has accepted an update for a product and it is possible to
+            /// overwrite an existing valid product with an invalid product. To detect this, you should retrieve the
+            /// product and check it for issues once the updated version is available.
+            ///
+            /// Inserted or updated products first need to be processed before they can be retrieved. Until then, new
+            /// products will be unavailable, and retrieval of updated products will return the original state of the
+            /// product.</summary>
+            public class UpdateRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Product>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManufacturerCenter.v1.Data.Product body, string parent, string name)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Parent ID in the format `accounts/{account_id}`.
+                ///
+                /// `account_id` - The ID of the Manufacturer Center account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Name in the format `{target_country}:{content_language}:{product_id}`.
+                ///
+                /// `target_country`   - The target country of the product as a CLDR territory code (for example, US).
+                ///
+                /// `content_language` - The content language of the product as a two-letter ISO 639-1 language code
+                /// (for example, en).
+                ///
+                /// `product_id`     -   The ID of the product. For more information, see
+                /// https://support.google.com/manufacturers/answer/6124116#id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ManufacturerCenter.v1.Data.Product Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/products/{+name}"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^[^/]+$",
                         });
                 }
 
@@ -769,6 +997,18 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<long> Value { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

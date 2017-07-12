@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170530 (880)
+ *      <tr><th>API Rev<td>20170612 (893)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -1287,10 +1287,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -1486,10 +1489,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -1757,10 +1763,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2133,10 +2142,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2332,10 +2344,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2561,7 +2576,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
-        /// supports patch semantics.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -2572,7 +2587,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
-        /// supports patch semantics.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2601,10 +2616,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2816,10 +2834,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -2943,10 +2964,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3113,10 +3137,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3317,7 +3344,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates the specified BackendBucket resource with the data included in the request. This method
-        /// supports patch semantics.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -3328,7 +3355,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates the specified BackendBucket resource with the data included in the request. This method
-        /// supports patch semantics.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3353,10 +3380,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3456,10 +3486,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3720,10 +3753,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -3976,10 +4012,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -4181,7 +4220,8 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Patches the specified BackendService resource with the data included in the request. There are
         /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
-        /// Guidelines for more information. This method supports patch semantics.</summary>
+        /// Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch format
+        /// and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
@@ -4193,7 +4233,8 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Patches the specified BackendService resource with the data included in the request. There are
         /// several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions and
-        /// Guidelines for more information. This method supports patch semantics.</summary>
+        /// Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch format
+        /// and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4218,10 +4259,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -4409,10 +4453,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -5097,10 +5144,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -5226,10 +5276,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -5429,10 +5482,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -5711,10 +5767,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -5831,10 +5890,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6057,10 +6119,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6223,10 +6288,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6427,7 +6495,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
-        /// patch semantics.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
@@ -6438,7 +6506,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
-        /// patch semantics.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -6463,10 +6531,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6654,10 +6725,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -6923,10 +6997,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7123,10 +7200,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7396,10 +7476,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7517,10 +7600,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7743,10 +7829,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -7913,10 +8002,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8336,10 +8428,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8506,10 +8601,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -8832,10 +8930,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -9493,10 +9594,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -9663,10 +9767,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -9867,7 +9974,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request.
-        /// This method supports patch semantics.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="healthCheck">Name of the HealthCheck
@@ -9878,7 +9985,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates a HealthCheck resource in the specified project using the data included in the request.
-        /// This method supports patch semantics.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -9903,10 +10010,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10092,10 +10202,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10210,10 +10323,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10380,10 +10496,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10584,7 +10703,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates a HttpHealthCheck resource in the specified project using the data included in the request.
-        /// This method supports patch semantics.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpHealthCheck">Name of the
@@ -10595,7 +10714,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates a HttpHealthCheck resource in the specified project using the data included in the request.
-        /// This method supports patch semantics.</summary>
+        /// This method supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -10620,10 +10739,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10809,10 +10931,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -10927,10 +11052,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -11097,10 +11225,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -11301,7 +11432,8 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates a HttpsHealthCheck resource in the specified project using the data included in the
-        /// request. This method supports patch semantics.</summary>
+        /// request. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
@@ -11312,7 +11444,8 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates a HttpsHealthCheck resource in the specified project using the data included in the
-        /// request. This method supports patch semantics.</summary>
+        /// request. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -11337,10 +11470,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -11526,10 +11662,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -11644,10 +11783,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -11989,13 +12131,20 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+            /// <summary>Force image creation if true.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("forceCreate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ForceCreate { get; set; }
+
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -12037,6 +12186,15 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "forceCreate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "forceCreate",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -12452,10 +12610,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -12717,10 +12878,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -12848,10 +13012,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13068,10 +13235,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13453,7 +13623,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
         /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
         /// process of being patched. You must separately verify the status of the individual instances with the
-        /// listManagedInstances method. This method supports patch semantics.</summary>
+        /// listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and
+        /// processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where you
@@ -13468,7 +13639,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
         /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
         /// process of being patched. You must separately verify the status of the individual instances with the
-        /// listManagedInstances method. This method supports patch semantics.</summary>
+        /// listManagedInstances method. This method supports PATCH semantics and uses the JSON merge patch format and
+        /// processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -13498,10 +13670,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13633,10 +13808,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13774,10 +13952,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -13916,10 +14097,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14035,10 +14219,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14156,10 +14343,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14283,10 +14473,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14507,10 +14700,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14645,10 +14841,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -14910,10 +15109,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -15111,10 +15313,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -15574,10 +15779,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -15693,10 +15901,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -15923,10 +16134,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16095,10 +16309,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16449,10 +16666,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16724,10 +16944,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16842,10 +17065,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -16966,10 +17192,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -17101,10 +17330,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -17434,10 +17666,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -17878,10 +18113,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18002,10 +18240,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18134,10 +18375,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18254,10 +18498,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18374,10 +18621,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18492,10 +18742,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18569,8 +18822,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Changes the minimum cpu/platform that this instance should be started as. This is called on a
-        /// stopped instance.</summary>
+        /// <summary>Changes the minimum CPU platform that this instance should use. This method can only be called on a
+        /// stopped instance. For more information, read Specifying a Minimum CPU Platform.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -18581,8 +18834,8 @@ namespace Google.Apis.Compute.beta
             return new SetMinCpuPlatformRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Changes the minimum cpu/platform that this instance should be started as. This is called on a
-        /// stopped instance.</summary>
+        /// <summary>Changes the minimum CPU platform that this instance should use. This method can only be called on a
+        /// stopped instance. For more information, read Specifying a Minimum CPU Platform.</summary>
         public class SetMinCpuPlatformRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new SetMinCpuPlatform request.</summary>
@@ -18612,10 +18865,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18730,10 +18986,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18850,10 +19109,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -18968,10 +19230,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -19086,10 +19351,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -19200,10 +19468,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -19322,10 +19593,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -19509,8 +19783,7 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Returns the specified License resource. Get a list of available licenses by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified License resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="license">Name of the License
         /// resource to return.</param>
@@ -19519,8 +19792,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, license);
         }
 
-        /// <summary>Returns the specified License resource. Get a list of available licenses by making a list()
-        /// request.</summary>
+        /// <summary>Returns the specified License resource.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.License>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -20053,10 +20325,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20154,10 +20429,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20322,10 +20600,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20560,10 +20841,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20661,10 +20945,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20850,10 +21137,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -20931,10 +21221,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21016,10 +21309,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21099,10 +21395,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21542,10 +21841,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21629,10 +21931,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21718,10 +22023,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21807,10 +22115,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -21922,10 +22233,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22119,10 +22433,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22348,7 +22665,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
-        /// supports patch semantics.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -22359,7 +22676,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Updates an autoscaler in the specified project using the data included in the request. This method
-        /// supports patch semantics.</summary>
+        /// supports PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -22391,7 +22708,10 @@ namespace Google.Apis.Compute.beta
             /// For example, consider a situation where you make an initial request and then the request times out. If
             /// you make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22737,10 +23057,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -23038,10 +23361,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -23270,7 +23596,8 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
         /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
-        /// and Guidelines for more information. This method supports patch semantics.</summary>
+        /// and Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch
+        /// format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -23284,7 +23611,8 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Updates the specified regional BackendService resource with the data included in the request. There
         /// are several restrictions and guidelines to keep in mind when updating a backend service. Read  Restrictions
-        /// and Guidelines for more information. This method supports patch semantics.</summary>
+        /// and Guidelines for more information. This method supports PATCH semantics and uses the JSON merge patch
+        /// format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -23314,10 +23642,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -23536,10 +23867,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -23902,10 +24236,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -24208,10 +24545,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -24325,10 +24665,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -24455,10 +24798,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -24671,10 +25017,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25052,7 +25401,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
         /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
         /// process of being patched. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method. This method supports patch semantics.</summary>
+        /// listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and
+        /// processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -25067,7 +25417,8 @@ namespace Google.Apis.Compute.beta
         /// <summary>Updates a managed instance group using the information that you specify in the request. This
         /// operation is marked as DONE when the group is patched even if the instances in the group are still in the
         /// process of being patched. You must separately verify the status of the individual instances with the
-        /// listmanagedinstances method. This method supports patch semantics.</summary>
+        /// listmanagedinstances method. This method supports PATCH semantics and uses the JSON merge patch format and
+        /// processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -25097,10 +25448,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25231,10 +25585,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25369,10 +25726,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25490,10 +25850,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25611,10 +25974,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25731,10 +26097,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -25955,10 +26324,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -26531,10 +26903,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -27505,10 +27880,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -27797,10 +28175,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -28068,10 +28449,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -28386,10 +28770,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -28513,10 +28900,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -28681,10 +29071,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -29026,10 +29419,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -29530,10 +29926,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -29700,10 +30099,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30187,10 +30589,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30299,10 +30704,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30595,10 +31003,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -30965,10 +31376,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31191,10 +31605,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31361,10 +31778,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31599,10 +32019,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31801,10 +32224,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -31971,10 +32397,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -32209,10 +32638,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -32312,10 +32744,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -32664,10 +33099,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -32865,10 +33303,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -33251,10 +33692,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -33370,10 +33814,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -33630,10 +34077,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -33933,10 +34383,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34202,10 +34655,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34321,10 +34777,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34444,10 +34903,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34679,10 +35141,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -34849,10 +35314,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35087,10 +35555,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35190,10 +35661,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35293,10 +35767,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35495,10 +35972,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35665,10 +36145,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -35903,10 +36386,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -36006,10 +36492,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -36274,10 +36763,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -36475,10 +36967,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -36852,10 +37347,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -37022,10 +37520,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -37118,10 +37619,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -37331,7 +37835,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Patches the specified UrlMap resource with the data included in the request. This method supports
-        /// patch semantics.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -37342,7 +37846,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Patches the specified UrlMap resource with the data included in the request. This method supports
-        /// patch semantics.</summary>
+        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -37367,10 +37871,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -37554,10 +38061,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -37908,10 +38418,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -38109,10 +38622,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -39937,6 +40453,30 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Custom utilization metric policy.</summary>
     public class AutoscalingPolicyCustomMetricUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A filter string, compatible with a Stackdriver Monitoring filter string for TimeSeries.list API
+        /// call. This filter is used to select a specific TimeSeries for the purpose of autoscaling and to determine
+        /// whether the metric is exporting per-instance or global data.
+        ///
+        /// For the filter to be valid for autoscaling purposes, the following rules apply: - You can only use the AND
+        /// operator for joining selectors. - You can only use direct equality comparison operator (=) without any
+        /// functions for each selector. - You can specify the metric in both the filter string and in the metric field.
+        /// However, if specified in both places, the metric must be identical. - The monitored resource type determines
+        /// what kind of values are expected for the metric. If it is a gce_instance, the autoscaler expects the metric
+        /// to include a separate TimeSeries for each instance in a group. In such a case, you cannot filter on resource
+        /// labels. If the resource type is any other value, the autoscaler expects this metric to contain values that
+        /// apply to the entire autoscaled instance group and resource label filtering can be performed to point
+        /// autoscaler at the correct TimeSeries to scale upon. This is / called a global metric for the purpose of
+        /// autoscaling.
+        ///
+        /// If not specified, the type defaults to gce_instance.
+        ///
+        /// You should provide a filter that is selective enough to pick just one TimeSeries for the autoscaled group or
+        /// for each of the instances (if you are using gce_instance resource type). If multiple TimeSeries are returned
+        /// upon the query execution, the autoscaler will sum their respective values to obtain its scaling
+        /// value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
         /// <summary>The identifier (type) of the Stackdriver Monitoring metric. The metric cannot have negative values
         /// and should be a utilization metric, which means that the number of virtual machines handling requests should
         /// increase or decrease proportionally to the metric.
@@ -39944,6 +40484,20 @@ namespace Google.Apis.Compute.beta.Data
         /// The metric must have a value type of INT64 or DOUBLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
+
+        /// <summary>If scaling is based on a global metric value that represents the total amount of work to be done or
+        /// resource usage, set this value to an amount assigned for a single instance of the scaled group. Autoscaler
+        /// will keep the number of instances proportional to the value of this metric, the metric itself should not
+        /// change value due to group resizing.
+        ///
+        /// A good metric to use with the target is for example
+        /// pubsub.googleapis.com/subscription/num_undelivered_messages or a custom metric exporting the total number of
+        /// requests coming to your instances.
+        ///
+        /// A bad example would be a metric exporting an average or median latency, since this value can't include a
+        /// chunk assignable to a single instance, it could be better used with utilization_target instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleInstanceAssignment")]
+        public virtual System.Nullable<double> SingleInstanceAssignment { get; set; } 
 
         /// <summary>The target value of the metric that autoscaler should maintain. This must be a positive value.
         ///
@@ -40169,7 +40723,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Fingerprint { get; set; } 
 
         /// <summary>The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this
-        /// BackendService. Currently at most one health check can be specified, and a health check is required.
+        /// BackendService. Currently at most one health check can be specified, and a health check is required for GCE
+        /// backend services. A health check must not be specified for GAE app backend and Cloud Function backend.
         ///
         /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
@@ -40406,6 +40961,12 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined independently.
+        /// This field is GOOGLE_INTERNAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -41268,6 +41829,38 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a Firewall resource.</summary>
     public class Firewall : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -41345,6 +41938,17 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRanges")]
         public virtual System.Collections.Generic.IList<string> SourceRanges { get; set; } 
 
+        /// <summary>If source service accounts are specified, the firewall will apply only to traffic originating from
+        /// an instance with a service account in this list. Source service accounts cannot be used to control traffic
+        /// to an instance's external IP address because service accounts are associated with an instance, not an IP
+        /// address. sourceRanges can be set at the same time as sourceServiceAccounts. If both are set, the firewall
+        /// will apply to traffic that has source IP address within sourceRanges OR the source IP belongs to an instance
+        /// with service account listed in sourceServiceAccount. The connection does not need to match both properties
+        /// for the firewall to apply. sourceServiceAccounts cannot be used at the same time as sourceTags or
+        /// targetTags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceServiceAccounts")]
+        public virtual System.Collections.Generic.IList<string> SourceServiceAccounts { get; set; } 
+
         /// <summary>If source tags are specified, the firewall will apply only to traffic with source IP that belongs
         /// to a tag listed in source tags. Source tags cannot be used to control traffic to an instance's external IP
         /// address. Because tags are associated with an instance, not an IP address. One or both of sourceRanges and
@@ -41353,6 +41957,13 @@ namespace Google.Apis.Compute.beta.Data
         /// connection does not need to match both properties for the firewall to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
+
+        /// <summary>A list of service accounts indicating sets of instances located in the network that may make
+        /// network connections as specified in allowed[]. targetServiceAccounts cannot be used at the same time as
+        /// targetTags or sourceTags. If neither targetServiceAccounts nor targetTags are specified, the firewall rule
+        /// applies to all instances on the specified network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetServiceAccounts")]
+        public virtual System.Collections.Generic.IList<string> TargetServiceAccounts { get; set; } 
 
         /// <summary>A list of instance tags indicating sets of instances located in the network that may make network
         /// connections as specified in allowed[]. If no targetTags are specified, the firewall rule applies to all
@@ -41734,9 +42345,9 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Guest OS features.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of supported feature. Currenty only VIRTIO_SCSI_MULTIQUEUE is supported. For newer Windows
-        /// images, the server might also populate this property with the value WINDOWS to indicate that this is a
-        /// Windows image. This value is purely informational and does not enable or disable any features.</summary>
+        /// <summary>The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is supported. For newer
+        /// Windows images, the server might also populate this property with the value WINDOWS to indicate that this is
+        /// a Windows image. This value is purely informational and does not enable or disable any features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -42285,6 +42896,23 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskId")]
         public virtual string SourceDiskId { get; set; } 
 
+        /// <summary>URL of the source image used to create this image. This can be a full or valid partial URL. You
+        /// must provide exactly one of: - this property, or - the rawDisk.source property, or - the sourceDisk property
+        /// in order to create an image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
+        public virtual string SourceImage { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source image. Required if the source image is protected
+        /// by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] The ID value of the image used to create this image. This value may be used to
+        /// determine whether the image was taken from the current or a previous instance of a given image
+        /// name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImageId")]
+        public virtual string SourceImageId { get; set; } 
+
         /// <summary>The type of the image used to create this disk. The default and only value is RAW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
         public virtual string SourceType { get; set; } 
@@ -42428,8 +43056,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual Metadata Metadata { get; set; } 
 
-        /// <summary>Minimum cpu/platform to be used by this instance. We may schedule on the specified or later
-        /// cpu/platform.</summary>
+        /// <summary>Specifies a minimum CPU platform for the VM instance. Applicable values are the friendly names of
+        /// CPU platforms, such as minCpuPlatform: "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
@@ -43320,7 +43948,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual Metadata Metadata { get; set; } 
 
         /// <summary>Minimum cpu/platform to be used by this instance. The instance may be scheduled on the specified or
-        /// later cpu/platform.</summary>
+        /// newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform:
+        /// "Intel Haswell" or minCpuPlatform: "Intel Sandy Bridge". For more information, read Specifying a Minimum CPU
+        /// Platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
@@ -44556,8 +45186,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
-        /// `role`. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 

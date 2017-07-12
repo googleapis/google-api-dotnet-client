@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170608 (889)
+ *      <tr><th>API Rev<td>20170710 (921)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/</a>
@@ -1515,17 +1515,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CreativeId { get; private set; }
 
-                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
-                    /// value of ListDealAssociationsResponse.next_page_token returned from the previous call to
-                    /// 'ListDealAssociations' method.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size. Server may return fewer associations than requested. If
-                    /// unspecified, server will pick an appropriate default.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>An optional query string to filter deal associations. If no filter is specified, all
                     /// associations will be returned. Supported queries are:
                     ///
@@ -1536,6 +1525,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// Example: 'dealsId=12345 AND dealsStatus:disapproved'</summary>
                     [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Query { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of ListDealAssociationsResponse.next_page_token returned from the previous call to
+                    /// 'ListDealAssociations' method.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Requested page size. Server may return fewer associations than requested. If
+                    /// unspecified, server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1580,6 +1580,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "query", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "query",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1592,15 +1601,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "query", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "query",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2269,9 +2269,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 bidResponsesWithoutBids = new BidResponsesWithoutBidsResource(service);
                 filteredBidRequests = new FilteredBidRequestsResource(service);
                 filteredBids = new FilteredBidsResource(service);
-                filteredImpressions = new FilteredImpressionsResource(service);
                 impressionMetrics = new ImpressionMetricsResource(service);
                 losingBids = new LosingBidsResource(service);
+                nonBillableWinningBids = new NonBillableWinningBidsResource(service);
 
             }
 
@@ -2335,8 +2335,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the
-                    /// server will pick an appropriate default.</summary>
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2466,8 +2466,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the
-                    /// server will pick an appropriate default.</summary>
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2597,8 +2597,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the
-                    /// server will pick an appropriate default.</summary>
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2728,8 +2728,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the
-                    /// server will pick an appropriate default.</summary>
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2842,179 +2842,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public CreativesResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
-                        details = new DetailsResource(service);
 
                     }
 
-                    private readonly DetailsResource details;
-
-                    /// <summary>Gets the Details resource.</summary>
-                    public virtual DetailsResource Details
-                    {
-                        get { return details; }
-                    }
-
-                    /// <summary>The "details" collection of methods.</summary>
-                    public class DetailsResource
-                    {
-                        private const string Resource = "details";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public DetailsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-
-                        }
-
-
-                        /// <summary>List all details associated with a specific reason for which bids were filtered and
-                        /// a specific creative that was filtered for that reason, with the number of bids filtered for
-                        /// each detail.</summary>
-                        /// <param name="accountId">Account ID of the buyer.</param>
-                        /// <param name="filterSetId">The ID of the filter set
-                        /// to apply.</param>
-                        /// <param name="creativeStatusId">The ID of the creative status for which to retrieve a
-                        /// breakdown by detail. See [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-
-                        /// status-codes).</param>
-                        /// <param name="creativeId">The creative ID for which to retrieve a breakdown by
-                        /// detail.</param>
-                        public virtual ListRequest List(long accountId, long filterSetId, int creativeStatusId, string creativeId)
-                        {
-                            return new ListRequest(service, accountId, filterSetId, creativeStatusId, creativeId);
-                        }
-
-                        /// <summary>List all details associated with a specific reason for which bids were filtered and
-                        /// a specific creative that was filtered for that reason, with the number of bids filtered for
-                        /// each detail.</summary>
-                        public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListCreativeStatusAndCreativeBreakdownByDetailResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, long accountId, long filterSetId, int creativeStatusId, string creativeId)
-                                : base(service)
-                            {
-                                AccountId = accountId;
-                                FilterSetId = filterSetId;
-                                CreativeStatusId = creativeStatusId;
-                                CreativeId = creativeId;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Account ID of the buyer.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual long AccountId { get; private set; }
-
-                            /// <summary>The ID of the filter set to apply.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual long FilterSetId { get; private set; }
-
-                            /// <summary>The ID of the creative status for which to retrieve a breakdown by detail. See
-                            /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads
-                            /// /creative-status-codes).</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual int CreativeStatusId { get; private set; }
-
-                            /// <summary>The creative ID for which to retrieve a breakdown by detail.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string CreativeId { get; private set; }
-
-                            /// <summary>A token identifying a page of results the server should return. Typically, this
-                            /// is the value of ListCreativeStatusAndCreativeBreakdownByDetailResponse.nextPageToken
-                            /// returned from the previous call to the
-                            /// accounts.filterSets.filteredBids.creatives.details.list method.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Requested page size. The server may return fewer than requested. If
-                            /// unspecified, the server will pick an appropriate default.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "list"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids/{creativeStatusId}/creatives/{creativeId}/details"; }
-                            }
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "accountId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "accountId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "filterSetId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filterSetId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "creativeStatusId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "creativeStatusId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "creativeId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "creativeId",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-                    }
 
                     /// <summary>List all creatives associated with a specific reason for which bids were filtered, with
                     /// the number of bids filtered for each creative.</summary>
@@ -3064,8 +2894,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Requested page size. The server may return fewer than requested. If unspecified,
-                        /// the server will pick an appropriate default.</summary>
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3173,7 +3003,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// to apply.</param>
                     /// <param name="creativeStatusId">The ID of the creative status for which to retrieve a
                     /// breakdown by detail. See [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-
-                    /// status-codes).</param>
+                    /// status-codes). Details are only available for statuses 14, 15, 17, 18, 19, 86, and 87.</param>
                     public virtual ListRequest List(long accountId, long filterSetId, int creativeStatusId)
                     {
                         return new ListRequest(service, accountId, filterSetId, creativeStatusId);
@@ -3204,7 +3034,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                         /// <summary>The ID of the creative status for which to retrieve a breakdown by detail. See
                         /// [creative-status-codes](https://developers.google.com/ad-exchange/rtb/downloads/creative-
-                        /// status-codes).</summary>
+                        /// status-codes). Details are only available for statuses 14, 15, 17, 18, 19, 86, and
+                        /// 87.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual int CreativeStatusId { get; private set; }
 
@@ -3214,8 +3045,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Requested page size. The server may return fewer than requested. If unspecified,
-                        /// the server will pick an appropriate default.</summary>
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3331,8 +3162,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the
-                    /// server will pick an appropriate default.</summary>
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3353,137 +3184,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public override string RestPath
                     {
                         get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredBids"; }
-                    }
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-
-                        RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "accountId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filterSetId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                    }
-
-                }
-            }
-            private readonly FilteredImpressionsResource filteredImpressions;
-
-            /// <summary>Gets the FilteredImpressions resource.</summary>
-            public virtual FilteredImpressionsResource FilteredImpressions
-            {
-                get { return filteredImpressions; }
-            }
-
-            /// <summary>The "filteredImpressions" collection of methods.</summary>
-            public class FilteredImpressionsResource
-            {
-                private const string Resource = "filteredImpressions";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public FilteredImpressionsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-
-                }
-
-
-                /// <summary>List all reasons that caused an impression to be filtered (i.e. not considered as an
-                /// inventory match), with the number of impressions that were filtered for each reason.</summary>
-                /// <param name="accountId">Account ID of the buyer.</param>
-                /// <param name="filterSetId">The ID of the filter set
-                /// to apply.</param>
-                public virtual ListRequest List(long accountId, long filterSetId)
-                {
-                    return new ListRequest(service, accountId, filterSetId);
-                }
-
-                /// <summary>List all reasons that caused an impression to be filtered (i.e. not considered as an
-                /// inventory match), with the number of impressions that were filtered for each reason.</summary>
-                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListFilteredImpressionsResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, long filterSetId)
-                        : base(service)
-                    {
-                        AccountId = accountId;
-                        FilterSetId = filterSetId;
-                        InitParameters();
-                    }
-
-
-                    /// <summary>Account ID of the buyer.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual long AccountId { get; private set; }
-
-                    /// <summary>The ID of the filter set to apply.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual long FilterSetId { get; private set; }
-
-                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
-                    /// value of ListFilteredImpressionsResponse.nextPageToken returned from the previous call to the
-                    /// accounts.filterSets.filteredImpressions.list method.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the
-                    /// server will pick an appropriate default.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-
-                    ///<summary>Gets the method name.</summary>
-                    public override string MethodName
-                    {
-                        get { return "list"; }
-                    }
-
-                    ///<summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod
-                    {
-                        get { return "GET"; }
-                    }
-
-                    ///<summary>Gets the REST path.</summary>
-                    public override string RestPath
-                    {
-                        get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/filteredImpressions"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -3591,8 +3291,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the
-                    /// server will pick an appropriate default.</summary>
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3722,8 +3422,8 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the
-                    /// server will pick an appropriate default.</summary>
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3744,6 +3444,137 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     public override string RestPath
                     {
                         get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/losingBids"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "accountId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "accountId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+            private readonly NonBillableWinningBidsResource nonBillableWinningBids;
+
+            /// <summary>Gets the NonBillableWinningBids resource.</summary>
+            public virtual NonBillableWinningBidsResource NonBillableWinningBids
+            {
+                get { return nonBillableWinningBids; }
+            }
+
+            /// <summary>The "nonBillableWinningBids" collection of methods.</summary>
+            public class NonBillableWinningBidsResource
+            {
+                private const string Resource = "nonBillableWinningBids";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NonBillableWinningBidsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>List all reasons for which winning bids were not billable, with the number of bids not
+                /// billed for each reason.</summary>
+                /// <param name="accountId">Account ID of the buyer.</param>
+                /// <param name="filterSetId">The ID of the filter set
+                /// to apply.</param>
+                public virtual ListRequest List(long accountId, long filterSetId)
+                {
+                    return new ListRequest(service, accountId, filterSetId);
+                }
+
+                /// <summary>List all reasons for which winning bids were not billable, with the number of bids not
+                /// billed for each reason.</summary>
+                public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListNonBillableWinningBidsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, long accountId, long filterSetId)
+                        : base(service)
+                    {
+                        AccountId = accountId;
+                        FilterSetId = filterSetId;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Account ID of the buyer.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long AccountId { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual long FilterSetId { get; private set; }
+
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the
+                    /// accounts.filterSets.nonBillableWinningBids.list method.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v2beta1/accounts/{accountId}/filterSets/{filterSetId}/nonBillableWinningBids"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -4052,12 +3883,12 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>A token identifying a page of results the server should return. Typically, this is the
                 /// value of ListFilterSetsResponse.nextPageToken returned from the previous call to the
-                /// accounts.rtbBreakout.filterSets.list method.</summary>
+                /// accounts.filterSets.list method.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Requested page size. The server may return fewer than requested. If unspecified, the server
-                /// will pick an appropriate default.</summary>
+                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
+                /// the server will pick an appropriate default.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -4194,6 +4025,11 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impressionsWon")]
         public virtual MetricValue ImpressionsWon { get; set; } 
 
+        /// <summary>The number of bids for which the corresponding impression was measurable for viewability (as
+        /// defined by Active View).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measurableImpressions")]
+        public virtual MetricValue MeasurableImpressions { get; set; } 
+
         /// <summary>The values of all dimensions associated with metric values in this row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
         public virtual RowDimensions RowDimensions { get; set; } 
@@ -4219,7 +4055,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
         public virtual RowDimensions RowDimensions { get; set; } 
 
-        /// <summary>The status that caused the bid response to be considered to have no applicable bids.</summary>
+        /// <summary>The status specifying why the bid responses were considered to have no applicable bids.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -4798,26 +4634,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The number of impressions with the specified dimension values that were filtered due to the specified
-    /// filtering status.</summary>
-    public class ImpressionStatusRow : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The number of impressions that were filtered with the specified status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("impressionCount")]
-        public virtual MetricValue ImpressionCount { get; set; } 
-
-        /// <summary>The values of all dimensions associated with metric values in this row.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
-        public virtual RowDimensions RowDimensions { get; set; } 
-
-        /// <summary>The status for which impressions were filtered.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Response message for listing the metrics that are measured in number of bids.</summary>
     public class ListBidMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4910,30 +4726,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
 
         /// <summary>A token to retrieve the next page of results. Pass this value in the ListClientsRequest.pageToken
         /// field in the subsequent call to the accounts.clients.list method to retrieve the next page of
-        /// results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response message for listing all details associated with a given filtered bid reason and a given
-    /// creative.</summary>
-    public class ListCreativeStatusAndCreativeBreakdownByDetailResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The type of detail that the detail IDs represent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("detailType")]
-        public virtual string DetailType { get; set; } 
-
-        /// <summary>List of rows, with counts of bids with a given creative status and creative, aggregated by
-        /// detail.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filteredBidDetailRows")]
-        public virtual System.Collections.Generic.IList<FilteredBidDetailRow> FilteredBidDetailRows { get; set; } 
-
-        /// <summary>A token to retrieve the next page of results. Pass this value in the
-        /// ListCreativeStatusAndCreativeBreakdownByDetailRequest.pageToken field in the subsequent call to the
-        /// accounts.filterSets.filteredBids.creatives.details.list method to retrieve the next page of
         /// results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -5067,24 +4859,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for listing all reasons that impressions were filtered (i.e. not considered as an
-    /// inventory match) for the buyer.</summary>
-    public class ListFilteredImpressionsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of rows, with counts of filtered impressions aggregated by status.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("impressionsStatusRows")]
-        public virtual System.Collections.Generic.IList<ImpressionStatusRow> ImpressionsStatusRows { get; set; } 
-
-        /// <summary>A token to retrieve the next page of results. Pass this value in the
-        /// ListFilteredImpressionsRequest.pageToken field in the subsequent call to the
-        /// accounts.filterSets.filteredImpressions.list method to retrieve the next page of results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Response message for listing the metrics that are measured in number of impressions.</summary>
     public class ListImpressionMetricsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5115,6 +4889,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// method to retrieve the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing all reasons for which a buyer was not billed for a winning bid.</summary>
+    public class ListNonBillableWinningBidsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token to retrieve the next page of results. Pass this value in the
+        /// ListNonBillableWinningBidsRequest.pageToken field in the subsequent call to the
+        /// accounts.filterSets.nonBillableWinningBids.list method to retrieve the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>List of rows, with counts of bids not billed aggregated by reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nonBillableWinningBidStatusRows")]
+        public virtual System.Collections.Generic.IList<NonBillableWinningBidStatusRow> NonBillableWinningBidStatusRows { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5208,6 +4999,26 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The URL to fetch a native video ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoUrl")]
         public virtual string VideoUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The number of winning bids with the specified dimension values for which the buyer was not billed, as
+    /// described by the specified status.</summary>
+    public class NonBillableWinningBidStatusRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of bids with the specified status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bidCount")]
+        public virtual MetricValue BidCount { get; set; } 
+
+        /// <summary>The values of all dimensions associated with metric values in this row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowDimensions")]
+        public virtual RowDimensions RowDimensions { get; set; } 
+
+        /// <summary>The status specifying why the winning bids were not billed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

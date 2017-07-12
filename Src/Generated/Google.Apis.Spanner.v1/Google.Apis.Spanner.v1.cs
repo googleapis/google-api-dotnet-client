@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170531 (881)
+ *      <tr><th>API Rev<td>20170613 (894)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -110,6 +110,12 @@ namespace Google.Apis.Spanner.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>Administer your Spanner databases</summary>
+            public static string SpannerAdmin = "https://www.googleapis.com/auth/spanner.admin";
+
+            /// <summary>View and manage the contents of your Spanner databases</summary>
+            public static string SpannerData = "https://www.googleapis.com/auth/spanner.data";
 
         }
 
@@ -808,9 +814,13 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
                     /// support this method, it returns `UNIMPLEMENTED`.
                     ///
-                    /// NOTE: the `name` binding below allows API services to override the binding to use different
-                    /// resource name schemes, such as `users/operations`.</summary>
-                    /// <param name="name">The name of the operation collection.</param>
+                    /// NOTE: the `name` binding allows API services to override the binding to use different resource
+                    /// name schemes, such as `users/operations`. To override the binding, API services can add a
+                    /// binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+                    /// compatibility, the default name includes the operations collection id, however overriding users
+                    /// must ensure the name binding is the parent resource, without the operations collection
+                    /// id.</summary>
+                    /// <param name="name">The name of the operation's parent resource.</param>
                     public virtual ListRequest List(string name)
                     {
                         return new ListRequest(service, name);
@@ -819,8 +829,12 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
                     /// support this method, it returns `UNIMPLEMENTED`.
                     ///
-                    /// NOTE: the `name` binding below allows API services to override the binding to use different
-                    /// resource name schemes, such as `users/operations`.</summary>
+                    /// NOTE: the `name` binding allows API services to override the binding to use different resource
+                    /// name schemes, such as `users/operations`. To override the binding, API services can add a
+                    /// binding such as `"/v1/{name=users}/operations"` to their service configuration. For backwards
+                    /// compatibility, the default name includes the operations collection id, however overriding users
+                    /// must ensure the name binding is the parent resource, without the operations collection
+                    /// id.</summary>
                     public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListOperationsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -832,7 +846,7 @@ namespace Google.Apis.Spanner.v1
                         }
 
 
-                        /// <summary>The name of the operation collection.</summary>
+                        /// <summary>The name of the operation's parent resource.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2573,9 +2587,12 @@ namespace Google.Apis.Spanner.v1
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
                 /// support this method, it returns `UNIMPLEMENTED`.
                 ///
-                /// NOTE: the `name` binding below allows API services to override the binding to use different resource
-                /// name schemes, such as `users/operations`.</summary>
-                /// <param name="name">The name of the operation collection.</param>
+                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
+                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
+                /// default name includes the operations collection id, however overriding users must ensure the name
+                /// binding is the parent resource, without the operations collection id.</summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
                     return new ListRequest(service, name);
@@ -2584,8 +2601,11 @@ namespace Google.Apis.Spanner.v1
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
                 /// support this method, it returns `UNIMPLEMENTED`.
                 ///
-                /// NOTE: the `name` binding below allows API services to override the binding to use different resource
-                /// name schemes, such as `users/operations`.</summary>
+                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
+                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
+                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
+                /// default name includes the operations collection id, however overriding users must ensure the name
+                /// binding is the parent resource, without the operations collection id.</summary>
                 public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2597,7 +2617,7 @@ namespace Google.Apis.Spanner.v1
                     }
 
 
-                    /// <summary>The name of the operation collection.</summary>
+                    /// <summary>The name of the operation's parent resource.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -3037,6 +3057,16 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                /// ListInstancesResponse.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
+                /// maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive.
                 /// The fields eligible for filtering are:
                 ///
@@ -3051,16 +3081,6 @@ namespace Google.Apis.Spanner.v1
                 /// contains "howl" and it has the label "env" with its value containing "dev".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
-                /// ListInstancesResponse.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
-                /// maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3096,15 +3116,6 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3117,6 +3128,15 @@ namespace Google.Apis.Spanner.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3483,6 +3503,12 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined independently.
+        /// This field is GOOGLE_INTERNAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -3544,6 +3570,10 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class CloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
+        public virtual string LogName { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3797,6 +3827,38 @@ namespace Google.Apis.Spanner.v1.Data
         /// strong concurrency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual TransactionSelector Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in [Common Expression Language](http://go/api-expr) syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4313,8 +4375,8 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
-        /// `role`. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -4358,7 +4420,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Options for read-only transactions.</summary>
+    /// <summary>Message type to initiate a read-only transaction.</summary>
     public class ReadOnly : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Executes all reads at a timestamp that is `exact_staleness` old. The timestamp is chosen soon after
@@ -4464,7 +4526,8 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Options for read-write transactions.</summary>
+    /// <summary>Message type to initiate a read-write transaction. Currently this transaction type has no
+    /// options.</summary>
     public class ReadWrite : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -4642,7 +4705,7 @@ namespace Google.Apis.Spanner.v1.Data
     /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
     /// If a localized user-facing error message is needed, put the localized message in the error details or localize
     /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` which can be used for common error conditions.
+    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
     ///
     /// # Language mapping
     ///
@@ -4662,7 +4725,7 @@ namespace Google.Apis.Spanner.v1.Data
     /// normal response to indicate the partial errors.
     ///
     /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting purpose.
+    /// reporting.
     ///
     /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
     /// directly inside batch response, one for each error sub-response.

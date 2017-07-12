@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/QPjaEtFR37sSTgcf7ZL7D_Qj07U\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/xxCMFllvdY9r3Y6cCpyoM0GPdao\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3firstparty",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3firstparty",
- "revision": "20170609",
+ "revision": "20170707",
  "title": "Cloud Tool Results firstparty API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -81,6 +81,20 @@
      "type": "string",
      "description": "Must be a valid serialized protocol buffer of the above specified type.",
      "format": "byte"
+    }
+   }
+  },
+  "AppStartTime": {
+   "id": "AppStartTime",
+   "type": "object",
+   "properties": {
+    "fullyDrawnTime": {
+     "$ref": "Duration",
+     "description": "Optional. The time from app start to reaching the developer-reported \"fully drawn\" time. This is only stored if the app includes a call to Activity.reportFullyDrawn(). See https://developer.android.com/topic/performance/launch-time.html#time-full"
+    },
+    "initialDisplayTime": {
+     "$ref": "Duration",
+     "description": "The time from app start to the first displayed activity being drawn, as reported in Logcat. See https://developer.android.com/topic/performance/launch-time.html#time-initial"
     }
    }
   },
@@ -536,6 +550,9 @@
    "type": "object",
    "description": "A summary of perf metrics collected and performance environment info",
    "properties": {
+    "appStartTime": {
+     "$ref": "AppStartTime"
+    },
     "executionId": {
      "type": "string",
      "description": "A tool results execution ID."
@@ -696,7 +713,7 @@
     },
     "details": {
      "type": "array",
-     "description": "A list of messages that carry the error details. There will be a common set of message types for APIs to use.",
+     "description": "A list of messages that carry the error details. There is a common set of message types for APIs to use.",
      "items": {
       "$ref": "Any"
      }
