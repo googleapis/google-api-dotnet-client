@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170621 (902)
+ *      <tr><th>API Rev<td>20170710 (921)
  *      <tr><th>API Docs
  *          <td><a href='http://cloud.google.com/debugger'>
  *              http://cloud.google.com/debugger</a>
@@ -418,10 +418,10 @@ namespace Google.Apis.CloudDebugger.v2
 
                 /// <summary>Returns the list of all active breakpoints for the debuggee.
                 ///
-                /// The breakpoint specification (location, condition, and expression fields) is semantically immutable,
-                /// although the field values may change. For example, an agent may update the location line number to
-                /// reflect the actual line where the breakpoint was set, but this doesn't change the breakpoint
-                /// semantics.
+                /// The breakpoint specification (`location`, `condition`, and `expressions` fields) is semantically
+                /// immutable, although the field values may change. For example, an agent may update the location line
+                /// number to reflect the actual line where the breakpoint was set, but this doesn't change the
+                /// breakpoint semantics.
                 ///
                 /// This means that an agent does not need to check if a breakpoint has changed when it encounters the
                 /// same breakpoint on a successive call. Moreover, an agent should remember the breakpoints that are
@@ -435,10 +435,10 @@ namespace Google.Apis.CloudDebugger.v2
 
                 /// <summary>Returns the list of all active breakpoints for the debuggee.
                 ///
-                /// The breakpoint specification (location, condition, and expression fields) is semantically immutable,
-                /// although the field values may change. For example, an agent may update the location line number to
-                /// reflect the actual line where the breakpoint was set, but this doesn't change the breakpoint
-                /// semantics.
+                /// The breakpoint specification (`location`, `condition`, and `expressions` fields) is semantically
+                /// immutable, although the field values may change. For example, an agent may update the location line
+                /// number to reflect the actual line where the breakpoint was set, but this doesn't change the
+                /// breakpoint semantics.
                 ///
                 /// This means that an agent does not need to check if a breakpoint has changed when it encounters the
                 /// same breakpoint on a successive call. Moreover, an agent should remember the breakpoints that are
@@ -459,12 +459,6 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>A wait token that, if specified, blocks the method call until the list of active
-                    /// breakpoints has changed, or a server selected timeout has expired.  The value should be set from
-                    /// the last returned response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string WaitToken { get; set; }
-
                     /// <summary>If set to `true`, returns `google.rpc.Code.OK` status and sets the `wait_expired`
                     /// response field to `true` when the server-selected timeout has expired (recommended).
                     ///
@@ -472,6 +466,12 @@ namespace Google.Apis.CloudDebugger.v2
                     /// expired (deprecated).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("successOnTimeout", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> SuccessOnTimeout { get; set; }
+
+                    /// <summary>A wait token that, if specified, blocks the method call until the list of active
+                    /// breakpoints has changed, or a server selected timeout has expired.  The value should be set from
+                    /// the last returned response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string WaitToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -507,18 +507,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "waitToken", new Google.Apis.Discovery.Parameter
+                            "successOnTimeout", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "waitToken",
+                                Name = "successOnTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "successOnTimeout", new Google.Apis.Discovery.Parameter
+                            "waitToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "successOnTimeout",
+                                Name = "waitToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -532,7 +532,7 @@ namespace Google.Apis.CloudDebugger.v2
                 /// back to the controller service.
                 ///
                 /// Updates to active breakpoint fields are only allowed if the new value does not change the breakpoint
-                /// specification. Updates to the `location`, `condition` and `expression` fields should not alter the
+                /// specification. Updates to the `location`, `condition` and `expressions` fields should not alter the
                 /// breakpoint semantics. These may only make changes such as canonicalizing a value or snapping the
                 /// location to the correct line of code.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -548,7 +548,7 @@ namespace Google.Apis.CloudDebugger.v2
                 /// back to the controller service.
                 ///
                 /// Updates to active breakpoint fields are only allowed if the new value does not change the breakpoint
-                /// specification. Updates to the `location`, `condition` and `expression` fields should not alter the
+                /// specification. Updates to the `location`, `condition` and `expressions` fields should not alter the
                 /// breakpoint semantics. These may only make changes such as canonicalizing a value or snapping the
                 /// location to the correct line of code.</summary>
                 public class UpdateRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.UpdateActiveBreakpointResponse>
@@ -973,11 +973,6 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WaitToken { get; set; }
 
-                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
-                    /// `google.com/intellij/v1`).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClientVersion { get; set; }
-
                     /// <summary>Only breakpoints with the specified action will pass the filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("action.value", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ActionValueEnum> ActionValue { get; set; }
@@ -990,6 +985,11 @@ namespace Google.Apis.CloudDebugger.v2
                         [Google.Apis.Util.StringValueAttribute("LOG")]
                         LOG,
                     }
+
+                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// `google.com/intellij/v1`).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientVersion { get; set; }
 
                     /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
                     /// it includes only active breakpoints.</summary>
@@ -1053,18 +1053,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clientVersion", new Google.Apis.Discovery.Parameter
+                            "action.value", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clientVersion",
+                                Name = "action.value",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "action.value", new Google.Apis.Discovery.Parameter
+                            "clientVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "action.value",
+                                Name = "clientVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1642,7 +1642,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
     {
         /// <summary>List of breakpoints matching the request. The fields `id` and `location` are guaranteed to be set
         /// on each breakpoint. The fields: `stack_frames`, `evaluated_expressions` and `variable_table` are cleared on
-        /// each breakpoint regardless of it's status.</summary>
+        /// each breakpoint regardless of its status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoints")]
         public virtual System.Collections.Generic.IList<Breakpoint> Breakpoints { get; set; } 
 
@@ -1823,7 +1823,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Request to update an active breakpoint.</summary>
     public class UpdateActiveBreakpointRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Updated breakpoint information. The field 'id' must be set.</summary>
+        /// <summary>Updated breakpoint information. The field `id` must be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoint")]
         public virtual Breakpoint Breakpoint { get; set; } 
 
