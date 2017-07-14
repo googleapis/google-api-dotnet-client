@@ -31,3 +31,13 @@ var fileDataStore = new FileDataStore(absolutePath, fullPath: true);
 Release [v1.26](https://github.com/google/google-api-dotnet-client/releases/tag/v1.26.2) was a major refactor of the project structure. Part of this work was to converge source code between desktop and .NET Core platforms, which involved changes to [FileDataStore.cs](https://github.com/google/google-api-dotnet-client/blob/master/Src/Support/Google.Apis/Util/Store/FileDataStore.cs). These changes allowed `FileDataStore` to build for .NET Core applications, but did involve changes to the logic to determine the default base directory of the file-store, because `Environment.SpecialFolder.ApplicationData` is not available on .NET Core.
 
 We did consider reverting this back to the v1.25 behaviour in v1.28+, but would rather not cause an additional backward-incompatible change; especially as there is a simple work-around available. 
+
+### Can I use [GoogleWebAuthorizationBroker](https://github.com/google/google-api-dotnet-client/blob/master/Src/Support/Google.Apis.Auth/OAuth2/GoogleWebAuthorizationBroker.cs) on a server?
+
+In a word: No.
+
+[GoogleWebAuthorizationBroker](https://github.com/google/google-api-dotnet-client/blob/master/Src/Support/Google.Apis.Auth/OAuth2/GoogleWebAuthorizationBroker.cs) requires interaction with the end-user, so can only be used in client-side code.
+
+OAuth authentication requires the end-user to interact with a web browser, which can only be done client-side.
+
+It is possible to user OAuth authentication in a web application, but not using this `GoogleWebAuthorizationBroker` class.
