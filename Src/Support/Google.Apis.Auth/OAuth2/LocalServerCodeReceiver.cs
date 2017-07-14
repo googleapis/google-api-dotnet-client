@@ -371,10 +371,24 @@ namespace Google.Apis.Auth.OAuth2
 #elif NET45
         private HttpListener StartListener()
         {
-            var listener = new HttpListener();
-            listener.Prefixes.Add(RedirectUri);
-            listener.Start();
-            return listener;
+            // Using IP address 127.0.0.0 is recommended, so try that first.
+            // But Windows 7 and 8 only allow non-admin users to listen on "localhost",
+            // so try that if 127.0.0.1 fails with Access Denied.
+            HttpListener Start(string uri)
+            {
+                var listener = new HttpListener();
+                listener.Prefixes.Add(RedirectUri);
+                listener.Start();
+                return listener;
+            }
+            try
+            {
+                return Start(RedirectUri);
+            }
+            catch (HttpListenerException e) when (e.ErrorCode == 5) // 5: Access denied
+            {
+                return Start(RedirectUri.Replace(IPAddress.Loopback.ToString(), "localhost"));
+            }
         }
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(HttpListener listener, CancellationToken ct)
