@@ -26,6 +26,12 @@ using Google.Apis.Util.Store;
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>A helper utility to manage the authorization code flow.</summary>
+    /// <remarks>
+    /// This class is only suitable for client-side use, as it starts a local browser that requires
+    /// user interaction.
+    /// Do not use this class when executing on a web server, or any cases where the authenticating
+    /// end-user is not able to do directly interact with a launched browser.
+    /// </remarks>
     public class GoogleWebAuthorizationBroker
     {
         // It's unforunate this is a public field. But it cannot be changed due to backward compatibility.
@@ -36,7 +42,10 @@ namespace Google.Apis.Auth.OAuth2
         /// </remarks>
         public static string Folder = "Google.Apis.Auth";
 
-        /// <summary>Asynchronously authorizes the specified user.</summary>
+        /// <summary>
+        /// Asynchronously authorizes the specified user.
+        /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
+        /// </summary>
         /// <remarks>
         /// In case no data store is specified, <see cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
         /// default.
@@ -62,7 +71,10 @@ namespace Google.Apis.Auth.OAuth2
                 .ConfigureAwait(false);
         }
 
-        /// <summary>Asynchronously authorizes the specified user.</summary>
+        /// <summary>
+        /// Asynchronously authorizes the specified user.
+        /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
+        /// </summary>
         /// <remarks>
         /// In case no data store is specified, <see cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
         /// default.
@@ -93,6 +105,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>
         /// Asynchronously reauthorizes the user. This method should be called if the users want to authorize after 
         /// they revoked the token.
+        /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
         /// </summary>
         /// <param name="userCredential">The current user credential. Its <see cref="UserCredential.Token"/> will be
         /// updated. </param>
@@ -110,7 +123,10 @@ namespace Google.Apis.Auth.OAuth2
             userCredential.Token = newUserCredential.Token;
         }
 
-        /// <summary>The core logic for asynchronously authorizing the specified user.</summary>
+        /// <summary>
+        /// The core logic for asynchronously authorizing the specified user.
+        /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
+        /// </summary>
         /// <param name="initializer">The authorization code initializer.</param>
         /// <param name="scopes">
         /// The scopes which indicate the Google API access your application is requesting.
