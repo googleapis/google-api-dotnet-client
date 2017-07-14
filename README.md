@@ -1,11 +1,17 @@
 [![Build Status](https://travis-ci.org/google/google-api-dotnet-client.svg?branch=master)](https://travis-ci.org/google/google-api-dotnet-client)
 
-# Google APIs client Library for .NET  ##
+# Google APIs client Library for .NET
 
 ---------
 # _Google Cloud Platform APIs_
 
 _If you're working with **Google Cloud Platform** APIs such as Datastore or Pub/Sub, consider using the [Cloud Client Libraries for .NET instead](https://github.com/GoogleCloudPlatform/google-cloud-dotnet). These are the new and idiomatic .NET libraries targeted specifically at Google Cloud Platform Services._
+
+# Library Maintenance
+
+This client library is supported but in maintenance mode only. We are fixing necessary bugs and adding essential features to ensure this library continues to meet your needs for accessing Google APIs. Non-critical issues will be closed. Any issue may be reopened if it is causing ongoing problems.
+
+Please see the [FAQ](FAQ.md) for more details on what this means.
 
 ----------
 
@@ -45,7 +51,7 @@ For more details on framework support see [Frameworks.md](Frameworks.md)
 
 # NuGet Packages
 
-To make it easer for you to develop with the Google APIs using the Google API client Library for .NET we have released a number of NuGet packages. The libraries published by Google are owned by [google-apis-packages](https://www.nuget.org/profiles/google-apis-packages).
+To make it easier for you to develop with the Google APIs using the Google API client Library for .NET we have released a number of NuGet packages. The libraries published by Google are owned by [google-apis-packages](https://www.nuget.org/profiles/google-apis-packages).
 
 # API-specific Libraries
 
