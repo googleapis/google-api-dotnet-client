@@ -20,6 +20,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Http;
+using System;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -162,6 +163,16 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
+        /// If the credential supports setting the user, creates a copy with the specified user.
+        /// Otherwise, it throws <see cref="InvalidOperationException"/>.
+        /// Only Service Credentials support this operation.
+        /// </summary>
+        /// <param name="user">The user to set in the returned credential.</param>
+        /// <returns>This credential with the user set to <paramref name="user"/>.</returns>
+        /// <exception cref="InvalidOperationException">When the credential type doesn't support setting the user.</exception>
+        public virtual GoogleCredential CreateWithUser(string user) => throw new InvalidOperationException();
+
+        /// <summary>
         /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
         /// instance.
         /// </summary>
@@ -214,6 +225,18 @@ namespace Google.Apis.Auth.OAuth2
                     User = serviceAccountCredential.User,
                     Key = serviceAccountCredential.Key,
                     Scopes = scopes
+                };
+                return new ServiceAccountGoogleCredential(new ServiceAccountCredential(initializer));
+            }
+
+            public override GoogleCredential CreateWithUser(string user)
+            {
+                var serviceAccountCredential = credential as ServiceAccountCredential;
+                var initializer = new ServiceAccountCredential.Initializer(serviceAccountCredential.Id)
+                {
+                    User = user,
+                    Key = serviceAccountCredential.Key,
+                    Scopes = serviceAccountCredential.Scopes
                 };
                 return new ServiceAccountGoogleCredential(new ServiceAccountCredential(initializer));
             }
