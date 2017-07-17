@@ -53,7 +53,7 @@ namespace Google.Apis.Auth
 
         /// <summary>
         /// Validates a Google-issued Json Web Token (JWT).
-        /// With throw a <see cref="InvalidJwtException"/> if the passed value is not valid JWT signed by Google.
+        /// Will throw a <see cref="InvalidJwtException"/> if the passed value is not valid JWT signed by Google.
         /// </summary>
         /// <remarks>
         /// <para>Follows the procedure to
@@ -68,14 +68,75 @@ namespace Google.Apis.Auth
         /// <returns>The JWT payload, if the JWT is valid. Throws an <see cref="InvalidJwtException"/> otherwise.</returns>
         /// <exception cref="InvalidJwtException">Thrown when passed a JWT that is not a valid JWT signed by Google.</exception>
         public static Task<Payload> ValidateAsync(string jwt, IClock clock = null, bool forceGoogleCertRefresh = false) =>
-            ValidateInternalAsync(jwt, clock ?? SystemClock.Default, forceGoogleCertRefresh, null);
+            ValidateAsync(jwt, new ValidationSettings { Clock = clock, ForceGoogleCertRefresh = forceGoogleCertRefresh });
+
+        /// <summary>
+        /// Settings used when validating a JSON Web Signature.
+        /// </summary>
+        public sealed class ValidationSettings
+        {
+            /// <summary>
+            /// Create a new instance.
+            /// </summary>
+            public ValidationSettings() { }
+
+            private ValidationSettings(ValidationSettings other)
+            {
+                Audience = other.Audience?.ToArray();
+                HostedDomain = other.HostedDomain;
+                Clock = other.Clock;
+                ForceGoogleCertRefresh = other.ForceGoogleCertRefresh;
+            }
+
+            /// <summary>
+            /// The trusted audience client IDs; or <c>null</c> to suppress audience validation.
+            /// </summary>
+            public IEnumerable<string> Audience { get; set; }
+
+            /// <summary>
+            /// The required GSuite domain of the user; or <c>null</c> to suppress hosted domain validation.
+            /// </summary>
+            public string HostedDomain { get; set; }
+
+            /// <summary>
+            /// Optional. The <see cref="IClock"/> to use for JWT expiration verification. Defaults to the system clock.
+            /// </summary>
+            public IClock Clock { get; set; }
+
+            /// <summary>
+            /// Optional. If true forces new certificates to be downloaded from Google. Defaults to false.
+            /// </summary>
+            public bool ForceGoogleCertRefresh { get; set; }
+
+            internal ValidationSettings Clone() => new ValidationSettings(this);
+        }
+
+        /// <summary>
+        /// Validates a Google-issued Json Web Token (JWT).
+        /// Will throw a <see cref="InvalidJwtException"/> if the specified JWT fails any validation check.
+        /// </summary>
+        /// <remarks>
+        /// <para>Follows the procedure to
+        /// <see href="https://developers.google.com/identity/protocols/OpenIDConnect#validatinganidtoken">validate a JWT ID token</see>.
+        /// </para>
+        /// <para>Google certificates are cached, and refreshed once per hour. This can be overridden by setting
+        /// <see cref="ValidationSettings.ForceGoogleCertRefresh"/> to true.</para>
+        /// </remarks>
+        /// <param name="jwt">The JWT to validate.</param>
+        /// <param name="validationSettings">Specifies how to carry out the validation.</param>
+        /// <returns></returns>
+        public static Task<Payload> ValidateAsync(string jwt, ValidationSettings validationSettings) =>
+            ValidateInternalAsync(jwt, validationSettings, null, false);
 
         // internal for testing
-        internal static async Task<Payload> ValidateInternalAsync(string jwt, IClock clock, bool forceGoogleCertRefresh, string certsJson)
+        internal static async Task<Payload> ValidateInternalAsync(string jwt, ValidationSettings validationSettings, string certsJson, bool ignoreCertCheck)
         {
             // Check arguments
             jwt.ThrowIfNull(nameof(jwt));
             jwt.ThrowIfNullOrEmpty(nameof(jwt));
+            var settings = validationSettings.ThrowIfNull(nameof(validationSettings)).Clone();
+            var clock = settings.Clock ?? SystemClock.Default;
+
             if (jwt.Length > MaxJwtLength)
             {
                 throw new InvalidJwtException($"JWT exceeds maximum allowed length of {MaxJwtLength}");
@@ -97,38 +158,57 @@ namespace Google.Apis.Auth
                 throw new InvalidJwtException($"JWT algorithm must be '{SupportedJwtAlgorithm}'");
             }
 
-            // Verify signature
-            byte[] hash;
-            using (var hashAlg = SHA256.Create())
+            // Validate the JWT, using process defined at:
+            // https://developers.google.com/identity/protocols/OpenIDConnect#validatinganidtoken
+
+            // Step 1: Verify that the ID token is properly signed by the issuer (Google, in our case).
+            if (!ignoreCertCheck)
             {
-                hash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes($"{parts[0]}.{parts[1]}"));
-            }
-            bool verifiedOk = false;
-            foreach (var googleCert in await GetGoogleCertsAsync(clock, forceGoogleCertRefresh, certsJson))
-            {
+                byte[] hash;
+                using (var hashAlg = SHA256.Create())
+                {
+                    hash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes($"{parts[0]}.{parts[1]}"));
+                }
+                bool verifiedOk = false;
+                foreach (var googleCert in await GetGoogleCertsAsync(clock, settings.ForceGoogleCertRefresh, certsJson))
+                {
 #if NET45
                 verifiedOk = ((RSACryptoServiceProvider)googleCert).VerifyHash(hash, Sha256Oid, signature);
 #elif NETSTANDARD1_3
-                verifiedOk = googleCert.VerifyHash(hash, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+                    verifiedOk = googleCert.VerifyHash(hash, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 #else
 #error Unsupported platform
 #endif
-                if (verifiedOk)
+                    if (verifiedOk)
+                    {
+                        break;
+                    }
+                }
+                if (!verifiedOk)
                 {
-                    break;
+                    throw new InvalidJwtException("JWT invalid, unable to verify signature.");
                 }
             }
-            if (!verifiedOk)
-            {
-                throw new InvalidJwtException("JWT invalid: unable to verify signature.");
-            }
 
-            // Verify iss, iat and exp claims
+            // Step 2: Verify that the value of iss in the ID token is equal to https://accounts.google.com or accounts.google.com.
             if (!ValidJwtIssuers.Contains(payload.Issuer))
             {
                 var validList = string.Join(", ", ValidJwtIssuers.Select(x => $"'{x}'"));
                 throw new InvalidJwtException($"JWT issuer incorrect. Must be one of: {validList}");
             }
+
+            // Step 3: Verify that the value of aud in the ID token is equal to your app’s client ID.
+            if (settings.Audience != null)
+            {
+                // Verify that all audiences in the JWT are trusted; i.e. in settings.Audience.
+                var trustedAudiences = new HashSet<string>(settings.Audience);
+                if (payload.AudienceAsList.Any(aud => !trustedAudiences.Contains(aud)))
+                {
+                    throw new InvalidJwtException("JWT contains untrusted 'aud' claim.");
+                }
+            }
+
+            // Step 4: Verify that the expiry time (exp) of the ID token has not passed.
             if (payload.IssuedAtTimeSeconds == null || payload.ExpirationTimeSeconds == null)
             {
                 throw new InvalidJwtException("JWT must contain 'iat' and 'exp' claims");
@@ -141,6 +221,16 @@ namespace Google.Apis.Auth
             if (nowSeconds > payload.ExpirationTimeSeconds.Value)
             {
                 throw new InvalidJwtException("JWT has expired.");
+            }
+
+            // Step 5: If you passed a hd parameter in the request,
+            // verify that the ID token has a hd claim that matches your G Suite hosted domain.
+            if (settings.HostedDomain != null)
+            {
+                if (payload.HostedDomain != settings.HostedDomain)
+                {
+                    throw new InvalidJwtException("JWT contains invalid 'hd' claim.");
+                }
             }
 
             // All verification passed, return payload.
@@ -214,12 +304,14 @@ namespace Google.Apis.Auth
 
         /// <summary>
         /// The payload as specified in 
-        /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingclaimset.
+        /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#formingclaimset,
+        /// https://developers.google.com/identity/protocols/OpenIDConnect, and
+        /// https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
         /// </summary>
         public class Payload : JsonWebSignature.Payload
         {
             /// <summary>
-            /// a space-delimited list of the permissions the application requests or <c>null</c>.
+            /// A space-delimited list of the permissions the application requests or <c>null</c>.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("scope")]
             public string Scope { get; set; }
@@ -229,6 +321,69 @@ namespace Google.Apis.Auth
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("prn")]
             public string Prn { get; set; }
+
+            /// <summary>
+            /// The hosted GSuite domain of the user. Provided only if the user belongs to a hosted domain.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("hd")]
+            public string HostedDomain { get; set; }
+
+            /// <summary>
+            /// The user's email address. This may not be unique and is not suitable for use as a primary key.
+            /// Provided only if your scope included the string "email".
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("email")]
+            public string Email { get; set; }
+
+            /// <summary>
+            /// True if the user's e-mail address has been verified; otherwise false.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("email_verified")]
+            public bool EmailVerified { get; set; }
+
+            /// <summary>
+            /// The user's full name, in a displayable form. Might be provided when:
+            /// (1) The request scope included the string "profile"; or
+            /// (2) The ID token is returned from a token refresh.
+            /// When name claims are present, you can use them to update your app's user records.
+            /// Note that this claim is never guaranteed to be present.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public string Name { get; set; }
+
+            /// <summary>
+            /// Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names;
+            /// all can be present, with the names being separated by space characters.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("given_name")]
+            public string GivenName { get; set; }
+
+            /// <summary>
+            /// Surname(s) or last name(s) of the End-User. Note that in some cultures,
+            /// people can have multiple family names or no family name;
+            /// all can be present, with the names being separated by space characters.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("family_name")]
+            public string FamilyName { get; set; }
+
+            /// <summary>
+            /// The URL of the user's profile picture. Might be provided when:
+            /// (1) The request scope included the string "profile"; or
+            /// (2) The ID token is returned from a token refresh.
+            /// When picture claims are present, you can use them to update your app's user records.
+            /// Note that this claim is never guaranteed to be present.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("picture")]
+            public string Picture { get; set; }
+
+            /// <summary>
+            /// End-User's locale, represented as a BCP47 [RFC5646] language tag.
+            /// This is typically an ISO 639-1 Alpha-2 [ISO639‑1] language code in lowercase and an
+            /// ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase, separated by a dash.
+            /// For example, en-US or fr-CA.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("locale")]
+            public string Locale { get; set; }
         }
     }
 }
