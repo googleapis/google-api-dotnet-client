@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Google Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170621 (902)
+ *      <tr><th>API Rev<td>20170713 (924)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -673,6 +673,40 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Safe search annotation (based on per-frame visual signals only). If no unsafe content has been detected
+    /// in a frame, no annotations are present for that frame. If only some types of unsafe content have been detected
+    /// in a frame, the likelihood is set to `UNKNOWN` for all other types of unsafe content.</summary>
+    public class GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Likelihood of adult content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adult")]
+        public virtual string Adult { get; set; } 
+
+        /// <summary>Likelihood of medical content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medical")]
+        public virtual string Medical { get; set; } 
+
+        /// <summary>Likelihood of racy content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("racy")]
+        public virtual string Racy { get; set; } 
+
+        /// <summary>Likelihood that an obvious modification was made to the original version to make it appear funny or
+        /// offensive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
+        public virtual string Spoof { get; set; } 
+
+        /// <summary>Video time offset in microseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeOffset")]
+        public virtual System.Nullable<long> TimeOffset { get; set; } 
+
+        /// <summary>Likelihood of violent content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violent")]
+        public virtual string Violent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -712,6 +746,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta1LabelAnnotation> LabelAnnotations { get; set; } 
 
+        /// <summary>Safe search annotations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeSearchAnnotations")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta1SafeSearchAnnotation> SafeSearchAnnotations { get; set; } 
+
         /// <summary>Shot annotations. Each shot is represented as a video segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta1VideoSegment> ShotAnnotations { get; set; } 
@@ -732,6 +770,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelDetectionModel")]
         public virtual string LabelDetectionModel { get; set; } 
 
+        /// <summary>Model to use for safe search detection. Supported values: "latest" and "stable" (the
+        /// default).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeSearchDetectionModel")]
+        public virtual string SafeSearchDetectionModel { get; set; } 
+
         /// <summary>Video segments to annotate. The segments may overlap and are not required to be contiguous or span
         /// the whole video. If unspecified, each video is treated as a single segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
@@ -741,6 +784,11 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
         /// default).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shotChangeDetectionModel")]
         public virtual string ShotChangeDetectionModel { get; set; } 
+
+        /// <summary>Whether the video has been shot from a stationary (i.e. non-moving) camera. When set to true, might
+        /// improve detection accuracy for moving objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stationaryCamera")]
+        public virtual System.Nullable<bool> StationaryCamera { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -846,8 +894,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

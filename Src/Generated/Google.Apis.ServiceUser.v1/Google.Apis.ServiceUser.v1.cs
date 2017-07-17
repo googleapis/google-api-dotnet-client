@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170630 (911)
+ *      <tr><th>API Rev<td>20170707 (918)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -2629,8 +2629,8 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 

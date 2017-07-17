@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/AcTLnZ77ikst1EpGZklXXRSxKgs\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/QLCPYyOggx4rb-WO7LmbQ-ebIns\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20170612",
+ "revision": "20170710",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -5270,7 +5270,7 @@
    "properties": {
     "instances": {
      "type": "array",
-     "description": "The list of instances for which we want to apply updates on this managed instance group.",
+     "description": "The list of URLs of one or more instances for which we want to apply updates on this managed instance group. This can be a full URL or a partial URL, such as zones/[ZONE]/instances/[INSTANCE_NAME].",
      "items": {
       "type": "string"
      }
@@ -8305,6 +8305,7 @@
       "NETWORKS",
       "NVIDIA_K80_GPUS",
       "PREEMPTIBLE_CPUS",
+      "PREEMPTIBLE_LOCAL_SSD_GB",
       "REGIONAL_AUTOSCALERS",
       "REGIONAL_INSTANCE_GROUP_MANAGERS",
       "ROUTERS",
@@ -8325,6 +8326,7 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -26672,7 +26674,7 @@
      "id": "compute.routers.patch",
      "path": "{project}/regions/{region}/routers/{router}",
      "httpMethod": "PATCH",
-     "description": "Patches the specified Router resource with the data included in the request. This method supports patch semantics.",
+     "description": "Patches the specified Router resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.",
      "parameters": {
       "project": {
        "type": "string",

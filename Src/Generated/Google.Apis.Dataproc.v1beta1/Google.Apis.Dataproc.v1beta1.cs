@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170707 (918)
+ *      <tr><th>API Rev<td>20170712 (923)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -1510,6 +1510,20 @@ namespace Google.Apis.Dataproc.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Optional The number of results to return in each response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional If set, the returned jobs list includes only jobs that were submitted to the named
+                /// cluster.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ClusterName { get; set; }
+
+                /// <summary>Optional A filter constraining which jobs to list. Valid filters contain job state and
+                /// label terms such as: labels.key1 = val1 AND (labels.k2 = val2 OR labels.k3 = val3)</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional Specifies enumerated categories of jobs to list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("jobStateMatcher", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<JobStateMatcherEnum> JobStateMatcher { get; set; }
@@ -1529,20 +1543,6 @@ namespace Google.Apis.Dataproc.v1beta1
                 /// results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Optional The number of results to return in each response.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional If set, the returned jobs list includes only jobs that were submitted to the named
-                /// cluster.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ClusterName { get; set; }
-
-                /// <summary>Optional A filter constraining which jobs to list. Valid filters contain job state and
-                /// label terms such as: labels.key1 = val1 AND (labels.k2 = val2 OR labels.k3 = val3)</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1578,24 +1578,6 @@ namespace Google.Apis.Dataproc.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "jobStateMatcher", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "jobStateMatcher",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1617,6 +1599,24 @@ namespace Google.Apis.Dataproc.v1beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "jobStateMatcher", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "jobStateMatcher",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1933,6 +1933,20 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         /// <summary>The YARN metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnMetrics")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> YarnMetrics { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ClusterOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output-only Error, if operation failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; } 
+
+        /// <summary>Output-only The id of the cluster operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2840,8 +2854,8 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details. There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -2860,6 +2874,75 @@ namespace Google.Apis.Dataproc.v1beta1.Data
         /// <summary>Required The job resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual Job Job { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The workflow graph.</summary>
+    public class WorkflowGraph : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output-only The workflow nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
+        public virtual System.Collections.Generic.IList<WorkflowNode> Nodes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Cloud Dataproc workflow template resource.</summary>
+    public class WorkflowMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output-only The create cluster operation metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createCluster")]
+        public virtual ClusterOperation CreateCluster { get; set; } 
+
+        /// <summary>Output-only The delete cluster operation metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteCluster")]
+        public virtual ClusterOperation DeleteCluster { get; set; } 
+
+        /// <summary>Output-only The workflow graph.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graph")]
+        public virtual WorkflowGraph Graph { get; set; } 
+
+        /// <summary>Output-only The workflow state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Output-only The "resource name" of the template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("template")]
+        public virtual string Template { get; set; } 
+
+        /// <summary>Output-only The version of template at the time of workflow instantiation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The workflow node.</summary>
+    public class WorkflowNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output-only The error detail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; } 
+
+        /// <summary>Output-only The job id; populated after the node enters RUNNING state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; } 
+
+        /// <summary>Output-only Node's prerequisite nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStepIds")]
+        public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; } 
+
+        /// <summary>Output-only The node state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>Output-only The name of the node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
+        public virtual string StepId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

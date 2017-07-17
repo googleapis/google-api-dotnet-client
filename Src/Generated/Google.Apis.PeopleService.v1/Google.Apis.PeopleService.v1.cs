@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170711 (922)
+ *      <tr><th>API Rev<td>20170713 (924)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -850,7 +850,7 @@ namespace Google.Apis.PeopleService.v1
         /// <summary>Update the name of an existing contact group owned by the authenticated user.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">The resource name for the contact group, assigned by the server. An ASCII string, in the
-        /// form of `contactGroups/`.</param>
+        /// form of `contactGroups/`contact_group_id.</param>
         public virtual UpdateRequest Update(Google.Apis.PeopleService.v1.Data.UpdateContactGroupRequest body, string resourceName)
         {
             return new UpdateRequest(service, body, resourceName);
@@ -870,7 +870,7 @@ namespace Google.Apis.PeopleService.v1
 
 
             /// <summary>The resource name for the contact group, assigned by the server. An ASCII string, in the form
-            /// of `contactGroups/`.</summary>
+            /// of `contactGroups/`contact_group_id.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -1011,15 +1011,15 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
-                /// inclusive. Defaults to 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
                 /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object RequestMaskIncludeField { get; set; }
+
+                /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
+                /// inclusive. Defaults to 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
                 /// changed since the sync token was created will be returned.</summary>
@@ -1097,18 +1097,18 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "requestMask.includeField",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMask.includeField",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1270,8 +1270,8 @@ namespace Google.Apis.PeopleService.v1
         /// <param name="resourceName">The resource name of the person to provide information about.
         ///
         /// - To get information about the authenticated user, specify `people/me`. - To get information about a google account,
-        /// specify `people/`. - To get information about a contact, specify the resource name that   identifies the contact as
-        /// returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list).</param>
+        /// specify  `people/`account_id. - To get information about a contact, specify the resource name that   identifies the
+        /// contact as returned by [`people.connections.list`](/people/api/rest/v1/people.connections/list).</param>
         public virtual GetRequest Get(string resourceName)
         {
             return new GetRequest(service, resourceName);
@@ -1295,8 +1295,8 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>The resource name of the person to provide information about.
             ///
             /// - To get information about the authenticated user, specify `people/me`. - To get information about a
-            /// google account, specify `people/`. - To get information about a contact, specify the resource name that
-            /// identifies the contact as returned by
+            /// google account, specify `people/`account_id. - To get information about a contact, specify the resource
+            /// name that identifies the contact as returned by
             /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
@@ -1394,12 +1394,6 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>The resource name, such as one returned by
-            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list), of one of the people to
-            /// provide information about. You can include this parameter up to 50 times in one request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
-
             /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Valid values
             /// are:
             ///
@@ -1414,6 +1408,17 @@ namespace Google.Apis.PeopleService.v1
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object RequestMaskIncludeField { get; set; }
+
+            /// <summary>The resource names of the people to provide information about.
+            ///
+            /// - To get information about the authenticated user, specify `people/me`. - To get information about a
+            /// google account, specify `people/`account_id. - To get information about a contact, specify the resource
+            /// name that identifies the contact as returned by
+            /// [`people.connections.list`](/people/api/rest/v1/people.connections/list).
+            ///
+            /// You can include up to 50 resource names in one request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1440,15 +1445,6 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "resourceNames",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "personFields", new Google.Apis.Discovery.Parameter
                     {
                         Name = "personFields",
@@ -1461,6 +1457,15 @@ namespace Google.Apis.PeopleService.v1
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMask.includeField",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1481,7 +1486,7 @@ namespace Google.Apis.PeopleService.v1
         /// their updates to the latest person.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resourceName">The resource name for the person, assigned by the server. An ASCII string with a max
-        /// length of 27 characters, in the form of `people/`.</param>
+        /// length of 27 characters, in the form of `people/`person_id.</param>
         public virtual UpdateContactRequest UpdateContact(Google.Apis.PeopleService.v1.Data.Person body, string resourceName)
         {
             return new UpdateContactRequest(service, body, resourceName);
@@ -1509,7 +1514,7 @@ namespace Google.Apis.PeopleService.v1
 
 
             /// <summary>The resource name for the person, assigned by the server. An ASCII string with a max length of
-            /// 27 characters, in the form of `people/`.</summary>
+            /// 27 characters, in the form of `people/`person_id.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
@@ -1758,7 +1763,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>The resource name for the contact group, assigned by the server. An ASCII string, in the form of
-        /// `contactGroups/`.</summary>
+        /// `contactGroups/`contact_group_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
@@ -2145,12 +2150,13 @@ namespace Google.Apis.PeopleService.v1.Data
     /// <summary>A request to modify an existing contact group's members.</summary>
     public class ModifyContactGroupMembersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The resource names of the contact people to add in the form of in the form `people/`.</summary>
+        /// <summary>The resource names of the contact people to add in the form of in the form
+        /// `people/`person_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToAdd")]
         public virtual System.Collections.Generic.IList<string> ResourceNamesToAdd { get; set; } 
 
         /// <summary>The resource names of the contact people to remove in the form of in the form of
-        /// `people/`.</summary>
+        /// `people/`person_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNamesToRemove")]
         public virtual System.Collections.Generic.IList<string> ResourceNamesToRemove { get; set; } 
 
@@ -2173,12 +2179,12 @@ namespace Google.Apis.PeopleService.v1.Data
     public class Name : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The read-only display name formatted according to the locale specified by the viewer's account or
-        /// the Accept-Language HTTP header.</summary>
+        /// the `Accept-Language` HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
         /// <summary>The read-only display name with the last name first formatted according to the locale specified by
-        /// the viewer's account or the Accept-Language HTTP header.</summary>
+        /// the viewer's account or the `Accept-Language` HTTP header.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayNameLastFirst")]
         public virtual string DisplayNameLastFirst { get; set; } 
 
@@ -2452,7 +2458,7 @@ namespace Google.Apis.PeopleService.v1.Data
         public virtual System.Collections.Generic.IList<Residence> Residences { get; set; } 
 
         /// <summary>The resource name for the person, assigned by the server. An ASCII string with a max length of 27
-        /// characters, in the form of `people/`.</summary>
+        /// characters, in the form of `people/`person_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
@@ -2576,9 +2582,9 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual FieldMetadata Metadata { get; set; } 
 
-        /// <summary>The URL of the photo. You can change the desired size by appending a query parameter `sz=` at the
-        /// end of the url. Example: `https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw
-        /// /s100/photo.jpg?sz=50`</summary>
+        /// <summary>The URL of the photo. You can change the desired size by appending a query parameter `sz=`size at
+        /// the end of the url. Example: `https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvD
+        /// BYqw/s100/photo.jpg?sz=50`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 

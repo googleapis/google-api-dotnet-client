@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170627 (908)
+ *      <tr><th>API Rev<td>20170711 (922)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -8507,6 +8507,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; } 
 
+        /// <summary>Product data after applying all the join inputs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual Product Product { get; set; } 
+
         /// <summary>The id of the product for which status is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
@@ -8746,6 +8750,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("includeAttributes")]
+        public virtual System.Nullable<bool> IncludeAttributes { get; set; } 
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]

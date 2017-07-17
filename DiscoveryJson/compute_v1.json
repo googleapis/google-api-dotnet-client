@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/pqOvnHFN7sP-wPh4KHehXBGM-3c\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/Vvs1qCXXydmy8DUf5jxMZ8BPVo8\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20170612",
+ "revision": "20170710",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -5799,6 +5799,7 @@
       "NETWORKS",
       "NVIDIA_K80_GPUS",
       "PREEMPTIBLE_CPUS",
+      "PREEMPTIBLE_LOCAL_SSD_GB",
       "REGIONAL_AUTOSCALERS",
       "REGIONAL_INSTANCE_GROUP_MANAGERS",
       "ROUTERS",
@@ -5818,6 +5819,7 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -17730,7 +17732,7 @@
      "id": "compute.routers.patch",
      "path": "{project}/regions/{region}/routers/{router}",
      "httpMethod": "PATCH",
-     "description": "Patches the specified Router resource with the data included in the request. This method supports patch semantics.",
+     "description": "Patches the specified Router resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.",
      "parameters": {
       "project": {
        "type": "string",

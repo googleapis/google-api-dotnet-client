@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170612 (893)
+ *      <tr><th>API Rev<td>20170710 (921)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -28407,7 +28407,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Patches the specified Router resource with the data included in the request. This method supports
-        /// patch semantics.</summary>
+        /// PATCH semantics and uses JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -28419,7 +28419,7 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Patches the specified Router resource with the data included in the request. This method supports
-        /// patch semantics.</summary>
+        /// PATCH semantics and uses JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>

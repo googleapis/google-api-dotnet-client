@@ -1,0 +1,506 @@
+{
+  "canonicalName": "Flight Availability",
+  "rootUrl": "https://flightavailability.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "flightavailability",
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "Google Flight Availability API",
+  "ownerName": "Google",
+  "resources": {
+    "v1": {
+      "methods": {
+        "query": {
+          "description": "Called by a partner: receives questions, each of which consists of one or\nmore segments, and returns answers with availability data.",
+          "request": {
+            "$ref": "FlightavailabilityPartnerAvailQuestions"
+          },
+          "response": {
+            "$ref": "FlightavailabilityPartnerAvailAnswers"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {},
+          "flatPath": "v1:query",
+          "id": "flightavailability.query",
+          "path": "v1:query"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "type": "boolean",
+      "location": "query"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "pp": {
+      "description": "Pretty-print response.",
+      "default": "true",
+      "type": "boolean",
+      "location": "query"
+    },
+    "bearer_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth bearer token."
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://flightavailability.googleapis.com/",
+  "servicePath": "",
+  "description": "The Google Flight Availability API provides flight availability to partner airlines.\n",
+  "kind": "discovery#restDescription",
+  "basePath": "",
+  "documentationLink": "https://devsite.googleplex.com/flightavailability",
+  "revision": "20170713",
+  "id": "flightavailability:v1",
+  "discoveryVersion": "v1",
+  "version_module": "True",
+  "schemas": {
+    "FlightavailabilityPartnerAvailQuestionsSegment": {
+      "description": "A flight segment, also known as leg.",
+      "type": "object",
+      "properties": {
+        "departureDate": {
+          "$ref": "FlightavailabilityDate",
+          "description": "Departure date for this segment, in the time zone of the origin airport."
+        },
+        "origin": {
+          "description": "Three-letter code of the origin airport.",
+          "type": "string"
+        },
+        "bookingCode": {
+          "type": "string",
+          "description": "Booking code, one or two letters."
+        },
+        "flightNumber": {
+          "format": "int32",
+          "description": "A positive number from 1 to 9999.",
+          "type": "integer"
+        },
+        "destination": {
+          "description": "Three-letter code of the destination airport.",
+          "type": "string"
+        },
+        "carrier": {
+          "description": "Exactly 2 alphanumeric characters.",
+          "type": "string"
+        },
+        "passiveSegment": {
+          "description": "If true, then don't include an availability answer for this segment.\nThe default is \u003ccode\u003efalse\u003c/code\u003e (=include information).\nUseful for multiple segments with married availability, when it would\nonly be desirable to expose availability from a few selected segments.\n\u003cp\u003e\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e \u003ci\u003eMarried availability\u003c/i\u003e refers to\nflight segments that are sold together based on origin and destination,\nbut might not be available if you try to book them separately, segment by\nsegment. For example, a routing from New York via Paris to Cairo might be\navailable when you book a New York-Cairo flight, but an airline might\nrestrict booking the two segments (New York to Paris, and Paris to Cairo)\nseparately.\u003c/aside\u003e\u003cp\u003e",
+          "type": "boolean"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailQuestionsSegment"
+    },
+    "FlightavailabilityPartnerAvailAnswersEquivalentBookingCodes": {
+      "id": "FlightavailabilityPartnerAvailAnswersEquivalentBookingCodes",
+      "description": "A set of booking codes considered equivalent.",
+      "type": "object",
+      "properties": {
+        "bookingCodes": {
+          "description": "Booking code, one or two letters.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "FlightavailabilityPartnerAvailAnswersConstraint": {
+      "description": "Conditions or constraints that apply to a solution.",
+      "type": "object",
+      "properties": {
+        "segmentIndices": {
+          "description": "Zero-based non-negative index into the list of segments in the original\nquestion.",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": "array"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailAnswersConstraint"
+    },
+    "FlightavailabilityPartnerAvailAnswers": {
+      "type": "object",
+      "properties": {
+        "answers": {
+          "description": "One-to-one mapping of answers to questions.",
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailAnswersAnswer"
+          },
+          "type": "array"
+        },
+        "narrative": {
+          "description": "Consists of the sequence of calculations done to produce the questions.",
+          "type": "string"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailAnswers",
+      "description": "External (public) availability answer."
+    },
+    "FlightavailabilityPartnerAvailAnswersConstraintWithEquivalence": {
+      "description": "Condition or constraint that applies to a set of segments and has sets of\nequivalent booking codes.",
+      "type": "object",
+      "properties": {
+        "equivalentBookingCodes": {
+          "description": "Multiple groups if booking codes are to be treated as equivalent.",
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailAnswersEquivalentBookingCodes"
+          },
+          "type": "array"
+        },
+        "segmentIndices": {
+          "description": "Zero-based non-negative index into the list of segments in the original\nquestion.",
+          "items": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": "array"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailAnswersConstraintWithEquivalence"
+    },
+    "FlightavailabilityPartnerAvailQuestions": {
+      "properties": {
+        "questions": {
+          "description": "Availability questions.",
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailQuestionsQuestion"
+          },
+          "type": "array"
+        },
+        "parameters": {
+          "description": "Parameters that apply to all questions.",
+          "$ref": "FlightavailabilityPartnerAvailQuestionsParameters"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailQuestions",
+      "description": "External (public) availability questions.",
+      "type": "object"
+    },
+    "FlightavailabilityPartnerAvailAnswersSeatCountSeatsFlag": {
+      "description": "Seats flag parameters.",
+      "type": "object",
+      "properties": {
+        "infinityFlag": {
+          "type": "boolean",
+          "description": "More seats may be available."
+        },
+        "waitlistOpen": {
+          "type": "boolean",
+          "description": "Wait list open."
+        },
+        "onRequest": {
+          "description": "Available on request.",
+          "type": "boolean"
+        },
+        "waitlistClosed": {
+          "description": "Wait list closed.",
+          "type": "boolean"
+        },
+        "nonOperating": {
+          "description": "Non-operating.",
+          "type": "boolean"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailAnswersSeatCountSeatsFlag"
+    },
+    "FlightavailabilityPartnerAvailAnswersAnswer": {
+      "description": "One answer to an availability question.",
+      "type": "object",
+      "properties": {
+        "solutions": {
+          "description": "The answer. It consists of multiple solutions.",
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailAnswersSolution"
+          },
+          "type": "array"
+        },
+        "narrative": {
+          "description": "Consists of the sequence of calculations done to produce the answer.",
+          "type": "string"
+        },
+        "foundNoSolution": {
+          "description": "Set to true if no solution is found for the corresponding question.\n\u003cp\u003e\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e We return no solution if AVS returns\nan empty solution or reports an error for that question.\u003caside\u003e\u003c/p\u003e",
+          "type": "boolean"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailAnswersAnswer"
+    },
+    "FlightavailabilityPartnerAvailQuestionsPointOfSale": {
+      "properties": {
+        "salesCrss": {
+          "description": "Exactly 2 or 3 alphanumeric characters.\nCRS stands for Computer Reservation System.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "salesCarriers": {
+          "description": "Exactly 2 or 3 alphanumeric characters.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "salesAirport": {
+          "description": "3 to 5 letters.",
+          "type": "string"
+        },
+        "salesCountry": {
+          "description": "2 to 3 letters.\nDefaults to 'US'.",
+          "type": "string"
+        },
+        "salesCity": {
+          "description": "3 to 5 letters.",
+          "type": "string"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailQuestionsPointOfSale",
+      "description": "Location where the ticket is purchased.",
+      "type": "object"
+    },
+    "FlightavailabilityPartnerAvailAnswersSolution": {
+      "description": "One solution within an availability answer.",
+      "type": "object",
+      "properties": {
+        "narrative": {
+          "description": "Consists of the sequence of calculations done to produce the solution.",
+          "type": "string"
+        },
+        "constraints": {
+          "description": "All constraints that apply to a solution.",
+          "$ref": "FlightavailabilityPartnerAvailAnswersConstraints"
+        },
+        "segmentCounts": {
+          "description": "A list of seat counts for one or more segments.",
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailAnswersSegmentCounts"
+          },
+          "type": "array"
+        },
+        "timestampTime": {
+          "format": "google-datetime",
+          "description": "UTC timestamp that indicates when the solution was computed.",
+          "type": "string"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailAnswersSolution"
+    },
+    "FlightavailabilityDate": {
+      "description": "Represents a whole calendar date, e.g. date of birth. The time of day and\ntime zone are either specified elsewhere or are not significant. The date\nis relative to the Proleptic Gregorian Calendar. The day may be 0 to\nrepresent a year and month where the day is not significant, e.g. credit card\nexpiration date. The year may be 0 to represent a month and day independent\nof year, e.g. anniversary date. Related types are google.type.TimeOfDay\nand `google.protobuf.Timestamp`.",
+      "type": "object",
+      "properties": {
+        "month": {
+          "format": "int32",
+          "description": "Month of year. Must be from 1 to 12.",
+          "type": "integer"
+        },
+        "day": {
+          "format": "int32",
+          "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0\nif specifying a year/month where the day is not significant.",
+          "type": "integer"
+        },
+        "year": {
+          "format": "int32",
+          "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without\na year.",
+          "type": "integer"
+        }
+      },
+      "id": "FlightavailabilityDate"
+    },
+    "FlightavailabilityPartnerAvailAnswersConstraints": {
+      "properties": {
+        "sameBookingCodes": {
+          "description": "Counts that are valid only when booking in the same BCs.",
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailAnswersConstraintWithEquivalence"
+          },
+          "type": "array"
+        },
+        "diffBookingCodes": {
+          "description": "Counts that are valid only when booking in different BCs.",
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailAnswersConstraintWithEquivalence"
+          },
+          "type": "array"
+        },
+        "marriedSegments": {
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailAnswersConstraint"
+          },
+          "type": "array",
+          "description": "Segments that must be married."
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailAnswersConstraints",
+      "description": "Conditions or constraints that apply to a solution.",
+      "type": "object"
+    },
+    "FlightavailabilityPartnerAvailAnswersSegmentCounts": {
+      "description": "A list of seat counts for a segment.",
+      "type": "object",
+      "properties": {
+        "seatCounts": {
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailAnswersSeatCount"
+          },
+          "type": "array",
+          "description": "A list of seat counts for a segment."
+        },
+        "narrative": {
+          "description": "Consists of the sequence of calculations done to produce the segment.",
+          "type": "string"
+        },
+        "segmentIndex": {
+          "format": "int32",
+          "description": "Segment index in the original question.",
+          "type": "integer"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailAnswersSegmentCounts"
+    },
+    "FlightavailabilityPartnerAvailQuestionsParameters": {
+      "description": "Parameters upon which the questions should be answered.",
+      "type": "object",
+      "properties": {
+        "pointOfSale": {
+          "$ref": "FlightavailabilityPartnerAvailQuestionsPointOfSale",
+          "description": "Location where tickets are purchased."
+        },
+        "seamlessAdjustment": {
+          "description": "Whether a PAORES-adjusted answer has been requested.",
+          "type": "boolean"
+        },
+        "carrierPreferredAnswer": {
+          "description": "Indicates that answer should follow carrier preferred rules.",
+          "type": "boolean"
+        },
+        "journeyDataSegments": {
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailQuestionsSegment"
+          },
+          "type": "array",
+          "description": "List of segments provided as journey data."
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailQuestionsParameters"
+    },
+    "FlightavailabilityPartnerAvailAnswersSeatCount": {
+      "id": "FlightavailabilityPartnerAvailAnswersSeatCount",
+      "description": "Availability count from the seat.",
+      "type": "object",
+      "properties": {
+        "seatsFlag": {
+          "$ref": "FlightavailabilityPartnerAvailAnswersSeatCountSeatsFlag",
+          "description": "Seats flag."
+        },
+        "count": {
+          "format": "int32",
+          "description": "Available seat counts.",
+          "type": "integer"
+        },
+        "bookingCode": {
+          "description": "Booking code, one or two letters.",
+          "type": "string"
+        }
+      }
+    },
+    "FlightavailabilityPartnerAvailQuestionsQuestion": {
+      "type": "object",
+      "properties": {
+        "journeyOriginCity": {
+          "description": "Three-letter abbreviation for the city where the journey originates.",
+          "type": "string"
+        },
+        "segments": {
+          "description": "List of segments to be queried for availability.\n\u003cp\u003e\u003caside class=\"note\"\u003e\u003cb\u003eNote:\u003c/b\u003e No more than 10 segments per question\nis allowed.\u003c/aside\u003e\u003c/p\u003e",
+          "items": {
+            "$ref": "FlightavailabilityPartnerAvailQuestionsSegment"
+          },
+          "type": "array"
+        }
+      },
+      "id": "FlightavailabilityPartnerAvailQuestionsQuestion",
+      "description": "One availability question."
+    }
+  },
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "protocol": "rest"
+}

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170622 (903)
+ *      <tr><th>API Rev<td>20170709 (920)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3289,8 +3289,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; } 
 
-        /// <summary>[Required] The fully-qualified URIs that point to your data in Google Cloud Storage. Each URI can
-        /// contain one '*' wildcard character and it must come after the 'bucket' name.</summary>
+        /// <summary>[Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud
+        /// Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size
+        /// limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI
+        /// can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For
+        /// Google Cloud Datastore backups: Exactly one URI can be specified, and it must end with '.backup_info'. Also,
+        /// the '*' wildcard character is not allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; } 
 
@@ -3391,8 +3395,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
         /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
-        /// reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are
-        /// ignored; query will be run as if allowLargeResults is true and flattenResults is false.</summary>
+        /// reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as
+        /// if flattenResults is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; } 
 
@@ -3407,11 +3411,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IList<UserDefinedFunctionResource> UserDefinedFunctionResources { get; set; } 
 
         /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
-        /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
-        /// WRITE_APPEND: If the table already exists, BigQuery appends the data to the table. WRITE_EMPTY: If the table
-        /// already exists and contains data, a 'duplicate' error is returned in the job result. The default value is
-        /// WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able to complete the job successfully.
-        /// Creation, truncation and append actions occur as one atomic update upon job completion.</summary>
+        /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data and
+        /// uses the schema from the query result. WRITE_APPEND: If the table already exists, BigQuery appends the data
+        /// to the table. WRITE_EMPTY: If the table already exists and contains data, a 'duplicate' error is returned in
+        /// the job result. The default value is WRITE_EMPTY. Each action is atomic and only occurs if BigQuery is able
+        /// to complete the job successfully. Creation, truncation and append actions occur as one atomic update upon
+        /// job completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeDisposition")]
         public virtual string WriteDisposition { get; set; } 
 
@@ -3621,6 +3626,12 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class JobStatistics3 : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Output-only] The number of bad records encountered. Note that if the job has failed because of
+        /// more bad records encountered than the maximum allowed in the load job configuration, then this number can be
+        /// less than the total number of bad records present in the input data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("badRecords")]
+        public virtual System.Nullable<long> BadRecords { get; set; } 
+
         /// <summary>[Output-only] Number of bytes of source data in a load job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputFileBytes")]
         public virtual System.Nullable<long> InputFileBytes { get; set; } 
@@ -3861,8 +3872,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
         /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-
-        /// reference/ When useLegacySql is set to false, the values of allowLargeResults and flattenResults are
-        /// ignored; query will be run as if allowLargeResults is true and flattenResults is false.</summary>
+        /// reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as
+        /// if flattenResults is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useLegacySql")]
         public virtual System.Nullable<bool> UseLegacySql { get; set; } 
 
