@@ -18,9 +18,13 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Json;
 using System;
 using System.IO;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Xunit;
+using System.Threading;
+using System.Collections.Generic;
+using System.Net.Http.Headers;
 
 namespace Google.Apis.Auth.Tests.OAuth2
 {
@@ -162,6 +166,33 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         private string UrlSafeDecode64(string urlSafeBase64)
         {
             return Encoding.UTF8.GetString(Convert.FromBase64String(urlSafeBase64));
+        }
+
+        private class FakeHandler : HttpMessageHandler
+        {
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                AuthHeaders.Add(request.Headers.Authorization);
+                return Task.FromResult(new HttpResponseMessage());
+            }
+            public List<AuthenticationHeaderValue> AuthHeaders { get; } = new List<AuthenticationHeaderValue>();
+        }
+
+        [Fact]
+        public async Task AccessTokenCredential()
+        {
+            const string fakeAccessToken = "FakeAccessToken";
+            // Create an access-token credential, and check the access token is correct.
+            ICredential cred = GoogleCredential.FromAccessToken(fakeAccessToken);
+            Assert.Equal(fakeAccessToken, await cred.GetAccessTokenForRequestAsync());
+            // Check the auth header is added correctly to an HTTP request.
+            var httpHandler = new FakeHandler();
+            var httpClient = new Http.ConfigurableHttpClient(new Http.ConfigurableMessageHandler(httpHandler));
+            cred.Initialize(httpClient);
+            await httpClient.GetAsync("http://localhost/TestRequest");
+            Assert.Equal(1, httpHandler.AuthHeaders.Count);
+            Assert.Equal("Bearer", httpHandler.AuthHeaders[0].Scheme);
+            Assert.Equal(fakeAccessToken, httpHandler.AuthHeaders[0].Parameter);
         }
     }
 }
