@@ -1,4 +1,8 @@
 {
+  "batchPath": "batch",
+  "id": "script:v1",
+  "documentationLink": "https://developers.google.com/apps-script/execution/rest/v1/scripts/run",
+  "revision": "20170712",
   "title": "Google Apps Script Execution API",
   "ownerName": "Google",
   "discoveryVersion": "v1",
@@ -6,10 +10,10 @@
     "scripts": {
       "methods": {
         "run": {
-          "description": "Runs a function in an Apps Script project. The project must be deployed\nfor use with the Apps Script Execution API.\n\nThis method requires authorization with an OAuth 2.0 token that includes at\nleast one of the scopes listed in the [Authorization](#authorization)\nsection; script projects that do not require authorization cannot be\nexecuted through this API. To find the correct scopes to include in the\nauthentication token, open the project in the script editor, then select\n**File \u003e Project properties** and click the **Scopes** tab.",
           "request": {
             "$ref": "ExecutionRequest"
           },
+          "description": "Runs a function in an Apps Script project. The project must be deployed\nfor use with the Apps Script Execution API.\n\nThis method requires authorization with an OAuth 2.0 token that includes at\nleast one of the scopes listed in the [Authorization](#authorization)\nsection; script projects that do not require authorization cannot be\nexecuted through this API. To find the correct scopes to include in the\nauthentication token, open the project in the script editor, then select\n**File \u003e Project properties** and click the **Scopes** tab.",
           "response": {
             "$ref": "Operation"
           },
@@ -17,14 +21,6 @@
             "scriptId"
           ],
           "httpMethod": "POST",
-          "parameters": {
-            "scriptId": {
-              "description": "The project key of the script to be executed. To find the project key, open\nthe project in the script editor and select **File \u003e Project properties**.",
-              "type": "string",
-              "required": true,
-              "location": "path"
-            }
-          },
           "scopes": [
             "https://mail.google.com/",
             "https://www.google.com/calendar/feeds",
@@ -38,6 +34,14 @@
             "https://www.googleapis.com/auth/spreadsheets",
             "https://www.googleapis.com/auth/userinfo.email"
           ],
+          "parameters": {
+            "scriptId": {
+              "location": "path",
+              "description": "The project key of the script to be executed. To find the project key, open\nthe project in the script editor and select **File \u003e Project properties**.",
+              "type": "string",
+              "required": true
+            }
+          },
           "flatPath": "v1/scripts/{scriptId}:run",
           "id": "script.scripts.run",
           "path": "v1/scripts/{scriptId}:run"
@@ -47,14 +51,9 @@
   },
   "parameters": {
     "pp": {
-      "location": "query",
       "description": "Pretty-print response.",
       "default": "true",
-      "type": "boolean"
-    },
-    "bearer_token": {
-      "description": "OAuth bearer token.",
-      "type": "string",
+      "type": "boolean",
       "location": "query"
     },
     "oauth_token": {
@@ -62,16 +61,21 @@
       "description": "OAuth 2.0 token for the current user.",
       "type": "string"
     },
+    "bearer_token": {
+      "description": "OAuth bearer token.",
+      "type": "string",
+      "location": "query"
+    },
     "upload_protocol": {
-      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "default": "true",
-      "type": "boolean",
-      "location": "query"
+      "type": "boolean"
     },
     "fields": {
       "location": "query",
@@ -79,7 +83,12 @@
       "type": "string"
     },
     "uploadType": {
+      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
       "type": "string",
       "location": "query"
     },
@@ -95,11 +104,6 @@
         "1",
         "2"
       ]
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
     },
     "alt": {
       "type": "string",
@@ -117,15 +121,15 @@
         "proto"
       ]
     },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
     "key": {
-      "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
     },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
@@ -134,10 +138,59 @@
     }
   },
   "schemas": {
+    "ScriptStackTraceElement": {
+      "description": "A stack trace through the script that shows where the execution failed.",
+      "type": "object",
+      "properties": {
+        "function": {
+          "description": "The name of the function that failed.",
+          "type": "string"
+        },
+        "lineNumber": {
+          "format": "int32",
+          "description": "The line number where the script failed.",
+          "type": "integer"
+        }
+      },
+      "id": "ScriptStackTraceElement"
+    },
+    "ExecutionError": {
+      "description": "An object that provides information about the nature of an error in the Apps\nScript Execution API. If an\n`run` call succeeds but the\nscript function (or Apps Script itself) throws an exception, the response\nbody's `error` field contains a\n`Status` object. The `Status` object's `details` field\ncontains an array with a single one of these `ExecutionError` objects.",
+      "type": "object",
+      "properties": {
+        "errorType": {
+          "description": "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included.",
+          "type": "string"
+        },
+        "errorMessage": {
+          "description": "The error message thrown by Apps Script, usually localized into the user's\nlanguage.",
+          "type": "string"
+        },
+        "scriptStackTraceElements": {
+          "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
+          "items": {
+            "$ref": "ScriptStackTraceElement"
+          },
+          "type": "array"
+        }
+      },
+      "id": "ExecutionError"
+    },
     "Status": {
       "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's `error` field will contain this `Status` object.",
       "type": "object",
       "properties": {
+        "details": {
+          "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
+          "items": {
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            },
+            "type": "object"
+          },
+          "type": "array"
+        },
         "code": {
           "format": "int32",
           "description": "The status code. For this API, this value will always be 3, corresponding to an INVALID_ARGUMENT error.",
@@ -146,17 +199,6 @@
         "message": {
           "description": "A developer-facing error message, which is in English. Any user-facing error message is localized and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the client.",
           "type": "string"
-        },
-        "details": {
-          "description": "An array that contains a single `ExecutionError` object that provides information about the nature of the error.",
-          "items": {
-            "type": "object",
-            "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
-            }
-          },
-          "type": "array"
         }
       },
       "id": "Status"
@@ -191,11 +233,6 @@
       "description": "A request to retrieve the results from a collection of requests,\nspecified by the operation resource names.",
       "type": "object",
       "properties": {
-        "timeout": {
-          "format": "google-duration",
-          "description": "Timeout for information retrieval in milliseconds.",
-          "type": "string"
-        },
         "scriptId": {
           "description": "The script id which specifies the script which all processes in the names\nfield must be from.",
           "type": "string"
@@ -206,6 +243,11 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "timeout": {
+          "format": "google-duration",
+          "description": "Timeout for information retrieval in milliseconds.",
+          "type": "string"
         }
       },
       "id": "JoinAsyncRequest"
@@ -226,11 +268,11 @@
       "type": "object",
       "properties": {
         "results": {
-          "description": "The return values for each script function, in a map of operation resource\nnames to the Operation containing the result of the process. The response\nwill contain either an error or the result of the script function.",
-          "type": "object",
           "additionalProperties": {
             "$ref": "Operation"
-          }
+          },
+          "description": "The return values for each script function, in a map of operation resource\nnames to the Operation containing the result of the process. The response\nwill contain either an error or the result of the script function.",
+          "type": "object"
         }
       },
       "id": "JoinAsyncResponse"
@@ -244,24 +286,24 @@
           "description": "If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this field will contain a `Status` object. The `Status` object's `details` field will contain an array with a single `ExecutionError` object that provides information about the nature of the error."
         },
         "metadata": {
+          "description": "This field is not used.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          },
-          "description": "This field is not used.",
-          "type": "object"
+          }
         },
         "done": {
           "description": "This field is not used.",
           "type": "boolean"
         },
         "response": {
-          "description": "If the script function returns successfully, this field will contain an `ExecutionResponse` object with the function's return value as the object's `result` field.",
-          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
-          }
+          },
+          "description": "If the script function returns successfully, this field will contain an `ExecutionResponse` object with the function's return value as the object's `result` field.",
+          "type": "object"
         },
         "name": {
           "description": "This field is not used.",
@@ -269,51 +311,13 @@
         }
       },
       "id": "Operation"
-    },
-    "ScriptStackTraceElement": {
-      "description": "A stack trace through the script that shows where the execution failed.",
-      "type": "object",
-      "properties": {
-        "lineNumber": {
-          "format": "int32",
-          "description": "The line number where the script failed.",
-          "type": "integer"
-        },
-        "function": {
-          "description": "The name of the function that failed.",
-          "type": "string"
-        }
-      },
-      "id": "ScriptStackTraceElement"
-    },
-    "ExecutionError": {
-      "description": "An object that provides information about the nature of an error in the Apps\nScript Execution API. If an\n`run` call succeeds but the\nscript function (or Apps Script itself) throws an exception, the response\nbody's `error` field contains a\n`Status` object. The `Status` object's `details` field\ncontains an array with a single one of these `ExecutionError` objects.",
-      "type": "object",
-      "properties": {
-        "errorType": {
-          "description": "The error type, for example `TypeError` or `ReferenceError`. If the error\ntype is unavailable, this field is not included.",
-          "type": "string"
-        },
-        "errorMessage": {
-          "description": "The error message thrown by Apps Script, usually localized into the user's\nlanguage.",
-          "type": "string"
-        },
-        "scriptStackTraceElements": {
-          "description": "An array of objects that provide a stack trace through the script to show\nwhere the execution failed, with the deepest call first.",
-          "items": {
-            "$ref": "ScriptStackTraceElement"
-          },
-          "type": "array"
-        }
-      },
-      "id": "ExecutionError"
     }
   },
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
   "version": "v1",
   "baseUrl": "https://script.googleapis.com/",
   "auth": {
@@ -331,17 +335,17 @@
         "https://www.googleapis.com/auth/drive": {
           "description": "View and manage the files in your Google Drive"
         },
-        "https://www.googleapis.com/auth/admin.directory.user": {
-          "description": "View and manage the provisioning of users on your domain"
-        },
-        "https://www.googleapis.com/auth/admin.directory.group": {
-          "description": "View and manage the provisioning of groups on your domain"
+        "https://www.googleapis.com/auth/spreadsheets": {
+          "description": "View and manage your spreadsheets in Google Drive"
         },
         "https://mail.google.com/": {
           "description": "Read, send, delete, and manage your email"
         },
-        "https://www.googleapis.com/auth/spreadsheets": {
-          "description": "View and manage your spreadsheets in Google Drive"
+        "https://www.googleapis.com/auth/admin.directory.group": {
+          "description": "View and manage the provisioning of groups on your domain"
+        },
+        "https://www.googleapis.com/auth/admin.directory.user": {
+          "description": "View and manage the provisioning of users on your domain"
         },
         "https://www.googleapis.com/auth/forms": {
           "description": "View and manage your forms in Google Drive"
@@ -361,9 +365,5 @@
   "rootUrl": "https://script.googleapis.com/",
   "basePath": "",
   "ownerDomain": "google.com",
-  "name": "script",
-  "batchPath": "batch",
-  "revision": "20170712",
-  "documentationLink": "https://developers.google.com/apps-script/execution/rest/v1/scripts/run",
-  "id": "script:v1"
+  "name": "script"
 }

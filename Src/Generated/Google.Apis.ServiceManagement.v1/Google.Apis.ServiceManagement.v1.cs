@@ -2081,6 +2081,12 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Include services consumed by the specified consumer.
+            ///
+            /// The Google Service Management implementation accepts the following forms: - project:</summary>
+            [Google.Apis.Util.RequestParameterAttribute("consumerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConsumerId { get; set; }
+
             /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -2092,12 +2098,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Include services produced by the specified project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProducerProjectId { get; set; }
-
-            /// <summary>Include services consumed by the specified consumer.
-            ///
-            /// The Google Service Management implementation accepts the following forms: - project:</summary>
-            [Google.Apis.Util.RequestParameterAttribute("consumerId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConsumerId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2124,6 +2124,15 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "consumerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "consumerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2145,15 +2154,6 @@ namespace Google.Apis.ServiceManagement.v1
                     "producerProjectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "producerProjectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "consumerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "consumerId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
