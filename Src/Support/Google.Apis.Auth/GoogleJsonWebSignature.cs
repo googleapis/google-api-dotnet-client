@@ -173,7 +173,7 @@ namespace Google.Apis.Auth
                 foreach (var googleCert in await GetGoogleCertsAsync(clock, settings.ForceGoogleCertRefresh, certsJson))
                 {
 #if NET45
-                verifiedOk = ((RSACryptoServiceProvider)googleCert).VerifyHash(hash, Sha256Oid, signature);
+                    verifiedOk = ((RSACryptoServiceProvider)googleCert).VerifyHash(hash, Sha256Oid, signature);
 #elif NETSTANDARD1_3
                     verifiedOk = googleCert.VerifyHash(hash, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 #else
@@ -201,8 +201,7 @@ namespace Google.Apis.Auth
             if (settings.Audience != null)
             {
                 // Verify that all audiences in the JWT are trusted; i.e. in settings.Audience.
-                var trustedAudiences = new HashSet<string>(settings.Audience);
-                if (payload.AudienceAsList.Any(aud => !trustedAudiences.Contains(aud)))
+                if (payload.AudienceAsList.Except(settings.Audience).Any())
                 {
                     throw new InvalidJwtException("JWT contains untrusted 'aud' claim.");
                 }
@@ -225,12 +224,9 @@ namespace Google.Apis.Auth
 
             // Step 5: If you passed a hd parameter in the request,
             // verify that the ID token has a hd claim that matches your G Suite hosted domain.
-            if (settings.HostedDomain != null)
+            if (settings.HostedDomain != null && payload.HostedDomain != settings.HostedDomain)
             {
-                if (payload.HostedDomain != settings.HostedDomain)
-                {
-                    throw new InvalidJwtException("JWT contains invalid 'hd' claim.");
-                }
+                throw new InvalidJwtException("JWT contains invalid 'hd' claim.");
             }
 
             // All verification passed, return payload.
@@ -313,32 +309,32 @@ namespace Google.Apis.Auth
             /// <summary>
             /// A space-delimited list of the permissions the application requests or <c>null</c>.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+            [Newtonsoft.Json.JsonProperty("scope")]
             public string Scope { get; set; }
 
             /// <summary>
             /// The email address of the user for which the application is requesting delegated access.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("prn")]
+            [Newtonsoft.Json.JsonProperty("prn")]
             public string Prn { get; set; }
 
             /// <summary>
             /// The hosted GSuite domain of the user. Provided only if the user belongs to a hosted domain.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("hd")]
+            [Newtonsoft.Json.JsonProperty("hd")]
             public string HostedDomain { get; set; }
 
             /// <summary>
             /// The user's email address. This may not be unique and is not suitable for use as a primary key.
             /// Provided only if your scope included the string "email".
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("email")]
+            [Newtonsoft.Json.JsonProperty("email")]
             public string Email { get; set; }
 
             /// <summary>
             /// True if the user's e-mail address has been verified; otherwise false.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("email_verified")]
+            [Newtonsoft.Json.JsonProperty("email_verified")]
             public bool EmailVerified { get; set; }
 
             /// <summary>
@@ -348,14 +344,14 @@ namespace Google.Apis.Auth
             /// When name claims are present, you can use them to update your app's user records.
             /// Note that this claim is never guaranteed to be present.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            [Newtonsoft.Json.JsonProperty("name")]
             public string Name { get; set; }
 
             /// <summary>
             /// Given name(s) or first name(s) of the End-User. Note that in some cultures, people can have multiple given names;
             /// all can be present, with the names being separated by space characters.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("given_name")]
+            [Newtonsoft.Json.JsonProperty("given_name")]
             public string GivenName { get; set; }
 
             /// <summary>
@@ -363,7 +359,7 @@ namespace Google.Apis.Auth
             /// people can have multiple family names or no family name;
             /// all can be present, with the names being separated by space characters.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("family_name")]
+            [Newtonsoft.Json.JsonProperty("family_name")]
             public string FamilyName { get; set; }
 
             /// <summary>
@@ -373,7 +369,7 @@ namespace Google.Apis.Auth
             /// When picture claims are present, you can use them to update your app's user records.
             /// Note that this claim is never guaranteed to be present.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("picture")]
+            [Newtonsoft.Json.JsonProperty("picture")]
             public string Picture { get; set; }
 
             /// <summary>
@@ -382,7 +378,7 @@ namespace Google.Apis.Auth
             /// ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase, separated by a dash.
             /// For example, en-US or fr-CA.
             /// </summary>
-            [Newtonsoft.Json.JsonPropertyAttribute("locale")]
+            [Newtonsoft.Json.JsonProperty("locale")]
             public string Locale { get; set; }
         }
     }

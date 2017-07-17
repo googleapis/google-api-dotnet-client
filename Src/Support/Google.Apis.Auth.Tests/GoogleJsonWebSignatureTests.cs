@@ -88,7 +88,7 @@ namespace Google.Apis.Auth.Tests
             "IMAj-lTi0ysjiKnd7OJwG_HnNqF-nWTU7z0JbZm_l6_Zfyp_wra78YIbDY-VmxBjiz32RDugLqilfhH4o--GThjhdlyHZENMtk-" +
             "pO3CE8RfNI5fGnmfUgtf6tcdhk2MiA1Quy8BgB_F5Q";
 
-        private GoogleJsonWebSignature.ValidationSettings S(IClock clock, string aud = null, string hd = null) =>
+        private GoogleJsonWebSignature.ValidationSettings MakeSettings(IClock clock, string aud = null, string hd = null) =>
             new GoogleJsonWebSignature.ValidationSettings
             {
                 Clock = clock,
@@ -102,7 +102,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task Validate_BadJwt()
         {
-            var settings = S(new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 22, 0, DateTimeKind.Utc) });
+            var settings = MakeSettings(new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 22, 0, DateTimeKind.Utc) });
             // Null JWT
             await Assert.ThrowsAsync<ArgumentNullException>(() => GoogleJsonWebSignature.ValidateInternalAsync(null, settings, GoogleCertsJson, false));
             // Empty JWT
@@ -118,7 +118,7 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task WrongAlgorithm()
         {
-            var settings = S(new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 22, 0, DateTimeKind.Utc) });
+            var settings = MakeSettings(new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 22, 0, DateTimeKind.Utc) });
             string jwt = $"{B64("{\"alg\":\"HS256\"}")}.{B64("{}")}.";
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
                 GoogleJsonWebSignature.ValidateInternalAsync(jwt, settings, null, true));
@@ -129,11 +129,11 @@ namespace Google.Apis.Auth.Tests
         public async Task Validate_Signature()
         {
             var clockValid1 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 24, 0, DateTimeKind.Utc) };
-            Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, S(clockValid1), GoogleCertsJson, false));
+            Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, MakeSettings(clockValid1), GoogleCertsJson, false));
 
             var clockValid2 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 24, 0, DateTimeKind.Utc) };
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
-                GoogleJsonWebSignature.ValidateInternalAsync(JwtNonGoogleSigned, S(clockValid2), GoogleCertsJson, false));
+                GoogleJsonWebSignature.ValidateInternalAsync(JwtNonGoogleSigned, MakeSettings(clockValid2), GoogleCertsJson, false));
             Assert.Equal("JWT invalid, unable to verify signature.", ex.Message);
         }
 
@@ -142,7 +142,7 @@ namespace Google.Apis.Auth.Tests
         {
             var clock = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 22, 0, DateTimeKind.Utc) };
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
-                GoogleJsonWebSignature.ValidateInternalAsync(JwtNonGoogleSigned, S(clock), GoogleCertsJson, true));
+                GoogleJsonWebSignature.ValidateInternalAsync(JwtNonGoogleSigned, MakeSettings(clock), GoogleCertsJson, true));
             Assert.Equal("JWT issuer incorrect. Must be one of: 'https://accounts.google.com', 'accounts.google.com'", ex.Message);
         }
 
@@ -151,7 +151,7 @@ namespace Google.Apis.Auth.Tests
         {
             var clock = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 22, 0, DateTimeKind.Utc) };
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
-                GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, S(clock, "bad_aud"), GoogleCertsJson, true));
+                GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, MakeSettings(clock, "bad_aud"), GoogleCertsJson, true));
             Assert.Equal("JWT contains untrusted 'aud' claim.", ex.Message);
         }
 
@@ -164,15 +164,15 @@ namespace Google.Apis.Auth.Tests
             var clockValid2 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 11, 22, 0, DateTimeKind.Utc) };
             var clockInvalid2 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 11, 24, 0, DateTimeKind.Utc) };
 
-            Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, S(clockValid1), GoogleCertsJson, false));
-            Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, S(clockValid2), GoogleCertsJson, false));
+            Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, MakeSettings(clockValid1), GoogleCertsJson, false));
+            Assert.NotNull(await GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, MakeSettings(clockValid2), GoogleCertsJson, false));
 
             var ex1 = await Assert.ThrowsAsync<InvalidJwtException>(() =>
-                GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, S(clockInvalid1), GoogleCertsJson, false));
+                GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, MakeSettings(clockInvalid1), GoogleCertsJson, false));
             Assert.Equal("JWT is not yet valid.", ex1.Message);
 
             var ex2 = await Assert.ThrowsAsync<InvalidJwtException>(() =>
-                GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, S(clockInvalid2), GoogleCertsJson, false));
+                GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, MakeSettings(clockInvalid2), GoogleCertsJson, false));
             Assert.Equal("JWT has expired.", ex2.Message);
         }
 
@@ -181,7 +181,7 @@ namespace Google.Apis.Auth.Tests
         {
             var clock = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 24, 0, DateTimeKind.Utc) };
             var ex = await Assert.ThrowsAsync<InvalidJwtException>(() =>
-                GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, S(clock, hd: "hd"), GoogleCertsJson, true));
+                GoogleJsonWebSignature.ValidateInternalAsync(JwtGoogleSigned, MakeSettings(clock, hd: "hd"), GoogleCertsJson, true));
             Assert.Equal("JWT contains invalid 'hd' claim.", ex.Message);
         }
 
