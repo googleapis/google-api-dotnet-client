@@ -100,6 +100,8 @@ namespace Google.Apis.Auth.OAuth2
                     // This fails on Windows 7 and 8, for non-admin users.
                     try
                     {
+                        // This listener isn't used for anything except to check if it can listen on 127.0.0.1
+                        // Hence it is disposed immediately.
                         using (var listener = new HttpListener())
                         {
                             listener.Prefixes.Add(string.Format(CallbackUriTemplate127001, GetRandomUnusedPort()));
@@ -387,7 +389,6 @@ namespace Google.Apis.Auth.OAuth2
                 s_receivedCallback = true;
 
                 return ret;
-
             }
         }
 
