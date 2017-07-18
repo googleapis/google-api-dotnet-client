@@ -31,6 +31,7 @@ using Google.Apis.Logging;
 using Google.Apis.Requests;
 using Google.Apis.Util;
 using Google.Apis.Testing;
+using System.Linq;
 
 namespace Google.Apis.Services
 {
@@ -115,9 +116,15 @@ namespace Google.Apis.Services
                 MaxUrlLength = DefaultMaxUrlLength;
             }
 
+            // HttpRequestMessage.Headers fails if any of these characters are included in a User-Agent header.
+            private const string InvalidApplicationNameCharacters = "\"(),:;<=>?@[\\]{}";
+
             internal void Validate()
             {
-                // TODO: Validate ApplicationName
+                if (ApplicationName != null && ApplicationName.Any(c => InvalidApplicationNameCharacters.Contains(c)))
+                {
+                    throw new ArgumentException("Invalid Application name", nameof(ApplicationName));
+                }
             }
         }
 

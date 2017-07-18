@@ -346,6 +346,14 @@ namespace Google.Apis.Tests.Apis.Services
             });
         }
 
-        // TODO: Test invalid ApplicationName once validation is (re)implemented.
+        [Fact]
+        public void InvalidApplicationName()
+        {
+            // Assert no exception thrown
+            Assert.Throws<ArgumentException>(() => new MockClientService(new BaseClientService.Initializer
+            {
+                ApplicationName = "App=Name"
+            }));
+        }
     }
 }
