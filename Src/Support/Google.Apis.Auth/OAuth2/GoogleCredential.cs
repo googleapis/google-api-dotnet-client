@@ -143,18 +143,13 @@ namespace Google.Apis.Auth.OAuth2
                 _accessMethod = accessMethod;
             }
 
-            private string _accessToken;
-            private IAccessMethod _accessMethod;
+            private readonly string _accessToken;
+            private readonly IAccessMethod _accessMethod;
 
-            public void Initialize(ConfigurableHttpClient httpClient)
-            {
-                httpClient.MessageHandler.AddExecuteInterceptor(this);
-            }
+            public void Initialize(ConfigurableHttpClient httpClient) => httpClient.MessageHandler.AddExecuteInterceptor(this);
 
-            public Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
-            {
-                return Task.FromResult(_accessToken);
-            }
+            public Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken)) =>
+                Task.FromResult(_accessToken);
 
             // Only method in IHttpExecuteInterceptor
             public Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
