@@ -14,13 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System.Collections.Generic;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-
 using Google.Apis.Http;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -119,6 +119,44 @@ namespace Google.Apis.Auth.OAuth2
         public static GoogleCredential FromJson(string json)
         {
             return defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
+        }
+
+        /// <summary>
+        /// Create a <see cref="GoogleCredential"/> directly from the provided access token.
+        /// The access token will not be automatically refreshed.
+        /// </summary>
+        /// <param name="accessToken">The access token to use within this credential.</param>
+        /// <param name="accessMethod">Optional. The <see cref="IAccessMethod"/> to use within this credential.
+        /// If <c>null</c>, will default to <see cref="BearerToken.AuthorizationHeaderAccessMethod"/>.</param>
+        /// <returns>A credential based on the provided access token.</returns>
+        public static GoogleCredential FromAccessToken(string accessToken, IAccessMethod accessMethod = null)
+        {
+            accessMethod = accessMethod ?? new BearerToken.AuthorizationHeaderAccessMethod();
+            return new GoogleCredential(new AccessTokenCredential(accessToken, accessMethod));
+        }
+
+        internal class AccessTokenCredential : ICredential, IHttpExecuteInterceptor
+        {
+            public AccessTokenCredential(string accessToken, IAccessMethod accessMethod)
+            {
+                _accessToken = accessToken;
+                _accessMethod = accessMethod;
+            }
+
+            private readonly string _accessToken;
+            private readonly IAccessMethod _accessMethod;
+
+            public void Initialize(ConfigurableHttpClient httpClient) => httpClient.MessageHandler.AddExecuteInterceptor(this);
+
+            public Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken)) =>
+                Task.FromResult(_accessToken);
+
+            // Only method in IHttpExecuteInterceptor
+            public Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
+            {
+                _accessMethod.Intercept(request, _accessToken);
+                return Task.FromResult(0);
+            }
         }
 
         /// <summary>
