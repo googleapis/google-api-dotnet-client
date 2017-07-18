@@ -88,7 +88,7 @@ namespace Google.Apis.Auth.OAuth2
                 Logger.Debug("Received \"{0}\" code", response.Code);
 
                 // Get the token based on the code.
-                token = await Flow.ExchangeCodeForTokenAsync(userId, response.Code, CodeReceiver.RedirectUri,
+                token = await Flow.ExchangeCodeForTokenAsync(userId, response.Code, redirectUri,
                     taskCancellationToken).ConfigureAwait(false);
             }
 
