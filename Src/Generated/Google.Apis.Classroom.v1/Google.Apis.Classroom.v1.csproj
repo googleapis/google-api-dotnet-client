@@ -3,11 +3,11 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Classroom.v1 Client Library</Title>
-    <Version>1.27.1.921</Version>
+    <Version>1.27.1.923</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
-    <PackageProjectUrl>https://developers.google.com/api-client-library/dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/google/google-api-dotnet-client</PackageProjectUrl>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
