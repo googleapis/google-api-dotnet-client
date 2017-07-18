@@ -6,6 +6,10 @@ version: 1.0.{build}-{branch}
 # We're using Visual Studio 2017
 image: Visual Studio 2017
 
+# Temporary work around for https://appveyor.statuspage.io/incidents/m2vdvw39kdk8
+hosts:
+  api.nuget.org: 93.184.221.200
+
 # Install the pre-requisites for the build.
 install:
   # Make sure curl is available

@@ -31,7 +31,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
     {
         private LocalServerCodeReceiver.LimitedLocalhostHttpServer StartServer()
         {
-            var url = string.Format(LocalServerCodeReceiver.LoopbackCallback, 0);
+            var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, 0);
             return LocalServerCodeReceiver.LimitedLocalhostHttpServer.Start(url);
         }
 
@@ -51,7 +51,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var client = new HttpClient())
             {
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
-                var url = string.Format(LocalServerCodeReceiver.LoopbackCallback, server.Port) + "?a=b&c=d";
+                var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port) + "?a=b&c=d";
                 var responseMsgTask = client.GetAsync(url, cts.Token);
 
                 var queryParams = await server.GetQueryParamsAsync(cts.Token);
@@ -71,7 +71,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var client = new HttpClient())
             {
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
-                var url = string.Format(LocalServerCodeReceiver.LoopbackCallback, server.Port);
+                var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port);
                 var responseMsgTask = client.GetAsync(url, cts.Token);
 
                 var queryParams = await server.GetQueryParamsAsync(cts.Token);
@@ -140,7 +140,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var client = new HttpClient())
             {
                 var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
-                var url = string.Format(LocalServerCodeReceiver.LoopbackCallback, server.Port);
+                var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port);
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
                 request.Headers.Add("X-Test", new string('X', 10000));
                 var dummyTask = client.SendAsync(request, cts.Token);
