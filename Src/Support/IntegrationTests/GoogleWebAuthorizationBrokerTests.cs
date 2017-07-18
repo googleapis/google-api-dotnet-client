@@ -16,6 +16,7 @@ limitations under the License.
 
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Storage.v1;
+using Google.Apis.Storage.v1.Data;
 using Google.Apis.Util.Store;
 using System;
 using System.Threading;
@@ -27,7 +28,7 @@ namespace IntegrationTests
     public class GoogleWebAuthorizationBrokerTests
     {
         [Fact]
-        public async Task AuthClientSecret()
+        public async Task AuthClientSecretAndAccessTokenCredential()
         {
             // Warning: This test is interactive!
             // It will bring up a browser window that must be responded to before the test can complete.
@@ -46,6 +47,19 @@ namespace IntegrationTests
             // Test token refresh succeeds.
             bool refreshed = await cred.RefreshTokenAsync(CancellationToken.None);
             Assert.True(refreshed);
+
+            // Test a credential created from the AccessToken succeeds.
+            var accessTokenCred = GoogleCredential.FromAccessToken(cred.Token.AccessToken);
+            Assert.False(accessTokenCred.IsCreateScopedRequired);
+            var storageClient = new StorageService(new Google.Apis.Services.BaseClientService.Initializer
+            {
+                HttpClientInitializer = accessTokenCred,
+                ApplicationName = "test"
+            });
+            // Following line will throw is authentication fails.
+            Buckets buckets = storageClient.Buckets.List(Helper.GetProjectId()).Execute();
+            // A final sanity-check.
+            Assert.NotNull(buckets.Items);
         }
 
         [Fact]
