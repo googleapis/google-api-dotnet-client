@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/cSRtdvIwnx_tpSQU2HgCQoaVq90\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/S3pwfTJaOsJizaNBQgY1WAP4Jss\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3firstparty",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3firstparty",
- "revision": "20170712",
+ "revision": "20170718",
  "title": "Cloud Tool Results firstparty API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -695,9 +695,17 @@
    "type": "object",
    "description": "A stacktrace.",
    "properties": {
+    "clusterId": {
+     "type": "string",
+     "description": "Exception cluster ID"
+    },
     "exception": {
      "type": "string",
      "description": "The stack trace message.\n\nRequired"
+    },
+    "reportId": {
+     "type": "string",
+     "description": "Exception report ID"
     }
    }
   },
