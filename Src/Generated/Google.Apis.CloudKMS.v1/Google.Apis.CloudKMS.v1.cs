@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Google Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170621 (902)
+ *      <tr><th>API Rev<td>20170713 (924)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -2391,6 +2391,10 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class CloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>True if the log is for a permission of type DATA_READ or ADMIN_READ.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isReadPermissionType")]
+        public virtual System.Nullable<bool> IsReadPermissionType { get; set; } 
+
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
