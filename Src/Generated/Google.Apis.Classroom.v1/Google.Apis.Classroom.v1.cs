@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170717 (928)
+ *      <tr><th>API Rev<td>20170722 (933)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -2090,6 +2090,20 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned.
+                ///
+                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional sort ordering for results. A comma-separated list of fields with an optional sort
+                /// direction keyword. Supported fields are `updateTime` and `dueDate`. Supported direction keywords are
+                /// `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `dueDate
+                /// asc,updateTime desc`, `updateTime,dueDate desc`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
                 /// a maximum.
                 ///
@@ -2115,20 +2129,6 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.StringValueAttribute("DELETED")]
                     DELETED,
                 }
-
-                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional sort ordering for results. A comma-separated list of fields with an optional sort
-                /// direction keyword. Supported fields are `updateTime` and `dueDate`. Supported direction keywords are
-                /// `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `dueDate
-                /// asc,updateTime desc`, `updateTime,dueDate desc`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2164,24 +2164,6 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "courseWorkStates", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseWorkStates",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2194,6 +2176,24 @@ namespace Google.Apis.Classroom.v1
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "courseWorkStates", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkStates",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4047,16 +4047,6 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Maximum number of items to return. Zero means no maximum.
-            ///
-            /// The server may return fewer than the specified number of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Restricts returned invitations to those for a course with the specified identifier.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CourseId { get; set; }
-
             /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page of
             /// results should be returned.
             ///
@@ -4071,6 +4061,16 @@ namespace Google.Apis.Classroom.v1
             /// indicating the requesting user</summary>
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserId { get; set; }
+
+            /// <summary>Maximum number of items to return. Zero means no maximum.
+            ///
+            /// The server may return fewer than the specified number of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Restricts returned invitations to those for a course with the specified identifier.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CourseId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4097,24 +4097,6 @@ namespace Google.Apis.Classroom.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "courseId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "courseId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -4127,6 +4109,24 @@ namespace Google.Apis.Classroom.v1
                     "userId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "userId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "courseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

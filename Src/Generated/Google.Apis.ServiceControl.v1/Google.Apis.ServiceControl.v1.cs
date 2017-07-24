@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170712 (923)
+ *      <tr><th>API Rev<td>20170717 (928)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1075,7 +1075,7 @@ namespace Google.Apis.ServiceControl.v1.Data
 
         /// <summary>The resource being accessed, as a REST-style string. For example:
         ///
-        /// bigquery.googlapis.com/projects/PROJECTID/datasets/DATASETID</summary>
+        /// bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; } 
 
@@ -1100,6 +1100,10 @@ namespace Google.Apis.ServiceControl.v1.Data
 
     public class CheckInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Consumer info of this check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerInfo")]
+        public virtual ConsumerInfo ConsumerInfo { get; set; } 
+
         /// <summary>A list of fields and label keys that are ignored by the server. The client doesn't need to send
         /// them for following requests to improve performance and allow better aggregation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unusedArguments")]
@@ -1161,6 +1165,18 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>The actual config id used to process the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConfigId")]
         public virtual string ServiceConfigId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>`ConsumerInfo` provides information about the consumer project.</summary>
+    public class ConsumerInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Google cloud project number, e.g. 1234567890. A value of 0 indicates no project number is
+        /// found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1811,7 +1827,11 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Metadata about the request.</summary>
     public class RequestMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The IP address of the caller.</summary>
+        /// <summary>The IP address of the caller. For caller from internet, this will be public IPv4 or IPv6 address.
+        /// For caller from GCE VM with external IP address, this will be the VM's external IP address. For caller from
+        /// GCE VM without external IP address, if the VM is in the same GCP organization (or project) as the accessed
+        /// resource, `caller_ip` will be the GCE VM's internal IPv4 address, otherwise it will be redacted to "gce-
+        /// internal-ip". See https://cloud.google.com/compute/docs/vpc/ for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerIp")]
         public virtual string CallerIp { get; set; } 
 
@@ -1821,9 +1841,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// +   `google-api-python-client/1.4.0`: The request was made by the Google API client for Python. +   `Cloud
         /// SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`: The request was made by the Google Cloud SDK CLI
         /// (gcloud). +   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`: The request was
-        /// made from the `my-project` App Engine app.
-        ///
-        /// NOLINT</summary>
+        /// made from the `my-project` App Engine app. NOLINT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerSuppliedUserAgent")]
         public virtual string CallerSuppliedUserAgent { get; set; } 
 

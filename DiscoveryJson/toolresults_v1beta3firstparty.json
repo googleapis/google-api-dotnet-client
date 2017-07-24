@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/S3pwfTJaOsJizaNBQgY1WAP4Jss\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/4oPnQhgaz4eBR_zahBYffynwMBI\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3firstparty",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3firstparty",
- "revision": "20170718",
+ "revision": "20170721",
  "title": "Cloud Tool Results firstparty API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -276,7 +276,7 @@
     },
     "testExecutionMatrixId": {
      "type": "string",
-     "description": "TestExecution Matrix ID that the Test Service uses.\n\n- In response: present if set by create - In create: optional - In update: never set"
+     "description": "TestExecution Matrix ID that the TestExecutionService uses.\n\n- In response: present if set by create - In create: optional - In update: never set"
     }
    }
   },

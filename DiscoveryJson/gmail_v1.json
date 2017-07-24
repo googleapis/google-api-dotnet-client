@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/jjY7pkk9YS3I7OrUYpKHEcptmsQ\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-7hctsPRqqhE_T5dgXskHqqnQRE\"",
  "discoveryVersion": "v1",
  "id": "gmail:v1",
  "name": "gmail",
  "version": "v1",
- "revision": "20170711",
+ "revision": "20170719",
  "title": "Gmail API",
  "description": "Access Gmail mailboxes including sending user email.",
  "ownerDomain": "google.com",

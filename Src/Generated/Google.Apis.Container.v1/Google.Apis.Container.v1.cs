@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170627 (908)
+ *      <tr><th>API Rev<td>20170710 (921)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -3461,6 +3461,22 @@ namespace Google.Apis.Container.v1
 namespace Google.Apis.Container.v1.Data
 {    
 
+    /// <summary>AcceleratorConfig represents a Hardware Accelerator request.</summary>
+    public class AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of the accelerator cards exposed to an instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
+        public virtual System.Nullable<long> AcceleratorCount { get; set; } 
+
+        /// <summary>The accelerator type resource name. List of supported accelerators
+        /// [here](/compute/docs/gpus/#Introduction)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
+        public virtual string AcceleratorType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for the addons that can be automatically spun up in the cluster, enabling additional
     /// functionality.</summary>
     public class AddonsConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -3474,6 +3490,10 @@ namespace Google.Apis.Container.v1.Data
         /// load balancers for services in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpLoadBalancing")]
         public virtual HttpLoadBalancing HttpLoadBalancing { get; set; } 
+
+        /// <summary>Configuration for the Kubernetes Dashboard.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesDashboard")]
+        public virtual KubernetesDashboard KubernetesDashboard { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3500,6 +3520,21 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>CancelOperationRequest cancels a single operation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>CidrBlock contains an optional name and one CIDR block.</summary>
+    public class CidrBlock : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>cidr_block must be specified in CIDR notation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrBlock")]
+        public virtual string CidrBlockValue { get; set; } 
+
+        /// <summary>display_name is an optional field for users to identify CIDR blocks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3617,6 +3652,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuth")]
         public virtual MasterAuth MasterAuth { get; set; } 
 
+        /// <summary>Master authorized networks is a Beta feature. The configuration options for master authorized
+        /// networks feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
+        public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; } 
+
         /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
         ///
         /// * `monitoring.googleapis.com` - the Google Cloud Monitoring service. * `none` - no metrics will be exported
@@ -3719,6 +3759,11 @@ namespace Google.Apis.Container.v1.Data
         /// This list must always include the cluster's primary zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLocations")]
         public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; } 
+
+        /// <summary>Master authorized networks is a Beta feature. The desired configuration options for master
+        /// authorized networks feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterAuthorizedNetworksConfig")]
+        public virtual MasterAuthorizedNetworksConfig DesiredMasterAuthorizedNetworksConfig { get; set; } 
 
         /// <summary>The Kubernetes version to change the master to. The only valid value is the latest supported
         /// version. Use "-" to have the server automatically select the latest version.</summary>
@@ -3886,6 +3931,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for the Kubernetes Dashboard.</summary>
+    public class KubernetesDashboard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Kubernetes Dashboard is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration for the legacy Attribute Based Access Control authorization mode.</summary>
     public class LegacyAbac : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3980,6 +4036,25 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Master authorized networks is a Beta feature. Configuration options for the master authorized networks
+    /// feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master
+    /// through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod
+    /// IPs.</summary>
+    public class MasterAuthorizedNetworksConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>cidr_blocks define up to 10 external networks that could access Kubernetes master through
+        /// HTTPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cidrBlocks")]
+        public virtual System.Collections.Generic.IList<CidrBlock> CidrBlocks { get; set; } 
+
+        /// <summary>Whether or not master authorized networks is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-
     /// networking/networkpolicies/</summary>
     public class NetworkPolicy : Google.Apis.Requests.IDirectResponseSchema
@@ -3999,6 +4074,11 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Parameters that describe the nodes in a cluster.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of hardware accelerators to be attached to each node. See
+        /// https://cloud.google.com/compute/docs/gpus for more information about support for GPUs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
+
         /// <summary>Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB.
         ///
         /// If unspecified, the default disk size is 100GB.</summary>

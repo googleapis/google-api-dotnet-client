@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170718 (929)
+ *      <tr><th>API Rev<td>20170721 (932)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3509,7 +3509,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>TestExecution Matrix ID that the Test Service uses.
+        /// <summary>TestExecution Matrix ID that the TestExecutionService uses.
         ///
         /// - In response: present if set by create - In create: optional - In update: never set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testExecutionMatrixId")]
