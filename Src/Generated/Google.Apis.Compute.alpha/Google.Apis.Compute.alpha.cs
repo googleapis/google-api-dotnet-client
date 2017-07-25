@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170710 (921)
+ *      <tr><th>API Rev<td>20170712 (923)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -16101,107 +16101,6 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Delete selected overrides for the managed instance group.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">The name of the zone where the
-        /// managed instance group is located. It should conform to RFC1035.</param>
-        /// <param
-        /// name="instanceGroupManager">The name of the managed instance group.</param>
-        public virtual DeleteOverridesRequest DeleteOverrides(Google.Apis.Compute.alpha.Data.InstanceGroupManagersDeleteOverridesRequest body, string project, string zone, string instanceGroupManager)
-        {
-            return new DeleteOverridesRequest(service, body, project, zone, instanceGroupManager);
-        }
-
-        /// <summary>Delete selected overrides for the managed instance group.</summary>
-        public class DeleteOverridesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
-        {
-            /// <summary>Constructs a new DeleteOverrides request.</summary>
-            public DeleteOverridesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.InstanceGroupManagersDeleteOverridesRequest body, string project, string zone, string instanceGroupManager)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                InstanceGroupManager = instanceGroupManager;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>The name of the zone where the managed instance group is located. It should conform to
-            /// RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>The name of the managed instance group.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string InstanceGroupManager { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.alpha.Data.InstanceGroupManagersDeleteOverridesRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "deleteOverrides"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deleteOverrides"; }
-            }
-
-            /// <summary>Initializes DeleteOverrides parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instanceGroupManager",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
         /// <summary>Delete selected per-instance configs for the managed instance group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -16813,183 +16712,6 @@ namespace Google.Apis.Compute.alpha
                     "order_by", new Google.Apis.Discovery.Parameter
                     {
                         Name = "order_by",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Lists all of the overrides defined for the managed instance group.</summary>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">The name of the zone where the
-        /// managed instance group is located. It should conform to RFC1035.</param>
-        /// <param
-        /// name="instanceGroupManager">The name of the managed instance group. It should conform to RFC1035.</param>
-        public virtual ListOverridesRequest ListOverrides(string project, string zone, string instanceGroupManager)
-        {
-            return new ListOverridesRequest(service, project, zone, instanceGroupManager);
-        }
-
-        /// <summary>Lists all of the overrides defined for the managed instance group.</summary>
-        public class ListOverridesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.InstanceGroupManagersListOverridesResponse>
-        {
-            /// <summary>Constructs a new ListOverrides request.</summary>
-            public ListOverridesRequest(Google.Apis.Services.IClientService service, string project, string zone, string instanceGroupManager)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                InstanceGroupManager = instanceGroupManager;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>The name of the zone where the managed instance group is located. It should conform to
-            /// RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>The name of the managed instance group. It should conform to RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string InstanceGroupManager { get; private set; }
-
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
-            ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
-            ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "listOverrides"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/listOverrides"; }
-            }
-
-            /// <summary>Initializes ListOverrides parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instanceGroupManager",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -18301,131 +18023,6 @@ namespace Google.Apis.Compute.alpha
             }
 
             /// <summary>Initializes Update parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "zone", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "zone",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instanceGroupManager",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Insert or patch (for the ones that already exist) overrides for the managed instance
-        /// group.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="zone">The name of the zone where the
-        /// managed instance group is located. It should conform to RFC1035.</param>
-        /// <param
-        /// name="instanceGroupManager">The name of the managed instance group. It should conform to RFC1035.</param>
-        public virtual UpdateOverridesRequest UpdateOverrides(Google.Apis.Compute.alpha.Data.InstanceGroupManagersUpdateOverridesRequest body, string project, string zone, string instanceGroupManager)
-        {
-            return new UpdateOverridesRequest(service, body, project, zone, instanceGroupManager);
-        }
-
-        /// <summary>Insert or patch (for the ones that already exist) overrides for the managed instance
-        /// group.</summary>
-        public class UpdateOverridesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
-        {
-            /// <summary>Constructs a new UpdateOverrides request.</summary>
-            public UpdateOverridesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.InstanceGroupManagersUpdateOverridesRequest body, string project, string zone, string instanceGroupManager)
-                : base(service)
-            {
-                Project = project;
-                Zone = zone;
-                InstanceGroupManager = instanceGroupManager;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>The name of the zone where the managed instance group is located. It should conform to
-            /// RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Zone { get; private set; }
-
-            /// <summary>The name of the managed instance group. It should conform to RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string InstanceGroupManager { get; private set; }
-
-            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
-            /// retry your request, the server will know to ignore the request if it has already been completed.
-            ///
-            /// For example, consider a situation where you make an initial request and the request times out. If you
-            /// make the request again with the same request ID, the server can check if original operation with the
-            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.
-            ///
-            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
-            /// (00000000-0000-0000-0000-000000000000).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestId { get; set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.alpha.Data.InstanceGroupManagersUpdateOverridesRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "updateOverrides"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/updateOverrides"; }
-            }
-
-            /// <summary>Initializes UpdateOverrides parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -28320,14 +27917,14 @@ namespace Google.Apis.Compute.alpha
         }
 
 
-        /// <summary>Disable this project as an XPN host project.</summary>
+        /// <summary>Disable this project as a shared VPC host project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual DisableXpnHostRequest DisableXpnHost(string project)
         {
             return new DisableXpnHostRequest(service, project);
         }
 
-        /// <summary>Disable this project as an XPN host project.</summary>
+        /// <summary>Disable this project as a shared VPC host project.</summary>
         public class DisableXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new DisableXpnHost request.</summary>
@@ -28402,7 +27999,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Disable an XPN resource associated with this host project.</summary>
+        /// <summary>Disable a serivce resource (a.k.a service project) associated with this host project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual DisableXpnResourceRequest DisableXpnResource(Google.Apis.Compute.alpha.Data.ProjectsDisableXpnResourceRequest body, string project)
@@ -28410,7 +28007,7 @@ namespace Google.Apis.Compute.alpha
             return new DisableXpnResourceRequest(service, body, project);
         }
 
-        /// <summary>Disable an XPN resource associated with this host project.</summary>
+        /// <summary>Disable a serivce resource (a.k.a service project) associated with this host project.</summary>
         public class DisableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new DisableXpnResource request.</summary>
@@ -28492,14 +28089,14 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Enable this project as an XPN host project.</summary>
+        /// <summary>Enable this project as a shared VPC host project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual EnableXpnHostRequest EnableXpnHost(string project)
         {
             return new EnableXpnHostRequest(service, project);
         }
 
-        /// <summary>Enable this project as an XPN host project.</summary>
+        /// <summary>Enable this project as a shared VPC host project.</summary>
         public class EnableXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new EnableXpnHost request.</summary>
@@ -28574,8 +28171,8 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Enable XPN resource (a.k.a service project or service folder in the future) for a host project, so
-        /// that subnetworks in the host project can be used by instances in the service project or folder.</summary>
+        /// <summary>Enable service resource (a.k.a service project) for a host project, so that subnets in the host
+        /// project can be used by instances in the service project.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual EnableXpnResourceRequest EnableXpnResource(Google.Apis.Compute.alpha.Data.ProjectsEnableXpnResourceRequest body, string project)
@@ -28583,8 +28180,8 @@ namespace Google.Apis.Compute.alpha
             return new EnableXpnResourceRequest(service, body, project);
         }
 
-        /// <summary>Enable XPN resource (a.k.a service project or service folder in the future) for a host project, so
-        /// that subnetworks in the host project can be used by instances in the service project or folder.</summary>
+        /// <summary>Enable service resource (a.k.a service project) for a host project, so that subnets in the host
+        /// project can be used by instances in the service project.</summary>
         public class EnableXpnResourceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new EnableXpnResource request.</summary>
@@ -28726,14 +28323,16 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Get the XPN host project that this project links to. May be empty if no link exists.</summary>
+        /// <summary>Get the shared VPC host project that this project links to. May be empty if no link
+        /// exists.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetXpnHostRequest GetXpnHost(string project)
         {
             return new GetXpnHostRequest(service, project);
         }
 
-        /// <summary>Get the XPN host project that this project links to. May be empty if no link exists.</summary>
+        /// <summary>Get the shared VPC host project that this project links to. May be empty if no link
+        /// exists.</summary>
         public class GetXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Project>
         {
             /// <summary>Constructs a new GetXpnHost request.</summary>
@@ -28786,14 +28385,14 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Get XPN resources associated with this host project.</summary>
+        /// <summary>Get service resources (a.k.a service project) associated with this host project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetXpnResourcesRequest GetXpnResources(string project)
         {
             return new GetXpnResourcesRequest(service, project);
         }
 
-        /// <summary>Get XPN resources associated with this host project.</summary>
+        /// <summary>Get service resources (a.k.a service project) associated with this host project.</summary>
         public class GetXpnResourcesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.ProjectsGetXpnResources>
         {
             /// <summary>Constructs a new GetXpnResources request.</summary>
@@ -28900,7 +28499,7 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>List all XPN host projects visible to the user in an organization.</summary>
+        /// <summary>List all shared VPC host projects visible to the user in an organization.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListXpnHostsRequest ListXpnHosts(Google.Apis.Compute.alpha.Data.ProjectsListXpnHostsRequest body, string project)
@@ -28908,7 +28507,7 @@ namespace Google.Apis.Compute.alpha
             return new ListXpnHostsRequest(service, body, project);
         }
 
-        /// <summary>List all XPN host projects visible to the user in an organization.</summary>
+        /// <summary>List all shared VPC host projects visible to the user in an organization.</summary>
         public class ListXpnHostsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.XpnHostList>
         {
             /// <summary>Constructs a new ListXpnHosts request.</summary>
@@ -33626,106 +33225,6 @@ namespace Google.Apis.Compute.alpha
 
         }
 
-        /// <summary>Delete selected overrides for the managed instance group.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">Name of the region scoping
-        /// this request, should conform to RFC1035.</param>
-        /// <param name="instanceGroupManager">The name of the managed
-        /// instance group. It should conform to RFC1035.</param>
-        public virtual DeleteOverridesRequest DeleteOverrides(Google.Apis.Compute.alpha.Data.RegionInstanceGroupManagersDeleteOverridesRequest body, string project, string region, string instanceGroupManager)
-        {
-            return new DeleteOverridesRequest(service, body, project, region, instanceGroupManager);
-        }
-
-        /// <summary>Delete selected overrides for the managed instance group.</summary>
-        public class DeleteOverridesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
-        {
-            /// <summary>Constructs a new DeleteOverrides request.</summary>
-            public DeleteOverridesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.RegionInstanceGroupManagersDeleteOverridesRequest body, string project, string region, string instanceGroupManager)
-                : base(service)
-            {
-                Project = project;
-                Region = region;
-                InstanceGroupManager = instanceGroupManager;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>Name of the region scoping this request, should conform to RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Region { get; private set; }
-
-            /// <summary>The name of the managed instance group. It should conform to RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string InstanceGroupManager { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.alpha.Data.RegionInstanceGroupManagersDeleteOverridesRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "deleteOverrides"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deleteOverrides"; }
-            }
-
-            /// <summary>Initializes DeleteOverrides parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "region", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "region",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instanceGroupManager",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
         /// <summary>Delete selected per-instance configs for the managed instance group.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -34328,182 +33827,6 @@ namespace Google.Apis.Compute.alpha
                     "order_by", new Google.Apis.Discovery.Parameter
                     {
                         Name = "order_by",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Lists all of the overrides defined for the managed instance group.</summary>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">Name of the region scoping
-        /// this request, should conform to RFC1035.</param>
-        /// <param name="instanceGroupManager">The name of the managed
-        /// instance group. It should conform to RFC1035.</param>
-        public virtual ListOverridesRequest ListOverrides(string project, string region, string instanceGroupManager)
-        {
-            return new ListOverridesRequest(service, project, region, instanceGroupManager);
-        }
-
-        /// <summary>Lists all of the overrides defined for the managed instance group.</summary>
-        public class ListOverridesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.RegionInstanceGroupManagersListOverridesResponse>
-        {
-            /// <summary>Constructs a new ListOverrides request.</summary>
-            public ListOverridesRequest(Google.Apis.Services.IClientService service, string project, string region, string instanceGroupManager)
-                : base(service)
-            {
-                Project = project;
-                Region = region;
-                InstanceGroupManager = instanceGroupManager;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>Name of the region scoping this request, should conform to RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Region { get; private set; }
-
-            /// <summary>The name of the managed instance group. It should conform to RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string InstanceGroupManager { get; private set; }
-
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
-            ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
-            ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
-            ///
-            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
-            /// <summary>The maximum number of results per page that should be returned. If the number of available
-            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
-            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
-            /// 500)</summary>
-            /// [default: 500]
-            /// [minimum: 0]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
-            /// based on the resource name.
-            ///
-            /// You can also sort results in descending order based on the creation timestamp using
-            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
-            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
-            /// operation is returned first.
-            ///
-            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
-            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
-            /// request to get the next page of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "listOverrides"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/listOverrides"; }
-            }
-
-            /// <summary>Initializes ListOverrides parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "region", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "region",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instanceGroupManager",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "500",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -35697,108 +35020,6 @@ namespace Google.Apis.Compute.alpha
                         Name = "requestId",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-
-        /// <summary>Insert or patch (for the ones that already exist) overrides for the managed instance
-        /// group.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="project">Project ID for this request.</param>
-        /// <param name="region">Name of the region scoping
-        /// this request, should conform to RFC1035.</param>
-        /// <param name="instanceGroupManager">The name of the managed
-        /// instance group. It should conform to RFC1035.</param>
-        public virtual UpdateOverridesRequest UpdateOverrides(Google.Apis.Compute.alpha.Data.RegionInstanceGroupManagersUpdateOverridesRequest body, string project, string region, string instanceGroupManager)
-        {
-            return new UpdateOverridesRequest(service, body, project, region, instanceGroupManager);
-        }
-
-        /// <summary>Insert or patch (for the ones that already exist) overrides for the managed instance
-        /// group.</summary>
-        public class UpdateOverridesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
-        {
-            /// <summary>Constructs a new UpdateOverrides request.</summary>
-            public UpdateOverridesRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.RegionInstanceGroupManagersUpdateOverridesRequest body, string project, string region, string instanceGroupManager)
-                : base(service)
-            {
-                Project = project;
-                Region = region;
-                InstanceGroupManager = instanceGroupManager;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>Project ID for this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Project { get; private set; }
-
-            /// <summary>Name of the region scoping this request, should conform to RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Region { get; private set; }
-
-            /// <summary>The name of the managed instance group. It should conform to RFC1035.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("instanceGroupManager", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string InstanceGroupManager { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.alpha.Data.RegionInstanceGroupManagersUpdateOverridesRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "updateOverrides"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/updateOverrides"; }
-            }
-
-            /// <summary>Initializes UpdateOverrides parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "project", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "project",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-                    });
-                RequestParameters.Add(
-                    "region", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "region",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "instanceGroupManager", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "instanceGroupManager",
-                        IsRequired = true,
-                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -50320,12 +49541,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class AcceleratorTypeAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped accelerator type lists.</summary>
+        /// <summary>A list of AcceleratorTypesScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,AcceleratorTypesScopedList> Items { get; set; } 
 
@@ -50365,7 +49585,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -50452,8 +49675,13 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string NatIP { get; set; } 
 
         /// <summary>This signifies the networking tier used for configuring this access configuration and can only take
-        /// the following values: PREMIUM , SELECT. If this field is not specified, it is assumed to be
-        /// PREMIUM.</summary>
+        /// the following values: PREMIUM, STANDARD.
+        ///
+        /// If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with
+        /// this networkTier.
+        ///
+        /// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier
+        /// associated with the Address resource owning that IP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
 
@@ -50541,7 +49769,9 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Name { get; set; } 
 
         /// <summary>This signifies the networking tier used for configuring this Address and can only take the
-        /// following values: PREMIUM , SELECT. If this field is not specified, it is assumed to be PREMIUM.</summary>
+        /// following values: PREMIUM , STANDARD.
+        ///
+        /// If this field is not specified, it is assumed to be PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
 
@@ -50581,7 +49811,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped address lists.</summary>
+        /// <summary>A list of AddressesScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,AddressesScopedList> Items { get; set; } 
 
@@ -50608,12 +49838,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of addresses.</summary>
     public class AddressList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of addresses.</summary>
+        /// <summary>A list of Address resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Address> Items { get; set; } 
 
@@ -50628,7 +49857,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -51008,12 +50237,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class AutoscalerAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A map of scoped autoscaler lists.</summary>
+        /// <summary>A list of AutoscalersScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,AutoscalersScopedList> Items { get; set; } 
 
@@ -51040,8 +50268,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of Autoscaler resources.</summary>
     public class AutoscalerList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -51351,7 +50578,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failover")]
         public virtual System.Nullable<bool> Failover { get; set; } 
 
-        /// <summary>The fully-qualified URL of a zonal Instance Group resource. This instance group defines the list of
+        /// <summary>The fully-qualified URL of a Instance Group resource. This instance group defines the list of
         /// instances that serve traffic. Member virtual machine instances from each instance group must live in the
         /// same zone as the instance group itself. No two backends in a backend service are allowed to use same
         /// Instance Group resource.
@@ -51359,8 +50586,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// Note that you must specify an Instance Group resource using the fully-qualified URL, rather than a partial
         /// URL.
         ///
-        /// When the BackendService has load balancing scheme INTERNAL, the instance group must be in a zone within the
-        /// same region as the BackendService.</summary>
+        /// When the BackendService has load balancing scheme INTERNAL, the instance group must be within the same
+        /// region as the BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; } 
 
@@ -51489,7 +50716,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -51655,7 +50885,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A map of scoped BackendService lists.</summary>
+        /// <summary>A list of BackendServicesScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,BackendServicesScopedList> Items { get; set; } 
 
@@ -51663,7 +50893,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -51979,12 +51212,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class CommitmentAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Commitments by scope.</summary>
+        /// <summary>A list of CommitmentsScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,CommitmentsScopedList> Items { get; set; } 
 
@@ -52011,8 +51243,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of Commitment resources.</summary>
     public class CommitmentList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -52274,6 +51505,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastDetachTimestamp")]
         public virtual string LastDetachTimestamp { get; set; } 
 
+        /// <summary>Integer license codes indicating which licenses are attached to this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
+
         /// <summary>Any applicable publicly visible licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
@@ -52402,12 +51637,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class DiskAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped disk lists.</summary>
+        /// <summary>A list of DisksScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,DisksScopedList> Items { get; set; } 
 
@@ -52419,7 +51653,7 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
         /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
         /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results. Acceptable values are 0 to 500, inclusive. (Default: 500)</summary>
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -52446,10 +51680,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>This token allows you to get the next page of results for list requests. If the number of results
-        /// is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next
-        /// list request. Subsequent list requests will have their own nextPageToken to continue paging through the
-        /// results.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -52531,12 +51765,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class DiskTypeAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped disk type lists.</summary>
+        /// <summary>A list of DiskTypesScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,DiskTypesScopedList> Items { get; set; } 
 
@@ -52562,12 +51795,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of disk types.</summary>
     public class DiskTypeList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Disk Type resources.</summary>
+        /// <summary>A list of DiskType resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<DiskType> Items { get; set; } 
 
@@ -52848,12 +52080,13 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceServiceAccounts")]
         public virtual System.Collections.Generic.IList<string> SourceServiceAccounts { get; set; } 
 
-        /// <summary>If source tags are specified, the firewall will apply only to traffic with source IP that belongs
-        /// to a tag listed in source tags. Source tags cannot be used to control traffic to an instance's external IP
-        /// address. Because tags are associated with an instance, not an IP address. One or both of sourceRanges and
-        /// sourceTags may be set. If both properties are set, the firewall will apply to traffic that has source IP
-        /// address within sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The
-        /// connection does not need to match both properties for the firewall to apply.</summary>
+        /// <summary>If source tags are specified, the firewall will apply only to traffic from VM instances in the same
+        /// virtual network with a tag listed in the source tags. Source tags cannot be used to control traffic to an
+        /// instance's external IP address, it only applies to traffic between instances in the same virtual network.
+        /// Because tags are associated with instances, not IP addresses. One or both of sourceRanges and sourceTags may
+        /// be set. If both properties are set, the firewall will apply to traffic that has source IP address within
+        /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
+        /// not need to match both properties for the firewall to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
 
@@ -52914,12 +52147,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of firewalls.</summary>
     public class FirewallList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Firewall resources.</summary>
+        /// <summary>A list of Firewall resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Firewall> Items { get; set; } 
 
@@ -53054,7 +52286,13 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string Network { get; set; } 
 
         /// <summary>This signifies the networking tier used for configuring this load balancer and can only take the
-        /// following values: PREMIUM , SELECT. If this field is not specified, it is assumed to be PREMIUM.</summary>
+        /// following values: PREMIUM , STANDARD.
+        ///
+        /// For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid
+        /// value is PREMIUM.
+        ///
+        /// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be
+        /// equal to the networkTier of the Address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
 
@@ -53066,8 +52304,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995 -
-        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995 - TargetVpnGateway: 500, 4500
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222 -
+        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222 - TargetVpnGateway: 500, 4500
         /// -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
@@ -53133,12 +52371,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class ForwardingRuleAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A map of scoped forwarding rule lists.</summary>
+        /// <summary>A list of ForwardingRulesScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,ForwardingRulesScopedList> Items { get; set; } 
 
@@ -53165,7 +52402,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of ForwardingRule resources.</summary>
     public class ForwardingRuleList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource. Set by the server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -53468,8 +52705,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of HealthCheck resources.</summary>
     public class HealthCheckList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -53606,12 +52842,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class HostAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped host lists.</summary>
+        /// <summary>A list of HostsScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,HostsScopedList> Items { get; set; } 
 
@@ -53627,7 +52862,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -53638,12 +52873,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of hosts.</summary>
     public class HostList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Host resources.</summary>
+        /// <summary>A list of Host resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Host> Items { get; set; } 
 
@@ -53658,7 +52892,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -53748,12 +52982,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class HostTypeAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped host type lists.</summary>
+        /// <summary>A list of HostTypesScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,HostTypesScopedList> Items { get; set; } 
 
@@ -53769,7 +53002,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -53780,12 +53013,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of host types.</summary>
     public class HostTypeList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Host Type resources.</summary>
+        /// <summary>A list of HostType resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<HostType> Items { get; set; } 
 
@@ -53800,7 +53032,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -53986,7 +53218,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of HttpHealthCheck resources.</summary>
     public class HttpHealthCheckList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource. Defined by the server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -54188,6 +53420,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
+        /// <summary>Integer license codes indicating which licenses are attached to this image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
+
         /// <summary>Any applicable license URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
@@ -54282,12 +53518,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of images.</summary>
     public class ImageList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Image resources.</summary>
+        /// <summary>A list of Image resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Image> Items { get; set; } 
 
@@ -54478,12 +53713,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstanceAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped instance lists.</summary>
+        /// <summary>A list of InstancesScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,InstancesScopedList> Items { get; set; } 
 
@@ -54577,12 +53811,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstanceGroupAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique identifier for this aggregated list of instance groups. The server generates
-        /// this identifier.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A map of scoped instance group lists.</summary>
+        /// <summary>A list of InstanceGroupsScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,InstanceGroupsScopedList> Items { get; set; } 
 
@@ -54598,7 +53831,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this resource type. The server generates this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -54609,12 +53842,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A list of InstanceGroup resources.</summary>
     public class InstanceGroupList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique identifier for this list of instance groups. The server generates this
-        /// identifier.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A list of instance groups.</summary>
+        /// <summary>A list of InstanceGroup resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InstanceGroup> Items { get; set; } 
 
@@ -54630,7 +53862,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this resource type. The server generates this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -54856,12 +54088,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstanceGroupManagerAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique identifier for this aggregated list of managed instance groups. The server
-        /// generates this identifier.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of filtered managed instance group lists.</summary>
+        /// <summary>A list of InstanceGroupManagersScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,InstanceGroupManagersScopedList> Items { get; set; } 
 
@@ -54877,7 +54108,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this resource type. The server generates this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -54913,12 +54144,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>[Output Only] A list of managed instance groups.</summary>
     public class InstanceGroupManagerList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique identifier for this resource type. The server generates this
-        /// identifier.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of managed instance groups.</summary>
+        /// <summary>A list of InstanceGroupManager resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InstanceGroupManager> Items { get; set; } 
 
@@ -55091,18 +54321,6 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>InstanceGroupManagers.deleteOverrides</summary>
-    public class InstanceGroupManagersDeleteOverridesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of instances for which we want to delete overrides on this managed instance
-        /// group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>InstanceGroupManagers.deletePerInstanceConfigs</summary>
     public class InstanceGroupManagersDeletePerInstanceConfigsReq : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -55132,26 +54350,9 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class InstanceGroupManagersListOverridesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>[Output Only] The list of overrides in the managed instance group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ManagedInstanceOverride> Items { get; set; } 
-
-        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
-        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
-        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class InstanceGroupManagersListPerInstanceConfigsResp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The list of overrides in the managed instance group.</summary>
+        /// <summary>[Output Only] The list of PerInstanceConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<PerInstanceConfig> Items { get; set; } 
 
@@ -55301,17 +54502,6 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>InstanceGroupManagers.updateOverrides</summary>
-    public class InstanceGroupManagersUpdateOverridesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of overrides to insert or patch on this managed instance group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
-        public virtual System.Collections.Generic.IList<ManagedInstanceOverride> Overrides { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>InstanceGroupManagers.updatePerInstanceConfigs</summary>
     public class InstanceGroupManagersUpdatePerInstanceConfigsReq : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -55335,13 +54525,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InstanceGroupsListInstances : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique identifier for this list of instances in the specified instance group. The
-        /// server generates this identifier.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of instances and any named ports that are assigned to those
-        /// instances.</summary>
+        /// <summary>A list of InstanceWithNamedPorts resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InstanceWithNamedPorts> Items { get; set; } 
 
@@ -55357,8 +54545,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this list of instances in the specified instance groups. The server
-        /// generates this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -55461,12 +54648,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of instances.</summary>
     public class InstanceList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of instances.</summary>
+        /// <summary>A list of Instance resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Instance> Items { get; set; } 
 
@@ -55493,12 +54679,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of instance referrers.</summary>
     public class InstanceListReferrers : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of referrers.</summary>
+        /// <summary>A list of Reference resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Reference> Items { get; set; } 
 
@@ -55673,12 +54858,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A list of instance templates.</summary>
     public class InstanceTemplateList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A unique identifier for this instance template. The server defines this
-        /// identifier.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] list of InstanceTemplate resources.</summary>
+        /// <summary>A list of InstanceTemplate resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InstanceTemplate> Items { get; set; } 
 
@@ -55694,7 +54878,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this instance template list. The server defines this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -55856,7 +55040,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support Interconnect. Next available tag: 22</summary>
+    /// <summary>Protocol definitions for Mixer API to support Interconnect. Next available tag: 23</summary>
     public class Interconnect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Administrative status of the interconnect. When this is set to ?true?, the Interconnect is
@@ -55875,6 +55059,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>Customer name, to put in the Letter of Authorization as the party authorized to request a
+        /// crossconnect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerName")]
+        public virtual string CustomerName { get; set; } 
 
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
@@ -56040,12 +55229,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class InterconnectAttachmentAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped InterconnectAttachment lists.</summary>
+        /// <summary>A list of InterconnectAttachmentsScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,InterconnectAttachmentsScopedList> Items { get; set; } 
 
@@ -56072,12 +55260,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Response to the list request, and contains a list of interconnect attachments.</summary>
     public class InterconnectAttachmentList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of InterconnectAttachment resources.</summary>
+        /// <summary>A list of InterconnectAttachment resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InterconnectAttachment> Items { get; set; } 
 
@@ -56169,12 +55356,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Response to the list request, and contains a list of interconnects.</summary>
     public class InterconnectList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Interconnect resources.</summary>
+        /// <summary>A list of Interconnect resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Interconnect> Items { get; set; } 
 
@@ -56271,12 +55457,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Response to the list request, and contains a list of interconnect locations.</summary>
     public class InterconnectLocationList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of InterconnectLocation resources.</summary>
+        /// <summary>A list of InterconnectLocation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InterconnectLocation> Items { get; set; } 
 
@@ -56378,17 +55563,15 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of IP owners.</summary>
     public class IpOwnerList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of InternalIpOwner resources.</summary>
+        /// <summary>A list of InternalIpOwner resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InternalIpOwner> Items { get; set; } 
 
-        /// <summary>[Output Only] Type of resource. Always compute#internalIpOwnerList for lists of internal IP
-        /// owners.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#ipOwnerList for lists of IP owners.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -56477,12 +55660,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class LicensesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of License resources.</summary>
+        /// <summary>A list of License resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<License> Items { get; set; } 
 
@@ -56519,6 +55701,10 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>True if the log is for a permission of type DATA_READ or ADMIN_READ.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isReadPermissionType")]
+        public virtual System.Nullable<bool> IsReadPermissionType { get; set; } 
+
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
@@ -56605,12 +55791,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class MachineTypeAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped machine type lists.</summary>
+        /// <summary>A list of MachineTypesScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,MachineTypesScopedList> Items { get; set; } 
 
@@ -56637,12 +55822,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of machine types.</summary>
     public class MachineTypeList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Machine Type resources.</summary>
+        /// <summary>A list of MachineType resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<MachineType> Items { get; set; } 
 
@@ -56827,12 +56011,33 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<ManagedInstanceOverrideDiskOverride> Disks { get; set; } 
 
-        /// <summary>The URL of the instance.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
-        public virtual string Instance { get; set; } 
+        /// <summary>Metadata overrides defined for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IList<ManagedInstanceOverride.MetadataData> Metadata { get; set; } 
+
+        /// <summary>[Output Only] Indicates where does the override come from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual string Origin { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+        
+
+        public class MetadataData
+        {
+            /// <summary>Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be
+            /// less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally,
+            /// to avoid ambiguity, keys must not conflict with any other metadata keys for the project.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("key")]
+            public virtual string Key { get; set; } 
+
+            /// <summary>Value for the metadata entry. These are free-form strings, and only have meaning as interpreted
+            /// by the image running in the instance. The only restriction placed on values is that their size must be
+            /// less than or equal to 262144 bytes (256 KiB).</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value { get; set; } 
+
+        }
     }    
 
     public class ManagedInstanceOverrideDiskOverride : Google.Apis.Requests.IDirectResponseSchema
@@ -56901,7 +56106,7 @@ namespace Google.Apis.Compute.alpha.Data
 
             /// <summary>Value for the metadata entry. These are free-form strings, and only have meaning as interpreted
             /// by the image running in the instance. The only restriction placed on values is that their size must be
-            /// less than or equal to 32768 bytes.</summary>
+            /// less than or equal to 262144 bytes (256 KiB).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("value")]
             public virtual string Value { get; set; } 
 
@@ -57065,12 +56270,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of networks.</summary>
     public class NetworkList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Network resources.</summary>
+        /// <summary>A list of Network resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Network> Items { get; set; } 
 
@@ -57639,8 +56843,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usageExportLocation")]
         public virtual UsageExportLocation UsageExportLocation { get; set; } 
 
-        /// <summary>[Output Only] The role this project has in a Cross Project Network (XPN) configuration. Currently
-        /// only HOST projects are differentiated.</summary>
+        /// <summary>[Output Only] The role this project has in a shared VPC configuration. Currently only HOST projects
+        /// are differentiated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xpnProjectStatus")]
         public virtual string XpnProjectStatus { get; set; } 
 
@@ -57650,7 +56854,7 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class ProjectsDisableXpnResourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>XPN resource ID.</summary>
+        /// <summary>Service resource (a.k.a service project) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xpnResource")]
         public virtual XpnResourceId XpnResource { get; set; } 
 
@@ -57660,7 +56864,7 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class ProjectsEnableXpnResourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>XPN resource ID.</summary>
+        /// <summary>Service resource (a.k.a service project) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xpnResource")]
         public virtual XpnResourceId XpnResource { get; set; } 
 
@@ -57670,8 +56874,8 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class ProjectsGetXpnResources : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Type of resource. Always compute#projectsGetXpnResources for lists of XPN
-        /// resources.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#projectsGetXpnResources for lists of service
+        /// resources (a.k.a service projects)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -57682,7 +56886,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>XPN resources attached to this project as their XPN host.</summary>
+        /// <summary>Serive resources (a.k.a service projects) attached to this project as their shared VPC
+        /// host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<XpnResourceId> Resources { get; set; } 
 
@@ -57692,8 +56897,8 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class ProjectsListXpnHostsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional organization ID managed by Cloud Resource Manager, for which to list XPN host projects. If
-        /// not specified, the organization will be inferred from the project.</summary>
+        /// <summary>Optional organization ID managed by Cloud Resource Manager, for which to list shared VPC host
+        /// projects. If not specified, the organization will be inferred from the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organization")]
         public virtual string Organization { get; set; } 
 
@@ -57805,12 +57010,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of autoscalers.</summary>
     public class RegionAutoscalerList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A list of autoscalers.</summary>
+        /// <summary>A list of Autoscaler resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Autoscaler> Items { get; set; } 
 
@@ -57818,7 +57022,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -57832,12 +57039,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class RegionDiskTypeList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Disk Type resources.</summary>
+        /// <summary>A list of DiskType resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<DiskType> Items { get; set; } 
 
@@ -57873,8 +57079,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of InstanceGroup resources.</summary>
     public class RegionInstanceGroupList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -57893,7 +57098,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] The URL for this resource type. The server generates this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -57916,12 +57121,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of managed instance groups.</summary>
     public class RegionInstanceGroupManagerList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A list of managed instance groups.</summary>
+        /// <summary>A list of InstanceGroupManager resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InstanceGroupManager> Items { get; set; } 
 
@@ -57930,11 +57134,14 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>[Output only] A token used to continue a truncated list request.</summary>
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output only] The URL for this resource type. The server generates this URL.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -57994,21 +57201,9 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>RegionInstanceGroupManagers.deleteOverrides</summary>
-    public class RegionInstanceGroupManagersDeleteOverridesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of instances for which we want to delete overrides on this managed instance
-        /// group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
-        public virtual System.Collections.Generic.IList<string> Instances { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class RegionInstanceGroupManagersListInstanceConfigsResp : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The list of per-instance configs in the managed instance group.</summary>
+        /// <summary>[Output Only] The list of PerInstanceConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<PerInstanceConfig> Items { get; set; } 
 
@@ -58028,23 +57223,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>List of managed instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedInstances")]
         public virtual System.Collections.Generic.IList<ManagedInstance> ManagedInstances { get; set; } 
-
-        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
-        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
-        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
-        /// paging through the results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class RegionInstanceGroupManagersListOverridesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>[Output Only] The list of overrides in the managed instance group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<ManagedInstanceOverride> Items { get; set; } 
 
         /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
         /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
@@ -58103,24 +57281,13 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>RegionInstanceGroupManagers.updateOverrides</summary>
-    public class RegionInstanceGroupManagersUpdateOverridesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of overrides to insert or patch on this managed instance group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
-        public virtual System.Collections.Generic.IList<ManagedInstanceOverride> Overrides { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class RegionInstanceGroupsListInstances : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource. Defined by the server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A list of instances and any named ports that are assigned to those instances.</summary>
+        /// <summary>A list of InstanceWithNamedPorts resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<InstanceWithNamedPorts> Items { get; set; } 
 
@@ -58135,7 +57302,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -58180,12 +57347,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of region resources.</summary>
     public class RegionList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Region resources.</summary>
+        /// <summary>A list of Region resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Region> Items { get; set; } 
 
@@ -58393,11 +57559,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of Route resources.</summary>
     public class RouteList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource. Defined by the server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Route resources.</summary>
+        /// <summary>A list of Route resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Route> Items { get; set; } 
 
@@ -58497,12 +57663,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of routers.</summary>
     public class RouterAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A map of scoped router lists.</summary>
+        /// <summary>A list of Router resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,RoutersScopedList> Items { get; set; } 
 
@@ -58635,8 +57800,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of Router resources.</summary>
     public class RouterList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -58906,12 +58070,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class SecurityPoliciesList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of SecurityPolicy resources.</summary>
+        /// <summary>A list of SecurityPolicy resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<SecurityPolicy> Items { get; set; } 
 
@@ -58994,7 +58157,7 @@ namespace Google.Apis.Compute.alpha.Data
     }    
 
     /// <summary>Represents a rule that describes one or more match conditions along with the action to be taken when
-    /// traffic matches this condition (allow or deny)</summary>
+    /// traffic matches this condition (allow or deny).</summary>
     public class SecurityPolicyRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Action to preform when the client connection triggers the rule. Can currently be either "allow"
@@ -59029,8 +58192,8 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a match condition that incoming traffic is evaluated against. Exactly one of the fields must
-    /// be set.</summary>
+    /// <summary>Represents a match condition that incoming traffic is evaluated against. Exactly one field must be
+    /// specified.</summary>
     public class SecurityPolicyRuleMatcher : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>CIDR IP address range. Only IPv4 is supported.</summary>
@@ -59149,6 +58312,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
+        /// <summary>Integer license codes indicating which licenses are attached to this snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
+
         /// <summary>[Output Only] A list of public visible licenses that apply to this snapshot. This can be because
         /// the original image had licenses attached (such as a Windows image).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
@@ -59218,12 +58385,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of Snapshot resources.</summary>
     public class SnapshotList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Snapshot resources.</summary>
+        /// <summary>A list of Snapshot resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Snapshot> Items { get; set; } 
 
@@ -59296,7 +58462,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of SslCertificate resources.</summary>
     public class SslCertificateList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource. Defined by the server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -59349,7 +58515,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Fingerprint generated from a hash of the resource contents.</summary>
+        /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
+        /// optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must
+        /// be provided in order to update the Subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -59413,12 +58581,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class SubnetworkAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output] A map of scoped Subnetwork lists.</summary>
+        /// <summary>A list of SubnetworksScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,SubnetworksScopedList> Items { get; set; } 
 
@@ -59445,12 +58612,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of Subnetwork resources.</summary>
     public class SubnetworkList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The Subnetwork resources.</summary>
+        /// <summary>A list of Subnetwork resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Subnetwork> Items { get; set; } 
 
@@ -59661,8 +58827,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A list of TargetHttpProxy resources.</summary>
     public class TargetHttpProxyList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -59775,8 +58940,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of TargetHttpsProxy resources.</summary>
     public class TargetHttpsProxyList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -59865,7 +59029,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A map of scoped target instance lists.</summary>
+        /// <summary>A list of TargetInstance resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,TargetInstancesScopedList> Items { get; set; } 
 
@@ -59891,8 +59055,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of TargetInstance resources.</summary>
     public class TargetInstanceList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -60062,11 +59225,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class TargetPoolAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource. Defined by the server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped target pool lists.</summary>
+        /// <summary>A list of TargetPool resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,TargetPoolsScopedList> Items { get; set; } 
 
@@ -60107,7 +59270,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of TargetPool resources.</summary>
     public class TargetPoolList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource. Defined by the server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -60332,8 +59495,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of TargetSslProxy resources.</summary>
     public class TargetSslProxyList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -60430,8 +59592,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of TargetTcpProxy resources.</summary>
     public class TargetTcpProxyList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -60520,12 +59681,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class TargetVpnGatewayAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>A map of scoped target vpn gateway lists.</summary>
+        /// <summary>A list of TargetVpnGateway resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,TargetVpnGatewaysScopedList> Items { get; set; } 
 
@@ -60551,12 +59711,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of TargetVpnGateway resources.</summary>
     public class TargetVpnGatewayList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of TargetVpnGateway resources.</summary>
+        /// <summary>A list of TargetVpnGateway resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<TargetVpnGateway> Items { get; set; } 
 
@@ -60761,7 +59920,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of UrlMap resources.</summary>
     public class UrlMapList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Unique identifier for the resource. Set by the server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -60987,12 +60146,11 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class VpnTunnelAggregatedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A map of scoped vpn tunnel lists.</summary>
+        /// <summary>A list of VpnTunnelsScopedList resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IDictionary<string,VpnTunnelsScopedList> Items { get; set; } 
 
@@ -61018,12 +60176,11 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Contains a list of VpnTunnel resources.</summary>
     public class VpnTunnelList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of VpnTunnel resources.</summary>
+        /// <summary>A list of VpnTunnel resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<VpnTunnel> Items { get; set; } 
 
@@ -61100,16 +60257,15 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class XpnHostList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
-        /// server.</summary>
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of XPN host project URLs.</summary>
+        /// <summary>[Output Only] A list of shared VPC host project URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Project> Items { get; set; } 
 
-        /// <summary>[Output Only] Type of resource. Always compute#xpnHostList for lists of XPN hosts.</summary>
+        /// <summary>[Output Only] Type of resource. Always compute#xpnHostList for lists of shared VPC hosts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -61128,15 +60284,15 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>XpnResourceId</summary>
+    /// <summary>Service resource (a.k.a service project) ID.</summary>
     public class XpnResourceId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the XPN resource. In the case of projects, this field matches the project's name, not the
-        /// canonical ID.</summary>
+        /// <summary>The ID of the service resource. In the case of projects, this field matches the project ID (e.g.,
+        /// my-project), not the project number (e.g., 12345678).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>The type of the XPN resource.</summary>
+        /// <summary>The type of the service resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -61199,7 +60355,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>[Output Only] A list of Zone resources.</summary>
+        /// <summary>A list of Zone resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Zone> Items { get; set; } 
 

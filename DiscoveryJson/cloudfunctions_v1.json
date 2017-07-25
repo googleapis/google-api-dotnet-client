@@ -1,12 +1,25 @@
 {
+  "ownerDomain": "google.com",
+  "name": "cloudfunctions",
+  "batchPath": "batch",
+  "id": "cloudfunctions:v1",
+  "documentationLink": "https://cloud.google.com/functions",
+  "revision": "20170717",
+  "title": "Google Cloud Functions API",
   "ownerName": "Google",
   "discoveryVersion": "v1",
   "version_module": "True",
   "resources": {},
   "parameters": {
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "type": "boolean",
       "location": "query"
     },
     "uploadType": {
@@ -14,25 +27,32 @@
       "type": "string",
       "location": "query"
     },
-    "callback": {
-      "description": "JSONP",
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
     },
     "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
       "enum": [
         "1",
         "2"
       ],
       "description": "V1 error format.",
+      "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
       "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
       "location": "query"
     },
     "alt": {
+      "description": "Data format for response.",
+      "default": "json",
       "enum": [
         "json",
         "media",
@@ -44,19 +64,17 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
       "location": "query"
     },
     "access_token": {
+      "location": "query",
       "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
     },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
@@ -69,30 +87,21 @@
       "type": "boolean",
       "location": "query"
     },
+    "bearer_token": {
+      "description": "OAuth bearer token.",
+      "type": "string",
+      "location": "query"
+    },
     "oauth_token": {
       "description": "OAuth 2.0 token for the current user.",
       "type": "string",
       "location": "query"
-    },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "default": "true",
-      "type": "boolean"
     }
   },
   "schemas": {
     "OperationMetadataV1Beta2": {
+      "description": "Metadata describing an Operation",
+      "type": "object",
       "properties": {
         "target": {
           "description": "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1",
@@ -107,6 +116,12 @@
           "type": "object"
         },
         "type": {
+          "enumDescriptions": [
+            "Unknown operation type.",
+            "Triggered by CreateFunction call",
+            "Triggered by UpdateFunction call",
+            "Triggered by DeleteFunction call."
+          ],
           "enum": [
             "OPERATION_UNSPECIFIED",
             "CREATE_FUNCTION",
@@ -114,38 +129,23 @@
             "DELETE_FUNCTION"
           ],
           "description": "Type of operation.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown operation type.",
-            "Triggered by CreateFunction call",
-            "Triggered by UpdateFunction call",
-            "Triggered by DeleteFunction call."
-          ]
+          "type": "string"
         }
       },
-      "id": "OperationMetadataV1Beta2",
-      "description": "Metadata describing an Operation",
-      "type": "object"
+      "id": "OperationMetadataV1Beta2"
     }
   },
-  "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
   "version": "v1",
   "baseUrl": "https://cloudfunctions.googleapis.com/",
   "canonicalName": "Cloud Functions",
-  "servicePath": "",
-  "description": "API for managing lightweight user-provided functions executed in response to events.",
   "kind": "discovery#restDescription",
+  "description": "API for managing lightweight user-provided functions executed in response to events.",
+  "servicePath": "",
   "rootUrl": "https://cloudfunctions.googleapis.com/",
-  "basePath": "",
-  "ownerDomain": "google.com",
-  "name": "cloudfunctions",
-  "batchPath": "batch",
-  "documentationLink": "https://cloud.google.com/functions",
-  "revision": "20170717",
-  "id": "cloudfunctions:v1",
-  "title": "Google Cloud Functions API"
+  "basePath": ""
 }
