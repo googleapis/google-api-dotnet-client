@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170707 (918)
+ *      <tr><th>API Rev<td>20170718 (929)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -3228,10 +3228,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class GoogleIamV1LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if the log is for a permission of type DATA_READ or ADMIN_READ.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isReadPermissionType")]
-        public virtual System.Nullable<bool> IsReadPermissionType { get; set; } 
-
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
