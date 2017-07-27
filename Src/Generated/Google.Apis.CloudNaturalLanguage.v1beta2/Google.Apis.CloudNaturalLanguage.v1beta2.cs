@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20170619 (900)
+ *      <tr><th>API Rev<td>20170726 (937)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -108,6 +108,9 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Natural Language API.</summary>
         public class Scope
         {
+            /// <summary>Apply machine learning models to reveal the structure and meaning of text</summary>
+            public static string CloudLanguage = "https://www.googleapis.com/auth/cloud-language";
+
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
@@ -1091,8 +1094,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There will be a common set of message types for
-        /// APIs to use.</summary>
+        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
+        /// to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
