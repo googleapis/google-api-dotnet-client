@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Google Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170714 (925)
+ *      <tr><th>API Rev<td>20170722 (933)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -2942,6 +2942,11 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
+        /// <summary>The condition that is associated with this binding. This field is GOOGLE_INTERNAL. This field is
+        /// not logged in IAM side because it's only for audit logging. Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
         /// <summary>A single identity requesting access for a Cloud Platform resource. Follows the same format of
         /// Binding.members. Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
@@ -3017,6 +3022,38 @@ namespace Google.Apis.Iam.v1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

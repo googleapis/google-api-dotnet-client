@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170711 (922)
+ *      <tr><th>API Rev<td>20170725 (936)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -388,8 +388,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Claims the website of a Merchant Center sub-account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
-        /// account is a multi-client account.</summary>
+        /// which the managing account has access: either the managing account itself for any Merchant Center account,
+        /// or any sub-account when the managing account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account whose website is claimed.</param>
@@ -399,8 +399,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Claims the website of a Merchant Center sub-account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
-        /// account is a multi-client account.</summary>
+        /// which the managing account has access: either the managing account itself for any Merchant Center account,
+        /// or any sub-account when the managing account is a multi-client account.</summary>
         public class ClaimwebsiteRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountsClaimWebsiteResponse>
         {
             /// <summary>Constructs a new Claimwebsite request.</summary>
@@ -641,8 +641,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account.</param>
@@ -652,8 +652,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -892,8 +892,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account. This method supports patch semantics.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -904,8 +904,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account. This method supports patch semantics.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -993,8 +993,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -1005,8 +1005,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1164,8 +1164,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves the status of a Merchant Center account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
-        /// account is a multi-client account.</summary>
+        /// which the managing account has access: either the managing account itself for any Merchant Center account,
+        /// or any sub-account when the managing account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account.</param>
@@ -1175,8 +1175,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves the status of a Merchant Center account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
-        /// account is a multi-client account.</summary>
+        /// which the managing account has access: either the managing account itself for any Merchant Center account,
+        /// or any sub-account when the managing account is a multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1415,8 +1415,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account for which to get/update account tax settings.</param>
@@ -1426,8 +1426,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1583,8 +1583,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account. This method supports patch semantics.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -1595,8 +1595,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account. This method supports patch semantics.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1684,8 +1684,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -1696,8 +1696,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself or sub-accounts if the managing account is a
-        /// multi-client account.</summary>
+        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
+        /// account when the managing account is a multi-client account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -5020,8 +5020,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves the shipping settings of the account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
-        /// account is a multi-client account.</summary>
+        /// which the managing account has access: either the managing account itself for any Merchant Center account,
+        /// or any sub-account when the managing account is a multi-client account.</summary>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
         /// account for which to get/update shipping settings.</param>
@@ -5031,8 +5031,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves the shipping settings of the account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself or sub-accounts if the managing
-        /// account is a multi-client account.</summary>
+        /// which the managing account has access: either the managing account itself for any Merchant Center account,
+        /// or any sub-account when the managing account is a multi-client account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5248,8 +5248,9 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
-        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
-        /// is a multi-client account. This method supports patch semantics.</summary>
+        /// the managing account has access: either the managing account itself for any Merchant Center account, or any
+        /// sub-account when the managing account is a multi-client account. This method supports patch
+        /// semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -5260,8 +5261,9 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
-        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
-        /// is a multi-client account. This method supports patch semantics.</summary>
+        /// the managing account has access: either the managing account itself for any Merchant Center account, or any
+        /// sub-account when the managing account is a multi-client account. This method supports patch
+        /// semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5349,8 +5351,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
-        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
-        /// is a multi-client account.</summary>
+        /// the managing account has access: either the managing account itself for any Merchant Center account, or any
+        /// sub-account when the managing account is a multi-client account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account.</param>
         /// <param name="accountId">The ID of the
@@ -5361,8 +5363,8 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
-        /// the managing account has access: either the managing account itself or sub-accounts if the managing account
-        /// is a multi-client account.</summary>
+        /// the managing account has access: either the managing account itself for any Merchant Center account, or any
+        /// sub-account when the managing account is a multi-client account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -6139,6 +6141,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; } 
 
+        /// <summary>Whether the scheduled fetch is paused or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paused")]
+        public virtual System.Nullable<bool> Paused { get; set; } 
+
         /// <summary>Time zone used for schedule. UTC by default. E.g., "America/Los_Angeles".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; } 
@@ -6822,7 +6828,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string PlacedDate { get; set; } 
 
         /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are  here.</summary>
+        /// program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
 
@@ -8432,7 +8438,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; } 
 
-        /// <summary>The geographic region to which a shipping rate applies (e.g. zip code).</summary>
+        /// <summary>The geographic region to which a shipping rate applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -9075,7 +9081,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string PredefinedDeliveryAddress { get; set; } 
 
         /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are  here.</summary>
+        /// program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
 

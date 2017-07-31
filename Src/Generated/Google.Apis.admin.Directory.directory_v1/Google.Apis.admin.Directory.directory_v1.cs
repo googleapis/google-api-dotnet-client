@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20170711 (922)
+ *      <tr><th>API Rev<td>20170712 (923)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -1186,6 +1186,90 @@ namespace Google.Apis.Admin.Directory.directory_v1
                     {
                         Name = "sortOrder",
                         IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Move or insert multiple Chrome OS Devices to Organization Unit</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="customerId">Immutable ID of the G Suite account</param>
+        /// <param name="orgUnitPath">Full path of
+        /// the target organization unit or its Id</param>
+        public virtual MoveDevicesToOuRequest MoveDevicesToOu(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsMoveDevicesToOu body, string customerId, string orgUnitPath)
+        {
+            return new MoveDevicesToOuRequest(service, body, customerId, orgUnitPath);
+        }
+
+        /// <summary>Move or insert multiple Chrome OS Devices to Organization Unit</summary>
+        public class MoveDevicesToOuRequest : DirectoryBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new MoveDevicesToOu request.</summary>
+            public MoveDevicesToOuRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsMoveDevicesToOu body, string customerId, string orgUnitPath)
+                : base(service)
+            {
+                CustomerId = customerId;
+                OrgUnitPath = orgUnitPath;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Immutable ID of the G Suite account</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string CustomerId { get; private set; }
+
+            /// <summary>Full path of the target organization unit or its Id</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrgUnitPath { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsMoveDevicesToOu Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "moveDevicesToOu"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "customer/{customerId}/devices/chromeos/moveDevicesToOu"; }
+            }
+
+            /// <summary>Initializes MoveDevicesToOu parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orgUnitPath", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orgUnitPath",
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -9311,6 +9395,17 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
+    }    
+
+    /// <summary>JSON request template for moving ChromeOs Device to given OU in Directory Devices API.</summary>
+    public class ChromeOsMoveDevicesToOu : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ChromeOs Devices to be moved to OU</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIds")]
+        public virtual System.Collections.Generic.IList<string> DeviceIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>JSON template for Customer Resource object in Directory API.</summary>

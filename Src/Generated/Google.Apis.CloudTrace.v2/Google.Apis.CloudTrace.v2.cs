@@ -610,15 +610,15 @@ namespace Google.Apis.CloudTrace.v2
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
 
+                /// <summary>Optional. Do not return traces whose end time is earlier than this time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method.  `page_token` must be the value of `next_page_token` from the previous response.  The
                 /// values of other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Optional. Do not return traces whose end time is earlier than this time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
 
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of `next_page_token` in the response indicates that more results might be
@@ -687,18 +687,18 @@ namespace Google.Apis.CloudTrace.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "startTime", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "startTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/uMsCLQ1yWVY4BQXw6HWexaEvhLY\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/mhTe-_g3m7I2eL2tJAE3C73VFrw\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20170711",
+ "revision": "20170725",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -861,6 +861,10 @@
      "type": "string",
      "description": "An optional password for fetch_url."
     },
+    "paused": {
+     "type": "boolean",
+     "description": "Whether the scheduled fetch is paused or not."
+    },
     "timeZone": {
      "type": "string",
      "description": "Time zone used for schedule. UTC by default. E.g., \"America/Los_Angeles\"."
@@ -1596,7 +1600,7 @@
     },
     "promotions": {
      "type": "array",
-     "description": "The details of the merchant provided promotions applied to the order. More details about the program are  here.",
+     "description": "The details of the merchant provided promotions applied to the order. More details about the program are here.",
      "items": {
       "$ref": "OrderPromotion"
      }
@@ -3351,7 +3355,7 @@
     },
     "region": {
      "type": "string",
-     "description": "The geographic region to which a shipping rate applies (e.g. zip code)."
+     "description": "The geographic region to which a shipping rate applies."
     },
     "service": {
      "type": "string",
@@ -4071,7 +4075,7 @@
     },
     "promotions": {
      "type": "array",
-     "description": "The details of the merchant provided promotions applied to the order. More details about the program are  here.",
+     "description": "The details of the merchant provided promotions applied to the order. More details about the program are here.",
      "items": {
       "$ref": "OrderPromotion"
      }
@@ -4370,7 +4374,7 @@
      "id": "content.accounts.claimwebsite",
      "path": "{merchantId}/accounts/{accountId}/claimwebsite",
      "httpMethod": "POST",
-     "description": "Claims the website of a Merchant Center sub-account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
+     "description": "Claims the website of a Merchant Center sub-account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -4463,7 +4467,7 @@
      "id": "content.accounts.get",
      "path": "{merchantId}/accounts/{accountId}",
      "httpMethod": "GET",
-     "description": "Retrieves a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
+     "description": "Retrieves a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -4562,7 +4566,7 @@
      "id": "content.accounts.patch",
      "path": "{merchantId}/accounts/{accountId}",
      "httpMethod": "PATCH",
-     "description": "Updates a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account. This method supports patch semantics.",
+     "description": "Updates a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account. This method supports patch semantics.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -4602,7 +4606,7 @@
      "id": "content.accounts.update",
      "path": "{merchantId}/accounts/{accountId}",
      "httpMethod": "PUT",
-     "description": "Updates a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
+     "description": "Updates a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -4660,7 +4664,7 @@
      "id": "content.accountstatuses.get",
      "path": "{merchantId}/accountstatuses/{accountId}",
      "httpMethod": "GET",
-     "description": "Retrieves the status of a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
+     "description": "Retrieves the status of a Merchant Center account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -4753,7 +4757,7 @@
      "id": "content.accounttax.get",
      "path": "{merchantId}/accounttax/{accountId}",
      "httpMethod": "GET",
-     "description": "Retrieves the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
+     "description": "Retrieves the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -4820,7 +4824,7 @@
      "id": "content.accounttax.patch",
      "path": "{merchantId}/accounttax/{accountId}",
      "httpMethod": "PATCH",
-     "description": "Updates the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account. This method supports patch semantics.",
+     "description": "Updates the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account. This method supports patch semantics.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -4860,7 +4864,7 @@
      "id": "content.accounttax.update",
      "path": "{merchantId}/accounttax/{accountId}",
      "httpMethod": "PUT",
-     "description": "Updates the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
+     "description": "Updates the tax settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -6128,7 +6132,7 @@
      "id": "content.shippingsettings.get",
      "path": "{merchantId}/shippingsettings/{accountId}",
      "httpMethod": "GET",
-     "description": "Retrieves the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
+     "description": "Retrieves the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -6219,7 +6223,7 @@
      "id": "content.shippingsettings.patch",
      "path": "{merchantId}/shippingsettings/{accountId}",
      "httpMethod": "PATCH",
-     "description": "Updates the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account. This method supports patch semantics.",
+     "description": "Updates the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account. This method supports patch semantics.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -6259,7 +6263,7 @@
      "id": "content.shippingsettings.update",
      "path": "{merchantId}/shippingsettings/{accountId}",
      "httpMethod": "PUT",
-     "description": "Updates the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself or sub-accounts if the managing account is a multi-client account.",
+     "description": "Updates the shipping settings of the account. This method can only be called for accounts to which the managing account has access: either the managing account itself for any Merchant Center account, or any sub-account when the managing account is a multi-client account.",
      "parameters": {
       "accountId": {
        "type": "string",

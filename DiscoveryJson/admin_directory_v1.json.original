@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/XWa3bpCiD7OEjOXVxQY4-q9fvHs\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/-1ksPYZjVYMttk_-QKwkN92i-2U\"",
  "discoveryVersion": "v1",
  "id": "admin:directory_v1",
  "name": "admin",
  "canonicalName": "directory",
  "version": "directory_v1",
- "revision": "20170711",
+ "revision": "20170712",
  "title": "Admin Directory API",
  "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
  "ownerDomain": "google.com",
@@ -576,6 +576,25 @@
     "nextPageToken": {
      "type": "string",
      "description": "Token used to access next page of this result."
+    }
+   }
+  },
+  "ChromeOsMoveDevicesToOu": {
+   "id": "ChromeOsMoveDevicesToOu",
+   "type": "object",
+   "description": "JSON request template for moving ChromeOs Device to given OU in Directory Devices API.",
+   "properties": {
+    "deviceIds": {
+     "type": "array",
+     "description": "ChromeOs Devices to be moved to OU",
+     "items": {
+      "type": "string"
+     },
+     "annotations": {
+      "required": [
+       "directory.chromeosdevices.moveDevicesToOu"
+      ]
+     }
     }
    }
   },
@@ -2836,6 +2855,36 @@
      "scopes": [
       "https://www.googleapis.com/auth/admin.directory.device.chromeos",
       "https://www.googleapis.com/auth/admin.directory.device.chromeos.readonly"
+     ]
+    },
+    "moveDevicesToOu": {
+     "id": "directory.chromeosdevices.moveDevicesToOu",
+     "path": "customer/{customerId}/devices/chromeos/moveDevicesToOu",
+     "httpMethod": "POST",
+     "description": "Move or insert multiple Chrome OS Devices to Organization Unit",
+     "parameters": {
+      "customerId": {
+       "type": "string",
+       "description": "Immutable ID of the G Suite account",
+       "required": true,
+       "location": "path"
+      },
+      "orgUnitPath": {
+       "type": "string",
+       "description": "Full path of the target organization unit or its Id",
+       "required": true,
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "customerId",
+      "orgUnitPath"
+     ],
+     "request": {
+      "$ref": "ChromeOsMoveDevicesToOu"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/admin.directory.device.chromeos"
      ]
     },
     "patch": {

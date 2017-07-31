@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20170711 (922)
+ *      <tr><th>API Rev<td>20170725 (936)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1701,7 +1701,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         public virtual string PlacedDate { get; set; } 
 
         /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are  here.</summary>
+        /// program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
 
@@ -2891,7 +2891,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         public virtual string PredefinedDeliveryAddress { get; set; } 
 
         /// <summary>The details of the merchant provided promotions applied to the order. More details about the
-        /// program are  here.</summary>
+        /// program are here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<OrderPromotion> Promotions { get; set; } 
 
