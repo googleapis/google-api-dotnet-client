@@ -59,5 +59,5 @@ The generator that produces the source code for API-specific libraries is in `Cl
 
 # Support Forums
 
-If you find an issue with in the client library we would appricate you adding an issue in the [issue tracker](https://github.com/google/google-api-dotnet-client/issues).
+If you find an issue with in the client library we would appreciate you adding an issue in the [issue tracker](https://github.com/google/google-api-dotnet-client/issues).
 Questions regarding usage of the client library should be posted to [stackoverflow.com](http://stackoverflow.com/)  using the tag [#google-api-dotnet-client](http://stackoverflow.com/questions/tagged/google-api-dotnet-client)
