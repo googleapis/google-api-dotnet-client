@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170727 (938)
+ *      <tr><th>API Rev<td>20170731 (942)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -930,14 +930,6 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseWorkId { get; private set; }
 
-                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
-                    /// the specified identifier. The identifier can be one of the following:
-                    ///
-                    /// * the numeric identifier for the user * the email address of the user * the string literal
-                    /// `"me"`, indicating the requesting user</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string UserId { get; set; }
-
                     /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
                     /// the requested value. If unspecified, submissions are returned regardless of `late`
                     /// value.</summary>
@@ -964,13 +956,6 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may
-                    /// assign a maximum.
-                    ///
-                    /// The server may return fewer than the specified number of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Requested submission states. If specified, returned student submissions match one of
                     /// the specified submission states.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
@@ -993,6 +978,21 @@ namespace Google.Apis.Classroom.v1
                         [Google.Apis.Util.StringValueAttribute("RECLAIMED_BY_STUDENT")]
                         RECLAIMEDBYSTUDENT,
                     }
+
+                    /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may
+                    /// assign a maximum.
+                    ///
+                    /// The server may return fewer than the specified number of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
+                    /// the specified identifier. The identifier can be one of the following:
+                    ///
+                    /// * the numeric identifier for the user * the email address of the user * the string literal
+                    /// `"me"`, indicating the requesting user</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1037,15 +1037,6 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "late", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "late",
@@ -1064,6 +1055,15 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "states", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "states",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1073,9 +1073,9 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "states", new Google.Apis.Discovery.Parameter
+                            "userId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "states",
+                                Name = "userId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3402,28 +3402,6 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Restricts returned courses to those having a student with the specified identifier. The
-            /// identifier can be one of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-            /// indicating the requesting user</summary>
-            [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string StudentId { get; set; }
-
-            /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page of
-            /// results should be returned.
-            ///
-            /// The list request must be otherwise identical to the one that resulted in this token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign a
-            /// maximum.
-            ///
-            /// The server may return fewer than the specified number of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Restricts returned courses to those in one of the specified states The default value is ACTIVE,
             /// ARCHIVED, PROVISIONED, DECLINED.</summary>
             [Google.Apis.Util.RequestParameterAttribute("courseStates", Google.Apis.Util.RequestParameterType.Query)]
@@ -3455,6 +3433,28 @@ namespace Google.Apis.Classroom.v1
             [Google.Apis.Util.RequestParameterAttribute("teacherId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeacherId { get; set; }
 
+            /// <summary>Restricts returned courses to those having a student with the specified identifier. The
+            /// identifier can be one of the following:
+            ///
+            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user</summary>
+            [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string StudentId { get; set; }
+
+            /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page of
+            /// results should be returned.
+            ///
+            /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign a
+            /// maximum.
+            ///
+            /// The server may return fewer than the specified number of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3480,6 +3480,24 @@ namespace Google.Apis.Classroom.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "courseStates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseStates",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "teacherId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teacherId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "studentId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "studentId",
@@ -3501,24 +3519,6 @@ namespace Google.Apis.Classroom.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "courseStates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "courseStates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "teacherId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teacherId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4442,13 +4442,6 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
-                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
                 /// a maximum.
                 ///
@@ -4477,6 +4470,13 @@ namespace Google.Apis.Classroom.v1
                 /// returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("invitedEmailAddress", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string InvitedEmailAddress { get; set; }
+
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned.
+                ///
+                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -4512,15 +4512,6 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -4542,6 +4533,15 @@ namespace Google.Apis.Classroom.v1
                         "invitedEmailAddress", new Google.Apis.Discovery.Parameter
                         {
                             Name = "invitedEmailAddress",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4976,13 +4976,6 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
-                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
                 /// a maximum.
                 ///
@@ -4994,6 +4987,13 @@ namespace Google.Apis.Classroom.v1
                 /// this guardian link. This filter can only be used by domain administrators.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("invitedEmailAddress", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string InvitedEmailAddress { get; set; }
+
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned.
+                ///
+                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5029,15 +5029,6 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -5050,6 +5041,15 @@ namespace Google.Apis.Classroom.v1
                         "invitedEmailAddress", new Google.Apis.Discovery.Parameter
                         {
                             Name = "invitedEmailAddress",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5624,6 +5624,33 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The history of each grade on this submission.</summary>
+    public class GradeHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The teacher who made the grade change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actorUserId")]
+        public virtual string ActorUserId { get; set; } 
+
+        /// <summary>The type of grade change at this time in the submission grade history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gradeChangeType")]
+        public virtual string GradeChangeType { get; set; } 
+
+        /// <summary>When the grade of the submission was changed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gradeTimestamp")]
+        public virtual object GradeTimestamp { get; set; } 
+
+        /// <summary>The denominator of the grade at this time in the submission grade history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPoints")]
+        public virtual System.Nullable<double> MaxPoints { get; set; } 
+
+        /// <summary>The numerator of the grade at this time in the submission grade history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointsEarned")]
+        public virtual System.Nullable<double> PointsEarned { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Association between a student and a guardian of that student. The guardian may receive information
     /// about the student's course work.</summary>
     public class Guardian : Google.Apis.Requests.IDirectResponseSchema
@@ -6005,6 +6032,25 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The history of each state this submission has been in.</summary>
+    public class StateHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The teacher or student who made the change</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actorUserId")]
+        public virtual string ActorUserId { get; set; } 
+
+        /// <summary>The workflow pipeline stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>When the submission entered this state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateTimestamp")]
+        public virtual object StateTimestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Student in a course.</summary>
     public class Student : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6130,6 +6176,12 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
+        /// <summary>The history of the submission (includes state and grade histories).
+        ///
+        /// Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("submissionHistory")]
+        public virtual System.Collections.Generic.IList<SubmissionHistory> SubmissionHistory { get; set; } 
+
         /// <summary>Last update time of this submission. This may be unset if the student has not accessed this item.
         ///
         /// Read-only.</summary>
@@ -6141,6 +6193,21 @@ namespace Google.Apis.Classroom.v1.Data
         /// Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The history of the submission. This currently includes state and grade histories.</summary>
+    public class SubmissionHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The grade history information of the submission, if present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gradeHistory")]
+        public virtual GradeHistory GradeHistory { get; set; } 
+
+        /// <summary>The state history information of the submission, if present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateHistory")]
+        public virtual StateHistory StateHistory { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

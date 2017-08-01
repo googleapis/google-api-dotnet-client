@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170719 (930)
+ *      <tr><th>API Rev<td>20170726 (937)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1810,8 +1810,9 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Sets the Android Device Policy config resource. EMM may use this API to enable or disable Android
-        /// Device Policy support for the specified enterprise.</summary>
+        /// <summary>Sets the Android Device Policy config resource. EMM may use this method to enable or disable
+        /// Android Device Policy support for the specified enterprise. To learn more about managing devices and apps
+        /// with Android Device Policy, see the Android Management API.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetAndroidDevicePolicyConfigRequest SetAndroidDevicePolicyConfig(Google.Apis.AndroidEnterprise.v1.Data.AndroidDevicePolicyConfig body, string enterpriseId)
@@ -1819,8 +1820,9 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new SetAndroidDevicePolicyConfigRequest(service, body, enterpriseId);
         }
 
-        /// <summary>Sets the Android Device Policy config resource. EMM may use this API to enable or disable Android
-        /// Device Policy support for the specified enterprise.</summary>
+        /// <summary>Sets the Android Device Policy config resource. EMM may use this method to enable or disable
+        /// Android Device Policy support for the specified enterprise. To learn more about managing devices and apps
+        /// with Android Device Policy, see the Android Management API.</summary>
         public class SetAndroidDevicePolicyConfigRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AndroidDevicePolicyConfig>
         {
             /// <summary>Constructs a new SetAndroidDevicePolicyConfig request.</summary>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170712 (923)
+ *      <tr><th>API Rev<td>20170721 (932)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -32054,7 +32054,7 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the
         /// default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// For Internal Load Balancing, the default and only supported mode is CONNECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
@@ -32879,7 +32879,8 @@ namespace Google.Apis.Compute.v1.Data
         /// disk.
         ///
         /// If you specify this field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less
-        /// than the size of the sourceImage or the size of the snapshot.</summary>
+        /// than the size of the sourceImage or the size of the snapshot. Acceptable values are 1 to 65536,
+        /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; } 
 
@@ -33318,13 +33319,14 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRanges")]
         public virtual System.Collections.Generic.IList<string> SourceRanges { get; set; } 
 
-        /// <summary>If source tags are specified, the firewall will apply only to traffic from VM instances in the same
-        /// virtual network with a tag listed in the source tags. Source tags cannot be used to control traffic to an
-        /// instance's external IP address, it only applies to traffic between instances in the same virtual network.
-        /// Because tags are associated with instances, not IP addresses. One or both of sourceRanges and sourceTags may
-        /// be set. If both properties are set, the firewall will apply to traffic that has source IP address within
-        /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
-        /// not need to match both properties for the firewall to apply.</summary>
+        /// <summary>If source tags are specified, the firewall rule applies only to traffic with source IPs that match
+        /// the primary network interfaces of VM instances that have the tag and are in the same VPC network. Source
+        /// tags cannot be used to control traffic to an instance's external IP address, it only applies to traffic
+        /// between instances in the same virtual network. Because tags are associated with instances, not IP addresses.
+        /// One or both of sourceRanges and sourceTags may be set. If both properties are set, the firewall will apply
+        /// to traffic that has source IP address within sourceRanges OR the source IP that belongs to a tag listed in
+        /// the sourceTags property. The connection does not need to match both properties for the firewall to
+        /// apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
 
@@ -33342,7 +33344,7 @@ namespace Google.Apis.Compute.v1.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
@@ -33472,9 +33474,9 @@ namespace Google.Apis.Compute.v1.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222 -
-        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222 - TargetVpnGateway: 500, 4500
-        /// -</summary>
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 -
+        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 - TargetVpnGateway: 500,
+        /// 4500 -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
@@ -34381,7 +34383,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual System.Nullable<bool> StartRestricted { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 

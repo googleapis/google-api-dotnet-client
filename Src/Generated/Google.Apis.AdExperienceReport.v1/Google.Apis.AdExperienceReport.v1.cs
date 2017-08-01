@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-experience-report/'>Google Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170628 (909)
+ *      <tr><th>API Rev<td>20170731 (942)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-experience-report/'>
  *              https://developers.google.com/ad-experience-report/</a>
@@ -365,15 +365,18 @@ namespace Google.Apis.AdExperienceReport.v1
         }
 
 
-        /// <summary>Gets a summary of the ads rating of a site.</summary>
-        /// <param name="name">The required site name. It should be a site property registered in Search Console. The server
-        /// will return an error of BAD_REQUEST if this field is not filled in.</param>
+        /// <summary>Gets a summary of the ad experience rating of a site.</summary>
+        /// <param name="name">The required site name. It should be the site property whose ad experiences may have been
+        /// reviewed, and it should be URL encoded. For example, https%3A%2F%2Fwww.google.com. The server will return an error
+        /// of BAD_REQUEST if this field is not filled in. Note that if the site property is not yet verified in Search Console,
+        /// the reportUrl field returned by the API will lead to the verification page, prompting the user to go through that
+        /// process before they can gain access to the Ad Experience Report.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets a summary of the ads rating of a site.</summary>
+        /// <summary>Gets a summary of the ad experience rating of a site.</summary>
         public class GetRequest : AdExperienceReportBaseServiceRequest<Google.Apis.AdExperienceReport.v1.Data.SiteSummaryResponse>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -385,8 +388,12 @@ namespace Google.Apis.AdExperienceReport.v1
             }
 
 
-            /// <summary>The required site name. It should be a site property registered in Search Console. The server
-            /// will return an error of BAD_REQUEST if this field is not filled in.</summary>
+            /// <summary>The required site name. It should be the site property whose ad experiences may have been
+            /// reviewed, and it should be URL encoded. For example, https%3A%2F%2Fwww.google.com. The server will
+            /// return an error of BAD_REQUEST if this field is not filled in. Note that if the site property is not yet
+            /// verified in Search Console, the reportUrl field returned by the API will lead to the verification page,
+            /// prompting the user to go through that process before they can gain access to the Ad Experience
+            /// Report.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -494,7 +501,7 @@ namespace Google.Apis.AdExperienceReport.v1
 namespace Google.Apis.AdExperienceReport.v1.Data
 {    
 
-    /// <summary>Summary of the ads rating of a site for a specific platform.</summary>
+    /// <summary>Summary of the ad experience rating of a site for a specific platform.</summary>
     public class PlatformSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status of the site reviewed for the Better Ads Standards.</summary>

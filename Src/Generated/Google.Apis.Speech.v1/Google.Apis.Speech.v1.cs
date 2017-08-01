@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170728 (939)
+ *      <tr><th>API Rev<td>20170731 (942)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -600,6 +600,10 @@ namespace Google.Apis.Speech.v1
             }
 
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -611,10 +615,6 @@ namespace Google.Apis.Speech.v1
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -641,6 +641,15 @@ namespace Google.Apis.Speech.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -662,15 +671,6 @@ namespace Google.Apis.Speech.v1
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -924,9 +924,9 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>Provides information to the recognizer that specifies how to process the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Optional* If `true`, a list of `words` are returned in the top result, containing the start and
-        /// end timestamps for those words. The default value, 'false' does not return any word-level timing
-        /// information.</summary>
+        /// <summary>*Optional* If `true`, the top result includes a list of words and the start and end time offsets
+        /// (timestamps) for those words. If `false`, no word-level time offset information is returned. The default is
+        /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordTimeOffsets")]
         public virtual System.Nullable<bool> EnableWordTimeOffsets { get; set; } 
 
@@ -1028,7 +1028,7 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>*Output-only* List of word-specific information for each recognized word.</summary>
+        /// <summary>*Output-only* A list of word-specific information for each recognized word.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<WordInfo> Words { get; set; } 
 
@@ -1040,7 +1040,7 @@ namespace Google.Apis.Speech.v1.Data
     public class SpeechRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>*Output-only* May contain one or more recognition hypotheses (up to the maximum specified in
-        /// `max_alternatives`). These alternatives are ordered in terms of accuracy, with the first/top alternative
+        /// `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative
         /// being the most probable, as ranked by the recognizer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionAlternative> Alternatives { get; set; } 
@@ -1112,8 +1112,8 @@ namespace Google.Apis.Speech.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Word-specific information detected along with speech recognition when certain request parameters are
-    /// set.</summary>
+    /// <summary>Word-specific information for recognized words. Word information is only included in the response when
+    /// certain request parameters are set, such as `enable_word_time_offsets`.</summary>
     public class WordInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>*Output-only* Time offset relative to the beginning of the audio, and corresponding to the end of

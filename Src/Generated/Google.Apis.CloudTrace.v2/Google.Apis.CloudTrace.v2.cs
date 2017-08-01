@@ -587,25 +587,6 @@ namespace Google.Apis.CloudTrace.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. A single field used to sort the returned traces. Only the following field names
-                /// can be used:
-                ///
-                /// *   `trace_id`: the trace's ID field *   `name`:  the root span's resource name *   `duration`: the
-                /// difference between the root span's start time and end time *   `start`:  the start time of the root
-                /// span
-                ///
-                /// Sorting is in ascending order unless `desc` is appended to the sort field name. Example: `"name
-                /// desc"`).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>Opional. Return only traces that match this [trace filter](/trace/docs/trace-filters).
-                /// Example:
-                ///
-                /// "label:/http/url root:/_ah/background my_label:17"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Optional. Do not return traces whose start time is later than this time.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
@@ -625,6 +606,25 @@ namespace Google.Apis.CloudTrace.v2
                 /// available, even if fewer than the maximum number of results is returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. A single field used to sort the returned traces. Only the following field names
+                /// can be used:
+                ///
+                /// *   `trace_id`: the trace's ID field *   `name`:  the root span's resource name *   `duration`: the
+                /// difference between the root span's start time and end time *   `start`:  the start time of the root
+                /// span
+                ///
+                /// Sorting is in ascending order unless `desc` is appended to the sort field name. Example: `"name
+                /// desc"`).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Opional. Return only traces that match this [trace filter](/trace/docs/trace-filters).
+                /// Example:
+                ///
+                /// "label:/http/url root:/_ah/background my_label:17"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -660,24 +660,6 @@ namespace Google.Apis.CloudTrace.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "endTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "endTime",
@@ -708,6 +690,24 @@ namespace Google.Apis.CloudTrace.v2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

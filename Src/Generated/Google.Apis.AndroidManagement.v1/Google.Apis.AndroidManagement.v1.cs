@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170717 (928)
+ *      <tr><th>API Rev<td>20170724 (935)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -3046,6 +3046,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// the device. If no admins are specified, the device will not provide factory reset protection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frpAdminEmails")]
         public virtual System.Collections.Generic.IList<string> FrpAdminEmails { get; set; } 
+
+        /// <summary>Whether the user is allowed to have fun. Controls whether the Easter egg game in Settings is
+        /// disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("funDisabled")]
+        public virtual System.Nullable<bool> FunDisabled { get; set; } 
 
         /// <summary>Whether the user is allowed to enable the "Unknown Sources" setting, which allows installation of
         /// apps from unknown sources.</summary>

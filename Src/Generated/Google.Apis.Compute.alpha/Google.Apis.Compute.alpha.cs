@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170712 (923)
+ *      <tr><th>API Rev<td>20170721 (932)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -20925,6 +20925,110 @@ namespace Google.Apis.Compute.alpha
 
         }
 
+        /// <summary>Returns the specified guest attributes entry.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual GetGuestAttributesRequest GetGuestAttributes(string project, string zone, string instance)
+        {
+            return new GetGuestAttributesRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Returns the specified guest attributes entry.</summary>
+        public class GetGuestAttributesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.GuestAttributes>
+        {
+            /// <summary>Constructs a new GetGuestAttributes request.</summary>
+            public GetGuestAttributesRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Specifies the key for the guest attributes entry.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("variableKey", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string VariableKey { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getGuestAttributes"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/getGuestAttributes"; }
+            }
+
+            /// <summary>Initializes GetGuestAttributes parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "variableKey", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "variableKey",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
         /// exists.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -23635,7 +23739,8 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Updates the specified access config from an instance's network interface with the data included in
-        /// the request.</summary>
+        /// the request. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -23649,7 +23754,8 @@ namespace Google.Apis.Compute.alpha
         }
 
         /// <summary>Updates the specified access config from an instance's network interface with the data included in
-        /// the request.</summary>
+        /// the request. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
         public class UpdateAccessConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new UpdateAccessConfig request.</summary>
@@ -50164,6 +50270,17 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Authorization-related information used by Cloud Audit Logging.</summary>
+    public class AuthorizationLoggingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the permission that was checked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
+        public virtual string PermissionType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine
     /// instances in managed instance groups according to an autoscaling policy that you define. For more information,
     /// read Autoscaling Groups of Instances.</summary>
@@ -50555,7 +50672,7 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the
         /// default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// For Internal Load Balancing, the default and only supported mode is CONNECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
@@ -51551,7 +51668,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// disk.
         ///
         /// If you specify this field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less
-        /// than the size of the sourceImage or the size of the snapshot.</summary>
+        /// than the size of the sourceImage or the size of the snapshot. Acceptable values are 1 to 65536,
+        /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; } 
 
@@ -52025,6 +52143,12 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
 
+        /// <summary>This field denotes whether to enable logging for a particular firewall rule. If logging is enabled,
+        /// logs will be exported to the configured export destination for all firewall logs in the network. Logs may be
+        /// exported to BigQuery or Pub/Sub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
+        public virtual System.Nullable<bool> EnableLogging { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -52080,13 +52204,14 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceServiceAccounts")]
         public virtual System.Collections.Generic.IList<string> SourceServiceAccounts { get; set; } 
 
-        /// <summary>If source tags are specified, the firewall will apply only to traffic from VM instances in the same
-        /// virtual network with a tag listed in the source tags. Source tags cannot be used to control traffic to an
-        /// instance's external IP address, it only applies to traffic between instances in the same virtual network.
-        /// Because tags are associated with instances, not IP addresses. One or both of sourceRanges and sourceTags may
-        /// be set. If both properties are set, the firewall will apply to traffic that has source IP address within
-        /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
-        /// not need to match both properties for the firewall to apply.</summary>
+        /// <summary>If source tags are specified, the firewall rule applies only to traffic with source IPs that match
+        /// the primary network interfaces of VM instances that have the tag and are in the same VPC network. Source
+        /// tags cannot be used to control traffic to an instance's external IP address, it only applies to traffic
+        /// between instances in the same virtual network. Because tags are associated with instances, not IP addresses.
+        /// One or both of sourceRanges and sourceTags may be set. If both properties are set, the firewall will apply
+        /// to traffic that has source IP address within sourceRanges OR the source IP that belongs to a tag listed in
+        /// the sourceTags property. The connection does not need to match both properties for the firewall to
+        /// apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
 
@@ -52111,7 +52236,7 @@ namespace Google.Apis.Compute.alpha.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
@@ -52129,7 +52254,7 @@ namespace Google.Apis.Compute.alpha.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
@@ -52304,9 +52429,9 @@ namespace Google.Apis.Compute.alpha.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222 -
-        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222 - TargetVpnGateway: 500, 4500
-        /// -</summary>
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 -
+        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 - TargetVpnGateway: 500,
+        /// 4500 -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
@@ -52498,6 +52623,30 @@ namespace Google.Apis.Compute.alpha.Data
         /// "").</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A guest attributes entry.</summary>
+    public class GuestAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Type of the resource. Always compute#guestAttributes for guest attributes
+        /// entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The key to search for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableKey")]
+        public virtual string VariableKey { get; set; } 
+
+        /// <summary>[Output Only] The value found for the requested key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableValue")]
+        public virtual string VariableValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -53689,7 +53838,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual System.Nullable<bool> StartRestricted { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -55701,9 +55850,9 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if the log is for a permission of type DATA_READ or ADMIN_READ.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isReadPermissionType")]
-        public virtual System.Nullable<bool> IsReadPermissionType { get; set; } 
+        /// <summary>Information used by the Cloud Audit Logging pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationLoggingOptions")]
+        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; } 
 
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]

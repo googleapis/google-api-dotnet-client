@@ -1,12 +1,13 @@
 {
+  "canonicalName": "Service Control",
   "auth": {
     "oauth2": {
       "scopes": {
-        "https://www.googleapis.com/auth/servicecontrol": {
-          "description": "Manage your Google Service Control data"
-        },
         "https://www.googleapis.com/auth/cloud-platform": {
           "description": "View and manage your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/servicecontrol": {
+          "description": "Manage your Google Service Control data"
         }
       }
     }
@@ -22,10 +23,10 @@
     "services": {
       "methods": {
         "startReconciliation": {
-          "description": "Unlike rate quota, allocation quota does not get refilled periodically.\nSo, it is possible that the quota usage as seen by the service differs from\nwhat the One Platform considers the usage is. This is expected to happen\nonly rarely, but over time this can accumulate. Services can invoke\nStartReconciliation and EndReconciliation to correct this usage drift, as\ndescribed below:\n1. Service sends StartReconciliation with a timestamp in future for each\n   metric that needs to be reconciled. The timestamp being in future allows\n   to account for in-flight AllocateQuota and ReleaseQuota requests for the\n   same metric.\n2. One Platform records this timestamp and starts tracking subsequent\n   AllocateQuota and ReleaseQuota requests until EndReconciliation is\n   called.\n3. At or after the time specified in the StartReconciliation, service\n   sends EndReconciliation with the usage that needs to be reconciled to.\n4. One Platform adjusts its own record of usage for that metric to the\n   value specified in EndReconciliation by taking in to account any\n   allocation or release between StartReconciliation and EndReconciliation.\n\nSignals the quota controller that the service wants to perform a usage\nreconciliation as specified in the request.\n\nThis method requires the `servicemanagement.services.quota`\npermission on the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
           "request": {
             "$ref": "StartReconciliationRequest"
           },
+          "description": "Unlike rate quota, allocation quota does not get refilled periodically.\nSo, it is possible that the quota usage as seen by the service differs from\nwhat the One Platform considers the usage is. This is expected to happen\nonly rarely, but over time this can accumulate. Services can invoke\nStartReconciliation and EndReconciliation to correct this usage drift, as\ndescribed below:\n1. Service sends StartReconciliation with a timestamp in future for each\n   metric that needs to be reconciled. The timestamp being in future allows\n   to account for in-flight AllocateQuota and ReleaseQuota requests for the\n   same metric.\n2. One Platform records this timestamp and starts tracking subsequent\n   AllocateQuota and ReleaseQuota requests until EndReconciliation is\n   called.\n3. At or after the time specified in the StartReconciliation, service\n   sends EndReconciliation with the usage that needs to be reconciled to.\n4. One Platform adjusts its own record of usage for that metric to the\n   value specified in EndReconciliation by taking in to account any\n   allocation or release between StartReconciliation and EndReconciliation.\n\nSignals the quota controller that the service wants to perform a usage\nreconciliation as specified in the request.\n\nThis method requires the `servicemanagement.services.quota`\npermission on the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
           "response": {
             "$ref": "StartReconciliationResponse"
           },
@@ -33,23 +34,24 @@
             "serviceName"
           ],
           "httpMethod": "POST",
-          "parameters": {
-            "serviceName": {
-              "location": "path",
-              "description": "Name of the service as specified in the service configuration. For example,\n`\"pubsub.googleapis.com\"`.\n\nSee google.api.Service for the definition of a service name.",
-              "type": "string",
-              "required": true
-            }
-          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform",
             "https://www.googleapis.com/auth/servicecontrol"
           ],
+          "parameters": {
+            "serviceName": {
+              "description": "Name of the service as specified in the service configuration. For example,\n`\"pubsub.googleapis.com\"`.\n\nSee google.api.Service for the definition of a service name.",
+              "type": "string",
+              "required": true,
+              "location": "path"
+            }
+          },
           "flatPath": "v1/services/{serviceName}:startReconciliation",
           "id": "servicecontrol.services.startReconciliation",
           "path": "v1/services/{serviceName}:startReconciliation"
         },
         "check": {
+          "flatPath": "v1/services/{serviceName}:check",
           "path": "v1/services/{serviceName}:check",
           "id": "servicecontrol.services.check",
           "description": "Checks an operation with Google Service Control to decide whether\nthe given operation should proceed. It should be called before the\noperation is executed.\n\nIf feasible, the client should cache the check results and reuse them for\n60 seconds. In case of server errors, the client can rely on the cached\nresults for longer time.\n\nNOTE: the `CheckRequest` has the size limit of 64KB.\n\nThis method requires the `servicemanagement.services.check` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
@@ -74,8 +76,7 @@
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform",
             "https://www.googleapis.com/auth/servicecontrol"
-          ],
-          "flatPath": "v1/services/{serviceName}:check"
+          ]
         },
         "releaseQuota": {
           "response": {
@@ -85,34 +86,6 @@
             "serviceName"
           ],
           "httpMethod": "POST",
-          "parameters": {
-            "serviceName": {
-              "description": "Name of the service as specified in the service configuration. For example,\n`\"pubsub.googleapis.com\"`.\n\nSee google.api.Service for the definition of a service name.",
-              "type": "string",
-              "required": true,
-              "location": "path"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/servicecontrol"
-          ],
-          "flatPath": "v1/services/{serviceName}:releaseQuota",
-          "id": "servicecontrol.services.releaseQuota",
-          "path": "v1/services/{serviceName}:releaseQuota",
-          "description": "Releases previously allocated quota done through AllocateQuota method.\n\nThis method requires the `servicemanagement.services.quota`\npermission on the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).\n\n**NOTE:** the client code **must** fail-open if the server returns one\nof the following quota errors:\n-   `PROJECT_STATUS_UNAVAILABLE`\n-   `SERVICE_STATUS_UNAVAILABLE`\n-   `BILLING_STATUS_UNAVAILABLE`\n-   `QUOTA_SYSTEM_UNAVAILABLE`\n\nThe server may inject above errors to prohibit any hard dependency\non the quota system.",
-          "request": {
-            "$ref": "ReleaseQuotaRequest"
-          }
-        },
-        "endReconciliation": {
-          "httpMethod": "POST",
-          "parameterOrder": [
-            "serviceName"
-          ],
-          "response": {
-            "$ref": "EndReconciliationResponse"
-          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform",
             "https://www.googleapis.com/auth/servicecontrol"
@@ -125,15 +98,49 @@
               "required": true
             }
           },
+          "flatPath": "v1/services/{serviceName}:releaseQuota",
+          "id": "servicecontrol.services.releaseQuota",
+          "path": "v1/services/{serviceName}:releaseQuota",
+          "request": {
+            "$ref": "ReleaseQuotaRequest"
+          },
+          "description": "Releases previously allocated quota done through AllocateQuota method.\n\nThis method requires the `servicemanagement.services.quota`\npermission on the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).\n\n**NOTE:** the client code **must** fail-open if the server returns one\nof the following quota errors:\n-   `PROJECT_STATUS_UNAVAILABLE`\n-   `SERVICE_STATUS_UNAVAILABLE`\n-   `BILLING_STATUS_UNAVAILABLE`\n-   `QUOTA_SYSTEM_UNAVAILABLE`\n\nThe server may inject above errors to prohibit any hard dependency\non the quota system."
+        },
+        "endReconciliation": {
+          "response": {
+            "$ref": "EndReconciliationResponse"
+          },
+          "parameterOrder": [
+            "serviceName"
+          ],
+          "httpMethod": "POST",
+          "parameters": {
+            "serviceName": {
+              "description": "Name of the service as specified in the service configuration. For example,\n`\"pubsub.googleapis.com\"`.\n\nSee google.api.Service for the definition of a service name.",
+              "type": "string",
+              "required": true,
+              "location": "path"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/servicecontrol"
+          ],
           "flatPath": "v1/services/{serviceName}:endReconciliation",
-          "path": "v1/services/{serviceName}:endReconciliation",
           "id": "servicecontrol.services.endReconciliation",
+          "path": "v1/services/{serviceName}:endReconciliation",
+          "description": "Signals the quota controller that service ends the ongoing usage\nreconciliation.\n\nThis method requires the `servicemanagement.services.quota`\npermission on the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
           "request": {
             "$ref": "EndReconciliationRequest"
-          },
-          "description": "Signals the quota controller that service ends the ongoing usage\nreconciliation.\n\nThis method requires the `servicemanagement.services.quota`\npermission on the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam)."
+          }
         },
         "report": {
+          "path": "v1/services/{serviceName}:report",
+          "id": "servicecontrol.services.report",
+          "description": "Reports operation results to Google Service Control, such as logs and\nmetrics. It should be called after an operation is completed.\n\nIf feasible, the client should aggregate reporting data for up to 5\nseconds to reduce API traffic. Limiting aggregation to 5 seconds is to\nreduce data loss during client crashes. Clients should carefully choose\nthe aggregation time window to avoid data loss risk more than 0.01%\nfor business and compliance reasons.\n\nNOTE: the `ReportRequest` has the size limit of 1MB.\n\nThis method requires the `servicemanagement.services.report` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).",
+          "request": {
+            "$ref": "ReportRequest"
+          },
           "httpMethod": "POST",
           "parameterOrder": [
             "serviceName"
@@ -141,10 +148,6 @@
           "response": {
             "$ref": "ReportResponse"
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/servicecontrol"
-          ],
           "parameters": {
             "serviceName": {
               "description": "The service name as specified in its service configuration. For example,\n`\"pubsub.googleapis.com\"`.\n\nSee google.api.Service for the definition of a service name.",
@@ -153,26 +156,20 @@
               "location": "path"
             }
           },
-          "flatPath": "v1/services/{serviceName}:report",
-          "path": "v1/services/{serviceName}:report",
-          "id": "servicecontrol.services.report",
-          "request": {
-            "$ref": "ReportRequest"
-          },
-          "description": "Reports operation results to Google Service Control, such as logs and\nmetrics. It should be called after an operation is completed.\n\nIf feasible, the client should aggregate reporting data for up to 5\nseconds to reduce API traffic. Limiting aggregation to 5 seconds is to\nreduce data loss during client crashes. Clients should carefully choose\nthe aggregation time window to avoid data loss risk more than 0.01%\nfor business and compliance reasons.\n\nNOTE: the `ReportRequest` has the size limit of 1MB.\n\nThis method requires the `servicemanagement.services.report` permission\non the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam)."
-        },
-        "allocateQuota": {
-          "response": {
-            "$ref": "AllocateQuotaResponse"
-          },
-          "parameterOrder": [
-            "serviceName"
-          ],
-          "httpMethod": "POST",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform",
             "https://www.googleapis.com/auth/servicecontrol"
           ],
+          "flatPath": "v1/services/{serviceName}:report"
+        },
+        "allocateQuota": {
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "serviceName"
+          ],
+          "response": {
+            "$ref": "AllocateQuotaResponse"
+          },
           "parameters": {
             "serviceName": {
               "location": "path",
@@ -181,54 +178,47 @@
               "required": true
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/servicecontrol"
+          ],
           "flatPath": "v1/services/{serviceName}:allocateQuota",
-          "id": "servicecontrol.services.allocateQuota",
           "path": "v1/services/{serviceName}:allocateQuota",
+          "id": "servicecontrol.services.allocateQuota",
+          "description": "Attempts to allocate quota for the specified consumer. It should be called\nbefore the operation is executed.\n\nThis method requires the `servicemanagement.services.quota`\npermission on the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).\n\n**NOTE:** the client code **must** fail-open if the server returns one\nof the following quota errors:\n-   `PROJECT_STATUS_UNAVAILABLE`\n-   `SERVICE_STATUS_UNAVAILABLE`\n-   `BILLING_STATUS_UNAVAILABLE`\n-   `QUOTA_SYSTEM_UNAVAILABLE`\n\nThe server may inject above errors to prohibit any hard dependency\non the quota system.",
           "request": {
             "$ref": "AllocateQuotaRequest"
-          },
-          "description": "Attempts to allocate quota for the specified consumer. It should be called\nbefore the operation is executed.\n\nThis method requires the `servicemanagement.services.quota`\npermission on the specified service. For more information, see\n[Google Cloud IAM](https://cloud.google.com/iam).\n\n**NOTE:** the client code **must** fail-open if the server returns one\nof the following quota errors:\n-   `PROJECT_STATUS_UNAVAILABLE`\n-   `SERVICE_STATUS_UNAVAILABLE`\n-   `BILLING_STATUS_UNAVAILABLE`\n-   `QUOTA_SYSTEM_UNAVAILABLE`\n\nThe server may inject above errors to prohibit any hard dependency\non the quota system."
+          }
         }
       }
     }
   },
   "parameters": {
-    "pp": {
-      "default": "true",
-      "type": "boolean",
-      "location": "query",
-      "description": "Pretty-print response."
-    },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
-    "oauth_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
-    },
     "upload_protocol": {
-      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
       "default": "true",
-      "type": "boolean",
-      "location": "query",
-      "description": "Returns response with indentations and line breaks."
-    },
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
+      "type": "boolean"
     },
     "uploadType": {
-      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -241,11 +231,6 @@
         "2"
       ],
       "description": "V1 error format.",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
       "type": "string"
     },
     "alt": {
@@ -264,20 +249,36 @@
       "description": "Data format for response.",
       "default": "json"
     },
-    "key": {
+    "access_token": {
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "description": "OAuth access token.",
       "type": "string"
     },
-    "access_token": {
-      "description": "OAuth access token.",
+    "key": {
+      "type": "string",
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "pp": {
+      "default": "true",
+      "type": "boolean",
+      "location": "query",
+      "description": "Pretty-print response."
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
       "type": "string",
       "location": "query"
     },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
+    "bearer_token": {
+      "location": "query",
+      "description": "OAuth bearer token.",
+      "type": "string"
     }
   },
   "version": "v1",
@@ -286,9 +287,9 @@
   "description": "Google Service Control provides control plane functionality to managed services, such as logging, monitoring, and status checks.",
   "kind": "discovery#restDescription",
   "basePath": "",
-  "id": "servicecontrol:v1",
   "documentationLink": "https://cloud.google.com/service-control/",
   "revision": "20170724",
+  "id": "servicecontrol:v1",
   "discoveryVersion": "v1",
   "version_module": "True",
   "schemas": {
@@ -302,9 +303,9 @@
           "type": "number"
         },
         "int64Value": {
+          "type": "string",
           "format": "int64",
-          "description": "A signed 64-bit integer value.",
-          "type": "string"
+          "description": "A signed 64-bit integer value."
         },
         "distributionValue": {
           "$ref": "Distribution",
@@ -329,11 +330,11 @@
           "description": "A money value."
         },
         "labels": {
+          "description": "The labels describing the metric value.\nSee comments on google.api.servicecontrol.v1.Operation.labels for\nthe overriding relationship.",
+          "type": "object",
           "additionalProperties": {
             "type": "string"
-          },
-          "description": "The labels describing the metric value.\nSee comments on google.api.servicecontrol.v1.Operation.labels for\nthe overriding relationship.",
-          "type": "object"
+          }
         },
         "stringValue": {
           "description": "A text string value.",
@@ -341,27 +342,6 @@
         }
       },
       "id": "MetricValue"
-    },
-    "Money": {
-      "description": "Represents an amount of money with its currency type.",
-      "type": "object",
-      "properties": {
-        "currencyCode": {
-          "description": "The 3-letter currency code defined in ISO 4217.",
-          "type": "string"
-        },
-        "nanos": {
-          "format": "int32",
-          "description": "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
-          "type": "integer"
-        },
-        "units": {
-          "format": "int64",
-          "description": "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
-          "type": "string"
-        }
-      },
-      "id": "Money"
     },
     "EndReconciliationResponse": {
       "type": "object",
@@ -374,15 +354,15 @@
           "type": "array"
         },
         "reconciliationErrors": {
-          "description": "Indicates the decision of the reconciliation end.",
           "items": {
             "$ref": "QuotaError"
           },
-          "type": "array"
+          "type": "array",
+          "description": "Indicates the decision of the reconciliation end."
         },
         "operationId": {
-          "description": "The same operation_id value used in the EndReconciliationRequest. Used for\nlogging and diagnostics purposes.",
-          "type": "string"
+          "type": "string",
+          "description": "The same operation_id value used in the EndReconciliationRequest. Used for\nlogging and diagnostics purposes."
         },
         "serviceConfigId": {
           "description": "ID of the actual config used to process the request.",
@@ -391,24 +371,51 @@
       },
       "id": "EndReconciliationResponse"
     },
+    "Money": {
+      "properties": {
+        "nanos": {
+          "format": "int32",
+          "description": "Number of nano (10^-9) units of the amount.\nThe value must be between -999,999,999 and +999,999,999 inclusive.\nIf `units` is positive, `nanos` must be positive or zero.\nIf `units` is zero, `nanos` can be positive, zero, or negative.\nIf `units` is negative, `nanos` must be negative or zero.\nFor example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
+          "type": "integer"
+        },
+        "units": {
+          "type": "string",
+          "format": "int64",
+          "description": "The whole units of the amount.\nFor example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar."
+        },
+        "currencyCode": {
+          "description": "The 3-letter currency code defined in ISO 4217.",
+          "type": "string"
+        }
+      },
+      "id": "Money",
+      "description": "Represents an amount of money with its currency type.",
+      "type": "object"
+    },
     "ExplicitBuckets": {
       "description": "Describing buckets with arbitrary user-provided width.",
       "type": "object",
       "properties": {
         "bounds": {
+          "description": "'bound' is a list of strictly increasing boundaries between\nbuckets. Note that a list of length N-1 defines N buckets because\nof fenceposting. See comments on `bucket_options` for details.\n\nThe i'th finite bucket covers the interval\n  [bound[i-1], bound[i])\nwhere i ranges from 1 to bound_size() - 1. Note that there are no\nfinite buckets at all if 'bound' only contains a single element; in\nthat special case the single bound defines the boundary between the\nunderflow and overflow buckets.\n\nbucket number                   lower bound    upper bound\n i == 0 (underflow)              -inf           bound[i]\n 0 \u003c i \u003c bound_size()            bound[i-1]     bound[i]\n i == bound_size() (overflow)    bound[i-1]     +inf",
           "items": {
             "format": "double",
             "type": "number"
           },
-          "type": "array",
-          "description": "'bound' is a list of strictly increasing boundaries between\nbuckets. Note that a list of length N-1 defines N buckets because\nof fenceposting. See comments on `bucket_options` for details.\n\nThe i'th finite bucket covers the interval\n  [bound[i-1], bound[i])\nwhere i ranges from 1 to bound_size() - 1. Note that there are no\nfinite buckets at all if 'bound' only contains a single element; in\nthat special case the single bound defines the boundary between the\nunderflow and overflow buckets.\n\nbucket number                   lower bound    upper bound\n i == 0 (underflow)              -inf           bound[i]\n 0 \u003c i \u003c bound_size()            bound[i-1]     bound[i]\n i == bound_size() (overflow)    bound[i-1]     +inf"
+          "type": "array"
         }
       },
       "id": "ExplicitBuckets"
     },
     "Distribution": {
+      "description": "Distribution represents a frequency distribution of double-valued sample\npoints. It contains the size of the population of sample points plus\nadditional optional information:\n\n  - the arithmetic mean of the samples\n  - the minimum and maximum of the samples\n  - the sum-squared-deviation of the samples, used to compute variance\n  - a histogram of the values of the sample points",
       "type": "object",
       "properties": {
+        "maximum": {
+          "format": "double",
+          "description": "The maximum of the population of values. Ignored if `count` is zero.",
+          "type": "number"
+        },
         "sumOfSquaredDeviation": {
           "format": "double",
           "description": "The sum of squared deviations from the mean:\n  Sum[i=1..count]((x_i - mean)^2)\nwhere each x_i is a sample values. If `count` is zero then this field\nmust be zero, otherwise validation of the request fails.",
@@ -418,45 +425,39 @@
           "description": "Buckets with exponentially growing width.",
           "$ref": "ExponentialBuckets"
         },
-        "minimum": {
-          "format": "double",
-          "description": "The minimum of the population of values. Ignored if `count` is zero.",
-          "type": "number"
-        },
         "linearBuckets": {
           "$ref": "LinearBuckets",
           "description": "Buckets with constant width."
         },
-        "count": {
-          "format": "int64",
-          "description": "The total number of samples in the distribution. Must be \u003e= 0.",
-          "type": "string"
+        "minimum": {
+          "format": "double",
+          "description": "The minimum of the population of values. Ignored if `count` is zero.",
+          "type": "number"
         },
         "mean": {
           "format": "double",
           "description": "The arithmetic mean of the samples in the distribution. If `count` is\nzero then this field must be zero.",
           "type": "number"
         },
+        "count": {
+          "type": "string",
+          "format": "int64",
+          "description": "The total number of samples in the distribution. Must be \u003e= 0."
+        },
         "bucketCounts": {
           "description": "The number of samples in each histogram bucket. `bucket_counts` are\noptional. If present, they must sum to the `count` value.\n\nThe buckets are defined below in `bucket_option`. There are N buckets.\n`bucket_counts[0]` is the number of samples in the underflow bucket.\n`bucket_counts[1]` to `bucket_counts[N-1]` are the numbers of samples\nin each of the finite buckets. And `bucket_counts[N] is the number\nof samples in the overflow bucket. See the comments of `bucket_option`\nbelow for more details.\n\nAny suffix of trailing zeros may be omitted.",
           "items": {
-            "type": "string",
-            "format": "int64"
+            "format": "int64",
+            "type": "string"
           },
           "type": "array"
         },
         "explicitBuckets": {
           "$ref": "ExplicitBuckets",
           "description": "Buckets with arbitrary user-provided width."
-        },
-        "maximum": {
-          "format": "double",
-          "description": "The maximum of the population of values. Ignored if `count` is zero.",
-          "type": "number"
         }
       },
-      "id": "Distribution",
-      "description": "Distribution represents a frequency distribution of double-valued sample\npoints. It contains the size of the population of sample points plus\nadditional optional information:\n\n  - the arithmetic mean of the samples\n  - the minimum and maximum of the samples\n  - the sum-squared-deviation of the samples, used to compute variance\n  - a histogram of the values of the sample points"
+      "id": "Distribution"
     },
     "ExponentialBuckets": {
       "description": "Describing buckets with exponentially growing width.",
@@ -473,9 +474,9 @@
           "type": "number"
         },
         "numFiniteBuckets": {
-          "type": "integer",
           "format": "int32",
-          "description": "The number of finite buckets. With the underflow and overflow buckets,\nthe total number of buckets is `num_finite_buckets` + 2.\nSee comments on `bucket_options` for details."
+          "description": "The number of finite buckets. With the underflow and overflow buckets,\nthe total number of buckets is `num_finite_buckets` + 2.\nSee comments on `bucket_options` for details.",
+          "type": "integer"
         }
       },
       "id": "ExponentialBuckets"
@@ -484,16 +485,16 @@
       "description": "Authorization information for the operation.",
       "type": "object",
       "properties": {
+        "resource": {
+          "type": "string",
+          "description": "The resource being accessed, as a REST-style string. For example:\n\n    bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID"
+        },
         "granted": {
           "description": "Whether or not authorization for `resource` and `permission`\nwas granted.",
           "type": "boolean"
         },
         "permission": {
           "description": "The required IAM permission.",
-          "type": "string"
-        },
-        "resource": {
-          "description": "The resource being accessed, as a REST-style string. For example:\n\n    bigquery.googleapis.com/projects/PROJECTID/datasets/DATASETID",
           "type": "string"
         }
       },
@@ -502,17 +503,6 @@
     "StartReconciliationResponse": {
       "type": "object",
       "properties": {
-        "serviceConfigId": {
-          "description": "ID of the actual config used to process the request.",
-          "type": "string"
-        },
-        "quotaMetrics": {
-          "description": "Metric values as tracked by One Platform before the start of\nreconciliation. The following metrics will be included:\n\n1. Per quota metric total usage will be specified using the following gauge\nmetric:\n  \"serviceruntime.googleapis.com/allocation/consumer/quota_used_count\"\n\n2. Value for each quota limit associated with the metrics will be specified\nusing the following gauge metric:\n  \"serviceruntime.googleapis.com/quota/limit\"",
-          "items": {
-            "$ref": "MetricValueSet"
-          },
-          "type": "array"
-        },
         "reconciliationErrors": {
           "description": "Indicates the decision of the reconciliation start.",
           "items": {
@@ -521,8 +511,19 @@
           "type": "array"
         },
         "operationId": {
-          "description": "The same operation_id value used in the StartReconciliationRequest. Used\nfor logging and diagnostics purposes.",
-          "type": "string"
+          "type": "string",
+          "description": "The same operation_id value used in the StartReconciliationRequest. Used\nfor logging and diagnostics purposes."
+        },
+        "serviceConfigId": {
+          "type": "string",
+          "description": "ID of the actual config used to process the request."
+        },
+        "quotaMetrics": {
+          "description": "Metric values as tracked by One Platform before the start of\nreconciliation. The following metrics will be included:\n\n1. Per quota metric total usage will be specified using the following gauge\nmetric:\n  \"serviceruntime.googleapis.com/allocation/consumer/quota_used_count\"\n\n2. Value for each quota limit associated with the metrics will be specified\nusing the following gauge metric:\n  \"serviceruntime.googleapis.com/quota/limit\"",
+          "items": {
+            "$ref": "MetricValueSet"
+          },
+          "type": "array"
         }
       },
       "id": "StartReconciliationResponse"
@@ -531,6 +532,13 @@
       "description": "Represents the properties needed for quota operations.",
       "type": "object",
       "properties": {
+        "limitByIds": {
+          "description": "LimitType IDs that should be used for checking quota. Key in this map\nshould be a valid LimitType string, and the value is the ID to be used. For\nexample, an entry \u003cUSER, 123\u003e will cause all user quota limits to use 123\nas the user ID. See google/api/quota.proto for the definition of LimitType.\nCLIENT_PROJECT: Not supported.\nUSER: Value of this entry will be used for enforcing user-level quota\n      limits. If none specified, caller IP passed in the\n      servicecontrol.googleapis.com/caller_ip label will be used instead.\n      If the server cannot resolve a value for this LimitType, an error\n      will be thrown. No validation will be performed on this ID.\nDeprecated: use servicecontrol.googleapis.com/user label to send user ID.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "quotaMode": {
           "enumDescriptions": [
             "Decreases available quota by the cost specified for the operation.\nIf cost is higher than available quota, operation fails and returns\nerror.",
@@ -546,65 +554,59 @@
           ],
           "description": "Quota mode for this operation.",
           "type": "string"
-        },
-        "limitByIds": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "LimitType IDs that should be used for checking quota. Key in this map\nshould be a valid LimitType string, and the value is the ID to be used. For\nexample, an entry \u003cUSER, 123\u003e will cause all user quota limits to use 123\nas the user ID. See google/api/quota.proto for the definition of LimitType.\nCLIENT_PROJECT: Not supported.\nUSER: Value of this entry will be used for enforcing user-level quota\n      limits. If none specified, caller IP passed in the\n      servicecontrol.googleapis.com/caller_ip label will be used instead.\n      If the server cannot resolve a value for this LimitType, an error\n      will be thrown. No validation will be performed on this ID.\nDeprecated: use servicecontrol.googleapis.com/user label to send user ID.",
-          "type": "object"
         }
       },
       "id": "QuotaProperties"
     },
     "LinearBuckets": {
-      "id": "LinearBuckets",
       "description": "Describing buckets with constant width.",
       "type": "object",
       "properties": {
-        "width": {
-          "type": "number",
-          "format": "double",
-          "description": "The i'th linear bucket covers the interval\n  [offset + (i-1) * width, offset + i * width)\nwhere i ranges from 1 to num_finite_buckets, inclusive.\nMust be strictly positive."
-        },
-        "offset": {
-          "format": "double",
-          "description": "The i'th linear bucket covers the interval\n  [offset + (i-1) * width, offset + i * width)\nwhere i ranges from 1 to num_finite_buckets, inclusive.",
-          "type": "number"
-        },
         "numFiniteBuckets": {
           "format": "int32",
           "description": "The number of finite buckets. With the underflow and overflow buckets,\nthe total number of buckets is `num_finite_buckets` + 2.\nSee comments on `bucket_options` for details.",
           "type": "integer"
+        },
+        "width": {
+          "format": "double",
+          "description": "The i'th linear bucket covers the interval\n  [offset + (i-1) * width, offset + i * width)\nwhere i ranges from 1 to num_finite_buckets, inclusive.\nMust be strictly positive.",
+          "type": "number"
+        },
+        "offset": {
+          "type": "number",
+          "format": "double",
+          "description": "The i'th linear bucket covers the interval\n  [offset + (i-1) * width, offset + i * width)\nwhere i ranges from 1 to num_finite_buckets, inclusive."
         }
-      }
+      },
+      "id": "LinearBuckets"
     },
     "AuthenticationInfo": {
-      "description": "Authentication information for the operation.",
       "type": "object",
       "properties": {
         "principalEmail": {
-          "type": "string",
-          "description": "The email address of the authenticated user making the request."
+          "description": "The email address of the authenticated user making the request.",
+          "type": "string"
         },
         "authoritySelector": {
           "description": "The authority selector specified by the requestor, if any.\nIt is not guaranteed that the principal was allowed to use this authority.",
           "type": "string"
         }
       },
-      "id": "AuthenticationInfo"
+      "id": "AuthenticationInfo",
+      "description": "Authentication information for the operation."
     },
     "AllocateQuotaResponse": {
-      "id": "AllocateQuotaResponse",
-      "description": "Response message for the AllocateQuota method.",
-      "type": "object",
       "properties": {
+        "serviceConfigId": {
+          "description": "ID of the actual config used to process the request.",
+          "type": "string"
+        },
         "allocateErrors": {
-          "description": "Indicates the decision of the allocate.",
           "items": {
             "$ref": "QuotaError"
           },
-          "type": "array"
+          "type": "array",
+          "description": "Indicates the decision of the allocate."
         },
         "quotaMetrics": {
           "description": "Quota metrics to indicate the result of allocation. Depending on the\nrequest, one or more of the following metrics will be included:\n\n1. For rate quota, per quota group or per quota metric incremental usage\nwill be specified using the following delta metric:\n  \"serviceruntime.googleapis.com/api/consumer/quota_used_count\"\n\n2. For allocation quota, per quota metric total usage will be specified\nusing the following gauge metric:\n  \"serviceruntime.googleapis.com/allocation/consumer/quota_used_count\"\n\n3. For both rate quota and allocation quota, the quota limit reached\ncondition will be specified using the following boolean metric:\n  \"serviceruntime.googleapis.com/quota/exceeded\"\n\n4. For allocation quota, value for each quota limit associated with\nthe metrics will be specified using the following gauge metric:\n  \"serviceruntime.googleapis.com/quota/limit\"",
@@ -614,17 +616,15 @@
           "type": "array"
         },
         "operationId": {
-          "type": "string",
-          "description": "The same operation_id value used in the AllocateQuotaRequest. Used for\nlogging and diagnostics purposes."
-        },
-        "serviceConfigId": {
-          "description": "ID of the actual config used to process the request.",
+          "description": "The same operation_id value used in the AllocateQuotaRequest. Used for\nlogging and diagnostics purposes.",
           "type": "string"
         }
-      }
+      },
+      "id": "AllocateQuotaResponse",
+      "description": "Response message for the AllocateQuota method.",
+      "type": "object"
     },
     "ReleaseQuotaRequest": {
-      "id": "ReleaseQuotaRequest",
       "description": "Request message for the ReleaseQuota method.",
       "type": "object",
       "properties": {
@@ -636,25 +636,10 @@
           "description": "Operation that describes the quota release.",
           "$ref": "QuotaOperation"
         }
-      }
-    },
-    "RequestMetadata": {
-      "description": "Metadata about the request.",
-      "type": "object",
-      "properties": {
-        "callerIp": {
-          "description": "The IP address of the caller.\nFor caller from internet, this will be public IPv4 or IPv6 address.\nFor caller from GCE VM with external IP address, this will be the VM's\nexternal IP address. For caller from GCE VM without external IP address, if\nthe VM is in the same GCP organization (or project) as the accessed\nresource, `caller_ip` will be the GCE VM's internal IPv4 address, otherwise\nit will be redacted to \"gce-internal-ip\".\nSee https://cloud.google.com/compute/docs/vpc/ for more information.",
-          "type": "string"
-        },
-        "callerSuppliedUserAgent": {
-          "description": "The user agent of the caller.\nThis information is not authenticated and should be treated accordingly.\nFor example:\n\n+   `google-api-python-client/1.4.0`:\n    The request was made by the Google API client for Python.\n+   `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`:\n    The request was made by the Google Cloud SDK CLI (gcloud).\n+   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`:\n    The request was made from the `my-project` App Engine app.\nNOLINT",
-          "type": "string"
-        }
       },
-      "id": "RequestMetadata"
+      "id": "ReleaseQuotaRequest"
     },
     "QuotaError": {
-      "type": "object",
       "properties": {
         "description": {
           "description": "Free-form text that provides details on the cause of the error.",
@@ -665,6 +650,22 @@
           "type": "string"
         },
         "code": {
+          "enumDescriptions": [
+            "This is never used.",
+            "Quota allocation failed.\nSame as google.rpc.Code.RESOURCE_EXHAUSTED.",
+            "Quota release failed.  This error is ONLY returned on a NORMAL release.\nMore formally:  if a user requests a release of 10 tokens, but only\n5 tokens were previously allocated, in a BEST_EFFORT release, this will\nbe considered a success, 5 tokens will be released, and the result will\nbe \"Ok\".  If this is done in NORMAL mode, no tokens will be released,\nand an OUT_OF_RANGE error will be returned.\nSame as google.rpc.Code.OUT_OF_RANGE.",
+            "Consumer cannot access the service because the service requires active\nbilling.",
+            "Consumer's project has been marked as deleted (soft deletion).",
+            "Specified API key is invalid.",
+            "Specified API Key has expired.",
+            "Consumer's spatula header is invalid.",
+            "The consumer's LOAS role is invalid.",
+            "The consumer's LOAS role has no associated project.",
+            "The backend server for looking up project id/number is unavailable.",
+            "The backend server for checking service status is unavailable.",
+            "The backend server for checking billing status is unavailable.",
+            "The backend server for checking quota limits is unavailable."
+          ],
           "enum": [
             "UNSPECIFIED",
             "RESOURCE_EXHAUSTED",
@@ -682,26 +683,26 @@
             "QUOTA_SYSTEM_UNAVAILABLE"
           ],
           "description": "Error code.",
-          "type": "string",
-          "enumDescriptions": [
-            "This is never used.",
-            "Quota allocation failed.\nSame as google.rpc.Code.RESOURCE_EXHAUSTED.",
-            "Quota release failed.  This error is ONLY returned on a NORMAL release.\nMore formally:  if a user requests a release of 10 tokens, but only\n5 tokens were previously allocated, in a BEST_EFFORT release, this will\nbe considered a success, 5 tokens will be released, and the result will\nbe \"Ok\".  If this is done in NORMAL mode, no tokens will be released,\nand an OUT_OF_RANGE error will be returned.\nSame as google.rpc.Code.OUT_OF_RANGE.",
-            "Consumer cannot access the service because the service requires active\nbilling.",
-            "Consumer's project has been marked as deleted (soft deletion).",
-            "Specified API key is invalid.",
-            "Specified API Key has expired.",
-            "Consumer's spatula header is invalid.",
-            "The consumer's LOAS role is invalid.",
-            "The consumer's LOAS role has no associated project.",
-            "The backend server for looking up project id/number is unavailable.",
-            "The backend server for checking service status is unavailable.",
-            "The backend server for checking billing status is unavailable.",
-            "The backend server for checking quota limits is unavailable."
-          ]
+          "type": "string"
         }
       },
-      "id": "QuotaError"
+      "id": "QuotaError",
+      "type": "object"
+    },
+    "RequestMetadata": {
+      "description": "Metadata about the request.",
+      "type": "object",
+      "properties": {
+        "callerSuppliedUserAgent": {
+          "type": "string",
+          "description": "The user agent of the caller.\nThis information is not authenticated and should be treated accordingly.\nFor example:\n\n+   `google-api-python-client/1.4.0`:\n    The request was made by the Google API client for Python.\n+   `Cloud SDK Command Line Tool apitools-client/1.0 gcloud/0.9.62`:\n    The request was made by the Google Cloud SDK CLI (gcloud).\n+   `AppEngine-Google; (+http://code.google.com/appengine; appid: s~my-project`:\n    The request was made from the `my-project` App Engine app.\nNOLINT"
+        },
+        "callerIp": {
+          "description": "The IP address of the caller.\nFor caller from internet, this will be public IPv4 or IPv6 address.\nFor caller from GCE VM with external IP address, this will be the VM's\nexternal IP address. For caller from GCE VM without external IP address, if\nthe VM is in the same GCP organization (or project) as the accessed\nresource, `caller_ip` will be the GCE VM's internal IPv4 address, otherwise\nit will be redacted to \"gce-internal-ip\".\nSee https://cloud.google.com/compute/docs/vpc/ for more information.",
+          "type": "string"
+        }
+      },
+      "id": "RequestMetadata"
     },
     "CheckInfo": {
       "type": "object",
@@ -714,17 +715,47 @@
           "type": "array"
         },
         "consumerInfo": {
-          "description": "Consumer info of this check.",
-          "$ref": "ConsumerInfo"
+          "$ref": "ConsumerInfo",
+          "description": "Consumer info of this check."
         }
       },
       "id": "CheckInfo"
     },
+    "ReleaseQuotaResponse": {
+      "description": "Response message for the ReleaseQuota method.",
+      "type": "object",
+      "properties": {
+        "releaseErrors": {
+          "description": "Indicates the decision of the release.",
+          "items": {
+            "$ref": "QuotaError"
+          },
+          "type": "array"
+        },
+        "quotaMetrics": {
+          "description": "Quota metrics to indicate the result of release. Depending on the\nrequest, one or more of the following metrics will be included:\n\n1. For rate quota, per quota group or per quota metric released amount\nwill be specified using the following delta metric:\n  \"serviceruntime.googleapis.com/api/consumer/quota_refund_count\"\n\n2. For allocation quota, per quota metric total usage will be specified\nusing the following gauge metric:\n  \"serviceruntime.googleapis.com/allocation/consumer/quota_used_count\"\n\n3. For allocation quota, value for each quota limit associated with\nthe metrics will be specified using the following gauge metric:\n  \"serviceruntime.googleapis.com/quota/limit\"",
+          "items": {
+            "$ref": "MetricValueSet"
+          },
+          "type": "array"
+        },
+        "operationId": {
+          "type": "string",
+          "description": "The same operation_id value used in the ReleaseQuotaRequest. Used for\nlogging and diagnostics purposes."
+        },
+        "serviceConfigId": {
+          "description": "ID of the actual config used to process the request.",
+          "type": "string"
+        }
+      },
+      "id": "ReleaseQuotaResponse"
+    },
     "AllocateQuotaRequest": {
-      "description": "Request message for the AllocateQuota method.",
       "type": "object",
       "properties": {
         "allocationMode": {
+          "description": "Allocation mode for this operation.\nDeprecated: use QuotaMode inside the QuotaOperation.",
+          "type": "string",
           "enumDescriptions": [
             "",
             "Allocates quota for the amount specified in the service configuration or\nspecified using the quota_metrics. If the amount is higher than the\navailable quota, allocation error will be returned and no quota will be\nallocated.",
@@ -736,9 +767,7 @@
             "NORMAL",
             "BEST_EFFORT",
             "CHECK_ONLY"
-          ],
-          "description": "Allocation mode for this operation.\nDeprecated: use QuotaMode inside the QuotaOperation.",
-          "type": "string"
+          ]
         },
         "serviceConfigId": {
           "description": "Specifies which version of service configuration should be used to process\nthe request. If unspecified or no matching version can be found, the latest\none will be used.",
@@ -749,62 +778,34 @@
           "description": "Operation that describes the quota allocation."
         }
       },
-      "id": "AllocateQuotaRequest"
-    },
-    "ReleaseQuotaResponse": {
-      "type": "object",
-      "properties": {
-        "serviceConfigId": {
-          "description": "ID of the actual config used to process the request.",
-          "type": "string"
-        },
-        "releaseErrors": {
-          "description": "Indicates the decision of the release.",
-          "items": {
-            "$ref": "QuotaError"
-          },
-          "type": "array"
-        },
-        "quotaMetrics": {
-          "items": {
-            "$ref": "MetricValueSet"
-          },
-          "type": "array",
-          "description": "Quota metrics to indicate the result of release. Depending on the\nrequest, one or more of the following metrics will be included:\n\n1. For rate quota, per quota group or per quota metric released amount\nwill be specified using the following delta metric:\n  \"serviceruntime.googleapis.com/api/consumer/quota_refund_count\"\n\n2. For allocation quota, per quota metric total usage will be specified\nusing the following gauge metric:\n  \"serviceruntime.googleapis.com/allocation/consumer/quota_used_count\"\n\n3. For allocation quota, value for each quota limit associated with\nthe metrics will be specified using the following gauge metric:\n  \"serviceruntime.googleapis.com/quota/limit\""
-        },
-        "operationId": {
-          "description": "The same operation_id value used in the ReleaseQuotaRequest. Used for\nlogging and diagnostics purposes.",
-          "type": "string"
-        }
-      },
-      "id": "ReleaseQuotaResponse",
-      "description": "Response message for the ReleaseQuota method."
+      "id": "AllocateQuotaRequest",
+      "description": "Request message for the AllocateQuota method."
     },
     "MetricValueSet": {
-      "id": "MetricValueSet",
       "description": "Represents a set of metric values in the same metric.\nEach metric value in the set should have a unique combination of start time,\nend time, and label values.",
       "type": "object",
       "properties": {
+        "metricName": {
+          "description": "The metric name defined in the service configuration.",
+          "type": "string"
+        },
         "metricValues": {
           "description": "The values in this metric.",
           "items": {
             "$ref": "MetricValue"
           },
           "type": "array"
-        },
-        "metricName": {
-          "description": "The metric name defined in the service configuration.",
-          "type": "string"
         }
-      }
+      },
+      "id": "MetricValueSet"
     },
     "ReportError": {
       "description": "Represents the processing error of one `Operation` in the request.",
       "type": "object",
       "properties": {
         "status": {
-          "$ref": "Status",
-          "description": "Details of the error when processing the `Operation`."
+          "description": "Details of the error when processing the `Operation`.",
+          "$ref": "Status"
         },
         "operationId": {
           "description": "The Operation.operation_id value from the request.",
@@ -813,23 +814,48 @@
       },
       "id": "ReportError"
     },
-    "StartReconciliationRequest": {
+    "CheckError": {
       "type": "object",
       "properties": {
-        "reconciliationOperation": {
-          "$ref": "QuotaOperation",
-          "description": "Operation that describes the quota reconciliation."
-        },
-        "serviceConfigId": {
-          "description": "Specifies which version of service configuration should be used to process\nthe request. If unspecified or no matching version can be found, the latest\none will be used.",
+        "detail": {
+          "description": "Free-form text providing details on the error cause of the error.",
           "type": "string"
-        }
-      },
-      "id": "StartReconciliationRequest"
-    },
-    "CheckError": {
-      "properties": {
+        },
         "code": {
+          "enum": [
+            "ERROR_CODE_UNSPECIFIED",
+            "NOT_FOUND",
+            "PERMISSION_DENIED",
+            "RESOURCE_EXHAUSTED",
+            "BUDGET_EXCEEDED",
+            "DENIAL_OF_SERVICE_DETECTED",
+            "LOAD_SHEDDING",
+            "ABUSER_DETECTED",
+            "SERVICE_NOT_ACTIVATED",
+            "VISIBILITY_DENIED",
+            "BILLING_DISABLED",
+            "PROJECT_DELETED",
+            "PROJECT_INVALID",
+            "IP_ADDRESS_BLOCKED",
+            "REFERER_BLOCKED",
+            "CLIENT_APP_BLOCKED",
+            "API_TARGET_BLOCKED",
+            "API_KEY_INVALID",
+            "API_KEY_EXPIRED",
+            "API_KEY_NOT_FOUND",
+            "SPATULA_HEADER_INVALID",
+            "LOAS_ROLE_INVALID",
+            "NO_LOAS_PROJECT",
+            "LOAS_PROJECT_DISABLED",
+            "SECURITY_POLICY_VIOLATED",
+            "NAMESPACE_LOOKUP_UNAVAILABLE",
+            "SERVICE_STATUS_UNAVAILABLE",
+            "BILLING_STATUS_UNAVAILABLE",
+            "QUOTA_CHECK_UNAVAILABLE",
+            "LOAS_PROJECT_LOOKUP_UNAVAILABLE",
+            "CLOUD_RESOURCE_MANAGER_BACKEND_UNAVAILABLE",
+            "SECURITY_POLICY_BACKEND_UNAVAILABLE"
+          ],
           "description": "The error code.",
           "type": "string",
           "enumDescriptions": [
@@ -865,53 +891,27 @@
             "The Spanner for looking up LOAS project is unavailable.",
             "Cloud Resource Manager backend server is unavailable.",
             "Backend server for evaluating security policy is unavailable."
-          ],
-          "enum": [
-            "ERROR_CODE_UNSPECIFIED",
-            "NOT_FOUND",
-            "PERMISSION_DENIED",
-            "RESOURCE_EXHAUSTED",
-            "BUDGET_EXCEEDED",
-            "DENIAL_OF_SERVICE_DETECTED",
-            "LOAD_SHEDDING",
-            "ABUSER_DETECTED",
-            "SERVICE_NOT_ACTIVATED",
-            "VISIBILITY_DENIED",
-            "BILLING_DISABLED",
-            "PROJECT_DELETED",
-            "PROJECT_INVALID",
-            "IP_ADDRESS_BLOCKED",
-            "REFERER_BLOCKED",
-            "CLIENT_APP_BLOCKED",
-            "API_TARGET_BLOCKED",
-            "API_KEY_INVALID",
-            "API_KEY_EXPIRED",
-            "API_KEY_NOT_FOUND",
-            "SPATULA_HEADER_INVALID",
-            "LOAS_ROLE_INVALID",
-            "NO_LOAS_PROJECT",
-            "LOAS_PROJECT_DISABLED",
-            "SECURITY_POLICY_VIOLATED",
-            "NAMESPACE_LOOKUP_UNAVAILABLE",
-            "SERVICE_STATUS_UNAVAILABLE",
-            "BILLING_STATUS_UNAVAILABLE",
-            "QUOTA_CHECK_UNAVAILABLE",
-            "LOAS_PROJECT_LOOKUP_UNAVAILABLE",
-            "CLOUD_RESOURCE_MANAGER_BACKEND_UNAVAILABLE",
-            "SECURITY_POLICY_BACKEND_UNAVAILABLE"
           ]
-        },
-        "detail": {
-          "description": "Free-form text providing details on the error cause of the error.",
-          "type": "string"
         }
       },
       "id": "CheckError",
-      "description": "Defines the errors to be returned in\ngoogle.api.servicecontrol.v1.CheckResponse.check_errors.",
-      "type": "object"
+      "description": "Defines the errors to be returned in\ngoogle.api.servicecontrol.v1.CheckResponse.check_errors."
+    },
+    "StartReconciliationRequest": {
+      "id": "StartReconciliationRequest",
+      "type": "object",
+      "properties": {
+        "serviceConfigId": {
+          "description": "Specifies which version of service configuration should be used to process\nthe request. If unspecified or no matching version can be found, the latest\none will be used.",
+          "type": "string"
+        },
+        "reconciliationOperation": {
+          "description": "Operation that describes the quota reconciliation.",
+          "$ref": "QuotaOperation"
+        }
+      }
     },
     "QuotaInfo": {
-      "description": "Contains the quota information for a quota check response.",
       "type": "object",
       "properties": {
         "quotaConsumed": {
@@ -930,52 +930,62 @@
           "type": "array"
         },
         "limitExceeded": {
+          "description": "Quota Metrics that have exceeded quota limits.\nFor QuotaGroup-based quota, this is QuotaGroup.name\nFor QuotaLimit-based quota, this is QuotaLimit.name\nSee: google.api.Quota\nDeprecated: Use quota_metrics to get per quota group limit exceeded status.",
           "items": {
             "type": "string"
           },
-          "type": "array",
-          "description": "Quota Metrics that have exceeded quota limits.\nFor QuotaGroup-based quota, this is QuotaGroup.name\nFor QuotaLimit-based quota, this is QuotaLimit.name\nSee: google.api.Quota\nDeprecated: Use quota_metrics to get per quota group limit exceeded status."
+          "type": "array"
         }
       },
-      "id": "QuotaInfo"
+      "id": "QuotaInfo",
+      "description": "Contains the quota information for a quota check response."
     },
     "ConsumerInfo": {
+      "id": "ConsumerInfo",
       "description": "`ConsumerInfo` provides information about the consumer project.",
       "type": "object",
       "properties": {
         "projectNumber": {
+          "type": "string",
           "format": "int64",
-          "description": "The Google cloud project number, e.g. 1234567890. A value of 0 indicates\nno project number is found.",
-          "type": "string"
+          "description": "The Google cloud project number, e.g. 1234567890. A value of 0 indicates\nno project number is found."
         }
-      },
-      "id": "ConsumerInfo"
+      }
     },
     "CheckRequest": {
+      "description": "Request message for the Check method.",
       "type": "object",
       "properties": {
-        "skipActivationCheck": {
-          "description": "Indicates if service activation check should be skipped for this request.\nDefault behavior is to perform the check and apply relevant quota.",
-          "type": "boolean"
-        },
         "requestProjectSettings": {
-          "description": "Requests the project settings to be returned as part of the check response.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Requests the project settings to be returned as part of the check response."
         },
         "operation": {
-          "description": "The operation to be checked.",
-          "$ref": "Operation"
+          "$ref": "Operation",
+          "description": "The operation to be checked."
         },
         "serviceConfigId": {
           "description": "Specifies which version of service configuration should be used to process\nthe request.\n\nIf unspecified or no matching version can be found, the\nlatest one will be used.",
           "type": "string"
+        },
+        "skipActivationCheck": {
+          "description": "Indicates if service activation check should be skipped for this request.\nDefault behavior is to perform the check and apply relevant quota.",
+          "type": "boolean"
         }
       },
-      "id": "CheckRequest",
-      "description": "Request message for the Check method."
+      "id": "CheckRequest"
     },
     "QuotaOperation": {
+      "description": "Represents information regarding a quota operation.",
+      "type": "object",
       "properties": {
+        "quotaMetrics": {
+          "description": "Represents information about this operation. Each MetricValueSet\ncorresponds to a metric defined in the service configuration.\nThe data type used in the MetricValueSet must agree with\nthe data type specified in the metric definition.\n\nWithin a single operation, it is not allowed to have more than one\nMetricValue instances that have the same metric names and identical\nlabel value combinations. If a request has such duplicated MetricValue\ninstances, the entire request is rejected with\nan invalid argument error.",
+          "items": {
+            "$ref": "MetricValueSet"
+          },
+          "type": "array"
+        },
         "labels": {
           "additionalProperties": {
             "type": "string"
@@ -1010,50 +1020,49 @@
         "methodName": {
           "description": "Fully qualified name of the API method for which this quota operation is\nrequested. This name is used for matching quota rules or metric rules and\nbilling status rules defined in service configuration. This field is not\nrequired if the quota operation is performed on non-API resources.\n\nExample of an RPC method name:\n    google.example.library.v1.LibraryService.CreateShelf",
           "type": "string"
-        },
-        "quotaMetrics": {
-          "description": "Represents information about this operation. Each MetricValueSet\ncorresponds to a metric defined in the service configuration.\nThe data type used in the MetricValueSet must agree with\nthe data type specified in the metric definition.\n\nWithin a single operation, it is not allowed to have more than one\nMetricValue instances that have the same metric names and identical\nlabel value combinations. If a request has such duplicated MetricValue\ninstances, the entire request is rejected with\nan invalid argument error.",
-          "items": {
-            "$ref": "MetricValueSet"
-          },
-          "type": "array"
         }
       },
-      "id": "QuotaOperation",
-      "description": "Represents information regarding a quota operation.",
-      "type": "object"
+      "id": "QuotaOperation"
     },
     "EndReconciliationRequest": {
+      "type": "object",
       "properties": {
+        "reconciliationOperation": {
+          "$ref": "QuotaOperation",
+          "description": "Operation that describes the quota reconciliation."
+        },
         "serviceConfigId": {
           "description": "Specifies which version of service configuration should be used to process\nthe request. If unspecified or no matching version can be found, the latest\none will be used.",
           "type": "string"
-        },
-        "reconciliationOperation": {
-          "description": "Operation that describes the quota reconciliation.",
-          "$ref": "QuotaOperation"
         }
       },
-      "id": "EndReconciliationRequest",
-      "type": "object"
+      "id": "EndReconciliationRequest"
     },
     "ReportInfo": {
-      "type": "object",
       "properties": {
         "operationId": {
-          "type": "string",
-          "description": "The Operation.operation_id value from the request."
+          "description": "The Operation.operation_id value from the request.",
+          "type": "string"
         },
         "quotaInfo": {
           "$ref": "QuotaInfo",
           "description": "Quota usage info when processing the `Operation`."
         }
       },
-      "id": "ReportInfo"
+      "id": "ReportInfo",
+      "type": "object"
     },
     "ReportResponse": {
+      "description": "Response message for the Report method.",
       "type": "object",
       "properties": {
+        "reportErrors": {
+          "description": "Partial failures, one for each `Operation` in the request that failed\nprocessing. There are three possible combinations of the RPC status:\n\n1. The combination of a successful RPC status and an empty `report_errors`\n   list indicates a complete success where all `Operations` in the\n   request are processed successfully.\n2. The combination of a successful RPC status and a non-empty\n   `report_errors` list indicates a partial success where some\n   `Operations` in the request succeeded. Each\n   `Operation` that failed processing has a corresponding item\n   in this list.\n3. A failed RPC status indicates a general non-deterministic failure.\n   When this happens, it's impossible to know which of the\n   'Operations' in the request succeeded or failed.",
+          "items": {
+            "$ref": "ReportError"
+          },
+          "type": "array"
+        },
         "reportInfos": {
           "description": "Quota usage for each quota release `Operation` request.\n\nFully or partially failed quota release request may or may not be present\nin `report_quota_info`. For example, a failed quota release request will\nhave the current quota usage info when precise quota library returns the\ninfo. A deadline exceeded quota request will not have quota usage info.\n\nIf there is no quota release request, report_quota_info will be empty.\n",
           "items": {
@@ -1064,22 +1073,34 @@
         "serviceConfigId": {
           "description": "The actual config id used to process the request.",
           "type": "string"
-        },
-        "reportErrors": {
-          "description": "Partial failures, one for each `Operation` in the request that failed\nprocessing. There are three possible combinations of the RPC status:\n\n1. The combination of a successful RPC status and an empty `report_errors`\n   list indicates a complete success where all `Operations` in the\n   request are processed successfully.\n2. The combination of a successful RPC status and a non-empty\n   `report_errors` list indicates a partial success where some\n   `Operations` in the request succeeded. Each\n   `Operation` that failed processing has a corresponding item\n   in this list.\n3. A failed RPC status indicates a general non-deterministic failure.\n   When this happens, it's impossible to know which of the\n   'Operations' in the request succeeded or failed.",
-          "items": {
-            "$ref": "ReportError"
-          },
-          "type": "array"
         }
       },
-      "id": "ReportResponse",
-      "description": "Response message for the Report method."
+      "id": "ReportResponse"
     },
     "Operation": {
-      "description": "Represents information regarding an operation.",
       "type": "object",
       "properties": {
+        "logEntries": {
+          "description": "Represents information to be logged.",
+          "items": {
+            "$ref": "LogEntry"
+          },
+          "type": "array"
+        },
+        "userLabels": {
+          "description": "User defined labels for the resource that this operation is associated\nwith.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "metricValueSets": {
+          "description": "Represents information about this operation. Each MetricValueSet\ncorresponds to a metric defined in the service configuration.\nThe data type used in the MetricValueSet must agree with\nthe data type specified in the metric definition.\n\nWithin a single operation, it is not allowed to have more than one\nMetricValue instances that have the same metric names and identical\nlabel value combinations. If a request has such duplicated MetricValue\ninstances, the entire request is rejected with\nan invalid argument error.",
+          "items": {
+            "$ref": "MetricValueSet"
+          },
+          "type": "array"
+        },
         "quotaProperties": {
           "$ref": "QuotaProperties",
           "description": "Represents the properties needed for quota check. Applicable only if this\noperation is for a quota check request."
@@ -1102,11 +1123,13 @@
           "type": "string"
         },
         "startTime": {
-          "type": "string",
           "format": "google-datetime",
-          "description": "Required. Start time of the operation."
+          "description": "Required. Start time of the operation.",
+          "type": "string"
         },
         "importance": {
+          "description": "DO NOT USE. This is an experimental field.",
+          "type": "string",
           "enumDescriptions": [
             "The API implementation may cache and aggregate the data.\nThe data may be lost when rare and unexpected system failures occur.",
             "The API implementation doesn't cache and aggregate the data.\nIf the method returns successfully, it's guaranteed that the data has\nbeen persisted in durable storage.",
@@ -1116,9 +1139,7 @@
             "LOW",
             "HIGH",
             "DEBUG"
-          ],
-          "description": "DO NOT USE. This is an experimental field.",
-          "type": "string"
+          ]
         },
         "resourceContainer": {
           "description": "The resource name of the parent of a resource in the resource hierarchy.\n\nThis can be in one of the following formats:\n    - “projects/\u003cproject-id or project-number\u003e”\n    - “folders/\u003cfolder-id\u003e”\n    - “organizations/\u003corganization-id\u003e”",
@@ -1130,32 +1151,13 @@
           },
           "description": "Labels describing the operation. Only the following labels are allowed:\n\n- Labels describing monitored resources as defined in\n  the service configuration.\n- Default labels of metric values. When specified, labels defined in the\n  metric value override these default.\n- The following labels defined by Google Cloud Platform:\n    - `cloud.googleapis.com/location` describing the location where the\n       operation happened,\n    - `servicecontrol.googleapis.com/user_agent` describing the user agent\n       of the API request,\n    - `servicecontrol.googleapis.com/service_agent` describing the service\n       used to handle the API request (e.g. ESP),\n    - `servicecontrol.googleapis.com/platform` describing the platform\n       where the API is served (e.g. GAE, GCE, GKE).",
           "type": "object"
-        },
-        "logEntries": {
-          "description": "Represents information to be logged.",
-          "items": {
-            "$ref": "LogEntry"
-          },
-          "type": "array"
-        },
-        "userLabels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "User defined labels for the resource that this operation is associated\nwith.",
-          "type": "object"
-        },
-        "metricValueSets": {
-          "description": "Represents information about this operation. Each MetricValueSet\ncorresponds to a metric defined in the service configuration.\nThe data type used in the MetricValueSet must agree with\nthe data type specified in the metric definition.\n\nWithin a single operation, it is not allowed to have more than one\nMetricValue instances that have the same metric names and identical\nlabel value combinations. If a request has such duplicated MetricValue\ninstances, the entire request is rejected with\nan invalid argument error.",
-          "items": {
-            "$ref": "MetricValueSet"
-          },
-          "type": "array"
         }
       },
-      "id": "Operation"
+      "id": "Operation",
+      "description": "Represents information regarding an operation."
     },
     "CheckResponse": {
+      "description": "Response message for the Check method.",
       "type": "object",
       "properties": {
         "checkInfo": {
@@ -1182,8 +1184,7 @@
           "description": "Quota information for the check request associated with this response.\n"
         }
       },
-      "id": "CheckResponse",
-      "description": "Response message for the Check method."
+      "id": "CheckResponse"
     },
     "Status": {
       "id": "Status",
@@ -1213,6 +1214,7 @@
       }
     },
     "ReportRequest": {
+      "description": "Request message for the Report method.",
       "type": "object",
       "properties": {
         "serviceConfigId": {
@@ -1227,93 +1229,12 @@
           "type": "array"
         }
       },
-      "id": "ReportRequest",
-      "description": "Request message for the Report method."
-    },
-    "AuditLog": {
-      "description": "Common audit log format for Google Cloud Platform API operations.\n\n",
-      "type": "object",
-      "properties": {
-        "methodName": {
-          "type": "string",
-          "description": "The name of the service method or operation.\nFor API calls, this should be the name of the API method.\nFor example,\n\n    \"google.datastore.v1.Datastore.RunQuery\"\n    \"google.logging.v1.LoggingService.DeleteLog\""
-        },
-        "authorizationInfo": {
-          "items": {
-            "$ref": "AuthorizationInfo"
-          },
-          "type": "array",
-          "description": "Authorization information. If there are multiple\nresources or permissions involved, then there is\none AuthorizationInfo element for each {resource, permission} tuple."
-        },
-        "resourceName": {
-          "description": "The resource or collection that is the target of the operation.\nThe name is a scheme-less URI, not including the API service name.\nFor example:\n\n    \"shelves/SHELF_ID/books\"\n    \"shelves/SHELF_ID/books/BOOK_ID\"",
-          "type": "string"
-        },
-        "request": {
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          },
-          "description": "The operation request. This may not include all request parameters,\nsuch as those that are too large, privacy-sensitive, or duplicated\nelsewhere in the log record.\nIt should never include user-generated data, such as file contents.\nWhen the JSON object represented here has a proto equivalent, the proto\nname will be indicated in the `@type` property.",
-          "type": "object"
-        },
-        "requestMetadata": {
-          "$ref": "RequestMetadata",
-          "description": "Metadata about the operation."
-        },
-        "serviceData": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Other service-specific data about the request, response, and other\nactivities.",
-          "type": "object"
-        },
-        "numResponseItems": {
-          "format": "int64",
-          "description": "The number of items returned from a List or Query API method,\nif applicable.",
-          "type": "string"
-        },
-        "authenticationInfo": {
-          "$ref": "AuthenticationInfo",
-          "description": "Authentication information."
-        },
-        "status": {
-          "description": "The status of the overall operation.",
-          "$ref": "Status"
-        },
-        "serviceName": {
-          "description": "The name of the API service performing the operation. For example,\n`\"datastore.googleapis.com\"`.",
-          "type": "string"
-        },
-        "response": {
-          "description": "The operation response. This may not include all response elements,\nsuch as those that are too large, privacy-sensitive, or duplicated\nelsewhere in the log record.\nIt should never include user-generated data, such as file contents.\nWhen the JSON object represented here has a proto equivalent, the proto\nname will be indicated in the `@type` property.",
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          }
-        }
-      },
-      "id": "AuditLog"
+      "id": "ReportRequest"
     },
     "LogEntry": {
       "description": "An individual log entry.",
       "type": "object",
       "properties": {
-        "protoPayload": {
-          "description": "The log entry payload, represented as a protocol buffer that is\nexpressed as a JSON object. You can only pass `protoPayload`\nvalues that belong to a set of approved types.",
-          "type": "object",
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          }
-        },
-        "timestamp": {
-          "format": "google-datetime",
-          "description": "The time the event described by the log entry occurred. If\nomitted, defaults to operation start time.",
-          "type": "string"
-        },
         "labels": {
           "description": "A set of user-defined (key, value) data that provides additional\ninformation about the log entry.",
           "type": "object",
@@ -1357,8 +1278,8 @@
         },
         "structPayload": {
           "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object."
+            "description": "Properties of the object.",
+            "type": "any"
           },
           "description": "The log entry payload, represented as a structure that\nis expressed as a JSON object.",
           "type": "object"
@@ -1366,15 +1287,94 @@
         "textPayload": {
           "description": "The log entry payload, represented as a Unicode string (UTF-8).",
           "type": "string"
+        },
+        "protoPayload": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "The log entry payload, represented as a protocol buffer that is\nexpressed as a JSON object. You can only pass `protoPayload`\nvalues that belong to a set of approved types.",
+          "type": "object"
+        },
+        "timestamp": {
+          "format": "google-datetime",
+          "description": "The time the event described by the log entry occurred. If\nomitted, defaults to operation start time.",
+          "type": "string"
         }
       },
       "id": "LogEntry"
+    },
+    "AuditLog": {
+      "properties": {
+        "resourceName": {
+          "description": "The resource or collection that is the target of the operation.\nThe name is a scheme-less URI, not including the API service name.\nFor example:\n\n    \"shelves/SHELF_ID/books\"\n    \"shelves/SHELF_ID/books/BOOK_ID\"",
+          "type": "string"
+        },
+        "authorizationInfo": {
+          "description": "Authorization information. If there are multiple\nresources or permissions involved, then there is\none AuthorizationInfo element for each {resource, permission} tuple.",
+          "items": {
+            "$ref": "AuthorizationInfo"
+          },
+          "type": "array"
+        },
+        "request": {
+          "description": "The operation request. This may not include all request parameters,\nsuch as those that are too large, privacy-sensitive, or duplicated\nelsewhere in the log record.\nIt should never include user-generated data, such as file contents.\nWhen the JSON object represented here has a proto equivalent, the proto\nname will be indicated in the `@type` property.",
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          }
+        },
+        "requestMetadata": {
+          "description": "Metadata about the operation.",
+          "$ref": "RequestMetadata"
+        },
+        "serviceData": {
+          "description": "Other service-specific data about the request, response, and other\nactivities.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object. Contains field @type with type URL."
+          }
+        },
+        "numResponseItems": {
+          "format": "int64",
+          "description": "The number of items returned from a List or Query API method,\nif applicable.",
+          "type": "string"
+        },
+        "status": {
+          "description": "The status of the overall operation.",
+          "$ref": "Status"
+        },
+        "authenticationInfo": {
+          "$ref": "AuthenticationInfo",
+          "description": "Authentication information."
+        },
+        "response": {
+          "description": "The operation response. This may not include all response elements,\nsuch as those that are too large, privacy-sensitive, or duplicated\nelsewhere in the log record.\nIt should never include user-generated data, such as file contents.\nWhen the JSON object represented here has a proto equivalent, the proto\nname will be indicated in the `@type` property.",
+          "type": "object",
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          }
+        },
+        "serviceName": {
+          "description": "The name of the API service performing the operation. For example,\n`\"datastore.googleapis.com\"`.",
+          "type": "string"
+        },
+        "methodName": {
+          "description": "The name of the service method or operation.\nFor API calls, this should be the name of the API method.\nFor example,\n\n    \"google.datastore.v1.Datastore.RunQuery\"\n    \"google.logging.v1.LoggingService.DeleteLog\"",
+          "type": "string"
+        }
+      },
+      "id": "AuditLog",
+      "description": "Common audit log format for Google Cloud Platform API operations.\n\n",
+      "type": "object"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
-  "canonicalName": "Service Control"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  }
 }

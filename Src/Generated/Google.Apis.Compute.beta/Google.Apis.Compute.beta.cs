@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170712 (923)
+ *      <tr><th>API Rev<td>20170721 (932)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -40202,6 +40202,17 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Authorization-related information used by Cloud Audit Logging.</summary>
+    public class AuthorizationLoggingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the permission that was checked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
+        public virtual string PermissionType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine
     /// instances in managed instance groups according to an autoscaling policy that you define. For more information,
     /// read Autoscaling Groups of Instances.</summary>
@@ -40546,7 +40557,7 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Specifies the balancing mode for this backend. For global HTTP(S) or TCP/SSL load balancing, the
         /// default is UTILIZATION. Valid values are UTILIZATION, RATE (for HTTP(S)) and CONNECTION (for TCP/SSL).
         ///
-        /// This cannot be used for internal load balancing.</summary>
+        /// For Internal Load Balancing, the default and only supported mode is CONNECTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("balancingMode")]
         public virtual string BalancingMode { get; set; } 
 
@@ -41453,7 +41464,8 @@ namespace Google.Apis.Compute.beta.Data
         /// disk.
         ///
         /// If you specify this field along with sourceImage or sourceSnapshot, the value of sizeGb must not be less
-        /// than the size of the sourceImage or the size of the snapshot.</summary>
+        /// than the size of the sourceImage or the size of the snapshot. Acceptable values are 1 to 65536,
+        /// inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<long> SizeGb { get; set; } 
 
@@ -41962,13 +41974,14 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceServiceAccounts")]
         public virtual System.Collections.Generic.IList<string> SourceServiceAccounts { get; set; } 
 
-        /// <summary>If source tags are specified, the firewall will apply only to traffic from VM instances in the same
-        /// virtual network with a tag listed in the source tags. Source tags cannot be used to control traffic to an
-        /// instance's external IP address, it only applies to traffic between instances in the same virtual network.
-        /// Because tags are associated with instances, not IP addresses. One or both of sourceRanges and sourceTags may
-        /// be set. If both properties are set, the firewall will apply to traffic that has source IP address within
-        /// sourceRanges OR the source IP that belongs to a tag listed in the sourceTags property. The connection does
-        /// not need to match both properties for the firewall to apply.</summary>
+        /// <summary>If source tags are specified, the firewall rule applies only to traffic with source IPs that match
+        /// the primary network interfaces of VM instances that have the tag and are in the same VPC network. Source
+        /// tags cannot be used to control traffic to an instance's external IP address, it only applies to traffic
+        /// between instances in the same virtual network. Because tags are associated with instances, not IP addresses.
+        /// One or both of sourceRanges and sourceTags may be set. If both properties are set, the firewall will apply
+        /// to traffic that has source IP address within sourceRanges OR the source IP that belongs to a tag listed in
+        /// the sourceTags property. The connection does not need to match both properties for the firewall to
+        /// apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTags")]
         public virtual System.Collections.Generic.IList<string> SourceTags { get; set; } 
 
@@ -41993,7 +42006,7 @@ namespace Google.Apis.Compute.beta.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
@@ -42011,7 +42024,7 @@ namespace Google.Apis.Compute.beta.Data
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
-            /// icmp, esp, ah, sctp), or the IP protocol number.</summary>
+            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
             public virtual string IPProtocol { get; set; } 
 
@@ -42175,9 +42188,9 @@ namespace Google.Apis.Compute.beta.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222 -
-        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 5222 - TargetVpnGateway: 500, 4500
-        /// -</summary>
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 -
+        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 - TargetVpnGateway: 500,
+        /// 4500 -</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
@@ -43127,7 +43140,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual System.Nullable<bool> StartRestricted { get; set; } 
 
         /// <summary>[Output Only] The status of the instance. One of the following values: PROVISIONING, STAGING,
-        /// RUNNING, STOPPING, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
+        /// RUNNING, STOPPING, STOPPED, SUSPENDING, SUSPENDED, and TERMINATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -44374,9 +44387,9 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>True if the log is for a permission of type DATA_READ or ADMIN_READ.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isReadPermissionType")]
-        public virtual System.Nullable<bool> IsReadPermissionType { get; set; } 
+        /// <summary>Information used by the Cloud Audit Logging pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationLoggingOptions")]
+        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; } 
 
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
