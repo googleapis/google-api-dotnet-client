@@ -587,26 +587,6 @@ namespace Google.Apis.CloudTrace.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Do not return traces whose start time is later than this time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object EndTime { get; set; }
-
-                /// <summary>Optional. Do not return traces whose end time is earlier than this time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
-
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method.  `page_token` must be the value of `next_page_token` from the previous response.  The
-                /// values of other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of `next_page_token` in the response indicates that more results might be
-                /// available, even if fewer than the maximum number of results is returned by this request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. A single field used to sort the returned traces. Only the following field names
                 /// can be used:
                 ///
@@ -625,6 +605,26 @@ namespace Google.Apis.CloudTrace.v2
                 /// "label:/http/url root:/_ah/background my_label:17"</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>Optional. Do not return traces whose start time is later than this time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object EndTime { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method.  `page_token` must be the value of `next_page_token` from the previous response.  The
+                /// values of other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. Do not return traces whose end time is earlier than this time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of `next_page_token` in the response indicates that more results might be
+                /// available, even if fewer than the maximum number of results is returned by this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -660,18 +660,27 @@ namespace Google.Apis.CloudTrace.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "endTime", new Google.Apis.Discovery.Parameter
+                        "orderBy", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "endTime",
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
+                        "filter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTime",
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -687,27 +696,18 @@ namespace Google.Apis.CloudTrace.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

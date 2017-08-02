@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170727 (938)
+ *      <tr><th>API Rev<td>20170801 (943)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3263,6 +3263,112 @@ namespace Google.Apis.ToolResults.v1beta3
 namespace Google.Apis.ToolResults.v1beta3.Data
 {    
 
+    /// <summary>Android app information.</summary>
+    public class AndroidAppInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the app. Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The package name of the app. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>The internal version code of the app. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual string VersionCode { get; set; } 
+
+        /// <summary>The version name of the app. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionName")]
+        public virtual string VersionName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A test of an Android application that can control an Android component independently of its normal
+    /// lifecycle.
+    ///
+    /// See  for more information on types of Android tests.</summary>
+    public class AndroidInstrumentationTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The java package for the test to be executed. Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testPackageId")]
+        public virtual string TestPackageId { get; set; } 
+
+        /// <summary>The InstrumentationTestRunner class. Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testRunnerClass")]
+        public virtual string TestRunnerClass { get; set; } 
+
+        /// <summary>Each target must be fully qualified with the package name or class name, in one of these formats: -
+        /// "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name"
+        ///
+        /// If empty, all targets in the module will be run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
+        public virtual System.Collections.Generic.IList<string> TestTargets { get; set; } 
+
+        /// <summary>The flag indicates whether Android Test Orchestrator will be used to run test or not. Test
+        /// orchestrator is used if either: - orchestrator_option field is USE_ORCHESTRATOR, and test runner is
+        /// compatible with orchestrator. Or - orchestrator_option field is unspecified or
+        /// ORCHESTRATOR_OPTION_UNSPECIFIED, and test runner is compatible with orchestrator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useOrchestrator")]
+        public virtual System.Nullable<bool> UseOrchestrator { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A test of an android application that explores the application on a virtual or physical Android device,
+    /// finding culprits and crashes as it goes.</summary>
+    public class AndroidRoboTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The initial activity that should be used to start the app. Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInitialActivity")]
+        public virtual string AppInitialActivity { get; set; } 
+
+        /// <summary>The java package for the bootstrap. Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootstrapPackageId")]
+        public virtual string BootstrapPackageId { get; set; } 
+
+        /// <summary>The runner class for the bootstrap. Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootstrapRunnerClass")]
+        public virtual string BootstrapRunnerClass { get; set; } 
+
+        /// <summary>The max depth of the traversal stack Robo can explore. Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDepth")]
+        public virtual System.Nullable<int> MaxDepth { get; set; } 
+
+        /// <summary>The max number of steps/actions Robo can execute. Default is no limit (0). Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxSteps")]
+        public virtual System.Nullable<int> MaxSteps { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An Android mobile test specification.</summary>
+    public class AndroidTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Infomation about the application under test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidAppInfo")]
+        public virtual AndroidAppInfo AndroidAppInfo { get; set; } 
+
+        /// <summary>An Android instrumentation test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidInstrumentationTest")]
+        public virtual AndroidInstrumentationTest AndroidInstrumentationTest { get; set; } 
+
+        /// <summary>An Android robo test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidRoboTest")]
+        public virtual AndroidRoboTest AndroidRoboTest { get; set; } 
+
+        /// <summary>Max time a test is allowed to run before it is automatically cancelled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testTimeout")]
+        public virtual Duration TestTimeout { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type
     /// of the serialized message.
     ///
@@ -3492,6 +3598,12 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// - In response: present if set by create/update request - In create/update request: optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outcome")]
         public virtual Outcome Outcome { get; set; } 
+
+        /// <summary>Lightweight information about execution request.
+        ///
+        /// - In response: present if set by create - In create: optional - In update: optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specification")]
+        public virtual Specification Specification { get; set; } 
 
         /// <summary>The initial state is IN_PROGRESS.
         ///
@@ -3953,6 +4065,17 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>If the requested OS version doesn't run on the specific device model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("incompatibleDevice")]
         public virtual System.Nullable<bool> IncompatibleDevice { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The details about how to run the execution.</summary>
+    public class Specification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An Android mobile test execution specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidTest")]
+        public virtual AndroidTest AndroidTest { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

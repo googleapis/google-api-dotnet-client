@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170718 (929)
+ *      <tr><th>API Rev<td>20170729 (940)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1064,9 +1064,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The name of the version to make the default for the model. You can get the names of all
                 /// the versions of a model by calling [projects.models.versions.list](/ml-
-                /// engine/reference/rest/v1beta1/projects.models.versions/list).
-                ///
-                /// Authorization: `ml.models.update` permission is required on the parent model.</param>
+                /// engine/reference/rest/v1beta1/projects.models.versions/list).</param>
                 public virtual SetDefaultRequest SetDefault(Google.Apis.CloudMachineLearningEngine.v1beta1.Data.GoogleCloudMlV1beta1SetDefaultVersionRequest body, string name)
                 {
                     return new SetDefaultRequest(service, body, name);
@@ -1093,9 +1091,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
 
                     /// <summary>Required. The name of the version to make the default for the model. You can get the
                     /// names of all the versions of a model by calling [projects.models.versions.list](/ml-
-                    /// engine/reference/rest/v1beta1/projects.models.versions/list).
-                    ///
-                    /// Authorization: `ml.models.update` permission is required on the parent model.</summary>
+                    /// engine/reference/rest/v1beta1/projects.models.versions/list).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1916,6 +1912,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1923,10 +1923,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1962,6 +1958,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1974,15 +1979,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2217,7 +2213,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the metadata of the long-running operation.</summary>
+    /// <summary>Represents the metadata of the long-running operation.
+    ///
+    /// Next ID: 9</summary>
     public class GoogleCloudMlV1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time the operation was submitted.</summary>
@@ -2256,7 +2254,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     ///
     /// Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have
     /// multiple versions. You can get information about all of the versions of a given model by calling
-    /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).</summary>
+    /// [projects.models.versions.list](/ml-engine/reference/rest/v1/projects.models.versions/list).
+    ///
+    /// Next ID: 18</summary>
     public class GoogleCloudMlV1Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and
@@ -2451,7 +2451,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a training or prediction job.</summary>
+    /// <summary>Represents a training or prediction job.
+    ///
+    /// Next ID: 16</summary>
     public class GoogleCloudMlV1beta1Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. When the job was created.</summary>
@@ -2559,7 +2561,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     /// <summary>Represents a machine learning solution.
     ///
     /// A model can have multiple versions, each of which is a deployed, trained model ready to receive prediction
-    /// requests. The model itself is just a container.</summary>
+    /// requests. The model itself is just a container.
+    ///
+    /// Next ID: 8</summary>
     public class GoogleCloudMlV1beta1Model : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The default version of the model. This version will be used to handle prediction
@@ -2596,7 +2600,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the metadata of the long-running operation.</summary>
+    /// <summary>Represents the metadata of the long-running operation.
+    ///
+    /// Next ID: 9</summary>
     public class GoogleCloudMlV1beta1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time the operation was submitted.</summary>
@@ -2764,6 +2770,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     /// <summary>Represents input parameters for a prediction job.</summary>
     public class GoogleCloudMlV1beta1PredictionInput : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of
+        /// records in memory before invoking one Tensorflow prediction call internally. So take the record size and
+        /// memory available into consideration when setting this parameter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
+        public virtual System.Nullable<long> BatchSize { get; set; } 
+
         /// <summary>Required. The format of the input data files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
         public virtual string DataFormat { get; set; } 
@@ -2991,7 +3003,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     ///
     /// Each version is a trained model deployed in the cloud, ready to handle prediction requests. A model can have
     /// multiple versions. You can get information about all of the versions of a given model by calling
-    /// [projects.models.versions.list](/ml-engine/reference/rest/v1beta1/projects.models.versions/list).</summary>
+    /// [projects.models.versions.list](/ml-engine/reference/rest/v1beta1/projects.models.versions/list).
+    ///
+    /// Next ID: 18</summary>
     public class GoogleCloudMlV1beta1Version : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Automatically scale the number of nodes used to serve the model in response to increases and
@@ -3191,22 +3205,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies what kind of log the caller must write Increment a streamz counter with the specified metric
-    /// and field names.
-    ///
-    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
-    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
-    ///
-    /// Field names correspond to IAM request parameters and field values are their respective values.
-    ///
-    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
-    /// (empty string), resulting in one aggretated counter with no field.
-    ///
-    /// Examples: counter { metric: "/debug_access_count"  field: "iam_principal" } ==> increment counter
-    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
-    ///
-    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
-    /// decrementing the counter * incrementing it by anything other than 1</summary>
+    /// <summary>Specifies what kind of log the caller must write</summary>
     public class GoogleIamV1LogConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud audit options.</summary>
@@ -3236,7 +3235,21 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Options for counters</summary>
+    /// <summary>Increment a streamz counter with the specified metric and field names.
+    ///
+    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
+    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
+    ///
+    /// Field names correspond to IAM request parameters and field values are their respective values.
+    ///
+    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
+    /// (empty string), resulting in one aggretated counter with no field.
+    ///
+    /// Examples: counter { metric: "/debug_access_count"  field: "iam_principal" } ==> increment counter
+    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
+    ///
+    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
+    /// decrementing the counter * incrementing it by anything other than 1</summary>
     public class GoogleIamV1LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field value to attribute.</summary>
@@ -3254,6 +3267,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1beta1.Data
     /// <summary>Write a Data Access (Gin) log</summary>
     public class GoogleIamV1LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
+        /// the LocalIAM implementation, for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
+        public virtual string LogMode { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
