@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170725 (936)
+ *      <tr><th>API Rev<td>20170801 (943)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -794,6 +794,10 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -801,10 +805,6 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -840,6 +840,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -852,15 +861,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -944,6 +944,11 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
+                    /// value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Restricts findings to items that match. Supports info_type and likelihood. Examples:
                     /// info_type=EMAIL_ADDRESS info_type=PHONE_NUMBER,EMAIL_ADDRESS likelihood=VERY_LIKELY
                     /// likelihood=VERY_LIKELY,LIKELY info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
@@ -955,11 +960,6 @@ namespace Google.Apis.DLP.v2beta1
                     /// page of data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
-                    /// value.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -995,6 +995,15 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1007,15 +1016,6 @@ namespace Google.Apis.DLP.v2beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1253,6 +1253,43 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>This field will contain an InspectOperationResult object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options defining BigQuery table and row identifiers.</summary>
+    public class GooglePrivacyDlpV2beta1BigQueryOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>References to fields uniquely identifying rows within the table. Nested fields in the format like
+        /// person.birthdate.year are allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1FieldId> IdentifyingFields { get; set; } 
+
+        /// <summary>Complete BigQuery table reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
+        public virtual GooglePrivacyDlpV2beta1BigQueryTable TableReference { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message defining the location of a BigQuery table. A table is uniquely identified  by its project_id,
+    /// dataset_id, and table_name.</summary>
+    public class GooglePrivacyDlpV2beta1BigQueryTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dataset ID of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; } 
+
+        /// <summary>The GCP project id of the project containing the table. If omitted, project id is inferred from the
+        /// API call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>Name of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1774,6 +1811,10 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("storagePath")]
         public virtual GooglePrivacyDlpV2beta1CloudStoragePath StoragePath { get; set; } 
 
+        /// <summary>Store findings in a new table in the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GooglePrivacyDlpV2beta1BigQueryTable Table { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1926,6 +1967,10 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>Shared message indicating Cloud storage type.</summary>
     public class GooglePrivacyDlpV2beta1StorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>BigQuery options specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryOptions")]
+        public virtual GooglePrivacyDlpV2beta1BigQueryOptions BigQueryOptions { get; set; } 
+
         /// <summary>Google Cloud Storage options specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOptions")]
         public virtual GooglePrivacyDlpV2beta1CloudStorageOptions CloudStorageOptions { get; set; } 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20161128 (697)
+ *      <tr><th>API Rev<td>20170731 (942)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -1979,7 +1979,7 @@ namespace Google.Apis.Fitness.v1.Data
         /// number:device.manufacturer:device.model:device.uid:dataStreamName
         ///
         /// When any of the optional fields that comprise of the data stream ID are blank, they will be omitted from the
-        /// data stream ID. The minnimum viable data stream ID would be: type:dataType.name:developer project number
+        /// data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number
         ///
         /// Finally, the developer project number is obfuscated when read by any REST or Android client that did not
         /// create the data source. Only the data source creator will see the developer project number in clear and
