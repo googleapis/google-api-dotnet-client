@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/aaBKQEJ-XEjtqmHQRpfDP4T_t9Y\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/7mVdzLqtcMeYUzCBBUJ2DuZmIX0\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3firstparty",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3firstparty",
- "revision": "20170802",
+ "revision": "20170804",
  "title": "Cloud Tool Results firstparty API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -1014,15 +1014,51 @@
   "TestIssue": {
    "id": "TestIssue",
    "type": "object",
-   "description": "An abnormal event observed during the test execution.",
+   "description": "An issue detected occurring during a test execution.",
    "properties": {
     "errorMessage": {
      "type": "string",
-     "description": "A brief human-readable message describing the abnormal event.\n\nRequired."
+     "description": "A brief human-readable message describing the issue. Required."
+    },
+    "severity": {
+     "type": "string",
+     "description": "Severity of issue. Required.",
+     "enum": [
+      "info",
+      "severe",
+      "unspecifiedSeverity",
+      "warning"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      ""
+     ]
     },
     "stackTrace": {
      "$ref": "StackTrace",
-     "description": "Optional."
+     "description": "Deprecated in favor of stack trace fields inside specific warnings."
+    },
+    "type": {
+     "type": "string",
+     "description": "Type of issue. Required.",
+     "enum": [
+      "anr",
+      "fatalException",
+      "nativeCrash",
+      "unspecifiedType"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "warning": {
+     "$ref": "Any",
+     "description": "Warning message with additional details of the issue. Should always be a message from com.google.devtools.toolresults.v1.warnings Required."
     }
    }
   },

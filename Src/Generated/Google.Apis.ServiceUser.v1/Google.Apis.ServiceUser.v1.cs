@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170717 (928)
+ *      <tr><th>API Rev<td>20170728 (939)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -747,23 +747,29 @@ namespace Google.Apis.ServiceUser.v1
 namespace Google.Apis.ServiceUser.v1.Data
 {    
 
-    /// <summary>Api is a light-weight descriptor for a protocol buffer service.</summary>
+    /// <summary>Api is a light-weight descriptor for an API Interface.
+    ///
+    /// Interfaces are also described as "protocol buffer services" in some contexts, such as by the "service" keyword
+    /// in a .proto file, but they are different from API Services, which represent a concrete implementation of an
+    /// interface as opposed to simply a description of methods and bindings. They are also sometimes simply referred to
+    /// as "APIs" in other contexts, such as the name of this message itself. See
+    /// https://cloud.google.com/apis/design/glossary for detailed terminology.</summary>
     public class Api : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The methods of this api, in unspecified order.</summary>
+        /// <summary>The methods of this interface, in unspecified order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methods")]
         public virtual System.Collections.Generic.IList<Method> Methods { get; set; } 
 
-        /// <summary>Included APIs. See Mixin.</summary>
+        /// <summary>Included interfaces. See Mixin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mixins")]
         public virtual System.Collections.Generic.IList<Mixin> Mixins { get; set; } 
 
-        /// <summary>The fully qualified name of this api, including package name followed by the api's simple
-        /// name.</summary>
+        /// <summary>The fully qualified name of this interface, including package name followed by the interface's
+        /// simple name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Any metadata attached to the API.</summary>
+        /// <summary>Any metadata attached to the interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual System.Collections.Generic.IList<Option> Options { get; set; } 
 
@@ -775,18 +781,18 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("syntax")]
         public virtual string Syntax { get; set; } 
 
-        /// <summary>A version string for this api. If specified, must have the form `major-version.minor-version`, as
-        /// in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is empty, the
-        /// major version is derived from the package name, as outlined below. If the field is not empty, the version in
-        /// the package name will be verified to be consistent with what is provided here.
+        /// <summary>A version string for this interface. If specified, must have the form `major-version.minor-
+        /// version`, as in `1.10`. If the minor version is omitted, it defaults to zero. If the entire version field is
+        /// empty, the major version is derived from the package name, as outlined below. If the field is not empty, the
+        /// version in the package name will be verified to be consistent with what is provided here.
         ///
         /// The versioning schema uses [semantic versioning](http://semver.org) where the major version number indicates
         /// a breaking change and the minor version an additive, non-breaking change. Both version numbers are signals
         /// to users what to expect from different versions, and should be carefully chosen based on the product plan.
         ///
-        /// The major version is also reflected in the package name of the API, which must end in `v`, as in
+        /// The major version is also reflected in the package name of the interface, which must end in `v`, as in
         /// `google.feature.v1`. For major versions 0 and 1, the suffix can be omitted. Zero major versions must only be
-        /// used for experimental, none-GA apis. </summary>
+        /// used for experimental, non-GA interfaces. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 
@@ -809,6 +815,11 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audiences")]
         public virtual string Audiences { get; set; } 
+
+        /// <summary>Redirect URL if JWT token is required but no present or is expired. Implement authorizationUrl of
+        /// securityDefinitions in OpenAPI spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationUrl")]
+        public virtual string AuthorizationUrl { get; set; } 
 
         /// <summary>The unique identifier of the auth provider. It will be referred to by
         /// `AuthRequirement.provider_id`.
@@ -1564,8 +1575,10 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseBody")]
         public virtual string ResponseBody { get; set; } 
 
-        /// <summary>Optional. The REST collection name is by default derived from the URL pattern. If specified, this
-        /// field overrides the default collection name. Example:
+        /// <summary>DO NOT USE. This is an experimental field.
+        ///
+        /// Optional. The REST collection name is by default derived from the URL pattern. If specified, this field
+        /// overrides the default collection name. Example:
         ///
         /// rpc AddressesAggregatedList(AddressesAggregatedListRequest) returns (AddressesAggregatedListResponse) {
         /// option (google.api.http) = { get: "/v1/projects/{project_id}/aggregated/addresses" rest_collection:
@@ -1577,13 +1590,15 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restCollection")]
         public virtual string RestCollection { get; set; } 
 
-        /// <summary>Optional. The rest method name is by default derived from the URL pattern. If specified, this field
+        /// <summary>DO NOT USE. This is an experimental field.
+        ///
+        /// Optional. The rest method name is by default derived from the URL pattern. If specified, this field
         /// overrides the default method name. Example:
         ///
         /// rpc CreateResource(CreateResourceRequest) returns (CreateResourceResponse) { option (google.api.http) = {
         /// post: "/v1/resources", body: "resource", rest_method_name: "insert" }; }
         ///
-        /// This method has the automatically derived rest method name "create", but for backwards compatability with
+        /// This method has the automatically derived rest method name "create", but for backwards compatibility with
         /// apiary, it is specified as insert.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restMethodName")]
         public virtual string RestMethodName { get; set; } 
@@ -1794,7 +1809,7 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Method represents a method of an api.</summary>
+    /// <summary>Method represents a method of an API interface.</summary>
     public class Method : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The simple name of this method.</summary>
@@ -1945,8 +1960,8 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Declares an API to be included in this API. The including API must redeclare all the methods from the
-    /// included API, but documentation and options are inherited as follows:
+    /// <summary>Declares an API Interface to be included in this interface. The including interface must redeclare all
+    /// the methods from the included interface, but documentation and options are inherited as follows:
     ///
     /// - If after comment and whitespace stripping, the documentation string of the redeclared method is empty, it will
     /// be inherited from the original method.
@@ -1955,7 +1970,7 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// will be inherited.
     ///
     /// - If an http annotation is inherited, the path pattern will be modified as follows. Any version prefix will be
-    /// replaced by the version of the including API plus the root path if specified.
+    /// replaced by the version of the including interface plus the root path if specified.
     ///
     /// Example of a simple mixin:
     ///
@@ -1991,7 +2006,7 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// (google.api.http).get = "/v2/acls/{resource=**}:getAcl"; } ... }</summary>
     public class Mixin : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The fully qualified name of the API which is included.</summary>
+        /// <summary>The fully qualified name of the interface which is included.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2436,9 +2451,9 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backend")]
         public virtual Backend Backend { get; set; } 
 
-        /// <summary>The version of the service configuration. The config version may influence interpretation of the
-        /// configuration, for example, to determine defaults. This is documented together with applicable options. The
-        /// current default for the config version itself is `3`.</summary>
+        /// <summary>The semantic version of the service configuration. The config version affects the interpretation of
+        /// the service configuration. For example, certain features are enabled by default for certain config versions.
+        /// The latest config version is `3`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVersion")]
         public virtual System.Nullable<long> ConfigVersion { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results firstparty API</a>
  *      <tr><th>API Version<td>v1beta3firstparty
- *      <tr><th>API Rev<td>20170802 (944)
+ *      <tr><th>API Rev<td>20170804 (946)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4422,18 +4422,29 @@ namespace Google.Apis.ToolResults.v1beta3firstparty.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An abnormal event observed during the test execution.</summary>
+    /// <summary>An issue detected occurring during a test execution.</summary>
     public class TestIssue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A brief human-readable message describing the abnormal event.
-        ///
-        /// Required.</summary>
+        /// <summary>A brief human-readable message describing the issue. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; } 
 
-        /// <summary>Optional.</summary>
+        /// <summary>Severity of issue. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; } 
+
+        /// <summary>Deprecated in favor of stack trace fields inside specific warnings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTrace")]
         public virtual StackTrace StackTrace { get; set; } 
+
+        /// <summary>Type of issue. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Warning message with additional details of the issue. Should always be a message from
+        /// com.google.devtools.toolresults.v1.warnings Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual Any Warning { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

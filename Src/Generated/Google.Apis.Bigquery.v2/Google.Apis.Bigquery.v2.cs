@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170721 (932)
+ *      <tr><th>API Rev<td>20170730 (941)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3269,11 +3269,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string SchemaInlineFormat { get; set; } 
 
         /// <summary>[Experimental] Allows the schema of the desitination table to be updated as a side effect of the
-        /// load job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when
-        /// writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by
-        /// partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the
-        /// following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
-        /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.</summary>
+        /// load job if a schema is autodetected or supplied in the job configuration. Schema update options are
+        /// supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and
+        /// the destination table is a partition of a table, specified by partition decorators. For normal tables,
+        /// WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
+        /// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a
+        /// required field in the original schema to nullable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
         public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; } 
 

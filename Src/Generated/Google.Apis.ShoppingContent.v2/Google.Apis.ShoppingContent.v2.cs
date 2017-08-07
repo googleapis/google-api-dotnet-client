@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170725 (936)
+ *      <tr><th>API Rev<td>20170803 (945)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5546,6 +5546,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
+        /// <summary>A list of account level issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountLevelIssues")]
+        public virtual System.Collections.Generic.IList<AccountStatusAccountLevelIssue> AccountLevelIssues { get; set; } 
+
         /// <summary>A list of data quality issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataQualityIssues")]
         public virtual System.Collections.Generic.IList<AccountStatusDataQualityIssue> DataQualityIssues { get; set; } 
@@ -5558,6 +5562,32 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Whether the account's website is claimed or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteClaimed")]
         public virtual System.Nullable<bool> WebsiteClaimed { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountStatusAccountLevelIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Country for which this issue is reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>Additional details about the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; } 
+
+        /// <summary>Issue identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>Severity of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; } 
+
+        /// <summary>Short description of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

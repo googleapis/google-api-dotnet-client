@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170724 (935)
+ *      <tr><th>API Rev<td>20170804 (946)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -106,7 +106,13 @@ namespace Google.Apis.AndroidManagement.v1
         }
         #endif
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Android Management API.</summary>
+        public class Scope
+        {
+            /// <summary>Manage Android devices and apps for your customers</summary>
+            public static string Androidmanagement = "https://www.googleapis.com/auth/androidmanagement";
 
+        }
 
 
 

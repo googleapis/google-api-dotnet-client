@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170724 (935)
+ *      <tr><th>API Rev<td>20170729 (940)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1639,9 +1639,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
         public virtual string MethodName { get; set; } 
 
-        /// <summary>Identity of the operation. This must be unique within the scope of the service that generated the
-        /// operation. If the service calls AllocateQuota and ReleaseQuota on the same operation, the two calls should
-        /// carry the same ID.
+        /// <summary>Identity of the operation. This is expected to be unique within the scope of the service that
+        /// generated the operation, and guarantees idempotency in case of retries.
         ///
         /// UUID version 4 is recommended, though not required. In scenarios where an operation is computed from
         /// existing information and an idempotent id is desirable for deduplication purpose, UUID version 5 is

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170717 (928)
+ *      <tr><th>API Rev<td>20170720 (931)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -3919,7 +3919,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ServicesIpv4Cidr { get; set; } 
 
         /// <summary>A custom subnetwork name to be used if `create_subnetwork` is true.  If this field is empty, then
-        /// an automatic name will choosen for the new subnetwork.</summary>
+        /// an automatic name will be chosen for the new subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkName")]
         public virtual string SubnetworkName { get; set; } 
 

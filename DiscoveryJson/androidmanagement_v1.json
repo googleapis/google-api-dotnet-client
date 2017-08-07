@@ -1,5 +1,14 @@
 {
   "id": "androidmanagement:v1",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/androidmanagement": {
+          "description": "Manage Android devices and apps for your customers"
+        }
+      }
+    }
+  },
   "description": "The Android Management API provides remote enterprise management of Android devices and apps.",
   "protocol": "rest",
   "title": "Android Management API",
@@ -27,7 +36,10 @@
               "type": "string"
             }
           },
-          "path": "v1/signupUrls"
+          "path": "v1/signupUrls",
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ]
         }
       }
     },
@@ -55,7 +67,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}"
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             },
             "list": {
               "id": "androidmanagement.enterprises.policies.list",
@@ -88,7 +103,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+parent}/policies"
+              "path": "v1/{+parent}/policies",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             },
             "patch": {
               "id": "androidmanagement.enterprises.policies.patch",
@@ -119,7 +137,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}"
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             },
             "delete": {
               "id": "androidmanagement.enterprises.policies.delete",
@@ -141,7 +162,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}"
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             }
           }
         },
@@ -172,7 +196,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}"
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             }
           }
         },
@@ -201,7 +228,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+parent}/enrollmentTokens"
+              "path": "v1/{+parent}/enrollmentTokens",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             },
             "delete": {
               "id": "androidmanagement.enterprises.enrollmentTokens.delete",
@@ -223,7 +253,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}"
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             }
           }
         },
@@ -252,7 +285,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+parent}/webTokens"
+              "path": "v1/{+parent}/webTokens",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             }
           }
         },
@@ -280,7 +316,10 @@
                       "type": "string"
                     }
                   },
-                  "path": "v1/{+name}"
+                  "path": "v1/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/androidmanagement"
+                  ]
                 },
                 "list": {
                   "id": "androidmanagement.enterprises.devices.operations.list",
@@ -318,7 +357,10 @@
                       "type": "string"
                     }
                   },
-                  "path": "v1/{+name}"
+                  "path": "v1/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/androidmanagement"
+                  ]
                 },
                 "delete": {
                   "id": "androidmanagement.enterprises.devices.operations.delete",
@@ -340,7 +382,10 @@
                       "type": "string"
                     }
                   },
-                  "path": "v1/{+name}"
+                  "path": "v1/{+name}",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/androidmanagement"
+                  ]
                 },
                 "cancel": {
                   "id": "androidmanagement.enterprises.devices.operations.cancel",
@@ -362,7 +407,10 @@
                       "type": "string"
                     }
                   },
-                  "path": "v1/{+name}:cancel"
+                  "path": "v1/{+name}:cancel",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/androidmanagement"
+                  ]
                 }
               }
             }
@@ -388,7 +436,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}"
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             },
             "list": {
               "id": "androidmanagement.enterprises.devices.list",
@@ -421,7 +472,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+parent}/devices"
+              "path": "v1/{+parent}/devices",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             },
             "issueCommand": {
               "id": "androidmanagement.enterprises.devices.issueCommand",
@@ -446,7 +500,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}:issueCommand"
+              "path": "v1/{+name}:issueCommand",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             },
             "patch": {
               "id": "androidmanagement.enterprises.devices.patch",
@@ -477,7 +534,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}"
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             },
             "delete": {
               "id": "androidmanagement.enterprises.devices.delete",
@@ -499,7 +559,10 @@
                   "type": "string"
                 }
               },
-              "path": "v1/{+name}"
+              "path": "v1/{+name}",
+              "scopes": [
+                "https://www.googleapis.com/auth/androidmanagement"
+              ]
             }
           }
         }
@@ -534,7 +597,10 @@
               "type": "string"
             }
           },
-          "path": "v1/enterprises"
+          "path": "v1/enterprises",
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ]
         },
         "get": {
           "id": "androidmanagement.enterprises.get",
@@ -556,7 +622,10 @@
               "type": "string"
             }
           },
-          "path": "v1/{+name}"
+          "path": "v1/{+name}",
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ]
         },
         "patch": {
           "id": "androidmanagement.enterprises.patch",
@@ -587,7 +656,10 @@
               "type": "string"
             }
           },
-          "path": "v1/{+name}"
+          "path": "v1/{+name}",
+          "scopes": [
+            "https://www.googleapis.com/auth/androidmanagement"
+          ]
         }
       }
     }
@@ -2162,13 +2234,13 @@
       "id": "HardwareStatus"
     }
   },
-  "revision": "20170724",
+  "revision": "20170804",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
-  "version_module": "True",
+  "version_module": true,
   "canonicalName": "Android Management",
   "discoveryVersion": "v1",
   "fullyEncodeReservedExpansion": true,
