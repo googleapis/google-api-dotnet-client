@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170801 (943)
+ *      <tr><th>API Rev<td>20170805 (947)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -794,6 +794,10 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -801,10 +805,6 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -840,6 +840,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -852,15 +861,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1261,8 +1261,8 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>Options defining BigQuery table and row identifiers.</summary>
     public class GooglePrivacyDlpV2beta1BigQueryOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>References to fields uniquely identifying rows within the table. Nested fields in the format like
-        /// person.birthdate.year are allowed.</summary>
+        /// <summary>References to fields uniquely identifying rows within the table. Nested fields in the format, like
+        /// `person.birthdate.year`, are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1FieldId> IdentifyingFields { get; set; } 
 
@@ -1275,15 +1275,16 @@ namespace Google.Apis.DLP.v2beta1.Data
     }    
 
     /// <summary>Message defining the location of a BigQuery table. A table is uniquely identified  by its project_id,
-    /// dataset_id, and table_name.</summary>
+    /// dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or
+    /// `..`.</summary>
     public class GooglePrivacyDlpV2beta1BigQueryTable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Dataset ID of the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; } 
 
-        /// <summary>The GCP project id of the project containing the table. If omitted, project id is inferred from the
-        /// API call.</summary>
+        /// <summary>The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is
+        /// inferred from the API call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
@@ -1398,9 +1399,10 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// files with each file name matching the pattern "[operation_id]_[count].csv", for example
         /// `3094877188788974909_1.csv`. The `operation_id` matches the identifier for the Operation, and the `count` is
         /// a counter used for tracking the number of files written. The CSV file(s) contain the following columns
-        /// regardless of storage type scanned: id info_type likelihood byte size of finding quote time_stamp For Cloud
+        /// regardless of storage type scanned: id info_type likelihood byte size of finding quote timestamp For Cloud
         /// Storage the next columns are: file_path start_offset For Cloud Datastore the next columns are: project_id
-        /// namespace_id path column_name offset</summary>
+        /// namespace_id path column_name offset For BigQuery the next columns are: row_number project_id dataset_id
+        /// table_id</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GooglePrivacyDlpV2beta1OutputStorageConfig OutputConfig { get; set; } 
 
@@ -1519,12 +1521,13 @@ namespace Google.Apis.DLP.v2beta1.Data
     public class GooglePrivacyDlpV2beta1ImageRedactionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Only one per info_type should be provided per request. If not specified, and redact_all_text is
-        /// false, the DLP API will redacts all text that it matches against all info_types that are found, but not
+        /// false, the DLP API will redact all text that it matches against all info_types that are found, but not
         /// specified in another ImageRedactionConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
 
-        /// <summary>If true, all text found in the image, regardless if it matches an info_type, is redacted.</summary>
+        /// <summary>If true, all text found in the image, regardless whether it matches an info_type, is
+        /// redacted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactAllText")]
         public virtual System.Nullable<bool> RedactAllText { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170728 (939)
+ *      <tr><th>API Rev<td>20170807 (949)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -691,6 +691,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>The warning code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningCode")]
         public virtual string WarningCode { get; set; } 
+
+        /// <summary>The document describing the warning, and helps resolve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warningDocumentLink")]
+        public virtual string WarningDocumentLink { get; set; } 
 
         /// <summary>The warning message to help developers improve their requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningMessage")]

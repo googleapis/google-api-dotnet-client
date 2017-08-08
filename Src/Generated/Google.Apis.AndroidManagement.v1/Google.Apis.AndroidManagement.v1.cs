@@ -395,7 +395,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>Gets info about an application.</summary>
             /// <param name="name">The name of the application in the form
-            /// `enterprises/{enterpriseId}/applications/{package_name}`</param>
+            /// enterprises/{enterpriseId}/applications/{package_name}</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -414,7 +414,7 @@ namespace Google.Apis.AndroidManagement.v1
 
 
                 /// <summary>The name of the application in the form
-                /// `enterprises/{enterpriseId}/applications/{package_name}`</summary>
+                /// enterprises/{enterpriseId}/applications/{package_name}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -517,26 +517,26 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
-                /// `Code.CANCELLED`.</summary>
+                /// Code.CANCELLED.</summary>
                 /// <param name="name">The name of the operation resource to be cancelled.</param>
                 public virtual CancelRequest Cancel(string name)
                 {
                     return new CancelRequest(service, name);
                 }
 
-                /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best
-                /// effort to cancel the operation, but success is not guaranteed.  If the server doesn't support this
-                /// method, it returns `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or
-                /// other methods to check whether the cancellation succeeded or whether the operation completed despite
+                /// <summary>Starts asynchronous cancellation on a long-running operation. The server makes a best
+                /// effort to cancel the operation, but success is not guaranteed. If the server doesn't support this
+                /// method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other
+                /// methods to check whether the cancellation succeeded or whether the operation completed despite
                 /// cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an
                 /// operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to
-                /// `Code.CANCELLED`.</summary>
+                /// Code.CANCELLED.</summary>
                 public class CancelRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Cancel request.</summary>
@@ -591,7 +591,7 @@ namespace Google.Apis.AndroidManagement.v1
 
                 /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
                 /// interested in the operation result. It does not cancel the operation. If the server doesn't support
-                /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+                /// this method, it returns google.rpc.Code.UNIMPLEMENTED.</summary>
                 /// <param name="name">The name of the operation resource to be deleted.</param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -600,7 +600,7 @@ namespace Google.Apis.AndroidManagement.v1
 
                 /// <summary>Deletes a long-running operation. This method indicates that the client is no longer
                 /// interested in the operation result. It does not cancel the operation. If the server doesn't support
-                /// this method, it returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
+                /// this method, it returns google.rpc.Code.UNIMPLEMENTED.</summary>
                 public class DeleteRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -653,7 +653,7 @@ namespace Google.Apis.AndroidManagement.v1
 
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 /// <param name="name">The name of the operation resource.</param>
                 public virtual GetRequest Get(string name)
@@ -661,7 +661,7 @@ namespace Google.Apis.AndroidManagement.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+                /// <summary>Gets the latest state of a long-running operation. Clients can use this method to poll the
                 /// operation result at intervals as recommended by the API service.</summary>
                 public class GetRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Operation>
                 {
@@ -716,13 +716,12 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override
+                /// the binding to use different resource name schemes, such as users/operations. To override the
+                /// binding, API services can add a binding such as "/v1/{name=users}/operations" to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 /// <param name="name">The name of the operation's parent resource.</param>
                 public virtual ListRequest List(string name)
                 {
@@ -730,13 +729,12 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
-                /// support this method, it returns `UNIMPLEMENTED`.
-                ///
-                /// NOTE: the `name` binding allows API services to override the binding to use different resource name
-                /// schemes, such as `users/operations`. To override the binding, API services can add a binding such as
-                /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the
-                /// default name includes the operations collection id, however overriding users must ensure the name
-                /// binding is the parent resource, without the operations collection id.</summary>
+                /// support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override
+                /// the binding to use different resource name schemes, such as users/operations. To override the
+                /// binding, API services can add a binding such as "/v1/{name=users}/operations" to their service
+                /// configuration. For backwards compatibility, the default name includes the operations collection id,
+                /// however overriding users must ensure the name binding is the parent resource, without the operations
+                /// collection id.</summary>
                 public class ListRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ListOperationsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -830,7 +828,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>Deletes a device, which causes the device to be wiped.</summary>
-            /// <param name="name">The name of the device in the form `enterprises/{enterpriseId}/devices/{deviceId}`</param>
+            /// <param name="name">The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -848,8 +846,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the device in the form
-                /// `enterprises/{enterpriseId}/devices/{deviceId}`</summary>
+                /// <summary>The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -891,7 +888,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>Gets a device.</summary>
-            /// <param name="name">The name of the device in the form `enterprises/{enterpriseId}/devices/{deviceId}`</param>
+            /// <param name="name">The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -909,8 +906,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the device in the form
-                /// `enterprises/{enterpriseId}/devices/{deviceId}`</summary>
+                /// <summary>The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -951,27 +947,17 @@ namespace Google.Apis.AndroidManagement.v1
 
             }
 
-            /// <summary>Issues a command to a device. The
-            /// [`Operation`](/android/management/reference/rest/v1/enterprises.devices.operations#Operation) resource
-            /// returned contains a
-            /// [`Command`](/android/management/reference/rest/v1/enterprises.devices/issueCommand#Command) in its
-            /// `metadata` field. Use the [get operation
-            /// method](/android/management/reference/rest/v1/enterprises.devices.operations/get) to get the status of
-            /// the command.</summary>
+            /// <summary>Issues a command to a device. The Operation resource returned contains a Command in its
+            /// metadata field. Use the get operation method to get the status of the command.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the device in the form `enterprises/{enterpriseId}/devices/{deviceId}`</param>
+            /// <param name="name">The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</param>
             public virtual IssueCommandRequest IssueCommand(Google.Apis.AndroidManagement.v1.Data.Command body, string name)
             {
                 return new IssueCommandRequest(service, body, name);
             }
 
-            /// <summary>Issues a command to a device. The
-            /// [`Operation`](/android/management/reference/rest/v1/enterprises.devices.operations#Operation) resource
-            /// returned contains a
-            /// [`Command`](/android/management/reference/rest/v1/enterprises.devices/issueCommand#Command) in its
-            /// `metadata` field. Use the [get operation
-            /// method](/android/management/reference/rest/v1/enterprises.devices.operations/get) to get the status of
-            /// the command.</summary>
+            /// <summary>Issues a command to a device. The Operation resource returned contains a Command in its
+            /// metadata field. Use the get operation method to get the status of the command.</summary>
             public class IssueCommandRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.Operation>
             {
                 /// <summary>Constructs a new IssueCommand request.</summary>
@@ -984,8 +970,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the device in the form
-                /// `enterprises/{enterpriseId}/devices/{deviceId}`</summary>
+                /// <summary>The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1033,7 +1018,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>Lists devices for a given enterprise.</summary>
-            /// <param name="parent">The name of the enterprise in the form `enterprises/{enterpriseId}`</param>
+            /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1051,7 +1036,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the enterprise in the form `enterprises/{enterpriseId}`</summary>
+                /// <summary>The name of the enterprise in the form enterprises/{enterpriseId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1120,7 +1105,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>Updates a device.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the device in the form `enterprises/{enterpriseId}/devices/{deviceId}`</param>
+            /// <param name="name">The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidManagement.v1.Data.Device body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1139,8 +1124,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the device in the form
-                /// `enterprises/{enterpriseId}/devices/{deviceId}`</summary>
+                /// <summary>The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1227,7 +1211,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>Creates an enrollment token for a given enterprise.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The name of the enterprise in the form `enterprises/{enterpriseId}`</param>
+            /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}</param>
             public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.EnrollmentToken body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1246,7 +1230,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the enterprise in the form `enterprises/{enterpriseId}`</summary>
+                /// <summary>The name of the enterprise in the form enterprises/{enterpriseId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1295,7 +1279,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>Deletes an enrollment token, which prevents future use of the token.</summary>
             /// <param name="name">The name of the enrollment token in the form
-            /// `enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}`</param>
+            /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1314,7 +1298,7 @@ namespace Google.Apis.AndroidManagement.v1
 
 
                 /// <summary>The name of the enrollment token in the form
-                /// `enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}`</summary>
+                /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1381,7 +1365,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>Deletes a policy. This operation is only permitted if no devices are currently referencing the
             /// policy.</summary>
-            /// <param name="name">The name of the policy in the form `enterprises/{enterpriseId}/policies/{policyId}`</param>
+            /// <param name="name">The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1400,8 +1384,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the policy in the form
-                /// `enterprises/{enterpriseId}/policies/{policyId}`</summary>
+                /// <summary>The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1443,7 +1426,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>Gets a policy.</summary>
-            /// <param name="name">The name of the policy in the form `enterprises/{enterpriseId}/policies/{policyId}`</param>
+            /// <param name="name">The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1461,8 +1444,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the policy in the form
-                /// `enterprises/{enterpriseId}/policies/{policyId}`</summary>
+                /// <summary>The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1504,7 +1486,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
             /// <summary>Lists policies for a given enterprise.</summary>
-            /// <param name="parent">The name of the enterprise in the form `enterprises/{enterpriseId}`</param>
+            /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
@@ -1522,7 +1504,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the enterprise in the form `enterprises/{enterpriseId}`</summary>
+                /// <summary>The name of the enterprise in the form enterprises/{enterpriseId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1591,7 +1573,7 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>Updates or creates a policy.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the policy in the form `enterprises/{enterpriseId}/policies/{policyId}`</param>
+            /// <param name="name">The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidManagement.v1.Data.Policy body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1610,8 +1592,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the policy in the form
-                /// `enterprises/{enterpriseId}/policies/{policyId}`</summary>
+                /// <summary>The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1699,7 +1680,7 @@ namespace Google.Apis.AndroidManagement.v1
             /// <summary>Creates a web token to access an embeddable managed Google Play web UI for a given
             /// enterprise.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The name of the enterprise in the form `enterprises/{enterpriseId}`</param>
+            /// <param name="parent">The name of the enterprise in the form enterprises/{enterpriseId}</param>
             public virtual CreateRequest Create(Google.Apis.AndroidManagement.v1.Data.WebToken body, string parent)
             {
                 return new CreateRequest(service, body, parent);
@@ -1719,7 +1700,7 @@ namespace Google.Apis.AndroidManagement.v1
                 }
 
 
-                /// <summary>The name of the enterprise in the form `enterprises/{enterpriseId}`</summary>
+                /// <summary>The name of the enterprise in the form enterprises/{enterpriseId}</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -1786,8 +1767,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
-            /// <summary>The name of the [`SignupUrl`](/android/management/reference/rest/v1/signupUrls#SignupUrl) used
-            /// to sign up for the enterprise.</summary>
+            /// <summary>The name of the SignupUrl used to sign up for the enterprise.</summary>
             [Google.Apis.Util.RequestParameterAttribute("signupUrlName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SignupUrlName { get; set; }
 
@@ -1861,7 +1841,7 @@ namespace Google.Apis.AndroidManagement.v1
         }
 
         /// <summary>Gets an enterprise.</summary>
-        /// <param name="name">The name of the enterprise in the form `enterprises/{enterpriseId}`</param>
+        /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
@@ -1879,7 +1859,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
-            /// <summary>The name of the enterprise in the form `enterprises/{enterpriseId}`</summary>
+            /// <summary>The name of the enterprise in the form enterprises/{enterpriseId}</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1922,7 +1902,7 @@ namespace Google.Apis.AndroidManagement.v1
 
         /// <summary>Updates an enterprise.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the enterprise in the form `enterprises/{enterpriseId}`</param>
+        /// <param name="name">The name of the enterprise in the form enterprises/{enterpriseId}</param>
         public virtual PatchRequest Patch(Google.Apis.AndroidManagement.v1.Data.Enterprise body, string name)
         {
             return new PatchRequest(service, body, name);
@@ -1941,7 +1921,7 @@ namespace Google.Apis.AndroidManagement.v1
             }
 
 
-            /// <summary>The name of the enterprise in the form `enterprises/{enterpriseId}`</summary>
+            /// <summary>The name of the enterprise in the form enterprises/{enterpriseId}</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -2038,10 +2018,9 @@ namespace Google.Apis.AndroidManagement.v1
 
             /// <summary>The callback URL to which the admin will be redirected after successfully creating an
             /// enterprise. Before redirecting there the system will add a query parameter to this URL named
-            /// `enterpriseToken` which will contain an opaque token to be used for the [create
-            /// enterprise](/android/management/reference/rest/v1/enterprises/create) request. The URL will be parsed
-            /// then reformatted in order to add the `enterpriseToken` parameter, so there may be some minor formatting
-            /// changes.</summary>
+            /// enterpriseToken which will contain an opaque token to be used for the create enterprise request. The URL
+            /// will be parsed then reformatted in order to add the enterpriseToken parameter, so there may be some
+            /// minor formatting changes.</summary>
             [Google.Apis.Util.RequestParameterAttribute("callbackUrl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CallbackUrl { get; set; }
 
@@ -2121,7 +2100,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperties { get; set; } 
 
         /// <summary>The name of the application in the form
-        /// `enterprises/{enterpriseId}/applications/{package_name}`</summary>
+        /// enterprises/{enterpriseId}/applications/{package_name}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2161,7 +2140,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class ApplicationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The default policy for all permissions requested by the app. If specified, this overrides the
-        /// policy-level `default_permission_policy` which applies to all apps.</summary>
+        /// policy-level default_permission_policy which applies to all apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPermissionPolicy")]
         public virtual string DefaultPermissionPolicy { get; set; } 
 
@@ -2174,21 +2153,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> LockTaskAllowed { get; set; } 
 
         /// <summary>Managed configuration applied to the app. The format for the configuration is dictated by the
-        /// [`ManagedProperty`](/android/management/reference/rest/v1/enterprises.applications#ManagedProperty) values
-        /// supported by the app. Each field name in the managed configuration must match the `key` field of the
-        /// `ManagedProperty`. The field value must be compatible with the `type` of the `ManagedProperty`:
-        ///
-        /// typeJSON value `BOOL``true` or `false` `STRING`string `INTEGER`number `CHOICE`string `MULTISELECT`array of
-        /// strings `HIDDEN`string `BUNDLE_ARRAY`array of objects </summary>
+        /// ManagedProperty values supported by the app. Each field name in the managed configuration must match the key
+        /// field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty:
+        /// typeJSON value BOOLtrue or false STRINGstring INTEGERnumber CHOICEstring MULTISELECTarray of strings
+        /// HIDDENstring BUNDLE_ARRAYarray of objects </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual System.Collections.Generic.IDictionary<string,object> ManagedConfiguration { get; set; } 
 
-        /// <summary>The package name of the app, e.g. `com.google.android.youtube` for the YouTube app.</summary>
+        /// <summary>The package name of the app, e.g. com.google.android.youtube for the YouTube app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
 
         /// <summary>Explicit permission grants or denials for the app. These values override the
-        /// `default_permission_policy`.</summary>
+        /// default_permission_policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionGrants")]
         public virtual System.Collections.Generic.IList<PermissionGrant> PermissionGrants { get; set; } 
 
@@ -2205,16 +2182,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual object CreateTime { get; set; } 
 
         /// <summary>The duration for which the command is valid. The command will expire if not executed by the device
-        /// during this time.  The default duration if unspecified is ten minutes. There is no maximum
+        /// during this time. The default duration if unspecified is ten minutes. There is no maximum
         /// duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; } 
 
-        /// <summary>For commands of type `RESET_PASSWORD`, optionally specifies the new password.</summary>
+        /// <summary>For commands of type RESET_PASSWORD, optionally specifies the new password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPassword")]
         public virtual string NewPassword { get; set; } 
 
-        /// <summary>For commands of type `RESET_PASSWORD`, optionally specifies flags.</summary>
+        /// <summary>For commands of type RESET_PASSWORD, optionally specifies flags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetPasswordFlags")]
         public virtual System.Collections.Generic.IList<string> ResetPasswordFlags { get; set; } 
 
@@ -2227,10 +2204,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }    
 
     /// <summary>A rule declaring which mitigating actions to take when a device is not compliant with its policy. For
-    /// every rule, there is always an implicit mitigating action to set `policy_compliant` to false for the
-    /// [`Device`](/android/management/reference/rest/v1/enterprises.devices#Device) resource, and display a message on
-    /// the device indicating that the device is not compliant with its policy. Other mitigating actions may optionally
-    /// be taken as well, depending on the field values in the rule.</summary>
+    /// every rule, there is always an implicit mitigating action to set policy_compliant to false for the Device
+    /// resource, and display a message on the device indicating that the device is not compliant with its policy. Other
+    /// mitigating actions may optionally be taken as well, depending on the field values in the rule.</summary>
     public class ComplianceRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A condition which is satisfied if the Android Framework API level on the device does not meet a
@@ -2244,9 +2220,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableApps")]
         public virtual System.Nullable<bool> DisableApps { get; set; } 
 
-        /// <summary>A condition which is satisfied if there exists *any* matching
-        /// [`NonComplianceDetail`](/android/management/reference/rest/v1/enterprises.devices#NonComplianceDetail) for
-        /// the device.</summary>
+        /// <summary>A condition which is satisfied if there exists any matching NonComplianceDetail for the
+        /// device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonComplianceDetailCondition")]
         public virtual NonComplianceDetailCondition NonComplianceDetailCondition { get; set; } 
 
@@ -2274,12 +2249,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedState")]
         public virtual string AppliedState { get; set; } 
 
-        /// <summary>If the device state is `DISABLED`, an optional message that is displayed on the device indicating
-        /// the reason the device is disabled. This field may be modified by an update request.</summary>
+        /// <summary>If the device state is DISABLED, an optional message that is displayed on the device indicating the
+        /// reason the device is disabled. This field may be modified by an update request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledReason")]
         public virtual UserFacingMessage DisabledReason { get; set; } 
 
-        /// <summary>Displays on the device. This information is only available when `displayInfoEnabled` is true in the
+        /// <summary>Displays on the device. This information is only available when displayInfoEnabled is true in the
         /// device's policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displays")]
         public virtual System.Collections.Generic.IList<Display> Displays { get; set; } 
@@ -2303,7 +2278,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual HardwareInfo HardwareInfo { get; set; } 
 
         /// <summary>Hardware status samples in chronological order. This information is only available when
-        /// `hardwareStatusEnabled` is true in the device's policy.</summary>
+        /// hardwareStatusEnabled is true in the device's policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hardwareStatusSamples")]
         public virtual System.Collections.Generic.IList<HardwareStatus> HardwareStatusSamples { get; set; } 
 
@@ -2320,20 +2295,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual object LastStatusReportTime { get; set; } 
 
         /// <summary>Events related to memory and storage measurements in chronological order. This information is only
-        /// available when `memoryInfoEnabled` is true in the device's policy.</summary>
+        /// available when memoryInfoEnabled is true in the device's policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryEvents")]
         public virtual System.Collections.Generic.IList<MemoryEvent> MemoryEvents { get; set; } 
 
-        /// <summary>Memory information. This information is only available when `memoryInfoEnabled` is true in the
+        /// <summary>Memory information. This information is only available when memoryInfoEnabled is true in the
         /// device's policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryInfo")]
         public virtual MemoryInfo MemoryInfo { get; set; } 
 
-        /// <summary>The name of the device in the form `enterprises/{enterpriseId}/devices/{deviceId}`</summary>
+        /// <summary>The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Device network information. This information is only available when `networkInfoEnabled` is true in
+        /// <summary>Device network information. This information is only available when networkInfoEnabled is true in
         /// the device's policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInfo")]
         public virtual NetworkInfo NetworkInfo { get; set; } 
@@ -2347,15 +2322,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> PolicyCompliant { get; set; } 
 
         /// <summary>The name of the policy that is intended to be applied to the device. If empty, the policy with id
-        /// `default` is applied. This field may be modified by an update request. The name of the policy is in the form
-        /// `enterprises/{enterpriseId}/policies/{policyId}`. It is also permissible to only specify the `policyId` when
-        /// updating this field as long as the `policyId` contains no slashes since the rest of the policy name can be
+        /// default is applied. This field may be modified by an update request. The name of the policy is in the form
+        /// enterprises/{enterpriseId}/policies/{policyId}. It is also permissible to only specify the policyId when
+        /// updating this field as long as the policyId contains no slashes since the rest of the policy name can be
         /// inferred from context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyName")]
         public virtual string PolicyName { get; set; } 
 
         /// <summary>Power management events on the device in chronological order. This information is only available
-        /// when `powerManagementEventsEnabled` is true in the device's policy.</summary>
+        /// when powerManagementEventsEnabled is true in the device's policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("powerManagementEvents")]
         public virtual System.Collections.Generic.IList<PowerManagementEvent> PowerManagementEvents { get; set; } 
 
@@ -2366,20 +2341,18 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Collections.Generic.IList<string> PreviousDeviceNames { get; set; } 
 
         /// <summary>Detailed information about the device software. This information is only available when
-        /// `softwareInfoEnabled` is true in the device's policy.</summary>
+        /// softwareInfoEnabled is true in the device's policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareInfo")]
         public virtual SoftwareInfo SoftwareInfo { get; set; } 
 
         /// <summary>The state that is intended to be applied to the device. This field may be modified by an update
-        /// request. Note that UpdateDevice only handles toggling between `ACTIVE` and `DISABLED` states. Use the
-        /// [delete device method](/android/management/reference/rest/v1/enterprises.devices/delete) to cause the device
-        /// to enter the `DELETED` state.</summary>
+        /// request. Note that UpdateDevice only handles toggling between ACTIVE and DISABLED states. Use the delete
+        /// device method to cause the device to enter the DELETED state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>The resource name of the user of the device in the form
-        /// `enterprises/{enterpriseId}/users/{userId}`. This is the name of the device account automatically created
-        /// for this device.</summary>
+        /// <summary>The resource name of the user of the device in the form enterprises/{enterpriseId}/users/{userId}.
+        /// This is the name of the device account automatically created for this device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; } 
 
@@ -2423,11 +2396,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
+    /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty
+    /// JSON object {}.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -2439,8 +2410,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     {
         /// <summary>Optional, arbitrary data associated with the enrollment token. This could contain, for example, the
         /// id of an org unit to which the device is assigned after enrollment. After a device enrolls with the token,
-        /// this data will be exposed in the `enrollment_token_data` field of the
-        /// [`Device`](/android/management/reference/rest/v1/enterprises.devices#Device) resource. The data must be 1024
+        /// this data will be exposed in the enrollment_token_data field of the Device resource. The data must be 1024
         /// characters or less; otherwise, the creation request will fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalData")]
         public virtual string AdditionalData { get; set; } 
@@ -2455,20 +2425,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual object ExpirationTimestamp { get; set; } 
 
         /// <summary>The name of the enrollment token, which is generated by the server during creation, in the form
-        /// `enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}`</summary>
+        /// enterprises/{enterpriseId}/enrollmentTokens/{enrollmentTokenId}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>The name of the policy that will be initially applied to the enrolled device in the form
-        /// `enterprises/{enterpriseId}/policies/{policyId}`. If not specified, the policy with id `default` is applied.
-        /// It is permissible to only specify the `policyId` when updating this field as long as the `policyId` contains
-        /// no slashes since the rest of the policy name can be inferred from context.</summary>
+        /// enterprises/{enterpriseId}/policies/{policyId}. If not specified, the policy with id default is applied. It
+        /// is permissible to only specify the policyId when updating this field as long as the policyId contains no
+        /// slashes since the rest of the policy name can be inferred from context.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyName")]
         public virtual string PolicyName { get; set; } 
 
         /// <summary>A JSON string whose UTF-8 representation can be used to generate a QR code to enroll a device with
         /// this enrollment token. To enroll a device using NFC, the NFC record must contain a serialized
-        /// `java.util.Properties` representation of the properties in the JSON.</summary>
+        /// java.util.Properties representation of the properties in the JSON.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qrCode")]
         public virtual string QrCode { get; set; } 
 
@@ -2505,19 +2475,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual ExternalData Logo { get; set; } 
 
         /// <summary>The name of the enterprise which is generated by the server during creation, in the form
-        /// `enterprises/{enterpriseId}`</summary>
+        /// enterprises/{enterpriseId}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>A color in RGB format indicating the predominant color to display in the device management app UI.
-        /// The color components are stored as follows: `(red << 16) | (green << 8) | blue`, where each component may
-        /// take a value between 0 and 255 inclusive.</summary>
+        /// The color components are stored as follows: (red << 16) | (green << 8) | blue, where each component may take
+        /// a value between 0 and 255 inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryColor")]
         public virtual System.Nullable<int> PrimaryColor { get; set; } 
 
         /// <summary>When Cloud Pub/Sub notifications are enabled, this field is required to indicate the topic to which
-        /// the notifications will be published. The format of this field is `projects/{project}/topics/{topic}`. You
-        /// must have granted the publish permission on this topic to android-cloud-
+        /// the notifications will be published. The format of this field is projects/{project}/topics/{topic}. You must
+        /// have granted the publish permission on this topic to android-cloud-
         /// policy@system.gserviceaccount.com</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; } 
@@ -2557,7 +2527,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batteryThrottlingTemperatures")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> BatteryThrottlingTemperatures { get; set; } 
 
-        /// <summary>Brand of the device, e.g. `Google`.</summary>
+        /// <summary>Brand of the device, e.g. Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; } 
 
@@ -2569,7 +2539,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuThrottlingTemperatures")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> CpuThrottlingTemperatures { get; set; } 
 
-        /// <summary>Baseband version, e.g. `MDM9625_104662.22.05.34p`.</summary>
+        /// <summary>Baseband version, e.g. MDM9625_104662.22.05.34p.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceBasebandVersion")]
         public virtual string DeviceBasebandVersion { get; set; } 
 
@@ -2581,15 +2551,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gpuThrottlingTemperatures")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> GpuThrottlingTemperatures { get; set; } 
 
-        /// <summary>Name of the hardware, e.g. `Angler`.</summary>
+        /// <summary>Name of the hardware, e.g. Angler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hardware")]
         public virtual string Hardware { get; set; } 
 
-        /// <summary>Manufacturer, e.g. `Motorola`.</summary>
+        /// <summary>Manufacturer, e.g. Motorola.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
         public virtual string Manufacturer { get; set; } 
 
-        /// <summary>The model of the device, e.g. `Asus Nexus 7`.</summary>
+        /// <summary>The model of the device, e.g. Asus Nexus 7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; } 
 
@@ -2609,7 +2579,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Hardware status. Temperatures may be compared to the temperature thresholds available in `hardwareInfo`
+    /// <summary>Hardware status. Temperatures may be compared to the temperature thresholds available in hardwareInfo
     /// to determine hardware health.</summary>
     public class HardwareStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2695,8 +2665,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Managed property.</summary>
     public class ManagedProperty : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The default value of the properties. `BUNDLE_ARRAY` properties never have a default
-        /// value.</summary>
+        /// <summary>The default value of the properties. BUNDLE_ARRAY properties never have a default value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
         public virtual object DefaultValue { get; set; } 
 
@@ -2704,7 +2673,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>For `CHOICE` or `MULTISELECT` properties, the list of possible entries.</summary>
+        /// <summary>For CHOICE or MULTISELECT properties, the list of possible entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<ManagedPropertyEntry> Entries { get; set; } 
 
@@ -2713,8 +2682,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
 
-        /// <summary>For `BUNDLE_ARRAY` properties, the list of nested properties. A `BUNDLE_ARRAY` property is at most
-        /// two levels deep.</summary>
+        /// <summary>For BUNDLE_ARRAY properties, the list of nested properties. A BUNDLE_ARRAY property is at most two
+        /// levels deep.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nestedProperties")]
         public virtual System.Collections.Generic.IList<ManagedProperty> NestedProperties { get; set; } 
 
@@ -2749,7 +2718,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>An event related to memory and storage measurements.</summary>
     public class MemoryEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The number of free bytes in the medium, or for `EXTERNAL_STORAGE_DETECTED`, the total capacity in
+        /// <summary>The number of free bytes in the medium, or for EXTERNAL_STORAGE_DETECTED, the total capacity in
         /// bytes of the storage medium.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byteCount")]
         public virtual System.Nullable<long> ByteCount { get; set; } 
@@ -2784,15 +2753,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Device network info.</summary>
     public class NetworkInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>IMEI number of the GSM device, e.g. `A1000031212`.</summary>
+        /// <summary>IMEI number of the GSM device, e.g. A1000031212.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; } 
 
-        /// <summary>MEID number of the CDMA device, e.g. `A00000292788E1`.</summary>
+        /// <summary>MEID number of the CDMA device, e.g. A00000292788E1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; } 
 
-        /// <summary>WiFi MAC address of the device, e.g. `7c:11:11:11:11:11`.</summary>
+        /// <summary>WiFi MAC address of the device, e.g. 7c:11:11:11:11:11.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddress")]
         public virtual string WifiMacAddress { get; set; } 
 
@@ -2811,14 +2780,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>For settings with nested fields, if a particular nested field is out of compliance, this specifies
         /// the full path to the offending field. The path is formatted in the same way the policy JSON field would be
         /// referenced in JavaScript, that is: 1) For object-typed fields, the field name is followed by a dot then by a
-        /// subfield name. 2) For array-typed fields, the field name is followed by the array index enclosed in
-        /// brackets. For example, to indicate a problem with the `url` field in the `externalData` field in the 3rd
-        /// application, the path would be `applications[2].externalData.url`</summary>
+        /// subfield name. 2) For array-typed fields, the field name is followed by the array index  enclosed in
+        /// brackets. For example, to indicate a problem with the url field in the externalData field in the 3rd
+        /// application, the path would be applications[2].externalData.url</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
         public virtual string FieldPath { get; set; } 
 
-        /// <summary>If `package_name` is set and the non-compliance reason is `APP_NOT_INSTALLED`, the detailed reason
-        /// the app cannot be installed.</summary>
+        /// <summary>If package_name is set and the non-compliance reason is APP_NOT_INSTALLED, the detailed reason the
+        /// app cannot be installed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installationFailureReason")]
         public virtual string InstallationFailureReason { get; set; } 
 
@@ -2830,8 +2799,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
 
-        /// <summary>The name of the policy setting. This is the JSON field name of a top-level
-        /// [`Policy`](/android/management/reference/rest/v1/enterprises.policies#Policy) field.</summary>
+        /// <summary>The name of the policy setting. This is the JSON field name of a top-level Policy  field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settingName")]
         public virtual string SettingName { get; set; } 
 
@@ -2839,10 +2807,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A compliance rule condition which is satisfied if there exists *any* matching
-    /// [`NonComplianceDetail`](/android/management/reference/rest/v1/enterprises.devices#NonComplianceDetail) for the
-    /// device. A `NonComplianceDetail` matches a `NonComplianceDetailCondition` if *all* the fields which are set
-    /// within the `NonComplianceDetailCondition` match the corresponding `NonComplianceDetail` fields.</summary>
+    /// <summary>A compliance rule condition which is satisfied if there exists any matching NonComplianceDetail for the
+    /// device. A NonComplianceDetail matches a NonComplianceDetailCondition if all the fields which are set within the
+    /// NonComplianceDetailCondition match the corresponding NonComplianceDetail fields.</summary>
     public class NonComplianceDetailCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The reason the device is not in compliance with the setting. If not set, then this condition
@@ -2851,14 +2818,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string NonComplianceReason { get; set; } 
 
         /// <summary>The package name indicating which application is out of compliance. If not set, then this condition
-        /// matches any package name. If this field is set, then `setting_name` must be unset or set to `applications`;
+        /// matches any package name. If this field is set, then setting_name must be unset or set to applications;
         /// otherwise, the condition would never be satisfied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
 
-        /// <summary>The name of the policy setting. This is the JSON field name of a top-level
-        /// [`Policy`](/android/management/reference/rest/v1/enterprises.policies#Policy) field. If not set, then this
-        /// condition matches any setting name.</summary>
+        /// <summary>The name of the policy setting. This is the JSON field name of a top-level Policy field. If not
+        /// set, then this condition matches any setting name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("settingName")]
         public virtual string SettingName { get; set; } 
 
@@ -2869,8 +2835,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
-        /// completed, and either `error` or `response` is available.</summary>
+        /// <summary>If the value is false, it means the operation is still in progress. If true, the operation is
+        /// completed, and either error or response is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
@@ -2878,23 +2844,23 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>Service-specific metadata associated with the operation.  It typically contains progress
-        /// information and common metadata such as create time. Some services might not provide such metadata.  Any
-        /// method that returns a long-running operation should document the metadata type, if any.</summary>
+        /// <summary>Service-specific metadata associated with the operation. It typically contains progress information
+        /// and common metadata such as create time. Some services might not provide such metadata. Any method that
+        /// returns a long-running operation should document the metadata type, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of
-        /// `operations/some/unique/name`.</summary>
+        /// If you use the default HTTP mapping, the name should have the format of
+        /// operations/some/unique/name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The normal response of the operation in case of success.  If the original method returns no data on
-        /// success, such as `Delete`, the response is `google.protobuf.Empty`.  If the original method is standard
-        /// `Get`/`Create`/`Update`, the response should be the resource.  For other methods, the response should have
-        /// the type `XxxResponse`, where `Xxx` is the original method name.  For example, if the original method name
-        /// is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.</summary>
+        /// <summary>The normal response of the operation in case of success. If the original method returns no data on
+        /// success, such as Delete, the response is google.protobuf.Empty. If the original method is standard
+        /// Get/Create/Update, the response should be the resource. For other methods, the response should have the type
+        /// XxxResponse, where Xxx is the original method name. For example, if the original method name is
+        /// TakeSnapshot(), the inferred response type is TakeSnapshotResponse.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -2921,37 +2887,37 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<int> PasswordHistoryLength { get; set; } 
 
         /// <summary>The minimum allowed password length. A value of 0 means there is no restriction. Only enforced when
-        /// `password_quality` is `NUMERIC`, `NUMERIC_COMPLEX`, `ALPHABETIC`, `ALPHANUMERIC`, or `COMPLEX`.</summary>
+        /// password_quality is NUMERIC, NUMERIC_COMPLEX, ALPHABETIC, ALPHANUMERIC, or COMPLEX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumLength")]
         public virtual System.Nullable<int> PasswordMinimumLength { get; set; } 
 
-        /// <summary>Minimum number of letters required in the password. Only enforced when `password_quality` is
-        /// `COMPLEX`.</summary>
+        /// <summary>Minimum number of letters required in the password. Only enforced when password_quality is
+        /// COMPLEX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumLetters")]
         public virtual System.Nullable<int> PasswordMinimumLetters { get; set; } 
 
-        /// <summary>Minimum number of lower case letters required in the password. Only enforced when
-        /// `password_quality` is `COMPLEX`.</summary>
+        /// <summary>Minimum number of lower case letters required in the password. Only enforced when password_quality
+        /// is COMPLEX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumLowerCase")]
         public virtual System.Nullable<int> PasswordMinimumLowerCase { get; set; } 
 
         /// <summary>Minimum number of non-letter characters (numerical digits or symbols) required in the password.
-        /// Only enforced when `password_quality` is `COMPLEX`.</summary>
+        /// Only enforced when password_quality is COMPLEX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumNonLetter")]
         public virtual System.Nullable<int> PasswordMinimumNonLetter { get; set; } 
 
-        /// <summary>Minimum number of numerical digits required in the password. Only enforced when `password_quality`
-        /// is `COMPLEX`.</summary>
+        /// <summary>Minimum number of numerical digits required in the password. Only enforced when password_quality is
+        /// COMPLEX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumNumeric")]
         public virtual System.Nullable<int> PasswordMinimumNumeric { get; set; } 
 
-        /// <summary>Minimum number of symbols required in the password. Only enforced when `password_quality` is
-        /// `COMPLEX`.</summary>
+        /// <summary>Minimum number of symbols required in the password. Only enforced when password_quality is
+        /// COMPLEX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumSymbols")]
         public virtual System.Nullable<int> PasswordMinimumSymbols { get; set; } 
 
-        /// <summary>Minimum number of upper case letters required in the password. Only enforced when
-        /// `password_quality` is `COMPLEX`.</summary>
+        /// <summary>Minimum number of upper case letters required in the password. Only enforced when password_quality
+        /// is COMPLEX.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordMinimumUpperCase")]
         public virtual System.Nullable<int> PasswordMinimumUpperCase { get; set; } 
 
@@ -2966,7 +2932,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Configuration for an Android permission and its grant state.</summary>
     public class PermissionGrant : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The android permission, e.g. `android.permission.READ_CALENDAR`.</summary>
+        /// <summary>The android permission, e.g. android.permission.READ_CALENDAR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permission")]
         public virtual string Permission { get; set; } 
 
@@ -2981,20 +2947,20 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>A default activity for handling intents that match a particular intent filter.</summary>
     public class PersistentPreferredActivity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The intent actions to match in the filter.  If any actions are included in the filter, then an
+        /// <summary>The intent actions to match in the filter. If any actions are included in the filter, then an
         /// intent's action must be one of those values for it to match. If no actions are included, the intent action
         /// is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<string> Actions { get; set; } 
 
-        /// <summary>The intent categories to match in the filter.  An intent includes the categories that it requires,
+        /// <summary>The intent categories to match in the filter. An intent includes the categories that it requires,
         /// all of which must be included in the filter in order to match. In other words, adding a category to the
         /// filter has no impact on matching unless that category is specified in the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
 
         /// <summary>The activity that should be the default intent handler. This should be an Android component name,
-        /// e.g. `com.android.enterprise.app/.MainActivity`. Alternatively, the value may be the package name of an app,
+        /// e.g. com.android.enterprise.app/.MainActivity. Alternatively, the value may be the package name of an app,
         /// which causes Android Device Policy to choose an appropriate activity from the app to handle the
         /// intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receiverActivity")]
@@ -3019,7 +2985,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<ApplicationPolicy> Applications { get; set; } 
 
-        /// <summary>Whether applications other than the ones configured in `applications` are blocked from being
+        /// <summary>Whether applications other than the ones configured in applications are blocked from being
         /// installed. When set, applications that were installed under a previous policy but no longer appear in the
         /// policy are automatically uninstalled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockApplicationsEnabled")]
@@ -3076,7 +3042,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modifyAccountsDisabled")]
         public virtual System.Nullable<bool> ModifyAccountsDisabled { get; set; } 
 
-        /// <summary>The name of the policy in the form `enterprises/{enterpriseId}/policies/{policyId}`</summary>
+        /// <summary>The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3087,8 +3053,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkEscapeHatchEnabled")]
         public virtual System.Nullable<bool> NetworkEscapeHatchEnabled { get; set; } 
 
-        /// <summary>Network configuration for the device. See [configure networks](/android/management/configure-
-        /// networks) for more information.</summary>
+        /// <summary>Network configuration for the device. See configure networks for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNetworkConfiguration")]
         public virtual System.Collections.Generic.IDictionary<string,object> OpenNetworkConfiguration { get; set; } 
 
@@ -3122,14 +3087,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual StatusReportingSettings StatusReportingSettings { get; set; } 
 
         /// <summary>The battery plugged in modes for which the device stays on. When using this setting, it is
-        /// recommended to clear `maximum_time_to_lock` so that the device doesn't lock itself while it stays
+        /// recommended to clear maximum_time_to_lock so that the device doesn't lock itself while it stays
         /// on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stayOnPluggedModes")]
         public virtual System.Collections.Generic.IList<string> StayOnPluggedModes { get; set; } 
 
-        /// <summary>The system update policy, which controls how OS updates are applied. If the update type is
-        /// `WINDOWED` and the device has a device account, the update window will automatically apply to Play app
-        /// updates as well.</summary>
+        /// <summary>The system update policy, which controls how OS updates are applied. If the update type is WINDOWED
+        /// and the device has a device account, the update window will automatically apply to Play app updates as
+        /// well.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemUpdate")]
         public virtual SystemUpdate SystemUpdate { get; set; } 
 
@@ -3149,7 +3114,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>A power management event.</summary>
     public class PowerManagementEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>For `BATTERY_LEVEL_COLLECTED` events, the battery level as a percentage.</summary>
+        /// <summary>For BATTERY_LEVEL_COLLECTED events, the battery level as a percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batteryLevel")]
         public virtual System.Nullable<float> BatteryLevel { get; set; } 
 
@@ -3168,9 +3133,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>An enterprise signup URL.</summary>
     public class SignupUrl : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the resource. This must be included in the [create
-        /// enterprise](/android/management/reference/rest/v1/enterprises/create) request at the end of the signup
-        /// flow.</summary>
+        /// <summary>The name of the resource. This must be included in the create enterprise request at the end of the
+        /// signup flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3186,8 +3150,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Information about device software.</summary>
     public class SoftwareInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Android build Id string meant for displaying to the user, e.g. `shamu-userdebug 6.0.1 MOB30I
-        /// 2756745 dev-keys`.</summary>
+        /// <summary>Android build Id string meant for displaying to the user, e.g. shamu-userdebug 6.0.1 MOB30I 2756745
+        /// dev-keys.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidBuildNumber")]
         public virtual string AndroidBuildNumber { get; set; } 
 
@@ -3195,19 +3159,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidBuildTime")]
         public virtual object AndroidBuildTime { get; set; } 
 
-        /// <summary>The user visible Android version string, e.g. `6.0.1`.</summary>
+        /// <summary>The user visible Android version string, e.g. 6.0.1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidVersion")]
         public virtual string AndroidVersion { get; set; } 
 
-        /// <summary>The system bootloader version number, e.g. `0.6.7`.</summary>
+        /// <summary>The system bootloader version number, e.g. 0.6.7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootloaderVersion")]
         public virtual string BootloaderVersion { get; set; } 
 
-        /// <summary>Kernel version, e.g. `2.6.32.9-g103d848`.</summary>
+        /// <summary>Kernel version, e.g. 2.6.32.9-g103d848.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceKernelVersion")]
         public virtual string DeviceKernelVersion { get; set; } 
 
-        /// <summary>Security patch level, e.g. `2016-05-01`.</summary>
+        /// <summary>Security patch level, e.g. 2016-05-01.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityPatchLevel")]
         public virtual string SecurityPatchLevel { get; set; } 
 
@@ -3215,57 +3179,36 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The `Status` type defines a logical error model that is suitable for different programming
-    /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
-    /// is designed to be:
-    ///
-    /// - Simple to use and understand for most users - Flexible enough to meet unexpected needs
-    ///
-    /// # Overview
-    ///
-    /// The `Status` message contains three pieces of data: error code, error message, and error details. The error code
-    /// should be an enum value of google.rpc.Code, but it may accept additional error codes if needed.  The error
-    /// message should be a developer-facing English message that helps developers *understand* and *resolve* the error.
-    /// If a localized user-facing error message is needed, put the localized message in the error details or localize
-    /// it in the client. The optional error details may contain arbitrary information about the error. There is a
-    /// predefined set of error detail types in the package `google.rpc` that can be used for common error conditions.
-    ///
-    /// # Language mapping
-    ///
-    /// The `Status` message is the logical representation of the error model, but it is not necessarily the actual wire
-    /// format. When the `Status` message is exposed in different client libraries and different wire protocols, it can
-    /// be mapped differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped
-    /// to some error codes in C.
-    ///
-    /// # Other uses
-    ///
-    /// The error model and the `Status` message can be used in a variety of environments, either with or without APIs,
-    /// to provide a consistent developer experience across different environments.
-    ///
-    /// Example uses of this error model include:
-    ///
-    /// - Partial errors. If a service needs to return partial errors to the client, it may embed the `Status` in the
-    /// normal response to indicate the partial errors.
-    ///
-    /// - Workflow errors. A typical workflow has multiple steps. Each step may have a `Status` message for error
-    /// reporting.
-    ///
-    /// - Batch operations. If a client uses batch request and batch response, the `Status` message should be used
-    /// directly inside batch response, one for each error sub-response.
-    ///
-    /// - Asynchronous operations. If an API call embeds asynchronous operation results in its response, the status of
-    /// those operations should be represented directly using the `Status` message.
-    ///
-    /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
-    /// stripping needed for security/privacy reasons.</summary>
+    /// <summary>The Status type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to
+    /// be: Simple to use and understand for most users Flexible enough to meet unexpected needsOverviewThe Status
+    /// message contains three pieces of data: error code, error message, and error details. The error code should be an
+    /// enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a
+    /// developer-facing English message that helps developers understand and resolve the error. If a localized user-
+    /// facing error message is needed, put the localized message in the error details or localize it in the client. The
+    /// optional error details may contain arbitrary information about the error. There is a predefined set of error
+    /// detail types in the package google.rpc that can be used for common error conditions.Language mappingThe Status
+    /// message is the logical representation of the error model, but it is not necessarily the actual wire format. When
+    /// the Status message is exposed in different client libraries and different wire protocols, it can be mapped
+    /// differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some
+    /// error codes in C.Other usesThe error model and the Status message can be used in a variety of environments,
+    /// either with or without APIs, to provide a consistent developer experience across different environments.Example
+    /// uses of this error model include: Partial errors. If a service needs to return partial errors to the client, it
+    /// may embed the Status in the normal response to indicate the partial errors. Workflow errors. A typical workflow
+    /// has multiple steps. Each step may have a Status message for error reporting. Batch operations. If a client uses
+    /// batch request and batch response, the Status message should be used directly inside batch response, one for each
+    /// error sub-response. Asynchronous operations. If an API call embeds asynchronous operation results in its
+    /// response, the status of those operations should be represented directly using the Status message. Logging. If
+    /// some API errors are stored in logs, the message Status could be used directly after any stripping needed for
+    /// security/privacy reasons.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>A list of messages that carry the error details.  There is a common set of message types for APIs
-        /// to use.</summary>
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
@@ -3312,14 +3255,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Configuration for managing system updates</summary>
     public class SystemUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the type is `WINDOWED`, the end of the maintenance window, measured as the number of minutes
-        /// after midnight in device local time. This value must be between 0 and 1439, inclusive. If this value is less
-        /// than `start_minutes`, then the maintenance window spans midnight. If the maintenance window specified is
-        /// smaller than 30 minutes, the actual window is extended to 30 minutes beyond the start time.</summary>
+        /// <summary>If the type is WINDOWED, the end of the maintenance window, measured as the number of minutes after
+        /// midnight in device local time. This value must be between 0 and 1439, inclusive. If this value is less than
+        /// start_minutes, then the maintenance window spans midnight. If the maintenance window specified is smaller
+        /// than 30 minutes, the actual window is extended to 30 minutes beyond the start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endMinutes")]
         public virtual System.Nullable<int> EndMinutes { get; set; } 
 
-        /// <summary>If the type is `WINDOWED`, the start of the maintenance window, measured as the number of minutes
+        /// <summary>If the type is WINDOWED, the start of the maintenance window, measured as the number of minutes
         /// after midnight in device local time. This value must be between 0 and 1439, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startMinutes")]
         public virtual System.Nullable<int> StartMinutes { get; set; } 
@@ -3353,7 +3296,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class WebToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the web token, which is generated by the server during creation, in the form
-        /// `enterprises/{enterpriseId}/webTokens/{webTokenId}`.</summary>
+        /// enterprises/{enterpriseId}/webTokens/{webTokenId}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

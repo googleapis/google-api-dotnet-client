@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170726 (937)
+ *      <tr><th>API Rev<td>20170803 (945)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8399,7 +8399,9 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// are accessible, including products that are approved, products with revoked approval, and products that have
         /// never been approved. "allApproved" means that the user is entitled to access all products that are approved
         /// for the enterprise. If the value is "allApproved" or "includeAll", the productId field is ignored. If no
-        /// value is provided, it is interpreted as "whitelist" for backwards compatibility.</summary>
+        /// value is provided, it is interpreted as "whitelist" for backwards compatibility. Further "allApproved" or
+        /// "includeAll" does not enable automatic visibility of "alpha" or "beta" tracks for Android app. Use
+        /// ProductVisibility to enable "alpha" or "beta" tracks per user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productSetBehavior")]
         public virtual string ProductSetBehavior { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170729 (940)
+ *      <tr><th>API Rev<td>20170805 (947)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -1282,17 +1282,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; } 
 
-        /// <summary>Manufacturer to match android.os.Build.MANUFACTURER (required).</summary>
+        /// <summary>Manufacturer name to match `android.os.Build.MANUFACTURER` (required). Allowed values listed in
+        /// [manufacturer names](/zero-touch/resources/manufacturer-names).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
         public virtual string Manufacturer { get; set; } 
 
         /// <summary>MEID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; } 
-
-        /// <summary>Model to match android.os.Build.MODEL (required).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; } 
 
         /// <summary>Serial number (optional)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]

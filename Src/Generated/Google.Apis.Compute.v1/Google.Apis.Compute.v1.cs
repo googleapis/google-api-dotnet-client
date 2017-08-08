@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170721 (932)
+ *      <tr><th>API Rev<td>20170728 (939)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -5528,21 +5528,19 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request. Using PUT method, can
-        /// only update following fields of firewall rule: allowed, description, sourceRanges, sourceTags, targetTags.
-        /// This method supports patch semantics.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
+        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="firewall">Name of the firewall rule
-        /// to update.</param>
+        /// to patch.</param>
         public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Firewall body, string project, string firewall)
         {
             return new PatchRequest(service, body, project, firewall);
         }
 
-        /// <summary>Updates the specified firewall rule with the data included in the request. Using PUT method, can
-        /// only update following fields of firewall rule: allowed, description, sourceRanges, sourceTags, targetTags.
-        /// This method supports patch semantics.</summary>
+        /// <summary>Updates the specified firewall rule with the data included in the request. This method supports
+        /// PATCH semantics and uses the JSON merge patch format and processing rules.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5560,7 +5558,7 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the firewall rule to update.</summary>
+            /// <summary>Name of the firewall rule to patch.</summary>
             [Google.Apis.Util.RequestParameterAttribute("firewall", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Firewall { get; private set; }
 
@@ -33277,10 +33275,26 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range
+        /// tuple that describes a permitted connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denied")]
+        public virtual System.Collections.Generic.IList<Firewall.DeniedData> Denied { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>If destination ranges are specified, the firewall will apply only to traffic that has destination
+        /// IP address in these ranges. These ranges must be expressed in CIDR format. Only IPv4 is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationRanges")]
+        public virtual System.Collections.Generic.IList<string> DestinationRanges { get; set; } 
+
+        /// <summary>Direction of traffic to which this firewall applies; default is INGRESS. Note: For INGRESS traffic,
+        /// it is NOT supported to specify destinationRanges; For EGRESS traffic, it is NOT supported to specify
+        /// sourceRanges OR sourceTags.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -33306,6 +33320,13 @@ namespace Google.Apis.Compute.v1.Data
         /// projects/myproject/global/networks/my-network - global/networks/default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
+
+        /// <summary>Priority for this rule. This is an integer between 0 and 65535, both inclusive. When not specified,
+        /// the value assumed is 1000. Relative priorities determine precedence of conflicting rules. Lower value of
+        /// priority implies higher precedence (eg, a rule with priority 0 has higher precedence than a rule with
+        /// priority 1). DENY rules take precedence over ALLOW rules having equal priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -33341,6 +33362,24 @@ namespace Google.Apis.Compute.v1.Data
         
 
         public class AllowedData
+        {
+            /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
+            /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
+            /// icmp, esp, ah, ipip, sctp), or the IP protocol number.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("IPProtocol")]
+            public virtual string IPProtocol { get; set; } 
+
+            /// <summary>An optional list of ports to which this rule applies. This field is only applicable for UDP or
+            /// TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to
+            /// connections through any port.
+            ///
+            /// Example inputs include: ["22"], ["80","443"], and ["12345-12349"].</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("ports")]
+            public virtual System.Collections.Generic.IList<string> Ports { get; set; } 
+
+        }    
+
+        public class DeniedData
         {
             /// <summary>The IP protocol to which this rule applies. The protocol type is required when creating a
             /// firewall rule. This value can either be one of the following well known protocol strings (tcp, udp,
@@ -34355,9 +34394,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>An array of configurations for this interface. This specifies how this interface is configured to
-        /// interact with other network services, such as connecting to the internet. Only one interface is supported
-        /// per instance.</summary>
+        /// <summary>An array of network configurations for this instance. These specify how interfaces are configured
+        /// to interact with other network services, such as connecting to the internet. Multiple interfaces are
+        /// supported per instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
 
