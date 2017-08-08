@@ -50,7 +50,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var server = StartServer())
             using (var client = new HttpClient())
             {
-                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
+                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                 var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port) + "?a=b&c=d";
                 var responseMsgTask = client.GetAsync(url, cts.Token);
 
@@ -70,7 +70,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var server = StartServer())
             using (var client = new HttpClient())
             {
-                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
+                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                 var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port);
                 var responseMsgTask = client.GetAsync(url, cts.Token);
 
@@ -90,7 +90,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var server = StartServer())
             using (var client = new HttpClient())
             {
-                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
+                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                 var url = $"http://localhost:{server.Port}/WRONG/?a=b&c=d";
                 var responseMsgTask = client.GetAsync(url, cts.Token);
 
@@ -105,7 +105,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var server = StartServer())
             using (var client = new TcpClient())
             {
-                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
+                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                 await client.ConnectAsync("localhost", server.Port);
                 var stream = client.GetStream();
                 var httpRequest = Encoding.ASCII.GetBytes("INVALIDREQUESTLINE\r\n");
@@ -122,7 +122,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var server = StartServer())
             using (var client = new TcpClient())
             {
-                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
+                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                 await client.ConnectAsync("localhost", server.Port);
                 var stream = client.GetStream();
                 var httpRequest = Encoding.ASCII.GetBytes(new string('X', 1000));
@@ -139,7 +139,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             using (var server = StartServer())
             using (var client = new HttpClient())
             {
-                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(2));
+                var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
                 var url = string.Format(LocalServerCodeReceiver.CallbackUriTemplate127001, server.Port);
                 var request = new HttpRequestMessage(HttpMethod.Get, url);
                 request.Headers.Add("X-Test", new string('X', 10000));

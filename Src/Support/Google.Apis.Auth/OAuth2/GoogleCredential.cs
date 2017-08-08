@@ -160,6 +160,19 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         /// <summary>
+        /// Create a <see cref="GoogleCredential"/> from a <see cref="ComputeCredential"/>.
+        /// In general, do not use this method. Call <see cref="GetApplicationDefault"/> or
+        /// <see cref="GetApplicationDefaultAsync"/>, which will provide the most suitable
+        /// credentials for the current platform.
+        /// </summary>
+        /// <param name="computeCredential">Optional. The compute credential to use in the returned <see cref="GoogleCredential"/>.
+        /// If <c>null</c>, then a new <see cref="ComputeCredential"/> will be instantiated, using the default
+        /// <see cref="ComputeCredential.Initializer"/>.</param>
+        /// <returns>A <see cref="GoogleCredential"/> with an underlying <see cref="ComputeCredential"/>.</returns>
+        public static GoogleCredential FromComputeCredential(ComputeCredential computeCredential = null) =>
+            new GoogleCredential(computeCredential ?? new ComputeCredential());
+
+        /// <summary>
         /// <para>Returns <c>true</c> only if this credential type has no scopes by default and requires
         /// a call to <see cref="o:CreateScoped"/> before use.</para>
         ///
