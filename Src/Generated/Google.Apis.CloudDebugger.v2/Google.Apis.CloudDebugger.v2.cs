@@ -1192,11 +1192,6 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
 
-                /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
-                /// `google.com/intellij/v1`).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ClientVersion { get; set; }
-
                 /// <summary>When set to `true`, the result includes all debuggees. Otherwise, the result includes only
                 /// debuggees that are active.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
@@ -1205,6 +1200,11 @@ namespace Google.Apis.CloudDebugger.v2
                 /// <summary>Project number of a Google Cloud project whose debuggees to list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Project { get; set; }
+
+                /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                /// `google.com/intellij/v1`).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ClientVersion { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1231,15 +1231,6 @@ namespace Google.Apis.CloudDebugger.v2
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "clientVersion", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clientVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "includeInactive", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeInactive",
@@ -1252,6 +1243,15 @@ namespace Google.Apis.CloudDebugger.v2
                         "project", new Google.Apis.Discovery.Parameter
                         {
                             Name = "project",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "clientVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "clientVersion",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170726 (937)
+ *      <tr><th>API Rev<td>20170801 (943)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -395,8 +395,8 @@ namespace Google.Apis.Script.v1
         /// project in the script editor, then select **File > Project properties** and click the **Scopes**
         /// tab.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="scriptId">The project key of the script to be executed. To find the project key, open the project in
-        /// the script editor and select **File > Project properties**.</param>
+        /// <param name="scriptId">The script ID of the script to be executed. To find the script ID, open the project in the
+        /// script editor and select **File > Project properties**.</param>
         public virtual RunRequest Run(Google.Apis.Script.v1.Data.ExecutionRequest body, string scriptId)
         {
             return new RunRequest(service, body, scriptId);
@@ -422,7 +422,7 @@ namespace Google.Apis.Script.v1
             }
 
 
-            /// <summary>The project key of the script to be executed. To find the project key, open the project in the
+            /// <summary>The script ID of the script to be executed. To find the script ID, open the project in the
             /// script editor and select **File > Project properties**.</summary>
             [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ScriptId { get; private set; }
@@ -551,41 +551,6 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A request to retrieve the results from a collection of requests, specified by the operation resource
-    /// names.</summary>
-    public class JoinAsyncRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of operation resource names that we want to join, as returned from a call to
-        /// RunAsync.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("names")]
-        public virtual System.Collections.Generic.IList<string> Names { get; set; } 
-
-        /// <summary>The script id which specifies the script which all processes in the names field must be
-        /// from.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
-        public virtual string ScriptId { get; set; } 
-
-        /// <summary>Timeout for information retrieval in milliseconds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
-        public virtual object Timeout { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>An object that provides the return value for the JoinAsync method.</summary>
-    public class JoinAsyncResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The return values for each script function, in a map of operation resource names to the Operation
-        /// containing the result of the process. The response will contain either an error or the result of the script
-        /// function.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IDictionary<string,Operation> Results { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The response will not arrive until the function finishes executing. The maximum runtime is listed in
     /// the guide to [limitations in Apps Script](https://developers.google.com/apps-
     /// script/guides/services/quotas#current_limitations). If the script function returns successfully, the `response`
@@ -598,7 +563,9 @@ namespace Google.Apis.Script.v1.Data
     /// response into an exception class.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field is not used.</summary>
+        /// <summary>This field is only used with asynchronous executions and indicates whether or not the script
+        /// execution has completed. A completed execution has a populated response field containing the
+        /// `ExecutionResponse` from function that was executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
@@ -612,7 +579,9 @@ namespace Google.Apis.Script.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
-        /// <summary>This field is not used.</summary>
+        /// <summary>This field is only used with asynchronous executions and contains a unique identifier that can be
+        /// used to subsequently invoke a `get` `cancel` or `join` on the asynchronous script execution identified by
+        /// this name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170607 (888)
+ *      <tr><th>API Rev<td>20170731 (942)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -7565,8 +7565,8 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
 
-        /// <summary>Content-Type of the object data. If contentType is not specified, object downloads will be served
-        /// as application/octet-stream.</summary>
+        /// <summary>Content-Type of the object data. If an object is stored without a Content-Type, it is served as
+        /// application/octet-stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; } 
 
@@ -7875,10 +7875,11 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The ID of the resource to which this policy belongs. Will be of the form buckets/bucket for
-        /// buckets, and buckets/bucket/objects/object for objects. A specific generation may be specified by appending
-        /// #generationNumber to the end of the object name, e.g. buckets/my-bucket/objects/data.txt#17. The current
-        /// generation can be denoted with #0. This field is ignored on input.</summary>
+        /// <summary>The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket
+        /// for buckets, and projects/_/buckets/bucket/objects/object for objects. A specific generation may be
+        /// specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-
+        /// bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on
+        /// input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; } 
 
