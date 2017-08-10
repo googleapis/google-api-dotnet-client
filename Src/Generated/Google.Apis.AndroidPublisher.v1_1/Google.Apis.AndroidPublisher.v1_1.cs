@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v1.1
- *      <tr><th>API Rev<td>20170504 (854)
+ *      <tr><th>API Rev<td>20170808 (950)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -591,6 +591,10 @@ namespace Google.Apis.AndroidPublisher.v1_1.Data
         /// <summary>This kind represents an inappPurchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The order id associated with the purchase of the inapp product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; } 
 
         /// <summary>The purchase state of the order. Possible values are: - Purchased - Cancelled</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseState")]

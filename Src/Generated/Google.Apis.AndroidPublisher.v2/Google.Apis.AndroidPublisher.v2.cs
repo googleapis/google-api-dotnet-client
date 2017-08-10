@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170504 (854)
+ *      <tr><th>API Rev<td>20170808 (950)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -6363,7 +6363,9 @@ namespace Google.Apis.AndroidPublisher.v2
 
                 /// <summary>The time, in milliseconds since the Epoch, of the newest voided in-app product purchase
                 /// that you want to see in the response. The value of this parameter cannot be greater than the current
-                /// time and is ignored if a pagination token is set. Default value is current time.</summary>
+                /// time and is ignored if a pagination token is set. Default value is current time. Note: This filter
+                /// is applied on the time at which the record is seen as voided by our systems and not the actual
+                /// voided time returned in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> EndTime { get; set; }
 
@@ -6377,7 +6379,9 @@ namespace Google.Apis.AndroidPublisher.v2
 
                 /// <summary>The time, in milliseconds since the Epoch, of the oldest voided in-app product purchase
                 /// that you want to see in the response. The value of this parameter cannot be older than 30 days and
-                /// is ignored if a pagination token is set. Default value is current time minus 30 days.</summary>
+                /// is ignored if a pagination token is set. Default value is current time minus 30 days. Note: This
+                /// filter is applied on the time at which the record is seen as voided by our systems and not the
+                /// actual voided time returned in the response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> StartTime { get; set; }
 
@@ -6800,6 +6804,11 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha1")]
         public virtual string Sha1 { get; set; } 
+
+        /// <summary>A sha256 hash of the APK payload, encoded as a hex string and matching the output of the sha256sum
+        /// command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
+        public virtual string Sha256 { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7478,6 +7487,10 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>The order id associated with the purchase of the inapp product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; } 
+
         /// <summary>The purchase state of the order. Possible values are: - Purchased - Cancelled</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseState")]
         public virtual System.Nullable<int> PurchaseState { get; set; } 
@@ -7642,8 +7655,13 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The payment state of the subscription. Possible values are: - Payment pending - Payment
-        /// received</summary>
+        /// <summary>The order id of the latest recurring order associated with the purchase of the
+        /// subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
+        public virtual string OrderId { get; set; } 
+
+        /// <summary>The payment state of the subscription. Possible values are: - Payment pending - Payment received -
+        /// Free trial</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentState")]
         public virtual System.Nullable<int> PaymentState { get; set; } 
 

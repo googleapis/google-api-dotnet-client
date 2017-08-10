@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170805 (947)
+ *      <tr><th>API Rev<td>20170808 (950)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -944,6 +944,11 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
+                    /// value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Restricts findings to items that match. Supports info_type and likelihood. Examples:
                     /// info_type=EMAIL_ADDRESS info_type=PHONE_NUMBER,EMAIL_ADDRESS likelihood=VERY_LIKELY
                     /// likelihood=VERY_LIKELY,LIKELY info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
@@ -955,11 +960,6 @@ namespace Google.Apis.DLP.v2beta1
                     /// page of data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
-                    /// value.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -995,6 +995,15 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1007,15 +1016,6 @@ namespace Google.Apis.DLP.v2beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1373,6 +1373,10 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>Content data to inspect or redact.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
+
+        /// <summary>Structured content for inspection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GooglePrivacyDlpV2beta1Table Table { get; set; } 
 
         /// <summary>Type of the content, as defined in Content-Type HTTP header. Supported types are: all "text" types,
         /// octet streams, PNG images, JPEG images.</summary>
@@ -1803,6 +1807,10 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recordKey")]
         public virtual GooglePrivacyDlpV2beta1RecordKey RecordKey { get; set; } 
 
+        /// <summary>Location within a `ContentItem.Table`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableLocation")]
+        public virtual GooglePrivacyDlpV2beta1TableLocation TableLocation { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1967,6 +1975,15 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class GooglePrivacyDlpV2beta1Row : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Value> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Shared message indicating Cloud storage type.</summary>
     public class GooglePrivacyDlpV2beta1StorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1981,6 +1998,58 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>Google Cloud Datastore options specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreOptions")]
         public virtual GooglePrivacyDlpV2beta1DatastoreOptions DatastoreOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Structured content to inspect. Up to 50,000 `Value`'s per request allowed.</summary>
+    public class GooglePrivacyDlpV2beta1Table : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1FieldId> Headers { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Row> Rows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Location of a finding within a `ContentItem.Table`.</summary>
+    public class GooglePrivacyDlpV2beta1TableLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The index, zero based, of the row where the finding is located.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowIndex")]
+        public virtual System.Nullable<long> RowIndex { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Set of primitive values supported by the system.</summary>
+    public class GooglePrivacyDlpV2beta1Value : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
+        public virtual System.Nullable<bool> BooleanValue { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
+        public virtual GoogleTypeDate DateValue { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
+        public virtual System.Nullable<double> FloatValue { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
+        public virtual System.Nullable<long> IntegerValue { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timeValue")]
+        public virtual GoogleTypeTimeOfDay TimeValue { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
+        public virtual object TimestampValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2056,6 +2125,57 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a whole calendar date, e.g. date of birth. The time of day and time zone are either
+    /// specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. The day
+    /// may be 0 to represent a year and month where the day is not significant, e.g. credit card expiration date. The
+    /// year may be 0 to represent a month and day independent of year, e.g. anniversary date. Related types are
+    /// google.type.TimeOfDay and `google.protobuf.Timestamp`.</summary>
+    public class GoogleTypeDate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+        /// year/month where the day is not significant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; } 
+
+        /// <summary>Month of year. Must be from 1 to 12.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; } 
+
+        /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a time of day. The date and time zone are either not significant or are specified elsewhere.
+    /// An API may choose to allow leap seconds. Related types are google.type.Date and
+    /// `google.protobuf.Timestamp`.</summary>
+    public class GoogleTypeTimeOfDay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value
+        /// "24:00:00" for scenarios like business closing time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hours")]
+        public virtual System.Nullable<int> Hours { get; set; } 
+
+        /// <summary>Minutes of hour of day. Must be from 0 to 59.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minutes")]
+        public virtual System.Nullable<int> Minutes { get; set; } 
+
+        /// <summary>Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        /// <summary>Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it
+        /// allows leap-seconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seconds")]
+        public virtual System.Nullable<int> Seconds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

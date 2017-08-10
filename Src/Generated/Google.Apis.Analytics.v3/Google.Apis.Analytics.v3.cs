@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170726 (937)
+ *      <tr><th>API Rev<td>20170807 (949)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -10014,6 +10014,10 @@ namespace Google.Apis.Analytics.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profilesLinked")]
         public virtual System.Collections.Generic.IList<string> ProfilesLinked { get; set; } 
 
+        /// <summary>Collection of schema headers of the custom data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual System.Collections.Generic.IList<string> Schema { get; set; } 
+
         /// <summary>Link for this Analytics custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -10040,6 +10044,7 @@ namespace Google.Apis.Analytics.v3.Data
             }
         }
 
+        /// <summary>Upload type of the custom data source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadType")]
         public virtual string UploadType { get; set; } 
 
@@ -13010,6 +13015,24 @@ namespace Google.Apis.Analytics.v3.Data
         /// <summary>Upload status. Possible values: PENDING, COMPLETED, FAILED, DELETING, DELETED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
+
+        /// <summary>Time this file is uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
+        public virtual string UploadTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UploadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> UploadTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(UploadTimeRaw);
+            }
+            set
+            {
+                UploadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

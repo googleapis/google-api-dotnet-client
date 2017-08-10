@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20170606 (887)
+ *      <tr><th>API Rev<td>20170807 (949)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4203,9 +4203,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentDiskSize")]
         public virtual System.Nullable<long> CurrentDiskSize { get; set; } 
 
-        /// <summary>The database engine type and version. The databaseVersion can not be changed after instance
-        /// creation. Can be MYSQL_5_5, MYSQL_5_6 or MYSQL_5_7. Defaults to MYSQL_5_6. MYSQL_5_7 is applicable only to
-        /// Second Generation instances.</summary>
+        /// <summary>The database engine type and version. The databaseVersion field can not be changed after instance
+        /// creation. MySQL Second Generation instances: MYSQL_5_7 (default) or MYSQL_5_6. PostgreSQL instances:
+        /// POSTGRES_9_6 MySQL First Generation instances: MYSQL_5_6 (default) or MYSQL_5_5</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; } 
 
@@ -4217,6 +4217,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failoverReplica")]
         public virtual DatabaseInstance.FailoverReplicaData FailoverReplica { get; set; } 
+
+        /// <summary>The GCE zone that the instance is serving from. In case when the instance is failed over to standby
+        /// zone, this value may be different with what user specified in the settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gceZone")]
+        public virtual string GceZone { get; set; } 
 
         /// <summary>The instance type. This can be one of the following. CLOUD_SQL_INSTANCE: A Cloud SQL instance that
         /// is not replicating from a master. ON_PREMISES_INSTANCE: An instance running on the customer's premises.
@@ -4491,8 +4496,8 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fileType")]
         public virtual string FileType { get; set; } 
 
-        /// <summary>The PostgreSQL user to use for this import operation. Defaults to cloudsqlsuperuser. Does not apply
-        /// to MySQL instances.</summary>
+        /// <summary>The PostgreSQL user for this import operation. Defaults to cloudsqlsuperuser. Used only for
+        /// PostgreSQL instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importUser")]
         public virtual string ImportUser { get; set; } 
 
@@ -4622,7 +4627,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipv4Enabled")]
         public virtual System.Nullable<bool> Ipv4Enabled { get; set; } 
 
-        /// <summary>Whether the mysqld should default to 'REQUIRE X509' for users connecting over IP.</summary>
+        /// <summary>Whether SSL connections over IP should be enforced or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; } 
 

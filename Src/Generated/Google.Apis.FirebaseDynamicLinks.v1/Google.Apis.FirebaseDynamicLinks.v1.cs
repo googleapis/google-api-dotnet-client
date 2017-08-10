@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170807 (949)
+ *      <tr><th>API Rev<td>20170809 (951)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -83,7 +83,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://firebasedynamiclinks.googleapis.com/"; }
+            get { return "https://firebasedynamiclinks-ipv6.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -96,7 +96,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://firebasedynamiclinks.googleapis.com/batch"; }
+            get { return "https://firebasedynamiclinks-ipv6.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

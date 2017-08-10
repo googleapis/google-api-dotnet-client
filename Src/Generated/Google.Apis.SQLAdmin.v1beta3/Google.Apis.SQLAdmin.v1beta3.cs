@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170606 (887)
+ *      <tr><th>API Rev<td>20170807 (949)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -3189,7 +3189,7 @@ namespace Google.Apis.SQLAdmin.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Whether the mysqld should default to 'REQUIRE X509' for users connecting over IP.</summary>
+        /// <summary>Whether SSL connections over IP should be enforced or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; } 
 

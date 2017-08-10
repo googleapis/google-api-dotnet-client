@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170703 (914)
+ *      <tr><th>API Rev<td>20170808 (950)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -479,9 +479,9 @@ namespace Google.Apis.ManufacturerCenter.v1
 
             /// <summary>Gets the product from a Manufacturer Center account, including product issues.
             ///
-            /// A recently updated product takes some time to be processed before any changes are visible. While some
-            /// issues may be available once the product has been processed, other issues may take days to
-            /// appear.</summary>
+            /// A recently updated product takes around 15 minutes to process. Changes are only visible after it has
+            /// been processed. While some issues may be available once the product has been processed, other issues may
+            /// take days to appear.</summary>
             /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
             ///
             /// `account_id` - The ID of the Manufacturer Center account.</param>
@@ -503,9 +503,9 @@ namespace Google.Apis.ManufacturerCenter.v1
 
             /// <summary>Gets the product from a Manufacturer Center account, including product issues.
             ///
-            /// A recently updated product takes some time to be processed before any changes are visible. While some
-            /// issues may be available once the product has been processed, other issues may take days to
-            /// appear.</summary>
+            /// A recently updated product takes around 15 minutes to process. Changes are only visible after it has
+            /// been processed. While some issues may be available once the product has been processed, other issues may
+            /// take days to appear.</summary>
             public class GetRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Product>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -949,6 +949,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// https://support.google.com/manufacturers/answer/6124116#price.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedRetailPrice")]
         public virtual Price SuggestedRetailPrice { get; set; } 
+
+        /// <summary>The target account id. Should only be used in the accounts of the data partners.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetAccountId")]
+        public virtual System.Nullable<long> TargetAccountId { get; set; } 
 
         /// <summary>The theme of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#theme.</summary>

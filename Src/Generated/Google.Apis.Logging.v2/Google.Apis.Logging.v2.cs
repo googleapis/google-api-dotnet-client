@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170717 (928)
+ *      <tr><th>API Rev<td>20170808 (950)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -960,6 +960,105 @@ namespace Google.Apis.Logging.v2
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
             /// project-id/sinks/my-sink-id".</param>
+            public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+            {
+                return new PatchRequest(service, body, sinkName);
+            }
+
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+                    : base(service)
+                {
+                    SinkName = sinkName;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The full resource name of the sink to update, including the parent resource and
+                /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SinkName { get; private set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+sinkName}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "sinkName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sinkName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uniqueWriterIdentity",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
                 return new UpdateRequest(service, body, sinkName);
@@ -1664,17 +1763,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1710,6 +1809,15 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1718,10 +1826,100 @@ namespace Google.Apis.Logging.v2
                             DefaultValue = null,
                             Pattern = null,
                         });
+                }
+
+            }
+
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
+            public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+            {
+                return new PatchRequest(service, body, sinkName);
+            }
+
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+                    : base(service)
+                {
+                    SinkName = sinkName;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The full resource name of the sink to update, including the parent resource and
+                /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SinkName { get; private set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+sinkName}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "sinkName", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "sinkName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/sinks/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2469,6 +2667,105 @@ namespace Google.Apis.Logging.v2
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
+            public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+            {
+                return new PatchRequest(service, body, sinkName);
+            }
+
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+                    : base(service)
+                {
+                    SinkName = sinkName;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The full resource name of the sink to update, including the parent resource and
+                /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SinkName { get; private set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+sinkName}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "sinkName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sinkName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3524,6 +3821,105 @@ namespace Google.Apis.Logging.v2
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
             /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
             /// project-id/sinks/my-sink-id".</param>
+            public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+            {
+                return new PatchRequest(service, body, sinkName);
+            }
+
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
+                    : base(service)
+                {
+                    SinkName = sinkName;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The full resource name of the sink to update, including the parent resource and
+                /// the sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]"
+                /// "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]"
+                /// Example: "projects/my-project-id/sinks/my-sink-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string SinkName { get; private set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogSink Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+sinkName}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "sinkName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sinkName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/sinks/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "uniqueWriterIdentity",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
+            /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/sinks/[SINK_ID]" "folders/[FOLDER_ID]/sinks/[SINK_ID]" Example: "projects/my-
+            /// project-id/sinks/my-sink-id".</param>
             public virtual UpdateRequest Update(Google.Apis.Logging.v2.Data.LogSink body, string sinkName)
             {
                 return new UpdateRequest(service, body, sinkName);
@@ -3656,6 +4052,10 @@ namespace Google.Apis.Logging.v2.Data
         /// response was sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latency")]
         public virtual object Latency { get; set; } 
+
+        /// <summary>Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; } 
 
         /// <summary>The referer URL of the request, as defined in HTTP/1.1 Header Field Definitions
         /// (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).</summary>
@@ -4036,9 +4436,8 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only. The API version that created or updated this metric. The version also dictates the
-        /// syntax of the filter expression. When a value for this field is missing, the default value of V2 should be
-        /// assumed.</summary>
+        /// <summary>Output only. The API version that created or updated this metric. This value is currently always
+        /// set to V2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 
