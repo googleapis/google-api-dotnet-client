@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170729 (940)
+ *      <tr><th>API Rev<td>20170807 (949)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1054,7 +1054,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authoritySelector")]
         public virtual string AuthoritySelector { get; set; } 
 
-        /// <summary>The email address of the authenticated user making the request.</summary>
+        /// <summary>The email address of the authenticated user making the request. For privacy reasons, the principal
+        /// email address is redacted for all read-only operations that fail with a "permission denied" error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
         public virtual string PrincipalEmail { get; set; } 
 
@@ -1595,8 +1596,11 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual System.Collections.Generic.IList<string> LimitExceeded { get; set; } 
 
         /// <summary>Map of quota group name to the actual number of tokens consumed. If the quota check was not
-        /// successful, then this will not be populated due to no quota consumption. Deprecated: Use quota_metrics to
-        /// get per quota group usage.</summary>
+        /// successful, then this will not be populated due to no quota consumption.
+        ///
+        /// We are not merging this field with 'quota_metrics' field because of the complexity of scaling in Chemist
+        /// client code base. For simplicity, we will keep this field for Castor (that scales quota usage) and
+        /// 'quota_metrics' for SuperQuota (that doesn't scale quota usage). </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaConsumed")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<int>> QuotaConsumed { get; set; } 
 

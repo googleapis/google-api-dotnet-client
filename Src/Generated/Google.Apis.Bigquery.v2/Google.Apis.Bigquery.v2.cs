@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170730 (941)
+ *      <tr><th>API Rev<td>20170806 (948)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2824,6 +2824,14 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class ExplainQueryStage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Milliseconds the average shard spent on CPU-bound tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeMsAvg")]
+        public virtual System.Nullable<long> ComputeMsAvg { get; set; } 
+
+        /// <summary>Milliseconds the slowest shard spent on CPU-bound tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeMsMax")]
+        public virtual System.Nullable<long> ComputeMsMax { get; set; } 
+
         /// <summary>Relative amount of time the average shard spent on CPU-bound tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeRatioAvg")]
         public virtual System.Nullable<double> ComputeRatioAvg { get; set; } 
@@ -2839,6 +2847,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Human-readable name for stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Milliseconds the average shard spent reading input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readMsAvg")]
+        public virtual System.Nullable<long> ReadMsAvg { get; set; } 
+
+        /// <summary>Milliseconds the slowest shard spent reading input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readMsMax")]
+        public virtual System.Nullable<long> ReadMsMax { get; set; } 
 
         /// <summary>Relative amount of time the average shard spent reading input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readRatioAvg")]
@@ -2856,6 +2872,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recordsWritten")]
         public virtual System.Nullable<long> RecordsWritten { get; set; } 
 
+        /// <summary>Total number of bytes written to shuffle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleOutputBytes")]
+        public virtual System.Nullable<long> ShuffleOutputBytes { get; set; } 
+
+        /// <summary>Total number of bytes written to shuffle and spilled to disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleOutputBytesSpilled")]
+        public virtual System.Nullable<long> ShuffleOutputBytesSpilled { get; set; } 
+
         /// <summary>Current status for the stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
@@ -2864,6 +2888,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
         public virtual System.Collections.Generic.IList<ExplainQueryStep> Steps { get; set; } 
 
+        /// <summary>Milliseconds the average shard spent waiting to be scheduled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitMsAvg")]
+        public virtual System.Nullable<long> WaitMsAvg { get; set; } 
+
+        /// <summary>Milliseconds the slowest shard spent waiting to be scheduled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waitMsMax")]
+        public virtual System.Nullable<long> WaitMsMax { get; set; } 
+
         /// <summary>Relative amount of time the average shard spent waiting to be scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitRatioAvg")]
         public virtual System.Nullable<double> WaitRatioAvg { get; set; } 
@@ -2871,6 +2903,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Relative amount of time the slowest shard spent waiting to be scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitRatioMax")]
         public virtual System.Nullable<double> WaitRatioMax { get; set; } 
+
+        /// <summary>Milliseconds the average shard spent on writing output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeMsAvg")]
+        public virtual System.Nullable<long> WriteMsAvg { get; set; } 
+
+        /// <summary>Milliseconds the slowest shard spent on writing output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeMsMax")]
+        public virtual System.Nullable<long> WriteMsMax { get; set; } 
 
         /// <summary>Relative amount of time the average shard spent on writing output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writeRatioAvg")]
@@ -2955,8 +2995,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size
         /// limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI
         /// can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For
-        /// Google Cloud Datastore backups, exactly one URI can be specified, and it must end with '.backup_info'. Also,
-        /// the '*' wildcard character is not allowed.</summary>
+        /// Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not
+        /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; } 
 
@@ -3294,10 +3334,15 @@ namespace Google.Apis.Bigquery.v2.Data
         /// Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size
         /// limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI
         /// can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For
-        /// Google Cloud Datastore backups: Exactly one URI can be specified, and it must end with '.backup_info'. Also,
-        /// the '*' wildcard character is not allowed.</summary>
+        /// Google Cloud Datastore backups: Exactly one URI can be specified. Also, the '*' wildcard character is not
+        /// allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; } 
+
+        /// <summary>[Experimental] If specified, configures time-based partitioning for the destination
+        /// table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
+        public virtual TimePartitioning TimePartitioning { get; set; } 
 
         /// <summary>[Optional] Specifies the action that occurs if the destination table already exists. The following
         /// values are supported: WRITE_TRUNCATE: If the table already exists, BigQuery overwrites the table data.
@@ -3393,6 +3438,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// queried as if it were a standard BigQuery table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableDefinitions")]
         public virtual System.Collections.Generic.IDictionary<string,ExternalDataConfiguration> TableDefinitions { get; set; } 
+
+        /// <summary>[Experimental] If specified, configures time-based partitioning for the destination
+        /// table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
+        public virtual TimePartitioning TimePartitioning { get; set; } 
 
         /// <summary>Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true.
         /// If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-

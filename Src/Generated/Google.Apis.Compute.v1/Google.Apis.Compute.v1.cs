@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170728 (939)
+ *      <tr><th>API Rev<td>20170731 (942)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -32244,8 +32244,9 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Fingerprint { get; set; } 
 
         /// <summary>The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this
-        /// BackendService. Currently at most one health check can be specified, and a health check is required for GCE
-        /// backend services. A health check must not be specified for GAE app backend and Cloud Function backend.
+        /// BackendService. Currently at most one health check can be specified, and a health check is required for
+        /// Compute Engine backend services. A health check must not be specified for App Engine backend and Cloud
+        /// Function backend.
         ///
         /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
@@ -32263,6 +32264,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Indicates whether the backend service will be used with internal or external load balancing. A
+        /// backend service created for one type of load balancing cannot be used with the other. Possible values are
+        /// INTERNAL and EXTERNAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; } 
 

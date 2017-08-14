@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170728 (939)
+ *      <tr><th>API Rev<td>20170731 (942)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -31216,7 +31216,7 @@ namespace Google.Apis.Compute.beta
         /// <summary>List all of the ordered rules present in a single specified policy.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="securityPolicy">Name of the security
-        /// policy to update.</param>
+        /// policy to get.</param>
         public virtual GetRequest Get(string project, string securityPolicy)
         {
             return new GetRequest(service, project, securityPolicy);
@@ -31239,7 +31239,7 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Name of the security policy to update.</summary>
+            /// <summary>Name of the security policy to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("securityPolicy", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SecurityPolicy { get; private set; }
 
@@ -43099,8 +43099,9 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Fingerprint { get; set; } 
 
         /// <summary>The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this
-        /// BackendService. Currently at most one health check can be specified, and a health check is required for GCE
-        /// backend services. A health check must not be specified for GAE app backend and Cloud Function backend.
+        /// BackendService. Currently at most one health check can be specified, and a health check is required for
+        /// Compute Engine backend services. A health check must not be specified for App Engine backend and Cloud
+        /// Function backend.
         ///
         /// For internal load balancing, a URL to a HealthCheck resource must be specified instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthChecks")]
@@ -43118,6 +43119,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Indicates whether the backend service will be used with internal or external load balancing. A
+        /// backend service created for one type of load balancing cannot be used with the other. Possible values are
+        /// INTERNAL and EXTERNAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
         public virtual string LoadBalancingScheme { get; set; } 
 
@@ -47269,6 +47273,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("counter")]
         public virtual LogConfigCounterOptions Counter { get; set; } 
 
+        /// <summary>Data access options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
+        public virtual LogConfigDataAccessOptions DataAccess { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -47288,7 +47296,21 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Options for counters</summary>
+    /// <summary>Increment a streamz counter with the specified metric and field names.
+    ///
+    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
+    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
+    ///
+    /// Field names correspond to IAM request parameters and field values are their respective values.
+    ///
+    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
+    /// (empty string), resulting in one aggretated counter with no field.
+    ///
+    /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
+    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
+    ///
+    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
+    /// decrementing the counter * incrementing it by anything other than 1</summary>
     public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field value to attribute.</summary>
@@ -47298,6 +47320,18 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The metric to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Write a Data Access (Gin) log</summary>
+    public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
+        /// the LocalIAM implementation, for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
+        public virtual string LogMode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49466,7 +49500,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Output only] Type of the resource. Always compute#rulefor security policies</summary>
+        /// <summary>[Output only] Type of the resource. Always compute#securityPolicyRule for security policy
+        /// rules</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results firstparty API</a>
  *      <tr><th>API Version<td>v1beta3firstparty
- *      <tr><th>API Rev<td>20170809 (951)
+ *      <tr><th>API Rev<td>20170811 (953)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -299,10 +299,149 @@ namespace Google.Apis.ToolResults.v1beta3firstparty
                 public ExecutionsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    clusters = new ClustersResource(service);
                     steps = new StepsResource(service);
 
                 }
 
+                private readonly ClustersResource clusters;
+
+                /// <summary>Gets the Clusters resource.</summary>
+                public virtual ClustersResource Clusters
+                {
+                    get { return clusters; }
+                }
+
+                /// <summary>The "clusters" collection of methods.</summary>
+                public class ClustersResource
+                {
+                    private const string Resource = "clusters";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ClustersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>Lists Screenshot Clusters
+                    ///
+                    /// Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are
+                    /// created after the execution is finished. Clusters are created from a set of screenshots. Between
+                    /// any two screenshots, a matching score is calculated based off their metadata that determines how
+                    /// similar they are. Screenshots are placed in the cluster that has screens which have the highest
+                    /// matching scores.</summary>
+                    /// <param name="projectId">A Project id.
+                    ///
+                    /// Required.</param>
+                    /// <param name="historyId">A History id.
+                    ///
+                    /// Required.</param>
+                    /// <param name="executionId">An Execution id.
+                    ///
+                    /// Required.</param>
+                    public virtual ListRequest List(string projectId, string historyId, string executionId)
+                    {
+                        return new ListRequest(service, projectId, historyId, executionId);
+                    }
+
+                    /// <summary>Lists Screenshot Clusters
+                    ///
+                    /// Returns the list of screenshot clusters corresponding to an execution. Screenshot clusters are
+                    /// created after the execution is finished. Clusters are created from a set of screenshots. Between
+                    /// any two screenshots, a matching score is calculated based off their metadata that determines how
+                    /// similar they are. Screenshots are placed in the cluster that has screens which have the highest
+                    /// matching scores.</summary>
+                    public class ListRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3firstparty.Data.ListScreenshotClustersResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            HistoryId = historyId;
+                            ExecutionId = executionId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A Project id.
+                        ///
+                        /// Required.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>A History id.
+                        ///
+                        /// Required.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string HistoryId { get; private set; }
+
+                        /// <summary>An Execution id.
+                        ///
+                        /// Required.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ExecutionId { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{projectId}/histories/{historyId}/executions/{executionId}/clusters"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
                 private readonly StepsResource steps;
 
                 /// <summary>Gets the Steps resource.</summary>
@@ -3813,6 +3952,16 @@ namespace Google.Apis.ToolResults.v1beta3firstparty.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ListScreenshotClustersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of clustres associated with an execution Always set</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
+        public virtual System.Collections.Generic.IList<ScreenshotCluster> Clusters { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A response containing the thumbnails in a step.</summary>
     public class ListStepThumbnailsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4041,6 +4190,52 @@ namespace Google.Apis.ToolResults.v1beta3firstparty.Data
         /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("xunitXmlFiles")]
         public virtual System.Collections.Generic.IList<FileReference> XunitXmlFiles { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class Screen : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>File reference of the png file. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileReference")]
+        public virtual string FileReference { get; set; } 
+
+        /// <summary>Locale of the device that the screenshot was taken on. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locale")]
+        public virtual string Locale { get; set; } 
+
+        /// <summary>Model of the device that the screenshot was taken on. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; } 
+
+        /// <summary>OS version of the device that the screenshot was taken on. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ScreenshotCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A string that describes the activity of every screen in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activity")]
+        public virtual string Activity { get; set; } 
+
+        /// <summary>A unique identifier for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; } 
+
+        /// <summary>A singular screen that represents the cluster as a whole. This screen will act as the "cover" of
+        /// the entire cluster. When users look at the clusters, only the key screen from each cluster will be shown.
+        /// Which screen is the key screen is determined by the ClusteringAlgorithm</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyScreen")]
+        public virtual Screen KeyScreen { get; set; } 
+
+        /// <summary>Full list of screens.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screens")]
+        public virtual System.Collections.Generic.IList<Screen> Screens { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

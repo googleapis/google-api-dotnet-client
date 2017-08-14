@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/bVLAwMNctM1JeNkfe6yjcRAFn2s\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/xrjjdwKoZ8v_U3unbuQOFfKYVGg\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20170728",
+ "revision": "20170731",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1216,7 +1216,7 @@
     },
     "healthChecks": {
      "type": "array",
-     "description": "The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required for GCE backend services. A health check must not be specified for GAE app backend and Cloud Function backend.\n\nFor internal load balancing, a URL to a HealthCheck resource must be specified instead.",
+     "description": "The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required for Compute Engine backend services. A health check must not be specified for App Engine backend and Cloud Function backend.\n\nFor internal load balancing, a URL to a HealthCheck resource must be specified instead.",
      "items": {
       "type": "string"
      }
@@ -1236,6 +1236,7 @@
     },
     "loadBalancingScheme": {
      "type": "string",
+     "description": "Indicates whether the backend service will be used with internal or external load balancing. A backend service created for one type of load balancing cannot be used with the other. Possible values are INTERNAL and EXTERNAL.",
      "enum": [
       "EXTERNAL",
       "INTERNAL",

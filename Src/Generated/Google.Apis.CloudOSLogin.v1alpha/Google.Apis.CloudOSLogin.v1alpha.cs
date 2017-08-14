@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Google Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20170808 (950)
+ *      <tr><th>API Rev<td>20170811 (953)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
@@ -789,7 +789,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
 
         /// <summary>The default group ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gid")]
-        public virtual System.Nullable<ulong> Gid { get; set; } 
+        public virtual System.Nullable<long> Gid { get; set; } 
 
         /// <summary>The path to the home directory for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homeDirectory")]
@@ -810,7 +810,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
 
         /// <summary>The user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual System.Nullable<ulong> Uid { get; set; } 
+        public virtual System.Nullable<long> Uid { get; set; } 
 
         /// <summary>The username of the POSIX account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]

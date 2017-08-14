@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170717 (928)
+ *      <tr><th>API Rev<td>20170808 (950)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -753,17 +753,17 @@ namespace Google.Apis.Logging.v2beta1
             }
 
 
-            /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
-            /// ignored. The presence of nextPageToken in the response indicates that more results might be
-            /// available.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to this
             /// method. pageToken must be the value of nextPageToken from the previous response. The values of other
             /// method parameters should be identical to those in the previous call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Optional. The maximum number of results to return from this request. Non-positive values are
+            /// ignored. The presence of nextPageToken in the response indicates that more results might be
+            /// available.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -790,18 +790,18 @@ namespace Google.Apis.Logging.v2beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2097,6 +2097,10 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latency")]
         public virtual object Latency { get; set; } 
 
+        /// <summary>Protocol used for the request. Examples: "HTTP/1.1", "HTTP/2", "websocket"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
+        public virtual string Protocol { get; set; } 
+
         /// <summary>The referer URL of the request, as defined in HTTP/1.1 Header Field Definitions
         /// (http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("referer")]
@@ -2476,9 +2480,8 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Output only. The API version that created or updated this metric. The version also dictates the
-        /// syntax of the filter expression. When a value for this field is missing, the default value of V2 should be
-        /// assumed.</summary>
+        /// <summary>Output only. The API version that created or updated this metric. This value is currently always
+        /// set to V2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 

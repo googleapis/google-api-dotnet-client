@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/TsI-81mK8Opk4zuHUCcJRyPIsec\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/GlsFJLm7bDS6Bz7vJuOv6RmZKWI\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20170728",
+ "revision": "20170731",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1347,7 +1347,7 @@
     },
     "healthChecks": {
      "type": "array",
-     "description": "The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required for GCE backend services. A health check must not be specified for GAE app backend and Cloud Function backend.\n\nFor internal load balancing, a URL to a HealthCheck resource must be specified instead.",
+     "description": "The list of URLs to the HttpHealthCheck or HttpsHealthCheck resource for health checking this BackendService. Currently at most one health check can be specified, and a health check is required for Compute Engine backend services. A health check must not be specified for App Engine backend and Cloud Function backend.\n\nFor internal load balancing, a URL to a HealthCheck resource must be specified instead.",
      "items": {
       "type": "string"
      }
@@ -1367,6 +1367,7 @@
     },
     "loadBalancingScheme": {
      "type": "string",
+     "description": "Indicates whether the backend service will be used with internal or external load balancing. A backend service created for one type of load balancing cannot be used with the other. Possible values are INTERNAL and EXTERNAL.",
      "enum": [
       "EXTERNAL",
       "INTERNAL",
@@ -5928,6 +5929,10 @@
     "counter": {
      "$ref": "LogConfigCounterOptions",
      "description": "Counter options."
+    },
+    "dataAccess": {
+     "$ref": "LogConfigDataAccessOptions",
+     "description": "Data access options."
     }
    }
   },
@@ -5959,7 +5964,7 @@
   "LogConfigCounterOptions": {
    "id": "LogConfigCounterOptions",
    "type": "object",
-   "description": "Options for counters",
+   "description": "Increment a streamz counter with the specified metric and field names.\n\nMetric names should start with a '/', generally be lowercase-only, and end in \"_count\". Field names should not contain an initial slash. The actual exported metric names will have \"/iam/policy\" prepended.\n\nField names correspond to IAM request parameters and field values are their respective values.\n\nAt present the only supported field names are - \"iam_principal\", corresponding to IAMContext.principal; - \"\" (empty string), resulting in one aggretated counter with no field.\n\nExamples: counter { metric: \"/debug_access_count\" field: \"iam_principal\" } ==\u003e increment counter /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}\n\nAt this time we do not support: * multiple field names (though this may be supported in the future) * decrementing the counter * incrementing it by anything other than 1",
    "properties": {
     "field": {
      "type": "string",
@@ -5968,6 +5973,25 @@
     "metric": {
      "type": "string",
      "description": "The metric to update."
+    }
+   }
+  },
+  "LogConfigDataAccessOptions": {
+   "id": "LogConfigDataAccessOptions",
+   "type": "object",
+   "description": "Write a Data Access (Gin) log",
+   "properties": {
+    "logMode": {
+     "type": "string",
+     "description": "Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in the LocalIAM implementation, for now.",
+     "enum": [
+      "LOG_FAIL_CLOSED",
+      "LOG_MODE_UNSPECIFIED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     }
    }
   },
@@ -8490,7 +8514,7 @@
     },
     "kind": {
      "type": "string",
-     "description": "[Output only] Type of the resource. Always compute#rulefor security policies",
+     "description": "[Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules",
      "default": "compute#securityPolicyRule"
     },
     "match": {
@@ -22545,7 +22569,7 @@
       },
       "securityPolicy": {
        "type": "string",
-       "description": "Name of the security policy to update.",
+       "description": "Name of the security policy to get.",
        "required": true,
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
        "location": "path"

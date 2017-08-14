@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170728 (939)
+ *      <tr><th>API Rev<td>20170804 (946)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -959,6 +959,39 @@ namespace Google.Apis.ServiceUser.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Authorization rule for API services.
+    ///
+    /// It specifies the permission(s) required for an API element for the overall API request to succeed. It is
+    /// typically used to mark request message fields that contain the name of the resource and indicates the
+    /// permissions that will be checked on that resource.
+    ///
+    /// For example:
+    ///
+    /// package google.storage.v1;
+    ///
+    /// message CopyObjectRequest { string source = 1 [ (google.api.authz).permissions = "storage.objects.get"];
+    ///
+    /// string destination = 2 [ (google.api.authz).permissions = "storage.objects.create,storage.objects.update"];
+    /// }</summary>
+    public class AuthorizationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The required permissions. The acceptable values vary depend on the authorization system used. For
+        /// Google APIs, it should be a comma-separated Google IAM permission values. When multiple permissions are
+        /// listed, the semantics is not defined by the system. Additional documentation must be provided
+        /// manually.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual string Permissions { get; set; } 
+
+        /// <summary>Selects the API elements to which this rule applies.
+        ///
+        /// Refer to selector for syntax details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual string Selector { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`Backend` defines the backend configuration for a service.</summary>
     public class Backend : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1525,6 +1558,12 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// `additional_bindings` field themselves (that is, the nesting may only be one level deep).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalBindings")]
         public virtual System.Collections.Generic.IList<HttpRule> AdditionalBindings { get; set; } 
+
+        /// <summary>Specifies the permission(s) required for an API element for the overall API request to succeed. It
+        /// is typically used to mark request message fields that contain the name of the resource and indicates the
+        /// permissions that will be checked on that resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizations")]
+        public virtual System.Collections.Generic.IList<AuthorizationRule> Authorizations { get; set; } 
 
         /// <summary>The name of the request field whose value is mapped to the HTTP body, or `*` for mapping all fields
         /// not captured by the path pattern to the HTTP body. NOTE: the referred field must not be a repeated field and

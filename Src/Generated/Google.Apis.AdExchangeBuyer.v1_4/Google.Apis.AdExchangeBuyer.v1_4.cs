@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20170504 (854)
+ *      <tr><th>API Rev<td>20170810 (952)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -5334,7 +5334,7 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
     public class PublisherProfileApiProto : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The account id of the seller.</summary>
+        /// <summary>Deprecated: use the seller.account_id. The account id of the seller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual string AccountId { get; set; } 
 
