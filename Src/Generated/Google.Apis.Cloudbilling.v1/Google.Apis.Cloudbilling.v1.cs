@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Google Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170711 (922)
+ *      <tr><th>API Rev<td>20170813 (955)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -66,6 +66,7 @@ namespace Google.Apis.Cloudbilling.v1
         {
             billingAccounts = new BillingAccountsResource(this);
             projects = new ProjectsResource(this);
+            services = new ServicesResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -130,6 +131,14 @@ namespace Google.Apis.Cloudbilling.v1
         public virtual ProjectsResource Projects
         {
             get { return projects; }
+        }
+
+        private readonly ServicesResource services;
+
+        /// <summary>Gets the Services resource.</summary>
+        public virtual ServicesResource Services
+        {
+            get { return services; }
         }
     }
 
@@ -816,10 +825,277 @@ namespace Google.Apis.Cloudbilling.v1
 
         }
     }
+
+    /// <summary>The "services" collection of methods.</summary>
+    public class ServicesResource
+    {
+        private const string Resource = "services";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ServicesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            skus = new SkusResource(service);
+
+        }
+
+        private readonly SkusResource skus;
+
+        /// <summary>Gets the Skus resource.</summary>
+        public virtual SkusResource Skus
+        {
+            get { return skus; }
+        }
+
+        /// <summary>The "skus" collection of methods.</summary>
+        public class SkusResource
+        {
+            private const string Resource = "skus";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SkusResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Lists all publicly available SKUs for a given cloud service.</summary>
+            /// <param name="parent">The name of the service. Example: "services/DA34-426B-A397"</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all publicly available SKUs for a given cloud service.</summary>
+            public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.ListSkusResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the service. Example: "services/DA34-426B-A397"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>The ISO 4217 currency code for the pricing info in the response proto. Will use the
+                /// conversion rate as of start_time. Optional. If not specified USD will be used.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CurrencyCode { get; set; }
+
+                /// <summary>Optional exclusive end time of the time range for which the pricing versions will be
+                /// returned. Timestamps in the future are not allowed. Maximum allowable time range is 1 month (31
+                /// days). Time range as a whole is optional. If not specified, the latest pricing will be returned (up
+                /// to 12 hours old at most).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object EndTime { get; set; }
+
+                /// <summary>Requested page size. Defaults to 5000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional inclusive start time of the time range for which the pricing versions will be
+                /// returned. Timestamps in the future are not allowed. Maximum allowable time range is 1 month (31
+                /// days). Time range as a whole is optional. If not specified, the latest pricing will be returned (up
+                /// to 12 hours old at most).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
+                /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
+                /// returned from a previous `ListSkus` call. If unspecified, the first page of results is
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/skus"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^services/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "currencyCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currencyCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "startTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>Lists all public cloud services.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists all public cloud services.</summary>
+        public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.ListServicesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Requested page size. Defaults to 5000.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
+            /// returned from a previous `ListServices` call. If unspecified, the first page of results is
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/services"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
 }
 
 namespace Google.Apis.Cloudbilling.v1.Data
 {    
+
+    /// <summary>Represents the aggregation level and interval for pricing of a single SKU.</summary>
+    public class AggregationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of intervals to aggregate over. Example: If aggregation_level is "DAILY" and
+        /// aggregation_count is 14, aggregation will be over 14 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationCount")]
+        public virtual System.Nullable<int> AggregationCount { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationInterval")]
+        public virtual string AggregationInterval { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationLevel")]
+        public virtual string AggregationLevel { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>A billing account in [Google Cloud Console](https://console.cloud.google.com/). You can assign a
     /// billing account to one or more projects.</summary>
@@ -841,6 +1117,32 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// to use paid services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("open")]
         public virtual System.Nullable<bool> Open { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the category hierarchy of a SKU.</summary>
+    public class Category : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of product the SKU refers to. Example: "Compute", "Storage", "Network",
+        /// "ApplicationServices" etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFamily")]
+        public virtual string ResourceFamily { get; set; } 
+
+        /// <summary>A group classification for related SKUs. Example: "RAM", "GPU", "Prediction", "Ops", "GoogleEgress"
+        /// etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroup")]
+        public virtual string ResourceGroup { get; set; } 
+
+        /// <summary>The display name of the service this SKU belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDisplayName")]
+        public virtual string ServiceDisplayName { get; set; } 
+
+        /// <summary>Represents how the SKU is consumed. Example: "OnDemand", "Preemptible", "Commit1Mo", "Commit1Yr"
+        /// etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageType")]
+        public virtual string UsageType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -881,6 +1183,142 @@ namespace Google.Apis.Cloudbilling.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for `ListServices`.</summary>
+    public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token to retrieve the next page of results. To retrieve the next page, call `ListServices` again
+        /// with the `page_token` field set to this value. This field is empty if there are no more results to
+        /// retrieve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A list of services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for `ListSkus`.</summary>
+    public class ListSkusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A token to retrieve the next page of results. To retrieve the next page, call `ListSkus` again with
+        /// the `page_token` field set to this value. This field is empty if there are no more results to
+        /// retrieve.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of public SKUs of the given service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skus")]
+        public virtual System.Collections.Generic.IList<Sku> Skus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an amount of money with its currency type.</summary>
+    public class Money : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The 3-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; } 
+
+        /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999
+        /// inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be
+        /// positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is
+        /// represented as `units`=-1 and `nanos`=-750,000,000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nanos")]
+        public virtual System.Nullable<int> Nanos { get; set; } 
+
+        /// <summary>The whole units of the amount. For example if `currencyCode` is `"USD"`, then 1 unit is one US
+        /// dollar.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("units")]
+        public virtual System.Nullable<long> Units { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Expresses a mathematical pricing formula. For Example:-
+    ///
+    /// `usage_unit: GBy` `tiered_rates:` `[start_usage_amount: 20, unit_price: $10]` `[start_usage_amount: 100,
+    /// unit_price: $5]`
+    ///
+    /// The above expresses a pricing formula where the first 20GB is free, the next 80GB is priced at $10 per GB
+    /// followed by $5 per GB for additional usage.</summary>
+    public class PricingExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base unit for the SKU which is the unit used in usage exports. Example: "By"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseUnit")]
+        public virtual string BaseUnit { get; set; } 
+
+        /// <summary>Conversion factor for converting from price per usage_unit to price per base_unit, and
+        /// start_usage_amount to start_usage_amount in base_unit. unit_price / base_unit_conversion_factor = price per
+        /// base_unit. start_usage_amount * base_unit_conversion_factor = start_usage_amount in base_unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseUnitConversionFactor")]
+        public virtual System.Nullable<double> BaseUnitConversionFactor { get; set; } 
+
+        /// <summary>The base unit in human readable form. Example: "byte".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baseUnitDescription")]
+        public virtual string BaseUnitDescription { get; set; } 
+
+        /// <summary>The recommended quantity of units for displaying pricing info. When displaying pricing info it is
+        /// recommended to display: (unit_price * display_quantity) per display_quantity usage_unit. This field does not
+        /// affect the pricing formula and is for display purposes only. Example: If the unit_price is "0.0001 USD", the
+        /// usage_unit is "GB" and the display_quantity is "1000" then the recommended way of displaying the pricing
+        /// info is "0.10 USD per 1000 GB"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayQuantity")]
+        public virtual System.Nullable<double> DisplayQuantity { get; set; } 
+
+        /// <summary>The list of tiered rates for this pricing. The total cost is computed by applying each of the
+        /// tiered rates on usage. This repeated list is sorted by ascending order of start_usage_amount.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tieredRates")]
+        public virtual System.Collections.Generic.IList<TierRate> TieredRates { get; set; } 
+
+        /// <summary>The short hand for unit of usage this pricing is specified in. Example: usage_unit of "GiBy" means
+        /// that usage is specified in "Gibi Byte".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageUnit")]
+        public virtual string UsageUnit { get; set; } 
+
+        /// <summary>The unit of usage in human readable form. Example: "gibi byte".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usageUnitDescription")]
+        public virtual string UsageUnitDescription { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the pricing information for a SKU at a single point of time.</summary>
+    public class PricingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Aggregation Info. This can be left unspecified if the pricing expression doesn't require
+        /// aggregation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationInfo")]
+        public virtual AggregationInfo AggregationInfo { get; set; } 
+
+        /// <summary>Conversion rate for currency conversion, from USD to the currency specified in the request. If the
+        /// currency is not specified this defaults to 1.0. Example: USD * currency_conversion_rate = JPY</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyConversionRate")]
+        public virtual System.Nullable<double> CurrencyConversionRate { get; set; } 
+
+        /// <summary>The timestamp from which this pricing was effective.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
+        public virtual object EffectiveTime { get; set; } 
+
+        /// <summary>Expresses the pricing formula. See `PricingExpression` for an example.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pricingExpression")]
+        public virtual PricingExpression PricingExpression { get; set; } 
+
+        /// <summary>An optional human readable summary of the pricing information, has a maximum length of 256
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Encapsulation of billing information for a Cloud Console project. A project has at most one associated
     /// billing account at a time (but a billing account can be assigned to multiple projects).</summary>
     public class ProjectBillingInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -907,6 +1345,79 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates a single service in Google Cloud Platform.</summary>
+    public class Service : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A human readable display name for this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The resource name for the service. Example: "services/DA34-426B-A397"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The identifier for the service. Example: "DA34-426B-A397"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
+        public virtual string ServiceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Encapsulates a single SKU in Google Cloud Platform</summary>
+    public class Sku : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The category hierarchy of this SKU, purely for organizational purpose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual Category Category { get; set; } 
+
+        /// <summary>A human readable description of the SKU, has a maximum length of 256 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The resource name for the SKU. Example: "services/DA34-426B-A397/skus/AA95-CD31-42FE"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A timeline of pricing info for this SKU in chronological order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pricingInfo")]
+        public virtual System.Collections.Generic.IList<PricingInfo> PricingInfo { get; set; } 
+
+        /// <summary>Identifies the service provider. This is 'Google' for first party services in Google Cloud
+        /// Platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceProviderName")]
+        public virtual string ServiceProviderName { get; set; } 
+
+        /// <summary>List of service regions this SKU is offered at. Example: "asia-east1" Service regions can be found
+        /// at https://cloud.google.com/about/locations/</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceRegions")]
+        public virtual System.Collections.Generic.IList<string> ServiceRegions { get; set; } 
+
+        /// <summary>The identifier for the SKU. Example: "AA95-CD31-42FE"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
+        public virtual string SkuId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The price rate indicating starting usage and its corresponding price.</summary>
+    public class TierRate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Usage is priced at this rate only after this amount. Example: start_usage_amount of 10 indicates
+        /// that the usage will be priced at the unit_price after the first 10 usage_units.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startUsageAmount")]
+        public virtual System.Nullable<double> StartUsageAmount { get; set; } 
+
+        /// <summary>The price per unit of usage. Example: unit_price of amount $10 indicates that each unit will cost
+        /// $10.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitPrice")]
+        public virtual Money UnitPrice { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

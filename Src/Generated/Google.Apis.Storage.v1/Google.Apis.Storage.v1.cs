@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170731 (942)
+ *      <tr><th>API Rev<td>20170810 (952)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -2989,7 +2989,7 @@ namespace Google.Apis.Storage.v1
         }
 
         /// <summary>Retrieves a list of notification subscriptions for a given bucket.</summary>
-        /// <param name="bucket">Name of a GCS bucket.</param>
+        /// <param name="bucket">Name of a Google Cloud Storage bucket.</param>
         public virtual ListRequest List(string bucket)
         {
             return new ListRequest(service, bucket);
@@ -3007,7 +3007,7 @@ namespace Google.Apis.Storage.v1
             }
 
 
-            /// <summary>Name of a GCS bucket.</summary>
+            /// <summary>Name of a Google Cloud Storage bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
@@ -3879,7 +3879,8 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>Makes the operation conditional on whether the object's current generation matches the given
-            /// value.</summary>
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
@@ -4130,12 +4131,14 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>Makes the operation conditional on whether the destination object's current generation matches
-            /// the given value.</summary>
+            /// the given value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
             /// <summary>Makes the operation conditional on whether the destination object's current generation does not
-            /// match the given value.</summary>
+            /// match the given value. If no live object exists, the precondition fails. Setting to 0 makes the
+            /// operation succeed only if there is a live version of the object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
 
@@ -4149,13 +4152,13 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
-            /// <summary>Makes the operation conditional on whether the source object's generation matches the given
-            /// value.</summary>
+            /// <summary>Makes the operation conditional on whether the source object's current generation matches the
+            /// given value.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifSourceGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfSourceGenerationMatch { get; set; }
 
-            /// <summary>Makes the operation conditional on whether the source object's generation does not match the
-            /// given value.</summary>
+            /// <summary>Makes the operation conditional on whether the source object's current generation does not
+            /// match the given value.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifSourceGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfSourceGenerationNotMatch { get; set; }
 
@@ -4465,12 +4468,14 @@ namespace Google.Apis.Storage.v1
             public virtual System.Nullable<long> Generation { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation matches the given
-            /// value.</summary>
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation does not match the
-            /// given value.</summary>
+            /// given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed
+            /// only if there is a live version of the object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
 
@@ -4626,13 +4631,15 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>Makes the operation conditional on whether the object's generation matches the given
-            /// value.</summary>
+            /// <summary>Makes the operation conditional on whether the object's current generation matches the given
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
-            /// <summary>Makes the operation conditional on whether the object's generation does not match the given
-            /// value.</summary>
+            /// <summary>Makes the operation conditional on whether the object's current generation does not match the
+            /// given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed
+            /// only if there is a live version of the object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
 
@@ -4967,12 +4974,14 @@ namespace Google.Apis.Storage.v1
             public virtual string ContentEncoding { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation matches the given
-            /// value.</summary>
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation does not match the
-            /// given value.</summary>
+            /// given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed
+            /// only if there is a live version of the object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
 
@@ -5303,12 +5312,14 @@ namespace Google.Apis.Storage.v1
             public virtual string ContentEncoding { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation matches the given
-            /// value.</summary>
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation does not match the
-            /// given value.</summary>
+            /// given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed
+            /// only if there is a live version of the object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
 
@@ -5604,12 +5615,14 @@ namespace Google.Apis.Storage.v1
             public virtual System.Nullable<long> Generation { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation matches the given
-            /// value.</summary>
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation does not match the
-            /// given value.</summary>
+            /// given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed
+            /// only if there is a live version of the object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
 
@@ -5881,13 +5894,15 @@ namespace Google.Apis.Storage.v1
                 PublicRead,
             }
 
-            /// <summary>Makes the operation conditional on whether the destination object's current generation matches
-            /// the given value.</summary>
+            /// <summary>Makes the operation conditional on whether the object's current generation matches the given
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
-            /// <summary>Makes the operation conditional on whether the destination object's current generation does not
-            /// match the given value.</summary>
+            /// <summary>Makes the operation conditional on whether the object's current generation does not match the
+            /// given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed
+            /// only if there is a live version of the object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
 
@@ -5901,13 +5916,13 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
-            /// <summary>Makes the operation conditional on whether the source object's generation matches the given
-            /// value.</summary>
+            /// <summary>Makes the operation conditional on whether the source object's current generation matches the
+            /// given value.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifSourceGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfSourceGenerationMatch { get; set; }
 
-            /// <summary>Makes the operation conditional on whether the source object's generation does not match the
-            /// given value.</summary>
+            /// <summary>Makes the operation conditional on whether the source object's current generation does not
+            /// match the given value.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifSourceGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfSourceGenerationNotMatch { get; set; }
 
@@ -6443,12 +6458,14 @@ namespace Google.Apis.Storage.v1
             public virtual System.Nullable<long> Generation { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation matches the given
-            /// value.</summary>
+            /// value. Setting to 0 makes the operation succeed only if there are no live versions of the
+            /// object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationMatch { get; set; }
 
             /// <summary>Makes the operation conditional on whether the object's current generation does not match the
-            /// given value.</summary>
+            /// given value. If no live object exists, the precondition fails. Setting to 0 makes the operation succeed
+            /// only if there is a live version of the object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
 
@@ -6905,14 +6922,14 @@ namespace Google.Apis.Storage.v1
             }
 
 
-            /// <summary>Get the email address of this project's GCS service account.</summary>
+            /// <summary>Get the email address of this project's Google Cloud Storage service account.</summary>
             /// <param name="projectId">Project ID</param>
             public virtual GetRequest Get(string projectId)
             {
                 return new GetRequest(service, projectId);
             }
 
-            /// <summary>Get the email address of this project's GCS service account.</summary>
+            /// <summary>Get the email address of this project's Google Cloud Storage service account.</summary>
             public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ServiceAccount>
             {
                 /// <summary>Constructs a new Get request.</summary>
