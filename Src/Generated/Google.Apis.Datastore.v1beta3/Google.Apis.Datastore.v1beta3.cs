@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170802 (944)
+ *      <tr><th>API Rev<td>20170811 (953)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -813,6 +813,10 @@ namespace Google.Apis.Datastore.v1beta3.Data
     /// <summary>The request for Datastore.BeginTransaction.</summary>
     public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Options for a new transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transactionOptions")]
+        public virtual TransactionOptions TransactionOptions { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1510,6 +1514,13 @@ namespace Google.Apis.Datastore.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Options specific to read-only transactions.</summary>
+    public class ReadOnly : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The options shared by read requests.</summary>
     public class ReadOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1522,6 +1533,17 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// to Datastore.BeginTransaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
         public virtual string Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options specific to read / write transactions.</summary>
+    public class ReadWrite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The transaction identifier of the transaction being retried.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previousTransaction")]
+        public virtual string PreviousTransaction { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1579,6 +1601,24 @@ namespace Google.Apis.Datastore.v1beta3.Data
         /// <summary>The parsed form of the `GqlQuery` from the request, if it was set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual Query Query { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for beginning a new transaction.
+    ///
+    /// Transactions can be created explicitly with calls to Datastore.BeginTransaction or implicitly by setting
+    /// ReadOptions.new_transaction in read requests.</summary>
+    public class TransactionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The transaction should only allow reads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual ReadOnly ReadOnly__ { get; set; } 
+
+        /// <summary>The transaction should allow both reads and writes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readWrite")]
+        public virtual ReadWrite ReadWrite { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
