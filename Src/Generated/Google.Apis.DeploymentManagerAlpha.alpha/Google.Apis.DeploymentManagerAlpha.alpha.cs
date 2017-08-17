@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170615 (896)
+ *      <tr><th>API Rev<td>20170810 (952)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -1206,7 +1206,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -1672,7 +1672,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -1842,7 +1842,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -4185,6 +4185,17 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Authorization-related information used by Cloud Audit Logging.</summary>
+    public class AuthorizationLoggingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of the permission that was checked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionType")]
+        public virtual string PermissionType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Basic Auth used as a credential.</summary>
     public class BasicAuth : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4647,6 +4658,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("counter")]
         public virtual LogConfigCounterOptions Counter { get; set; } 
 
+        /// <summary>Data access options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
+        public virtual LogConfigDataAccessOptions DataAccess { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4654,6 +4669,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     /// <summary>Write a Cloud Audit log</summary>
     public class LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Information used by the Cloud Audit Logging pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizationLoggingOptions")]
+        public virtual AuthorizationLoggingOptions AuthorizationLoggingOptions { get; set; } 
+
         /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
@@ -4662,7 +4681,21 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Options for counters</summary>
+    /// <summary>Increment a streamz counter with the specified metric and field names.
+    ///
+    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
+    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
+    ///
+    /// Field names correspond to IAM request parameters and field values are their respective values.
+    ///
+    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
+    /// (empty string), resulting in one aggretated counter with no field.
+    ///
+    /// Examples: counter { metric: "/debug_access_count" field: "iam_principal" } ==> increment counter
+    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
+    ///
+    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
+    /// decrementing the counter * incrementing it by anything other than 1</summary>
     public class LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The field value to attribute.</summary>
@@ -4672,6 +4705,18 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>The metric to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Write a Data Access (Gin) log</summary>
+    public class LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
+        /// the LocalIAM implementation, for now.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
+        public virtual string LogMode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

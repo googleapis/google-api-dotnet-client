@@ -891,6 +891,11 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
+            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
+            /// `photoIds==&...`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
+
             /// <summary>Specifies if a download URL for the photo bytes should be returned in the Photo
             /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -905,11 +910,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
-
-            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
-            /// `photoIds==&...`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -936,18 +936,18 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "photoIds", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "photoIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "photoIds", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "photoIds",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1039,21 +1039,6 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
-            /// <summary>Specifies if a download URL for the photos bytes should be returned in the Photos
-            /// response.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ViewEnum> View { get; set; }
-
-            /// <summary>Specifies if a download URL for the photos bytes should be returned in the Photos
-            /// response.</summary>
-            public enum ViewEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("BASIC")]
-                BASIC,
-                [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
-                INCLUDEDOWNLOADURL,
-            }
-
             /// <summary>The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1068,6 +1053,21 @@ namespace Google.Apis.StreetViewPublish.v1
             /// `pageSize`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Specifies if a download URL for the photos bytes should be returned in the Photos
+            /// response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>Specifies if a download URL for the photos bytes should be returned in the Photos
+            /// response.</summary>
+            public enum ViewEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("BASIC")]
+                BASIC,
+                [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
+                INCLUDEDOWNLOADURL,
+            }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1094,15 +1094,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -1124,6 +1115,15 @@ namespace Google.Apis.StreetViewPublish.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

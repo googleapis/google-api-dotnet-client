@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170814 (956)
+ *      <tr><th>API Rev<td>20170808 (950)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -536,17 +536,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -582,18 +582,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -884,17 +884,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -930,18 +930,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -951,9 +951,10 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -964,9 +965,10 @@ namespace Google.Apis.Logging.v2
                 return new PatchRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1048,9 +1050,10 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -1061,9 +1064,10 @@ namespace Google.Apis.Logging.v2
                 return new UpdateRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -1411,17 +1415,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1457,18 +1461,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1759,17 +1763,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1805,18 +1809,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^folders/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1826,9 +1830,10 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -1839,9 +1844,10 @@ namespace Google.Apis.Logging.v2
                 return new PatchRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1923,9 +1929,10 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -1936,9 +1943,10 @@ namespace Google.Apis.Logging.v2
                 return new UpdateRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -2668,9 +2676,10 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -2681,9 +2690,10 @@ namespace Google.Apis.Logging.v2
                 return new PatchRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -2765,9 +2775,10 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -2778,9 +2789,10 @@ namespace Google.Apis.Logging.v2
                 return new UpdateRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -3800,9 +3812,10 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -3813,9 +3826,10 @@ namespace Google.Apis.Logging.v2
                 return new PatchRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -3897,9 +3911,10 @@ namespace Google.Apis.Logging.v2
 
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -3910,9 +3925,10 @@ namespace Google.Apis.Logging.v2
                 return new UpdateRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
-            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
-            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
+            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
+            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
+            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>

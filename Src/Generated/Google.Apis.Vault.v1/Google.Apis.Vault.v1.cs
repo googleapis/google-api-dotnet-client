@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://apps.google.com/products/vault/'>Google Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170720 (931)
+ *      <tr><th>API Rev<td>20170719 (930)
  *      <tr><th>API Docs
  *          <td><a href='https://apps.google.com/products/vault/'>
  *              https://apps.google.com/products/vault/</a>
@@ -579,7 +579,7 @@ namespace Google.Apis.Vault.v1
                 }
 
                 /// <summary>Lists HeldAccounts for a hold. This will only list individually specified held accounts. If
-                /// the hold is on an OU, then use the Admin SDK to enumerate its members.</summary>
+                /// the hold is on an OU, then use Admin SDK to enumerate its members.</summary>
                 /// <param name="matterId">The matter ID.</param>
                 /// <param name="holdId">The hold ID.</param>
                 public virtual ListRequest List(string matterId, string holdId)
@@ -588,7 +588,7 @@ namespace Google.Apis.Vault.v1
                 }
 
                 /// <summary>Lists HeldAccounts for a hold. This will only list individually specified held accounts. If
-                /// the hold is on an OU, then use the Admin SDK to enumerate its members.</summary>
+                /// the hold is on an OU, then use Admin SDK to enumerate its members.</summary>
                 public class ListRequest : VaultBaseServiceRequest<Google.Apis.Vault.v1.Data.ListHeldAccountsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
