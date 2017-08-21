@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170731 (942)
+ *      <tr><th>API Rev<td>20170816 (958)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -12029,10 +12029,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -22541,6 +22544,112 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Patches the specified network with the data included in the request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="network">Name of the network to
+        /// update.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.Network body, string project, string network)
+        {
+            return new PatchRequest(service, body, project, network);
+        }
+
+        /// <summary>Patches the specified network with the data included in the request.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.Network body, string project, string network)
+                : base(service)
+            {
+                Project = project;
+                Network = network;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the network to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("network", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Network { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.Network Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/networks/{network}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "network", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "network",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Removes a peering from the specified network.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -24442,8 +24551,8 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
             /// accidentally creating duplicate commitments.
             ///
@@ -24660,10 +24769,13 @@ namespace Google.Apis.Compute.beta
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
-            /// For example, consider a situation where you make an initial request and then the request times out. If
-            /// you make the request again with the same request ID, the server can check if original operation with the
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
             /// same request ID was received, and if so, will ignore the second request. This prevents clients from
-            /// accidentally creating duplicate commitments.</summary>
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
@@ -47716,6 +47828,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peerings")]
         public virtual System.Collections.Generic.IList<NetworkPeering> Peerings { get; set; } 
 
+        /// <summary>The network-level routing configuration for this network. Used by Cloud Router to determine what
+        /// type of network-wide routing behavior to enforce.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingConfig")]
+        public virtual NetworkRoutingConfig RoutingConfig { get; set; } 
+
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -47846,6 +47963,22 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Details about the current state of the peering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateDetails")]
         public virtual string StateDetails { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A routing configuration attached to a network resource. The message includes the list of routers
+    /// associated with the network, and a flag indicating the type of routing behavior to enforce network-
+    /// wide.</summary>
+    public class NetworkRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only
+        /// advertise routes with subnetworks of this network in the same region as the router. If set to GLOBAL, this
+        /// network's cloud routers will advertise routes with all subnetworks of this network, across
+        /// regions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingMode")]
+        public virtual string RoutingMode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

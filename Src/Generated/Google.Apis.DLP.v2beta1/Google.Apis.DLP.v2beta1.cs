@@ -944,11 +944,6 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
-                    /// value.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Restricts findings to items that match. Supports info_type and likelihood. Examples:
                     /// info_type=EMAIL_ADDRESS info_type=PHONE_NUMBER,EMAIL_ADDRESS likelihood=VERY_LIKELY
                     /// likelihood=VERY_LIKELY,LIKELY info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
@@ -960,6 +955,11 @@ namespace Google.Apis.DLP.v2beta1
                     /// page of data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
+                    /// value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -995,15 +995,6 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1016,6 +1007,15 @@ namespace Google.Apis.DLP.v2beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

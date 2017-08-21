@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/GlsFJLm7bDS6Bz7vJuOv6RmZKWI\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/EDv5Otj5EVlhEDQZ_TLJpHC5fFA\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20170731",
+ "revision": "20170816",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -6442,6 +6442,10 @@
       "$ref": "NetworkPeering"
      }
     },
+    "routingConfig": {
+     "$ref": "NetworkRoutingConfig",
+     "description": "The network-level routing configuration for this network. Used by Cloud Router to determine what type of network-wide routing behavior to enforce."
+    },
     "selfLink": {
      "type": "string",
      "description": "[Output Only] Server-defined URL for the resource."
@@ -6560,6 +6564,25 @@
     "stateDetails": {
      "type": "string",
      "description": "[Output Only] Details about the current state of the peering."
+    }
+   }
+  },
+  "NetworkRoutingConfig": {
+   "id": "NetworkRoutingConfig",
+   "type": "object",
+   "description": "A routing configuration attached to a network resource. The message includes the list of routers associated with the network, and a flag indicating the type of routing behavior to enforce network-wide.",
+   "properties": {
+    "routingMode": {
+     "type": "string",
+     "description": "The network-wide routing mode to use. If set to REGIONAL, this network's cloud routers will only advertise routes with subnetworks of this network in the same region as the router. If set to GLOBAL, this network's cloud routers will advertise routes with all subnetworks of this network, across regions.",
+     "enum": [
+      "GLOBAL",
+      "REGIONAL"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     }
    }
   },
@@ -15221,7 +15244,7 @@
       },
       "requestId": {
        "type": "string",
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and then the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
        "location": "query"
       }
      },
@@ -19223,6 +19246,47 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "patch": {
+     "id": "compute.networks.patch",
+     "path": "{project}/global/networks/{network}",
+     "httpMethod": "PATCH",
+     "description": "Patches the specified network with the data included in the request.",
+     "parameters": {
+      "network": {
+       "type": "string",
+       "description": "Name of the network to update.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "network"
+     ],
+     "request": {
+      "$ref": "Network"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "removePeering": {
      "id": "compute.networks.removePeering",
      "path": "{project}/global/networks/{network}/removePeering",
@@ -19964,7 +20028,7 @@
       },
       "requestId": {
        "type": "string",
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and then the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
        "location": "query"
       }
      },
@@ -20056,7 +20120,7 @@
       },
       "requestId": {
        "type": "string",
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and then the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
        "location": "query"
       }
      },

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://cloud.google.com/debugger'>Stackdriver Debugger API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170710 (921)
+ *      <tr><th>API Rev<td>20170817 (959)
  *      <tr><th>API Docs
  *          <td><a href='http://cloud.google.com/debugger'>
  *              http://cloud.google.com/debugger</a>
@@ -459,17 +459,18 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>If set to `true`, returns `google.rpc.Code.OK` status and sets the `wait_expired`
-                    /// response field to `true` when the server-selected timeout has expired (recommended).
+                    /// <summary>If set to `true` (recommended), returns `google.rpc.Code.OK` status and sets the
+                    /// `wait_expired` response field to `true` when the server-selected timeout has expired.
                     ///
-                    /// If set to `false`, returns `google.rpc.Code.ABORTED` status when the server-selected timeout has
-                    /// expired (deprecated).</summary>
+                    /// If set to `false` (deprecated), returns `google.rpc.Code.ABORTED` status when the server-
+                    /// selected timeout has expired.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("successOnTimeout", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> SuccessOnTimeout { get; set; }
 
-                    /// <summary>A wait token that, if specified, blocks the method call until the list of active
-                    /// breakpoints has changed, or a server selected timeout has expired.  The value should be set from
-                    /// the last returned response.</summary>
+                    /// <summary>A token that, if specified, blocks the method call until the list of active breakpoints
+                    /// has changed, or a server-selected timeout has expired. The value should be set from the
+                    /// `next_wait_token` field in the last response. The initial value should be set to
+                    /// `"init"`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WaitToken { get; set; }
 
@@ -627,12 +628,12 @@ namespace Google.Apis.CloudDebugger.v2
 
             /// <summary>Registers the debuggee with the controller service.
             ///
-            /// All agents attached to the same application should call this method with the same request content to get
-            /// back the same stable `debuggee_id`. Agents should call this method again whenever
+            /// All agents attached to the same application must call this method with exactly the same request content
+            /// to get back the same stable `debuggee_id`. Agents should call this method again whenever
             /// `google.rpc.Code.NOT_FOUND` is returned from any controller method.
             ///
-            /// This allows the controller service to disable the agent or recover from any data loss. If the debuggee
-            /// is disabled by the server, the response will have `is_disabled` set to `true`.</summary>
+            /// This protocol allows the controller service to disable debuggees, recover from data loss, or change the
+            /// `debuggee_id` format. Agents must handle `debuggee_id` value changing upon re-registration.</summary>
             /// <param name="body">The body of the request.</param>
             public virtual RegisterRequest Register(Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeRequest body)
             {
@@ -641,12 +642,12 @@ namespace Google.Apis.CloudDebugger.v2
 
             /// <summary>Registers the debuggee with the controller service.
             ///
-            /// All agents attached to the same application should call this method with the same request content to get
-            /// back the same stable `debuggee_id`. Agents should call this method again whenever
+            /// All agents attached to the same application must call this method with exactly the same request content
+            /// to get back the same stable `debuggee_id`. Agents should call this method again whenever
             /// `google.rpc.Code.NOT_FOUND` is returned from any controller method.
             ///
-            /// This allows the controller service to disable the agent or recover from any data loss. If the debuggee
-            /// is disabled by the server, the response will have `is_disabled` set to `true`.</summary>
+            /// This protocol allows the controller service to disable debuggees, recover from data loss, or change the
+            /// `debuggee_id` format. Agents must handle `debuggee_id` value changing upon re-registration.</summary>
             public class RegisterRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.RegisterDebuggeeResponse>
             {
                 /// <summary>Constructs a new Register request.</summary>
@@ -788,7 +789,7 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("breakpointId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string BreakpointId { get; private set; }
 
-                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
@@ -878,7 +879,7 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("breakpointId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string BreakpointId { get; private set; }
 
-                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
@@ -961,6 +962,16 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
+                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
+                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
+
+                    /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
+                    /// it includes only active breakpoints.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeInactive { get; set; }
+
                     /// <summary>This field is deprecated. The following fields are always stripped out of the result:
                     /// `stack_frames`, `evaluated_expressions` and `variable_table`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("stripResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -973,7 +984,7 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WaitToken { get; set; }
 
-                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
@@ -990,16 +1001,6 @@ namespace Google.Apis.CloudDebugger.v2
                         [Google.Apis.Util.StringValueAttribute("LOG")]
                         LOG,
                     }
-
-                    /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
-                    /// Otherwise, it includes only breakpoints set by the caller.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeAllUsers", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeAllUsers { get; set; }
-
-                    /// <summary>When set to `true`, the response includes active and inactive breakpoints. Otherwise,
-                    /// it includes only active breakpoints.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> IncludeInactive { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1031,6 +1032,24 @@ namespace Google.Apis.CloudDebugger.v2
                                 Name = "debuggeeId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "includeAllUsers", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeAllUsers",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "includeInactive", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeInactive",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1070,24 +1089,6 @@ namespace Google.Apis.CloudDebugger.v2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "includeAllUsers", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeAllUsers",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "includeInactive", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "includeInactive",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
@@ -1117,7 +1118,7 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("debuggeeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string DebuggeeId { get; private set; }
 
-                    /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
                     /// `google.com/intellij/v1`).</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClientVersion { get; set; }
@@ -1175,13 +1176,13 @@ namespace Google.Apis.CloudDebugger.v2
                 }
             }
 
-            /// <summary>Lists all the debuggees that the user can set breakpoints to.</summary>
+            /// <summary>Lists all the debuggees that the user has access to.</summary>
             public virtual ListRequest List()
             {
                 return new ListRequest(service);
             }
 
-            /// <summary>Lists all the debuggees that the user can set breakpoints to.</summary>
+            /// <summary>Lists all the debuggees that the user has access to.</summary>
             public class ListRequest : CloudDebuggerBaseServiceRequest<Google.Apis.CloudDebugger.v2.Data.ListDebuggeesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1192,7 +1193,11 @@ namespace Google.Apis.CloudDebugger.v2
                 }
 
 
-                /// <summary>The client version making the call. Following: `domain/type/version` (e.g.,
+                /// <summary>Project number of a Google Cloud project whose debuggees to list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Project { get; set; }
+
+                /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
                 /// `google.com/intellij/v1`).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ClientVersion { get; set; }
@@ -1201,10 +1206,6 @@ namespace Google.Apis.CloudDebugger.v2
                 /// debuggees that are active.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeInactive", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeInactive { get; set; }
-
-                /// <summary>Project number of a Google Cloud project whose debuggees to list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Project { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1231,6 +1232,15 @@ namespace Google.Apis.CloudDebugger.v2
                     base.InitParameters();
 
                     RequestParameters.Add(
+                        "project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "clientVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "clientVersion",
@@ -1243,15 +1253,6 @@ namespace Google.Apis.CloudDebugger.v2
                         "includeInactive", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeInactive",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "project", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "project",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1444,14 +1445,14 @@ namespace Google.Apis.CloudDebugger.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the application to debug. The application may include one or more replicated processes
+    /// <summary>Represents the debugged application. The application may include one or more replicated processes
     /// executing the same code. Each of these processes is attached with a debugger agent, carrying out the debugging
-    /// commands. The agents attached to the same debuggee are identified by using exactly the same field values when
-    /// registering.</summary>
+    /// commands. Agents attached to the same debuggee identify themselves as such by using exactly the same Debuggee
+    /// message value when registering.</summary>
     public class Debuggee : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Version ID of the agent release. The version ID is structured as following:
-        /// `domain/type/vmajor.minor` (for example `google.com/gcp-java/v1.1`).</summary>
+        /// <summary>Version ID of the agent. Schema: `domain/language-platform/vmajor.minor` (for example `google.com
+        /// /java-gcp/v1.1`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
         public virtual string AgentVersion { get; set; } 
 
@@ -1462,8 +1463,7 @@ namespace Google.Apis.CloudDebugger.v2.Data
 
         /// <summary>References to the locations and revisions of the source code used in the deployed application.
         ///
-        /// Contexts describing a remote repo related to the source code have a `category` label of `remote_repo`.
-        /// Source snapshot source contexts have a `category` of `snapshot`.</summary>
+        /// NOTE: this field is experimental and can be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extSourceContexts")]
         public virtual System.Collections.Generic.IList<ExtendedSourceContext> ExtSourceContexts { get; set; } 
 
@@ -1476,8 +1476,8 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isDisabled")]
         public virtual System.Nullable<bool> IsDisabled { get; set; } 
 
-        /// <summary>If set to `true`, indicates that the debuggee is considered as inactive by the Controller
-        /// service.</summary>
+        /// <summary>If set to `true`, indicates that Controller service does not detect any activity from the debuggee
+        /// agents and the application is possibly stopped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isInactive")]
         public virtual System.Nullable<bool> IsInactive { get; set; } 
 
@@ -1485,15 +1485,13 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Project the debuggee is associated with. Use the project number when registering a Google Cloud
+        /// <summary>Project the debuggee is associated with. Use project number or id when registering a Google Cloud
         /// Platform project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; } 
 
-        /// <summary>References to the locations and revisions of the source code used in the deployed application.
-        ///
-        /// NOTE: This field is deprecated. Consumers should use `ext_source_contexts` if it is not empty. Debug agents
-        /// should populate both this field and `ext_source_contexts`.</summary>
+        /// <summary>References to the locations and revisions of the source code used in the deployed
+        /// application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceContexts")]
         public virtual System.Collections.Generic.IList<SourceContext> SourceContexts { get; set; } 
 
@@ -1502,8 +1500,10 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual StatusMessage Status { get; set; } 
 
-        /// <summary>Debuggee uniquifier within the project. Any string that identifies the application within the
-        /// project can be used. Including environment and version or build IDs is recommended.</summary>
+        /// <summary>Uniquifier to further distiguish the application. It is possible that different applications might
+        /// have identical values in the debuggee message, thus, incorrectly identified as a single application by the
+        /// Controller service. This field adds salt to further distiguish the application. Agents should consider
+        /// seeding this field with value that identifies the code, binary, configuration and environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniquifier")]
         public virtual string Uniquifier { get; set; } 
 
@@ -1623,13 +1623,13 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoints")]
         public virtual System.Collections.Generic.IList<Breakpoint> Breakpoints { get; set; } 
 
-        /// <summary>A wait token that can be used in the next method call to block until the list of breakpoints
+        /// <summary>A token that can be used in the next method call to block until the list of breakpoints
         /// changes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextWaitToken")]
         public virtual string NextWaitToken { get; set; } 
 
-        /// <summary>The `wait_expired` field is set to true by the server when the request times out and the field
-        /// `success_on_timeout` is set to true.</summary>
+        /// <summary>If set to `true`, indicates that there is no change to the list of active breakpoints and the
+        /// server-selected timeout has expired. The `breakpoints` field would be empty and should be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waitExpired")]
         public virtual System.Nullable<bool> WaitExpired { get; set; } 
 
@@ -1658,9 +1658,9 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Response for listing debuggees.</summary>
     public class ListDebuggeesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of debuggees accessible to the calling user. Note that the `description` field is the only
-        /// human readable field that should be displayed to the user. The fields `debuggee.id` and  `description`
-        /// fields are guaranteed to be set on each debuggee.</summary>
+        /// <summary>List of debuggees accessible to the calling user. The fields `debuggee.id` and `description` are
+        /// guaranteed to be set. The `description` field is a human readable field provided by agents and can be
+        /// displayed to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggees")]
         public virtual System.Collections.Generic.IList<Debuggee> Debuggees { get; set; } 
 
@@ -1699,8 +1699,10 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Response for registering a debuggee.</summary>
     public class RegisterDebuggeeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Debuggee resource. The field `id` is guranteed to be set (in addition to the echoed
-        /// fields).</summary>
+        /// <summary>Debuggee resource. The field `id` is guranteed to be set (in addition to the echoed fields). If the
+        /// field `is_disabled` is set to `true`, the agent should disable itself by removing all breakpoints and
+        /// detaching from the application. It should however continue to poll `RegisterDebuggee` until
+        /// reenabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggee")]
         public virtual Debuggee Debuggee { get; set; } 
 
@@ -1823,7 +1825,8 @@ namespace Google.Apis.CloudDebugger.v2.Data
     /// <summary>Request to update an active breakpoint.</summary>
     public class UpdateActiveBreakpointRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Updated breakpoint information. The field `id` must be set.</summary>
+        /// <summary>Updated breakpoint information. The field `id` must be set. The agent must echo all Breakpoint
+        /// specification fields in the update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("breakpoint")]
         public virtual Breakpoint Breakpoint { get; set; } 
 

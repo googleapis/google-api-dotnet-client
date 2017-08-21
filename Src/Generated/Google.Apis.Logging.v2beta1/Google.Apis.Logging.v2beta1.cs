@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170808 (950)
+ *      <tr><th>API Rev<td>20170814 (956)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1955,10 +1955,9 @@ namespace Google.Apis.Logging.v2beta1
 
             }
 
-            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
-            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
-            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
-            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
+            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
+            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="sinkName">Required. The full resource name of the sink to update, including the parent resource and the
             /// sink identifier: "projects/[PROJECT_ID]/sinks/[SINK_ID]" "organizations/[ORGANIZATION_ID]/sinks/[SINK_ID]"
@@ -1969,10 +1968,9 @@ namespace Google.Apis.Logging.v2beta1
                 return new UpdateRequest(service, body, sinkName);
             }
 
-            /// <summary>Updates a sink. If the named sink doesn't exist, then this method is identical to sinks.create.
-            /// If the named sink does exist, then this method replaces the following fields in the existing sink with
-            /// values from the new sink: destination, filter, output_version_format, start_time, and end_time. The
-            /// updated filter might also have a new writer_identity; see the unique_writer_identity field.</summary>
+            /// <summary>Updates a sink. This method replaces the following fields in the existing sink with values from
+            /// the new sink: destination, filter, output_version_format, start_time, and end_time. The updated sink
+            /// might also have a new writer_identity; see the unique_writer_identity field.</summary>
             public class UpdateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2beta1.Data.LogSink>
             {
                 /// <summary>Constructs a new Update request.</summary>

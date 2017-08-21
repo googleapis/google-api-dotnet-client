@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170725 (936)
+ *      <tr><th>API Rev<td>20170815 (957)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1336,8 +1336,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Metadata for online images.</summary>
     public class WebImage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Overall relevancy score for the image. Not normalized and not comparable across different image
-        /// queries.</summary>
+        /// <summary>(Deprecated) Overall relevancy score for the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; } 
 
@@ -1352,8 +1351,7 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Metadata for web pages.</summary>
     public class WebPage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Overall relevancy score for the web page. Not normalized and not comparable across different image
-        /// queries.</summary>
+        /// <summary>(Deprecated) Overall relevancy score for the web page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; } 
 

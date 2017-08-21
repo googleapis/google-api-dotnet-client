@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170815 (957)
+ *      <tr><th>API Rev<td>20170817 (959)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -501,13 +501,13 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>Specifies the maximum number of members to return for each group.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MaxMembers { get; set; }
-
             /// <summary>The resource names of the contact groups to get.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
+            /// <summary>Specifies the maximum number of members to return for each group.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxMembers", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MaxMembers { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -534,18 +534,18 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "maxMembers", new Google.Apis.Discovery.Parameter
+                    "resourceNames", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxMembers",
+                        Name = "resourceNames",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "resourceNames", new Google.Apis.Discovery.Parameter
+                    "maxMembers", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "resourceNames",
+                        Name = "maxMembers",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
