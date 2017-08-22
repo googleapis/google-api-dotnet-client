@@ -1,72 +1,8 @@
 {
-  "title": "Google Cloud Datastore API",
-  "ownerName": "Google",
-  "discoveryVersion": "v1",
-  "version_module": true,
   "resources": {
     "projects": {
       "methods": {
-        "beginTransaction": {
-          "request": {
-            "$ref": "BeginTransactionRequest"
-          },
-          "description": "Begins a new transaction.",
-          "response": {
-            "$ref": "BeginTransactionResponse"
-          },
-          "parameterOrder": [
-            "projectId"
-          ],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/datastore"
-          ],
-          "parameters": {
-            "projectId": {
-              "location": "path",
-              "description": "The ID of the project against which to make the request.",
-              "type": "string",
-              "required": true
-            }
-          },
-          "flatPath": "v1beta3/projects/{projectId}:beginTransaction",
-          "id": "datastore.projects.beginTransaction",
-          "path": "v1beta3/projects/{projectId}:beginTransaction"
-        },
-        "commit": {
-          "description": "Commits a transaction, optionally creating, deleting or modifying some\nentities.",
-          "request": {
-            "$ref": "CommitRequest"
-          },
-          "response": {
-            "$ref": "CommitResponse"
-          },
-          "parameterOrder": [
-            "projectId"
-          ],
-          "httpMethod": "POST",
-          "parameters": {
-            "projectId": {
-              "location": "path",
-              "description": "The ID of the project against which to make the request.",
-              "type": "string",
-              "required": true
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform",
-            "https://www.googleapis.com/auth/datastore"
-          ],
-          "flatPath": "v1beta3/projects/{projectId}:commit",
-          "id": "datastore.projects.commit",
-          "path": "v1beta3/projects/{projectId}:commit"
-        },
         "runQuery": {
-          "request": {
-            "$ref": "RunQueryRequest"
-          },
-          "description": "Queries for entities.",
           "response": {
             "$ref": "RunQueryResponse"
           },
@@ -74,40 +10,44 @@
             "projectId"
           ],
           "httpMethod": "POST",
+          "parameters": {
+            "projectId": {
+              "location": "path",
+              "description": "The ID of the project against which to make the request.",
+              "type": "string",
+              "required": true
+            }
+          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform",
             "https://www.googleapis.com/auth/datastore"
           ],
-          "parameters": {
-            "projectId": {
-              "description": "The ID of the project against which to make the request.",
-              "type": "string",
-              "required": true,
-              "location": "path"
-            }
-          },
           "flatPath": "v1beta3/projects/{projectId}:runQuery",
           "id": "datastore.projects.runQuery",
-          "path": "v1beta3/projects/{projectId}:runQuery"
+          "path": "v1beta3/projects/{projectId}:runQuery",
+          "description": "Queries for entities.",
+          "request": {
+            "$ref": "RunQueryRequest"
+          }
         },
         "rollback": {
           "description": "Rolls back a transaction.",
           "request": {
             "$ref": "RollbackRequest"
           },
-          "response": {
-            "$ref": "RollbackResponse"
-          },
+          "httpMethod": "POST",
           "parameterOrder": [
             "projectId"
           ],
-          "httpMethod": "POST",
+          "response": {
+            "$ref": "RollbackResponse"
+          },
           "parameters": {
             "projectId": {
+              "location": "path",
               "description": "The ID of the project against which to make the request.",
               "type": "string",
-              "required": true,
-              "location": "path"
+              "required": true
             }
           },
           "scopes": [
@@ -115,8 +55,8 @@
             "https://www.googleapis.com/auth/datastore"
           ],
           "flatPath": "v1beta3/projects/{projectId}:rollback",
-          "id": "datastore.projects.rollback",
-          "path": "v1beta3/projects/{projectId}:rollback"
+          "path": "v1beta3/projects/{projectId}:rollback",
+          "id": "datastore.projects.rollback"
         },
         "lookup": {
           "response": {
@@ -128,10 +68,10 @@
           "httpMethod": "POST",
           "parameters": {
             "projectId": {
-              "location": "path",
-              "description": "The ID of the project against which to make the request.",
               "type": "string",
-              "required": true
+              "required": true,
+              "location": "path",
+              "description": "The ID of the project against which to make the request."
             }
           },
           "scopes": [
@@ -167,57 +107,119 @@
           ],
           "parameters": {
             "projectId": {
+              "type": "string",
+              "required": true,
+              "location": "path",
+              "description": "The ID of the project against which to make the request."
+            }
+          }
+        },
+        "beginTransaction": {
+          "request": {
+            "$ref": "BeginTransactionRequest"
+          },
+          "description": "Begins a new transaction.",
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "projectId"
+          ],
+          "response": {
+            "$ref": "BeginTransactionResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/datastore"
+          ],
+          "parameters": {
+            "projectId": {
+              "type": "string",
+              "required": true,
+              "location": "path",
+              "description": "The ID of the project against which to make the request."
+            }
+          },
+          "flatPath": "v1beta3/projects/{projectId}:beginTransaction",
+          "path": "v1beta3/projects/{projectId}:beginTransaction",
+          "id": "datastore.projects.beginTransaction"
+        },
+        "commit": {
+          "request": {
+            "$ref": "CommitRequest"
+          },
+          "description": "Commits a transaction, optionally creating, deleting or modifying some\nentities.",
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "projectId"
+          ],
+          "response": {
+            "$ref": "CommitResponse"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform",
+            "https://www.googleapis.com/auth/datastore"
+          ],
+          "parameters": {
+            "projectId": {
               "location": "path",
               "description": "The ID of the project against which to make the request.",
               "type": "string",
               "required": true
             }
-          }
+          },
+          "flatPath": "v1beta3/projects/{projectId}:commit",
+          "path": "v1beta3/projects/{projectId}:commit",
+          "id": "datastore.projects.commit"
         }
       }
     }
   },
   "parameters": {
     "upload_protocol": {
+      "type": "string",
       "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
     },
     "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
       "default": "true",
-      "type": "boolean"
+      "type": "boolean",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
+    },
+    "fields": {
+      "type": "string",
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response."
     },
     "uploadType": {
       "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string"
     },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
+    "callback": {
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "JSONP"
     },
     "$.xgafv": {
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
       "description": "V1 error format.",
       "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
       ]
     },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
     "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -225,261 +227,152 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
+      "default": "json"
     },
     "key": {
+      "type": "string",
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
       "type": "string"
     },
     "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
     },
     "pp": {
-      "description": "Pretty-print response.",
       "default": "true",
       "type": "boolean",
-      "location": "query"
-    },
-    "bearer_token": {
-      "description": "OAuth bearer token.",
-      "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "Pretty-print response."
     },
     "oauth_token": {
+      "type": "string",
       "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "bearer_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth bearer token."
     }
   },
   "schemas": {
-    "Query": {
-      "description": "A query for entities.",
-      "type": "object",
-      "properties": {
-        "projection": {
-          "description": "The projection to return. Defaults to returning all properties.",
-          "items": {
-            "$ref": "Projection"
-          },
-          "type": "array"
-        },
-        "endCursor": {
-          "format": "byte",
-          "description": "An ending point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).",
-          "type": "string"
-        },
-        "limit": {
-          "format": "int32",
-          "description": "The maximum number of results to return. Applies after all other\nconstraints. Optional.\nUnspecified is interpreted as no limit.\nMust be \u003e= 0 if specified.",
-          "type": "integer"
-        },
-        "filter": {
-          "$ref": "Filter",
-          "description": "The filter to apply."
-        },
-        "startCursor": {
-          "format": "byte",
-          "description": "A starting point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).",
-          "type": "string"
-        },
-        "offset": {
-          "format": "int32",
-          "description": "The number of results to skip. Applies before limit, but after all other\nconstraints. Optional. Must be \u003e= 0 if specified.",
-          "type": "integer"
-        },
-        "kind": {
-          "description": "The kinds to query (if empty, returns entities of all kinds).\nCurrently at most 1 kind may be specified.",
-          "items": {
-            "$ref": "KindExpression"
-          },
-          "type": "array"
-        },
-        "distinctOn": {
-          "description": "The properties to make distinct. The query results will contain the first\nresult for each distinct combination of values for the given properties\n(if empty, all results are returned).",
-          "items": {
-            "$ref": "PropertyReference"
-          },
-          "type": "array"
-        },
-        "order": {
-          "description": "The order to apply to the query results (if empty, order is unspecified).",
-          "items": {
-            "$ref": "PropertyOrder"
-          },
-          "type": "array"
-        }
-      },
-      "id": "Query"
-    },
-    "ReadOnly": {
-      "description": "Options specific to read-only transactions.",
-      "type": "object",
-      "properties": {},
-      "id": "ReadOnly"
-    },
-    "PropertyFilter": {
-      "description": "A filter on a specific property.",
-      "type": "object",
-      "properties": {
-        "property": {
-          "$ref": "PropertyReference",
-          "description": "The property to filter by."
-        },
-        "op": {
-          "description": "The operator to filter by.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified. This value must not be used.",
-            "Less than.",
-            "Less than or equal.",
-            "Greater than.",
-            "Greater than or equal.",
-            "Equal.",
-            "Has ancestor."
-          ],
-          "enum": [
-            "OPERATOR_UNSPECIFIED",
-            "LESS_THAN",
-            "LESS_THAN_OR_EQUAL",
-            "GREATER_THAN",
-            "GREATER_THAN_OR_EQUAL",
-            "EQUAL",
-            "HAS_ANCESTOR"
-          ]
-        },
-        "value": {
-          "description": "The value to compare the property to.",
-          "$ref": "Value"
-        }
-      },
-      "id": "PropertyFilter"
-    },
     "EntityResult": {
-      "description": "The result of fetching an entity from Datastore.",
       "type": "object",
       "properties": {
         "entity": {
-          "description": "The resulting entity.",
-          "$ref": "Entity"
+          "$ref": "Entity",
+          "description": "The resulting entity."
         },
         "cursor": {
+          "type": "string",
           "format": "byte",
-          "description": "A cursor that points to the position after the result entity.\nSet only when the `EntityResult` is part of a `QueryResultBatch` message.",
-          "type": "string"
+          "description": "A cursor that points to the position after the result entity.\nSet only when the `EntityResult` is part of a `QueryResultBatch` message."
         },
         "version": {
+          "type": "string",
           "format": "int64",
-          "description": "The version of the entity, a strictly positive number that monotonically\nincreases with changes to the entity.\n\nThis field is set for `FULL` entity\nresults.\n\nFor missing entities in `LookupResponse`, this\nis the version of the snapshot that was used to look up the entity, and it\nis always set except for eventually consistent reads.",
-          "type": "string"
+          "description": "The version of the entity, a strictly positive number that monotonically\nincreases with changes to the entity.\n\nThis field is set for `FULL` entity\nresults.\n\nFor missing entities in `LookupResponse`, this\nis the version of the snapshot that was used to look up the entity, and it\nis always set except for eventually consistent reads."
         }
       },
-      "id": "EntityResult"
-    },
-    "CommitResponse": {
-      "description": "The response for Datastore.Commit.",
-      "type": "object",
-      "properties": {
-        "indexUpdates": {
-          "format": "int32",
-          "description": "The number of index entries updated during the commit, or zero if none were\nupdated.",
-          "type": "integer"
-        },
-        "mutationResults": {
-          "description": "The result of performing the mutations.\nThe i-th mutation result corresponds to the i-th mutation in the request.",
-          "items": {
-            "$ref": "MutationResult"
-          },
-          "type": "array"
-        }
-      },
-      "id": "CommitResponse"
+      "id": "EntityResult",
+      "description": "The result of fetching an entity from Datastore."
     },
     "Value": {
-      "description": "A message that can hold any of the supported value types and associated\nmetadata.",
       "type": "object",
       "properties": {
+        "doubleValue": {
+          "type": "number",
+          "format": "double",
+          "description": "A double value."
+        },
+        "timestampValue": {
+          "type": "string",
+          "format": "google-datetime",
+          "description": "A timestamp value.\nWhen stored in the Datastore, precise only to microseconds;\nany additional precision is rounded down."
+        },
+        "nullValue": {
+          "enum": [
+            "NULL_VALUE"
+          ],
+          "description": "A null value.",
+          "type": "string",
+          "enumDescriptions": [
+            "Null value."
+          ]
+        },
+        "booleanValue": {
+          "type": "boolean",
+          "description": "A boolean value."
+        },
+        "blobValue": {
+          "type": "string",
+          "format": "byte",
+          "description": "A blob value.\nMay have at most 1,000,000 bytes.\nWhen `exclude_from_indexes` is false, may have at most 1500 bytes.\nIn JSON requests, must be base64-encoded."
+        },
+        "meaning": {
+          "format": "int32",
+          "description": "The `meaning` field should only be populated for backwards compatibility.",
+          "type": "integer"
+        },
         "arrayValue": {
-          "description": "An array value.\nCannot contain another array value.\nA `Value` instance that sets field `array_value` must not set fields\n`meaning` or `exclude_from_indexes`.",
-          "$ref": "ArrayValue"
+          "$ref": "ArrayValue",
+          "description": "An array value.\nCannot contain another array value.\nA `Value` instance that sets field `array_value` must not set fields\n`meaning` or `exclude_from_indexes`."
         },
         "entityValue": {
           "$ref": "Entity",
           "description": "An entity value.\n\n- May have no key.\n- May have a key with an incomplete key path.\n- May have a reserved/read-only key."
         },
         "geoPointValue": {
-          "description": "A geo point value representing a point on the surface of Earth.",
-          "$ref": "LatLng"
+          "$ref": "LatLng",
+          "description": "A geo point value representing a point on the surface of Earth."
+        },
+        "keyValue": {
+          "$ref": "Key",
+          "description": "A key value."
         },
         "integerValue": {
           "format": "int64",
           "description": "An integer value.",
           "type": "string"
         },
-        "keyValue": {
-          "description": "A key value.",
-          "$ref": "Key"
-        },
         "stringValue": {
-          "description": "A UTF-8 encoded string value.\nWhen `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes.\nOtherwise, may be set to at least 1,000,000 bytes.",
-          "type": "string"
+          "type": "string",
+          "description": "A UTF-8 encoded string value.\nWhen `exclude_from_indexes` is false (it is indexed) , may have at most 1500 bytes.\nOtherwise, may be set to at least 1,000,000 bytes."
         },
         "excludeFromIndexes": {
           "description": "If the value should be excluded from all indexes including those defined\nexplicitly.",
           "type": "boolean"
+        }
+      },
+      "id": "Value",
+      "description": "A message that can hold any of the supported value types and associated\nmetadata."
+    },
+    "CommitResponse": {
+      "type": "object",
+      "properties": {
+        "mutationResults": {
+          "items": {
+            "$ref": "MutationResult"
+          },
+          "type": "array",
+          "description": "The result of performing the mutations.\nThe i-th mutation result corresponds to the i-th mutation in the request."
         },
-        "doubleValue": {
-          "format": "double",
-          "description": "A double value.",
-          "type": "number"
-        },
-        "timestampValue": {
-          "format": "google-datetime",
-          "description": "A timestamp value.\nWhen stored in the Datastore, precise only to microseconds;\nany additional precision is rounded down.",
-          "type": "string"
-        },
-        "booleanValue": {
-          "description": "A boolean value.",
-          "type": "boolean"
-        },
-        "nullValue": {
-          "enumDescriptions": [
-            "Null value."
-          ],
-          "enum": [
-            "NULL_VALUE"
-          ],
-          "description": "A null value.",
-          "type": "string"
-        },
-        "blobValue": {
-          "format": "byte",
-          "description": "A blob value.\nMay have at most 1,000,000 bytes.\nWhen `exclude_from_indexes` is false, may have at most 1500 bytes.\nIn JSON requests, must be base64-encoded.",
-          "type": "string"
-        },
-        "meaning": {
+        "indexUpdates": {
           "format": "int32",
-          "description": "The `meaning` field should only be populated for backwards compatibility.",
+          "description": "The number of index entries updated during the commit, or zero if none were\nupdated.",
           "type": "integer"
         }
       },
-      "id": "Value"
+      "id": "CommitResponse",
+      "description": "The response for Datastore.Commit."
     },
     "PartitionId": {
-      "description": "A partition ID identifies a grouping of entities. The grouping is always\nby project and namespace, however the namespace ID may be empty.\n\nA partition ID contains several dimensions:\nproject ID and namespace ID.\n\nPartition dimensions:\n\n- May be `\"\"`.\n- Must be valid UTF-8 bytes.\n- Must have values that match regex `[A-Za-z\\d\\.\\-_]{1,100}`\nIf the value of any dimension matches regex `__.*__`, the partition is\nreserved/read-only.\nA reserved/read-only partition ID is forbidden in certain documented\ncontexts.\n\nForeign partition IDs (in which the project ID does\nnot match the context project ID ) are discouraged.\nReads and writes of foreign partition IDs may fail if the project is not in an active state.",
       "type": "object",
       "properties": {
         "projectId": {
@@ -487,14 +380,14 @@
           "type": "string"
         },
         "namespaceId": {
-          "description": "If not empty, the ID of the namespace to which the entities belong.",
-          "type": "string"
+          "type": "string",
+          "description": "If not empty, the ID of the namespace to which the entities belong."
         }
       },
-      "id": "PartitionId"
+      "id": "PartitionId",
+      "description": "A partition ID identifies a grouping of entities. The grouping is always\nby project and namespace, however the namespace ID may be empty.\n\nA partition ID contains several dimensions:\nproject ID and namespace ID.\n\nPartition dimensions:\n\n- May be `\"\"`.\n- Must be valid UTF-8 bytes.\n- Must have values that match regex `[A-Za-z\\d\\.\\-_]{1,100}`\nIf the value of any dimension matches regex `__.*__`, the partition is\nreserved/read-only.\nA reserved/read-only partition ID is forbidden in certain documented\ncontexts.\n\nForeign partition IDs (in which the project ID does\nnot match the context project ID ) are discouraged.\nReads and writes of foreign partition IDs may fail if the project is not in an active state."
     },
     "ReadWrite": {
-      "description": "Options specific to read / write transactions.",
       "type": "object",
       "properties": {
         "previousTransaction": {
@@ -503,10 +396,10 @@
           "type": "string"
         }
       },
-      "id": "ReadWrite"
+      "id": "ReadWrite",
+      "description": "Options specific to read / write transactions."
     },
     "Entity": {
-      "description": "A Datastore data object.\n\nAn entity is limited to 1 megabyte when stored. That _roughly_\ncorresponds to a limit of 1 megabyte for the serialized form of this\nmessage.",
       "type": "object",
       "properties": {
         "properties": {
@@ -517,11 +410,97 @@
           "type": "object"
         },
         "key": {
-          "description": "The entity's key.\n\nAn entity must have a key, unless otherwise documented (for example,\nan entity in `Value.entity_value` may have no key).\nAn entity's kind is its key path's last element's kind,\nor null if it has no key.",
-          "$ref": "Key"
+          "$ref": "Key",
+          "description": "The entity's key.\n\nAn entity must have a key, unless otherwise documented (for example,\nan entity in `Value.entity_value` may have no key).\nAn entity's kind is its key path's last element's kind,\nor null if it has no key."
         }
       },
-      "id": "Entity"
+      "id": "Entity",
+      "description": "A Datastore data object.\n\nAn entity is limited to 1 megabyte when stored. That _roughly_\ncorresponds to a limit of 1 megabyte for the serialized form of this\nmessage."
+    },
+    "GoogleDatastoreAdminV1beta1Progress": {
+      "type": "object",
+      "properties": {
+        "workEstimated": {
+          "format": "int64",
+          "description": "An estimate of how much work needs to be performed.  May be zero if the\nwork estimate is unavailable.",
+          "type": "string"
+        },
+        "workCompleted": {
+          "type": "string",
+          "format": "int64",
+          "description": "Note that this may be greater than work_estimated."
+        }
+      },
+      "id": "GoogleDatastoreAdminV1beta1Progress",
+      "description": "Measures the progress of a particular metric."
+    },
+    "QueryResultBatch": {
+      "type": "object",
+      "properties": {
+        "moreResults": {
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. This value is never used.",
+            "There may be additional batches to fetch from this query.",
+            "The query is finished, but there may be more results after the limit.",
+            "The query is finished, but there may be more results after the end\ncursor.",
+            "The query is finished, and there are no more results."
+          ],
+          "enum": [
+            "MORE_RESULTS_TYPE_UNSPECIFIED",
+            "NOT_FINISHED",
+            "MORE_RESULTS_AFTER_LIMIT",
+            "MORE_RESULTS_AFTER_CURSOR",
+            "NO_MORE_RESULTS"
+          ],
+          "description": "The state of the query after the current batch."
+        },
+        "endCursor": {
+          "type": "string",
+          "format": "byte",
+          "description": "A cursor that points to the position after the last result in the batch."
+        },
+        "snapshotVersion": {
+          "format": "int64",
+          "description": "The version number of the snapshot this batch was returned from.\nThis applies to the range of results from the query's `start_cursor` (or\nthe beginning of the query if no cursor was given) to this batch's\n`end_cursor` (not the query's `end_cursor`).\n\nIn a single transaction, subsequent query result batches for the same query\ncan have a greater snapshot version number. Each batch's snapshot version\nis valid for all preceding batches.\nThe value will be zero for eventually consistent queries.",
+          "type": "string"
+        },
+        "skippedCursor": {
+          "type": "string",
+          "format": "byte",
+          "description": "A cursor that points to the position after the last skipped result.\nWill be set when `skipped_results` != 0."
+        },
+        "skippedResults": {
+          "format": "int32",
+          "description": "The number of results skipped, typically because of an offset.",
+          "type": "integer"
+        },
+        "entityResultType": {
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. This value is never used.",
+            "The key and properties.",
+            "A projected subset of properties. The entity may have no key.",
+            "Only the key."
+          ],
+          "enum": [
+            "RESULT_TYPE_UNSPECIFIED",
+            "FULL",
+            "PROJECTION",
+            "KEY_ONLY"
+          ],
+          "description": "The result type for every entity in `entity_results`."
+        },
+        "entityResults": {
+          "description": "The results for this batch.",
+          "items": {
+            "$ref": "EntityResult"
+          },
+          "type": "array"
+        }
+      },
+      "id": "QueryResultBatch",
+      "description": "A batch of results produced by a query."
     },
     "LookupRequest": {
       "description": "The request for Datastore.Lookup.",
@@ -541,95 +520,14 @@
       },
       "id": "LookupRequest"
     },
-    "QueryResultBatch": {
-      "description": "A batch of results produced by a query.",
-      "type": "object",
-      "properties": {
-        "skippedCursor": {
-          "format": "byte",
-          "description": "A cursor that points to the position after the last skipped result.\nWill be set when `skipped_results` != 0.",
-          "type": "string"
-        },
-        "skippedResults": {
-          "format": "int32",
-          "description": "The number of results skipped, typically because of an offset.",
-          "type": "integer"
-        },
-        "entityResultType": {
-          "enumDescriptions": [
-            "Unspecified. This value is never used.",
-            "The key and properties.",
-            "A projected subset of properties. The entity may have no key.",
-            "Only the key."
-          ],
-          "enum": [
-            "RESULT_TYPE_UNSPECIFIED",
-            "FULL",
-            "PROJECTION",
-            "KEY_ONLY"
-          ],
-          "description": "The result type for every entity in `entity_results`.",
-          "type": "string"
-        },
-        "entityResults": {
-          "description": "The results for this batch.",
-          "items": {
-            "$ref": "EntityResult"
-          },
-          "type": "array"
-        },
-        "moreResults": {
-          "enumDescriptions": [
-            "Unspecified. This value is never used.",
-            "There may be additional batches to fetch from this query.",
-            "The query is finished, but there may be more results after the limit.",
-            "The query is finished, but there may be more results after the end\ncursor.",
-            "The query is finished, and there are no more results."
-          ],
-          "enum": [
-            "MORE_RESULTS_TYPE_UNSPECIFIED",
-            "NOT_FINISHED",
-            "MORE_RESULTS_AFTER_LIMIT",
-            "MORE_RESULTS_AFTER_CURSOR",
-            "NO_MORE_RESULTS"
-          ],
-          "description": "The state of the query after the current batch.",
-          "type": "string"
-        },
-        "endCursor": {
-          "format": "byte",
-          "description": "A cursor that points to the position after the last result in the batch.",
-          "type": "string"
-        },
-        "snapshotVersion": {
-          "format": "int64",
-          "description": "The version number of the snapshot this batch was returned from.\nThis applies to the range of results from the query's `start_cursor` (or\nthe beginning of the query if no cursor was given) to this batch's\n`end_cursor` (not the query's `end_cursor`).\n\nIn a single transaction, subsequent query result batches for the same query\ncan have a greater snapshot version number. Each batch's snapshot version\nis valid for all preceding batches.\nThe value will be zero for eventually consistent queries.",
-          "type": "string"
-        }
-      },
-      "id": "QueryResultBatch"
-    },
-    "GoogleDatastoreAdminV1beta1Progress": {
-      "description": "Measures the progress of a particular metric.",
-      "type": "object",
-      "properties": {
-        "workEstimated": {
-          "format": "int64",
-          "description": "An estimate of how much work needs to be performed.  May be zero if the\nwork estimate is unavailable.",
-          "type": "string"
-        },
-        "workCompleted": {
-          "format": "int64",
-          "description": "Note that this may be greater than work_estimated.",
-          "type": "string"
-        }
-      },
-      "id": "GoogleDatastoreAdminV1beta1Progress"
-    },
     "PathElement": {
       "description": "A (kind, ID/name) pair used to construct a key path.\n\nIf either name or ID is set, the element is complete.\nIf neither is set, the element is incomplete.",
       "type": "object",
       "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the entity.\nA name matching regex `__.*__` is reserved/read-only.\nA name must not be more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`."
+        },
         "kind": {
           "description": "The kind of the entity.\nA kind matching regex `__.*__` is reserved/read-only.\nA kind must not contain more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`.",
           "type": "string"
@@ -638,16 +536,11 @@
           "format": "int64",
           "description": "The auto-allocated ID of the entity.\nNever equal to zero. Values less than zero are discouraged and may not\nbe supported in the future.",
           "type": "string"
-        },
-        "name": {
-          "description": "The name of the entity.\nA name matching regex `__.*__` is reserved/read-only.\nA name must not be more than 1500 bytes when UTF-8 encoded.\nCannot be `\"\"`.",
-          "type": "string"
         }
       },
       "id": "PathElement"
     },
     "GqlQueryParameter": {
-      "description": "A binding parameter for a GQL query.",
       "type": "object",
       "properties": {
         "cursor": {
@@ -656,65 +549,24 @@
           "type": "string"
         },
         "value": {
-          "description": "A value parameter.",
-          "$ref": "Value"
+          "$ref": "Value",
+          "description": "A value parameter."
         }
       },
-      "id": "GqlQueryParameter"
+      "id": "GqlQueryParameter",
+      "description": "A binding parameter for a GQL query."
     },
     "BeginTransactionResponse": {
-      "description": "The response for Datastore.BeginTransaction.",
       "type": "object",
       "properties": {
         "transaction": {
+          "type": "string",
           "format": "byte",
-          "description": "The transaction identifier (always present).",
-          "type": "string"
+          "description": "The transaction identifier (always present)."
         }
       },
-      "id": "BeginTransactionResponse"
-    },
-    "AllocateIdsRequest": {
-      "description": "The request for Datastore.AllocateIds.",
-      "type": "object",
-      "properties": {
-        "keys": {
-          "description": "A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only.",
-          "items": {
-            "$ref": "Key"
-          },
-          "type": "array"
-        }
-      },
-      "id": "AllocateIdsRequest"
-    },
-    "LookupResponse": {
-      "description": "The response for Datastore.Lookup.",
-      "type": "object",
-      "properties": {
-        "missing": {
-          "description": "Entities not found as `ResultType.KEY_ONLY` entities. The order of results\nin this field is undefined and has no relation to the order of the keys\nin the input.",
-          "items": {
-            "$ref": "EntityResult"
-          },
-          "type": "array"
-        },
-        "found": {
-          "description": "Entities found as `ResultType.FULL` entities. The order of results in this\nfield is undefined and has no relation to the order of the keys in the\ninput.",
-          "items": {
-            "$ref": "EntityResult"
-          },
-          "type": "array"
-        },
-        "deferred": {
-          "description": "A list of keys that were not looked up due to resource constraints. The\norder of results in this field is undefined and has no relation to the\norder of the keys in the input.",
-          "items": {
-            "$ref": "Key"
-          },
-          "type": "array"
-        }
-      },
-      "id": "LookupResponse"
+      "id": "BeginTransactionResponse",
+      "description": "The response for Datastore.BeginTransaction."
     },
     "RunQueryResponse": {
       "description": "The response for Datastore.RunQuery.",
@@ -725,29 +577,71 @@
           "description": "The parsed form of the `GqlQuery` from the request, if it was set."
         },
         "batch": {
-          "description": "A batch of query results (always present).",
-          "$ref": "QueryResultBatch"
+          "$ref": "QueryResultBatch",
+          "description": "A batch of query results (always present)."
         }
       },
       "id": "RunQueryResponse"
+    },
+    "AllocateIdsRequest": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "description": "A list of keys with incomplete key paths for which to allocate IDs.\nNo key may be reserved/read-only.",
+          "items": {
+            "$ref": "Key"
+          },
+          "type": "array"
+        }
+      },
+      "id": "AllocateIdsRequest",
+      "description": "The request for Datastore.AllocateIds."
+    },
+    "LookupResponse": {
+      "type": "object",
+      "properties": {
+        "deferred": {
+          "items": {
+            "$ref": "Key"
+          },
+          "type": "array",
+          "description": "A list of keys that were not looked up due to resource constraints. The\norder of results in this field is undefined and has no relation to the\norder of the keys in the input."
+        },
+        "missing": {
+          "items": {
+            "$ref": "EntityResult"
+          },
+          "type": "array",
+          "description": "Entities not found as `ResultType.KEY_ONLY` entities. The order of results\nin this field is undefined and has no relation to the order of the keys\nin the input."
+        },
+        "found": {
+          "items": {
+            "$ref": "EntityResult"
+          },
+          "type": "array",
+          "description": "Entities found as `ResultType.FULL` entities. The order of results in this\nfield is undefined and has no relation to the order of the keys in the\ninput."
+        }
+      },
+      "id": "LookupResponse",
+      "description": "The response for Datastore.Lookup."
     },
     "PropertyOrder": {
       "description": "The desired order for a specific property.",
       "type": "object",
       "properties": {
         "direction": {
-          "enumDescriptions": [
-            "Unspecified. This value must not be used.",
-            "Ascending.",
-            "Descending."
-          ],
           "enum": [
             "DIRECTION_UNSPECIFIED",
             "ASCENDING",
             "DESCENDING"
           ],
           "description": "The direction to order by. Defaults to `ASCENDING`.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. This value must not be used.",
+            "Ascending.",
+            "Descending."
+          ]
         },
         "property": {
           "$ref": "PropertyReference",
@@ -777,6 +671,7 @@
           "type": "string"
         },
         "mode": {
+          "type": "string",
           "enumDescriptions": [
             "Unspecified. This value must not be used.",
             "Transactional: The mutations are either all applied, or none are applied.\nLearn about transactions [here](https://cloud.google.com/datastore/docs/concepts/transactions).",
@@ -787,15 +682,14 @@
             "TRANSACTIONAL",
             "NON_TRANSACTIONAL"
           ],
-          "description": "The type of commit to perform. Defaults to `TRANSACTIONAL`.",
-          "type": "string"
+          "description": "The type of commit to perform. Defaults to `TRANSACTIONAL`."
         },
         "mutations": {
-          "description": "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n- `insert` followed by `insert`\n- `update` followed by `insert`\n- `upsert` followed by `insert`\n- `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity.",
           "items": {
             "$ref": "Mutation"
           },
-          "type": "array"
+          "type": "array",
+          "description": "The mutations to perform.\n\nWhen mode is `TRANSACTIONAL`, mutations affecting a single entity are\napplied in order. The following sequences of mutations affecting a single\nentity are not permitted in a single `Commit` request:\n\n- `insert` followed by `insert`\n- `update` followed by `insert`\n- `upsert` followed by `insert`\n- `delete` followed by `update`\n\nWhen mode is `NON_TRANSACTIONAL`, no two mutations may affect a single\nentity."
         }
       },
       "id": "CommitRequest"
@@ -805,8 +699,8 @@
       "type": "object",
       "properties": {
         "name": {
-          "description": "The name of the kind.",
-          "type": "string"
+          "type": "string",
+          "description": "The name of the kind."
         }
       },
       "id": "KindExpression"
@@ -821,9 +715,9 @@
           "type": "number"
         },
         "longitude": {
+          "type": "number",
           "format": "double",
-          "description": "The longitude in degrees. It must be in the range [-180.0, +180.0].",
-          "type": "number"
+          "description": "The longitude in degrees. It must be in the range [-180.0, +180.0]."
         }
       },
       "id": "LatLng"
@@ -851,8 +745,8 @@
       "type": "object",
       "properties": {
         "name": {
-          "description": "The name of the property.\nIf name includes \".\"s, it may be interpreted as a property name path.",
-          "type": "string"
+          "type": "string",
+          "description": "The name of the property.\nIf name includes \".\"s, it may be interpreted as a property name path."
         }
       },
       "id": "PropertyReference"
@@ -862,11 +756,11 @@
       "type": "object",
       "properties": {
         "kinds": {
-          "description": "If empty, then this represents all kinds.",
           "items": {
             "type": "string"
           },
-          "type": "array"
+          "type": "array",
+          "description": "If empty, then this represents all kinds."
         },
         "namespaceIds": {
           "description": "An empty list represents all namespaces.  This is the preferred\nusage for projects that don't use namespaces.\n\nAn empty string element represents the default namespace.  This should be\nused if the project has data in non-default namespaces, but doesn't want to\ninclude them.\nEach namespace in this list must be unique.",
@@ -883,11 +777,11 @@
       "type": "object",
       "properties": {
         "labels": {
+          "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "description": "The client-assigned labels which were provided when the operation was\ncreated.  May also include additional labels.",
-          "type": "object"
+          "description": "The client-assigned labels which were provided when the operation was\ncreated.  May also include additional labels."
         },
         "endTime": {
           "format": "google-datetime",
@@ -895,6 +789,16 @@
           "type": "string"
         },
         "state": {
+          "enum": [
+            "STATE_UNSPECIFIED",
+            "INITIALIZING",
+            "PROCESSING",
+            "CANCELLING",
+            "FINALIZING",
+            "SUCCESSFUL",
+            "FAILED",
+            "CANCELLED"
+          ],
           "description": "The current state of the Operation.",
           "type": "string",
           "enumDescriptions": [
@@ -906,26 +810,9 @@
             "Request has completed successfully.",
             "Request has finished being processed, but encountered an error.",
             "Request has finished being cancelled after user called\nlongrunning.Operations.CancelOperation."
-          ],
-          "enum": [
-            "STATE_UNSPECIFIED",
-            "INITIALIZING",
-            "PROCESSING",
-            "CANCELLING",
-            "FINALIZING",
-            "SUCCESSFUL",
-            "FAILED",
-            "CANCELLED"
           ]
         },
         "operationType": {
-          "enumDescriptions": [
-            "Unspecified.",
-            "ExportEntities.",
-            "ImportEntities.",
-            "Build an index.",
-            "Clear an index."
-          ],
           "enum": [
             "OPERATION_TYPE_UNSPECIFIED",
             "EXPORT_ENTITIES",
@@ -934,7 +821,14 @@
             "CLEAR_INDEX"
           ],
           "description": "The type of the operation.  Can be used as a filter in\nListOperationsRequest.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified.",
+            "ExportEntities.",
+            "ImportEntities.",
+            "Build an index.",
+            "Clear an index."
+          ]
         },
         "startTime": {
           "format": "google-datetime",
@@ -960,11 +854,11 @@
       "type": "object",
       "properties": {
         "values": {
-          "description": "Values in the array.\nThe order of this array may not be preserved if it contains a mix of\nindexed and unindexed values.",
           "items": {
             "$ref": "Value"
           },
-          "type": "array"
+          "type": "array",
+          "description": "Values in the array.\nThe order of this array may not be preserved if it contains a mix of\nindexed and unindexed values."
         }
       },
       "id": "ArrayValue"
@@ -974,8 +868,8 @@
       "type": "object",
       "properties": {
         "delete": {
-          "description": "The key of the entity to delete. The entity may or may not already exist.\nMust have a complete key path and must not be reserved/read-only.",
-          "$ref": "Key"
+          "$ref": "Key",
+          "description": "The key of the entity to delete. The entity may or may not already exist.\nMust have a complete key path and must not be reserved/read-only."
         },
         "baseVersion": {
           "format": "int64",
@@ -983,12 +877,12 @@
           "type": "string"
         },
         "insert": {
-          "description": "The entity to insert. The entity must not already exist.\nThe entity key's final path element may be incomplete.",
-          "$ref": "Entity"
+          "$ref": "Entity",
+          "description": "The entity to insert. The entity must not already exist.\nThe entity key's final path element may be incomplete."
         },
         "update": {
-          "description": "The entity to update. The entity must already exist.\nMust have a complete key path.",
-          "$ref": "Entity"
+          "$ref": "Entity",
+          "description": "The entity to update. The entity must already exist.\nMust have a complete key path."
         },
         "upsert": {
           "$ref": "Entity",
@@ -1002,22 +896,22 @@
       "type": "object",
       "properties": {
         "transaction": {
+          "type": "string",
           "format": "byte",
-          "description": "The identifier of the transaction in which to read. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction.",
-          "type": "string"
+          "description": "The identifier of the transaction in which to read. A\ntransaction identifier is returned by a call to\nDatastore.BeginTransaction."
         },
         "readConsistency": {
+          "enum": [
+            "READ_CONSISTENCY_UNSPECIFIED",
+            "STRONG",
+            "EVENTUAL"
+          ],
           "description": "The non-transactional read consistency to use.\nCannot be set to `STRONG` for global queries.",
           "type": "string",
           "enumDescriptions": [
             "Unspecified. This value must not be used.",
             "Strong consistency.",
             "Eventual consistency."
-          ],
-          "enum": [
-            "READ_CONSISTENCY_UNSPECIFIED",
-            "STRONG",
-            "EVENTUAL"
           ]
         }
       },
@@ -1030,15 +924,15 @@
       "id": "RollbackResponse"
     },
     "GoogleDatastoreAdminV1beta1ExportEntitiesResponse": {
-      "description": "The response for\ngoogle.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities.",
       "type": "object",
       "properties": {
         "outputUrl": {
-          "description": "Location of the output metadata file. This can be used to begin an import\ninto Cloud Datastore (this project or another project). See\ngoogle.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.\nOnly present if the operation completed successfully.",
-          "type": "string"
+          "type": "string",
+          "description": "Location of the output metadata file. This can be used to begin an import\ninto Cloud Datastore (this project or another project). See\ngoogle.datastore.admin.v1beta1.ImportEntitiesRequest.input_url.\nOnly present if the operation completed successfully."
         }
       },
-      "id": "GoogleDatastoreAdminV1beta1ExportEntitiesResponse"
+      "id": "GoogleDatastoreAdminV1beta1ExportEntitiesResponse",
+      "description": "The response for\ngoogle.datastore.admin.v1beta1.DatastoreAdmin.ExportEntities."
     },
     "MutationResult": {
       "description": "The result of applying a mutation.",
@@ -1049,8 +943,8 @@
           "type": "boolean"
         },
         "key": {
-          "description": "The automatically allocated key.\nSet only when the mutation allocated a key.",
-          "$ref": "Key"
+          "$ref": "Key",
+          "description": "The automatically allocated key.\nSet only when the mutation allocated a key."
         },
         "version": {
           "format": "int64",
@@ -1061,19 +955,14 @@
       "id": "MutationResult"
     },
     "GqlQuery": {
-      "description": "A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).",
       "type": "object",
       "properties": {
-        "queryString": {
-          "description": "A string of the format described\n[here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).",
-          "type": "string"
-        },
         "positionalBindings": {
-          "description": "Numbered binding site @1 references the first numbered parameter,\neffectively using 1-based indexing, rather than the usual 0.\n\nFor each binding site numbered i in `query_string`, there must be an i-th\nnumbered parameter. The inverse must also be true.",
           "items": {
             "$ref": "GqlQueryParameter"
           },
-          "type": "array"
+          "type": "array",
+          "description": "Numbered binding site @1 references the first numbered parameter,\neffectively using 1-based indexing, rather than the usual 0.\n\nFor each binding site numbered i in `query_string`, there must be an i-th\nnumbered parameter. The inverse must also be true."
         },
         "namedBindings": {
           "additionalProperties": {
@@ -1085,27 +974,31 @@
         "allowLiterals": {
           "description": "When false, the query string must not contain any literals and instead must\nbind all values. For example,\n`SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while\n`SELECT * FROM Kind WHERE a = @value` is.",
           "type": "boolean"
+        },
+        "queryString": {
+          "type": "string",
+          "description": "A string of the format described\n[here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference)."
         }
       },
-      "id": "GqlQuery"
+      "id": "GqlQuery",
+      "description": "A [GQL query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference)."
     },
     "Filter": {
-      "description": "A holder for any type of filter.",
       "type": "object",
       "properties": {
-        "compositeFilter": {
-          "$ref": "CompositeFilter",
-          "description": "A composite filter."
-        },
         "propertyFilter": {
           "$ref": "PropertyFilter",
           "description": "A filter on a property."
+        },
+        "compositeFilter": {
+          "$ref": "CompositeFilter",
+          "description": "A composite filter."
         }
       },
-      "id": "Filter"
+      "id": "Filter",
+      "description": "A holder for any type of filter."
     },
     "RollbackRequest": {
-      "description": "The request for Datastore.Rollback.",
       "type": "object",
       "properties": {
         "transaction": {
@@ -1114,33 +1007,33 @@
           "type": "string"
         }
       },
-      "id": "RollbackRequest"
+      "id": "RollbackRequest",
+      "description": "The request for Datastore.Rollback."
     },
     "RunQueryRequest": {
-      "description": "The request for Datastore.RunQuery.",
       "type": "object",
       "properties": {
         "gqlQuery": {
-          "description": "The GQL query to run.",
-          "$ref": "GqlQuery"
+          "$ref": "GqlQuery",
+          "description": "The GQL query to run."
         },
         "partitionId": {
           "$ref": "PartitionId",
           "description": "Entities are partitioned into subsets, identified by a partition ID.\nQueries are scoped to a single partition.\nThis partition ID is normalized with the standard default context\npartition ID."
         },
         "readOptions": {
-          "description": "The options for this query.",
-          "$ref": "ReadOptions"
+          "$ref": "ReadOptions",
+          "description": "The options for this query."
         },
         "query": {
-          "description": "The query to run.",
-          "$ref": "Query"
+          "$ref": "Query",
+          "description": "The query to run."
         }
       },
-      "id": "RunQueryRequest"
+      "id": "RunQueryRequest",
+      "description": "The request for Datastore.RunQuery."
     },
     "GoogleDatastoreAdminV1beta1ExportEntitiesMetadata": {
-      "description": "Metadata for ExportEntities operations.",
       "type": "object",
       "properties": {
         "common": {
@@ -1156,18 +1049,18 @@
           "type": "string"
         },
         "entityFilter": {
-          "description": "Description of which entities are being exported.",
-          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter"
+          "$ref": "GoogleDatastoreAdminV1beta1EntityFilter",
+          "description": "Description of which entities are being exported."
         },
         "progressEntities": {
           "$ref": "GoogleDatastoreAdminV1beta1Progress",
           "description": "An estimate of the number of entities processed."
         }
       },
-      "id": "GoogleDatastoreAdminV1beta1ExportEntitiesMetadata"
+      "id": "GoogleDatastoreAdminV1beta1ExportEntitiesMetadata",
+      "description": "Metadata for ExportEntities operations."
     },
     "TransactionOptions": {
-      "description": "Options for beginning a new transaction.\n\nTransactions can be created explicitly with calls to\nDatastore.BeginTransaction or implicitly by setting\nReadOptions.new_transaction in read requests.",
       "type": "object",
       "properties": {
         "readOnly": {
@@ -1175,40 +1068,40 @@
           "description": "The transaction should only allow reads."
         },
         "readWrite": {
-          "description": "The transaction should allow both reads and writes.",
-          "$ref": "ReadWrite"
+          "$ref": "ReadWrite",
+          "description": "The transaction should allow both reads and writes."
         }
       },
-      "id": "TransactionOptions"
+      "id": "TransactionOptions",
+      "description": "Options for beginning a new transaction.\n\nTransactions can be created explicitly with calls to\nDatastore.BeginTransaction or implicitly by setting\nReadOptions.new_transaction in read requests."
     },
     "CompositeFilter": {
       "description": "A filter that merges multiple other filters using the given operator.",
       "type": "object",
       "properties": {
-        "filters": {
-          "description": "The list of filters to combine.\nMust contain at least one filter.",
-          "items": {
-            "$ref": "Filter"
-          },
-          "type": "array"
-        },
         "op": {
-          "enumDescriptions": [
-            "Unspecified. This value must not be used.",
-            "The results are required to satisfy each of the combined filters."
-          ],
           "enum": [
             "OPERATOR_UNSPECIFIED",
             "AND"
           ],
           "description": "The operator for combining multiple filters.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. This value must not be used.",
+            "The results are required to satisfy each of the combined filters."
+          ]
+        },
+        "filters": {
+          "items": {
+            "$ref": "Filter"
+          },
+          "type": "array",
+          "description": "The list of filters to combine.\nMust contain at least one filter."
         }
       },
       "id": "CompositeFilter"
     },
     "GoogleDatastoreAdminV1beta1ImportEntitiesMetadata": {
-      "description": "Metadata for ImportEntities operations.",
       "type": "object",
       "properties": {
         "common": {
@@ -1220,63 +1113,170 @@
           "type": "string"
         },
         "progressBytes": {
-          "description": "An estimate of the number of bytes processed.",
-          "$ref": "GoogleDatastoreAdminV1beta1Progress"
+          "$ref": "GoogleDatastoreAdminV1beta1Progress",
+          "description": "An estimate of the number of bytes processed."
         },
         "entityFilter": {
           "$ref": "GoogleDatastoreAdminV1beta1EntityFilter",
           "description": "Description of which entities are being imported."
         },
         "progressEntities": {
-          "description": "An estimate of the number of entities processed.",
-          "$ref": "GoogleDatastoreAdminV1beta1Progress"
+          "$ref": "GoogleDatastoreAdminV1beta1Progress",
+          "description": "An estimate of the number of entities processed."
         }
       },
-      "id": "GoogleDatastoreAdminV1beta1ImportEntitiesMetadata"
+      "id": "GoogleDatastoreAdminV1beta1ImportEntitiesMetadata",
+      "description": "Metadata for ImportEntities operations."
     },
     "AllocateIdsResponse": {
       "description": "The response for Datastore.AllocateIds.",
       "type": "object",
       "properties": {
         "keys": {
-          "description": "The keys specified in the request (in the same order), each with\nits key path completed with a newly allocated ID.",
           "items": {
             "$ref": "Key"
+          },
+          "type": "array",
+          "description": "The keys specified in the request (in the same order), each with\nits key path completed with a newly allocated ID."
+        }
+      },
+      "id": "AllocateIdsResponse"
+    },
+    "Query": {
+      "description": "A query for entities.",
+      "type": "object",
+      "properties": {
+        "distinctOn": {
+          "items": {
+            "$ref": "PropertyReference"
+          },
+          "type": "array",
+          "description": "The properties to make distinct. The query results will contain the first\nresult for each distinct combination of values for the given properties\n(if empty, all results are returned)."
+        },
+        "order": {
+          "description": "The order to apply to the query results (if empty, order is unspecified).",
+          "items": {
+            "$ref": "PropertyOrder"
+          },
+          "type": "array"
+        },
+        "projection": {
+          "description": "The projection to return. Defaults to returning all properties.",
+          "items": {
+            "$ref": "Projection"
+          },
+          "type": "array"
+        },
+        "endCursor": {
+          "format": "byte",
+          "description": "An ending point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to limit the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).",
+          "type": "string"
+        },
+        "limit": {
+          "format": "int32",
+          "description": "The maximum number of results to return. Applies after all other\nconstraints. Optional.\nUnspecified is interpreted as no limit.\nMust be \u003e= 0 if specified.",
+          "type": "integer"
+        },
+        "filter": {
+          "$ref": "Filter",
+          "description": "The filter to apply."
+        },
+        "offset": {
+          "format": "int32",
+          "description": "The number of results to skip. Applies before limit, but after all other\nconstraints. Optional. Must be \u003e= 0 if specified.",
+          "type": "integer"
+        },
+        "startCursor": {
+          "type": "string",
+          "format": "byte",
+          "description": "A starting point for the query results. Query cursors are\nreturned in query result batches and\n[can only be used to continue the same query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets)."
+        },
+        "kind": {
+          "description": "The kinds to query (if empty, returns entities of all kinds).\nCurrently at most 1 kind may be specified.",
+          "items": {
+            "$ref": "KindExpression"
           },
           "type": "array"
         }
       },
-      "id": "AllocateIdsResponse"
+      "id": "Query"
+    },
+    "ReadOnly": {
+      "description": "Options specific to read-only transactions.",
+      "type": "object",
+      "properties": {},
+      "id": "ReadOnly"
+    },
+    "PropertyFilter": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "enum": [
+            "OPERATOR_UNSPECIFIED",
+            "LESS_THAN",
+            "LESS_THAN_OR_EQUAL",
+            "GREATER_THAN",
+            "GREATER_THAN_OR_EQUAL",
+            "EQUAL",
+            "HAS_ANCESTOR"
+          ],
+          "description": "The operator to filter by.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified. This value must not be used.",
+            "Less than.",
+            "Less than or equal.",
+            "Greater than.",
+            "Greater than or equal.",
+            "Equal.",
+            "Has ancestor."
+          ]
+        },
+        "value": {
+          "$ref": "Value",
+          "description": "The value to compare the property to."
+        },
+        "property": {
+          "$ref": "PropertyReference",
+          "description": "The property to filter by."
+        }
+      },
+      "id": "PropertyFilter",
+      "description": "A filter on a specific property."
     }
   },
+  "protocol": "rest",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
-  "protocol": "rest",
   "version": "v1beta3",
   "baseUrl": "https://datastore.googleapis.com/",
   "auth": {
     "oauth2": {
       "scopes": {
-        "https://www.googleapis.com/auth/datastore": {
-          "description": "View and manage your Google Cloud Datastore data"
-        },
         "https://www.googleapis.com/auth/cloud-platform": {
           "description": "View and manage your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/datastore": {
+          "description": "View and manage your Google Cloud Datastore data"
         }
       }
     }
   },
+  "kind": "discovery#restDescription",
   "description": "Accesses the schemaless NoSQL database to provide fully managed, robust, scalable storage for your application.\n",
   "servicePath": "",
-  "kind": "discovery#restDescription",
   "rootUrl": "https://datastore.googleapis.com/",
   "basePath": "",
   "ownerDomain": "google.com",
   "name": "datastore",
   "batchPath": "batch",
-  "id": "datastore:v1beta3",
   "documentationLink": "https://cloud.google.com/datastore/",
-  "revision": "20170811"
+  "id": "datastore:v1beta3",
+  "revision": "20170815",
+  "title": "Google Cloud Datastore API",
+  "ownerName": "Google",
+  "discoveryVersion": "v1",
+  "version_module": true
 }

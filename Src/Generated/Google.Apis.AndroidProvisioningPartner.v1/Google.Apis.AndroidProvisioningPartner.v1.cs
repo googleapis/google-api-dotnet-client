@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170805 (947)
+ *      <tr><th>API Rev<td>20170819 (961)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -1221,6 +1221,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Company</summary>
     public class Company : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Admin email. Admins will be able to operate on the portal. This field is a WRITE-only field at
+        /// creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminEmails")]
+        public virtual System.Collections.Generic.IList<string> AdminEmails { get; set; } 
+
         /// <summary>company id</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyId")]
         public virtual System.Nullable<long> CompanyId { get; set; } 
@@ -1228,6 +1233,15 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>company name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; } 
+
+        /// <summary>REST Resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Owner email. Owner is able to operate on the portal, and modify admins and other owners. This field
+        /// is a WRITE-only field at creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerEmails")]
+        public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1239,6 +1253,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>claims</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
         public virtual System.Collections.Generic.IList<DeviceClaim> Claims { get; set; } 
+
+        /// <summary>The resource name of the configuration. Only set for customers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
+        public virtual string Configuration { get; set; } 
 
         /// <summary>Device id</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
@@ -1278,7 +1296,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>DeviceIdentifiers identifies an unique device.</summary>
     public class DeviceIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>IMEI (either IMEI or MEID is required).</summary>
+        /// <summary>IMEI</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; } 
 
@@ -1299,7 +1317,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>metadata</summary>
+    /// <summary>A key value pair of the device metadata.</summary>
     public class DeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata entries</summary>

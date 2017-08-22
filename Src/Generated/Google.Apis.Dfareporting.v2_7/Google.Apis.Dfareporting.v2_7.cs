@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v2.7
- *      <tr><th>API Rev<td>20170428 (848)
+ *      <tr><th>API Rev<td>20170818 (960)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -16033,11 +16033,15 @@ namespace Google.Apis.Dfareporting.v2_7
             [Google.Apis.Util.RequestParameterAttribute("placementIds", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> PlacementIds { get; set; }
 
-            /// <summary>Tag formats to generate for these placements.</summary>
+            /// <summary>Tag formats to generate for these placements.
+            ///
+            /// Note: PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.</summary>
             [Google.Apis.Util.RequestParameterAttribute("tagFormats", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<TagFormatsEnum> TagFormats { get; set; }
 
-            /// <summary>Tag formats to generate for these placements.</summary>
+            /// <summary>Tag formats to generate for these placements.
+            ///
+            /// Note: PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements.</summary>
             public enum TagFormatsEnum
             {
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_TAG_CLICK_COMMANDS")]
@@ -24472,7 +24476,7 @@ namespace Google.Apis.Dfareporting.v2_7.Data
         public virtual FsCommand FsCommand { get; set; } 
 
         /// <summary>HTML code for the creative. This is a required field when applicable. This field is ignored if
-        /// htmlCodeLocked is false. Applicable to the following creative types: all CUSTOM, FLASH_INPAGE, and
+        /// htmlCodeLocked is true. Applicable to the following creative types: all CUSTOM, FLASH_INPAGE, and
         /// HTML5_BANNER, and all RICH_MEDIA.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("htmlCode")]
         public virtual string HtmlCode { get; set; } 
@@ -25922,7 +25926,8 @@ namespace Google.Apis.Dfareporting.v2_7.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verificationTagOptOut")]
         public virtual System.Nullable<bool> VerificationTagOptOut { get; set; } 
 
-        /// <summary>Whether this directory site has disabled active view for in-stream video creatives.</summary>
+        /// <summary>Whether this directory site has disabled active view for in-stream video creatives. This is a read-
+        /// only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoActiveViewOptOut")]
         public virtual System.Nullable<bool> VideoActiveViewOptOut { get; set; } 
 
@@ -26415,10 +26420,8 @@ namespace Google.Apis.Dfareporting.v2_7.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagString")]
         public virtual string TagString { get; set; } 
 
-        /// <summary>List of the user-defined variables used by this conversion tag. These map to the "u[1-20]=" in the
-        /// tags. Each of these can have a user defined type. Acceptable values are: - "U1" - "U2" - "U3" - "U4" - "U5"
-        /// - "U6" - "U7" - "U8" - "U9" - "U10" - "U11" - "U12" - "U13" - "U14" - "U15" - "U16" - "U17" - "U18" - "U19"
-        /// - "U20"</summary>
+        /// <summary>List of the user-defined variables used by this conversion tag. These map to the "u[1-100]=" in the
+        /// tags. Each of these can have a user defined type. Acceptable values are U1 to U100, inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedVariableTypes")]
         public virtual System.Collections.Generic.IList<string> UserDefinedVariableTypes { get; set; } 
 
@@ -27874,7 +27877,10 @@ namespace Google.Apis.Dfareporting.v2_7.Data
         public virtual VideoSettings VideoSettings { get; set; } 
 
         /// <summary>VPAID adapter setting for this placement. Controls which VPAID format the measurement adapter will
-        /// use for in-stream video creatives assigned to this placement.</summary>
+        /// use for in-stream video creatives assigned to this placement.
+        ///
+        /// Note: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided:
+        /// FLASH, BOTH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpaidAdapterChoice")]
         public virtual string VpaidAdapterChoice { get; set; } 
 
@@ -29385,8 +29391,10 @@ namespace Google.Apis.Dfareporting.v2_7.Data
         /// to populate the placements.vpaidAdapterChoice field, when no value is specified for the new placement.
         /// Controls which VPAID format the measurement adapter will use for in-stream video creatives assigned to the
         /// placement. The publisher's specifications will typically determine this setting. For VPAID creatives, the
-        /// adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter, and Flash VPAID
-        /// creatives use the Flash adapter).</summary>
+        /// adapter format will match the VPAID format (HTML5 VPAID creatives use the HTML5 adapter).
+        ///
+        /// Note: Flash is no longer supported. This field now defaults to HTML5 when the following values are provided:
+        /// FLASH, BOTH.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpaidAdapterChoiceTemplate")]
         public virtual string VpaidAdapterChoiceTemplate { get; set; } 
 
