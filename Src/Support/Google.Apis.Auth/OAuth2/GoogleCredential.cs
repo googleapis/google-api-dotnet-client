@@ -15,9 +15,11 @@ limitations under the License.
 */
 
 using Google.Apis.Http;
+using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -45,6 +47,16 @@ namespace Google.Apis.Auth.OAuth2
         internal GoogleCredential(ICredential credential)
         {
             this.credential = credential;
+        }
+
+        private static GoogleCredential Scoped(GoogleCredential credential, IEnumerable<string> scopes)
+        {
+            scopes = scopes.ThrowIfNull(nameof(scopes)).ToList();
+            if (scopes.Any(scope => scope == null))
+            {
+                throw new ArgumentNullException(nameof(scopes), "Scope string cannot be null.");
+            }
+            return credential.IsCreateScopedRequired && scopes.Any() ? credential.CreateScoped(scopes) : credential;
         }
 
         /// <summary>
@@ -83,10 +95,13 @@ namespace Google.Apis.Auth.OAuth2
         /// </list>
         /// </summary>
         /// <returns>A task which completes with the application default credentials.</returns>
-        public static Task<GoogleCredential> GetApplicationDefaultAsync()
-        {
-            return defaultCredentialProvider.GetDefaultCredentialAsync();
-        }
+        public static async Task<GoogleCredential> GetApplicationDefaultAsync(IEnumerable<string> scopes) =>
+            Scoped(await defaultCredentialProvider.GetDefaultCredentialAsync(), scopes);
+
+        public static Task<GoogleCredential> GetApplicationDefaultAsync() => GetApplicationDefaultAsync(Enumerable.Empty<string>());
+
+        public static Task<GoogleCredential> GetApplicationDefaultAsync(string scope1, params string[] scopes) =>
+            GetApplicationDefaultAsync(new[] { scope1.ThrowIfNull(nameof(scope1)) }.Concat(scopes.ThrowIfNull(nameof(scopes))));
 
         /// <summary>
         /// <para>Synchronously returns the Application Default Credentials which are ambient credentials that identify and authorize
@@ -95,7 +110,14 @@ namespace Google.Apis.Auth.OAuth2
         /// It is highly preferable to call <see cref="GetApplicationDefaultAsync"/> where possible.</para>
         /// </summary>
         /// <returns>The application default credentials.</returns>
-        public static GoogleCredential GetApplicationDefault() => Task.Run(() => GetApplicationDefaultAsync()).Result;
+        public static GoogleCredential GetApplicationDefault(IEnumerable<string> scopes) =>
+            Task.Run(() => GetApplicationDefaultAsync(scopes)).Result;
+
+        public static GoogleCredential GetApplicationDefault() =>
+            Task.Run(() => GetApplicationDefaultAsync()).Result;
+
+        public static GoogleCredential GetApplicationDefault(string scope1, params string[] scopes) =>
+            Task.Run(() => GetApplicationDefaultAsync(scope1, scopes)).Result;
 
         /// <summary>
         /// Loads credential from stream containing JSON credential data.
@@ -104,10 +126,26 @@ namespace Google.Apis.Auth.OAuth2
         /// Console or a stored user credential using the format supported by the Cloud SDK.
         /// </para>
         /// </summary>
-        public static GoogleCredential FromStream(Stream stream)
+        public static GoogleCredential FromStream(Stream stream, IEnumerable<string> scopes) =>
+            Scoped(defaultCredentialProvider.CreateDefaultCredentialFromStream(stream), scopes);
+
+        public static GoogleCredential FromStream(Stream stream) => FromStream(stream, Enumerable.Empty<string>());
+
+        public static GoogleCredential FromStream(Stream stream, string scope1, params string[] scopes) =>
+            FromStream(stream, new[] { scope1.ThrowIfNull(nameof(scope1)) }.Concat(scopes.ThrowIfNull(nameof(scopes))));
+
+        public static GoogleCredential FromFile(string path, IEnumerable<string> scopes)
         {
-            return defaultCredentialProvider.CreateDefaultCredentialFromStream(stream);
+            using (var f = File.OpenRead(path))
+            {
+                return FromStream(f, scopes);
+            }
         }
+
+        public static GoogleCredential FromFile(string path) => FromFile(path, Enumerable.Empty<string>());
+
+        public static GoogleCredential FromFile(string path, string scope1, params string[] scopes) =>
+            FromFile(path, new[] { scope1.ThrowIfNull(nameof(scope1)) }.Concat(scopes.ThrowIfNull(nameof(scopes))));
 
         /// <summary>
         /// Loads credential from a string containing JSON credential data.
@@ -116,10 +154,15 @@ namespace Google.Apis.Auth.OAuth2
         /// Console or a stored user credential using the format supported by the Cloud SDK.
         /// </para>
         /// </summary>
-        public static GoogleCredential FromJson(string json)
+        public static GoogleCredential FromJson(string json, IEnumerable<string> scopes)
         {
-            return defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
+            return Scoped(defaultCredentialProvider.CreateDefaultCredentialFromJson(json), scopes);
         }
+
+        public static GoogleCredential FromJson(string json) => FromJson(json, Enumerable.Empty<string>());
+
+        public static GoogleCredential FromJson(string json, string scope1, params string[] scopes) =>
+            FromJson(json, new[] { scope1.ThrowIfNull(nameof(scope1)) }.Concat(scopes.ThrowIfNull(nameof(scopes))));
 
         /// <summary>
         /// Create a <see cref="GoogleCredential"/> directly from the provided access token.
