@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170815 (957)
+ *      <tr><th>API Rev<td>20170822 (964)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1587,7 +1587,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
 
-        /// <summary>Max findings limit for the given info type.</summary>
+        /// <summary>Max findings limit for the given infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxFindings")]
         public virtual System.Nullable<int> MaxFindings { get; set; } 
 
@@ -1843,7 +1843,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>Additional configuration for inspect long running operations.</summary>
     public class GooglePrivacyDlpV2beta1OperationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Max number of findings per file, Datastore entity or database row.</summary>
+        /// <summary>Max number of findings per file, Datastore entity, or database row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxItemFindings")]
         public virtual System.Nullable<long> MaxItemFindings { get; set; } 
 

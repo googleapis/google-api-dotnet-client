@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170813 (955)
+ *      <tr><th>API Rev<td>20170819 (961)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -459,7 +459,7 @@ namespace Google.Apis.ServiceControl.v1
         /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of server
         /// errors, the client can rely on the cached results for longer time.
         ///
-        /// NOTE: the `CheckRequest` has the size limit of 64KB.
+        /// NOTE: the CheckRequest has the size limit of 64KB.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -467,7 +467,8 @@ namespace Google.Apis.ServiceControl.v1
         /// <param name="serviceName">The service name as specified in its service configuration. For example,
         /// `"pubsub.googleapis.com"`.
         ///
-        /// See google.api.Service for the definition of a service name.</param>
+        /// See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
+        /// for the definition of a service name.</param>
         public virtual CheckRequest Check(Google.Apis.ServiceControl.v1.Data.CheckRequest body, string serviceName)
         {
             return new CheckRequest(service, body, serviceName);
@@ -479,7 +480,7 @@ namespace Google.Apis.ServiceControl.v1
         /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of server
         /// errors, the client can rely on the cached results for longer time.
         ///
-        /// NOTE: the `CheckRequest` has the size limit of 64KB.
+        /// NOTE: the CheckRequest has the size limit of 64KB.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -498,7 +499,8 @@ namespace Google.Apis.ServiceControl.v1
             /// <summary>The service name as specified in its service configuration. For example,
             /// `"pubsub.googleapis.com"`.
             ///
-            /// See google.api.Service for the definition of a service name.</summary>
+            /// See [google.api.Service](https://cloud.google.com/service-
+            /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -724,7 +726,7 @@ namespace Google.Apis.ServiceControl.v1
         /// aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the
         /// aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons.
         ///
-        /// NOTE: the `ReportRequest` has the size limit of 1MB.
+        /// NOTE: the ReportRequest has the size limit of 1MB.
         ///
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -732,7 +734,8 @@ namespace Google.Apis.ServiceControl.v1
         /// <param name="serviceName">The service name as specified in its service configuration. For example,
         /// `"pubsub.googleapis.com"`.
         ///
-        /// See google.api.Service for the definition of a service name.</param>
+        /// See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service)
+        /// for the definition of a service name.</param>
         public virtual ReportRequest Report(Google.Apis.ServiceControl.v1.Data.ReportRequest body, string serviceName)
         {
             return new ReportRequest(service, body, serviceName);
@@ -745,7 +748,7 @@ namespace Google.Apis.ServiceControl.v1
         /// aggregation to 5 seconds is to reduce data loss during client crashes. Clients should carefully choose the
         /// aggregation time window to avoid data loss risk more than 0.01% for business and compliance reasons.
         ///
-        /// NOTE: the `ReportRequest` has the size limit of 1MB.
+        /// NOTE: the ReportRequest has the size limit of 1MB.
         ///
         /// This method requires the `servicemanagement.services.report` permission on the specified service. For more
         /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
@@ -764,7 +767,8 @@ namespace Google.Apis.ServiceControl.v1
             /// <summary>The service name as specified in its service configuration. For example,
             /// `"pubsub.googleapis.com"`.
             ///
-            /// See google.api.Service for the definition of a service name.</summary>
+            /// See [google.api.Service](https://cloud.google.com/service-
+            /// management/reference/rpc/google.api#google.api.Service) for the definition of a service name.</summary>
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
@@ -1373,8 +1377,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The log entry payload, represented as a protocol buffer that is expressed as a JSON object. You can
-        /// only pass `protoPayload` values that belong to a set of approved types.</summary>
+        /// <summary>The log entry payload, represented as a protocol buffer that is expressed as a JSON object. The
+        /// only accepted type currently is AuditLog.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protoPayload")]
         public virtual System.Collections.Generic.IDictionary<string,object> ProtoPayload { get; set; } 
 
@@ -1554,6 +1558,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// This can be in one of the following formats: - “projects/” - “folders/” - “organizations/”</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; } 
+
+        /// <summary>DO NOT USE. This field is not ready for use yet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainers")]
+        public virtual System.Collections.Generic.IList<string> ResourceContainers { get; set; } 
 
         /// <summary>Required. Start time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -1741,14 +1749,14 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents the processing error of one `Operation` in the request.</summary>
+    /// <summary>Represents the processing error of one Operation in the request.</summary>
     public class ReportError : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Operation.operation_id value from the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>Details of the error when processing the `Operation`.</summary>
+        /// <summary>Details of the error when processing the Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
 

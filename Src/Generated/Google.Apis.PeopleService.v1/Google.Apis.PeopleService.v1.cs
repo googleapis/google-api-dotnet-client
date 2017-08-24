@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170821 (963)
+ *      <tr><th>API Rev<td>20170822 (964)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -777,11 +777,6 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
-            /// the sync token was created will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SyncToken { get; set; }
-
             /// <summary>The next_page_token value returned from a previous call to
             /// [ListContactGroups](/people/api/rest/v1/contactgroups/list). Requests the next page of
             /// resources.</summary>
@@ -791,6 +786,11 @@ namespace Google.Apis.PeopleService.v1
             /// <summary>The maximum number of resources to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A sync token, returned by a previous call to `contactgroups.list`. Only resources changed since
+            /// the sync token was created will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SyncToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -817,15 +817,6 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "syncToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "syncToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -838,6 +829,15 @@ namespace Google.Apis.PeopleService.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "syncToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "syncToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -985,6 +985,23 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ResourceName { get; private set; }
 
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
+
+                /// <summary>The order in which the connections should be sorted. Defaults to
+                /// `LAST_MODIFIED_ASCENDING`.</summary>
+                public enum SortOrderEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
+                    LASTMODIFIEDASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
+                    FIRSTNAMEASCENDING,
+                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
+                    LASTNAMEASCENDING,
+                }
+
                 /// <summary>Whether the response should include a sync token, which can be used to get all changes
                 /// since the last request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestSyncToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1019,23 +1036,6 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object PersonFields { get; set; }
 
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-                /// <summary>The order in which the connections should be sorted. Defaults to
-                /// `LAST_MODIFIED_ASCENDING`.</summary>
-                public enum SortOrderEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("LAST_MODIFIED_ASCENDING")]
-                    LASTMODIFIEDASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("FIRST_NAME_ASCENDING")]
-                    FIRSTNAMEASCENDING,
-                    [Google.Apis.Util.StringValueAttribute("LAST_NAME_ASCENDING")]
-                    LASTNAMEASCENDING,
-                }
-
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1068,6 +1068,15 @@ namespace Google.Apis.PeopleService.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^people/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "sortOrder", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "sortOrder",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "requestSyncToken", new Google.Apis.Discovery.Parameter
@@ -1118,15 +1127,6 @@ namespace Google.Apis.PeopleService.v1
                         "personFields", new Google.Apis.Discovery.Parameter
                         {
                             Name = "personFields",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "sortOrder", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "sortOrder",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2445,7 +2445,7 @@ namespace Google.Apis.PeopleService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relations")]
         public virtual System.Collections.Generic.IList<Relation> Relations { get; set; } 
 
-        /// <summary>The person's read-only relationship interests.</summary>
+        /// <summary>The person's read-only relationship interests.g4</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relationshipInterests")]
         public virtual System.Collections.Generic.IList<RelationshipInterest> RelationshipInterests { get; set; } 
 
