@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>YouTube Reporting API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170822 (964)
+ *      <tr><th>API Rev<td>20170823 (965)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>
  *              https://developers.google.com/youtube/reporting/v1/reports/</a>
@@ -514,16 +514,6 @@ namespace Google.Apis.YouTubeReporting.v1
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
-                /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user
-                /// is acting for himself (his own channel).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OnBehalfOfContentOwner { get; set; }
-
-                /// <summary>If set, only reports whose start time is smaller than the specified date/time are
-                /// returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTimeBefore", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTimeBefore { get; set; }
-
                 /// <summary>If set, only reports created after the specified date/time are returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("createdAfter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object CreatedAfter { get; set; }
@@ -543,6 +533,16 @@ namespace Google.Apis.YouTubeReporting.v1
                 /// server will pick an appropriate default.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user
+                /// is acting for himself (his own channel).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OnBehalfOfContentOwner { get; set; }
+
+                /// <summary>If set, only reports whose start time is smaller than the specified date/time are
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTimeBefore", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTimeBefore { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -578,24 +578,6 @@ namespace Google.Apis.YouTubeReporting.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "onBehalfOfContentOwner",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startTimeBefore", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startTimeBefore",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "createdAfter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "createdAfter",
@@ -626,6 +608,24 @@ namespace Google.Apis.YouTubeReporting.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "onBehalfOfContentOwner",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "startTimeBefore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTimeBefore",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -868,11 +868,6 @@ namespace Google.Apis.YouTubeReporting.v1
             }
 
 
-            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
-            /// acting for himself (his own channel).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OnBehalfOfContentOwner { get; set; }
-
             /// <summary>If set to true, also system-managed jobs will be returned; otherwise only user-created jobs
             /// will be returned. System-managed jobs can neither be modified nor deleted.</summary>
             [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
@@ -888,6 +883,11 @@ namespace Google.Apis.YouTubeReporting.v1
             /// pick an appropriate default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
+            /// acting for himself (his own channel).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -914,15 +914,6 @@ namespace Google.Apis.YouTubeReporting.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "includeSystemManaged", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeSystemManaged",
@@ -944,6 +935,15 @@ namespace Google.Apis.YouTubeReporting.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "onBehalfOfContentOwner",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

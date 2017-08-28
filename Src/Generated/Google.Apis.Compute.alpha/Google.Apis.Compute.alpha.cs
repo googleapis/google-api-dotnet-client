@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170821 (963)
+ *      <tr><th>API Rev<td>20170816 (958)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -3500,7 +3500,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -3928,7 +3928,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -4012,7 +4012,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -5305,7 +5305,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -5516,7 +5516,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -7870,7 +7870,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -9688,7 +9688,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -10505,7 +10505,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -11585,7 +11585,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -13650,7 +13650,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -14381,7 +14381,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -14943,7 +14943,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -15282,7 +15282,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -15452,7 +15452,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -20030,7 +20030,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -25289,7 +25289,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -25560,7 +25560,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -25986,7 +25986,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -26070,7 +26070,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -26434,7 +26434,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -26758,7 +26758,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -26842,7 +26842,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -29592,7 +29592,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -39786,7 +39786,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -40401,7 +40401,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -40680,7 +40680,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -40908,7 +40908,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -41078,7 +41078,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -41591,7 +41591,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -43503,7 +43503,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -44335,7 +44335,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -47358,7 +47358,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -48083,7 +48083,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -49546,7 +49546,7 @@ namespace Google.Apis.Compute.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -52807,19 +52807,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// When the load balancing scheme is INTERNAL, this field is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableCDN")]
         public virtual System.Nullable<bool> EnableCDN { get; set; } 
-
-        /// <summary>The value of the field must be in [0, 1]. If set, 'backends[].failover' must be set. They together
-        /// define the fallback behavior of the primary backend: if the ratio of the healthy VMs in the primary backend
-        /// is at or below this number, traffic arriving at the load-balanced IP will be directed to the failover
-        /// backend.
-        ///
-        /// In case where 'failoverRatio' is not set or all the VMs in the backup backend are unhealthy, the traffic
-        /// will be directed back to the primary backend in the "force" mode, where traffic will be spread to the
-        /// healthy VMs with the best effort, or to all VMs when no VM is healthy.
-        ///
-        /// This field is only used with l4 load balancing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("failoverRatio")]
-        public virtual System.Nullable<float> FailoverRatio { get; set; } 
 
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a BackendService. An up-to-date fingerprint
@@ -61197,7 +61184,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>Serive resources (a.k.a service projects) attached to this project as their shared VPC
+        /// <summary>Service resources (a.k.a service projects) attached to this project as their shared VPC
         /// host.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<XpnResourceId> Resources { get; set; } 

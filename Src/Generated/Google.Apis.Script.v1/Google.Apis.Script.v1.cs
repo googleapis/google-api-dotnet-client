@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script Execution API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170818 (960)
+ *      <tr><th>API Rev<td>20170823 (965)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -578,12 +578,6 @@ namespace Google.Apis.Script.v1.Data
         /// <summary>This field is not used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>This field is only used with asynchronous executions and contains a unique identifier that can be
-        /// used to subsequently invoke a `get` `cancel` or `join` on the asynchronous script execution identified by
-        /// this name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
 
         /// <summary>If the script function returns successfully, this field will contain an `ExecutionResponse` object
         /// with the function's return value as the object's `result` field.</summary>

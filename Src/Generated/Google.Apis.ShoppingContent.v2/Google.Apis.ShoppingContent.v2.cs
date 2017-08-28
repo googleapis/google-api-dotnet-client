@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170803 (945)
+ *      <tr><th>API Rev<td>20170822 (964)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -421,8 +421,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>Flag to remove any existing claim on the requested website by another account and replace it
-            /// with a claim from this account.</summary>
+            /// <summary>Only available to selected merchants. When set to True, this flag removes any existing claim on
+            /// the requested website by another account and replaces it with a claim from this account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("overwrite", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Overwrite { get; set; }
 
@@ -585,6 +585,12 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
+            /// <summary>Flag to delete sub-accounts with products. The default value of false will become active on
+            /// September 28, 2017.</summary>
+            /// [default: true]
+            [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Force { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -634,6 +640,15 @@ namespace Google.Apis.ShoppingContent.v2
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "force", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "force",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "true",
                         Pattern = null,
                     });
             }

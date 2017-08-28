@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170722 (933)
+ *      <tr><th>API Rev<td>20170824 (966)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -680,13 +680,18 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <summary>Updates the metadata of a Photo, such as pose, place association, connections, etc. Changing the
         /// pixels of a photo is not supported.
         ///
+        /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
+        /// to all fields.
+        ///
+        /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
+        ///
         /// This method returns the following error codes:
         ///
         /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
         /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the requested
         /// photo does not exist.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="id">Required. A base64 encoded identifier.</param>
+        /// <param name="id">Required. A unique identifier for a photo.</param>
         public virtual UpdateRequest Update(Google.Apis.StreetViewPublish.v1.Data.Photo body, string id)
         {
             return new UpdateRequest(service, body, id);
@@ -694,6 +699,11 @@ namespace Google.Apis.StreetViewPublish.v1
 
         /// <summary>Updates the metadata of a Photo, such as pose, place association, connections, etc. Changing the
         /// pixels of a photo is not supported.
+        ///
+        /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
+        /// to all fields.
+        ///
+        /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
         ///
         /// This method returns the following error codes:
         ///
@@ -712,7 +722,7 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
-            /// <summary>Required. A base64 encoded identifier.</summary>
+            /// <summary>Required. A unique identifier for a photo.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Id { get; private set; }
 
@@ -722,13 +732,12 @@ namespace Google.Apis.StreetViewPublish.v1
             ///
             /// The following fields are valid:
             ///
-            /// * `pose.heading` * `pose.latlngpair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
+            /// * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
             /// `connections` * `places`
             ///
             /// Note: Repeated fields in updateMask mean the entire set of repeated values will be replaced with the new
-            /// contents. For example, if updateMask contains `connections` and
-            /// google.streetview.publish.v1.UpdatePhotoRequest.photo.connections is empty, all connections will be
-            /// removed.</summary>
+            /// contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections`
+            /// is empty, all connections will be removed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
 
@@ -963,7 +972,13 @@ namespace Google.Apis.StreetViewPublish.v1
         /// Note that if BatchUpdatePhotos fails, either critical fields are missing or there was an authentication
         /// error. Even if BatchUpdatePhotos succeeds, there may have been failures for single photos in the batch.
         /// These failures will be specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See
-        /// UpdatePhoto for specific failures that can occur per photo.</summary>
+        /// UpdatePhoto for specific failures that can occur per photo.
+        ///
+        /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
+        /// to all fields.
+        ///
+        /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will
+        /// fail.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual BatchUpdateRequest BatchUpdate(Google.Apis.StreetViewPublish.v1.Data.BatchUpdatePhotosRequest body)
         {
@@ -976,7 +991,13 @@ namespace Google.Apis.StreetViewPublish.v1
         /// Note that if BatchUpdatePhotos fails, either critical fields are missing or there was an authentication
         /// error. Even if BatchUpdatePhotos succeeds, there may have been failures for single photos in the batch.
         /// These failures will be specified in each PhotoResponse.status in BatchUpdatePhotosResponse.results. See
-        /// UpdatePhoto for specific failures that can occur per photo.</summary>
+        /// UpdatePhoto for specific failures that can occur per photo.
+        ///
+        /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
+        /// to all fields.
+        ///
+        /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will
+        /// fail.</summary>
         public class BatchUpdateRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.BatchUpdatePhotosResponse>
         {
             /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -1039,10 +1060,6 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
-            /// <summary>The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1069,6 +1086,10 @@ namespace Google.Apis.StreetViewPublish.v1
                 INCLUDEDOWNLOADURL,
             }
 
+            /// <summary>The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1094,15 +1115,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1124,6 +1136,15 @@ namespace Google.Apis.StreetViewPublish.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1342,7 +1363,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>Identifier for a Photo.</summary>
     public class PhotoId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. A base64 encoded identifier.</summary>
+        /// <summary>Required. A unique identifier for a photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -1484,9 +1505,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>Request to update the metadata of a Photo. Updating the pixels of a photo is not supported.</summary>
     public class UpdatePhotoRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Photo object containing the new metadata. Only the fields specified in updateMask field
-        /// are used. If `updateMask` is not present, the update applies to all fields. Note: To update Pose.altitude,
-        /// Pose.latLngPair has to be filled as well. Otherwise, the request will fail.</summary>
+        /// <summary>Required. Photo object containing the new metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photo")]
         public virtual Photo Photo { get; set; } 
 
@@ -1496,13 +1515,12 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         ///
         /// The following fields are valid:
         ///
-        /// * `pose.heading` * `pose.latlngpair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
+        /// * `pose.heading` * `pose.latLngPair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` *
         /// `connections` * `places`
         ///
         /// Note: Repeated fields in updateMask mean the entire set of repeated values will be replaced with the new
-        /// contents. For example, if updateMask contains `connections` and
-        /// google.streetview.publish.v1.UpdatePhotoRequest.photo.connections is empty, all connections will be
-        /// removed.</summary>
+        /// contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is
+        /// empty, all connections will be removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; } 
 
