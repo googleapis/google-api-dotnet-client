@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170816 (958)
+ *      <tr><th>API Rev<td>20170824 (966)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -994,7 +994,9 @@ namespace Google.Apis.Slides.v1.Data
         ///
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
         /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
-        /// format.</summary>
+        /// format.
+        ///
+        /// The provided URL can be at maximum 2K bytes large.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -2022,7 +2024,7 @@ namespace Google.Apis.Slides.v1.Data
     {
         /// <summary>The background fill property state.
         ///
-        /// Updating the the fill on a page will implicitly update this field to `RENDERED`, unless another value is
+        /// Updating the fill on a page will implicitly update this field to `RENDERED`, unless another value is
         /// specified in the same request. To have no fill on a page, set this field to `NOT_RENDERED`. In this case,
         /// any other fill fields set in the same request will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
@@ -2084,7 +2086,13 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
-        /// <summary>The transform of the page element.</summary>
+        /// <summary>The transform of the page element.
+        ///
+        /// The visual appearance of the page element is determined by its absolute transform. To compute the absolute
+        /// transform, preconcatenate a page element's transform with the transforms of all of its parent groups. If the
+        /// page element is not in a group, its absolute transform is the same as the value in this field.
+        ///
+        /// The initial transform for the newly created Group is always the identity transform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transform")]
         public virtual AffineTransform Transform { get; set; } 
 
@@ -2372,7 +2380,9 @@ namespace Google.Apis.Slides.v1.Data
         ///
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
         /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
-        /// format.</summary>
+        /// format.
+        ///
+        /// The provided URL can be at maximum 2K bytes large.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; } 
 
@@ -2924,7 +2934,9 @@ namespace Google.Apis.Slides.v1.Data
         ///
         /// The picture is fetched once at insertion time and a copy is stored for display inside the presentation.
         /// Pictures must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or
-        /// GIF format.</summary>
+        /// GIF format.
+        ///
+        /// The provided URL can be at maximum 2K bytes large.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentUrl")]
         public virtual string ContentUrl { get; set; } 
 
@@ -3386,7 +3398,10 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Updates the transform of a page element.</summary>
+    /// <summary>Updates the transform of a page element.
+    ///
+    /// Updating the transform of a group will change the absolute transform of the page elements in that group, which
+    /// can change their visual appearance. See the documentation for PageElement.transform for more details.</summary>
     public class UpdatePageElementTransformRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The apply mode of the transform update.</summary>

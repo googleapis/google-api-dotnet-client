@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage/transfer'>Google Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170810 (952)
+ *      <tr><th>API Rev<td>20170824 (966)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage/transfer'>
  *              https://cloud.google.com/storage/transfer</a>
@@ -604,6 +604,10 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
+            /// <summary>The list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -615,10 +619,6 @@ namespace Google.Apis.Storagetransfer.v1
             /// insensitive: `ENABLED`, `DISABLED`, and `DELETED`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -645,6 +645,15 @@ namespace Google.Apis.Storagetransfer.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -657,15 +666,6 @@ namespace Google.Apis.Storagetransfer.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -983,6 +983,10 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -994,10 +998,6 @@ namespace Google.Apis.Storagetransfer.v1
             /// notation. `job_names`, `operation_names`, and `transfer_statuses` are optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1033,6 +1033,15 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = @"^transferOperations$",
                     });
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1045,15 +1054,6 @@ namespace Google.Apis.Storagetransfer.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1345,8 +1345,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
     ///
     /// * MD5 - The base64-encoded MD5 hash of the object.
     ///
-    /// For an example of a valid TSV file, see [Transferring data from
-    /// URLs](https://cloud.google.com/storage/transfer/#urls)
+    /// For an example of a valid TSV file, see [Transferring data from URLs](https://cloud.google.com/storage/transfer
+    /// /create-url-list).
     ///
     /// When transferring data based on a URL list, keep the following in mind:
     ///
@@ -1466,7 +1466,7 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 

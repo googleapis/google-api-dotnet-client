@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170819 (961)
+ *      <tr><th>API Rev<td>20170825 (967)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -1649,6 +1649,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The number of models to retrieve per "page" of results. If there are more
                 /// remaining results than this number, the response message will contain a valid value in the
                 /// `next_page_token` field.
@@ -1656,12 +1662,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1697,18 +1697,18 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2125,6 +2125,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2132,10 +2136,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2171,6 +2171,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2183,15 +2192,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3238,109 +3238,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A condition to be met.</summary>
-    public class GoogleIamV1Condition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Trusted attributes supplied by the IAM system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iam")]
-        public virtual string Iam { get; set; } 
-
-        /// <summary>An operator to apply the subject with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; } 
-
-        /// <summary>Trusted attributes discharged by the service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("svc")]
-        public virtual string Svc { get; set; } 
-
-        /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
-        /// control.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sys")]
-        public virtual string Sys { get; set; } 
-
-        /// <summary>DEPRECATED. Use 'values' instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The objects of the condition. This is mutually exclusive with 'value'.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Specifies what kind of log the caller must write</summary>
-    public class GoogleIamV1LogConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud audit options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
-        public virtual GoogleIamV1LogConfigCloudAuditOptions CloudAudit { get; set; } 
-
-        /// <summary>Counter options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("counter")]
-        public virtual GoogleIamV1LogConfigCounterOptions Counter { get; set; } 
-
-        /// <summary>Data access options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
-        public virtual GoogleIamV1LogConfigDataAccessOptions DataAccess { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Write a Cloud Audit log</summary>
-    public class GoogleIamV1LogConfigCloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Increment a streamz counter with the specified metric and field names.
-    ///
-    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
-    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
-    ///
-    /// Field names correspond to IAM request parameters and field values are their respective values.
-    ///
-    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
-    /// (empty string), resulting in one aggretated counter with no field.
-    ///
-    /// Examples: counter { metric: "/debug_access_count"  field: "iam_principal" } ==> increment counter
-    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
-    ///
-    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
-    /// decrementing the counter * incrementing it by anything other than 1</summary>
-    public class GoogleIamV1LogConfigCounterOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The field value to attribute.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
-
-        /// <summary>The metric to update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Write a Data Access (Gin) log</summary>
-    public class GoogleIamV1LogConfigDataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
-        /// the LocalIAM implementation, for now.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
-        public virtual string LogMode { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
@@ -3381,58 +3278,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
         public virtual System.Nullable<bool> IamOwned { get; set; } 
 
-        /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
-        /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
-        /// be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule
-        /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
-        /// Otherwise, if no rule applies, permission is denied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1Rule> Rules { get; set; } 
-
         /// <summary>Version of the `Policy`. The default version is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
-    }    
-
-    /// <summary>A rule to be applied in a Policy.</summary>
-    public class GoogleIamV1Rule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
-
-        /// <summary>Additional restrictions that must be met</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1Condition> Conditions { get; set; } 
-
-        /// <summary>Human-readable description of the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
-        /// in at least one of these entries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("in")]
-        public virtual System.Collections.Generic.IList<string> In__ { get; set; } 
-
-        /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
-        /// action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
-        public virtual System.Collections.Generic.IList<GoogleIamV1LogConfig> LogConfig { get; set; } 
-
-        /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
-        /// is in none of the entries. The format for in and not_in entries is the same as for members in a Binding (see
-        /// google/iam/v1/policy.proto).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notIn")]
-        public virtual System.Collections.Generic.IList<string> NotIn { get; set; } 
-
-        /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
-        /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
@@ -3496,7 +3345,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class GoogleLongrunningOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 

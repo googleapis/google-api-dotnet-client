@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170815 (957)
+ *      <tr><th>API Rev<td>20170823 (965)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -587,17 +587,6 @@ namespace Google.Apis.CloudTrace.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Opional. Return only traces that match this [trace filter](/trace/docs/trace-filters).
-                /// Example:
-                ///
-                /// "label:/http/url root:/_ah/background my_label:17"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>Optional. Do not return traces whose start time is later than this time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object EndTime { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method.  `page_token` must be the value of `next_page_token` from the previous response.  The
                 /// values of other method parameters should be identical to those in the previous call.</summary>
@@ -625,6 +614,17 @@ namespace Google.Apis.CloudTrace.v2
                 /// desc"`).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Opional. Return only traces that match this [trace filter](/trace/docs/trace-filters).
+                /// Example:
+                ///
+                /// "label:/http/url root:/_ah/background my_label:17"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Optional. Do not return traces whose start time is later than this time.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object EndTime { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -660,24 +660,6 @@ namespace Google.Apis.CloudTrace.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "endTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "endTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -708,6 +690,24 @@ namespace Google.Apis.CloudTrace.v2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
