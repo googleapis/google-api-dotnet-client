@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results firstparty API</a>
  *      <tr><th>API Version<td>v1beta3firstparty
- *      <tr><th>API Rev<td>20170828 (970)
+ *      <tr><th>API Rev<td>20170829 (971)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -327,6 +327,127 @@ namespace Google.Apis.ToolResults.v1beta3firstparty
 
                     }
 
+
+                    /// <summary>Retrieves a single screenshot cluster by its ID</summary>
+                    /// <param name="projectId">A Project id.
+                    ///
+                    /// Required.</param>
+                    /// <param name="historyId">A History id.
+                    ///
+                    /// Required.</param>
+                    /// <param name="executionId">An Execution id.
+                    ///
+                    /// Required.</param>
+                    /// <param name="clusterId">A Cluster id
+                    ///
+                    /// Required.</param>
+                    public virtual GetRequest Get(string projectId, string historyId, string executionId, string clusterId)
+                    {
+                        return new GetRequest(service, projectId, historyId, executionId, clusterId);
+                    }
+
+                    /// <summary>Retrieves a single screenshot cluster by its ID</summary>
+                    public class GetRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3firstparty.Data.ScreenshotCluster>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectId, string historyId, string executionId, string clusterId)
+                            : base(service)
+                        {
+                            ProjectId = projectId;
+                            HistoryId = historyId;
+                            ExecutionId = executionId;
+                            ClusterId = clusterId;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>A Project id.
+                        ///
+                        /// Required.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectId { get; private set; }
+
+                        /// <summary>A History id.
+                        ///
+                        /// Required.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("historyId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string HistoryId { get; private set; }
+
+                        /// <summary>An Execution id.
+                        ///
+                        /// Required.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("executionId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ExecutionId { get; private set; }
+
+                        /// <summary>A Cluster id
+                        ///
+                        /// Required.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ClusterId { get; private set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "get"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}"; }
+                        }
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "historyId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "historyId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "executionId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "executionId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "clusterId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "clusterId",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
 
                     /// <summary>Lists Screenshot Clusters
                     ///

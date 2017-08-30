@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170821 (963)
+ *      <tr><th>API Rev<td>20170828 (970)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -409,11 +409,432 @@ namespace Google.Apis.Logging.v2
         public BillingAccountsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            exclusions = new ExclusionsResource(service);
             logs = new LogsResource(service);
             sinks = new SinksResource(service);
 
         }
 
+        private readonly ExclusionsResource exclusions;
+
+        /// <summary>Gets the Exclusions resource.</summary>
+        public virtual ExclusionsResource Exclusions
+        {
+            get { return exclusions; }
+        }
+
+        /// <summary>The "exclusions" collection of methods.</summary>
+        public class ExclusionsResource
+        {
+            private const string Resource = "exclusions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ExclusionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new exclusion in a specified parent resource. Only log entries belonging to that
+            /// resource can be excluded. You can have up to 10 exclusions in a resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects
+            /// /my-logging-project", "organizations/123456789".</param>
+            public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new exclusion in a specified parent resource. Only log entries belonging to that
+            /// resource can be excluded. You can have up to 10 exclusions in a resource.</summary>
+            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// Examples: "projects/my-logging-project", "organizations/123456789".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/exclusions"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes an exclusion.</summary>
+            /// <param name="name">Required. The resource name of an existing exclusion to delete:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an exclusion.</summary>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of an existing exclusion to delete:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets the description of an exclusion.</summary>
+            /// <param name="name">Required. The resource name of an existing exclusion:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the description of an exclusion.</summary>
+            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of an existing exclusion:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <param name="parent">Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/exclusions"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name of the exclusion to update:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the exclusion to update:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
+                /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields
+                /// not mentioned in update_mask are not changed and are ignored in the request.For example, to change
+                /// the filter and description of an exclusion, specify an update_mask of
+                /// "filter,description".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^billingAccounts/[^/]+/exclusions/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly LogsResource logs;
 
         /// <summary>Gets the Logs resource.</summary>
@@ -536,17 +957,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
-                /// other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
                 /// are ignored. The presence of nextPageToken in the response indicates that more results might be
                 /// available.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -582,18 +1003,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1218,14 +1639,18 @@ namespace Google.Apis.Logging.v2
 
         }
 
-        /// <summary>Writes log entries to Stackdriver Logging.</summary>
+        /// <summary>Log entry resourcesWrites log entries to Stackdriver Logging. This API method is the only way to
+        /// send log entries to Stackdriver Logging. This method is used, directly or indirectly, by the Stackdriver
+        /// Logging agent (fluentd) and all logging libraries configured to use Stackdriver Logging.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual WriteRequest Write(Google.Apis.Logging.v2.Data.WriteLogEntriesRequest body)
         {
             return new WriteRequest(service, body);
         }
 
-        /// <summary>Writes log entries to Stackdriver Logging.</summary>
+        /// <summary>Log entry resourcesWrites log entries to Stackdriver Logging. This API method is the only way to
+        /// send log entries to Stackdriver Logging. This method is used, directly or indirectly, by the Stackdriver
+        /// Logging agent (fluentd) and all logging libraries configured to use Stackdriver Logging.</summary>
         public class WriteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.WriteLogEntriesResponse>
         {
             /// <summary>Constructs a new Write request.</summary>
@@ -1284,11 +1709,432 @@ namespace Google.Apis.Logging.v2
         public FoldersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            exclusions = new ExclusionsResource(service);
             logs = new LogsResource(service);
             sinks = new SinksResource(service);
 
         }
 
+        private readonly ExclusionsResource exclusions;
+
+        /// <summary>Gets the Exclusions resource.</summary>
+        public virtual ExclusionsResource Exclusions
+        {
+            get { return exclusions; }
+        }
+
+        /// <summary>The "exclusions" collection of methods.</summary>
+        public class ExclusionsResource
+        {
+            private const string Resource = "exclusions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ExclusionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new exclusion in a specified parent resource. Only log entries belonging to that
+            /// resource can be excluded. You can have up to 10 exclusions in a resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects
+            /// /my-logging-project", "organizations/123456789".</param>
+            public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new exclusion in a specified parent resource. Only log entries belonging to that
+            /// resource can be excluded. You can have up to 10 exclusions in a resource.</summary>
+            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// Examples: "projects/my-logging-project", "organizations/123456789".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/exclusions"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes an exclusion.</summary>
+            /// <param name="name">Required. The resource name of an existing exclusion to delete:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an exclusion.</summary>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of an existing exclusion to delete:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets the description of an exclusion.</summary>
+            /// <param name="name">Required. The resource name of an existing exclusion:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the description of an exclusion.</summary>
+            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of an existing exclusion:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <param name="parent">Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/exclusions"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name of the exclusion to update:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the exclusion to update:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
+                /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields
+                /// not mentioned in update_mask are not changed and are ignored in the request.For example, to change
+                /// the filter and description of an exclusion, specify an update_mask of
+                /// "filter,description".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^folders/[^/]+/exclusions/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly LogsResource logs;
 
         /// <summary>Gets the Logs resource.</summary>
@@ -2126,11 +2972,432 @@ namespace Google.Apis.Logging.v2
         public OrganizationsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            exclusions = new ExclusionsResource(service);
             logs = new LogsResource(service);
             sinks = new SinksResource(service);
 
         }
 
+        private readonly ExclusionsResource exclusions;
+
+        /// <summary>Gets the Exclusions resource.</summary>
+        public virtual ExclusionsResource Exclusions
+        {
+            get { return exclusions; }
+        }
+
+        /// <summary>The "exclusions" collection of methods.</summary>
+        public class ExclusionsResource
+        {
+            private const string Resource = "exclusions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ExclusionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new exclusion in a specified parent resource. Only log entries belonging to that
+            /// resource can be excluded. You can have up to 10 exclusions in a resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects
+            /// /my-logging-project", "organizations/123456789".</param>
+            public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new exclusion in a specified parent resource. Only log entries belonging to that
+            /// resource can be excluded. You can have up to 10 exclusions in a resource.</summary>
+            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// Examples: "projects/my-logging-project", "organizations/123456789".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/exclusions"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes an exclusion.</summary>
+            /// <param name="name">Required. The resource name of an existing exclusion to delete:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an exclusion.</summary>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of an existing exclusion to delete:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets the description of an exclusion.</summary>
+            /// <param name="name">Required. The resource name of an existing exclusion:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the description of an exclusion.</summary>
+            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of an existing exclusion:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <param name="parent">Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/exclusions"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name of the exclusion to update:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the exclusion to update:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
+                /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields
+                /// not mentioned in update_mask are not changed and are ignored in the request.For example, to change
+                /// the filter and description of an exclusion, specify an update_mask of
+                /// "filter,description".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/exclusions/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly LogsResource logs;
 
         /// <summary>Gets the Logs resource.</summary>
@@ -2876,12 +4143,433 @@ namespace Google.Apis.Logging.v2
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            exclusions = new ExclusionsResource(service);
             logs = new LogsResource(service);
             metrics = new MetricsResource(service);
             sinks = new SinksResource(service);
 
         }
 
+        private readonly ExclusionsResource exclusions;
+
+        /// <summary>Gets the Exclusions resource.</summary>
+        public virtual ExclusionsResource Exclusions
+        {
+            get { return exclusions; }
+        }
+
+        /// <summary>The "exclusions" collection of methods.</summary>
+        public class ExclusionsResource
+        {
+            private const string Resource = "exclusions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ExclusionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new exclusion in a specified parent resource. Only log entries belonging to that
+            /// resource can be excluded. You can have up to 10 exclusions in a resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" Examples: "projects
+            /// /my-logging-project", "organizations/123456789".</param>
+            public virtual CreateRequest Create(Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new exclusion in a specified parent resource. Only log entries belonging to that
+            /// resource can be excluded. You can have up to 10 exclusions in a resource.</summary>
+            public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The parent resource in which to create the exclusion: "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// Examples: "projects/my-logging-project", "organizations/123456789".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/exclusions"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes an exclusion.</summary>
+            /// <param name="name">Required. The resource name of an existing exclusion to delete:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an exclusion.</summary>
+            public class DeleteRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of an existing exclusion to delete:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets the description of an exclusion.</summary>
+            /// <param name="name">Required. The resource name of an existing exclusion:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the description of an exclusion.</summary>
+            public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of an existing exclusion:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            /// <param name="parent">Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
+            /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]" </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all the exclusions in a parent resource.</summary>
+            public class ListRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.ListExclusionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The parent resource whose exclusions are to be listed. "projects/[PROJECT_ID]"
+                /// "organizations/[ORGANIZATION_ID]" "billingAccounts/[BILLING_ACCOUNT_ID]" "folders/[FOLDER_ID]"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
+                /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
+                /// other method parameters should be identical to those in the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+parent}/exclusions"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required. The resource name of the exclusion to update:
+            /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]" "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+            /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]" "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]"
+            /// Example: "projects/my-project-id/exclusions/my-exclusion-id".</param>
+            public virtual PatchRequest Patch(Google.Apis.Logging.v2.Data.LogExclusion body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Changes one or more properties of an existing exclusion.</summary>
+            public class PatchRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogExclusion>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Logging.v2.Data.LogExclusion body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The resource name of the exclusion to update:
+                /// "projects/[PROJECT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "organizations/[ORGANIZATION_ID]/exclusions/[EXCLUSION_ID]"
+                /// "billingAccounts/[BILLING_ACCOUNT_ID]/exclusions/[EXCLUSION_ID]"
+                /// "folders/[FOLDER_ID]/exclusions/[EXCLUSION_ID]" Example: "projects/my-project-id/exclusions/my-
+                /// exclusion-id".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. A nonempty list of fields to change in the existing exclusion. New values for the
+                /// fields are taken from the corresponding fields in the LogExclusion included in this request. Fields
+                /// not mentioned in update_mask are not changed and are ignored in the request.For example, to change
+                /// the filter and description of an exclusion, specify an update_mask of
+                /// "filter,description".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Logging.v2.Data.LogExclusion Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/exclusions/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly LogsResource logs;
 
         /// <summary>Gets the Logs resource.</summary>
@@ -3004,17 +4692,17 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3050,18 +4738,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4000,12 +5688,76 @@ namespace Google.Apis.Logging.v2
 namespace Google.Apis.Logging.v2.Data
 {    
 
+    /// <summary>BucketOptions describes the bucket boundaries used to create a histogram for the distribution. The
+    /// buckets can be in a linear sequence, an exponential sequence, or each bucket can be specified explicitly.
+    /// BucketOptions does not include the number of values in each bucket.A bucket has an inclusive lower bound and
+    /// exclusive upper bound for the values that are counted for that bucket. The upper bound of a bucket must be
+    /// strictly greater than the lower bound. The sequence of N buckets for a distribution consists of an underflow
+    /// bucket (number 0), zero or more finite buckets (number 1 through N - 2) and an overflow bucket (number N - 1).
+    /// The buckets are contiguous: the lower bound of bucket i (i > 0) is the same as the upper bound of bucket i - 1.
+    /// The buckets span the whole range of finite values: lower bound of the underflow bucket is -infinity and the
+    /// upper bound of the overflow bucket is +infinity. The finite buckets are so-called because both bounds are
+    /// finite.</summary>
+    public class BucketOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The explicit buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explicitBuckets")]
+        public virtual Explicit ExplicitBuckets { get; set; } 
+
+        /// <summary>The exponential buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exponentialBuckets")]
+        public virtual Exponential ExponentialBuckets { get; set; } 
+
+        /// <summary>The linear bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linearBuckets")]
+        public virtual Linear LinearBuckets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
     /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty
     /// JSON object {}.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies a set of buckets with arbitrary widths.There are size(bounds) + 1 (= N) buckets. Bucket i has
+    /// the following boundaries:Upper bound (0 <= i < N-1): boundsi  Lower bound (1 <= i < N); boundsi - 1The bounds
+    /// field must contain at least one element. If bounds has only one element, then there are no finite buckets, and
+    /// that single element is the common boundary of the overflow and underflow buckets.</summary>
+    public class Explicit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The values must be monotonically increasing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bounds")]
+        public virtual System.Collections.Generic.IList<System.Nullable<double>> Bounds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies an exponential sequence of buckets that have a width that is proportional to the value of the
+    /// lower bound. Each bucket represents a constant relative uncertainty on a specific value in the bucket.There are
+    /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): scale *
+    /// (growth_factor ^ i).  Lower bound (1 <= i < N): scale * (growth_factor ^ (i - 1)).</summary>
+    public class Exponential : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("growthFactor")]
+        public virtual System.Nullable<double> GrowthFactor { get; set; } 
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; } 
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<double> Scale { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4101,6 +5853,44 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>The type of data that can be assigned to the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
+    /// Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are
+    /// num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 <= i < N-1): offset +
+    /// (width * i).  Lower bound (1 <= i < N): offset + (width * (i - 1)).</summary>
+    public class Linear : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numFiniteBuckets")]
+        public virtual System.Nullable<int> NumFiniteBuckets { get; set; } 
+
+        /// <summary>Lower bound of the first bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<double> Offset { get; set; } 
+
+        /// <summary>Must be greater than 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<double> Width { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Result returned from ListExclusions.</summary>
+    public class ListExclusionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of exclusions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclusions")]
+        public virtual System.Collections.Generic.IList<LogExclusion> Exclusions { get; set; } 
+
+        /// <summary>If there might be more results than appear in this response, then nextPageToken is included. To get
+        /// the next set of results, call the same method again using the value of nextPageToken as pageToken.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4250,8 +6040,9 @@ namespace Google.Apis.Logging.v2.Data
 
         /// <summary>Optional. A unique identifier for the log entry. If you provide a value, then Stackdriver Logging
         /// considers other log entries in the same project, with the same timestamp, and with the same insert_id to be
-        /// duplicates which can be removed. If omitted in new log entries, then Stackdriver Logging will insert its own
-        /// unique identifier. The insert_id is used to order log entries that have the same timestamp value.</summary>
+        /// duplicates which can be removed. If omitted in new log entries, then Stackdriver Logging assigns its own
+        /// unique identifier. The insert_id is also used to order log entries that have the same timestamp
+        /// value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertId")]
         public virtual string InsertId { get; set; } 
 
@@ -4308,10 +6099,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textPayload")]
         public virtual string TextPayload { get; set; } 
 
-        /// <summary>Optional. The time the event described by the log entry occurred. If omitted in a new log entry,
-        /// Stackdriver Logging will insert the time the log entry is received. Stackdriver Logging might reject log
-        /// entries whose time stamps are more than a couple of hours in the future. Log entries with time stamps in the
-        /// past are accepted.</summary>
+        /// <summary>Optional. The time the event described by the log entry occurred. This time is used to compute the
+        /// log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then
+        /// Stackdriver Logging assigns it the current time.Incoming log entries should have timestamps that are no more
+        /// than the logs retention period in the past, and no more than 24 hours in the future. See the entries.write
+        /// API method for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
 
@@ -4375,6 +6167,37 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Specifies a set of log entries that are not to be stored in Stackdriver Logging. If your project
+    /// receives a large volume of logs, you might be able to use exclusions to reduce your chargeable logs. Exclusions
+    /// are processed after log sinks, so you can export log entries before they are excluded. Audit log entries and log
+    /// entries from Amazon Web Services are never excluded.</summary>
+    public class LogExclusion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. A description of this exclusion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Optional. If set to True, then this exclusion is disabled and it does not exclude any log entries.
+        /// You can use exclusions.patch to change the value of this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
+        /// <summary>Required. An advanced logs filter that matches the log entries to be excluded. By using the sample
+        /// function, you can exclude less than 100% of the matching log entries. For example, the following filter
+        /// matches 99% of low-severity log entries from load balancers: "resource.type=http_load_balancer
+        /// severity</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>Required. A client-assigned identifier, such as "load-balancer-exclusion". Identifiers are limited
+        /// to 100 characters and can include only letters, digits, underscores, hyphens, and periods.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Application log line emitted while processing a request.</summary>
     public class LogLine : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4399,9 +6222,16 @@ namespace Google.Apis.Logging.v2.Data
     }    
 
     /// <summary>Describes a logs-based metric. The value of the metric is the number of log entries that match a logs
-    /// filter in a given time interval.</summary>
+    /// filter in a given time interval.Logs-based metric can also be used to extract values from logs and create a a
+    /// distribution of the values. The distribution records the statistics of the extracted values along with an
+    /// optional histogram of the values as specified by the bucket options.</summary>
     public class LogMetric : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value
+        /// type and it describes the bucket boundaries used to create a histogram of the extracted values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
+        public virtual BucketOptions BucketOptions { get; set; } 
+
         /// <summary>Optional. A description of this metric, which is used in documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -4410,6 +6240,30 @@ namespace Google.Apis.Logging.v2.Data
         /// "resource.type=gae_app AND severity>=ERROR" The maximum length of the filter is 20000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
+
+        /// <summary>Optional. A map from a label key string to an extractor expression which is used to extract data
+        /// from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must
+        /// have an associated extractor expression in this map. The syntax of the extractor expression is the same as
+        /// for the value_extractor field.The extracted value is converted to the type defined in the label descriptor.
+        /// If the either the extraction or the type conversion fails, the label will have a default value. The default
+        /// value for a string label is an empty string, for an integer label its 0, and for a boolean label its
+        /// false.Note that there are upper bounds on the maximum number of labels and the number of active time series
+        /// that are allowed in a project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelExtractors")]
+        public virtual System.Collections.Generic.IDictionary<string,string> LabelExtractors { get; set; } 
+
+        /// <summary>Optional. The metric descriptor associated with the logs-based metric. If unspecified, it uses a
+        /// default metric descriptor with a DELTA metric kind, INT64 value type, with no labels and a unit of "1". Such
+        /// a metric counts the number of log entries matching the filter expression.The name, type, and description
+        /// fields in the metric_descriptor are output only, and is constructed using the name and description field in
+        /// the LogMetric.To create a logs-based metric that records a distribution of log values, a DELTA metric kind
+        /// with a DISTRIBUTION value type must be used along with a value_extractor expression in the LogMetric.Each
+        /// label in the metric descriptor must have a matching label name as the key and an extractor expression as the
+        /// value in the label_extractors map.The metric_kind and value_type fields in the metric_descriptor cannot be
+        /// updated once initially configured. New labels can be added in the metric_descriptor, but existing labels
+        /// cannot be modified except for their description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricDescriptor")]
+        public virtual MetricDescriptor MetricDescriptor { get; set; } 
 
         /// <summary>Required. The client-assigned metric identifier. Examples: "error_count", "nginx/requests".Metric
         /// identifiers are limited to 100 characters and can include only the following characters: A-Z, a-z, 0-9, and
@@ -4420,6 +6274,19 @@ namespace Google.Apis.Logging.v2.Data
         /// "projects/my-project/metrics/nginx%2Frequests".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Optional. A value_extractor is required when using a distribution logs-based metric to extract the
+        /// values to record from a log entry. Two functions are supported for value extraction: EXTRACT(field) or
+        /// REGEXP_EXTRACT(field, regex). The argument are:  1. field: The name of the log entry field from which the
+        /// value is to be  extracted.  2. regex: A regular expression using the Google RE2 syntax
+        /// (https://github.com/google/re2/wiki/Syntax) with a single capture  group to extract data from the specified
+        /// log entry field. The value  of the field is converted to a string before applying the regex.  It is an error
+        /// to specify a regex that does not include exactly one  capture group.The result of the extraction must be
+        /// convertible to a double type, as the distribution always records double values. If either the extraction or
+        /// the conversion to double fails, then those values are not recorded in the distribution.Example:
+        /// REGEXP_EXTRACT(jsonPayload.request, ".*quantity=(\d+).*")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueExtractor")]
+        public virtual string ValueExtractor { get; set; } 
 
         /// <summary>Deprecated. The API version that created or updated this metric. The v2 format is used by default
         /// and cannot be changed.</summary>
@@ -4494,6 +6361,74 @@ namespace Google.Apis.Logging.v2.Data
         /// to the identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("writerIdentity")]
         public virtual string WriterIdentity { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
+    /// stops data collection and makes the metric type's existing data unusable.</summary>
+    public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A detailed description of the metric, which can be used in documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>A concise name for the metric, which can be displayed in user interfaces. Use sentence case without
+        /// an ending period, for example "Request count".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The set of labels that can be used to describe a specific instance of this metric type. For
+        /// example, the appengine.googleapis.com/http/server/response_latencies metric type has a label for the HTTP
+        /// response code, response_code, so you can look at latencies for successful responses or just for responses
+        /// that failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+
+        /// <summary>Whether the metric records instantaneous values, changes to a value, etc. Some combinations of
+        /// metric_kind and value_type might not be supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
+        public virtual string MetricKind { get; set; } 
+
+        /// <summary>The resource name of the metric descriptor. Depending on the implementation, the name typically
+        /// includes: (1) the parent resource name that defines the scope of the metric type or of its data; and (2) the
+        /// metric's URL-encoded type, which also appears in the type field of this descriptor. For example, following
+        /// is the resource name of a custom metric within the GCP project my-project-id: "projects/my-project-
+        /// id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount" </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The metric type, including its DNS name prefix. The type is not URL-encoded. All user-defined
+        /// custom metric types have the DNS name custom.googleapis.com. Metric types should use a natural hierarchical
+        /// grouping. For example: "custom.googleapis.com/invoice/paid/amount"
+        /// "appengine.googleapis.com/http/server/response_latencies" </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The unit in which the metric value is reported. It is only applicable if the value_type is INT64,
+        /// DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure
+        /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second min minute h hour
+        /// d dayPrefixes (PREFIX) k kilo (10**3) M mega (10**6) G giga (10**9) T tera (10**12) P peta (10**15) E exa
+        /// (10**18) Z zetta (10**21) Y yotta (10**24) m milli (10**-3) u micro (10**-6) n nano (10**-9) p pico
+        /// (10**-12) f femto (10**-15) a atto (10**-18) z zepto (10**-21) y yocto (10**-24) Ki kibi (2**10) Mi mebi
+        /// (2**20) Gi gibi (2**30) Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/s.The
+        /// grammar also includes these connectors: / division (as an infix operator, e.g. 1/s). . multiplication (as an
+        /// infix operator, e.g. GBy.d)The grammar for a unit is as follows: Expression = Component { "." Component } {
+        /// "/" Component } ;
+        ///
+        /// Component = [ PREFIX ] UNIT [ Annotation ] | Annotation | "1" ;
+        ///
+        /// Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT and is  equivalent to 1
+        /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of
+        /// non-blank printable ASCII characters not  containing '{' or '}'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; } 
+
+        /// <summary>Whether the measurement is an integer, a floating-point number, etc. Some combinations of
+        /// metric_kind and value_type might not be supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
+        public virtual string ValueType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4753,13 +6688,17 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>The parameters to WriteLogEntries.</summary>
     public class WriteLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The log entries to write. Values supplied for the fields log_name, resource, and labels
-        /// in this entries.write request are inserted into those log entries in this list that do not provide their own
-        /// values.Stackdriver Logging also creates and inserts values for timestamp and insert_id if the entries do not
-        /// provide them. The created insert_id for the N'th entry in this list will be greater than earlier entries and
-        /// less than later entries. Otherwise, the order of log entries in this list does not matter.To improve
-        /// throughput and to avoid exceeding the quota limit for calls to entries.write, you should write multiple log
-        /// entries at once rather than calling this method for each individual log entry.</summary>
+        /// <summary>Required. The log entries to send to Stackdriver Logging. The order of log entries in this list
+        /// does not matter. Values supplied in this method's log_name, resource, and labels fields are copied into
+        /// those log entries in this list that do not include values for their corresponding fields. For more
+        /// information, see the LogEntry type.If the timestamp or insert_id fields are missing in log entries, then
+        /// this method supplies the current time or a unique identifier, respectively. The supplied values are chosen
+        /// so that, among the log entries that did not supply their own values, the entries earlier in the list will
+        /// sort before the entries later in the list. See entries.list.Log entries with timestamps that are more than
+        /// the logs retention period in the past or more than 24 hours in the future might be discarded. Discarding
+        /// does not return an error.To improve throughput and to avoid exceeding the quota limit for calls to
+        /// entries.write, you should try to include several log entries in this list, rather than calling this method
+        /// for each individual log entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IList<LogEntry> Entries { get; set; } 
 
