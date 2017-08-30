@@ -20,7 +20,7 @@ install:
 # Perform the build.
 build_script:
   - dotnet --info
-  - BuildSupport.sh
+  - bash BuildSupport.sh
 
 # Perform the tests. Release build on all supported frameworks.
 test_script:
