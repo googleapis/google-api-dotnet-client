@@ -42,10 +42,7 @@ namespace Google.Apis.Auth.OAuth2
         protected readonly ICredential credential;
 
         /// <summary>Creates a new <c>GoogleCredential</c>.</summary>
-        internal GoogleCredential(ICredential credential)
-        {
-            this.credential = credential;
-        }
+        internal GoogleCredential(ICredential credential) => this.credential = credential;
 
         /// <summary>
         /// <para>Returns the Application Default Credentials which are ambient credentials that identify and authorize
@@ -83,10 +80,7 @@ namespace Google.Apis.Auth.OAuth2
         /// </list>
         /// </summary>
         /// <returns>A task which completes with the application default credentials.</returns>
-        public static Task<GoogleCredential> GetApplicationDefaultAsync()
-        {
-            return defaultCredentialProvider.GetDefaultCredentialAsync();
-        }
+        public static Task<GoogleCredential> GetApplicationDefaultAsync() => defaultCredentialProvider.GetDefaultCredentialAsync();
 
         /// <summary>
         /// <para>Synchronously returns the Application Default Credentials which are ambient credentials that identify and authorize
@@ -104,9 +98,23 @@ namespace Google.Apis.Auth.OAuth2
         /// Console or a stored user credential using the format supported by the Cloud SDK.
         /// </para>
         /// </summary>
-        public static GoogleCredential FromStream(Stream stream)
+        public static GoogleCredential FromStream(Stream stream) => defaultCredentialProvider.CreateDefaultCredentialFromStream(stream);
+
+        /// <summary>
+        /// Loads credential from the specified file containing JSON credential data.
+        /// <para>
+        /// The file can contain a Service Account key file in JSON format from the Google Developers
+        /// Console or a stored user credential using the format supported by the Cloud SDK.
+        /// </para>
+        /// </summary>
+        /// <param name="path">The path to the credential file.</param>
+        /// <returns>The loaded credentials.</returns>
+        public static GoogleCredential FromFile(string path)
         {
-            return defaultCredentialProvider.CreateDefaultCredentialFromStream(stream);
+            using (var f = File.OpenRead(path))
+            {
+                return FromStream(f);
+            }
         }
 
         /// <summary>
@@ -116,10 +124,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Console or a stored user credential using the format supported by the Cloud SDK.
         /// </para>
         /// </summary>
-        public static GoogleCredential FromJson(string json)
-        {
-            return defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
-        }
+        public static GoogleCredential FromJson(string json) => defaultCredentialProvider.CreateDefaultCredentialFromJson(json);
 
         /// <summary>
         /// Create a <see cref="GoogleCredential"/> directly from the provided access token.
@@ -199,19 +204,13 @@ namespace Google.Apis.Auth.OAuth2
         /// </item>
         /// </list>
         /// </summary>
-        public virtual bool IsCreateScopedRequired
-        {
-            get { return false; }
-        }
+        public virtual bool IsCreateScopedRequired => false;
 
         /// <summary>
         /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
         /// instance.
         /// </summary>
-        public virtual GoogleCredential CreateScoped(IEnumerable<string> scopes)
-        {
-            return this;
-        }
+        public virtual GoogleCredential CreateScoped(IEnumerable<string> scopes) => this;
 
         /// <summary>
         /// If the credential supports setting the user, creates a copy with the specified user.
@@ -227,10 +226,7 @@ namespace Google.Apis.Auth.OAuth2
         /// If the credential supports scopes, creates a copy with the specified scopes. Otherwise, it returns the same
         /// instance.
         /// </summary>
-        public GoogleCredential CreateScoped(params string[] scopes)
-        {
-            return CreateScoped((IEnumerable<string>) scopes);
-        }
+        public GoogleCredential CreateScoped(params string[] scopes) => CreateScoped((IEnumerable<string>)scopes);
 
         void IConfigurableHttpClientInitializer.Initialize(ConfigurableHttpClient httpClient)
         {
@@ -263,10 +259,7 @@ namespace Google.Apis.Auth.OAuth2
             public ServiceAccountGoogleCredential(ServiceAccountCredential credential)
                 : base(credential) { }
 
-            public override bool IsCreateScopedRequired
-            {
-                get { return !(credential as ServiceAccountCredential).HasScopes; }
-            }
+            public override bool IsCreateScopedRequired => !(credential as ServiceAccountCredential).HasScopes;
 
             public override GoogleCredential CreateScoped(IEnumerable<string> scopes)
             {
