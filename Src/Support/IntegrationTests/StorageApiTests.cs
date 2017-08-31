@@ -106,8 +106,8 @@ namespace IntegrationTests
                 bucket.Labels = new Dictionary<string, string> { ["label"] = "1" };
                 var req1 = client.Buckets.Patch(bucket, bucket.Name);
                 req1.ETagAction = Google.Apis.ETagAction.IfNoneMatch;
-                var ex = Assert.Throws<GoogleApiException>(() => req1.Execute());
-                Assert.Contains("[Precondition Failed", ex.Message);
+                var ex1 = Assert.Throws<GoogleApiException>(() => req1.Execute());
+                Assert.Contains("[Precondition Failed", ex1.Message);
                 // Check that labels have not been added, and etag is the same
                 var bucket1 = client.Buckets.Get(bucket.Name).Execute();
                 Assert.Empty(bucket1.Labels.EmptyIfNull());
@@ -119,6 +119,11 @@ namespace IntegrationTests
                 // Check that labels have been added, and etag is different
                 Assert.NotEmpty(bucket2.Labels.EmptyIfNull());
                 Assert.NotEqual(bucket.ETag, bucket2.ETag);
+                // Set a label with If-Match header, with an out of date etag. This should not change any labels
+                var req3 = client.Buckets.Patch(bucket, bucket.Name);
+                req3.ETagAction = Google.Apis.ETagAction.IfMatch;
+                var ex3 = Assert.Throws<GoogleApiException>(() => req3.Execute());
+                Assert.Contains("[Precondition Failed", ex3.Message);
             }
             finally
             {
