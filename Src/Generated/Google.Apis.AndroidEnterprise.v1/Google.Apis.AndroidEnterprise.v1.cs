@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170817 (959)
+ *      <tr><th>API Rev<td>20170823 (965)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1680,16 +1680,16 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Sends a test push notification to validate the EMM integration with the Google Cloud Pub/Sub
-        /// service for this enterprise.</summary>
+        /// <summary>Sends a test notification to validate the EMM integration with the Google Cloud Pub/Sub service for
+        /// this enterprise.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SendTestPushNotificationRequest SendTestPushNotification(string enterpriseId)
         {
             return new SendTestPushNotificationRequest(service, enterpriseId);
         }
 
-        /// <summary>Sends a test push notification to validate the EMM integration with the Google Cloud Pub/Sub
-        /// service for this enterprise.</summary>
+        /// <summary>Sends a test notification to validate the EMM integration with the Google Cloud Pub/Sub service for
+        /// this enterprise.</summary>
         public class SendTestPushNotificationRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.EnterprisesSendTestPushNotificationResponse>
         {
             /// <summary>Constructs a new SendTestPushNotification request.</summary>
@@ -8292,6 +8292,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requiresContainerApp")]
         public virtual System.Nullable<bool> RequiresContainerApp { get; set; } 
 
+        /// <summary>The certificate used to sign this product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingCertificate")]
+        public virtual ProductSigningCertificate SigningCertificate { get; set; } 
+
         /// <summary>A link to a smaller image that can be used as an icon for the product. This image is suitable for
         /// use at up to 128px x 128px.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smallIconUrl")]
@@ -8404,6 +8408,21 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// ProductVisibility to enable "alpha" or "beta" tracks per user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productSetBehavior")]
         public virtual string ProductSetBehavior { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProductSigningCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The base64 urlsafe encoded SHA1 hash of the certificate. (This field is deprecated in favor of
+        /// SHA2-256. It should not be used and may be removed at any time.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateHashSha1")]
+        public virtual string CertificateHashSha1 { get; set; } 
+
+        /// <summary>The base64 urlsafe encoded SHA2-256 hash of the certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateHashSha256")]
+        public virtual string CertificateHashSha256 { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

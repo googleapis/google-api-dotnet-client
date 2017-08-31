@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170811 (953)
+ *      <tr><th>API Rev<td>20170825 (967)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -108,13 +108,13 @@ namespace Google.Apis.Drive.v2
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/drive/v2"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/drive/v2"; }
         }
         #endif
 
@@ -3293,10 +3293,10 @@ namespace Google.Apis.Drive.v2
 
             /// <summary>A comma-separated list of sort keys. Valid keys are 'createdDate', 'folder',
             /// 'lastViewedByMeDate', 'modifiedByMeDate', 'modifiedDate', 'quotaBytesUsed', 'recency',
-            /// 'sharedWithMeDate', 'starred', and 'title'. Each key sorts ascending by default, but may be reversed
-            /// with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please note that there
-            /// is a current limitation for users with approximately one million files in which the requested sort order
-            /// is ignored.</summary>
+            /// 'sharedWithMeDate', 'starred', 'title', and 'title_natural'. Each key sorts ascending by default, but
+            /// may be reversed with the 'desc' modifier. Example usage: ?orderBy=folder,modifiedDate desc,title. Please
+            /// note that there is a current limitation for users with approximately one million files in which the
+            /// requested sort order is ignored.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
 
@@ -8989,6 +8989,10 @@ namespace Google.Apis.Drive.v2.Data
         /// folder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parents")]
         public virtual System.Collections.Generic.IList<ParentReference> Parents { get; set; } 
+
+        /// <summary>List of permission IDs for users with access to this file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissionIds")]
+        public virtual System.Collections.Generic.IList<string> PermissionIds { get; set; } 
 
         /// <summary>The list of permissions for users with access to this file. Not populated for Team Drive
         /// files.</summary>

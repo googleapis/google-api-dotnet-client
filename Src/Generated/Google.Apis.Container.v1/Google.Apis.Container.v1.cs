@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170814 (956)
+ *      <tr><th>API Rev<td>20170818 (960)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -3868,20 +3868,31 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Configuration for controlling how IPs are allocated in the cluster.</summary>
     public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>This field is deprecated, use cluster_ipv4_cidr_block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
+        public virtual string ClusterIpv4Cidr { get; set; } 
+
         /// <summary>The IP address range for the cluster pod IPs. If this field is set, then
         /// `cluster.cluster_ipv4_cidr` must be left blank.
         ///
         /// This field is only applicable when `use_ip_aliases` is true.
         ///
-        /// Set to blank to have a range will be chosen with the default size.
+        /// Set to blank to have a range chosen with the default size.
         ///
-        /// Set to /netmask (e.g. `/14`) to have a range be chosen with a specific netmask.
+        /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask.
         ///
         /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
         /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
         /// range to use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
-        public virtual string ClusterIpv4Cidr { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4CidrBlock")]
+        public virtual string ClusterIpv4CidrBlock { get; set; } 
+
+        /// <summary>The name of the secondary range to be used for the cluster CIDR block.  The secondary range will be
+        /// used for pod IP addresses. This must be an existing secondary range associated with the cluster subnetwork.
+        ///
+        /// This field is only applicable with use_ip_aliases is true and create_subnetwork is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterSecondaryRangeName")]
+        public virtual string ClusterSecondaryRangeName { get; set; } 
 
         /// <summary>Whether a new subnetwork will be created automatically for the cluster.
         ///
@@ -3889,34 +3900,50 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createSubnetwork")]
         public virtual System.Nullable<bool> CreateSubnetwork { get; set; } 
 
+        /// <summary>This field is deprecated, use node_ipv4_cidr_block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4Cidr")]
+        public virtual string NodeIpv4Cidr { get; set; } 
+
         /// <summary>The IP address range of the instance IPs in this cluster.
         ///
         /// This is applicable only if `create_subnetwork` is true.
         ///
-        /// Set to blank to have a range will be chosen with the default size.
+        /// Set to blank to have a range chosen with the default size.
         ///
-        /// Set to /netmask (e.g. `/14`) to have a range be chosen with a specific netmask.
+        /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask.
         ///
         /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
         /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
         /// range to use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4Cidr")]
-        public virtual string NodeIpv4Cidr { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeIpv4CidrBlock")]
+        public virtual string NodeIpv4CidrBlock { get; set; } 
+
+        /// <summary>This field is deprecated, use services_ipv4_cidr_block.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4Cidr")]
+        public virtual string ServicesIpv4Cidr { get; set; } 
 
         /// <summary>The IP address range of the services IPs in this cluster. If blank, a range will be automatically
         /// chosen with the default size.
         ///
         /// This field is only applicable when `use_ip_aliases` is true.
         ///
-        /// Set to blank to have a range will be chosen with the default size.
+        /// Set to blank to have a range chosen with the default size.
         ///
-        /// Set to /netmask (e.g. `/14`) to have a range be chosen with a specific netmask.
+        /// Set to /netmask (e.g. `/14`) to have a range chosen with a specific netmask.
         ///
         /// Set to a [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) notation (e.g. `10.96.0.0/14`)
         /// from the RFC-1918 private networks (e.g. `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`) to pick a specific
         /// range to use.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4Cidr")]
-        public virtual string ServicesIpv4Cidr { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("servicesIpv4CidrBlock")]
+        public virtual string ServicesIpv4CidrBlock { get; set; } 
+
+        /// <summary>The name of the secondary range to be used as for the services CIDR block.  The secondary range
+        /// will be used for service ClusterIPs. This must be an existing secondary range associated with the cluster
+        /// subnetwork.
+        ///
+        /// This field is only applicable with use_ip_aliases is true and create_subnetwork is false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servicesSecondaryRangeName")]
+        public virtual string ServicesSecondaryRangeName { get; set; } 
 
         /// <summary>A custom subnetwork name to be used if `create_subnetwork` is true.  If this field is empty, then
         /// an automatic name will be chosen for the new subnetwork.</summary>
@@ -4267,6 +4294,11 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
 
+        /// <summary>[Output only] The time the operation completed, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; } 
+
         /// <summary>The server-assigned ID for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -4278,6 +4310,11 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output only] The time the operation started, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt)
+        /// text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; } 
 
         /// <summary>The current status of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170822 (964)
+ *      <tr><th>API Rev<td>20170830 (972)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5799,6 +5799,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
 
+        /// <summary>Whether the account should be deleted if the account has offers. Only applicable if the method is
+        /// delete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; } 
+
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
         public virtual System.Nullable<ulong> MerchantId { get; set; } 
@@ -8936,6 +8941,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Time spent in various aspects from order to the delivery of the product. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryTime")]
         public virtual DeliveryTime DeliveryTime { get; set; } 
+
+        /// <summary>Minimum order value for this service. If set, indicates that customers will have to spend at least
+        /// this amount. All prices within a service must have the same currency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValue")]
+        public virtual Price MinimumOrderValue { get; set; } 
 
         /// <summary>Free-form name of the service. Must be unique within target account. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

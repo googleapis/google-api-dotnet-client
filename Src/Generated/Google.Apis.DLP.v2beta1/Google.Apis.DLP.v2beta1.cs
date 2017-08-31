@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170822 (964)
+ *      <tr><th>API Rev<td>20170829 (971)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -66,6 +66,7 @@ namespace Google.Apis.DLP.v2beta1
         {
             content = new ContentResource(this);
             inspect = new InspectResource(this);
+            riskAnalysis = new RiskAnalysisResource(this);
             rootCategories = new RootCategoriesResource(this);
         }
 
@@ -131,6 +132,14 @@ namespace Google.Apis.DLP.v2beta1
         public virtual InspectResource Inspect
         {
             get { return inspect; }
+        }
+
+        private readonly RiskAnalysisResource riskAnalysis;
+
+        /// <summary>Gets the RiskAnalysis resource.</summary>
+        public virtual RiskAnalysisResource RiskAnalysis
+        {
+            get { return riskAnalysis; }
         }
 
         private readonly RootCategoriesResource rootCategories;
@@ -794,10 +803,6 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -805,6 +810,10 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -840,15 +849,6 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -861,6 +861,15 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -944,12 +953,6 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood. Examples:
-                    /// info_type=EMAIL_ADDRESS info_type=PHONE_NUMBER,EMAIL_ADDRESS likelihood=VERY_LIKELY
-                    /// likelihood=VERY_LIKELY,LIKELY info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The value returned by the last `ListInspectFindingsResponse`; indicates that this is a
                     /// continuation of a prior `ListInspectFindings` call, and that the system should return the next
                     /// page of data.</summary>
@@ -960,6 +963,12 @@ namespace Google.Apis.DLP.v2beta1
                     /// value.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood. Examples:
+                    /// info_type=EMAIL_ADDRESS info_type=PHONE_NUMBER,EMAIL_ADDRESS likelihood=VERY_LIKELY
+                    /// likelihood=VERY_LIKELY,LIKELY info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -995,15 +1004,6 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1021,9 +1021,351 @@ namespace Google.Apis.DLP.v2beta1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                     }
 
                 }
+            }
+        }
+    }
+
+    /// <summary>The "riskAnalysis" collection of methods.</summary>
+    public class RiskAnalysisResource
+    {
+        private const string Resource = "riskAnalysis";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RiskAnalysisResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            operations = new OperationsResource(service);
+
+        }
+
+        private readonly OperationsResource operations;
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations
+        {
+            get { return operations; }
+        }
+
+        /// <summary>The "operations" collection of methods.</summary>
+        public class OperationsResource
+        {
+            private const string Resource = "operations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OperationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Cancels an operation. Use the get method to check whether the cancellation succeeded or whether
+            /// the operation completed despite cancellation.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The name of the operation resource to be cancelled.</param>
+            public virtual CancelRequest Cancel(Google.Apis.DLP.v2beta1.Data.GoogleLongrunningCancelOperationRequest body, string name)
+            {
+                return new CancelRequest(service, body, name);
+            }
+
+            /// <summary>Cancels an operation. Use the get method to check whether the cancellation succeeded or whether
+            /// the operation completed despite cancellation.</summary>
+            public class CancelRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Cancel request.</summary>
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta1.Data.GoogleLongrunningCancelOperationRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation resource to be cancelled.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DLP.v2beta1.Data.GoogleLongrunningCancelOperationRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "cancel"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}:cancel"; }
+                }
+
+                /// <summary>Initializes Cancel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^riskAnalysis/operations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>This method is not supported and the server returns `UNIMPLEMENTED`.</summary>
+            /// <param name="name">The name of the operation resource to be deleted.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>This method is not supported and the server returns `UNIMPLEMENTED`.</summary>
+            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation resource to be deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^riskAnalysis/operations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            /// <param name="name">The name of the operation resource.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^riskAnalysis/operations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Fetch the list of long running operations.</summary>
+            /// <param name="name">The name of the operation's parent resource.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Fetch the list of long running operations.</summary>
+            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleLongrunningListOperationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation's parent resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta1/{+name}"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^riskAnalysis/operations$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
             }
         }
     }
@@ -1232,7 +1574,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class GoogleLongrunningOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 

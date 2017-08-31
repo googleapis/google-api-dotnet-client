@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud Runtime Configuration API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170829 (971)
+ *      <tr><th>API Rev<td>20170816 (958)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -581,7 +581,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// /runtime-configurator/set-and-get-variables) documentation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The path to the RutimeConfig resource that this variable should belong to. The configuration
-                /// must exist beforehand; the path must be in the format:
+                /// must exist beforehand; the path must by in the format:
                 ///
                 /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`</param>
                 public virtual CreateRequest Create(Google.Apis.CloudRuntimeConfig.v1beta1.Data.Variable body, string parent)
@@ -608,7 +608,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
 
 
                     /// <summary>The path to the RutimeConfig resource that this variable should belong to. The
-                    /// configuration must exist beforehand; the path must be in the format:
+                    /// configuration must exist beforehand; the path must by in the format:
                     ///
                     /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -829,7 +829,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// lists variable names, not the values, unless `return_values` is true, in which case only variables
                 /// that user has IAM permission to GetVariable will be returned.</summary>
                 /// <param name="parent">The path to the RuntimeConfig resource for which you want to list variables. The configuration
-                /// must exist beforehand; the path must be in the format:
+                /// must exist beforehand; the path must by in the format:
                 ///
                 /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`</param>
                 public virtual ListRequest List(string parent)
@@ -852,7 +852,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
 
 
                     /// <summary>The path to the RuntimeConfig resource for which you want to list variables. The
-                    /// configuration must exist beforehand; the path must be in the format:
+                    /// configuration must exist beforehand; the path must by in the format:
                     ///
                     /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1225,7 +1225,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 /// will still exist and must be deleted prior to subsequent creation attempts.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The path to the configuration that will own the waiter. The configuration must exist
-                /// beforehand; the path must be in the format:
+                /// beforehand; the path must by in the format:
                 ///
                 /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudRuntimeConfig.v1beta1.Data.Waiter body, string parent)
@@ -1250,7 +1250,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
 
 
                     /// <summary>The path to the configuration that will own the waiter. The configuration must exist
-                    /// beforehand; the path must be in the format:
+                    /// beforehand; the path must by in the format:
                     ///
                     /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1448,7 +1448,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
 
                 /// <summary>List waiters within the given configuration.</summary>
                 /// <param name="parent">The path to the configuration for which you want to get a list of waiters. The configuration
-                /// must exist beforehand; the path must be in the format:
+                /// must exist beforehand; the path must by in the format:
                 ///
                 /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`</param>
                 public virtual ListRequest List(string parent)
@@ -1469,7 +1469,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
 
 
                     /// <summary>The path to the configuration for which you want to get a list of waiters. The
-                    /// configuration must exist beforehand; the path must be in the format:
+                    /// configuration must exist beforehand; the path must by in the format:
                     ///
                     /// `projects/[PROJECT_ID]/configs/[CONFIG_NAME]`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1927,15 +1927,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous
-                /// list request to get the next page of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Specifies the number of results to return per page. If there are fewer elements than the
                 /// specified number, returns all elements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous
+                /// list request to get the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1971,18 +1971,18 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2364,7 +2364,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
+        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 

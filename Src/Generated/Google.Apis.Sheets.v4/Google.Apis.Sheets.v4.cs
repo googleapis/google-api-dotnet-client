@@ -554,11 +554,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines if the update response should include the values of the cells that were
-                /// appended. By default, responses do not include the updated values.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
-
                 /// <summary>Determines how values in the response should be rendered. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -621,6 +616,11 @@ namespace Google.Apis.Sheets.v4
                     FORMATTEDSTRING,
                 }
 
+                /// <summary>Determines if the update response should include the values of the cells that were
+                /// appended. By default, responses do not include the updated values.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
@@ -670,15 +670,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
@@ -709,6 +700,15 @@ namespace Google.Apis.Sheets.v4
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeValuesInResponse",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1303,6 +1303,23 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                public enum ResponseDateTimeRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
+                    SERIALNUMBER,
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
+                    FORMATTEDSTRING,
+                }
+
                 /// <summary>Determines if the update response should include the values of the cells that were updated.
                 /// By default, responses do not include the updated values. If the range to write was larger than than
                 /// the range actually written, the response will include all values in the requested range (excluding
@@ -1340,23 +1357,6 @@ namespace Google.Apis.Sheets.v4
                     RAW,
                     [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
                     USERENTERED,
-                }
-
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
-
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                public enum ResponseDateTimeRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
                 }
 
 
@@ -1408,6 +1408,15 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "responseDateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "includeValuesInResponse", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeValuesInResponse",
@@ -1429,15 +1438,6 @@ namespace Google.Apis.Sheets.v4
                         "valueInputOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueInputOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseDateTimeRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
