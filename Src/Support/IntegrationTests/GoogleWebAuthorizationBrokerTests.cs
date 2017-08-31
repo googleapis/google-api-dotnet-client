@@ -18,6 +18,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
 using Google.Apis.Util.Store;
+using IntegrationTests.Utils;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

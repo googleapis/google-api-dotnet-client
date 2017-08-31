@@ -18,6 +18,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
+using IntegrationTests.Utils;
 using Xunit;
 
 namespace IntegrationTests
