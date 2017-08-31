@@ -16,6 +16,7 @@ limitations under the License.
 
 using Google.Apis.Util;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.IO;
 using System.Reflection;
@@ -75,6 +76,35 @@ namespace Google.Apis.Json
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) => writer.WriteNull();
     }
 
+    /// <summary>
+    /// A JSON contract resolver to apply <see cref="RFC3339DateTimeConverter"/> and <see cref="ExplicitNullConverter"/> as necessary.
+    /// </summary>
+    /// <remarks>
+    /// Using a contract resolver is recommended in the Json.NET performance tips: https://www.newtonsoft.com/json/help/html/Performance.htm#JsonConverters
+    /// </remarks>
+    public class NewtonsoftJsonContractResolver : DefaultContractResolver
+    {
+        private static readonly JsonConverter DateTimeConverter = new RFC3339DateTimeConverter();
+        private static readonly JsonConverter ExplicitNullConverter = new ExplicitNullConverter();
+
+        /// <inheritdoc />
+        protected override JsonContract CreateContract(Type objectType)
+        {
+            JsonContract contract = base.CreateContract(objectType);
+
+            if (DateTimeConverter.CanConvert(objectType))
+            {
+                contract.Converter = DateTimeConverter;
+            }
+            else if (ExplicitNullConverter.CanConvert(objectType))
+            {
+                contract.Converter = ExplicitNullConverter;
+            }
+
+            return contract;
+        }
+    }
+
     /// <summary>Class for serialization and deserialization of JSON documents using the Newtonsoft Library.</summary>
     public class NewtonsoftJsonSerializer : IJsonSerializer
     {
@@ -113,7 +143,7 @@ namespace Google.Apis.Json
             {
                 NullValueHandling = NullValueHandling.Ignore,
                 MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-                Converters = { new RFC3339DateTimeConverter(), new ExplicitNullConverter() }
+                ContractResolver = new NewtonsoftJsonContractResolver()
             };
 
         /// <inheritdoc/>
