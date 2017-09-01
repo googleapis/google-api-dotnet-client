@@ -19,7 +19,7 @@ using System;
 using System.IO;
 using System.Text;
 
-namespace IntegrationTests
+namespace IntegrationTests.Utils
 {
     internal static class Helper
     {

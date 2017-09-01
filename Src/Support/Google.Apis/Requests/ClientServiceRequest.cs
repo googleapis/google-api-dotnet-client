@@ -260,23 +260,19 @@ namespace Google.Apis.Requests
             {
                 var etag = body.ETag;
                 ETagAction action = ETagAction == ETagAction.Default ? GetDefaultETagAction(HttpMethod) : ETagAction;
-                try
+                // TODO: ETag-related headers are added without validation at the moment, because it is known
+                // that some services are returning unquoted etags (see rfc7232).
+                // Once all services are fixed, change back to the commented-out code that validates the header.
+                switch (action)
                 {
-                    switch (action)
-                    {
-                        case ETagAction.IfMatch:
-                            request.Headers.IfMatch.Add(new EntityTagHeaderValue(etag));
-                            break;
-                        case ETagAction.IfNoneMatch:
-                            request.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(etag));
-                            break;
-                    }
-                }
-                // When ETag is invalid we are going to create a request anyway.
-                // See https://code.google.com/p/google-api-dotnet-client/issues/detail?id=464 for more details.
-                catch (FormatException ex)
-                {
-                    Logger.Error(ex, "Can't set {0}. Etag is: {1}.", action, etag);
+                    case ETagAction.IfMatch:
+                        //request.Headers.IfMatch.Add(new EntityTagHeaderValue(etag));
+                        request.Headers.TryAddWithoutValidation("If-Match", etag);
+                        break;
+                    case ETagAction.IfNoneMatch:
+                        //request.Headers.IfNoneMatch.Add(new EntityTagHeaderValue(etag));
+                        request.Headers.TryAddWithoutValidation("If-None-Match", etag);
+                        break;
                 }
             }
         }

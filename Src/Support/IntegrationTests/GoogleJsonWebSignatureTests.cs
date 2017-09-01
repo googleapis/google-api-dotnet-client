@@ -20,6 +20,7 @@ using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
+using IntegrationTests.Utils;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
