@@ -1,62 +1,30 @@
 {
-  "ownerName": "Google",
   "resources": {
     "videos": {
       "methods": {
         "annotate": {
-          "flatPath": "v1beta1/videos:annotate",
-          "path": "v1beta1/videos:annotate",
-          "id": "videointelligence.videos.annotate",
-          "description": "Performs asynchronous video annotation. Progress and results can be\nretrieved through the `google.longrunning.Operations` interface.\n`Operation.metadata` contains `AnnotateVideoProgress` (progress).\n`Operation.response` contains `AnnotateVideoResponse` (results).",
-          "request": {
-            "$ref": "GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest"
-          },
-          "httpMethod": "POST",
-          "parameterOrder": [],
           "response": {
             "$ref": "GoogleLongrunning_Operation"
           },
-          "parameters": {},
+          "parameterOrder": [],
+          "httpMethod": "POST",
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
-          ]
+          ],
+          "parameters": {},
+          "flatPath": "v1beta1/videos:annotate",
+          "id": "videointelligence.videos.annotate",
+          "path": "v1beta1/videos:annotate",
+          "request": {
+            "$ref": "GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest"
+          },
+          "description": "Performs asynchronous video annotation. Progress and results can be\nretrieved through the `google.longrunning.Operations` interface.\n`Operation.metadata` contains `AnnotateVideoProgress` (progress).\n`Operation.response` contains `AnnotateVideoResponse` (results)."
         }
       }
     }
   },
   "parameters": {
-    "fields": {
-      "type": "string",
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response."
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "$.xgafv": {
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ]
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
     "alt": {
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -67,22 +35,25 @@
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
-      ]
-    },
-    "key": {
-      "type": "string",
+      ],
       "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
+      "description": "Data format for response.",
+      "default": "json"
     },
     "access_token": {
+      "description": "OAuth access token.",
       "type": "string",
+      "location": "query"
+    },
+    "key": {
       "location": "query",
-      "description": "OAuth access token."
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
     },
     "quotaUser": {
-      "location": "query",
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "pp": {
       "location": "query",
@@ -91,44 +62,209 @@
       "type": "boolean"
     },
     "bearer_token": {
-      "location": "query",
       "description": "OAuth bearer token.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
       "type": "string",
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user."
+      "location": "query"
     },
     "upload_protocol": {
-      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
-      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "default": "true",
-      "type": "boolean"
+      "type": "boolean",
+      "location": "query"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string",
+      "location": "query"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query"
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
     }
   },
   "version": "v1beta1",
   "baseUrl": "https://videointelligence.googleapis.com/",
-  "servicePath": "",
-  "description": "Google Cloud Video Intelligence API.",
   "kind": "discovery#restDescription",
+  "description": "Google Cloud Video Intelligence API.",
+  "servicePath": "",
   "basePath": "",
-  "revision": "20170807",
-  "documentationLink": "https://cloud.google.com/video-intelligence/docs/",
   "id": "videointelligence:v1beta1",
+  "documentationLink": "https://cloud.google.com/video-intelligence/docs/",
+  "revision": "20170807",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest": {
+      "properties": {
+        "inputUri": {
+          "description": "Input video location. Currently, only\n[Google Cloud Storage](https://cloud.google.com/storage/) URIs are\nsupported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris).\nA video URI may include wildcards in `object-id`, and thus identify\nmultiple videos. Supported wildcards: '*' to match 0 or more characters;\n'?' to match 1 character. If unset, the input video should be embedded\nin the request as `input_content`. If set, `input_content` should be unset.",
+          "type": "string"
+        },
+        "inputContent": {
+          "description": "The video data bytes. Encoding: base64. If unset, the input video(s)\nshould be specified via `input_uri`. If set, `input_uri` should be unset.",
+          "type": "string"
+        },
+        "outputUri": {
+          "description": "Optional location where the output (in JSON format) should be stored.\nCurrently, only [Google Cloud Storage](https://cloud.google.com/storage/)\nURIs are supported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris).",
+          "type": "string"
+        },
+        "features": {
+          "description": "Requested video annotation features.",
+          "items": {
+            "enum": [
+              "FEATURE_UNSPECIFIED",
+              "LABEL_DETECTION",
+              "SHOT_CHANGE_DETECTION",
+              "SAFE_SEARCH_DETECTION"
+            ],
+            "type": "string"
+          },
+          "type": "array",
+          "enumDescriptions": [
+            "Unspecified.",
+            "Label detection. Detect objects, such as dog or flower.",
+            "Shot change detection.",
+            "Safe search detection."
+          ]
+        },
+        "videoContext": {
+          "description": "Additional video context and/or feature-specific parameters.",
+          "$ref": "GoogleCloudVideointelligenceV1beta1_VideoContext"
+        },
+        "locationId": {
+          "description": "Optional cloud region where annotation should take place. Supported cloud\nregions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region\nis specified, a region will be determined based on video file location.",
+          "type": "string"
+        }
+      },
+      "id": "GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest",
+      "description": "Video annotation request.",
+      "type": "object"
+    },
+    "GoogleCloudVideointelligenceV1beta1_LabelLocation": {
+      "description": "Label location.",
+      "type": "object",
+      "properties": {
+        "confidence": {
+          "format": "float",
+          "description": "Confidence that the label is accurate. Range: [0, 1].",
+          "type": "number"
+        },
+        "segment": {
+          "description": "Video segment. Set to [-1, -1] for video-level labels.\nSet to [timestamp, timestamp] for frame-level labels.\nOtherwise, corresponds to one of `AnnotateSpec.segments`\n(if specified) or to shot boundaries (if requested).",
+          "$ref": "GoogleCloudVideointelligenceV1beta1_VideoSegment"
+        },
+        "level": {
+          "enumDescriptions": [
+            "Unspecified.",
+            "Video-level. Corresponds to the whole video.",
+            "Segment-level. Corresponds to one of `AnnotateSpec.segments`.",
+            "Shot-level. Corresponds to a single shot (i.e. a series of frames\nwithout a major camera position or background change).",
+            "Frame-level. Corresponds to a single video frame."
+          ],
+          "enum": [
+            "LABEL_LEVEL_UNSPECIFIED",
+            "VIDEO_LEVEL",
+            "SEGMENT_LEVEL",
+            "SHOT_LEVEL",
+            "FRAME_LEVEL"
+          ],
+          "description": "Label level.",
+          "type": "string"
+        }
+      },
+      "id": "GoogleCloudVideointelligenceV1beta1_LabelLocation"
+    },
+    "GoogleCloudVideointelligenceV1beta1_VideoSegment": {
+      "properties": {
+        "endTimeOffset": {
+          "format": "int64",
+          "description": "End offset in microseconds (inclusive). Unset means 0.",
+          "type": "string"
+        },
+        "startTimeOffset": {
+          "format": "int64",
+          "description": "Start offset in microseconds (inclusive). Unset means 0.",
+          "type": "string"
+        }
+      },
+      "id": "GoogleCloudVideointelligenceV1beta1_VideoSegment",
+      "description": "Video segment.",
+      "type": "object"
+    },
+    "GoogleCloudVideointelligenceV1_SafeSearchAnnotation": {
+      "properties": {
+        "time": {
+          "format": "google-duration",
+          "description": "Time-offset, relative to the beginning of the video,\ncorresponding to the video frame for this annotation.",
+          "type": "string"
+        },
+        "adult": {
+          "enumDescriptions": [
+            "Unknown likelihood.",
+            "Very unlikely.",
+            "Unlikely.",
+            "Possible.",
+            "Likely.",
+            "Very likely."
+          ],
+          "enum": [
+            "UNKNOWN",
+            "VERY_UNLIKELY",
+            "UNLIKELY",
+            "POSSIBLE",
+            "LIKELY",
+            "VERY_LIKELY"
+          ],
+          "description": "Likelihood of adult content.",
+          "type": "string"
+        }
+      },
+      "id": "GoogleCloudVideointelligenceV1_SafeSearchAnnotation",
+      "description": "Safe search annotation (based on per-frame visual signals only).\nIf no unsafe content has been detected in a frame, no annotations\nare present for that frame.",
+      "type": "object"
+    },
     "GoogleCloudVideointelligenceV1beta1_SafeSearchAnnotation": {
       "description": "Safe search annotation (based on per-frame visual signals only).\nIf no unsafe content has been detected in a frame, no annotations\nare present for that frame. If only some types of unsafe content\nhave been detected in a frame, the likelihood is set to `UNKNOWN`\nfor all other types of unsafe content.",
       "type": "object",
       "properties": {
         "racy": {
+          "enumDescriptions": [
+            "Unknown likelihood.",
+            "Very unlikely.",
+            "Unlikely.",
+            "Possible.",
+            "Likely.",
+            "Very likely."
+          ],
           "enum": [
             "UNKNOWN",
             "VERY_UNLIKELY",
@@ -138,20 +274,12 @@
             "VERY_LIKELY"
           ],
           "description": "Likelihood of racy content.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown likelihood.",
-            "Very unlikely.",
-            "Unlikely.",
-            "Possible.",
-            "Likely.",
-            "Very likely."
-          ]
+          "type": "string"
         },
         "timeOffset": {
-          "type": "string",
           "format": "int64",
-          "description": "Video time offset in microseconds."
+          "description": "Video time offset in microseconds.",
+          "type": "string"
         },
         "spoof": {
           "enum": [
@@ -174,6 +302,14 @@
           ]
         },
         "violent": {
+          "enumDescriptions": [
+            "Unknown likelihood.",
+            "Very unlikely.",
+            "Unlikely.",
+            "Possible.",
+            "Likely.",
+            "Very likely."
+          ],
           "enum": [
             "UNKNOWN",
             "VERY_UNLIKELY",
@@ -183,7 +319,9 @@
             "VERY_LIKELY"
           ],
           "description": "Likelihood of violent content.",
-          "type": "string",
+          "type": "string"
+        },
+        "medical": {
           "enumDescriptions": [
             "Unknown likelihood.",
             "Very unlikely.",
@@ -191,9 +329,7 @@
             "Possible.",
             "Likely.",
             "Very likely."
-          ]
-        },
-        "medical": {
+          ],
           "enum": [
             "UNKNOWN",
             "VERY_UNLIKELY",
@@ -203,15 +339,7 @@
             "VERY_LIKELY"
           ],
           "description": "Likelihood of medical content.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown likelihood.",
-            "Very unlikely.",
-            "Unlikely.",
-            "Possible.",
-            "Likely.",
-            "Very likely."
-          ]
+          "type": "string"
         },
         "adult": {
           "enum": [
@@ -237,12 +365,13 @@
       "id": "GoogleCloudVideointelligenceV1beta1_SafeSearchAnnotation"
     },
     "GoogleCloudVideointelligenceV1_VideoAnnotationProgress": {
+      "description": "Annotation progress for a single video.",
       "type": "object",
       "properties": {
         "updateTime": {
-          "type": "string",
           "format": "google-datetime",
-          "description": "Time of the most recent update."
+          "description": "Time of the most recent update.",
+          "type": "string"
         },
         "startTime": {
           "format": "google-datetime",
@@ -250,8 +379,8 @@
           "type": "string"
         },
         "inputUri": {
-          "type": "string",
-          "description": "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."
+          "description": "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/).",
+          "type": "string"
         },
         "progressPercent": {
           "format": "int32",
@@ -259,11 +388,9 @@
           "type": "integer"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1_VideoAnnotationProgress",
-      "description": "Annotation progress for a single video."
+      "id": "GoogleCloudVideointelligenceV1_VideoAnnotationProgress"
     },
     "GoogleCloudVideointelligenceV1beta1_AnnotateVideoProgress": {
-      "type": "object",
       "properties": {
         "annotationProgress": {
           "description": "Progress metadata for all videos specified in `AnnotateVideoRequest`.",
@@ -274,25 +401,19 @@
         }
       },
       "id": "GoogleCloudVideointelligenceV1beta1_AnnotateVideoProgress",
-      "description": "Video annotation progress. Included in the `metadata`\nfield of the `Operation` returned by the `GetOperation`\ncall of the `google::longrunning::Operations` service."
+      "description": "Video annotation progress. Included in the `metadata`\nfield of the `Operation` returned by the `GetOperation`\ncall of the `google::longrunning::Operations` service.",
+      "type": "object"
     },
     "GoogleCloudVideointelligenceV1_VideoAnnotationResults": {
       "description": "Annotation results for a single video.",
       "type": "object",
       "properties": {
-        "shotAnnotations": {
-          "description": "Shot annotations. Each shot is represented as a video segment.",
-          "items": {
-            "$ref": "GoogleCloudVideointelligenceV1_VideoSegment"
-          },
-          "type": "array"
-        },
         "safeSearchAnnotations": {
+          "description": "Safe search annotations.",
           "items": {
             "$ref": "GoogleCloudVideointelligenceV1_SafeSearchAnnotation"
           },
-          "type": "array",
-          "description": "Safe search annotations."
+          "type": "array"
         },
         "inputUri": {
           "description": "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/).",
@@ -306,35 +427,38 @@
           "type": "array"
         },
         "error": {
-          "$ref": "GoogleRpc_Status",
-          "description": "If set, indicates an error. Note that for a single `AnnotateVideoRequest`\nsome videos may succeed and some may fail."
+          "description": "If set, indicates an error. Note that for a single `AnnotateVideoRequest`\nsome videos may succeed and some may fail.",
+          "$ref": "GoogleRpc_Status"
+        },
+        "shotAnnotations": {
+          "description": "Shot annotations. Each shot is represented as a video segment.",
+          "items": {
+            "$ref": "GoogleCloudVideointelligenceV1_VideoSegment"
+          },
+          "type": "array"
         }
       },
       "id": "GoogleCloudVideointelligenceV1_VideoAnnotationResults"
     },
     "GoogleCloudVideointelligenceV1_AnnotateVideoProgress": {
-      "description": "Video annotation progress. Included in the `metadata`\nfield of the `Operation` returned by the `GetOperation`\ncall of the `google::longrunning::Operations` service.",
-      "type": "object",
       "properties": {
         "annotationProgress": {
+          "description": "Progress metadata for all videos specified in `AnnotateVideoRequest`.",
           "items": {
             "$ref": "GoogleCloudVideointelligenceV1_VideoAnnotationProgress"
           },
-          "type": "array",
-          "description": "Progress metadata for all videos specified in `AnnotateVideoRequest`."
+          "type": "array"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1_AnnotateVideoProgress"
+      "id": "GoogleCloudVideointelligenceV1_AnnotateVideoProgress",
+      "description": "Video annotation progress. Included in the `metadata`\nfield of the `Operation` returned by the `GetOperation`\ncall of the `google::longrunning::Operations` service.",
+      "type": "object"
     },
     "GoogleCloudVideointelligenceV1_LabelLocation": {
+      "description": "Label location.",
       "type": "object",
       "properties": {
-        "segment": {
-          "$ref": "GoogleCloudVideointelligenceV1_VideoSegment",
-          "description": "Video segment. Unset for video-level labels.\nSet to a frame timestamp for frame-level labels.\nOtherwise, corresponds to one of `AnnotateSpec.segments`\n(if specified) or to shot boundaries (if requested)."
-        },
         "level": {
-          "type": "string",
           "enumDescriptions": [
             "Unspecified.",
             "Video-level. Corresponds to the whole video.",
@@ -349,37 +473,31 @@
             "SHOT_LEVEL",
             "FRAME_LEVEL"
           ],
-          "description": "Label level."
+          "description": "Label level.",
+          "type": "string"
         },
         "confidence": {
           "format": "float",
           "description": "Confidence that the label is accurate. Range: [0, 1].",
           "type": "number"
+        },
+        "segment": {
+          "description": "Video segment. Unset for video-level labels.\nSet to a frame timestamp for frame-level labels.\nOtherwise, corresponds to one of `AnnotateSpec.segments`\n(if specified) or to shot boundaries (if requested).",
+          "$ref": "GoogleCloudVideointelligenceV1_VideoSegment"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1_LabelLocation",
-      "description": "Label location."
+      "id": "GoogleCloudVideointelligenceV1_LabelLocation"
     },
     "GoogleLongrunning_Operation": {
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object",
       "properties": {
-        "metadata": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
-          },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any."
-        },
         "done": {
-          "type": "boolean",
-          "description": "If the value is `false`, it means the operation is still in progress.\nIf true, the operation is completed, and either `error` or `response` is\navailable."
+          "description": "If the value is `false`, it means the operation is still in progress.\nIf true, the operation is completed, and either `error` or `response` is\navailable.",
+          "type": "boolean"
         },
         "response": {
           "additionalProperties": {
-            "type": "any",
-            "description": "Properties of the object. Contains field @type with type URL."
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
           },
           "description": "The normal response of the operation in case of success.  If the original\nmethod returns no data on success, such as `Delete`, the response is\n`google.protobuf.Empty`.  If the original method is standard\n`Get`/`Create`/`Update`, the response should be the resource.  For other\nmethods, the response should have the type `XxxResponse`, where `Xxx`\nis the original method name.  For example, if the original method name\nis `TakeSnapshot()`, the inferred response type is\n`TakeSnapshotResponse`.",
           "type": "object"
@@ -389,16 +507,28 @@
           "type": "string"
         },
         "error": {
-          "$ref": "GoogleRpc_Status",
-          "description": "The error result of the operation in case of failure or cancellation."
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "GoogleRpc_Status"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object"
         }
       },
-      "id": "GoogleLongrunning_Operation"
+      "id": "GoogleLongrunning_Operation",
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
+      "type": "object"
     },
     "GoogleCloudVideointelligenceV1beta1_VideoAnnotationResults": {
-      "description": "Annotation results for a single video.",
-      "type": "object",
       "properties": {
+        "error": {
+          "description": "If set, indicates an error. Note that for a single `AnnotateVideoRequest`\nsome videos may succeed and some may fail.",
+          "$ref": "GoogleRpc_Status"
+        },
         "shotAnnotations": {
           "description": "Shot annotations. Each shot is represented as a video segment.",
           "items": {
@@ -407,33 +537,29 @@
           "type": "array"
         },
         "safeSearchAnnotations": {
+          "description": "Safe search annotations.",
           "items": {
             "$ref": "GoogleCloudVideointelligenceV1beta1_SafeSearchAnnotation"
           },
-          "type": "array",
-          "description": "Safe search annotations."
+          "type": "array"
         },
         "inputUri": {
           "description": "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/).",
           "type": "string"
         },
         "labelAnnotations": {
+          "description": "Label annotations. There is exactly one element for each unique label.",
           "items": {
             "$ref": "GoogleCloudVideointelligenceV1beta1_LabelAnnotation"
           },
-          "type": "array",
-          "description": "Label annotations. There is exactly one element for each unique label."
-        },
-        "error": {
-          "$ref": "GoogleRpc_Status",
-          "description": "If set, indicates an error. Note that for a single `AnnotateVideoRequest`\nsome videos may succeed and some may fail."
+          "type": "array"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1beta1_VideoAnnotationResults"
+      "id": "GoogleCloudVideointelligenceV1beta1_VideoAnnotationResults",
+      "description": "Annotation results for a single video.",
+      "type": "object"
     },
     "GoogleCloudVideointelligenceV1beta1_LabelAnnotation": {
-      "description": "Label annotation.",
-      "type": "object",
       "properties": {
         "description": {
           "description": "Textual description, e.g. `Fixed-gear bicycle`.",
@@ -451,9 +577,12 @@
           "type": "string"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1beta1_LabelAnnotation"
+      "id": "GoogleCloudVideointelligenceV1beta1_LabelAnnotation",
+      "description": "Label annotation.",
+      "type": "object"
     },
     "GoogleCloudVideointelligenceV1_AnnotateVideoResponse": {
+      "description": "Video annotation response. Included in the `response`\nfield of the `Operation` returned by the `GetOperation`\ncall of the `google::longrunning::Operations` service.",
       "type": "object",
       "properties": {
         "annotationResults": {
@@ -464,49 +593,70 @@
           "type": "array"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1_AnnotateVideoResponse",
-      "description": "Video annotation response. Included in the `response`\nfield of the `Operation` returned by the `GetOperation`\ncall of the `google::longrunning::Operations` service."
+      "id": "GoogleCloudVideointelligenceV1_AnnotateVideoResponse"
     },
     "GoogleCloudVideointelligenceV1beta1_AnnotateVideoResponse": {
+      "description": "Video annotation response. Included in the `response`\nfield of the `Operation` returned by the `GetOperation`\ncall of the `google::longrunning::Operations` service.",
       "type": "object",
       "properties": {
         "annotationResults": {
+          "description": "Annotation results for all videos specified in `AnnotateVideoRequest`.",
           "items": {
             "$ref": "GoogleCloudVideointelligenceV1beta1_VideoAnnotationResults"
           },
-          "type": "array",
-          "description": "Annotation results for all videos specified in `AnnotateVideoRequest`."
+          "type": "array"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1beta1_AnnotateVideoResponse",
-      "description": "Video annotation response. Included in the `response`\nfield of the `Operation` returned by the `GetOperation`\ncall of the `google::longrunning::Operations` service."
+      "id": "GoogleCloudVideointelligenceV1beta1_AnnotateVideoResponse"
     },
     "GoogleCloudVideointelligenceV1_LabelAnnotation": {
-      "description": "Label annotation.",
-      "type": "object",
       "properties": {
         "locations": {
+          "description": "Where the label was detected and with what confidence.",
           "items": {
             "$ref": "GoogleCloudVideointelligenceV1_LabelLocation"
           },
-          "type": "array",
-          "description": "Where the label was detected and with what confidence."
+          "type": "array"
         },
         "languageCode": {
           "description": "Language code for `description` in BCP-47 format.",
           "type": "string"
         },
         "description": {
-          "type": "string",
-          "description": "Textual description, e.g. `Fixed-gear bicycle`."
+          "description": "Textual description, e.g. `Fixed-gear bicycle`.",
+          "type": "string"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1_LabelAnnotation"
+      "id": "GoogleCloudVideointelligenceV1_LabelAnnotation",
+      "description": "Label annotation.",
+      "type": "object"
     },
     "GoogleCloudVideointelligenceV1beta1_VideoContext": {
-      "description": "Video context and/or feature-specific parameters.",
-      "type": "object",
       "properties": {
+        "stationaryCamera": {
+          "description": "Whether the video has been shot from a stationary (i.e. non-moving) camera.\nWhen set to true, might improve detection accuracy for moving objects.",
+          "type": "boolean"
+        },
+        "labelDetectionMode": {
+          "enumDescriptions": [
+            "Unspecified.",
+            "Detect shot-level labels.",
+            "Detect frame-level labels.",
+            "Detect both shot-level and frame-level labels."
+          ],
+          "enum": [
+            "LABEL_DETECTION_MODE_UNSPECIFIED",
+            "SHOT_MODE",
+            "FRAME_MODE",
+            "SHOT_AND_FRAME_MODE"
+          ],
+          "description": "If label detection has been requested, what labels should be detected\nin addition to video-level labels or segment-level labels. If unspecified,\ndefaults to `SHOT_MODE`.",
+          "type": "string"
+        },
+        "safeSearchDetectionModel": {
+          "description": "Model to use for safe search detection.\nSupported values: \"latest\" and \"stable\" (the default).",
+          "type": "string"
+        },
         "segments": {
           "description": "Video segments to annotate. The segments may overlap and are not required\nto be contiguous or span the whole video. If unspecified, each video\nis treated as a single segment.",
           "items": {
@@ -515,52 +665,30 @@
           "type": "array"
         },
         "labelDetectionModel": {
-          "type": "string",
-          "description": "Model to use for label detection.\nSupported values: \"latest\" and \"stable\" (the default)."
+          "description": "Model to use for label detection.\nSupported values: \"latest\" and \"stable\" (the default).",
+          "type": "string"
         },
         "shotChangeDetectionModel": {
-          "type": "string",
-          "description": "Model to use for shot change detection.\nSupported values: \"latest\" and \"stable\" (the default)."
-        },
-        "labelDetectionMode": {
-          "enum": [
-            "LABEL_DETECTION_MODE_UNSPECIFIED",
-            "SHOT_MODE",
-            "FRAME_MODE",
-            "SHOT_AND_FRAME_MODE"
-          ],
-          "description": "If label detection has been requested, what labels should be detected\nin addition to video-level labels or segment-level labels. If unspecified,\ndefaults to `SHOT_MODE`.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Detect shot-level labels.",
-            "Detect frame-level labels.",
-            "Detect both shot-level and frame-level labels."
-          ]
-        },
-        "stationaryCamera": {
-          "type": "boolean",
-          "description": "Whether the video has been shot from a stationary (i.e. non-moving) camera.\nWhen set to true, might improve detection accuracy for moving objects."
-        },
-        "safeSearchDetectionModel": {
-          "type": "string",
-          "description": "Model to use for safe search detection.\nSupported values: \"latest\" and \"stable\" (the default)."
+          "description": "Model to use for shot change detection.\nSupported values: \"latest\" and \"stable\" (the default).",
+          "type": "string"
         }
       },
-      "id": "GoogleCloudVideointelligenceV1beta1_VideoContext"
+      "id": "GoogleCloudVideointelligenceV1beta1_VideoContext",
+      "description": "Video context and/or feature-specific parameters.",
+      "type": "object"
     },
     "GoogleCloudVideointelligenceV1beta1_VideoAnnotationProgress": {
       "description": "Annotation progress for a single video.",
       "type": "object",
       "properties": {
         "inputUri": {
-          "type": "string",
-          "description": "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/)."
+          "description": "Video file location in\n[Google Cloud Storage](https://cloud.google.com/storage/).",
+          "type": "string"
         },
         "progressPercent": {
-          "type": "integer",
           "format": "int32",
-          "description": "Approximate percentage processed thus far.\nGuaranteed to be 100 when fully processed."
+          "description": "Approximate percentage processed thus far.\nGuaranteed to be 100 when fully processed.",
+          "type": "integer"
         },
         "updateTime": {
           "format": "google-datetime",
@@ -568,9 +696,9 @@
           "type": "string"
         },
         "startTime": {
-          "type": "string",
           "format": "google-datetime",
-          "description": "Time when the request was received."
+          "description": "Time when the request was received.",
+          "type": "string"
         }
       },
       "id": "GoogleCloudVideointelligenceV1beta1_VideoAnnotationProgress"
@@ -580,15 +708,15 @@
       "type": "object",
       "properties": {
         "details": {
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "items": {
             "additionalProperties": {
-              "type": "any",
-              "description": "Properties of the object. Contains field @type with type URL."
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
             },
             "type": "object"
           },
-          "type": "array",
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use."
+          "type": "array"
         },
         "code": {
           "format": "int32",
@@ -596,8 +724,8 @@
           "type": "integer"
         },
         "message": {
-          "type": "string",
-          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client."
+          "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
+          "type": "string"
         }
       },
       "id": "GoogleRpc_Status"
@@ -606,153 +734,24 @@
       "description": "Video segment.",
       "type": "object",
       "properties": {
-        "endTime": {
-          "type": "string",
-          "format": "google-duration",
-          "description": "Time-offset, relative to the beginning of the video,\ncorresponding to the end of the segment (inclusive)."
-        },
         "startTime": {
           "format": "google-duration",
           "description": "Time-offset, relative to the beginning of the video,\ncorresponding to the start of the segment (inclusive).",
           "type": "string"
+        },
+        "endTime": {
+          "format": "google-duration",
+          "description": "Time-offset, relative to the beginning of the video,\ncorresponding to the end of the segment (inclusive).",
+          "type": "string"
         }
       },
       "id": "GoogleCloudVideointelligenceV1_VideoSegment"
-    },
-    "GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest": {
-      "type": "object",
-      "properties": {
-        "features": {
-          "description": "Requested video annotation features.",
-          "items": {
-            "enum": [
-              "FEATURE_UNSPECIFIED",
-              "LABEL_DETECTION",
-              "SHOT_CHANGE_DETECTION",
-              "SAFE_SEARCH_DETECTION"
-            ],
-            "type": "string"
-          },
-          "type": "array",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Label detection. Detect objects, such as dog or flower.",
-            "Shot change detection.",
-            "Safe search detection."
-          ]
-        },
-        "outputUri": {
-          "description": "Optional location where the output (in JSON format) should be stored.\nCurrently, only [Google Cloud Storage](https://cloud.google.com/storage/)\nURIs are supported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris).",
-          "type": "string"
-        },
-        "videoContext": {
-          "$ref": "GoogleCloudVideointelligenceV1beta1_VideoContext",
-          "description": "Additional video context and/or feature-specific parameters."
-        },
-        "locationId": {
-          "description": "Optional cloud region where annotation should take place. Supported cloud\nregions: `us-east1`, `us-west1`, `europe-west1`, `asia-east1`. If no region\nis specified, a region will be determined based on video file location.",
-          "type": "string"
-        },
-        "inputUri": {
-          "type": "string",
-          "description": "Input video location. Currently, only\n[Google Cloud Storage](https://cloud.google.com/storage/) URIs are\nsupported, which must be specified in the following format:\n`gs://bucket-id/object-id` (other URI formats return\ngoogle.rpc.Code.INVALID_ARGUMENT). For more information, see\n[Request URIs](/storage/docs/reference-uris).\nA video URI may include wildcards in `object-id`, and thus identify\nmultiple videos. Supported wildcards: '*' to match 0 or more characters;\n'?' to match 1 character. If unset, the input video should be embedded\nin the request as `input_content`. If set, `input_content` should be unset."
-        },
-        "inputContent": {
-          "description": "The video data bytes. Encoding: base64. If unset, the input video(s)\nshould be specified via `input_uri`. If set, `input_uri` should be unset.",
-          "type": "string"
-        }
-      },
-      "id": "GoogleCloudVideointelligenceV1beta1_AnnotateVideoRequest",
-      "description": "Video annotation request."
-    },
-    "GoogleCloudVideointelligenceV1beta1_LabelLocation": {
-      "type": "object",
-      "properties": {
-        "level": {
-          "enum": [
-            "LABEL_LEVEL_UNSPECIFIED",
-            "VIDEO_LEVEL",
-            "SEGMENT_LEVEL",
-            "SHOT_LEVEL",
-            "FRAME_LEVEL"
-          ],
-          "description": "Label level.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified.",
-            "Video-level. Corresponds to the whole video.",
-            "Segment-level. Corresponds to one of `AnnotateSpec.segments`.",
-            "Shot-level. Corresponds to a single shot (i.e. a series of frames\nwithout a major camera position or background change).",
-            "Frame-level. Corresponds to a single video frame."
-          ]
-        },
-        "confidence": {
-          "format": "float",
-          "description": "Confidence that the label is accurate. Range: [0, 1].",
-          "type": "number"
-        },
-        "segment": {
-          "$ref": "GoogleCloudVideointelligenceV1beta1_VideoSegment",
-          "description": "Video segment. Set to [-1, -1] for video-level labels.\nSet to [timestamp, timestamp] for frame-level labels.\nOtherwise, corresponds to one of `AnnotateSpec.segments`\n(if specified) or to shot boundaries (if requested)."
-        }
-      },
-      "id": "GoogleCloudVideointelligenceV1beta1_LabelLocation",
-      "description": "Label location."
-    },
-    "GoogleCloudVideointelligenceV1beta1_VideoSegment": {
-      "description": "Video segment.",
-      "type": "object",
-      "properties": {
-        "startTimeOffset": {
-          "type": "string",
-          "format": "int64",
-          "description": "Start offset in microseconds (inclusive). Unset means 0."
-        },
-        "endTimeOffset": {
-          "type": "string",
-          "format": "int64",
-          "description": "End offset in microseconds (inclusive). Unset means 0."
-        }
-      },
-      "id": "GoogleCloudVideointelligenceV1beta1_VideoSegment"
-    },
-    "GoogleCloudVideointelligenceV1_SafeSearchAnnotation": {
-      "type": "object",
-      "properties": {
-        "time": {
-          "type": "string",
-          "format": "google-duration",
-          "description": "Time-offset, relative to the beginning of the video,\ncorresponding to the video frame for this annotation."
-        },
-        "adult": {
-          "enum": [
-            "UNKNOWN",
-            "VERY_UNLIKELY",
-            "UNLIKELY",
-            "POSSIBLE",
-            "LIKELY",
-            "VERY_LIKELY"
-          ],
-          "description": "Likelihood of adult content.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown likelihood.",
-            "Very unlikely.",
-            "Unlikely.",
-            "Possible.",
-            "Likely.",
-            "Very likely."
-          ]
-        }
-      },
-      "id": "GoogleCloudVideointelligenceV1_SafeSearchAnnotation",
-      "description": "Safe search annotation (based on per-frame visual signals only).\nIf no unsafe content has been detected in a frame, no annotations\nare present for that frame."
     }
   },
   "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "canonicalName": "Cloud Video Intelligence",
   "auth": {
@@ -768,5 +767,6 @@
   "ownerDomain": "google.com",
   "name": "videointelligence",
   "batchPath": "batch",
-  "title": "Google Cloud Video Intelligence API"
+  "title": "Google Cloud Video Intelligence API",
+  "ownerName": "Google"
 }

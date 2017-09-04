@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170822 (964)
+ *      <tr><th>API Rev<td>20170830 (972)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -406,7 +406,7 @@ namespace Google.Apis.Monitoring.v3
 
             /// <summary>Stackdriver Monitoring Agent only: Creates a new time series.This method is only for use by the
             /// Stackdriver Monitoring Agent. Use projects.timeSeries.create instead.</summary>
-            public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
+            public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.CreateCollectdTimeSeriesResponse>
             {
                 /// <summary>Constructs a new Create request.</summary>
                 public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.CreateCollectdTimeSeriesRequest body, string name)
@@ -880,12 +880,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-                /// parentName field contains the group name. If no groups have this parent, the results are
-                /// empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ChildrenOfGroup { get; set; }
-
                 /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns the descendants
                 /// of the specified group. This is a superset of the results returned by the childrenOfGroup filter,
                 /// and includes children-of-children, and so forth.</summary>
@@ -908,6 +902,12 @@ namespace Google.Apis.Monitoring.v3
                 /// the results are empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ancestorsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AncestorsOfGroup { get; set; }
+
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+                /// parentName field contains the group name. If no groups have this parent, the results are
+                /// empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ChildrenOfGroup { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -943,15 +943,6 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "childrenOfGroup", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "childrenOfGroup",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "descendantsOfGroup", new Google.Apis.Discovery.Parameter
                         {
                             Name = "descendantsOfGroup",
@@ -982,6 +973,15 @@ namespace Google.Apis.Monitoring.v3
                         "ancestorsOfGroup", new Google.Apis.Discovery.Parameter
                         {
                             Name = "ancestorsOfGroup",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "childrenOfGroup", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "childrenOfGroup",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1733,6 +1733,30 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields
+                /// determine how the time series are partitioned into subsets prior to applying the aggregation
+                /// function. Each subset contains time series that have the same value for each of the grouping fields.
+                /// Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to
+                /// each subset of time series. It is not possible to reduce across different resource types, so this
+                /// field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away.
+                /// If groupByFields is not specified and all the time series have the same resource type, then the time
+                /// series are aggregated into a single output time series. If crossSeriesReducer is not defined, this
+                /// field is ignored.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
+
+                /// <summary>Required. The end of the time interval.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalEndTime { get; set; }
+
+                /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at
+                /// least 60 seconds. After per-time series alignment, each time series will contain data points only on
+                /// the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
+                /// ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be
+                /// defined; otherwise an error is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object AggregationAlignmentPeriod { get; set; }
+
                 /// <summary>A positive number that is the maximum number of results to return. When view field sets to
                 /// FULL, it limits the number of Points server will return; if view field is HEADERS, it limits the
                 /// number of TimeSeries server will return.</summary>
@@ -1796,6 +1820,12 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return additional results from
+                /// the previous method call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>The approach to be used to align individual time series. Not all alignment functions may be
                 /// applied to all time series, depending on the metric type and value type of the original time series.
                 /// Alignment may change the metric type or the value type of the time series.Time series data must be
@@ -1849,12 +1879,6 @@ namespace Google.Apis.Monitoring.v3
                     ALIGNPERCENTILE05,
                 }
 
-                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
-                /// previous call to this method. Using this field causes the method to return additional results from
-                /// the previous method call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The beginning of the time interval. The default value for the start time is the
                 /// end time. The start time must not be later than the end time.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
@@ -1872,30 +1896,6 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.StringValueAttribute("HEADERS")]
                     HEADERS,
                 }
-
-                /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields
-                /// determine how the time series are partitioned into subsets prior to applying the aggregation
-                /// function. Each subset contains time series that have the same value for each of the grouping fields.
-                /// Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to
-                /// each subset of time series. It is not possible to reduce across different resource types, so this
-                /// field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away.
-                /// If groupByFields is not specified and all the time series have the same resource type, then the time
-                /// series are aggregated into a single output time series. If crossSeriesReducer is not defined, this
-                /// field is ignored.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
-
-                /// <summary>Required. The end of the time interval.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalEndTime { get; set; }
-
-                /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at
-                /// least 60 seconds. After per-time series alignment, each time series will contain data points only on
-                /// the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
-                /// ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be
-                /// defined; otherwise an error is returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object AggregationAlignmentPeriod { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1929,6 +1929,33 @@ namespace Google.Apis.Monitoring.v3
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.groupByFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "interval.endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.alignmentPeriod",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
@@ -1967,18 +1994,18 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "aggregation.perSeriesAligner", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "aggregation.perSeriesAligner",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "aggregation.perSeriesAligner", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "aggregation.perSeriesAligner",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1997,33 +2024,6 @@ namespace Google.Apis.Monitoring.v3
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.groupByFields",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "interval.endTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "interval.endTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.alignmentPeriod",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2108,6 +2108,27 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes the error status for payloads that were not written.</summary>
+    public class CollectdPayloadError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Records the error status for the payload. If this field is present, the partial errors for nested
+        /// values won't be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
+        /// <summary>The zero-based index in CreateCollectdTimeSeriesRequest.collectd_payloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; } 
+
+        /// <summary>Records the error status for values that were not written due to an error.Failed payloads for which
+        /// nothing is written will not include partial value errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueErrors")]
+        public virtual System.Collections.Generic.IList<CollectdValueError> ValueErrors { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single data point from a collectd-based plugin.</summary>
     public class CollectdValue : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2123,6 +2144,22 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The measurement value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual TypedValue Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Describes the error status for values that were not written.</summary>
+    public class CollectdValueError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Records the error status for the value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; } 
+
+        /// <summary>The zero-based index in CollectdPayload.values within the parent
+        /// CreateCollectdTimeSeriesRequest.collectd_payloads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual System.Nullable<int> Index { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2144,6 +2181,18 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>The monitored resource associated with the time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual MonitoredResource Resource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The CreateCollectdTimeSeries response.</summary>
+    public class CreateCollectdTimeSeriesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Records the error status for points that were not written due to an error.Failed requests for which
+        /// nothing is written will return an error response instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadErrors")]
+        public virtual System.Collections.Generic.IList<CollectdPayloadError> PayloadErrors { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2693,6 +2742,48 @@ namespace Google.Apis.Monitoring.v3.Data
         /// example: "google/protobuf/source_context.proto".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Status type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). The error model is designed to
+    /// be: Simple to use and understand for most users Flexible enough to meet unexpected needsOverviewThe Status
+    /// message contains three pieces of data: error code, error message, and error details. The error code should be an
+    /// enum value of google.rpc.Code, but it may accept additional error codes if needed. The error message should be a
+    /// developer-facing English message that helps developers understand and resolve the error. If a localized user-
+    /// facing error message is needed, put the localized message in the error details or localize it in the client. The
+    /// optional error details may contain arbitrary information about the error. There is a predefined set of error
+    /// detail types in the package google.rpc that can be used for common error conditions.Language mappingThe Status
+    /// message is the logical representation of the error model, but it is not necessarily the actual wire format. When
+    /// the Status message is exposed in different client libraries and different wire protocols, it can be mapped
+    /// differently. For example, it will likely be mapped to some exceptions in Java, but more likely mapped to some
+    /// error codes in C.Other usesThe error model and the Status message can be used in a variety of environments,
+    /// either with or without APIs, to provide a consistent developer experience across different environments.Example
+    /// uses of this error model include: Partial errors. If a service needs to return partial errors to the client, it
+    /// may embed the Status in the normal response to indicate the partial errors. Workflow errors. A typical workflow
+    /// has multiple steps. Each step may have a Status message for error reporting. Batch operations. If a client uses
+    /// batch request and batch response, the Status message should be used directly inside batch response, one for each
+    /// error sub-response. Asynchronous operations. If an API call embeds asynchronous operation results in its
+    /// response, the status of those operations should be represented directly using the Status message. Logging. If
+    /// some API errors are stored in logs, the message Status could be used directly after any stripping needed for
+    /// security/privacy reasons.</summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; } 
+
+        /// <summary>A list of messages that carry the error details. There is a common set of message types for APIs to
+        /// use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
+
+        /// <summary>A developer-facing error message, which should be in English. Any user-facing error message should
+        /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
