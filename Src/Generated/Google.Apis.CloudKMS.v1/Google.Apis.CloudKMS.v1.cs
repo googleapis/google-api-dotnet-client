@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/kms/'>Google Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170821 (963)
+ *      <tr><th>API Rev<td>20170829 (971)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -2207,6 +2207,10 @@ namespace Google.Apis.CloudKMS.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2214,10 +2218,6 @@ namespace Google.Apis.CloudKMS.v1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2253,6 +2253,15 @@ namespace Google.Apis.CloudKMS.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2265,15 +2274,6 @@ namespace Google.Apis.CloudKMS.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2388,78 +2388,6 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Write a Cloud Audit log</summary>
-    public class CloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A condition to be met.</summary>
-    public class Condition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Trusted attributes supplied by the IAM system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iam")]
-        public virtual string Iam { get; set; } 
-
-        /// <summary>An operator to apply the subject with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; } 
-
-        /// <summary>Trusted attributes discharged by the service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("svc")]
-        public virtual string Svc { get; set; } 
-
-        /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
-        /// control.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sys")]
-        public virtual string Sys { get; set; } 
-
-        /// <summary>DEPRECATED. Use 'values' instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The objects of the condition. This is mutually exclusive with 'value'.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Increment a streamz counter with the specified metric and field names.
-    ///
-    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
-    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
-    ///
-    /// Field names correspond to IAM request parameters and field values are their respective values.
-    ///
-    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
-    /// (empty string), resulting in one aggretated counter with no field.
-    ///
-    /// Examples: counter { metric: "/debug_access_count"  field: "iam_principal" } ==> increment counter
-    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
-    ///
-    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
-    /// decrementing the counter * incrementing it by anything other than 1</summary>
-    public class CounterOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The field value to attribute.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
-
-        /// <summary>The metric to update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A CryptoKey represents a logical key that can be used for cryptographic operations.
     ///
     /// A CryptoKey is made up of one or more versions, which represent the actual key material used in cryptographic
@@ -2469,6 +2397,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>Output only. The time at which this CryptoKey was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
+
+        /// <summary>Labels with user defined metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Output only. The resource name for this CryptoKey in the format
         /// `projects/locations/keyRings/cryptoKeys`.</summary>
@@ -2539,18 +2471,6 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The current state of the CryptoKeyVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Write a Data Access (Gin) log</summary>
-    public class DataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
-        /// the LocalIAM implementation, for now.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
-        public virtual string LogMode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2770,25 +2690,6 @@ namespace Google.Apis.CloudKMS.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies what kind of log the caller must write</summary>
-    public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud audit options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
-        public virtual CloudAuditOptions CloudAudit { get; set; } 
-
-        /// <summary>Counter options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("counter")]
-        public virtual CounterOptions Counter { get; set; } 
-
-        /// <summary>Data access options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
-        public virtual DataAccessOptions DataAccess { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
@@ -2829,14 +2730,6 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
         public virtual System.Nullable<bool> IamOwned { get; set; } 
 
-        /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
-        /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
-        /// be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule
-        /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
-        /// Otherwise, if no rule applies, permission is denied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
-
         /// <summary>Version of the `Policy`. The default version is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
@@ -2846,46 +2739,6 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Request message for KeyManagementService.RestoreCryptoKeyVersion.</summary>
     public class RestoreCryptoKeyVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A rule to be applied in a Policy.</summary>
-    public class Rule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
-
-        /// <summary>Additional restrictions that must be met</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
-
-        /// <summary>Human-readable description of the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
-        /// in at least one of these entries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("in")]
-        public virtual System.Collections.Generic.IList<string> In__ { get; set; } 
-
-        /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
-        /// action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
-        public virtual System.Collections.Generic.IList<LogConfig> LogConfig { get; set; } 
-
-        /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
-        /// is in none of the entries. The format for in and not_in entries is the same as for members in a Binding (see
-        /// google/iam/v1/policy.proto).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notIn")]
-        public virtual System.Collections.Generic.IList<string> NotIn { get; set; } 
-
-        /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
-        /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

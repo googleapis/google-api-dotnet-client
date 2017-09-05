@@ -21,7 +21,7 @@
  "basePath": "/deploymentmanager/v2beta/projects/",
  "rootUrl": "https://www.googleapis.com/",
  "servicePath": "deploymentmanager/v2beta/projects/",
- "batchPath": "batch/deploymentmanager/v2beta",
+ "batchPath": "batch",
  "parameters": {
   "alt": {
    "type": "string",

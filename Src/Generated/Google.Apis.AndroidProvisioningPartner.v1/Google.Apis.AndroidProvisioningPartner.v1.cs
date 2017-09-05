@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170825 (967)
+ *      <tr><th>API Rev<td>20170903 (976)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -463,14 +463,90 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             }
 
 
-            /// <summary>List all the customers that has delegates some role to this customer.</summary>
-            /// <param name="partnerId">the id of the partner.</param>
+            /// <summary>A customer for Zero Touch Provisioning will be created. After a Customer is created, their
+            /// admins and owners will be able to manage devices on partner.android.com/zerotouch or via their
+            /// API.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The parent resource in format `partners/[PARTNER_ID]'.</param>
+            public virtual CreateRequest Create(Google.Apis.AndroidProvisioningPartner.v1.Data.CreateCustomerRequest body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>A customer for Zero Touch Provisioning will be created. After a Customer is created, their
+            /// admins and owners will be able to manage devices on partner.android.com/zerotouch or via their
+            /// API.</summary>
+            public class CreateRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Company>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidProvisioningPartner.v1.Data.CreateCustomerRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The parent resource in format `partners/[PARTNER_ID]'.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidProvisioningPartner.v1.Data.CreateCustomerRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/customers"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^partners/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>List the customers that are enrolled to the reseller identified by the `partnerId` argument.
+            /// This list includes customers that the reseller created and customers that enrolled themselves using the
+            /// portal.</summary>
+            /// <param name="partnerId">The ID of the partner.</param>
             public virtual ListRequest List(long partnerId)
             {
                 return new ListRequest(service, partnerId);
             }
 
-            /// <summary>List all the customers that has delegates some role to this customer.</summary>
+            /// <summary>List the customers that are enrolled to the reseller identified by the `partnerId` argument.
+            /// This list includes customers that the reseller created and customers that enrolled themselves using the
+            /// portal.</summary>
             public class ListRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.ListCustomersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -482,7 +558,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>the id of the partner.</summary>
+                /// <summary>The ID of the partner.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
@@ -549,7 +625,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             /// <summary>Claim the device identified by device identifier.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="partnerId">Id of the partner.</param>
+            /// <param name="partnerId">ID of the partner.</param>
             public virtual ClaimRequest Claim(Google.Apis.AndroidProvisioningPartner.v1.Data.ClaimDeviceRequest body, long partnerId)
             {
                 return new ClaimRequest(service, body, partnerId);
@@ -568,7 +644,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>Id of the partner.</summary>
+                /// <summary>ID of the partner.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
@@ -615,15 +691,15 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             }
 
-            /// <summary>Claim devices asynchronously</summary>
+            /// <summary>Claim devices asynchronously.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="partnerId">partner id.</param>
+            /// <param name="partnerId">Partner ID.</param>
             public virtual ClaimAsyncRequest ClaimAsync(Google.Apis.AndroidProvisioningPartner.v1.Data.ClaimDevicesRequest body, long partnerId)
             {
                 return new ClaimAsyncRequest(service, body, partnerId);
             }
 
-            /// <summary>Claim devices asynchronously</summary>
+            /// <summary>Claim devices asynchronously.</summary>
             public class ClaimAsyncRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Operation>
             {
                 /// <summary>Constructs a new ClaimAsync request.</summary>
@@ -636,7 +712,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>partner id.</summary>
+                /// <summary>Partner ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
@@ -685,7 +761,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             /// <summary>Find devices by device identifier.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="partnerId">id of the partner.</param>
+            /// <param name="partnerId">ID of the partner.</param>
             public virtual FindByIdentifierRequest FindByIdentifier(Google.Apis.AndroidProvisioningPartner.v1.Data.FindDevicesByDeviceIdentifierRequest body, long partnerId)
             {
                 return new FindByIdentifierRequest(service, body, partnerId);
@@ -704,7 +780,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>id of the partner.</summary>
+                /// <summary>ID of the partner.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
@@ -753,7 +829,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             /// <summary>Find devices by ownership.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="partnerId">id of the partner.</param>
+            /// <param name="partnerId">ID of the partner.</param>
             public virtual FindByOwnerRequest FindByOwner(Google.Apis.AndroidProvisioningPartner.v1.Data.FindDevicesByOwnerRequest body, long partnerId)
             {
                 return new FindByOwnerRequest(service, body, partnerId);
@@ -772,7 +848,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>id of the partner.</summary>
+                /// <summary>ID of the partner.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
@@ -819,14 +895,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             }
 
-            /// <summary>Get a device</summary>
-            /// <param name="name">resource name in 'partners/[PARTNER_ID]/devices/[DEVICE_ID]'.</param>
+            /// <summary>Get a device.</summary>
+            /// <param name="name">Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Get a device</summary>
+            /// <summary>Get a device.</summary>
             public class GetRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Device>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -838,7 +914,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>resource name in 'partners/[PARTNER_ID]/devices/[DEVICE_ID]'.</summary>
+                /// <summary>Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -879,17 +955,17 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             }
 
-            /// <summary>Update the metadata</summary>
+            /// <summary>Update the metadata.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="metadataOwnerId">The owner of the newly set metadata. Should be partner id itself.</param>
+            /// <param name="metadataOwnerId">The owner of the newly set metadata. Set this to the partner ID.</param>
             ///
-            /// <param name="deviceId">id of the partner.</param>
+            /// <param name="deviceId">ID of the partner.</param>
             public virtual MetadataRequest Metadata(Google.Apis.AndroidProvisioningPartner.v1.Data.UpdateDeviceMetadataRequest body, long metadataOwnerId, long deviceId)
             {
                 return new MetadataRequest(service, body, metadataOwnerId, deviceId);
             }
 
-            /// <summary>Update the metadata</summary>
+            /// <summary>Update the metadata.</summary>
             public class MetadataRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.DeviceMetadata>
             {
                 /// <summary>Constructs a new Metadata request.</summary>
@@ -903,11 +979,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>The owner of the newly set metadata. Should be partner id itself.</summary>
+                /// <summary>The owner of the newly set metadata. Set this to the partner ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("metadataOwnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long MetadataOwnerId { get; private set; }
 
-                /// <summary>id of the partner.</summary>
+                /// <summary>ID of the partner.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long DeviceId { get; private set; }
 
@@ -963,15 +1039,15 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             }
 
-            /// <summary>Unclaim the device identified by device_id or identifier.</summary>
+            /// <summary>Unclaim the device identified by the `device_id` or the `deviceIdentifier`.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="partnerId">Id of the partner.</param>
+            /// <param name="partnerId">ID of the partner.</param>
             public virtual UnclaimRequest Unclaim(Google.Apis.AndroidProvisioningPartner.v1.Data.UnclaimDeviceRequest body, long partnerId)
             {
                 return new UnclaimRequest(service, body, partnerId);
             }
 
-            /// <summary>Unclaim the device identified by device_id or identifier.</summary>
+            /// <summary>Unclaim the device identified by the `device_id` or the `deviceIdentifier`.</summary>
             public class UnclaimRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Unclaim request.</summary>
@@ -984,7 +1060,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>Id of the partner.</summary>
+                /// <summary>ID of the partner.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
@@ -1031,15 +1107,15 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             }
 
-            /// <summary>Unclaim devices asynchronously</summary>
+            /// <summary>Unclaim devices asynchronously.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="partnerId">partner id.</param>
+            /// <param name="partnerId">Partner ID.</param>
             public virtual UnclaimAsyncRequest UnclaimAsync(Google.Apis.AndroidProvisioningPartner.v1.Data.UnclaimDevicesRequest body, long partnerId)
             {
                 return new UnclaimAsyncRequest(service, body, partnerId);
             }
 
-            /// <summary>Unclaim devices asynchronously</summary>
+            /// <summary>Unclaim devices asynchronously.</summary>
             public class UnclaimAsyncRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Operation>
             {
                 /// <summary>Constructs a new UnclaimAsync request.</summary>
@@ -1052,7 +1128,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>partner id.</summary>
+                /// <summary>Partner ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
@@ -1101,7 +1177,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             /// <summary>Set metadata in batch asynchronously.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="partnerId">partner id.</param>
+            /// <param name="partnerId">Partner ID.</param>
             public virtual UpdateMetadataAsyncRequest UpdateMetadataAsync(Google.Apis.AndroidProvisioningPartner.v1.Data.UpdateDeviceMetadataInBatchRequest body, long partnerId)
             {
                 return new UpdateMetadataAsyncRequest(service, body, partnerId);
@@ -1120,7 +1196,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>partner id.</summary>
+                /// <summary>Partner ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual long PartnerId { get; private set; }
 
@@ -1184,7 +1260,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
-        /// <summary>Section to claim</summary>
+        /// <summary>The section to claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; } 
 
@@ -1195,11 +1271,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Response message containing device id of the claim.</summary>
     public class ClaimDeviceResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>the device id of the claimed device.</summary>
+        /// <summary>The device ID of the claimed device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>the resource name of the device in 'partners/[PARTNER_ID]/devices/[DEVICE_ID]'.</summary>
+        /// <summary>The resource name of the device in the format
+        /// `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
         public virtual string DeviceName { get; set; } 
 
@@ -1210,7 +1287,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request to claim devices asynchronously in batch.</summary>
     public class ClaimDevicesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>list of claims.</summary>
+        /// <summary>List of claims.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
         public virtual System.Collections.Generic.IList<PartnerClaim> Claims { get; set; } 
 
@@ -1221,25 +1298,26 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Company</summary>
     public class Company : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Admin email. Admins will be able to operate on the portal. This field is a WRITE-only field at
+        /// <summary>Admin emails. Admins are able to operate on the portal. This field is a write-only field at
         /// creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEmails")]
         public virtual System.Collections.Generic.IList<string> AdminEmails { get; set; } 
 
-        /// <summary>company id</summary>
+        /// <summary>Company ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyId")]
         public virtual System.Nullable<long> CompanyId { get; set; } 
 
-        /// <summary>company name</summary>
+        /// <summary>Company name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; } 
 
-        /// <summary>REST Resource name.</summary>
+        /// <summary>The API resource name of the company in the format
+        /// `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Owner email. Owner is able to operate on the portal, and modify admins and other owners. This field
-        /// is a WRITE-only field at creation time.</summary>
+        /// <summary>Owner emails. Owners are able to operate on the portal, and modify admins or other owners. This
+        /// field is a write-only field at creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerEmails")]
         public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; } 
 
@@ -1247,10 +1325,21 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Device</summary>
+    /// <summary>Request message to create a customer.</summary>
+    public class CreateCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The customer to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual Company Customer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An Android device.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>claims</summary>
+        /// <summary>Claims.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
         public virtual System.Collections.Generic.IList<DeviceClaim> Claims { get; set; } 
 
@@ -1258,19 +1347,19 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
         public virtual string Configuration { get; set; } 
 
-        /// <summary>Device id</summary>
+        /// <summary>Device ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>Device identifier</summary>
+        /// <summary>Device identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
-        /// <summary>Device metadata</summary>
+        /// <summary>Device metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
         public virtual DeviceMetadata DeviceMetadata { get; set; } 
 
-        /// <summary>Resource name in 'partners/[PARTNER_ID]/devices/[DEVICE_ID]'.</summary>
+        /// <summary>Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1278,14 +1367,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>containing the necessary info about a claim for a partner.</summary>
+    /// <summary>Information about a device claimed for a partner.</summary>
     public class DeviceClaim : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>owner id</summary>
+        /// <summary>Owner ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerCompanyId")]
         public virtual System.Nullable<long> OwnerCompanyId { get; set; } 
 
-        /// <summary>section type.</summary>
+        /// <summary>Section type of the device claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; } 
 
@@ -1293,10 +1382,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>DeviceIdentifiers identifies an unique device.</summary>
+    /// <summary>Identifies a unique device.</summary>
     public class DeviceIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>IMEI</summary>
+        /// <summary>IMEI number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; } 
 
@@ -1305,11 +1394,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
         public virtual string Manufacturer { get; set; } 
 
-        /// <summary>MEID</summary>
+        /// <summary>MEID number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; } 
 
-        /// <summary>Serial number (optional)</summary>
+        /// <summary>Serial number (optional).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; } 
 
@@ -1317,7 +1406,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A key value pair of the device metadata.</summary>
+    /// <summary>A key-value pair of the device metadata.</summary>
     public class DeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata entries</summary>
@@ -1350,8 +1439,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Long running operation response.</summary>
     public class DevicesLongRunningOperationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>processing status for each device. One PerDeviceStatus per device. The order is the same as in your
-        /// requests.</summary>
+        /// <summary>Processing status for each device. One `PerDeviceStatus` per device. The order is the same as in
+        /// your requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("perDeviceStatus")]
         public virtual System.Collections.Generic.IList<OperationPerDevice> PerDeviceStatus { get; set; } 
 
@@ -1378,7 +1467,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request to find devices.</summary>
     public class FindDevicesByDeviceIdentifierRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The device identifier to search</summary>
+        /// <summary>The device identifier to search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
@@ -1386,7 +1475,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; } 
 
-        /// <summary>Page token</summary>
+        /// <summary>Page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
@@ -1401,7 +1490,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
 
-        /// <summary>Page token of next page</summary>
+        /// <summary>Page token of the next page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -1412,7 +1501,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request to find devices by customers.</summary>
     public class FindDevicesByOwnerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of customer ids to search for.</summary>
+        /// <summary>List of customer IDs to search for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> CustomerId { get; set; } 
 
@@ -1420,7 +1509,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; } 
 
-        /// <summary>Page token</summary>
+        /// <summary>Page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; } 
 
@@ -1439,7 +1528,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
 
-        /// <summary>Page token of next page</summary>
+        /// <summary>Page token of the next page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -1518,7 +1607,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Identifies one claim request.</summary>
     public class PartnerClaim : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>customer id to claim for.</summary>
+        /// <summary>Customer ID to claim for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
         public virtual System.Nullable<long> CustomerId { get; set; } 
 
@@ -1526,11 +1615,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
-        /// <summary>metadata to set at claim.</summary>
+        /// <summary>Metadata to set at claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
         public virtual DeviceMetadata DeviceMetadata { get; set; } 
 
-        /// <summary>section type to claim.</summary>
+        /// <summary>Section type to claim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; } 
 
@@ -1541,15 +1630,15 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Identifies one unclaim request.</summary>
     public class PartnerUnclaim : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>device id of the device.</summary>
+        /// <summary>Device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>device identifier of the device.</summary>
+        /// <summary>Device identifier of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
-        /// <summary>section type to unclaim.</summary>
+        /// <summary>Section type to unclaim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; } 
 
@@ -1560,7 +1649,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Stores the processing result for each device.</summary>
     public class PerDeviceStatusInBatch : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>device id of the device if process succeeds.</summary>
+        /// <summary>Device ID of the device if process succeeds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
@@ -1568,7 +1657,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorIdentifier")]
         public virtual string ErrorIdentifier { get; set; } 
 
-        /// <summary>Error message</summary>
+        /// <summary>Error message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; } 
 
@@ -1646,11 +1735,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request message to unclaim a device.</summary>
     public class UnclaimDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The device id returned by ClaimDevice.</summary>
+        /// <summary>The device ID returned by `ClaimDevice`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>The device identifier you use when you claimed this device.</summary>
+        /// <summary>The device identifier you used when you claimed this device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
@@ -1665,7 +1754,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request to unclaim devices asynchronously in batch.</summary>
     public class UnclaimDevicesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>list of unclaims.</summary>
+        /// <summary>List of devices to unclaim.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unclaims")]
         public virtual System.Collections.Generic.IList<PartnerUnclaim> Unclaims { get; set; } 
 
@@ -1676,7 +1765,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request to update device metadata in batch.</summary>
     public class UpdateDeviceMetadataInBatchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>list of metadata updates.</summary>
+        /// <summary>List of metadata updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updates")]
         public virtual System.Collections.Generic.IList<UpdateMetadataArguments> Updates { get; set; } 
 
@@ -1698,11 +1787,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Identifies metdata updates to one device.</summary>
     public class UpdateMetadataArguments : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>device id of the device.</summary>
+        /// <summary>Device ID of the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>device identifier.</summary>
+        /// <summary>Device identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170819 (961)
+ *      <tr><th>API Rev<td>20170828 (970)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1012,8 +1012,8 @@ namespace Google.Apis.ServiceUser.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
-        /// <summary>The number of seconds to wait for a response from a request.  The default depends on the deployment
-        /// context.</summary>
+        /// <summary>The number of seconds to wait for a response from a request.  The default deadline for gRPC and
+        /// HTTP requests is 5 seconds. For Stubby requests, the default is no deadline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 
@@ -2185,7 +2185,7 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 

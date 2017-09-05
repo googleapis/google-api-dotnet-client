@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170819 (961)
+ *      <tr><th>API Rev<td>20170828 (970)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -453,6 +453,14 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Not used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
             /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
             /// is 100.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -475,14 +483,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// ={some-service}.googleapis.com AND (status=done OR startTime>="2017-02-01")`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Not used.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -509,24 +509,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -539,6 +521,24 @@ namespace Google.Apis.ServiceManagement.v1
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1394,14 +1394,6 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
-                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
-                /// filter='status=SUCCESS' -- To limit the results to those in
-                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
-                /// filter='status=CANCELLED OR status=FAILED'</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1409,6 +1401,14 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>The max number of items to include in the response list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
+                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
+                /// filter='status=SUCCESS' -- To limit the results to those in
+                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
+                /// filter='status=CANCELLED OR status=FAILED'</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1444,15 +1444,6 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1465,6 +1456,15 @@ namespace Google.Apis.ServiceManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2081,6 +2081,10 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Include services produced by the specified project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProducerProjectId { get; set; }
+
             /// <summary>Include services consumed by the specified consumer.
             ///
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
@@ -2094,10 +2098,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Requested size of the next page of data.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Include services produced by the specified project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProducerProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2124,6 +2124,15 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "producerProjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "producerProjectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
@@ -2145,15 +2154,6 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "producerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "producerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2688,8 +2688,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
-        /// <summary>The number of seconds to wait for a response from a request.  The default depends on the deployment
-        /// context.</summary>
+        /// <summary>The number of seconds to wait for a response from a request.  The default deadline for gRPC and
+        /// HTTP requests is 5 seconds. For Stubby requests, the default is no deadline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deadline")]
         public virtual System.Nullable<double> Deadline { get; set; } 
 
@@ -2760,49 +2760,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// Example: visibility.rules[selector='LibraryService.CreateBook'].restriction</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configChanges")]
         public virtual System.Collections.Generic.IList<ConfigChange> ConfigChanges { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Write a Cloud Audit log</summary>
-    public class CloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A condition to be met.</summary>
-    public class Condition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Trusted attributes supplied by the IAM system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iam")]
-        public virtual string Iam { get; set; } 
-
-        /// <summary>An operator to apply the subject with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; } 
-
-        /// <summary>Trusted attributes discharged by the service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("svc")]
-        public virtual string Svc { get; set; } 
-
-        /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
-        /// control.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sys")]
-        public virtual string Sys { get; set; } 
-
-        /// <summary>DEPRECATED. Use 'values' instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The objects of the condition. This is mutually exclusive with 'value'.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2952,35 +2909,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Increment a streamz counter with the specified metric and field names.
-    ///
-    /// Metric names should start with a '/', generally be lowercase-only, and end in "_count". Field names should not
-    /// contain an initial slash. The actual exported metric names will have "/iam/policy" prepended.
-    ///
-    /// Field names correspond to IAM request parameters and field values are their respective values.
-    ///
-    /// At present the only supported field names are - "iam_principal", corresponding to IAMContext.principal; - ""
-    /// (empty string), resulting in one aggretated counter with no field.
-    ///
-    /// Examples: counter { metric: "/debug_access_count"  field: "iam_principal" } ==> increment counter
-    /// /iam/policy/backend_debug_access_count {iam_principal=[value of IAMContext.principal]}
-    ///
-    /// At this time we do not support: * multiple field names (though this may be supported in the future) *
-    /// decrementing the counter * incrementing it by anything other than 1</summary>
-    public class CounterOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The field value to attribute.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
-
-        /// <summary>The metric to update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Configuration for a custom authentication provider.</summary>
     public class CustomAuthRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3043,18 +2971,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>The path matched by this custom verb.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Write a Data Access (Gin) log</summary>
-    public class DataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether Gin logging should happen in a fail-closed manner at the caller. This is relevant only in
-        /// the LocalIAM implementation, for now.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logMode")]
-        public virtual string LogMode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3761,25 +3677,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies what kind of log the caller must write</summary>
-    public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud audit options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
-        public virtual CloudAuditOptions CloudAudit { get; set; } 
-
-        /// <summary>Counter options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("counter")]
-        public virtual CounterOptions Counter { get; set; } 
-
-        /// <summary>Data access options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
-        public virtual DataAccessOptions DataAccess { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A description of a log type. Example in YAML format:
     ///
     /// - name: library.googleapis.com/activity_history description: The history of borrowing and returning library
@@ -4295,7 +4192,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
@@ -4437,14 +4334,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
         public virtual System.Nullable<bool> IamOwned { get; set; } 
-
-        /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
-        /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
-        /// be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule
-        /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
-        /// Otherwise, if no rule applies, permission is denied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
 
         /// <summary>Version of the `Policy`. The default version is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -4632,46 +4521,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>Google Service Control selects service configurations based on traffic percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficPercentStrategy")]
         public virtual TrafficPercentStrategy TrafficPercentStrategy { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A rule to be applied in a Policy.</summary>
-    public class Rule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
-
-        /// <summary>Additional restrictions that must be met</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
-
-        /// <summary>Human-readable description of the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
-        /// in at least one of these entries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("in")]
-        public virtual System.Collections.Generic.IList<string> In__ { get; set; } 
-
-        /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
-        /// action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
-        public virtual System.Collections.Generic.IList<LogConfig> LogConfig { get; set; } 
-
-        /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
-        /// is in none of the entries. The format for in and not_in entries is the same as for members in a Binding (see
-        /// google/iam/v1/policy.proto).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notIn")]
-        public virtual System.Collections.Generic.IList<string> NotIn { get; set; } 
-
-        /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
-        /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

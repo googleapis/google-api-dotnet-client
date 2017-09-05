@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170823 (965)
+ *      <tr><th>API Rev<td>20170830 (972)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -7769,20 +7769,18 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A group license object indicates a product that an enterprise admin has approved for use in the
-    /// enterprise. The product may be free or paid. For free products, a group license object is created in these
-    /// cases: if the enterprise admin approves a product in Google Play, if the product is added to a collection, or if
-    /// an entitlement for the product is created for a user via the API. For paid products, a group license object is
-    /// only created as part of the first bulk purchase of that product in Google Play by the enterprise admin.
+    /// <summary>Group license objects allow you to keep track of licenses (called entitlements) for both free and paid
+    /// apps. For a free app, a group license is created when an enterprise admin first approves the product in Google
+    /// Play or when the first entitlement for the product is created for a user via the API. For a paid app, a group
+    /// license object is only created when an enterprise admin purchases the product in Google Play for the first time.
     ///
-    /// The API can be used to query group licenses; the available information includes the total number of licenses
-    /// purchased (for paid products) and the total number of licenses that have been provisioned, that is, the total
-    /// number of user entitlements in existence for the product.
+    /// Use the API to query group licenses. A Grouplicenses resource includes the total number of licenses purchased
+    /// (paid apps only) and the total number of licenses currently in use. Iyn other words, the total number of
+    /// Entitlements that exist for the product.
     ///
-    /// Group license objects are never deleted. If, for example, a free app is added to a collection and then removed,
-    /// the group license will remain, allowing the enterprise admin to keep track of any remaining entitlements. An
-    /// enterprise admin may indicate they are no longer interested in the group license by marking it as unapproved in
-    /// Google Play.</summary>
+    /// Only one group license object is created per product and group license objects are never deleted. If a product
+    /// is unapproved, its group license remains. This allows enterprise admins to keep track of any remaining
+    /// entitlements for the product.</summary>
     public class GroupLicense : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>How this group license was acquired. "bulkPurchase" means that this Grouplicenses resource was
@@ -8246,8 +8244,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// intended to allow a basic representation of the product within an EMM user interface.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>App versions currently available for this product. The returned list contains only public versions.
-        /// Alpha and beta versions are not included.</summary>
+        /// <summary>App versions currently available for this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
         public virtual System.Collections.Generic.IList<AppVersion> AppVersion { get; set; } 
 
