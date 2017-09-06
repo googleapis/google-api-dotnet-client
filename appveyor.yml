@@ -15,6 +15,7 @@ install:
 
 # Perform the build.
 build_script:
+  - mkdir NuPkgs\Support
   - msbuild /version
   - msbuild /t:Restore /m Src\Support
   - msbuild /t:Build /m /p:Platform=x64;Configuration=Debug Src\Support
