@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170804 (946)
+ *      <tr><th>API Rev<td>20170828 (970)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -3106,6 +3106,15 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// policy is updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; } 
+
+        /// <summary>Whether configuring WiFi access points is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigDisabled")]
+        public virtual System.Nullable<bool> WifiConfigDisabled { get; set; } 
+
+        /// <summary>Whether WiFi networks defined in Open Network Configuration are locked so they cannot be edited by
+        /// the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigsLockdownEnabled")]
+        public virtual System.Nullable<bool> WifiConfigsLockdownEnabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

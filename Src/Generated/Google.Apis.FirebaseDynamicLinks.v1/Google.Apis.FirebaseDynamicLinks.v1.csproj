@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.FirebaseDynamicLinks.v1 Client Library</Title>
-    <Version>1.29.1.971</Version>
+    <Version>1.29.1.975</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
