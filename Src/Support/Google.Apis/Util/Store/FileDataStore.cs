@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// TODO: This does not support UWP Storage.
+#if !UAP10_0
 
 using Google.Apis.Json;
 using System;
@@ -181,3 +181,5 @@ namespace Google.Apis.Util.Store
         }
     }
 }
+
+#endif

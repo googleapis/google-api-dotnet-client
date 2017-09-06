@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if NETCOREAPP1_0 || NETCOREAPP1_1
+#if NETSTANDARD1_3
 
 using System.Collections.Specialized;
 using System.IO;
@@ -105,7 +105,7 @@ namespace System.Net
     }
 }
 
-#elif NET452 || NET46
+#elif NET45 || UAP10_0
 // Nothing required
 #else
 #error Unsupported platform

@@ -34,13 +34,23 @@ namespace Google.Apis.Auth.OAuth2
     /// </remarks>
     public class GoogleWebAuthorizationBroker
     {
-        // It's unforunate this is a public field. But it cannot be changed due to backward compatibility.
+#if NETSTANDARD1_3 || NET45
+        // It's unfortunate this is a public field. But it cannot be changed due to backward compatibility.
         /// <summary>The folder which is used by the <see cref="Google.Apis.Util.Store.FileDataStore"/>.</summary>
         /// <remarks>
         /// The reason that this is not 'private const' is that a user can change it and store the credentials in a
         /// different location.
         /// </remarks>
         public static string Folder = "Google.Apis.Auth";
+
+        private static ICodeReceiver GetDefaultCodeReceiver() => new LocalServerCodeReceiver();
+        private static IDataStore GetDefaultDataStore() => new FileDataStore(Folder);
+#elif UAP10_0
+        private static ICodeReceiver GetDefaultCodeReceiver() => new UwpCodeReceiver();
+        private static IDataStore GetDefaultDataStore() => new PasswordVaultDataStore();
+#else
+#error Unsupported target
+#endif
 
         /// <summary>
         /// Asynchronously authorizes the specified user.
@@ -114,7 +124,7 @@ namespace Google.Apis.Auth.OAuth2
         public static async Task ReauthorizeAsync(UserCredential userCredential,
             CancellationToken taskCancellationToken, ICodeReceiver codeReceiver = null)
         {
-            codeReceiver = codeReceiver ?? new LocalServerCodeReceiver();
+            codeReceiver = codeReceiver ?? GetDefaultCodeReceiver();
 
             // Create an authorization code installed app instance and authorize the user.
             UserCredential newUserCredential = await new AuthorizationCodeInstalledApp(userCredential.Flow,
@@ -142,10 +152,10 @@ namespace Google.Apis.Auth.OAuth2
             ICodeReceiver codeReceiver = null)
         {
             initializer.Scopes = scopes;
-            initializer.DataStore = dataStore ?? new FileDataStore(Folder);
+            initializer.DataStore = dataStore ?? GetDefaultDataStore();
 
             var flow = new GoogleAuthorizationCodeFlow(initializer);
-            codeReceiver = codeReceiver ?? new LocalServerCodeReceiver();
+            codeReceiver = codeReceiver ?? GetDefaultCodeReceiver();
 
             // Create an authorization code installed app instance and authorize the user.
             return await new AuthorizationCodeInstalledApp(flow, codeReceiver).AuthorizeAsync

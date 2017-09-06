@@ -6,10 +6,6 @@ version: 1.0.{build}-{branch}
 # We're using Visual Studio 2017
 image: Visual Studio 2017
 
-# Temporary work around for https://appveyor.statuspage.io/incidents/m2vdvw39kdk8
-hosts:
-  api.nuget.org: 93.184.221.200
-
 # Install the pre-requisites for the build.
 install:
   # Make sure curl is available
@@ -19,10 +15,19 @@ install:
 
 # Perform the build.
 build_script:
-  - dotnet --info
-  - bash BuildSupport.sh
+  - msbuild /version
+  - msbuild /t:Restore /m Src\Support
+  - msbuild /t:Build /m /p:Platform=x64;Configuration=Debug Src\Support
+  - msbuild /t:Build /m /p:Platform=x64;Configuration=Release Src\Support
 
 # Perform the tests. Release build on all supported frameworks.
 test_script:
-  - dotnet test Src\Support\Google.Apis.Tests\Google.Apis.Tests.csproj --no-build -c Release
-  - dotnet test Src\Support\Google.Apis.Auth.Tests\Google.Apis.Auth.Tests.csproj --no-build -c Release
+  #- dotnet test Src\Support\Google.Apis.Tests\Google.Apis.Tests.csproj --no-build -c Release
+  #- dotnet test Src\Support\Google.Apis.Auth.Tests\Google.Apis.Auth.Tests.csproj --no-build -c Release
+  # TODO: Add back testing of non-UWP projects
+  # UWP testing (unlikely to work):
+  - vstest.console /ListDiscoverers
+  # This is unlikely to work on appveyor. It requires running a UWP application:
+  - vstest.console /Platform:x64 /InIsolation Src\Support\Google.Apis.Tests.Uwp\AppPackages\Google.Apis.Tests.Uwp_1.0.0.0_x64_Debug_Test\Google.Apis.Tests.Uwp_1.0.0.0_x64_Debug.appx
+  # This is unlikely to work on appveyor. It requires running a UWP application:
+  - vstest.console /Platform:x64 /InIsolation Src\Support\Google.Apis.Tests.Uwp\AppPackages\Google.Apis.Tests.Uwp_1.0.0.0_x64_Test\Google.Apis.Tests.Uwp_1.0.0.0_x64.appx

@@ -174,10 +174,10 @@ namespace Google.Apis.Auth
                 {
 #if NET45
                     verifiedOk = ((RSACryptoServiceProvider)googleCert).VerifyHash(hash, Sha256Oid, signature);
-#elif NETSTANDARD1_3
+#elif NETSTANDARD1_3 || UAP10_0
                     verifiedOk = googleCert.VerifyHash(hash, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 #else
-#error Unsupported platform
+#error Unsupported target
 #endif
                     if (verifiedOk)
                     {

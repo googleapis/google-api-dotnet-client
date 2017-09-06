@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+#if !UAP10_0
+
 using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
@@ -1010,3 +1012,5 @@ namespace Google.Apis.Tests.Apis.Upload
         }
     }
 }
+
+#endif

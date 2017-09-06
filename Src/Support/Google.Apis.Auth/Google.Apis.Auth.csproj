@@ -4,7 +4,7 @@
 
   <!-- build configuration -->
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;net45;uap10.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
   </PropertyGroup>
 
@@ -22,6 +22,18 @@ Supported Platforms:
     </Description>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
+    <TargetFrameworkIdentifier>.NETStandard</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v1.4</TargetFrameworkVersion>
+    <TargetFrameworkMoniker>UAP,Version=v10.0</TargetFrameworkMoniker>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <NugetTargetMoniker>UAP,Version=v10.0</NugetTargetMoniker>
+    <LanguageTargets>$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets</LanguageTargets>
+    <DefineConstants>$(DefineConstants);UAP10_0</DefineConstants>
+  </PropertyGroup>
+
   <!-- package references; common then per-target -->
   <ItemGroup>
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
@@ -34,6 +46,10 @@ Supported Platforms:
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='uap10.0'">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="5.4.0" />
   </ItemGroup>
 
   <!-- build and include the (empty) platformservices dll in package; required for backward compatibility -->
