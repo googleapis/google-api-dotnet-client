@@ -920,41 +920,21 @@ namespace Google.Apis.Tests.Apis.Http
         [Fact]
         public void NumTries_Setter()
         {
-            var configurableHanlder = new ConfigurableMessageHandler(new HttpClientHandler());
+            var configurableHandler = new ConfigurableMessageHandler(new HttpClientHandler());
 
             // valid values
-            configurableHanlder.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries;
-            configurableHanlder.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries - 1;
-            configurableHanlder.NumTries = 1;
+            configurableHandler.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries;
+            configurableHandler.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries - 1;
+            configurableHandler.NumTries = 1;
 
             // test invalid values
-            try
-            {
-                configurableHanlder.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries + 1;
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
-            }
-            try
-            {
-                configurableHanlder.NumTries = 0;
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
-            }
-            try
-            {
-                configurableHanlder.NumTries = -2;
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Assert.True(ex.Message.Contains("Parameter name: NumTries"));
-            }
+            var ex1 = Assert.Throws<ArgumentOutOfRangeException>(
+                () => configurableHandler.NumTries = ConfigurableMessageHandler.MaxAllowedNumTries + 1);
+            Assert.Contains("NumTries", ex1.Message);
+            var ex2 = Assert.Throws<ArgumentOutOfRangeException>(() => configurableHandler.NumTries = 0);
+            Assert.Contains("NumTries", ex2.Message);
+            var ex3 = Assert.Throws<ArgumentOutOfRangeException>(() => configurableHandler.NumTries = -2);
+            Assert.Contains("NumTries", ex3.Message);
         }
 
         /// <summary>

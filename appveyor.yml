@@ -25,10 +25,4 @@ build_script:
 test_script:
   #- dotnet test Src\Support\Google.Apis.Tests\Google.Apis.Tests.csproj --no-build -c Release
   #- dotnet test Src\Support\Google.Apis.Auth.Tests\Google.Apis.Auth.Tests.csproj --no-build -c Release
-  # TODO: Add back testing of non-UWP projects
-  # UWP testing (unlikely to work):
-  - vstest.console /ListDiscoverers
-  # This is unlikely to work on appveyor. It requires running a UWP application:
-  - vstest.console /Platform:x64 /InIsolation Src\Support\Google.Apis.Tests.Uwp\AppPackages\Google.Apis.Tests.Uwp_1.0.0.0_x64_Debug_Test\Google.Apis.Tests.Uwp_1.0.0.0_x64_Debug.appx
-  # This is unlikely to work on appveyor. It requires running a UWP application:
-  - vstest.console /Platform:x64 /InIsolation Src\Support\Google.Apis.Tests.Uwp\AppPackages\Google.Apis.Tests.Uwp_1.0.0.0_x64_Test\Google.Apis.Tests.Uwp_1.0.0.0_x64.appx
+  # TODO: Add back testing of non-UWP projects, using vstest.console
