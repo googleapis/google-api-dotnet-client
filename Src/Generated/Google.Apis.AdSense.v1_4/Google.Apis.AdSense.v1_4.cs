@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/adsense/management/'>AdSense Management API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20170904 (977)
+ *      <tr><th>API Rev<td>20170905 (978)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/adsense/management/'>
  *              https://developers.google.com/adsense/management/</a>
@@ -104,13 +104,13 @@ namespace Google.Apis.AdSense.v1_4
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/adsense/v1.4"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/adsense/v1.4"; }
         }
         #endif
 

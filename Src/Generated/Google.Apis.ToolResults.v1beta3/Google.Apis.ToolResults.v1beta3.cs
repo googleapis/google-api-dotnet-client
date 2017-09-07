@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170831 (973)
+ *      <tr><th>API Rev<td>20170906 (979)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -619,10 +619,11 @@ namespace Google.Apis.ToolResults.v1beta3
                         }
 
 
-                        /// <summary>Creates a PerfMetricsSummary resource.
+                        /// <summary>Creates a PerfMetricsSummary resource. Returns the existing one if it has already
+                        /// been created.
                         ///
-                        /// May return any of the following error code(s): - ALREADY_EXISTS - A PerfMetricSummary
-                        /// already exists for the given Step - NOT_FOUND - The containing Step does not exist</summary>
+                        /// May return any of the following error code(s): - NOT_FOUND - The containing Step does not
+                        /// exist</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="projectId">The cloud project</param>
                         /// <param name="historyId">A tool results history
@@ -635,10 +636,11 @@ namespace Google.Apis.ToolResults.v1beta3
                             return new CreateRequest(service, body, projectId, historyId, executionId, stepId);
                         }
 
-                        /// <summary>Creates a PerfMetricsSummary resource.
+                        /// <summary>Creates a PerfMetricsSummary resource. Returns the existing one if it has already
+                        /// been created.
                         ///
-                        /// May return any of the following error code(s): - ALREADY_EXISTS - A PerfMetricSummary
-                        /// already exists for the given Step - NOT_FOUND - The containing Step does not exist</summary>
+                        /// May return any of the following error code(s): - NOT_FOUND - The containing Step does not
+                        /// exist</summary>
                         public class CreateRequest : ToolResultsBaseServiceRequest<Google.Apis.ToolResults.v1beta3.Data.PerfMetricsSummary>
                         {
                             /// <summary>Constructs a new Create request.</summary>

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/9apLUp5XBqKbxk2H3SeXyQyPCkY\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/1QPBBBA_c3tBu0fiXeXwpZlOEeM\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20170831",
+ "revision": "20170906",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -1984,7 +1984,7 @@
              "id": "toolresults.projects.histories.executions.steps.perfMetricsSummary.create",
              "path": "{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary",
              "httpMethod": "POST",
-             "description": "Creates a PerfMetricsSummary resource.\n\nMay return any of the following error code(s): - ALREADY_EXISTS - A PerfMetricSummary already exists for the given Step - NOT_FOUND - The containing Step does not exist",
+             "description": "Creates a PerfMetricsSummary resource. Returns the existing one if it has already been created.\n\nMay return any of the following error code(s): - NOT_FOUND - The containing Step does not exist",
              "parameters": {
               "executionId": {
                "type": "string",
