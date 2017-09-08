@@ -1,19 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45;uap10.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp1.0;net452;net46;uap10.0</TargetFrameworks>
     <!-- On non-Windows platforms only net core can be built -->
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netcoreapp1.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="xunit" Version="2.3.0-beta2-build3683" />
-    <PackageReference Include="Xunit.Combinatorial" Version="1.2.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="xunit" Version="2.3.0-beta5-build3769" />
+    <PackageReference Include="Xunit.Combinatorial" Version="1.2.7" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
   </ItemGroup>
@@ -28,13 +30,20 @@
     <NugetTargetMoniker>UAP,Version=v10.0</NugetTargetMoniker>
     <LanguageTargets>$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets</LanguageTargets>
     <DefineConstants>$(DefineConstants);UAP10_0</DefineConstants>
+	<DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)'!='uap10.0'">
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0-beta5-build3769" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+  </ItemGroup>
+
   <ItemGroup Condition="'$(TargetFramework)'=='uap10.0'">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="5.4.0" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netcoreapp1.0'">
     <PackageReference Include="System.Net.WebHeaderCollection" Version="4.3.0" />
     <PackageReference Include="System.Collections.Specialized" Version="4.3.0" />
   </ItemGroup>

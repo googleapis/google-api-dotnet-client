@@ -10,13 +10,24 @@ using Windows.Storage;
 
 namespace Google.Apis.Util.Store
 {
+    /// <summary>
+    /// Data store that implements <see cref="IDataStore"/>, using Windows Storage.
+    /// A separate file within a <see cref="StorageFolder"/> is used for each key.
+    /// </summary>
     public class WindowsStorageDataStore : IDataStore
     {
-        public WindowsStorageDataStore(StorageFolder folder)
-        {
-            Folder = folder;
-        }
+        /// <summary>
+        /// Constructs a new <see cref="WindowsStorageDataStore"/>, with all files stored in
+        /// the specified <see cref="StorageFolder"/>.
+        /// WARNING: This folder will be deleted when <see cref="ClearAsync"/> is called.
+        /// </summary>
+        /// <param name="folder">The folder in which to store data.
+        /// This folder will be created if it doesn't exist.</param>
+        public WindowsStorageDataStore(StorageFolder folder) => Folder = folder;
 
+        /// <summary>
+        /// The folder in which data is stored.
+        /// </summary>
         public StorageFolder Folder { get; }
 
         private async Task EnsureFolderExists()
@@ -40,8 +51,12 @@ namespace Google.Apis.Util.Store
             }
         }
 
+        private static string GenerateStoredKey(string key, Type t) => string.Format("{0}-{1}", t.FullName, key);
+
+        /// <inheritdoc />
         public Task ClearAsync() => Folder.DeleteAsync().AsTask();
 
+        /// <inheritdoc />
         public async Task DeleteAsync<T>(string key)
         {
             var file = await Folder.TryGetItemAsync(GenerateStoredKey(key, typeof(T)));
@@ -51,6 +66,7 @@ namespace Google.Apis.Util.Store
             }
         }
 
+        /// <inheritdoc />
         public async Task<T> GetAsync<T>(string key)
         {
             key.ThrowIfNullOrEmpty(nameof(key));
@@ -67,6 +83,7 @@ namespace Google.Apis.Util.Store
             }
         }
 
+        /// <inheritdoc />
         public async Task StoreAsync<T>(string key, T value)
         {
             key.ThrowIfNullOrEmpty(nameof(key));
@@ -78,12 +95,6 @@ namespace Google.Apis.Util.Store
                 await stream.WriteAsync(serialized, 0, serialized.Length);
             }
         }
-
-        private static string GenerateStoredKey(string key, Type t)
-        {
-            return string.Format("{0}-{1}", t.FullName, key);
-        }
-
     }
 }
 

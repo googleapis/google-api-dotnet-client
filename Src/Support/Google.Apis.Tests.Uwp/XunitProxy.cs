@@ -1,14 +1,8 @@
-﻿using Google.Apis.Tests.Apis.Http;
-using Google.Apis.Tests.Apis.Logging;
-using Google.Apis.Tests.Apis.Requests;
+﻿using Google.Apis.Tests.Apis.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Google.Apis.Tests.Uwp
 {

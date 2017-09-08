@@ -1,4 +1,20 @@
-﻿#if UAP10_0
+﻿/*
+Copyright 2017 Google Inc
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+#if UAP10_0
 
 using Google.Apis.Json;
 using System;
@@ -8,6 +24,10 @@ using Windows.Security.Credentials;
 
 namespace Google.Apis.Util.Store
 {
+    /// <summary>
+    /// Data store that implements <see cref="IDataStore"/>, using the Windows
+    /// <see cref="PasswordVault"/> for storage.
+    /// </summary>
     public class PasswordVaultDataStore : IDataStore
     {
         private const string ResourcePrefix = "google-datastore";
@@ -15,6 +35,7 @@ namespace Google.Apis.Util.Store
 
         private string MakeResource<T>() => $"{ResourcePrefix}-{typeof(T)}";
 
+        /// <inheritdoc />
         public Task ClearAsync()
         {
             try
@@ -29,6 +50,7 @@ namespace Google.Apis.Util.Store
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc />
         public Task DeleteAsync<T>(string key)
         {
             try
@@ -40,6 +62,7 @@ namespace Google.Apis.Util.Store
             return Task.CompletedTask;
         }
 
+        /// <inheritdoc />
         public Task<T> GetAsync<T>(string key)
         {
             try
@@ -55,6 +78,7 @@ namespace Google.Apis.Util.Store
             }
         }
 
+        /// <inheritdoc />
         public Task StoreAsync<T>(string key, T value)
         {
             var serialized = NewtonsoftJsonSerializer.Instance.Serialize(value);

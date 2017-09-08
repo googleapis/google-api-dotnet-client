@@ -10,16 +10,27 @@ using System.Net.Http;
 
 namespace Google.Apis.Auth.OAuth2
 {
+    /// <summary>
+    /// OAuth 2.0 verification code receiver for UWP.
+    /// </summary>
     public class UwpCodeReceiver : ICodeReceiver
     {
+        /// <summary>
+        /// Exeception thrown on authention problems.
+        /// </summary>
         public sealed class AuthenticateException : Exception
         {
+            /// <summary>
+            /// Instantiate an <see cref="AuthenticateException"/>.
+            /// </summary>
+            /// <param name="msg"></param>
             public AuthenticateException(string msg) : base(msg) { }
         }
 
         /// <inheritdoc />
         public string RedirectUri => GoogleAuthConsts.InstalledAppRedirectUri;
 
+        /// <inheritdoc />
         public async Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url, CancellationToken taskCancellationToken)
         {
             if (taskCancellationToken.CanBeCanceled)

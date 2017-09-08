@@ -190,7 +190,7 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
             var httpClient = new Http.ConfigurableHttpClient(new Http.ConfigurableMessageHandler(httpHandler));
             cred.Initialize(httpClient);
             await httpClient.GetAsync("http://localhost/TestRequest");
-            Assert.Equal(1, httpHandler.AuthHeaders.Count);
+            Assert.Single(httpHandler.AuthHeaders);
             Assert.Equal("Bearer", httpHandler.AuthHeaders[0].Scheme);
             Assert.Equal(fakeAccessToken, httpHandler.AuthHeaders[0].Parameter);
         }

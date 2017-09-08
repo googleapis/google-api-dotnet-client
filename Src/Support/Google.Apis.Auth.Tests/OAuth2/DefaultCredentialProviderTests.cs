@@ -213,7 +213,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             }
             catch (InvalidOperationException e)
             {
-                Assert.True(e.Message.Contains("The Application Default Credentials are not available"));
+                Assert.Contains("The Application Default Credentials are not available", e.Message);
             }
         }
 
@@ -231,7 +231,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             }
             catch (InvalidOperationException e)
             {
-                Assert.True(e.Message.Contains("Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS"));
+                Assert.Contains("Please check the value of the Environment Variable GOOGLE_APPLICATION_CREDENTIALS", e.Message);
             }
         }
 
@@ -251,7 +251,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             }
             catch (InvalidOperationException e)
             {
-                Assert.True(e.Message.Contains("Error reading credential file from location"));
+                Assert.Contains("Error reading credential file from location", e.Message);
             }
         }
 
@@ -271,7 +271,7 @@ MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJJM6HT4s6btOsfe
             }
             catch (InvalidOperationException e)
             {
-                Assert.True(e.Message.Contains("Error reading credential file from location"));
+                Assert.Contains("Error reading credential file from location", e.Message);
             }
         }
 

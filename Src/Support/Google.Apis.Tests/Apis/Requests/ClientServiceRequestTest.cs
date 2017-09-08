@@ -1131,45 +1131,45 @@ namespace Google.Apis.Tests.Apis.Requests
                 // No ETag (ETag = null).
                 var request = new TestClientServiceRequest(service, HttpConsts.Get, body);
                 var httpRequest = request.CreateRequest();
-                Assert.Equal(0, httpRequest.Headers.IfMatch.Count);
-                Assert.Equal(0, httpRequest.Headers.IfNoneMatch.Count);
+                Assert.Empty(httpRequest.Headers.IfMatch);
+                Assert.Empty(httpRequest.Headers.IfNoneMatch);
 
                 // ETag has a value, but ETag action is ignored.
                 body.ETag = "\"ETAG_HERE\"";
                 request = new TestClientServiceRequest(service, HttpConsts.Get, body);
                 request.ETagAction = ETagAction.Ignore;
                 httpRequest = request.CreateRequest();
-                Assert.Equal(0, httpRequest.Headers.IfMatch.Count);
-                Assert.Equal(0, httpRequest.Headers.IfNoneMatch.Count);
+                Assert.Empty(httpRequest.Headers.IfMatch);
+                Assert.Empty(httpRequest.Headers.IfNoneMatch);
 
                 // ETag has a value, so use default action (Get -> If-None-Match).
                 request = new TestClientServiceRequest(service, HttpConsts.Get, body);
                 httpRequest = request.CreateRequest();
-                Assert.Equal(0, httpRequest.Headers.IfMatch.Count);
-                Assert.Equal(1, httpRequest.Headers.IfNoneMatch.Count);
+                Assert.Empty(httpRequest.Headers.IfMatch);
+                Assert.Single(httpRequest.Headers.IfNoneMatch);
                 Assert.Equal(new EntityTagHeaderValue(body.ETag), httpRequest.Headers.IfNoneMatch.First());
 
                 // ETag has a value, so use default action (Post -> If-Match).
                 request = new TestClientServiceRequest(service, HttpConsts.Post, body);
                 httpRequest = request.CreateRequest();
-                Assert.Equal(0, httpRequest.Headers.IfNoneMatch.Count);
-                Assert.Equal(1, httpRequest.Headers.IfMatch.Count);
+                Assert.Empty(httpRequest.Headers.IfNoneMatch);
+                Assert.Single(httpRequest.Headers.IfMatch);
                 Assert.Equal(new EntityTagHeaderValue(body.ETag), httpRequest.Headers.IfMatch.First());
 
                 // ETag has a value, default is override, use the specified ETag action.
                 request = new TestClientServiceRequest(service, HttpConsts.Post, body);
                 request.ETagAction = ETagAction.IfNoneMatch;
                 httpRequest = request.CreateRequest();
-                Assert.Equal(0, httpRequest.Headers.IfMatch.Count);
-                Assert.Equal(1, httpRequest.Headers.IfNoneMatch.Count);
+                Assert.Empty(httpRequest.Headers.IfMatch);
+                Assert.Single(httpRequest.Headers.IfNoneMatch);
                 Assert.Equal(new EntityTagHeaderValue(body.ETag), httpRequest.Headers.IfNoneMatch.First());
 
                 // ETag has a value, default is override, use the specified ETag action.
                 request = new TestClientServiceRequest(service, HttpConsts.Get, body);
                 request.ETagAction = ETagAction.IfMatch;
                 httpRequest = request.CreateRequest();
-                Assert.Equal(0, httpRequest.Headers.IfNoneMatch.Count);
-                Assert.Equal(1, httpRequest.Headers.IfMatch.Count);
+                Assert.Empty(httpRequest.Headers.IfNoneMatch);
+                Assert.Single(httpRequest.Headers.IfMatch);
                 Assert.Equal(new EntityTagHeaderValue(body.ETag), httpRequest.Headers.IfMatch.First());
 
                 // Fixing bug https://code.google.com/p/google-api-dotnet-client/issues/detail?id=464.
@@ -1177,8 +1177,8 @@ namespace Google.Apis.Tests.Apis.Requests
                 body.ETag = "ETAG";
                 request = new TestClientServiceRequest(service, HttpConsts.Post, body);
                 httpRequest = request.CreateRequest();
-                Assert.Equal(0, httpRequest.Headers.IfNoneMatch.Count);
-                Assert.Equal(0, httpRequest.Headers.IfMatch.Count);
+                Assert.Empty(httpRequest.Headers.IfNoneMatch);
+                Assert.Empty(httpRequest.Headers.IfMatch);
             }
         }
 

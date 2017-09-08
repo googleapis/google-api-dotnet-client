@@ -57,8 +57,8 @@ namespace Google.Apis.Auth.OAuth2
         /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
         /// </summary>
         /// <remarks>
-        /// In case no data store is specified, <see cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
-        /// default.
+        /// In case no data store is specified, a sensible default will be used:
+        /// <c>FileDataStore</c> on Windows and Core; <c>PasswordVaultDataStore</c> on UWP.
         /// </remarks>
         /// <param name="clientSecrets">The client secrets.</param>
         /// <param name="scopes">
@@ -86,8 +86,8 @@ namespace Google.Apis.Auth.OAuth2
         /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
         /// </summary>
         /// <remarks>
-        /// In case no data store is specified, <see cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
-        /// default.
+        /// In case no data store is specified, a sensible default will be used:
+        /// <c>FileDataStore</c> on Windows and Core; <c>PasswordVaultDataStore</c> on UWP.
         /// </remarks>
         /// <param name="clientSecretsStream">
         /// The client secrets stream. The authorization code flow constructor is responsible for disposing the stream.

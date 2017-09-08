@@ -31,20 +31,18 @@ Supported Platforms:
     <NugetTargetMoniker>UAP,Version=v10.0</NugetTargetMoniker>
     <LanguageTargets>$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets</LanguageTargets>
     <DefineConstants>$(DefineConstants);UAP10_0</DefineConstants>
+	<DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
 
   <!-- package references; common then per-target -->
   <ItemGroup>
-    <PackageReference Include="System.Net.Http" Version="4.3.1" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
+    <PackageReference Include="System.Net.Http" Version="4.3.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net45'">
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='uap10.0'">

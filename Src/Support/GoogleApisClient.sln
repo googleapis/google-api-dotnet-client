@@ -25,8 +25,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Tests.Uwp", "Go
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.IntegrationTests.Uwp", "Google.Apis.IntegrationTests.Uwp\Google.Apis.IntegrationTests.Uwp.csproj", "{AB4E5538-1AF0-4912-813A-748A697280E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Tests.FullCore", "Google.Apis.Tests.FullCore\Google.Apis.Tests.FullCore.csproj", "{A3FC91EE-B507-46A1-B753-BD0D080BE400}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -231,22 +229,6 @@ Global
 		{AB4E5538-1AF0-4912-813A-748A697280E4}.Release|x86.ActiveCfg = Release|x86
 		{AB4E5538-1AF0-4912-813A-748A697280E4}.Release|x86.Build.0 = Release|x86
 		{AB4E5538-1AF0-4912-813A-748A697280E4}.Release|x86.Deploy.0 = Release|x86
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Debug|ARM.Build.0 = Debug|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Debug|x64.Build.0 = Debug|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Debug|x86.Build.0 = Debug|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Release|ARM.ActiveCfg = Release|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Release|ARM.Build.0 = Release|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Release|x64.ActiveCfg = Release|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Release|x64.Build.0 = Release|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Release|x86.ActiveCfg = Release|Any CPU
-		{A3FC91EE-B507-46A1-B753-BD0D080BE400}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

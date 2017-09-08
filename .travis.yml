@@ -4,7 +4,11 @@ dotnet: 1.0.1
 dist: trusty
 
 script:
+  - mkdir NuPkgs\Support
   - dotnet --info
-  - ./BuildSupport.sh
-  - dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-build -c Release
-  - dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-build -c Release
+  - dotnet restore Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj
+  - dotnet restore Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj
+  - dotnet build Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj -c Release
+  - dotnet build Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj -c Release
+  - dotnet test Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj --no-restore --no-build -c Release
+  - dotnet test Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj --no-restore --no-build -c Release
