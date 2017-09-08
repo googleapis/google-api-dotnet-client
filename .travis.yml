@@ -1,10 +1,19 @@
 language: csharp
 mono: none
-dotnet: 1.0.1
+dotnet: 2.0.0
 dist: trusty
 
+# Install the .NET Core 1.0 runtime as that's what we test against
+addons:
+  apt:
+    sources:
+    - sourceline: 'deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-trusty-prod trusty main'
+      key_url: 'https://packages.microsoft.com/keys/microsoft.asc'
+    packages:
+    - dotnet-sharedframework-microsoft.netcore.app-1.0.5
+
 script:
-  - mkdir NuPkgs\Support
+  - mkdir -p NuPkgs/Support
   - dotnet --info
   - dotnet restore Src/Support/Google.Apis.Tests/Google.Apis.Tests.csproj
   - dotnet restore Src/Support/Google.Apis.Auth.Tests/Google.Apis.Auth.Tests.csproj
