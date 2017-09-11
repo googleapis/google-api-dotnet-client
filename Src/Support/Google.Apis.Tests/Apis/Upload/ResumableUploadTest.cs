@@ -124,6 +124,7 @@ namespace Google.Apis.Tests.Apis.Upload
             {
                 var rnd = new Random();
                 // Find an available port and start an HttpListener.
+                int retries = 5;
                 do
                 {
                     _httpListener = new HttpListener();
@@ -142,6 +143,12 @@ namespace Google.Apis.Tests.Apis.Upload
                     }
                     catch (SocketException e) when (e.SocketErrorCode == SocketError.AddressAlreadyInUse)
                     {
+                        _httpListener.Close();
+                        _httpListener = null;
+                    }
+                    catch when (retries > 0)
+                    {
+                        retries -= 1;
                         _httpListener.Close();
                         _httpListener = null;
                     }
