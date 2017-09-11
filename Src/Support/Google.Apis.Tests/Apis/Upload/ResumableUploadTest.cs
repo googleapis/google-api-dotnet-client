@@ -14,9 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Not possible in UAP
 // Too slow in net core
-#if !UAP10_0 && !NETCOREAPP1_0 && !NETCOREAPP1_1
+#if !NETCOREAPP1_0 && !NETCOREAPP1_1
 
 using Google.Apis.Json;
 using Google.Apis.Services;
@@ -321,7 +320,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 var progress = uploader.Upload();
                 Assert.Equal(2, server.Requests.Count);
                 var r0 = server.Requests[0];
-                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"]);
+                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"] ?? "");
                 Assert.Equal(knownSize ? uploadTestBytes.Length.ToString() : null, r0.Headers["X-Upload-Content-Length"]);
                 var r1 = server.Requests[1];
                 Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
@@ -351,7 +350,7 @@ namespace Google.Apis.Tests.Apis.Upload
 
                 Assert.Equal(2, server.Requests.Count);
                 var r0 = server.Requests[0];
-                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"]);
+                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"] ?? "");
                 Assert.Equal(uploadTestBytes.Length.ToString(), r0.Headers["X-Upload-Content-Length"]);
                 var r1 = server.Requests[1];
                 Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));

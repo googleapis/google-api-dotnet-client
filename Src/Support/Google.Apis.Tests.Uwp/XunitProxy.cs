@@ -20,6 +20,7 @@ namespace Google.Apis.Tests.Uwp
         [TestMethod]
         public void RunAllXunitTests()
         {
+            // TODO: Theory tests
             int testCount = 0;
             var googleApiTests = typeof(NullLoggerTests).GetTypeInfo().Assembly.GetTypes();
             foreach (var type in googleApiTests)
@@ -59,7 +60,7 @@ namespace Google.Apis.Tests.Uwp
                 }
             }
             // Confirm that the correct number of tests has actually run.
-            Assert.IsTrue(testCount == 153, $"testCount = {testCount}");
+            Assert.AreEqual(156, testCount);
         }
     }
 }
