@@ -62,14 +62,7 @@ namespace Google.Apis.Tests.Uwp
                 try
                 {
                     var ret = method.Invoke(test, new object[0]);
-                    if (method.ReturnType == typeof(Task))
-                    {
-                        ((Task)ret).Wait();
-                    }
-                    else if (method.ReturnType != typeof(void))
-                    {
-                        throw new InvalidOperationException($"Unexpected return type {method.ReturnType} in test method {method}");
-                    }
+                    (ret as Task)?.Wait();
                 }
                 catch (Exception e)
                 {
@@ -77,7 +70,7 @@ namespace Google.Apis.Tests.Uwp
                     throw new XunitException(method, e);
                 }
             }
-            // Confirm that the correct number of tests has actually run.
+            // Confirm that the correct number of tests have run.
             Assert.AreEqual(224, facts.Count);
         }
     }
