@@ -14,9 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// Not possible in UAP
 // Too slow in net core
-#if !UAP10_0 && !NETCOREAPP1_0 && !NETCOREAPP1_1
+#if !NETCOREAPP1_0 && !NETCOREAPP1_1
 
 using System;
 using System.Collections.Generic;

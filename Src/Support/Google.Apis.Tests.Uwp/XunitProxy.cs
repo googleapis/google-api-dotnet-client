@@ -58,8 +58,8 @@ namespace Google.Apis.Tests.Uwp
                     }
                 }
             }
-            // Confirm that a sensible number of tests has actually run.
-            Assert.IsTrue(testCount >= 140, $"testCount = {testCount}");
+            // Confirm that the correct number of tests has actually run.
+            Assert.IsTrue(testCount == 153, $"testCount = {testCount}");
         }
     }
 }
