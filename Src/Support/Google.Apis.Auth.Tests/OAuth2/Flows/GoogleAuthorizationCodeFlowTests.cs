@@ -14,20 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-
-using Moq;
-
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Requests;
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Http;
-using Google.Apis.Util.Store;
-using Google.Apis.Auth.OAuth2;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Google.Apis.Auth.Tests.OAuth2.Flows

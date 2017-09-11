@@ -139,6 +139,10 @@
       <Project>{b8d261f0-4c17-4887-bbc3-cbbfdf0d5328}</Project>
       <Name>Google.Apis.Tests</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Google.Apis.Auth.Tests\Google.Apis.Auth.Tests.csproj">
+      <Project>{f106e24e-49f8-4d86-8cbf-9616178ca08c}</Project>
+      <Name>Google.Apis.Auth.Tests</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Google.Apis\Google.Apis.csproj">
       <Project>{a0e0f5aa-6a5f-44a1-8dc7-0443f01c72e2}</Project>
       <Name>Google.Apis</Name>

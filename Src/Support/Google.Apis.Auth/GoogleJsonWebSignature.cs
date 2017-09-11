@@ -247,7 +247,7 @@ namespace Google.Apis.Auth
         }
 
         private static SemaphoreSlim _certCacheLock = new SemaphoreSlim(1);
-        private static DateTime _certCacheDownloadTime;
+        internal static DateTime _certCacheDownloadTime; // internal for testing
         private static List<RSA> _certCache;
 
         // internal for testing

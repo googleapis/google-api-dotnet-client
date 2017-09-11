@@ -30,7 +30,7 @@
     <NugetTargetMoniker>UAP,Version=v10.0</NugetTargetMoniker>
     <LanguageTargets>$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets</LanguageTargets>
     <DefineConstants>$(DefineConstants);UAP10_0</DefineConstants>
-	<DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'!='uap10.0'">

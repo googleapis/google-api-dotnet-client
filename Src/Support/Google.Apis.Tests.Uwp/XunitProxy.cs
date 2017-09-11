@@ -1,8 +1,9 @@
-﻿using Google.Apis.Tests.Apis.Logging;
+﻿using Google.Apis.Auth.Tests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Tests.Uwp
 {
@@ -21,46 +22,47 @@ namespace Google.Apis.Tests.Uwp
         public void RunAllXunitTests()
         {
             // TODO: Theory tests
-            int testCount = 0;
-            var googleApiTests = typeof(NullLoggerTests).GetTypeInfo().Assembly.GetTypes();
-            foreach (var type in googleApiTests)
+            var googleApiTypes = typeof(ApplicationContextTests).GetTypeInfo().Assembly.GetTypes();
+            var googleApiAuthTypes = typeof(GoogleJsonWebSignatureTests).GetTypeInfo().Assembly.GetTypes();
+            var allTypes = googleApiTypes.Concat(googleApiAuthTypes);
+            var facts = allTypes
+                .Select(type => type.GetTypeInfo())
+                .Where(typeInfo => typeInfo.IsPublic)
+                .Select(typeInfo => new
+                {
+                    typeInfo,
+                    ctor = typeInfo.DeclaredConstructors.FirstOrDefault(x => x.IsPublic && !x.GetParameters().Any())
+                })
+                .Where(x => x.ctor != null)
+                .SelectMany(x => x.typeInfo.DeclaredMethods.Select(method => new { x.ctor, method }))
+                .Where(x => x.method.GetCustomAttribute<Xunit.FactAttribute>()?.GetType() == typeof(Xunit.FactAttribute))
+                .ToList();
+            // Execute all xunit Fact tests
+            foreach (var fact in facts)
             {
-                var typeInfo = type.GetTypeInfo();
-                // Only public classes
-                if (!typeInfo.IsPublic)
+                var test = fact.ctor.Invoke(new object[0]);
+                var method = fact.method;
+                // TODO: Perhaps collect all test failures, throw at end
+                try
                 {
-                    continue;
-                }
-                // Only classes that have a parameterless public constructor
-                var ctor = typeInfo.DeclaredConstructors.FirstOrDefault(x => x.IsPublic && !x.GetParameters().Any());
-                if (ctor == null)
-                {
-                    continue;
-                }
-                var methods = type.GetTypeInfo().DeclaredMethods;
-                foreach (var method in typeInfo.DeclaredMethods)
-                {
-                    // TheoryAttribute derives from FactAttribute
-                    var isFact = method.GetCustomAttribute<Xunit.FactAttribute>()?.GetType() == typeof(Xunit.FactAttribute);
-                    if (isFact)
+                    var ret = method.Invoke(test, new object[0]);
+                    if (method.ReturnType == typeof(Task))
                     {
-                        testCount += 1;
-                        var test = ctor.Invoke(new object[0]);
-                        // TODO: Collect all test failures, throw at end
-                        try
-                        {
-                            method.Invoke(test, new object[0]);
-                        }
-                        catch (Exception e)
-                        {
-                            e = (e as TargetInvocationException)?.InnerException ?? e;
-                            throw new XunitException(method, e);
-                        }
+                        ((Task)ret).Wait();
                     }
+                    else if (method.ReturnType != typeof(void))
+                    {
+                        throw new InvalidOperationException($"Unexpected return type {method.ReturnType} in test method {method}");
+                    }
+                }
+                catch (Exception e)
+                {
+                    e = (e as TargetInvocationException)?.InnerException ?? e;
+                    throw new XunitException(method, e);
                 }
             }
             // Confirm that the correct number of tests has actually run.
-            Assert.AreEqual(156, testCount);
+            Assert.AreEqual(224, facts.Count);
         }
     }
 }
