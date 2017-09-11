@@ -10,6 +10,7 @@ namespace Google.Apis.Tests.Uwp.Apis.Util.Store
         [TestMethod]
         public async Task StoreAndGet()
         {
+            Assert.Fail("Testing a UWP-only failure");
             var store = new PasswordVaultDataStore();
             Assert.AreEqual(0, await store.GetAsync<int>("key1"));
             await store.StoreAsync<int>("key1", 1);

@@ -72,7 +72,6 @@ namespace Google.Apis.Tests
         [Fact]
         public void GetLoggerDefaultTest()
         {
-            //TODO: Remove: Assert.True(false, "Testing test failure is reported in jenkins UWP (again)");
             ApplicationContext.Reset();
             Assert.IsType<NullLogger>(ApplicationContext.Logger);
         }
