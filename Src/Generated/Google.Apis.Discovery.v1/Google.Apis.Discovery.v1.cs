@@ -95,13 +95,13 @@ namespace Google.Apis.Discovery.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/discovery/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/discovery/v1"; }
         }
         #endif
 

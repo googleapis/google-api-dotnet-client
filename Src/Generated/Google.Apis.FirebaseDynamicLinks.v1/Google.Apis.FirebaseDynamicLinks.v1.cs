@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170902 (975)
+ *      <tr><th>API Rev<td>20170907 (980)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -521,6 +521,59 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
             }
 
         }
+
+        /// <summary>Get iOS strong/weak-match info for post-install attribution.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual InstallAttributionRequest InstallAttribution(Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionRequest body)
+        {
+            return new InstallAttributionRequest(service, body);
+        }
+
+        /// <summary>Get iOS strong/weak-match info for post-install attribution.</summary>
+        public class InstallAttributionRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionResponse>
+        {
+            /// <summary>Constructs a new InstallAttribution request.</summary>
+            public InstallAttributionRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.FirebaseDynamicLinks.v1.Data.GetIosPostInstallAttributionRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "installAttribution"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/installAttribution"; }
+            }
+
+            /// <summary>Initializes InstallAttribution parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
     }
 }
 
@@ -603,6 +656,33 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Information about potential warnings on link creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warning")]
         public virtual System.Collections.Generic.IList<DynamicLinkWarning> Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Signals associated with the device making the request.</summary>
+    public class DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Device model name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceModelName")]
+        public virtual string DeviceModelName { get; set; } 
+
+        /// <summary>Device language code setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Device display resolution height.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenResolutionHeight")]
+        public virtual System.Nullable<long> ScreenResolutionHeight { get; set; } 
+
+        /// <summary>Device display resolution width.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenResolutionWidth")]
+        public virtual System.Nullable<long> ScreenResolutionWidth { get; set; } 
+
+        /// <summary>Device timezone setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timezone")]
+        public virtual string Timezone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -699,6 +779,124 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>The warning message to help developers improve their requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warningMessage")]
         public virtual string WarningMessage { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for iSDK to execute strong match flow for post-install attribution. This is meant for iOS
+    /// requests only. Requests from other platforms will not be honored.</summary>
+    public class GetIosPostInstallAttributionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>App installation epoch time (https://en.wikipedia.org/wiki/Unix_time). This is a client signal for
+        /// a more accurate weak match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appInstallationTime")]
+        public virtual System.Nullable<long> AppInstallationTime { get; set; } 
+
+        /// <summary>APP bundle ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleId")]
+        public virtual string BundleId { get; set; } 
+
+        /// <summary>Device information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual DeviceInfo Device { get; set; } 
+
+        /// <summary>iOS version, ie: 9.3.5. Consider adding "build".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosVersion")]
+        public virtual string IosVersion { get; set; } 
+
+        /// <summary>App post install attribution retrieval information. Disambiguates mechanism (iSDK or developer
+        /// invoked) to retrieve payload from clicked link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retrievalMethod")]
+        public virtual string RetrievalMethod { get; set; } 
+
+        /// <summary>Google SDK version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersion")]
+        public virtual string SdkVersion { get; set; } 
+
+        /// <summary>Possible unique matched link that server need to check before performing fingerprint match. If
+        /// passed link is short server need to expand the link. If link is long server need to vslidate the
+        /// link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueMatchLinkToCheck")]
+        public virtual string UniqueMatchLinkToCheck { get; set; } 
+
+        /// <summary>Strong match page information. Disambiguates between default UI and custom page to present when
+        /// strong match succeeds/fails to find cookie.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visualStyle")]
+        public virtual string VisualStyle { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for iSDK to execute strong match flow for post-install attribution.</summary>
+    public class GetIosPostInstallAttributionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The minimum version for app, specified by dev through ?imv= parameter. Return to iSDK to allow app
+        /// to evaluate if current version meets this.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appMinimumVersion")]
+        public virtual string AppMinimumVersion { get; set; } 
+
+        /// <summary>The confidence of the returned attribution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributionConfidence")]
+        public virtual string AttributionConfidence { get; set; } 
+
+        /// <summary>The deep-link attributed post-install via one of several techniques (fingerprint, copy
+        /// unique).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deepLink")]
+        public virtual string DeepLink { get; set; } 
+
+        /// <summary>User-agent specific custom-scheme URIs for iSDK to open. This will be set according to the user-
+        /// agent tha the click was originally made in. There is no Safari-equivalent custom-scheme open URLs. ie:
+        /// googlechrome://www.example.com ie: firefox://open-url?url=http://www.example.com ie: opera-
+        /// http://example.com</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalBrowserDestinationLink")]
+        public virtual string ExternalBrowserDestinationLink { get; set; } 
+
+        /// <summary>The link to navigate to update the app if min version is not met. This is either (in order): 1)
+        /// fallback link (from ?ifl= parameter, if specified by developer) or 2) AppStore URL (from ?isi= parameter, if
+        /// specified), or 3) the payload link (from required link= parameter).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackLink")]
+        public virtual string FallbackLink { get; set; } 
+
+        /// <summary>Invitation ID attributed post-install via one of several techniques (fingerprint, copy
+        /// unique).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
+        public virtual string InvitationId { get; set; } 
+
+        /// <summary>Instruction for iSDK to attemmpt to perform strong match. For instance, if browser does not
+        /// support/allow cookie or outside of support browsers, this will be false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isStrongMatchExecutable")]
+        public virtual System.Nullable<bool> IsStrongMatchExecutable { get; set; } 
+
+        /// <summary>Describes why match failed, ie: "discarded due to low confidence". This message will be publicly
+        /// visible.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchMessage")]
+        public virtual string MatchMessage { get; set; } 
+
+        /// <summary>Entire FDL (short or long) attributed post-install via one of several techniques (fingerprint, copy
+        /// unique).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedLink")]
+        public virtual string RequestedLink { get; set; } 
+
+        /// <summary>The entire FDL, expanded from a short link. It is the same as the requested_link, if it is long.
+        /// Parameters from this should not be used directly (ie: server can default utm_[campaign|medium|source] to a
+        /// value when requested_link lack them, server determine the best fallback_link when requested_link specifies
+        /// >1 fallback links).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedLink")]
+        public virtual string ResolvedLink { get; set; } 
+
+        /// <summary>Scion campaign value to be propagated by iSDK to Scion at post-install.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmCampaign")]
+        public virtual string UtmCampaign { get; set; } 
+
+        /// <summary>Scion medium value to be propagated by iSDK to Scion at post-install.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmMedium")]
+        public virtual string UtmMedium { get; set; } 
+
+        /// <summary>Scion source value to be propagated by iSDK to Scion at post-install.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utmSource")]
+        public virtual string UtmSource { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

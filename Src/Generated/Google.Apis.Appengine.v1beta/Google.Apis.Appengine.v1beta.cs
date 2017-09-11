@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20170825 (967)
+ *      <tr><th>API Rev<td>20170901 (974)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -1778,10 +1778,6 @@ namespace Google.Apis.Appengine.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AppsId { get; private set; }
 
-                    /// <summary>Maximum results to return per page.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>A valid IP Address. If set, only rules matching this address will be returned. The
                     /// first returned rule will be the rule that fires on requests from this IP.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("matchingAddress", Google.Apis.Util.RequestParameterType.Query)]
@@ -1790,6 +1786,10 @@ namespace Google.Apis.Appengine.v1beta
                     /// <summary>Continuation token for fetching the next page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Maximum results to return per page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1825,15 +1825,6 @@ namespace Google.Apis.Appengine.v1beta
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "matchingAddress", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "matchingAddress",
@@ -1846,6 +1837,15 @@ namespace Google.Apis.Appengine.v1beta
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3671,13 +3671,13 @@ namespace Google.Apis.Appengine.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>Maximum results to return per page.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Continuation token for fetching the next page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum results to return per page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3713,18 +3713,18 @@ namespace Google.Apis.Appengine.v1beta
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4284,6 +4284,12 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// resource creation. Example: 12345.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
+
+        /// <summary>Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the
+        /// lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this
+        /// certificate is manually administered by the user, this field will be empty.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedCertificate")]
+        public virtual ManagedCertificate ManagedCertificate { get; set; } 
 
         /// <summary>Full path to the AuthorizedCertificate resource in the API. Example:
         /// apps/myapp/authorizedCertificates/12345.@OutputOnly</summary>
@@ -5055,6 +5061,24 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A certificate managed by App Engine.</summary>
+    public class ManagedCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time at which the certificate was last renewed. The renewal process is fully managed. Certificate
+        /// renewal will automatically occur before the certificate expires. Renewal errors can be tracked via
+        /// ManagementStatus.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRenewalTime")]
+        public virtual object LastRenewalTime { get; set; } 
+
+        /// <summary>Status of certificate management. Refers to the most recent certificate acquisition or renewal
+        /// attempt.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A service with manual scaling runs continuously, allowing you to perform complex initialization and
     /// rely on the state of its memory over time.</summary>
     public class ManualScaling : Google.Apis.Requests.IDirectResponseSchema
@@ -5508,9 +5532,26 @@ namespace Google.Apis.Appengine.v1beta.Data
     public class SslSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field
-        /// will remove SSL support. Example: 12345.</summary>
+        /// will remove SSL support.By default, a managed certificate is automatically created for every domain mapping.
+        /// To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE
+        /// request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a
+        /// DomainMapping resource. Example: 12345.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certificateId")]
         public virtual string CertificateId { get; set; } 
+
+        /// <summary>ID of the managed AuthorizedCertificate resource currently being provisioned, if applicable. Until
+        /// the new managed certificate has been successfully provisioned, the previous SSL state will be preserved.
+        /// Once the provisioning process completes, the certificate_id field will reflect the new managed certificate
+        /// and this field will be left empty. To remove SSL support while there is still a pending managed certificate,
+        /// clear the certificate_id field with an UpdateDomainMappingRequest.@OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingManagedCertificateId")]
+        public virtual string PendingManagedCertificateId { get; set; } 
+
+        /// <summary>SSL management type for this domain. If AUTOMATIC, a managed certificate is automatically
+        /// provisioned. If MANUAL, certificate_id must be manually specified in order to configure SSL for this
+        /// domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sslManagementType")]
+        public virtual string SslManagementType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

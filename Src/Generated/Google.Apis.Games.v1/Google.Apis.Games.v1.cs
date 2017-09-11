@@ -109,13 +109,13 @@ namespace Google.Apis.Games.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/games/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/games/v1"; }
         }
         #endif
 

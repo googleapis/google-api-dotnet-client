@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170825 (967)
+ *      <tr><th>API Rev<td>20170903 (976)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -99,13 +99,13 @@ namespace Google.Apis.Bigquery.v2
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/bigquery/v2"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/bigquery/v2"; }
         }
         #endif
 
@@ -1528,6 +1528,68 @@ namespace Google.Apis.Bigquery.v2
         }
 
 
+        /// <summary>Returns the email address of the service account for your project used for interactions with Google
+        /// Cloud KMS.</summary>
+        /// <param name="projectId">Project ID for which the service account is requested.</param>
+        public virtual GetServiceAccountRequest GetServiceAccount(string projectId)
+        {
+            return new GetServiceAccountRequest(service, projectId);
+        }
+
+        /// <summary>Returns the email address of the service account for your project used for interactions with Google
+        /// Cloud KMS.</summary>
+        public class GetServiceAccountRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.GetServiceAccountResponse>
+        {
+            /// <summary>Constructs a new GetServiceAccount request.</summary>
+            public GetServiceAccountRequest(Google.Apis.Services.IClientService service, string projectId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for which the service account is requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getServiceAccount"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{projectId}/serviceAccount"; }
+            }
+
+            /// <summary>Initializes GetServiceAccount parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Lists all projects to which you have been granted any project role.</summary>
         public virtual ListRequest List()
         {
@@ -2800,6 +2862,18 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
+        /// table. The BigQuery Service Account associated with your project requires access to this encryption
+        /// key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class ErrorProto : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Debugging information. This property is internal to Google and should not be used.</summary>
@@ -3066,6 +3140,20 @@ namespace Google.Apis.Bigquery.v2.Data
 
     }    
 
+    public class GetServiceAccountResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The service account email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>The resource type of the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class GoogleSheetsOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data.
@@ -3239,6 +3327,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
         public virtual string CreateDisposition { get; set; } 
 
+        /// <summary>[Experimental] Custom encryption configuration (e.g., Cloud KMS keys).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
+        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
+
         /// <summary>[Required] The destination table to load the data into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
         public virtual TableReference DestinationTable { get; set; } 
@@ -3378,6 +3470,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataset")]
         public virtual DatasetReference DefaultDataset { get; set; } 
 
+        /// <summary>[Experimental] Custom encryption configuration (e.g., Cloud KMS keys).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
+        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
+
         /// <summary>[Optional] Describes the table where the query results should be stored. If not present, a new
         /// table will be created to store the results. This property must be set for large results that exceed the
         /// maximum response size.</summary>
@@ -3484,6 +3580,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// completion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
         public virtual string CreateDisposition { get; set; } 
+
+        /// <summary>[Experimental] Custom encryption configuration (e.g., Cloud KMS keys).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
+        public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
 
         /// <summary>[Required] The destination table</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
@@ -4027,6 +4127,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Optional] A user-friendly description of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>[Experimental] Custom encryption configuration (e.g., Cloud KMS keys).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfiguration")]
+        public virtual EncryptionConfiguration EncryptionConfiguration { get; set; } 
 
         /// <summary>[Output-only] A hash of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]

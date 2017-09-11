@@ -983,14 +983,6 @@ namespace Google.Apis.Storagetransfer.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>A list of query parameters specified as JSON text in the form of {\"project_id\" :
-            /// \"my_project_id\", \"job_names\" : [\"jobid1\", \"jobid2\",...], \"operation_names\" : [\"opid1\",
-            /// \"opid2\",...], \"transfer_statuses\":[\"status1\", \"status2\",...]}. Since `job_names`,
-            /// `operation_names`, and `transfer_statuses` support multiple values, they must be specified with array
-            /// notation. `job_names`, `operation_names`, and `transfer_statuses` are optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -998,6 +990,14 @@ namespace Google.Apis.Storagetransfer.v1
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A list of query parameters specified as JSON text in the form of {\"project_id\" :
+            /// \"my_project_id\", \"job_names\" : [\"jobid1\", \"jobid2\",...], \"operation_names\" : [\"opid1\",
+            /// \"opid2\",...], \"transfer_statuses\":[\"status1\", \"status2\",...]}. Since `job_names`,
+            /// `operation_names`, and `transfer_statuses` support multiple values, they must be specified with array
+            /// notation. `job_names`, `operation_names`, and `transfer_statuses` are optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1033,15 +1033,6 @@ namespace Google.Apis.Storagetransfer.v1
                         Pattern = @"^transferOperations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1054,6 +1045,15 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

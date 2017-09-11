@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170818 (960)
+ *      <tr><th>API Rev<td>20170825 (967)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -4121,7 +4121,7 @@ namespace Google.Apis.Container.v1.Data
         /// addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys,
         /// the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is
         /// undefined and conflicts should be avoided. For more information, including usage and the valid values, see:
-        /// http://kubernetes.io/v1.1/docs/user-guide/labels.html</summary>
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
