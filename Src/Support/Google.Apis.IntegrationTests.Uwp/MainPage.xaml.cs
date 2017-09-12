@@ -7,8 +7,10 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage.Pickers;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -31,23 +33,95 @@ namespace Google.Apis.IntegrationTests.Uwp
             this.InitializeComponent();
         }
 
-        static string s_clientSecret = "{\"installed\":{\"client_id\":\"233772281425-ab2mcbiqmv8kh0mdnqsrkrod97qk37h0.apps.googleusercontent.com\",\"project_id\":\"chrisbacon-testing\",\"auth_uri\":\"https://accounts.google.com/o/oauth2/auth\",\"token_uri\":\"https://accounts.google.com/o/oauth2/token\",\"auth_provider_x509_cert_url\":\"https://www.googleapis.com/oauth2/v1/certs\",\"client_secret\":\"7s1Gc2n2Zr6FZmMvR3OeyWdp\",\"redirect_uris\":[\"urn:ietf:wg:oauth:2.0:oob\",\"http://localhost\"]}}";
-        public static MemoryStream GetClientSecretStream() => new MemoryStream(Encoding.ASCII.GetBytes(s_clientSecret));
+        private static GoogleClientSecrets _userSecrets = null;
+        private static GoogleCredential _serviceCredential = null;
 
-        private async void Button_Click(object sender, RoutedEventArgs e)
+        private void SetTestButtonsState()
         {
-            var secret = GoogleClientSecrets.Load(GetClientSecretStream());
-            var response = await GoogleWebAuthorizationBroker.AuthorizeAsync(secret.Secrets,
-                new[] { Google.Apis.Storage.v1.StorageService.Scope.DevstorageReadOnly }, "me", CancellationToken.None, new NullDataStore());
-            this.textblock1.Text = response.Token.AccessToken;
+            bool enabled = _userSecrets != null && _serviceCredential != null
+                && !string.IsNullOrWhiteSpace(ProjectNameTextBox.Text);
+            StartButton.IsEnabled = enabled;
+        }
+
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.FileTypeFilter.Add(".json");
+            var file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                using (var st = await file.OpenStreamForReadAsync())
+                {
+                    _userSecrets = GoogleClientSecrets.Load(st);
+                }
+            }
+            else
+            {
+                _userSecrets = null;
+            }
+            SetTestButtonsState();
+        }
+
+        private async void SelectServiceCredentialsButton_Click(object sender, RoutedEventArgs e)
+        {
+            FileOpenPicker openPicker = new FileOpenPicker();
+            openPicker.FileTypeFilter.Add(".json");
+            var file = await openPicker.PickSingleFileAsync();
+            if (file != null)
+            {
+                using (var st = await file.OpenStreamForReadAsync())
+                {
+                    _serviceCredential = GoogleCredential.FromStream(st);
+                }
+            }
+            else
+            {
+                _serviceCredential = null;
+            }
+            SetTestButtonsState();
+        }
+
+        private void ProjectNameTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SetTestButtonsState();
+        }
+
+        private async Task<IEnumerable<string>> GetBuckets(ICredential credential)
+        {
             var storage = new Google.Apis.Storage.v1.StorageService(new Services.BaseClientService.Initializer
             {
-                HttpClientInitializer = response,
-                ApplicationName = "mytest",
+                HttpClientInitializer = credential,
+                ApplicationName = "UWPIntegrationTest",
             });
-            var buckets = await storage.Buckets.List("chrisbacon-testing").ExecuteAsync();
-            var bucketNames = string.Join(", ", buckets.Items.Select(x => x.Name));
-            textblock1.Text = bucketNames;
+            var buckets = await storage.Buckets.List(ProjectNameTextBox.Text).ExecuteAsync();
+            return buckets.Items.Select(x => x.Name).ToList();
+        }
+
+        private async void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            var storageScopes = new[] { Google.Apis.Storage.v1.StorageService.Scope.DevstorageReadOnly };
+            void Report(string s) => TestAuthToStorageTextBox.Text += s + Environment.NewLine;
+            TestAuthToStorageTextBox.Text = "";
+            Report("Test starting...");
+            // Test service credential to read storage
+            Report("Testing service credentials to storage");
+            var serviceCredential = _serviceCredential.CreateScoped(storageScopes);
+            var buckets = await GetBuckets(serviceCredential);
+            Report($"Buckets: {string.Join(", ", buckets)}");
+            // Test user credential to read storage, with PasswordVaultStorage
+            var datastore = new PasswordVaultDataStore();
+            await datastore.ClearAsync();
+            Report("Testing user credentials to storage. Will require login.");
+            var userCredential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    _userSecrets.Secrets, storageScopes, "uwpintegrationtest", CancellationToken.None, datastore);
+            buckets = await GetBuckets(userCredential);
+            Report($"Buckets: {string.Join(", ", buckets)}");
+            Report("Testing user credentials to storage again. Login not required.");
+            userCredential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    _userSecrets.Secrets, storageScopes, "uwpintegrationtest", CancellationToken.None, datastore);
+            buckets = await GetBuckets(userCredential);
+            Report($"Buckets: {string.Join(", ", buckets)}");
+            Report("Done OK");
         }
     }
 }

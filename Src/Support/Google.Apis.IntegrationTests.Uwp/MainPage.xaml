@@ -8,8 +8,11 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button Name="button1" Content="Button" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click"/>
-        <TextBlock Name="textblock1" HorizontalAlignment="Left" Margin="10,47,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Height="237" Width="340"/>
+        <Button x:Name="StartButton" Content="Start integration tests" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top" Click="StartButton_Click" IsEnabled="False"/>
+        <TextBlock x:Name="TestAuthToStorageTextBox" Margin="10,184,10,0" TextWrapping="Wrap" Text="Test progress..."/>
+        <Button x:Name="SelectUserCredentialsButton" Content="Select user credentials" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <TextBox x:Name="ProjectNameTextBox" HorizontalAlignment="Left" Margin="10,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" PlaceholderText="Cloud project name" Width="200" TextChanged="ProjectNameTextBox_TextChanged"/>
+        <Button x:Name="SelectServiceCredentialsButton" Content="Select service credentials" HorizontalAlignment="Left" Margin="10,48,0,0" VerticalAlignment="Top" Click="SelectServiceCredentialsButton_Click"/>
 
     </Grid>
 </Page>
