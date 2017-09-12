@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170905 (978)
+ *      <tr><th>API Rev<td>20170911 (984)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -414,6 +414,61 @@ namespace Google.Apis.CloudNaturalLanguage.v1
 
         }
 
+        /// <summary>Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each
+        /// entity and its mentions.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual AnalyzeEntitySentimentRequest AnalyzeEntitySentiment(Google.Apis.CloudNaturalLanguage.v1.Data.AnalyzeEntitySentimentRequest body)
+        {
+            return new AnalyzeEntitySentimentRequest(service, body);
+        }
+
+        /// <summary>Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment associated with each
+        /// entity and its mentions.</summary>
+        public class AnalyzeEntitySentimentRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1.Data.AnalyzeEntitySentimentResponse>
+        {
+            /// <summary>Constructs a new AnalyzeEntitySentiment request.</summary>
+            public AnalyzeEntitySentimentRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1.Data.AnalyzeEntitySentimentRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudNaturalLanguage.v1.Data.AnalyzeEntitySentimentRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "analyzeEntitySentiment"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/documents:analyzeEntitySentiment"; }
+            }
+
+            /// <summary>Initializes AnalyzeEntitySentiment parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
         /// <summary>Analyzes the sentiment of the provided text.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual AnalyzeSentimentRequest AnalyzeSentiment(Google.Apis.CloudNaturalLanguage.v1.Data.AnalyzeSentimentRequest body)
@@ -601,6 +656,37 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     public class AnalyzeEntitiesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The recognized entities in the input document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<Entity> Entities { get; set; } 
+
+        /// <summary>The language of the text, which will be the same as the language specified in the request or, if
+        /// not specified, the automatically-detected language. See Document.language field for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The entity-level sentiment analysis request message.</summary>
+    public class AnalyzeEntitySentimentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Input document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual Document Document { get; set; } 
+
+        /// <summary>The encoding type used by the API to calculate offsets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encodingType")]
+        public virtual string EncodingType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The entity-level sentiment analysis response message.</summary>
+    public class AnalyzeEntitySentimentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The recognized entities in the input document with associated sentiments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entities")]
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; } 
 
@@ -812,6 +898,12 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("salience")]
         public virtual System.Nullable<float> Salience { get; set; } 
 
+        /// <summary>For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is
+        /// set to true, this field will contain the aggregate sentiment expressed for this entity in the provided
+        /// document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual Sentiment Sentiment { get; set; } 
+
         /// <summary>The entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -824,6 +916,12 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// supported.</summary>
     public class EntityMention : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>For calls to AnalyzeEntitySentiment or if AnnotateTextRequest.Features.extract_entity_sentiment is
+        /// set to true, this field will contain the sentiment expressed for this mention of the entity in the provided
+        /// document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentiment")]
+        public virtual Sentiment Sentiment { get; set; } 
+
         /// <summary>The mention text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual TextSpan Text { get; set; } 
@@ -847,6 +945,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         /// <summary>Extract entities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractEntities")]
         public virtual System.Nullable<bool> ExtractEntities { get; set; } 
+
+        /// <summary>Extract entities and their associated sentiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extractEntitySentiment")]
+        public virtual System.Nullable<bool> ExtractEntitySentiment { get; set; } 
 
         /// <summary>Extract syntax information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractSyntax")]

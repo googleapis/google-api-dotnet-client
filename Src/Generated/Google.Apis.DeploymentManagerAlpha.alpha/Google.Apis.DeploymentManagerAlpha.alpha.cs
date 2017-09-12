@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170810 (952)
+ *      <tr><th>API Rev<td>20170907 (980)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -101,13 +101,13 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/deploymentmanager/alpha"; }
+            get { return "https://www.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/deploymentmanager/alpha"; }
+            get { return "batch"; }
         }
         #endif
 
@@ -4404,12 +4404,21 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Credential used by ConfigurableResourceTypes.</summary>
+    /// <summary>The credential used by Deployment Manager and TypeProvider. Only one of the options is
+    /// permitted.</summary>
     public class Credential : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Basic Auth Credentials for this Type.</summary>
+        /// <summary>Basic Auth Credential, only used by TypeProvider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("basicAuth")]
         public virtual BasicAuth BasicAuth { get; set; } 
+
+        /// <summary>Service Account Credential, only used by Deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual ServiceAccount ServiceAccount { get; set; } 
+
+        /// <summary>Specify to use the project default credential, only supported by Deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useProjectDefault")]
+        public virtual System.Nullable<bool> UseProjectDefault { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4464,6 +4473,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
+        /// <summary>api-linter: output-only-format=disabled [Output Only] Map of outputs from the last manifest that
+        /// deployed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputs")]
+        public virtual System.Collections.Generic.IList<DeploymentOutputsEntry> Outputs { get; set; } 
+
         /// <summary>[Output Only] Self link for the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -4483,6 +4497,18 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     }    
 
     public class DeploymentLabelEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DeploymentOutputsEntry : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; } 
@@ -5313,6 +5339,17 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Service Account used as a credential.</summary>
+    public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The IAM service account email address like test@myproject.iam.gserviceaccount.com</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

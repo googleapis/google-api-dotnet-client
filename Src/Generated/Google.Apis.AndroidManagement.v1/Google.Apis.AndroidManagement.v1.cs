@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170828 (970)
+ *      <tr><th>API Rev<td>20170905 (978)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2984,6 +2984,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Policy applied to apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
         public virtual System.Collections.Generic.IList<ApplicationPolicy> Applications { get; set; } 
+
+        /// <summary>Whether auto time is required, which prevents the user from manually setting the date and
+        /// time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoTimeRequired")]
+        public virtual System.Nullable<bool> AutoTimeRequired { get; set; } 
 
         /// <summary>Whether applications other than the ones configured in applications are blocked from being
         /// installed. When set, applications that were installed under a previous policy but no longer appear in the
