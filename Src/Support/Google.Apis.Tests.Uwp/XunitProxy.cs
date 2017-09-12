@@ -71,7 +71,7 @@ namespace Google.Apis.Tests.Uwp
                 }
             }
             // Confirm that the correct number of tests have run.
-            Assert.AreEqual(224, facts.Count);
+            Assert.AreEqual(221, facts.Count);
         }
     }
 }

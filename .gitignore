@@ -13,8 +13,8 @@ project.lock.json
 *~
 .DS_Store
 .cr
-.nuget.props
-.nuget.targets
+*.nuget.props
+*.nuget.targets
 
 msbuild.log
 TestResult.xml

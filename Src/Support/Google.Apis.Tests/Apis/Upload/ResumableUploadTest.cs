@@ -15,7 +15,8 @@ limitations under the License.
 */
 
 // Too slow in net core
-#if !NETCOREAPP1_0 && !NETCOREAPP1_1
+// Remove from UWP for the moment. It's flakey.
+#if !NETCOREAPP1_0 && !NETCOREAPP1_1 && !UAP10_0
 
 using Google.Apis.Json;
 using Google.Apis.Services;
