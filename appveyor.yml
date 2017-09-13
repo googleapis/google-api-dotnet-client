@@ -8,8 +8,6 @@ image: Visual Studio 2017
 
 # Install the pre-requisites for the build.
 install:
-  # Make sure curl is available
-  #- set PATH=C:\Program Files\Git\mingw64\bin;%PATH%
   # add dotnet to PATH
   - ps: $env:Path = "$env:DOTNET_INSTALL_DIR;$env:Path"
 

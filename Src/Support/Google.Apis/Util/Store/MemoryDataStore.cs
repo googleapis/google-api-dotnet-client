@@ -32,14 +32,6 @@ namespace Google.Apis.Util.Store
         internal static string GenerateStoredKey(string key, Type t) => string.Format("{0}-{1}", t.FullName, key);
 
         /// <summary>
-        /// Construct a new memory datastore, that stores items in memory only.
-        /// Contents do not persist across program restarts.
-        /// </summary>
-        public MemoryDataStore()
-        {
-        }
-
-        /// <summary>
         /// The live memory datastore contents. Writing/removing items from this dictionary
         /// will alter the datastore contents. The returned dictionary is not thread-safe.
         /// </summary>

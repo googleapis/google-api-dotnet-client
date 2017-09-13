@@ -114,7 +114,7 @@ namespace System.Net
     }
 }
 
-#elif NET45 || NET452 || NET46 || UAP10_0
+#elif NET452 || NET46 || UAP10_0
 // Nothing required
 #else
 #error Unsupported platform

@@ -49,7 +49,7 @@ namespace Google.Apis.Auth.OAuth2
         private static ICodeReceiver GetDefaultCodeReceiver() => new UwpCodeReceiver();
         private static IDataStore GetDefaultDataStore() => new PasswordVaultDataStore();
 #else
-#error Unsupported target
+#error Unsupported platform
 #endif
 
         /// <summary>
