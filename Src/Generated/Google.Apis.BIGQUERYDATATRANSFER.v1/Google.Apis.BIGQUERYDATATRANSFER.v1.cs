@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   BigQuery Data Transfer Service API Version v1
+ *   BigQuery Data Transfer API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Data Transfer Service API</a>
+ *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Data Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170911 (984)
+ *      <tr><th>API Rev<td>20170912 (985)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using BigQuery Data Transfer Service API can be found at
+ * The complete API documentation for using BigQuery Data Transfer API can be found at
  * <a href='https://cloud.google.com/bigquery/'>https://cloud.google.com/bigquery/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the BigQuery Data Transfer Service API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the BigQuery Data Transfer API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data in Google BigQuery</summary>
@@ -388,8 +388,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             }
 
 
-            /// <summary>Returns true if valid credentials exist for the given data source and requesting
-            /// user.</summary>
+            /// <summary>Returns true if valid credentials exist for the given data source and requesting user. Some
+            /// data sources doesn't support service account, so we need to talk to them on behalf of the end user. This
+            /// API just checks whether we have OAuth token for the particular user, which is a pre-requisite before
+            /// user can create a transfer config.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The data source in the form: `projects/{project_id}/dataSources/{data_source_id}`</param>
             public virtual CheckValidCredsRequest CheckValidCreds(Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsRequest body, string name)
@@ -397,8 +399,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 return new CheckValidCredsRequest(service, body, name);
             }
 
-            /// <summary>Returns true if valid credentials exist for the given data source and requesting
-            /// user.</summary>
+            /// <summary>Returns true if valid credentials exist for the given data source and requesting user. Some
+            /// data sources doesn't support service account, so we need to talk to them on behalf of the end user. This
+            /// API just checks whether we have OAuth token for the particular user, which is a pre-requisite before
+            /// user can create a transfer config.</summary>
             public class CheckValidCredsRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsResponse>
             {
                 /// <summary>Constructs a new CheckValidCreds request.</summary>
@@ -663,8 +667,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
 
-                /// <summary>Returns true if valid credentials exist for the given data source and requesting
-                /// user.</summary>
+                /// <summary>Returns true if valid credentials exist for the given data source and requesting user. Some
+                /// data sources doesn't support service account, so we need to talk to them on behalf of the end user.
+                /// This API just checks whether we have OAuth token for the particular user, which is a pre-requisite
+                /// before user can create a transfer config.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The data source in the form: `projects/{project_id}/dataSources/{data_source_id}`</param>
                 public virtual CheckValidCredsRequest CheckValidCreds(Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsRequest body, string name)
@@ -672,8 +678,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     return new CheckValidCredsRequest(service, body, name);
                 }
 
-                /// <summary>Returns true if valid credentials exist for the given data source and requesting
-                /// user.</summary>
+                /// <summary>Returns true if valid credentials exist for the given data source and requesting user. Some
+                /// data sources doesn't support service account, so we need to talk to them on behalf of the end user.
+                /// This API just checks whether we have OAuth token for the particular user, which is a pre-requisite
+                /// before user can create a transfer config.</summary>
                 public class CheckValidCredsRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.CheckValidCredsResponse>
                 {
                     /// <summary>Constructs a new CheckValidCreds request.</summary>
@@ -988,18 +996,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Pagination token, which can be used to request a specific page of
-                            /// `ListTransferLogsRequest` list results. For multiple-page results,
-                            /// `ListTransferLogsResponse` outputs a `next_page` token, which can be used as the
-                            /// `page_token` value to request the next page of list results.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Page size. The default page size is the maximum value of 1000
-                            /// results.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
                             /// <summary>Message types to return. If not populated - INFO, WARNING and ERROR messages
                             /// are returned.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("messageTypes", Google.Apis.Util.RequestParameterType.Query)]
@@ -1018,6 +1014,18 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 [Google.Apis.Util.StringValueAttribute("ERROR")]
                                 ERROR,
                             }
+
+                            /// <summary>Pagination token, which can be used to request a specific page of
+                            /// `ListTransferLogsRequest` list results. For multiple-page results,
+                            /// `ListTransferLogsResponse` outputs a `next_page` token, which can be used as the
+                            /// `page_token` value to request the next page of list results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Page size. The default page size is the maximum value of 1000
+                            /// results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -1053,6 +1061,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                         Pattern = @"^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
                                     });
                                 RequestParameters.Add(
+                                    "messageTypes", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "messageTypes",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
                                     "pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
@@ -1065,15 +1082,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                     "pageSize", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "messageTypes", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "messageTypes",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -1234,6 +1242,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Indicates how run attempts are to be pulled.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("runAttempt", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<RunAttemptEnum> RunAttempt { get; set; }
+
+                        /// <summary>Indicates how run attempts are to be pulled.</summary>
+                        public enum RunAttemptEnum
+                        {
+                            [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
+                            RUNATTEMPTUNSPECIFIED,
+                            [Google.Apis.Util.StringValueAttribute("LATEST")]
+                            LATEST,
+                        }
+
                         /// <summary>Pagination token, which can be used to request a specific page of
                         /// `ListTransferRunsRequest` list results. For multiple-page results,
                         /// `ListTransferRunsResponse` outputs a `next_page` token, which can be used as the
@@ -1266,19 +1287,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             FAILED,
                             [Google.Apis.Util.StringValueAttribute("CANCELLED")]
                             CANCELLED,
-                        }
-
-                        /// <summary>Indicates how run attempts are to be pulled.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("runAttempt", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<RunAttemptEnum> RunAttempt { get; set; }
-
-                        /// <summary>Indicates how run attempts are to be pulled.</summary>
-                        public enum RunAttemptEnum
-                        {
-                            [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
-                            RUNATTEMPTUNSPECIFIED,
-                            [Google.Apis.Util.StringValueAttribute("LATEST")]
-                            LATEST,
                         }
 
 
@@ -1315,6 +1323,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "runAttempt", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "runAttempt",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1336,15 +1353,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 "states", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "states",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "runAttempt", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "runAttempt",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1685,9 +1693,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>Updates a data transfer configuration. All fields must be set, even if they are not
                 /// updated.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">The resource name of the transfer run. Transfer run names have the form
+                /// <param name="name">The resource name of the transfer config. Transfer config names have the form
                 /// `projects/{project_id}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not
-                /// guaranteed or required. The name is ignored when creating a transfer run.</param>
+                /// guaranteed or required. The name is ignored when creating a transfer config.</param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1707,10 +1715,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
 
-                    /// <summary>The resource name of the transfer run. Transfer run names have the form
+                    /// <summary>The resource name of the transfer config. Transfer config names have the form
                     /// `projects/{project_id}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even
                     /// though it is not guaranteed or required. The name is ignored when creating a transfer
-                    /// run.</summary>
+                    /// config.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1929,74 +1937,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
 
             }
 
-            /// <summary>Returns true if data transfer is enabled for a project.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
-            public virtual IsEnabledRequest IsEnabled(Google.Apis.BigQueryDataTransfer.v1.Data.IsEnabledRequest body, string name)
-            {
-                return new IsEnabledRequest(service, body, name);
-            }
-
-            /// <summary>Returns true if data transfer is enabled for a project.</summary>
-            public class IsEnabledRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.IsEnabledResponse>
-            {
-                /// <summary>Constructs a new IsEnabled request.</summary>
-                public IsEnabledRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataTransfer.v1.Data.IsEnabledRequest body, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.BigQueryDataTransfer.v1.Data.IsEnabledRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "isEnabled"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1/{+name}:isEnabled"; }
-                }
-
-                /// <summary>Initializes IsEnabled parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                }
-
-            }
-
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -2091,78 +2031,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Enables or disables data transfer for a project. This method requires the additional scope of
-            /// 'https://www.googleapis.com/auth/cloudplatformprojects' to manage the cloud project
-            /// permissions.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
-            public virtual SetEnabledRequest SetEnabled(Google.Apis.BigQueryDataTransfer.v1.Data.SetEnabledRequest body, string name)
-            {
-                return new SetEnabledRequest(service, body, name);
-            }
-
-            /// <summary>Enables or disables data transfer for a project. This method requires the additional scope of
-            /// 'https://www.googleapis.com/auth/cloudplatformprojects' to manage the cloud project
-            /// permissions.</summary>
-            public class SetEnabledRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.Empty>
-            {
-                /// <summary>Constructs a new SetEnabled request.</summary>
-                public SetEnabledRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataTransfer.v1.Data.SetEnabledRequest body, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.BigQueryDataTransfer.v1.Data.SetEnabledRequest Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "setEnabled"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "POST"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1/{+name}:setEnabled"; }
-                }
-
-                /// <summary>Initializes SetEnabled parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                 }
 
@@ -2510,19 +2378,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Indicates how run attempts are to be pulled.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("runAttempt", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<RunAttemptEnum> RunAttempt { get; set; }
-
-                    /// <summary>Indicates how run attempts are to be pulled.</summary>
-                    public enum RunAttemptEnum
-                    {
-                        [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
-                        RUNATTEMPTUNSPECIFIED,
-                        [Google.Apis.Util.StringValueAttribute("LATEST")]
-                        LATEST,
-                    }
-
                     /// <summary>Pagination token, which can be used to request a specific page of
                     /// `ListTransferRunsRequest` list results. For multiple-page results, `ListTransferRunsResponse`
                     /// outputs a `next_page` token, which can be used as the `page_token` value to request the next
@@ -2555,6 +2410,19 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         FAILED,
                         [Google.Apis.Util.StringValueAttribute("CANCELLED")]
                         CANCELLED,
+                    }
+
+                    /// <summary>Indicates how run attempts are to be pulled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("runAttempt", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<RunAttemptEnum> RunAttempt { get; set; }
+
+                    /// <summary>Indicates how run attempts are to be pulled.</summary>
+                    public enum RunAttemptEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("RUN_ATTEMPT_UNSPECIFIED")]
+                        RUNATTEMPTUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("LATEST")]
+                        LATEST,
                     }
 
 
@@ -2591,15 +2459,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 Pattern = @"^projects/[^/]+/transferConfigs/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "runAttempt", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "runAttempt",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2621,6 +2480,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             "states", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "states",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "runAttempt", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "runAttempt",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2879,10 +2747,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>When specified, only configurations of requested data sources are returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("dataSourceIds", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> DataSourceIds { get; set; }
-
                 /// <summary>Pagination token, which can be used to request a specific page of `ListTransfersRequest`
                 /// list results. For multiple-page results, `ListTransfersResponse` outputs a `next_page` token, which
                 /// can be used as the `page_token` value to request the next page of list results.</summary>
@@ -2892,6 +2756,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>Page size. The default page size is the maximum value of 1000 results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>When specified, only configurations of requested data sources are returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("dataSourceIds", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> DataSourceIds { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2927,15 +2795,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "dataSourceIds", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "dataSourceIds",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2953,6 +2812,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "dataSourceIds", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "dataSourceIds",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -2960,9 +2828,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// <summary>Updates a data transfer configuration. All fields must be set, even if they are not
             /// updated.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">The resource name of the transfer run. Transfer run names have the form
+            /// <param name="name">The resource name of the transfer config. Transfer config names have the form
             /// `projects/{project_id}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is not
-            /// guaranteed or required. The name is ignored when creating a transfer run.</param>
+            /// guaranteed or required. The name is ignored when creating a transfer config.</param>
             public virtual PatchRequest Patch(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -2982,11 +2850,16 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
 
-                /// <summary>The resource name of the transfer run. Transfer run names have the form
+                /// <summary>The resource name of the transfer config. Transfer config names have the form
                 /// `projects/{project_id}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even
-                /// though it is not guaranteed or required. The name is ignored when creating a transfer run.</summary>
+                /// though it is not guaranteed or required. The name is ignored when creating a transfer
+                /// config.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
+
+                /// <summary>Required list of fields to be updated in this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
 
                 /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. If it is
                 /// provided, the transfer configuration will be associated with the gaia id of the authorizing user. In
@@ -3002,10 +2875,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// application.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AuthorizationCode { get; set; }
-
-                /// <summary>Required list of fields to be updated in this request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -3047,18 +2916,18 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             Pattern = @"^projects/[^/]+/transferConfigs/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "authorizationCode", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "authorizationCode",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "authorizationCode", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "authorizationCode",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3141,144 +3010,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
             }
-        }
-
-        /// <summary>Returns true if data transfer is enabled for a project.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
-        public virtual IsEnabledRequest IsEnabled(Google.Apis.BigQueryDataTransfer.v1.Data.IsEnabledRequest body, string name)
-        {
-            return new IsEnabledRequest(service, body, name);
-        }
-
-        /// <summary>Returns true if data transfer is enabled for a project.</summary>
-        public class IsEnabledRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.IsEnabledResponse>
-        {
-            /// <summary>Constructs a new IsEnabled request.</summary>
-            public IsEnabledRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataTransfer.v1.Data.IsEnabledRequest body, string name)
-                : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.BigQueryDataTransfer.v1.Data.IsEnabledRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "isEnabled"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+name}:isEnabled"; }
-            }
-
-            /// <summary>Initializes IsEnabled parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Enables or disables data transfer for a project. This method requires the additional scope of
-        /// 'https://www.googleapis.com/auth/cloudplatformprojects' to manage the cloud project permissions.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the project resource in the form: `projects/{project_id}`</param>
-        public virtual SetEnabledRequest SetEnabled(Google.Apis.BigQueryDataTransfer.v1.Data.SetEnabledRequest body, string name)
-        {
-            return new SetEnabledRequest(service, body, name);
-        }
-
-        /// <summary>Enables or disables data transfer for a project. This method requires the additional scope of
-        /// 'https://www.googleapis.com/auth/cloudplatformprojects' to manage the cloud project permissions.</summary>
-        public class SetEnabledRequest : BigQueryDataTransferBaseServiceRequest<Google.Apis.BigQueryDataTransfer.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new SetEnabled request.</summary>
-            public SetEnabledRequest(Google.Apis.Services.IClientService service, Google.Apis.BigQueryDataTransfer.v1.Data.SetEnabledRequest body, string name)
-                : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the project resource in the form: `projects/{project_id}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.BigQueryDataTransfer.v1.Data.SetEnabledRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "setEnabled"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+name}:setEnabled"; }
-            }
-
-            /// <summary>Initializes SetEnabled parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+$",
-                    });
-            }
-
         }
     }
 }
@@ -3482,24 +3213,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A request to determine whether data transfer is enabled for the project.</summary>
-    public class IsEnabledRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A response to indicate whether data transfer is enabled for the project.</summary>
-    public class IsEnabledResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Indicates whether the project is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Returns list of supported data sources and their metadata.</summary>
     public class ListDataSourcesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3508,7 +3221,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual System.Collections.Generic.IList<DataSource> DataSources { get; set; } 
 
         /// <summary>The next-pagination token. For multiple-page list results, this token can be used as the
-        /// `ListDataSourcesRequest.page_token` to request the next page of list results. @OutputOnly</summary>
+        /// `ListDataSourcesRequest.page_token` to request the next page of list results. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -3609,12 +3322,12 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     public class ScheduleTransferRunsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>End time of the range of transfer runs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rangeEndTime")]
-        public virtual object RangeEndTime { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
 
         /// <summary>Start time of the range of transfer runs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rangeStartTime")]
-        public virtual object RangeStartTime { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3623,20 +3336,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     /// <summary>A response to schedule transfer runs for a time range.</summary>
     public class ScheduleTransferRunsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The transfer runs that were created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createdRuns")]
-        public virtual System.Collections.Generic.IList<TransferRun> CreatedRuns { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A request to set whether data transfer is enabled or disabled for a project.</summary>
-    public class SetEnabledRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether data transfer should be enabled or disabled for the project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; } 
+        /// <summary>The transfer runs that were scheduled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runs")]
+        public virtual System.Collections.Generic.IList<TransferRun> Runs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3676,9 +3378,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>The resource name of the transfer run. Transfer run names have the form
+        /// <summary>The resource name of the transfer config. Transfer config names have the form
         /// `projects/{project_id}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid, even though it is
-        /// not guaranteed or required. The name is ignored when creating a transfer run.</summary>
+        /// not guaranteed or required. The name is ignored when creating a transfer config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3707,7 +3409,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>GaiaID of the user on whose behalf transfer is done. Applicable only to data sources that do not
+        /// <summary>Unique ID of the user on whose behalf transfer is done. Applicable only to data sources that do not
         /// support service accounts. When set to 0, the data source service account credentials are used. Output
         /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
@@ -3795,7 +3497,9 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>The user id for this transfer run. Output only.</summary>
+        /// <summary>Unique ID of the user on whose behalf transfer is done. Applicable only to data sources that do not
+        /// support service accounts. When set to 0, the data source service account credentials are used. Output
+        /// only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual System.Nullable<long> UserId { get; set; } 
 

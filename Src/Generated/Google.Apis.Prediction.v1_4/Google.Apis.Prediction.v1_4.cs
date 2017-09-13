@@ -96,13 +96,13 @@ namespace Google.Apis.Prediction.v1_4
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/prediction/v1.4"; }
+            get { return "https://www.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/prediction/v1.4"; }
+            get { return "batch"; }
         }
         #endif
 

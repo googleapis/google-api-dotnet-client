@@ -95,13 +95,13 @@ namespace Google.Apis.ShoppingContent.v2sandbox
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/content/v2sandbox"; }
+            get { return "https://www.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/content/v2sandbox"; }
+            get { return "batch"; }
         }
         #endif
 

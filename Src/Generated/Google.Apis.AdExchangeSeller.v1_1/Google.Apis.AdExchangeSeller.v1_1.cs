@@ -103,13 +103,13 @@ namespace Google.Apis.AdExchangeSeller.v1_1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/adexchangeseller/v1.1"; }
+            get { return "https://www.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/adexchangeseller/v1.1"; }
+            get { return "batch"; }
         }
         #endif
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170816 (958)
+ *      <tr><th>API Rev<td>20170905 (978)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -35081,9 +35081,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
-        /// <summary>Assigns a zero-based index to this disk, where 0 is reserved for the boot disk. For example, if you
-        /// have many disks attached to an instance, each disk would have a unique index number. If not specified, the
-        /// server will choose an appropriate value.</summary>
+        /// <summary>[Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have
+        /// many disks attached to an instance, each disk would have a unique index number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
         public virtual System.Nullable<int> Index { get; set; } 
 

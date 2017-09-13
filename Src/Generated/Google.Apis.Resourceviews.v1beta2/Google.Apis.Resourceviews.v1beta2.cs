@@ -96,13 +96,13 @@ namespace Google.Apis.Resourceviews.v1beta2
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/resourceviews/v1beta2"; }
+            get { return "https://www.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/resourceviews/v1beta2"; }
+            get { return "batch"; }
         }
         #endif
 

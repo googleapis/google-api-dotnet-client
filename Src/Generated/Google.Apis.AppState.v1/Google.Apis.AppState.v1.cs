@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/web/api/states'>Google App State API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170831 (973)
+ *      <tr><th>API Rev<td>20170911 (984)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/web/api/states'>
  *              https://developers.google.com/games/services/web/api/states</a>
@@ -95,13 +95,13 @@ namespace Google.Apis.AppState.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch/appstate/v1"; }
+            get { return "https://www.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch/appstate/v1"; }
+            get { return "batch"; }
         }
         #endif
 
