@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170130 (760)
+ *      <tr><th>API Rev<td>20170903 (976)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -1734,6 +1734,15 @@ namespace Google.Apis.YouTube.v3
             }
 
 
+            /// <summary>The channelId parameter identifies the YouTube channel to which the banner is uploaded. The
+            /// channelId parameter was introduced as a required parameter in May 2017. As this was a backward-
+            /// incompatible change, channelBanners.insert requests that do not specify this parameter will not return
+            /// an error until six months have passed from the time that the parameter was introduced. Please see the
+            /// API Terms of Service for the official policy regarding backward incompatible changes and the API
+            /// revision history for the exact date that the parameter was introduced.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ChannelId { get; set; }
+
             /// <summary>Note: This parameter is intended exclusively for YouTube content partners.
             ///
             /// The onBehalfOfContentOwner parameter indicates that the request's authorization credentials identify a
@@ -1775,6 +1784,15 @@ namespace Google.Apis.YouTube.v3
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "channelId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "channelId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
                     {
@@ -1850,6 +1868,15 @@ namespace Google.Apis.YouTube.v3
             [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserIp { get; set; }
 
+
+            /// <summary>The channelId parameter identifies the YouTube channel to which the banner is uploaded. The
+            /// channelId parameter was introduced as a required parameter in May 2017. As this was a backward-
+            /// incompatible change, channelBanners.insert requests that do not specify this parameter will not return
+            /// an error until six months have passed from the time that the parameter was introduced. Please see the
+            /// API Terms of Service for the official policy regarding backward incompatible changes and the API
+            /// revision history for the exact date that the parameter was introduced.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("channelId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ChannelId { get; set; }
 
             /// <summary>Note: This parameter is intended exclusively for YouTube content partners.
             ///
@@ -8846,7 +8873,7 @@ namespace Google.Apis.YouTube.v3
             /// <summary>The maxResults parameter specifies the maximum number of items that should be returned in the
             /// result set.</summary>
             /// [default: 5]
-            /// [minimum: 0]
+            /// [minimum: 1]
             /// [maximum: 50]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
@@ -12138,7 +12165,7 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 69</summary>
+    /// <summary>Ratings schemes. The country-specific ratings are mostly for movies and shows. NEXT_ID: 71</summary>
     public class ContentRating : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The video's Australian Classification Board (ACB) or Australian Communications and Media Authority
@@ -12343,6 +12370,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mekuRating")]
         public virtual string MekuRating { get; set; } 
 
+        /// <summary>The rating system for MENA countries, a clone of MPAA. It is needed to</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("menaMpaaRating")]
+        public virtual string MenaMpaaRating { get; set; } 
+
         /// <summary>The video's rating from the Ministero dei Beni e delle Attività Culturali e del Turismo
         /// (Italy).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mibacRating")]
@@ -12359,6 +12390,11 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The video's Motion Picture Association of America (MPAA) rating.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mpaaRating")]
         public virtual string MpaaRating { get; set; } 
+
+        /// <summary>The rating system for trailer, DVD, and Ad in the US. See
+        /// http://movielabs.com/md/ratings/v2.3/html/US_MPAAT_Ratings.html.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mpaatRating")]
+        public virtual string MpaatRating { get; set; } 
 
         /// <summary>The video's rating from the Movie and Television Review and Classification Board
         /// (Philippines).</summary>
@@ -13035,9 +13071,6 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual LiveBroadcastStatus Status { get; set; } 
 
-        [Newtonsoft.Json.JsonPropertyAttribute("topicDetails")]
-        public virtual LiveBroadcastTopicDetails TopicDetails { get; set; } 
-
     }    
 
     /// <summary>Detailed settings of a broadcast.</summary>
@@ -13098,6 +13131,9 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Indicates whether this broadcast has low latency enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLowLatency")]
         public virtual System.Nullable<bool> EnableLowLatency { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
+        public virtual string Mesh { get; set; } 
 
         /// <summary>The monitorStream object contains information about the monitor stream, which the broadcaster can
         /// use to review the event content before the broadcast stream is shown publicly.</summary>
@@ -13344,48 +13380,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The broadcast's recording status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordingStatus")]
         public virtual string RecordingStatus { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class LiveBroadcastTopic : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Information about the topic matched.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual LiveBroadcastTopicSnippet Snippet { get; set; } 
-
-        /// <summary>The type of the topic.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>If this flag is set it means that we have not been able to match the topic title and type provided
-        /// to a known entity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unmatched")]
-        public virtual System.Nullable<bool> Unmatched { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class LiveBroadcastTopicDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("topics")]
-        public virtual System.Collections.Generic.IList<LiveBroadcastTopic> Topics { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class LiveBroadcastTopicSnippet : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the topic.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The date at which the topic was released. Filled for types: videoGame</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("releaseDate")]
-        public virtual string ReleaseDate { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

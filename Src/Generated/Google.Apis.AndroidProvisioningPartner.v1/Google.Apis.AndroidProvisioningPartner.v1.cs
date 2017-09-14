@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170903 (976)
+ *      <tr><th>API Rev<td>20170909 (982)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -463,9 +463,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             }
 
 
-            /// <summary>A customer for Zero Touch Provisioning will be created. After a Customer is created, their
-            /// admins and owners will be able to manage devices on partner.android.com/zerotouch or via their
-            /// API.</summary>
+            /// <summary>A customer for zero-touch enrollment will be created. After a Customer is created, their admins
+            /// and owners will be able to manage devices on partner.android.com/zerotouch or via their API.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The parent resource in format `partners/[PARTNER_ID]'.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidProvisioningPartner.v1.Data.CreateCustomerRequest body, string parent)
@@ -473,9 +472,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>A customer for Zero Touch Provisioning will be created. After a Customer is created, their
-            /// admins and owners will be able to manage devices on partner.android.com/zerotouch or via their
-            /// API.</summary>
+            /// <summary>A customer for zero-touch enrollment will be created. After a Customer is created, their admins
+            /// and owners will be able to manage devices on partner.android.com/zerotouch or via their API.</summary>
             public class CreateRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Company>
             {
                 /// <summary>Constructs a new Create request.</summary>

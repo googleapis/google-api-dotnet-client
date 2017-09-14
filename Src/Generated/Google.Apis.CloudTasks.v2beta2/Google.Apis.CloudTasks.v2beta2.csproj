@@ -2,8 +2,8 @@
 
   <!-- nupkg information -->
   <PropertyGroup>
-    <Title>Google.Apis.Testing.v1 Client Library</Title>
-    <Version>1.29.1.984</Version>
+    <Title>Google.Apis.CloudTasks.v2beta2 Client Library</Title>
+    <Version>1.29.1.985</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
-      Google APIs Client Library for working with Testing v1.
+      Google APIs Client Library for working with Cloudtasks v2beta2.
 
       Supported Platforms:
       - .NET Framework 4.5+
@@ -31,7 +31,7 @@
       - UWP (will build, but is known not to work at runtime)
 
       More documentation on the API is available at:
-      https://developers.google.com/api-client-library/dotnet/apis/testing/v1
+      https://developers.google.com/api-client-library/dotnet/apis/cloudtasks/v2beta2
 
       The package source code is available at:
       https://github.com/google/google-api-dotnet-client/tree/master/Src/Generated
