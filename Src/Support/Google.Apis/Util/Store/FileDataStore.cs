@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// TODO: This does not support UWP Storage.
+#if !UAP10_0
 
 using Google.Apis.Json;
 using System;
@@ -175,9 +175,8 @@ namespace Google.Apis.Util.Store
         /// <summary>Creates a unique stored key based on the key and the class type.</summary>
         /// <param name="key">The object key.</param>
         /// <param name="t">The type to store or retrieve.</param>
-        public static string GenerateStoredKey(string key, Type t)
-        {
-            return string.Format("{0}-{1}", t.FullName, key);
-        }
+        public static string GenerateStoredKey(string key, Type t) => MemoryDataStore.GenerateStoredKey(key, t);
     }
 }
+
+#endif

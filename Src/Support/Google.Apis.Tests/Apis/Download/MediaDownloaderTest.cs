@@ -14,6 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Too slow in net core
+#if !NETCOREAPP1_0 && !NETCOREAPP1_1
+
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -500,3 +503,5 @@ namespace Google.Apis.Tests.Apis.Download
         }
     }
 }
+
+#endif

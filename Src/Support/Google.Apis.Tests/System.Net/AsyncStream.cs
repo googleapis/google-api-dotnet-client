@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if NETCOREAPP1_0 || NETCOREAPP1_1
+#if NETCOREAPP1_0 || NETCOREAPP1_1 || UAP10_0
 
 using System.Collections.Generic;
 using System.IO;
@@ -25,7 +25,7 @@ using System.Threading.Tasks;
 
 namespace System.Net
 {
-    // Make a stream availabel through various async methods.
+    // Make a stream available through various async methods.
     class AsyncStream
     {
         public AsyncStream(Stream stream)
@@ -99,7 +99,7 @@ namespace System.Net
     }
 }
 
-#elif NET452 || NET46
+#elif NET452 || NET46 || UAP10_0
 // Nothing required
 #else
 #error Unsupported platform

@@ -1,6 +1,7 @@
 [Bb]in
 [Oo]bj
 [Pp]ackages
+AppPackages
 [Dd]ebug*/**
 [Rr]elease*/**
 
@@ -12,6 +13,8 @@ project.lock.json
 *~
 .DS_Store
 .cr
+*.nuget.props
+*.nuget.targets
 
 msbuild.log
 TestResult.xml

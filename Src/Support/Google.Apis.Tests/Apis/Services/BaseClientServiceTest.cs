@@ -220,7 +220,7 @@ namespace Google.Apis.Tests.Apis.Services
                 switch (Calls)
                 {
                     case 1:
-                        Assert.Equal(1, request.Headers.GetValues("Authorization").Count());
+                        Assert.Single(request.Headers.GetValues("Authorization"));
                         Assert.Equal(FirstToken, request.Headers.GetValues("Authorization").First());
                         tcs.SetResult(new HttpResponseMessage
                             {
@@ -228,7 +228,7 @@ namespace Google.Apis.Tests.Apis.Services
                             });
                         break;
                     case 2:
-                        Assert.Equal(1, request.Headers.GetValues("Authorization").Count());
+                        Assert.Single(request.Headers.GetValues("Authorization"));
                         Assert.Equal(SecondToken, request.Headers.GetValues("Authorization").First());
                         tcs.SetResult(new HttpResponseMessage());
                         break;

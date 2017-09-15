@@ -20,9 +20,10 @@
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <DebugType>portable</DebugType>
+    <DebugType Condition="'$(Configuration)'=='Debug'">pdbonly</DebugType>
     <IncludeSymbols>true</IncludeSymbols>
     <IncludeSource>true</IncludeSource>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
 </Project>
+

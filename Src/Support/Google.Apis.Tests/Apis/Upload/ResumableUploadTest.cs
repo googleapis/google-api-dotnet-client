@@ -14,6 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Too slow in net core
+// Remove from UWP for the moment. It's flakey.
+#if !NETCOREAPP1_0 && !NETCOREAPP1_1 && !UAP10_0
+
 using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
@@ -117,10 +121,12 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </remarks>
         private class TestServer : IDisposable
         {
+            private static int rndSeed = 10000;
             public TestServer()
             {
-                var rnd = new Random();
+                var rnd = new Random(Interlocked.Increment(ref rndSeed));
                 // Find an available port and start an HttpListener.
+                int retries = 5;
                 do
                 {
                     _httpListener = new HttpListener();
@@ -134,12 +140,18 @@ namespace Google.Apis.Tests.Apis.Upload
                     // Catch errors that mean the port is already in use
                     catch (HttpListenerException e) when (e.ErrorCode == 183 || e.ErrorCode == 32)
                     {
-                        _httpListener.Close();
+                        try { _httpListener.Close(); } catch { }
                         _httpListener = null;
                     }
                     catch (SocketException e) when (e.SocketErrorCode == SocketError.AddressAlreadyInUse)
                     {
-                        _httpListener.Close();
+                        try { _httpListener.Close(); } catch { }
+                        _httpListener = null;
+                    }
+                    catch when (retries > 0)
+                    {
+                        retries -= 1;
+                        try { _httpListener.Close(); } catch { }
                         _httpListener = null;
                     }
                 } while (_httpListener == null);
@@ -317,7 +329,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 var progress = uploader.Upload();
                 Assert.Equal(2, server.Requests.Count);
                 var r0 = server.Requests[0];
-                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"]);
+                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"] ?? "");
                 Assert.Equal(knownSize ? uploadTestBytes.Length.ToString() : null, r0.Headers["X-Upload-Content-Length"]);
                 var r1 = server.Requests[1];
                 Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
@@ -347,7 +359,7 @@ namespace Google.Apis.Tests.Apis.Upload
 
                 Assert.Equal(2, server.Requests.Count);
                 var r0 = server.Requests[0];
-                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"]);
+                Assert.Equal(contentType, r0.Headers["X-Upload-Content-Type"] ?? "");
                 Assert.Equal(uploadTestBytes.Length.ToString(), r0.Headers["X-Upload-Content-Length"]);
                 var r1 = server.Requests[1];
                 Assert.Equal(uploadPath, server.RemovePrefix(r1.Url.AbsolutePath));
@@ -1010,3 +1022,5 @@ namespace Google.Apis.Tests.Apis.Upload
         }
     }
 }
+
+#endif

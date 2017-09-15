@@ -158,7 +158,6 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task Validate_Signature_Time()
         {
-
             var clockInvalid1 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 22, 0, DateTimeKind.Utc) };
             var clockValid1 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 10, 24, 0, DateTimeKind.Utc) };
             var clockValid2 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 11, 22, 0, DateTimeKind.Utc) };
@@ -188,14 +187,17 @@ namespace Google.Apis.Auth.Tests
         [Fact]
         public async Task Validate_CertCache()
         {
+            // Reset GoogleJsonWebSignature before starting this test
+            GoogleJsonWebSignature._certCacheDownloadTime = new DateTime(2000, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
             var clock1 = new MockClock() { UtcNow = new DateTime(2017, 5, 31, 11, 24, 0, DateTimeKind.Utc) };
             var clock2Cached = new MockClock() { UtcNow = clock1.UtcNow + GoogleJsonWebSignature.CertCacheRefreshInterval - TimeSpan.FromSeconds(1) };
             var clock3Uncached = new MockClock() { UtcNow = clock1.UtcNow + GoogleJsonWebSignature.CertCacheRefreshInterval + TimeSpan.FromSeconds(1) };
 
-            var rsas1 = await GoogleJsonWebSignature.GetGoogleCertsAsync(clock1, false, GoogleCertsJson);
-            var rsas2Cached = await GoogleJsonWebSignature.GetGoogleCertsAsync(clock2Cached, false, GoogleCertsJson);
-            var rsas3Refreshed = await GoogleJsonWebSignature.GetGoogleCertsAsync(clock3Uncached, false, GoogleCertsJson);
-            var rsas4Forced = await GoogleJsonWebSignature.GetGoogleCertsAsync(clock3Uncached, true, GoogleCertsJson);
+            var rsas1 = await GoogleJsonWebSignature.GetGoogleCertsAsync(clock1, false, GoogleCertsJson).ConfigureAwait(false);
+            var rsas2Cached = await GoogleJsonWebSignature.GetGoogleCertsAsync(clock2Cached, false, GoogleCertsJson).ConfigureAwait(false);
+            var rsas3Refreshed = await GoogleJsonWebSignature.GetGoogleCertsAsync(clock3Uncached, false, GoogleCertsJson).ConfigureAwait(false);
+            var rsas4Forced = await GoogleJsonWebSignature.GetGoogleCertsAsync(clock3Uncached, true, GoogleCertsJson).ConfigureAwait(false);
 
             Assert.NotNull(rsas1);
             Assert.Same(rsas1, rsas2Cached);

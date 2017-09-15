@@ -122,7 +122,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
         [Fact]
         public async Task ValidLocallySignedAccessToken_FromX509Certificate()
         {
-#if NETCOREAPP1_0 || NETCOREAPP1_1
+#if NETCOREAPP1_0 || NETCOREAPP1_1 || UAP10_0
             const string sPfx = @"
 MIIGMQIBAzCCBfcGCSqGSIb3DQEHAaCCBegEggXkMIIF4DCCAt8GCSqGSIb3DQEHBqCCAtAwggLM
 AgEAMIICxQYJKoZIhvcNAQcBMBwGCiqGSIb3DQEMAQYwDgQImgNbotR3pnACAggAgIICmMHYqn7R
@@ -192,7 +192,7 @@ AQsFAAOBgQBQ9cMInb2rEcg8TTYq8MjDEegHWLUI9Dq/IvP/FHyKDczza4eX8m+G
             privateKey.ImportParameters(rsaParameters);
             x509Cert.PrivateKey = privateKey;
 #else
-#error Unsupported target
+#error Unsupported platform
 #endif
             Assert.True(x509Cert.HasPrivateKey);
 

@@ -1,0 +1,20 @@
+﻿{
+  "dependencies": {
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.4.0",
+    "MSTest.TestAdapter": "1.2.0-beta3",
+    "MSTest.TestFramework": "1.1.18",
+    "xunit": "2.3.0-beta5-build3769",
+    "xunit.runner.visualstudio": "2.3.0-beta5-build3769"
+  },
+  "frameworks": {
+    "uap10.0.14393": {}
+  },
+  "runtimes": {
+    "win10-arm": {},
+    "win10-arm-aot": {},
+    "win10-x86": {},
+    "win10-x86-aot": {},
+    "win10-x64": {},
+    "win10-x64-aot": {}
+  }
+}
