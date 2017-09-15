@@ -46,7 +46,7 @@ namespace Google.Apis.Util.Store
                     vault.Remove(credential);
                 }
             }
-            catch { }
+            catch { } // Throws a COMException on failure
             return Task.CompletedTask;
         }
 
@@ -58,7 +58,7 @@ namespace Google.Apis.Util.Store
                 // Retrieve will throw if the key doesn't exist. Ignore it.
                 vault.Remove(vault.Retrieve(MakeResource<T>(), key));
             }
-            catch { }
+            catch { } // Throws a COMException on failure
             return Task.CompletedTask;
         }
 
@@ -72,7 +72,7 @@ namespace Google.Apis.Util.Store
                 credential.RetrievePassword();
                 return Task.FromResult(NewtonsoftJsonSerializer.Instance.Deserialize<T>(credential.Password));
             }
-            catch
+            catch // Throws a COMException on failure
             {
                 return Task.FromResult(default(T));
             }

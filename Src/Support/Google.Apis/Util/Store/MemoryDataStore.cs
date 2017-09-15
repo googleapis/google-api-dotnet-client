@@ -29,7 +29,7 @@ namespace Google.Apis.Util.Store
     {
         private static readonly Task s_completedTask = Task.FromResult(0);
 
-        internal static string GenerateStoredKey(string key, Type t) => string.Format("{0}-{1}", t.FullName, key);
+        internal static string GenerateStoredKey(string key, Type t) => $"{t.FullName}-{key}";
 
         /// <summary>
         /// The live memory datastore contents. Writing/removing items from this dictionary

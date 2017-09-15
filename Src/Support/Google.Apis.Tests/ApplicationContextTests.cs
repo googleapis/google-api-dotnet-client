@@ -75,25 +75,5 @@ namespace Google.Apis.Tests
             ApplicationContext.Reset();
             Assert.IsType<NullLogger>(ApplicationContext.Logger);
         }
-
-        /*/// <summary>
-        /// Confirms that the RegisterLogger method will not fail when no logger was previously registered.
-        /// </summary>
-        [Fact(Skip = "Global registration of the mock logger causes other test failures.")]
-        public void RegisterLoggerTest()
-        {
-            ApplicationContext.Reset();
-
-            // Initialize with a NullLogger: check default logger
-            Assert.IsType<NullLogger>(ApplicationContext.Logger);
-
-            // Register a new logger: should not throw
-            ApplicationContext.RegisterLogger(new MockLogger());
-
-            // Fail test: should now throw, only allowed to register one logger
-            Assert.Throws<InvalidOperationException>(() => ApplicationContext.RegisterLogger(new MockLogger()));
-			
-            ApplicationContext.Reset();
-        }*/
     }
 }

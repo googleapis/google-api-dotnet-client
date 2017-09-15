@@ -32,15 +32,15 @@ namespace Google.Apis.Auth.OAuth2
     public class UwpCodeReceiver : ICodeReceiver
     {
         /// <summary>
-        /// Exeception thrown on authention problems.
+        /// Exeception thrown on authenticaton problems.
         /// </summary>
         public sealed class AuthenticateException : Exception
         {
             /// <summary>
             /// Instantiate an <see cref="AuthenticateException"/>.
             /// </summary>
-            /// <param name="msg"></param>
-            public AuthenticateException(string msg) : base(msg) { }
+            /// <param name="message">Exception message</param>
+            public AuthenticateException(string message) : base(message) { }
         }
 
         /// <inheritdoc />

@@ -84,10 +84,10 @@ namespace Google.Apis.Tests.Apis.Http
                 TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
                 var response = new HttpResponseMessage
                 {
-                    StatusCode = HttpStatusCode.Redirect
+                    StatusCode = HttpStatusCode.Redirect,
+                    Headers = { Location = new Uri(Location + Calls) },
+                    RequestMessage = request,
                 };
-                response.Headers.Location = new Uri(Location + Calls);
-                response.RequestMessage = request;
 
                 if (Calls == 1)
                 {

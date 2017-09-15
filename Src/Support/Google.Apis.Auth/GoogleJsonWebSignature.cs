@@ -177,7 +177,7 @@ namespace Google.Apis.Auth
 #elif NETSTANDARD1_3 || UAP10_0
                     verifiedOk = googleCert.VerifyHash(hash, signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
 #else
-#error Unsupported target
+#error Unsupported platform
 #endif
                     if (verifiedOk)
                     {

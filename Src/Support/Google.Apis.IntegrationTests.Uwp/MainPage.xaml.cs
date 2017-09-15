@@ -49,8 +49,10 @@ namespace Google.Apis.IntegrationTests.Uwp
             this.InitializeComponent();
         }
 
-        private static GoogleClientSecrets _userSecrets = null;
-        private static GoogleCredential _serviceCredential = null;
+        // TODO: Embed credential resources at build time?
+
+        private GoogleClientSecrets _userSecrets = null;
+        private GoogleCredential _serviceCredential = null;
 
         private void SetTestButtonsState()
         {

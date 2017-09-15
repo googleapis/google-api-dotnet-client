@@ -31,7 +31,7 @@ Supported Platforms:
     <NugetTargetMoniker>UAP,Version=v10.0</NugetTargetMoniker>
     <LanguageTargets>$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets</LanguageTargets>
     <DefineConstants>$(DefineConstants);UAP10_0</DefineConstants>
-	<DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
 
   <!-- package references; common then per-target -->

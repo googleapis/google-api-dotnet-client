@@ -48,29 +48,28 @@ namespace Google.Apis.Util.Store
 
         private async Task EnsureFolderExists()
         {
-            var current = Folder;
-            var toCreate = new List<string>();
-            while (true)
+            var parent = await Folder.GetParentAsync();
+            if (parent == null)
             {
-                var parent = await current.GetParentAsync();
-                if (await parent.TryGetItemAsync(current.Name) != null)
-                {
-                    break;
-                }
-                toCreate.Add(current.Name);
-                current = parent;
+                throw new InvalidOperationException("Storage directory does not exist.");
             }
-            toCreate.Reverse();
-            foreach (var name in toCreate)
+            if (await parent.TryGetItemAsync(Folder.Name) == null)
             {
-                current = await current.CreateFolderAsync(name, CreationCollisionOption.FailIfExists);
+                await parent.CreateFolderAsync(Folder.Name, CreationCollisionOption.FailIfExists);
             }
         }
 
-        private static string GenerateStoredKey(string key, Type t) => string.Format("{0}-{1}", t.FullName, key);
+        private static string GenerateStoredKey(string key, Type t) => $"{t.FullName}-{key}";
 
         /// <inheritdoc />
-        public Task ClearAsync() => Folder.DeleteAsync().AsTask();
+        public async Task ClearAsync()
+        {
+            try
+            {
+                await Folder.DeleteAsync();
+            }
+            catch { } // Throws COMException if folder doesn't exist
+        }
 
         /// <inheritdoc />
         public async Task DeleteAsync<T>(string key)
