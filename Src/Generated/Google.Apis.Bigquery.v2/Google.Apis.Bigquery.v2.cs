@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170903 (976)
+ *      <tr><th>API Rev<td>20170910 (983)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3765,6 +3765,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] Total bytes processed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
         public virtual System.Nullable<long> TotalBytesProcessed { get; set; } 
+
+        /// <summary>[Output-only] Slot-milliseconds for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
+        public virtual System.Nullable<long> TotalSlotMs { get; set; } 
 
         /// <summary>[Output-only, Experimental] Standard SQL only: list of undeclared query parameters detected during
         /// a dry run validation.</summary>

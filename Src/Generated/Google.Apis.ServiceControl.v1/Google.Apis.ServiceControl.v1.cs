@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170904 (977)
+ *      <tr><th>API Rev<td>20170909 (982)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1566,9 +1566,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; } 
 
-        /// <summary>DO NOT USE. This field is not ready for use yet.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainers")]
-        public virtual System.Collections.Generic.IList<string> ResourceContainers { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<ResourceInfo> Resources { get; set; } 
 
         /// <summary>Required. Start time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -1862,6 +1861,22 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// made from the `my-project` App Engine app. NOLINT</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerSuppliedUserAgent")]
         public virtual string CallerSuppliedUserAgent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>DO NOT USE. This definition is not ready for use yet.</summary>
+    public class ResourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifier of the parent of this resource instance. Must be in one of the following formats: -
+        /// “projects/” - “folders/” - “organizations/”</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
+        public virtual string ResourceContainer { get; set; } 
+
+        /// <summary>Name of the resource. This is used for auditing purposes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

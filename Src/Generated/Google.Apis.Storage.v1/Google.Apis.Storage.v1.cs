@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170830 (972)
+ *      <tr><th>API Rev<td>20170915 (988)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -1279,6 +1279,10 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Storage.v1.Data.Bucket Body { get; set; }
@@ -1345,6 +1349,15 @@ namespace Google.Apis.Storage.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1402,6 +1415,10 @@ namespace Google.Apis.Storage.v1
                 [Google.Apis.Util.StringValueAttribute("noAcl")]
                 NoAcl,
             }
+
+            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1467,6 +1484,15 @@ namespace Google.Apis.Storage.v1
                     "projection", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projection",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5575,7 +5601,7 @@ namespace Google.Apis.Storage.v1
 
         }
 
-        /// <summary>Patches an object's metadata.</summary>
+        /// <summary>Updates an object's metadata. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param
@@ -5586,7 +5612,7 @@ namespace Google.Apis.Storage.v1
             return new PatchRequest(service, body, bucket, storageObject);
         }
 
-        /// <summary>Patches an object's metadata.</summary>
+        /// <summary>Updates an object's metadata. This method supports patch semantics.</summary>
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5596,7 +5622,6 @@ namespace Google.Apis.Storage.v1
                 Bucket = bucket;
                 Object = storageObject;
                 Body = body;
-                MediaDownloader = new Google.Apis.Download.MediaDownloader(service);
                 InitParameters();
             }
 
@@ -5805,58 +5830,6 @@ namespace Google.Apis.Storage.v1
                         Pattern = null,
                     });
             }
-
-            /// <summary>Gets the media downloader.</summary>
-            public Google.Apis.Download.IMediaDownloader MediaDownloader { get; private set; }
-
-            /// <summary>
-            /// <para>Synchronously download the media into the given stream.</para>
-            /// <para>Warning: This method hides download errors; use <see cref="DownloadWithStatus"/> instead.</para>
-            /// </summary>
-            public virtual void Download(System.IO.Stream stream)
-            {
-                MediaDownloader.Download(this.GenerateRequestUri(), stream);
-            }
-
-            /// <summary>Synchronously download the media into the given stream.</summary>
-            /// <returns>The final status of the download; including whether the download succeeded or failed.</returns>
-            public virtual Google.Apis.Download.IDownloadProgress DownloadWithStatus(System.IO.Stream stream)
-            {
-                return MediaDownloader.Download(this.GenerateRequestUri(), stream);
-            }
-
-            /// <summary>Asynchronously download the media into the given stream.</summary>
-            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream)
-            {
-                return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream);
-            }
-
-            /// <summary>Asynchronously download the media into the given stream.</summary>
-            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadAsync(System.IO.Stream stream,
-                System.Threading.CancellationToken cancellationToken)
-            {
-                return MediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
-            }
-
-            #if !NET40
-            /// <summary>Synchronously download a range of the media into the given stream.</summary>
-            public virtual Google.Apis.Download.IDownloadProgress DownloadRange(System.IO.Stream stream, System.Net.Http.Headers.RangeHeaderValue range)
-            {
-                var mediaDownloader = new Google.Apis.Download.MediaDownloader(Service);
-                mediaDownloader.Range = range;
-                return mediaDownloader.Download(this.GenerateRequestUri(), stream);
-            }
-
-            /// <summary>Asynchronously download a range of the media into the given stream.</summary>
-            public virtual System.Threading.Tasks.Task<Google.Apis.Download.IDownloadProgress> DownloadRangeAsync(System.IO.Stream stream,
-                System.Net.Http.Headers.RangeHeaderValue range,
-                System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-            {
-                var mediaDownloader = new Google.Apis.Download.MediaDownloader(Service);
-                mediaDownloader.Range = range;
-                return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
-            }
-            #endif
 
         }
 
@@ -6998,6 +6971,10 @@ namespace Google.Apis.Storage.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string UserProject { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -7028,6 +7005,15 @@ namespace Google.Apis.Storage.v1
                             Name = "projectId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "userProject", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "userProject",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });

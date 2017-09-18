@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='http://developers.google.com/youtube/analytics/'>YouTube Analytics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170912 (985)
+ *      <tr><th>API Rev<td>20170913 (986)
  *      <tr><th>API Docs
  *          <td><a href='http://developers.google.com/youtube/analytics/'>
  *              http://developers.google.com/youtube/analytics/</a>
@@ -97,13 +97,13 @@ namespace Google.Apis.YouTubeAnalytics.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/youtubeAnalytics/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/youtubeAnalytics/v1"; }
         }
         #endif
 

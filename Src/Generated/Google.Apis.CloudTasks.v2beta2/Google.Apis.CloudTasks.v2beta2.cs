@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20170912 (985)
+ *      <tr><th>API Rev<td>20170915 (988)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -907,8 +907,8 @@ namespace Google.Apis.CloudTasks.v2beta2
                         public virtual string PageToken { get; set; }
 
                         /// <summary> Sort order used for the query. The fields supported for sorting are
-                        /// Task.schedule_time and PullTaskTarget.tag. All results will be returned in ascending order.
-                        /// The default ordering is by Task.schedule_time.</summary>
+                        /// Task.schedule_time and PullMessage.tag. All results will be returned in ascending order. The
+                        /// default ordering is by Task.schedule_time.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
@@ -1649,6 +1649,18 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "app_engine_http_target: *".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested_page size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
@@ -1665,18 +1677,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "app_engine_http_target: *".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested_page size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1712,6 +1712,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1724,15 +1733,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2282,6 +2282,165 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 }
             }
+
+            /// <summary>Get information about a location.</summary>
+            /// <param name="name">Resource name for the location.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Get information about a location.</summary>
+            public class GetRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Location>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name for the location.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta2/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            public class ListRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.ListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta2/{+name}/locations"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
         }
     }
 }
@@ -2540,101 +2699,26 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>App Engine task target.
-    ///
-    /// An App Engine task is a task that has AppEngineTaskTarget set.
-    ///
-    /// This proto can only be used for tasks in a queue which has Queue.app_engine_queue_config set.
-    ///
-    /// Using this type of task target requires [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
-    /// Google IAM permission for the project and the following scope:
-    ///
-    /// `https://www.googleapis.com/auth/cloud-platform`
-    ///
-    /// The task will be delivered to the URL specified by the AppEngineQueueConfig and AppEngineTaskTarget in the App
-    /// Engine app which belongs to the same project as the queue. For more information, see [How Requests are
-    /// Routed](/appengine/docs/standard/python/how-requests-are-routed) and how routing is affected by [dispatch
-    /// files](/appengine/docs/python/config/dispatchref).
-    ///
-    /// The AppEngineRouting used to construct the URL can be set at the queue-level or task-level:
-    ///
-    /// *  If set, AppEngineQueueConfig.app_engine_routing_override is used for all tasks in the queue, no matter what
-    /// the setting is for the task-level app_engine_routing.
-    ///
-    /// The `url` that the task will be sent to is:
-    ///
-    /// * `url =` AppEngineRouting.host `+` AppEngineTaskTarget.relative_url
-    ///
-    /// The task will be sent to a task handler by an HTTP request using the specified AppEngineTaskTarget.http_method
-    /// (for example POST, HTTP GET, etc). The task attempt has succeeded if the task handler returns an HTTP response
-    /// code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application
-    /// error. Requests returning error 503 will be retried regardless of retry configuration and not counted against
-    /// retry counts. Any other response code or a failure to receive a response before the deadline is a failed
-    /// attempt.</summary>
+    /// <summary>Deprecated. Use AppEngineHttpRequest.</summary>
     public class AppEngineTaskTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Task-level setting for App Engine routing.
-        ///
-        /// If set, AppEngineQueueConfig.app_engine_routing_override is used for all tasks in the queue, no matter what
-        /// the setting is for the task-level app_engine_routing.</summary>
+        /// <summary>Deprecated. Use AppEngineHttpRequest.app_engine_routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRouting")]
         public virtual AppEngineRouting AppEngineRouting { get; set; } 
 
-        /// <summary>HTTP request headers.
-        ///
-        /// This map contains the header field names and values. Headers can be set when the [task is
-        /// created](google.cloud.tasks.v2beta2.CloudTasks.CreateTask). Repeated headers are not supported but a header
-        /// value can contain commas.
-        ///
-        /// Cloud Tasks sets some headers to default values:
-        ///
-        /// * `User-Agent`: By default, this header is `"AppEngine-Google; (+http://code.google.com/appengine)"`. This
-        /// header can be modified, but Cloud Tasks will append `"AppEngine-Google;
-        /// (+http://code.google.com/appengine)"` to the modified `User-Agent`.
-        ///
-        /// If the task has an AppEngineTaskTarget.payload, Cloud Tasks sets the following headers:
-        ///
-        /// * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default
-        /// can be overridden by explictly setting `Content-Type` to a particular media type when the [task is
-        /// created](google.cloud.tasks.v2beta2.CloudTasks.CreateTask). For example, `Content-Type` can be set to
-        /// `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It
-        /// cannot be changed.
-        ///
-        /// The headers below cannot be set or overridden:
-        ///
-        /// * `Host` * `X-Google-*` * `X-AppEngine-*`
-        ///
-        /// In addition, some App Engine headers, which contain task-specific information, are also be sent to the task
-        /// handler; see [request headers](/appengine/docs/python/taskqueue/push/creating-
-        /// handlers#reading_request_headers).</summary>
+        /// <summary>Deprecated. Use AppEngineHttpRequest.headers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
 
-        /// <summary>The HTTP method to use for the request. The default is POST.
-        ///
-        /// The app's request handler for the task's target URL must be able to handle HTTP requests with this
-        /// http_method, otherwise the task attempt will fail with error code 405 "Method Not Allowed" because "the
-        /// method specified in the Request-Line is not allowed for the resource identified by the Request-URI". See
-        /// [Writing a push task request handler](/appengine/docs/java/taskqueue/push/creating-
-        /// handlers#writing_a_push_task_request_handler) and the documentation for the request handlers in the language
-        /// your app is written in e.g. [python
-        /// RequestHandler](/appengine/docs/python/tools/webapp/requesthandlerclass).</summary>
+        /// <summary>Deprecated. Use AppEngineHttpRequest.http_method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; } 
 
-        /// <summary>Payload.
-        ///
-        /// The payload will be sent as the HTTP message body. A message body, and thus a payload, is allowed only if
-        /// the HTTP method is POST or PUT. It is an error to set a data payload on a task with an incompatible
-        /// HttpMethod.</summary>
+        /// <summary>Deprecated. Use AppEngineHttpRequest.payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; } 
 
-        /// <summary>The relative URL.
-        ///
-        /// The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query
-        /// string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No
-        /// spaces are allowed, and the maximum length allowed is 2083 characters.</summary>
+        /// <summary>Deprecated. Use AppEngineHttpRequest.relative_url.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeUrl")]
         public virtual string RelativeUrl { get; set; } 
 
@@ -2803,6 +2887,21 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Locations.ListLocations.</summary>
+    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of locations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; } 
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for CloudTasks.ListQueues.</summary>
     public class ListQueuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2840,6 +2939,32 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>The list of tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
         public virtual System.Collections.Generic.IList<Task> Tasks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cross-service attributes for the location. For example
+        ///
+        /// {"cloud.googleapis.com/region": "us-east1"}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; } 
+
+        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
+
+        /// <summary>Resource name for the location, which may vary between implementations. For example: `"projects
+        /// /example-project/locations/us-east1"`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2927,22 +3052,14 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Pull task target.
-    ///
-    /// A pull task is a task that has PullTaskTarget set.
-    ///
-    /// This proto can only be used for tasks in a queue which has Queue.pull_queue_config set.</summary>
+    /// <summary>Deprecated. Use PullMessage.</summary>
     public class PullTaskTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A data payload consumed by the task worker to execute the task.</summary>
+        /// <summary>Deprecated. Use PullMessage.payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; } 
 
-        /// <summary>A meta-data tag for this task.
-        ///
-        /// This value is used by CloudTasks.PullTasks calls when PullTasksRequest.filter is `tag=`.
-        ///
-        /// The tag must be less than 500 bytes.</summary>
+        /// <summary>Deprecated. Use PullMessage.tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; } 
 
@@ -2955,8 +3072,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>`filter` can be used to specify a subset of tasks to lease.
         ///
-        /// When `filter` is set to `tag=` then the PullTasksResponse will contain only tasks whose PullTaskTarget.tag
-        /// is equal to ``. `` can be a bytes encoded as a string and must be less than 500 bytes. If `` includes
+        /// When `filter` is set to `tag=` then the PullTasksResponse will contain only tasks whose PullMessage.tag is
+        /// equal to ``. `` can be a bytes encoded as a string and must be less than 500 bytes. If `` includes
         /// whitespace or special characters (characters which aren't letters, numbers, or underscores), then it must be
         /// double-quoted. Double quotes and backslashes in quoted strings must be escaped by preceding it with a
         /// backslash (`\`).
@@ -3468,7 +3585,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// This field has the same meaning as [bucket_size in
         /// queue.yaml](/appengine/docs/standard/python/config/queueref#bucket_size).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
-        public virtual System.Nullable<double> MaxBurstSize { get; set; } 
+        public virtual System.Nullable<int> MaxBurstSize { get; set; } 
 
         /// <summary>The maximum number of outstanding tasks that Cloud Tasks allows to be dispatched for this queue.
         /// After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of outstanding

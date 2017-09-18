@@ -930,6 +930,14 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseWorkId { get; private set; }
 
+                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
+                    /// the specified identifier. The identifier can be one of the following:
+                    ///
+                    /// * the numeric identifier for the user * the email address of the user * the string literal
+                    /// `"me"`, indicating the requesting user</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserId { get; set; }
+
                     /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
                     /// the requested value. If unspecified, submissions are returned regardless of `late`
                     /// value.</summary>
@@ -986,14 +994,6 @@ namespace Google.Apis.Classroom.v1
                         RECLAIMEDBYSTUDENT,
                     }
 
-                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
-                    /// the specified identifier. The identifier can be one of the following:
-                    ///
-                    /// * the numeric identifier for the user * the email address of the user * the string literal
-                    /// `"me"`, indicating the requesting user</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string UserId { get; set; }
-
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1037,6 +1037,15 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "late", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "late",
@@ -1067,15 +1076,6 @@ namespace Google.Apis.Classroom.v1
                             "states", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "states",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3404,6 +3404,28 @@ namespace Google.Apis.Classroom.v1
             }
 
 
+            /// <summary>Restricts returned courses to those having a student with the specified identifier. The
+            /// identifier can be one of the following:
+            ///
+            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
+            /// indicating the requesting user</summary>
+            [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string StudentId { get; set; }
+
+            /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page of
+            /// results should be returned.
+            ///
+            /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign a
+            /// maximum.
+            ///
+            /// The server may return fewer than the specified number of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Restricts returned courses to those in one of the specified states The default value is ACTIVE,
             /// ARCHIVED, PROVISIONED, DECLINED.</summary>
             [Google.Apis.Util.RequestParameterAttribute("courseStates", Google.Apis.Util.RequestParameterType.Query)]
@@ -3435,28 +3457,6 @@ namespace Google.Apis.Classroom.v1
             [Google.Apis.Util.RequestParameterAttribute("teacherId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string TeacherId { get; set; }
 
-            /// <summary>Restricts returned courses to those having a student with the specified identifier. The
-            /// identifier can be one of the following:
-            ///
-            /// * the numeric identifier for the user * the email address of the user * the string literal `"me"`,
-            /// indicating the requesting user</summary>
-            [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string StudentId { get; set; }
-
-            /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page of
-            /// results should be returned.
-            ///
-            /// The list request must be otherwise identical to the one that resulted in this token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign a
-            /// maximum.
-            ///
-            /// The server may return fewer than the specified number of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -3482,24 +3482,6 @@ namespace Google.Apis.Classroom.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "courseStates", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "courseStates",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "teacherId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "teacherId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "studentId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "studentId",
@@ -3521,6 +3503,24 @@ namespace Google.Apis.Classroom.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "courseStates", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "courseStates",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "teacherId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "teacherId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

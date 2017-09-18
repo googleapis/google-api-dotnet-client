@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170912 (985)
+ *      <tr><th>API Rev<td>20170914 (987)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -680,8 +680,8 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <summary>Updates the metadata of a Photo, such as pose, place association, connections, etc. Changing the
         /// pixels of a photo is not supported.
         ///
-        /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
-        /// to all fields.
+        /// Only the fields specified in the updateMask field are used. If `updateMask` is not present, the update
+        /// applies to all fields.
         ///
         /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
         ///
@@ -700,8 +700,8 @@ namespace Google.Apis.StreetViewPublish.v1
         /// <summary>Updates the metadata of a Photo, such as pose, place association, connections, etc. Changing the
         /// pixels of a photo is not supported.
         ///
-        /// Only the fields specified in updateMask field are used. If `updateMask` is not present, the update applies
-        /// to all fields.
+        /// Only the fields specified in the updateMask field are used. If `updateMask` is not present, the update
+        /// applies to all fields.
         ///
         /// Note: To update Pose.altitude, Pose.latLngPair has to be filled as well. Otherwise, the request will fail.
         ///
@@ -900,6 +900,11 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
+            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
+            /// `photoIds==&...`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
+
             /// <summary>Specifies if a download URL for the photo bytes should be returned in the Photo
             /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -914,11 +919,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
-
-            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
-            /// `photoIds==&...`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -945,18 +945,18 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "photoIds", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "photoIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "photoIds", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "photoIds",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1326,8 +1326,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
         public virtual string DownloadUrl { get; set; } 
 
-        /// <summary>Required when updating photo. Output only when creating photo. Identifier for the photo, which is
-        /// unique among all photos in Google.</summary>
+        /// <summary>Required when updating a photo. Output only when creating a photo. Identifier for the photo, which
+        /// is unique among all photos in Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("photoId")]
         public virtual PhotoId PhotoId { get; set; } 
 
@@ -1347,7 +1347,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; } 
 
-        /// <summary>Required when creating photo. Input only. The resource URL where the photo bytes are uploaded
+        /// <summary>Required when creating a photo. Input only. The resource URL where the photo bytes are uploaded
         /// to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadReference")]
         public virtual UploadRef UploadReference { get; set; } 

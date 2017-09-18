@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170528 (878)
+ *      <tr><th>API Rev<td>20170908 (981)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>
  *              https://cloud.google.com/source-repositories/docs/apis</a>
@@ -110,6 +110,9 @@ namespace Google.Apis.CloudSourceRepositories.v1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+
+            /// <summary>Manage your source code repositories</summary>
+            public static string SourceFullControl = "https://www.googleapis.com/auth/source.full_control";
 
             /// <summary>View the contents of your source code repositories</summary>
             public static string SourceReadOnly = "https://www.googleapis.com/auth/source.read_only";
@@ -943,6 +946,12 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
+        /// user access via current binding. Different bindings, including their conditions, are examined independently.
+        /// This field is GOOGLE_INTERNAL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; } 
+
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -976,71 +985,6 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Write a Cloud Audit log</summary>
-    public class CloudAuditOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The log_name to populate in the Cloud Audit Record.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logName")]
-        public virtual string LogName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A condition to be met.</summary>
-    public class Condition : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Trusted attributes supplied by the IAM system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iam")]
-        public virtual string Iam { get; set; } 
-
-        /// <summary>An operator to apply the subject with.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("op")]
-        public virtual string Op { get; set; } 
-
-        /// <summary>Trusted attributes discharged by the service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("svc")]
-        public virtual string Svc { get; set; } 
-
-        /// <summary>Trusted attributes supplied by any service that owns resources and uses the IAM system for access
-        /// control.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sys")]
-        public virtual string Sys { get; set; } 
-
-        /// <summary>DEPRECATED. Use 'values' instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; } 
-
-        /// <summary>The objects of the condition. This is mutually exclusive with 'value'.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Options for counters</summary>
-    public class CounterOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The field value to attribute.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual string Field { get; set; } 
-
-        /// <summary>The metric to update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metric")]
-        public virtual string Metric { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Write a Data Access (Gin) log</summary>
-    public class DataAccessOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1049,6 +993,38 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an expression text. Example:
+    ///
+    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
+    /// "size(request.user) > 0"</summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
+        /// e.g. when hovered over it in a UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.
+        ///
+        /// The application context of the containing message determines which well-known feature set of CEL is
+        /// supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; } 
+
+        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
+        /// and a position in the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
+        /// e.g. in UIs which allow to enter the expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1064,25 +1040,6 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// <summary>The listed repos.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repos")]
         public virtual System.Collections.Generic.IList<Repo> Repos { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Specifies what kind of log the caller must write</summary>
-    public class LogConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Cloud audit options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudAudit")]
-        public virtual CloudAuditOptions CloudAudit { get; set; } 
-
-        /// <summary>Counter options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("counter")]
-        public virtual CounterOptions Counter { get; set; } 
-
-        /// <summary>Data access options.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dataAccess")]
-        public virtual DataAccessOptions DataAccess { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1132,8 +1089,8 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
-        /// <summary>Associates a list of `members` to a `role`. Multiple `bindings` must not be specified for the same
-        /// `role`. `bindings` with no members will result in an error.</summary>
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
 
@@ -1150,14 +1107,6 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
         public virtual System.Nullable<bool> IamOwned { get; set; } 
-
-        /// <summary>If more than one rule is specified, the rules are applied in the following manner: - All matching
-        /// LOG rules are always applied. - If any DENY/DENY_WITH_LOG rule matches, permission is denied. Logging will
-        /// be applied if one or more matching rule requires logging. - Otherwise, if any ALLOW/ALLOW_WITH_LOG rule
-        /// matches, permission is granted. Logging will be applied if one or more matching rule requires logging. -
-        /// Otherwise, if no rule applies, permission is denied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
 
         /// <summary>Version of the `Policy`. The default version is 0.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -1184,46 +1133,6 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// <summary>URL to clone the repository from Google Cloud Source Repositories.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A rule to be applied in a Policy.</summary>
-    public class Rule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; } 
-
-        /// <summary>Additional restrictions that must be met</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
-        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
-
-        /// <summary>Human-readable description of the rule.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>If one or more 'in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is
-        /// in at least one of these entries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("in")]
-        public virtual System.Collections.Generic.IList<string> In__ { get; set; } 
-
-        /// <summary>The config returned to callers of tech.iam.IAM.CheckPolicy for any entries that match the LOG
-        /// action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logConfig")]
-        public virtual System.Collections.Generic.IList<LogConfig> LogConfig { get; set; } 
-
-        /// <summary>If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR
-        /// is in none of the entries. The format for in and not_in entries is the same as for members in a Binding (see
-        /// google/iam/v1/policy.proto).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notIn")]
-        public virtual System.Collections.Generic.IList<string> NotIn { get; set; } 
-
-        /// <summary>A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all
-        /// permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
-        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

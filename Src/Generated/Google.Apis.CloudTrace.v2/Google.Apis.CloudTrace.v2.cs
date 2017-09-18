@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170905 (978)
+ *      <tr><th>API Rev<td>20170913 (986)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -113,9 +113,6 @@ namespace Google.Apis.CloudTrace.v2
 
             /// <summary>Write Trace data for a project or application</summary>
             public static string TraceAppend = "https://www.googleapis.com/auth/trace.append";
-
-            /// <summary>Read Trace data for a project or application</summary>
-            public static string TraceReadonly = "https://www.googleapis.com/auth/trace.readonly";
 
         }
 
@@ -561,238 +558,6 @@ namespace Google.Apis.CloudTrace.v2
                 }
 
             }
-
-            /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
-            /// <param name="parent">Required. The project where the trace data is stored. The format is
-            /// `projects/PROJECT_ID`.</param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Returns of a list of traces that match the specified filter conditions.</summary>
-            public class ListRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.ListTracesResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The project where the trace data is stored. The format is
-                /// `projects/PROJECT_ID`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Optional. Do not return traces whose end time is earlier than this time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
-
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method.  `page_token` must be the value of `next_page_token` from the previous response.  The
-                /// values of other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of `next_page_token` in the response indicates that more results might be
-                /// available, even if fewer than the maximum number of results is returned by this request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. A single field used to sort the returned traces. Only the following field names
-                /// can be used:
-                ///
-                /// *   `trace_id`: the trace's ID field *   `name`:  the root span's resource name *   `duration`: the
-                /// difference between the root span's start time and end time *   `start`:  the start time of the root
-                /// span
-                ///
-                /// Sorting is in ascending order unless `desc` is appended to the sort field name. Example: `"name
-                /// desc"`).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>Opional. Return only traces that match this [trace filter](/trace/docs/trace-filters).
-                /// Example:
-                ///
-                /// "label:/http/url root:/_ah/background my_label:17"</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>Optional. Do not return traces whose start time is later than this time.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object EndTime { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2/{+parent}/traces"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "startTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "endTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "endTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-
-            /// <summary>Returns a list of spans within a trace.</summary>
-            /// <param name="parent">Required: The resource name of the trace containing the spans to list. The format is
-            /// `projects/PROJECT_ID/traces/TRACE_ID`.</param>
-            public virtual ListSpansRequest ListSpans(string parent)
-            {
-                return new ListSpansRequest(service, parent);
-            }
-
-            /// <summary>Returns a list of spans within a trace.</summary>
-            public class ListSpansRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.ListSpansResponse>
-            {
-                /// <summary>Constructs a new ListSpans request.</summary>
-                public ListSpansRequest(Google.Apis.Services.IClientService service, string parent)
-                    : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required: The resource name of the trace containing the spans to list. The format is
-                /// `projects/PROJECT_ID/traces/TRACE_ID`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
-                /// this method. `page_token` must be the value of `next_page_token` from the previous response. The
-                /// values of other method parameters should be identical to those in the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "listSpans"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2/{+parent}:listSpans"; }
-                }
-
-                /// <summary>Initializes ListSpans parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/traces/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
         }
     }
 }
@@ -916,39 +681,6 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// <summary>A collection of links.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual System.Collections.Generic.IList<Link> Link { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for the `ListSpans` method.</summary>
-    public class ListSpansResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If defined, indicates that there might be more spans that match the request. Pass this as the value
-        /// of `pageToken` in a subsequent request to retrieve additional spans.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The requested spans, if there are any in the specified trace.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spans")]
-        public virtual System.Collections.Generic.IList<Span> Spans { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for the `ListTraces` method.</summary>
-    public class ListTracesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If there might be more results than those appearing in this response, then `next_page_token` is
-        /// included.  To get the next set of results, call this method again using the value of `next_page_token` as
-        /// `page_token`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>List of trace records returned.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("traces")]
-        public virtual System.Collections.Generic.IList<Trace> Traces { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1250,21 +982,6 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// <summary>A collection of `TimeEvent`s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeEvent")]
         public virtual System.Collections.Generic.IList<TimeEvent> TimeEvent { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A trace describes how long it takes for an application to perform some operations. It consists of a set
-    /// of spans, each representing an operation and including time information and operation details.</summary>
-    public class Trace : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The resource name of the trace in the following format:
-        ///
-        /// projects/[PROJECT_ID]/traces/TRACE_ID is a unique identifier for a trace within a project. The ID is
-        /// assigned when the trace is created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

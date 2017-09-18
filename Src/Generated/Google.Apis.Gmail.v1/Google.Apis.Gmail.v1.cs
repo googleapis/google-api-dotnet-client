@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170905 (978)
+ *      <tr><th>API Rev<td>20170913 (986)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -6583,11 +6583,6 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>Labels are used to categorize messages and threads within the user's mailbox.</summary>
     public class Label : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Color to assign to the label. This field is hidden behind an API server mendel experiment and only
-        /// available for user-defined labels. Will be unset if the label doesn't have a color configured.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual LabelColor Color { get; set; } 
-
         /// <summary>The immutable ID of the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
@@ -6628,22 +6623,6 @@ namespace Google.Apis.Gmail.v1.Data
         /// or threads.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class LabelColor : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Background color represented as hex string #RRGGBB (ex #000000). Only a restricted predefined set
-        /// of color values are allowed. See (go/gmail-api-label-colors).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual string BackgroundColor { get; set; } 
-
-        /// <summary>Text color represented as hex string #RRGGBB (ex #000000). Only a restricted predefined set of
-        /// color values are allowed. See (go/gmail-api-label-colors).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
-        public virtual string TextColor { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

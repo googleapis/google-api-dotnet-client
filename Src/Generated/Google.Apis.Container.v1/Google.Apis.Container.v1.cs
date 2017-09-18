@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170825 (967)
+ *      <tr><th>API Rev<td>20170901 (974)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -4152,6 +4152,13 @@ namespace Google.Apis.Container.v1.Data
         /// The total size of all keys and values must be less than 512 KB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
+
+        /// <summary>Minimum cpu/platform to be used by this instance. The instance may be scheduled on the specified or
+        /// newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
+        /// Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read Specifying a Minimum CPU
+        /// Platform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
+        public virtual string MinCpuPlatform { get; set; } 
 
         /// <summary>The set of Google API scopes to be made available on all of the node VMs under the "default"
         /// service account.
