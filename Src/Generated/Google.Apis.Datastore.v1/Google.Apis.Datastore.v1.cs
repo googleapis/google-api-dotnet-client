@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170821 (963)
+ *      <tr><th>API Rev<td>20170912 (985)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -616,10 +616,6 @@ namespace Google.Apis.Datastore.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -627,6 +623,10 @@ namespace Google.Apis.Datastore.v1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -662,15 +662,6 @@ namespace Google.Apis.Datastore.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -683,6 +674,15 @@ namespace Google.Apis.Datastore.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1308,12 +1308,12 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>The client-assigned labels which were provided when the operation was created.  May also include
+        /// <summary>The client-assigned labels which were provided when the operation was created. May also include
         /// additional labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>The type of the operation.  Can be used as a filter in ListOperationsRequest.</summary>
+        /// <summary>The type of the operation. Can be used as a filter in ListOperationsRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
@@ -1329,7 +1329,7 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Identifies a subset of entities in a project.  This is specified as combinations of kind + namespace
+    /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
     /// (either or both of which may be all, as described in the following examples). Example usage:
     ///
     /// Entire project: kinds=[], namespace_ids=[]
@@ -1347,10 +1347,10 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kinds")]
         public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
 
-        /// <summary>An empty list represents all namespaces.  This is the preferred usage for projects that don't use
+        /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
         /// namespaces.
         ///
-        /// An empty string element represents the default namespace.  This should be used if the project has data in
+        /// An empty string element represents the default namespace. This should be used if the project has data in
         /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
         /// unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
@@ -1433,11 +1433,12 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>Measures the progress of a particular metric.</summary>
     public class GoogleDatastoreAdminV1beta1Progress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Note that this may be greater than work_estimated.</summary>
+        /// <summary>The amount of work that has been completed. Note that this may be greater than
+        /// work_estimated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workCompleted")]
         public virtual System.Nullable<long> WorkCompleted { get; set; } 
 
-        /// <summary>An estimate of how much work needs to be performed.  May be zero if the work estimate is
+        /// <summary>An estimate of how much work needs to be performed. May be zero if the work estimate is
         /// unavailable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workEstimated")]
         public virtual System.Nullable<long> WorkEstimated { get; set; } 
@@ -1464,7 +1465,7 @@ namespace Google.Apis.Datastore.v1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class GoogleLongrunningOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 

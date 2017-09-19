@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-experience-report/'>Google Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170914 (987)
+ *      <tr><th>API Rev<td>20170918 (991)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-experience-report/'>
  *              https://developers.google.com/ad-experience-report/</a>
@@ -504,10 +504,6 @@ namespace Google.Apis.AdExperienceReport.v1.Data
     /// <summary>Summary of the ad experience rating of a site for a specific platform.</summary>
     public class PlatformSummary : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status of the site reviewed for abusive ads.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("abusiveStatus")]
-        public virtual string AbusiveStatus { get; set; } 
-
         /// <summary>The status of the site reviewed for the Better Ads Standards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("betterAdsStatus")]
         public virtual string BetterAdsStatus { get; set; } 

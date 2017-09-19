@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170905 (978)
+ *      <tr><th>API Rev<td>20170911 (984)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2818,8 +2818,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string NonComplianceReason { get; set; } 
 
         /// <summary>The package name indicating which application is out of compliance. If not set, then this condition
-        /// matches any package name. If this field is set, then setting_name must be unset or set to applications;
-        /// otherwise, the condition would never be satisfied.</summary>
+        /// matches any package name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; } 
 
@@ -3051,10 +3050,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Flag to specify if network escape hatch is enabled. If this flag has been enabled then upon device
-        /// boot if device has no network connection, then an activity will be shown that allows the user to temporarily
-        /// connect to a network to fetch the latest policy. The launched activity will time out if no network has been
-        /// connected for a given while and will return to the previous activity that was shown.</summary>
+        /// <summary>Whether the network escape hatch is enabled. If a network connection can't be made at boot time,
+        /// the escape hatch prompts the user to temporarily connect to a network in order to refresh the device policy.
+        /// After applying policy, the temporary network will be forgotten and the device will continue booting. This
+        /// prevents being unable to connect to a network if there is no suitable network in the last policy and the
+        /// device boots into an app in lock task mode, or the user is otherwise unable to reach device
+        /// settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEscapeHatchEnabled")]
         public virtual System.Nullable<bool> NetworkEscapeHatchEnabled { get; set; } 
 

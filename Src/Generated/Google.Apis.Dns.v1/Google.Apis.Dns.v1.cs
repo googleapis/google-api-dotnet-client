@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170831 (973)
+ *      <tr><th>API Rev<td>20170915 (988)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -98,13 +98,13 @@ namespace Google.Apis.Dns.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/dns/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/dns/v1"; }
         }
         #endif
 

@@ -121,13 +121,13 @@ namespace Google.Apis.YouTube.v3
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/youtube/v3"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/youtube/v3"; }
         }
         #endif
 

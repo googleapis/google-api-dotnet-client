@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170909 (982)
+ *      <tr><th>API Rev<td>20170916 (989)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -463,17 +463,20 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             }
 
 
-            /// <summary>A customer for zero-touch enrollment will be created. After a Customer is created, their admins
-            /// and owners will be able to manage devices on partner.android.com/zerotouch or via their API.</summary>
+            /// <summary>Creates a customer for zero-touch enrollment. After the method returns successfully, admin and
+            /// owner roles can manage devices and EMM configs by calling API methods or using their zero-touch
+            /// enrollment portal. The API doesn't notify the customer that they have access.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">The parent resource in format `partners/[PARTNER_ID]'.</param>
+            /// <param name="parent">Required. The parent resource ID in format `partners/[PARTNER_ID]` that identifies the
+            /// reseller.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidProvisioningPartner.v1.Data.CreateCustomerRequest body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>A customer for zero-touch enrollment will be created. After a Customer is created, their admins
-            /// and owners will be able to manage devices on partner.android.com/zerotouch or via their API.</summary>
+            /// <summary>Creates a customer for zero-touch enrollment. After the method returns successfully, admin and
+            /// owner roles can manage devices and EMM configs by calling API methods or using their zero-touch
+            /// enrollment portal. The API doesn't notify the customer that they have access.</summary>
             public class CreateRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Company>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -486,7 +489,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>The parent resource in format `partners/[PARTNER_ID]'.</summary>
+                /// <summary>Required. The parent resource ID in format `partners/[PARTNER_ID]` that identifies the
+                /// reseller.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -533,7 +537,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
             }
 
-            /// <summary>List the customers that are enrolled to the reseller identified by the `partnerId` argument.
+            /// <summary>Lists the customers that are enrolled to the reseller identified by the `partnerId` argument.
             /// This list includes customers that the reseller created and customers that enrolled themselves using the
             /// portal.</summary>
             /// <param name="partnerId">The ID of the partner.</param>
@@ -542,7 +546,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 return new ListRequest(service, partnerId);
             }
 
-            /// <summary>List the customers that are enrolled to the reseller identified by the `partnerId` argument.
+            /// <summary>Lists the customers that are enrolled to the reseller identified by the `partnerId` argument.
             /// This list includes customers that the reseller created and customers that enrolled themselves using the
             /// portal.</summary>
             public class ListRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.ListCustomersResponse>
@@ -1293,29 +1297,32 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Company</summary>
+    /// <summary>A customer resource in the zero-touch enrollment API.</summary>
     public class Company : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Admin emails. Admins are able to operate on the portal. This field is a write-only field at
-        /// creation time.</summary>
+        /// <summary>Input only. Optional. Email address of customer's users in the admin role. Each email address must
+        /// be associated with a Google Account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEmails")]
         public virtual System.Collections.Generic.IList<string> AdminEmails { get; set; } 
 
-        /// <summary>Company ID.</summary>
+        /// <summary>Output only. The ID of the company. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyId")]
         public virtual System.Nullable<long> CompanyId { get; set; } 
 
-        /// <summary>Company name.</summary>
+        /// <summary>Required. The name of the company. For example _XYZ Corp_. Characters allowed are: Latin letters,
+        /// numerals, hyphens, and spaces. Displayed to the customer's employees in the zero-touch enrollment
+        /// portal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
         public virtual string CompanyName { get; set; } 
 
-        /// <summary>The API resource name of the company in the format
-        /// `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`.</summary>
+        /// <summary>Output only. The API resource name of the company in the format
+        /// `partners/[PARTNER_ID]/customers/[CUSTOMER_ID]`. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Owner emails. Owners are able to operate on the portal, and modify admins or other owners. This
-        /// field is a write-only field at creation time.</summary>
+        /// <summary>Input only. Email address of customer's users in the owner role. At least one `owner_email` is
+        /// required. Each email address must be associated with a Google Account. Owners share the same access as
+        /// admins but can also add, delete, and edit your organization's portal users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerEmails")]
         public virtual System.Collections.Generic.IList<string> OwnerEmails { get; set; } 
 
@@ -1326,7 +1333,9 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Request message to create a customer.</summary>
     public class CreateCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The customer to create.</summary>
+        /// <summary>Required. The company data to populate the new customer. Must contain a value for `companyName` and
+        /// at least one `owner_email` that's associated with a Google Account. The values for `companyId` and `name`
+        /// must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual Company Customer { get; set; } 
 
