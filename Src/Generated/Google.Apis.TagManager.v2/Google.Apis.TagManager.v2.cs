@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170330 (819)
+ *      <tr><th>API Rev<td>20170915 (988)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>
  *              https://developers.google.com/tag-manager/api/v2/</a>
@@ -1784,6 +1784,24 @@ namespace Google.Apis.TagManager.v2
                             Resolution,
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
                             SdkVersion,
+                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
+                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("videoDuration")]
+                            VideoDuration,
+                            [Google.Apis.Util.StringValueAttribute("videoElapsedTime")]
+                            VideoElapsedTime,
+                            [Google.Apis.Util.StringValueAttribute("videoPercent")]
+                            VideoPercent,
+                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
+                            VideoProvider,
+                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
+                            VideoStatus,
+                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
+                            VideoTitle,
+                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
+                            VideoUrl,
+                            [Google.Apis.Util.StringValueAttribute("videoVisible")]
+                            VideoVisible,
                         }
 
 
@@ -2040,6 +2058,24 @@ namespace Google.Apis.TagManager.v2
                             Resolution,
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
                             SdkVersion,
+                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
+                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("videoDuration")]
+                            VideoDuration,
+                            [Google.Apis.Util.StringValueAttribute("videoElapsedTime")]
+                            VideoElapsedTime,
+                            [Google.Apis.Util.StringValueAttribute("videoPercent")]
+                            VideoPercent,
+                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
+                            VideoProvider,
+                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
+                            VideoStatus,
+                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
+                            VideoTitle,
+                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
+                            VideoUrl,
+                            [Google.Apis.Util.StringValueAttribute("videoVisible")]
+                            VideoVisible,
                         }
 
 
@@ -2371,6 +2407,24 @@ namespace Google.Apis.TagManager.v2
                             Resolution,
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
                             SdkVersion,
+                            [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
+                            VideoCurrentTime,
+                            [Google.Apis.Util.StringValueAttribute("videoDuration")]
+                            VideoDuration,
+                            [Google.Apis.Util.StringValueAttribute("videoElapsedTime")]
+                            VideoElapsedTime,
+                            [Google.Apis.Util.StringValueAttribute("videoPercent")]
+                            VideoPercent,
+                            [Google.Apis.Util.StringValueAttribute("videoProvider")]
+                            VideoProvider,
+                            [Google.Apis.Util.StringValueAttribute("videoStatus")]
+                            VideoStatus,
+                            [Google.Apis.Util.StringValueAttribute("videoTitle")]
+                            VideoTitle,
+                            [Google.Apis.Util.StringValueAttribute("videoUrl")]
+                            VideoUrl,
+                            [Google.Apis.Util.StringValueAttribute("videoVisible")]
+                            VideoVisible,
                         }
 
 
@@ -6548,6 +6602,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual System.Collections.Generic.IList<Variable> Variable { get; set; } 
 
+        /// <summary>The zones in the container that this version was taken from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual System.Collections.Generic.IList<Zone> Zone { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -6594,6 +6652,10 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>Number of variables in the container version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numVariables")]
         public virtual string NumVariables { get; set; } 
+
+        /// <summary>Number of zones in the container version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numZones")]
+        public virtual string NumZones { get; set; } 
 
         /// <summary>GTM Container Versions's API relative path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
@@ -7479,6 +7541,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; } 
 
+        /// <summary>Additional parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
+
         /// <summary>Parent folder id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; } 
@@ -7813,6 +7879,108 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>User type distinguishes between a user and the Google Tag Manager system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a Google Tag Manager Zone's contents.</summary>
+    public class Zone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>GTM Account ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
+        /// <summary>This Zone's boundary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boundary")]
+        public virtual ZoneBoundary Boundary { get; set; } 
+
+        /// <summary>Containers that are children of this Zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childContainer")]
+        public virtual System.Collections.Generic.IList<ZoneChildContainer> ChildContainer { get; set; } 
+
+        /// <summary>GTM Container ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
+        public virtual string ContainerId { get; set; } 
+
+        /// <summary>The fingerprint of the GTM Zone as computed at storage time. This value is recomputed whenever the
+        /// zone is modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
+        /// <summary>Zone display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>User notes on how to apply this zone in the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual string Notes { get; set; } 
+
+        /// <summary>GTM Zone's API relative path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>Auto generated link to the tag manager UI</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagManagerUrl")]
+        public virtual string TagManagerUrl { get; set; } 
+
+        /// <summary>This Zone's type restrictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("typeRestriction")]
+        public virtual ZoneTypeRestriction TypeRestriction { get; set; } 
+
+        /// <summary>GTM Workspace ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workspaceId")]
+        public virtual string WorkspaceId { get; set; } 
+
+        /// <summary>The Zone ID uniquely identifies the GTM Zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoneId")]
+        public virtual string ZoneId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a Zone's boundaries.</summary>
+    public class ZoneBoundary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conditions that, when conjoined, make up the boundary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual System.Collections.Generic.IList<Condition> Condition { get; set; } 
+
+        /// <summary>Custom evaluation trigger IDs. A zone will evaluate its boundary conditions when any of the listed
+        /// triggers are true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customEvaluationTriggerId")]
+        public virtual System.Collections.Generic.IList<string> CustomEvaluationTriggerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a child container of a Zone.</summary>
+    public class ZoneChildContainer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The zone's nickname for the child container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nickname")]
+        public virtual string Nickname { get; set; } 
+
+        /// <summary>The child container's public id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicId")]
+        public virtual string PublicId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a Zone's type restrictions.</summary>
+    public class ZoneTypeRestriction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if type restrictions have been enabled for this Zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enable")]
+        public virtual System.Nullable<bool> Enable { get; set; } 
+
+        /// <summary>List of type public ids that have been whitelisted for use in this Zone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("whitelistedTypeId")]
+        public virtual System.Collections.Generic.IList<string> WhitelistedTypeId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

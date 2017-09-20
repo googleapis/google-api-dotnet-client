@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Google Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20170906 (979)
+ *      <tr><th>API Rev<td>20170918 (991)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
@@ -827,7 +827,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTimeUsec")]
         public virtual System.Nullable<long> ExpirationTimeUsec { get; set; } 
 
-        /// <summary>[Output Only] The SHA-256 fingerprint of the SSH public key.</summary>
+        /// <summary>The SHA-256 fingerprint of the SSH public key. Output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
