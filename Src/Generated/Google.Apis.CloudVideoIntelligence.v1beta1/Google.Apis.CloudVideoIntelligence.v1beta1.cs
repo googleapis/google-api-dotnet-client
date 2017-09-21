@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Video Intelligence API Version v1beta1
+ *   Cloud Video Intelligence API Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Google Cloud Video Intelligence API</a>
+ *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170908 (981)
+ *      <tr><th>API Rev<td>20170919 (992)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Video Intelligence API can be found at
+ * The complete API documentation for using Cloud Video Intelligence API can be found at
  * <a href='https://cloud.google.com/video-intelligence/docs/'>https://cloud.google.com/video-intelligence/docs/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Video Intelligence API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Video Intelligence API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

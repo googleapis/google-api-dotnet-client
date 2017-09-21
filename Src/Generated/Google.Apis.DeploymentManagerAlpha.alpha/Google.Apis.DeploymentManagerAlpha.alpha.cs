@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170907 (980)
+ *      <tr><th>API Rev<td>20170914 (987)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -4273,11 +4273,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] Timestamp when the composite type was created, in RFC3339 text format.</summary>
+        /// <summary>Output only. Timestamp when the composite type was created, in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -4292,12 +4292,12 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The Operation that most recently ran, or is currently running, on this composite
+        /// <summary>Output only. The Operation that most recently ran, or is currently running, on this composite
         /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
-        /// <summary>[Output Only] Self link for the type provider.</summary>
+        /// <summary>Output only. Self link for the type provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -4327,7 +4327,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     /// <summary>A response that returns all Composite Types supported by Deployment Manager</summary>
     public class CompositeTypesListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A list of resource composite types supported by Deployment Manager.</summary>
+        /// <summary>Output only. A list of resource composite types supported by Deployment Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compositeTypes")]
         public virtual System.Collections.Generic.IList<CompositeType> CompositeTypes { get; set; } 
 
@@ -4440,11 +4440,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
-        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] Timestamp when the deployment was created, in RFC3339 text format .</summary>
+        /// <summary>Output only. Timestamp when the deployment was created, in RFC3339 text format .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -4455,7 +4455,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<DeploymentLabelEntry> Labels { get; set; } 
 
-        /// <summary>[Output Only] URL of the manifest representing the last manifest that was successfully
+        /// <summary>Output only. URL of the manifest representing the last manifest that was successfully
         /// deployed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; } 
@@ -4468,17 +4468,16 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The Operation that most recently ran, or is currently running, on this
+        /// <summary>Output only. The Operation that most recently ran, or is currently running, on this
         /// deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
-        /// <summary>api-linter: output-only-format=disabled [Output Only] Map of outputs from the last manifest that
-        /// deployed successfully.</summary>
+        /// <summary>Output only. Map of outputs from the last manifest that deployed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputs")]
         public virtual System.Collections.Generic.IList<DeploymentOutputsEntry> Outputs { get; set; } 
 
-        /// <summary>[Output Only] Self link for the deployment.</summary>
+        /// <summary>Output only. Self link for the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -4487,7 +4486,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual TargetConfiguration Target { get; set; } 
 
-        /// <summary>[Output Only] If Deployment Manager is currently updating or previewing an update to this
+        /// <summary>Output only. If Deployment Manager is currently updating or previewing an update to this
         /// deployment, the updated configuration appears here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual DeploymentUpdate Update { get; set; } 
@@ -4522,19 +4521,19 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 
     public class DeploymentUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] An optional user-provided description of the deployment after the current update has
+        /// <summary>Output only. An optional user-provided description of the deployment after the current update has
         /// been applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Output Only] Map of labels; provided by the client when the resource is created or updated.
+        /// <summary>Output only. Map of labels; provided by the client when the resource is created or updated.
         /// Specifically: Label keys must be between 1 and 63 characters long and must conform to the following regular
         /// expression: [a-z]([-a-z0-9]*[a-z0-9])? Label values must be between 0 and 63 characters long and must
         /// conform to the regular expression ([a-z]([-a-z0-9]*[a-z0-9])?)?</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<DeploymentUpdateLabelEntry> Labels { get; set; } 
 
-        /// <summary>[Output Only] URL of the manifest representing the update configuration of this
+        /// <summary>Output only. URL of the manifest representing the update configuration of this
         /// deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; } 
@@ -4575,11 +4574,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     /// the request has been truncated.</summary>
     public class DeploymentsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The deployments contained in this response.</summary>
+        /// <summary>Output only. The deployments contained in this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployments")]
         public virtual System.Collections.Generic.IList<Deployment> Deployments { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>Output only. A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -4750,36 +4749,38 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 
     public class Manifest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The YAML configuration for this manifest.</summary>
+        /// <summary>Output only. The YAML configuration for this manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ConfigFile Config { get; set; } 
 
-        /// <summary>[Output Only] The fully-expanded configuration file, including any templates and
+        /// <summary>Output only. The fully-expanded configuration file, including any templates and
         /// references.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandedConfig")]
         public virtual string ExpandedConfig { get; set; } 
 
-        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] The imported files for this manifest.</summary>
+        /// <summary>Output only. The imported files for this manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imports")]
         public virtual System.Collections.Generic.IList<ImportFile> Imports { get; set; } 
 
-        /// <summary>[Output Only] Timestamp when the manifest was created, in RFC3339 text format.</summary>
+        /// <summary>Output only. Timestamp when the manifest was created, in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>[Output Only] The YAML layout for this manifest.</summary>
+        /// <summary>Output only. The YAML layout for this manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("layout")]
         public virtual string Layout { get; set; } 
 
-        /// <summary>[Output Only] The name of the manifest.</summary>
+        /// <summary>Output only.
+        ///
+        /// The name of the manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] Self link for the manifest.</summary>
+        /// <summary>Output only. Self link for the manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -4791,11 +4792,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     /// the request has been truncated.</summary>
     public class ManifestsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Manifests contained in this list response.</summary>
+        /// <summary>Output only. Manifests contained in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifests")]
         public virtual System.Collections.Generic.IList<Manifest> Manifests { get; set; } 
 
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>Output only. A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -4987,11 +4988,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     /// the request has been truncated.</summary>
     public class OperationsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] A token used to continue a truncated list request.</summary>
+        /// <summary>Output only. A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] Operations contained in this list response.</summary>
+        /// <summary>Output only. Operations contained in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
 
@@ -5079,53 +5080,52 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
         public virtual ResourceAccessControl AccessControl { get; set; } 
 
-        /// <summary>[Output Only] The evaluated properties of the resource with references expanded. Returned as
+        /// <summary>Output only. The evaluated properties of the resource with references expanded. Returned as
         /// serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalProperties")]
         public virtual string FinalProperties { get; set; } 
 
-        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] Timestamp when the resource was created or acquired, in RFC3339 text format
+        /// <summary>Output only. Timestamp when the resource was created or acquired, in RFC3339 text format
         /// .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
-        /// <summary>[Output Only] URL of the manifest representing the current configuration of this
-        /// resource.</summary>
+        /// <summary>Output only. URL of the manifest representing the current configuration of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; } 
 
-        /// <summary>[Output Only] The name of the resource as it appears in the YAML config.</summary>
+        /// <summary>Output only. The name of the resource as it appears in the YAML config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The current properties of the resource before any references have been filled in.
+        /// <summary>Output only. The current properties of the resource before any references have been filled in.
         /// Returned as serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; } 
 
-        /// <summary>[Output Only] The type of the resource, for example compute.v1.instance, or
+        /// <summary>Output only. The type of the resource, for example compute.v1.instance, or
         /// cloudfunctions.v1beta1.function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>[Output Only] If Deployment Manager is currently updating or previewing an update to this resource,
+        /// <summary>Output only. If Deployment Manager is currently updating or previewing an update to this resource,
         /// the updated configuration appears here.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual ResourceUpdate Update { get; set; } 
 
-        /// <summary>[Output Only] Timestamp when the resource was updated, in RFC3339 text format .</summary>
+        /// <summary>Output only. Timestamp when the resource was updated, in RFC3339 text format .</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTime { get; set; } 
 
-        /// <summary>[Output Only] The URL of the actual resource.</summary>
+        /// <summary>Output only. The URL of the actual resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
-        /// <summary>[Output Only] If warning messages are generated during processing of this resource, this field will
+        /// <summary>Output only. If warning messages are generated during processing of this resource, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<Resource.WarningsData> Warnings { get; set; } 
@@ -5188,34 +5188,34 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
         public virtual ResourceAccessControl AccessControl { get; set; } 
 
-        /// <summary>[Output Only] If errors are generated during update of the resource, this field will be
+        /// <summary>Output only. If errors are generated during update of the resource, this field will be
         /// populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual ResourceUpdate.ErrorData Error { get; set; } 
 
-        /// <summary>[Output Only] The expanded properties of the resource with reference values expanded. Returned as
+        /// <summary>Output only. The expanded properties of the resource with reference values expanded. Returned as
         /// serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalProperties")]
         public virtual string FinalProperties { get; set; } 
 
-        /// <summary>[Output Only] The intent of the resource: PREVIEW, UPDATE, or CANCEL.</summary>
+        /// <summary>Output only. The intent of the resource: PREVIEW, UPDATE, or CANCEL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intent")]
         public virtual string Intent { get; set; } 
 
-        /// <summary>[Output Only] URL of the manifest representing the update configuration of this resource.</summary>
+        /// <summary>Output only. URL of the manifest representing the update configuration of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; } 
 
-        /// <summary>[Output Only] The set of updated properties for this resource, before references are expanded.
+        /// <summary>Output only. The set of updated properties for this resource, before references are expanded.
         /// Returned as serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; } 
 
-        /// <summary>[Output Only] The state of the resource.</summary>
+        /// <summary>Output only. The state of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>[Output Only] If warning messages are generated during processing of this resource, this field will
+        /// <summary>Output only. If warning messages are generated during processing of this resource, this field will
         /// be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<ResourceUpdate.WarningsData> Warnings { get; set; } 
@@ -5224,7 +5224,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
         
 
-        /// <summary>[Output Only] If errors are generated during update of the resource, this field will be
+        /// <summary>Output only. If errors are generated during update of the resource, this field will be
         /// populated.</summary>
         public class ErrorData
         {
@@ -5426,11 +5426,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] Timestamp when the type was created, in RFC3339 text format.</summary>
+        /// <summary>Output only. Timestamp when the type was created, in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -5445,12 +5445,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The Operation that most recently ran, or is currently running, on this
-        /// type.</summary>
+        /// <summary>Output only. The Operation that most recently ran, or is currently running, on this type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
 
-        /// <summary>[Output Only] Self link for the type.</summary>
+        /// <summary>Output only. Self link for the type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -5471,7 +5470,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
         public virtual string DocumentationLink { get; set; } 
 
-        /// <summary>[Output Only] Type of the output. Always deploymentManager#TypeInfo for TypeInfo.</summary>
+        /// <summary>Output only. Type of the output. Always deploymentManager#TypeInfo for TypeInfo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
@@ -5484,7 +5483,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TypeInfoSchemaInfo Schema { get; set; } 
 
-        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        /// <summary>Output only. Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -5544,11 +5543,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("descriptorUrl")]
         public virtual string DescriptorUrl { get; set; } 
 
-        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        /// <summary>Output only. Unique identifier for the resource; defined by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<ulong> Id { get; set; } 
 
-        /// <summary>[Output Only] Timestamp when the type provider was created, in RFC3339 text format.</summary>
+        /// <summary>Output only. Timestamp when the type provider was created, in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
@@ -5563,7 +5562,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] The Operation that most recently ran, or is currently running, on this type
+        /// <summary>Output only. The Operation that most recently ran, or is currently running, on this type
         /// provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; } 
@@ -5572,7 +5571,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual Options Options { get; set; } 
 
-        /// <summary>[Output Only] Self link for the type provider.</summary>
+        /// <summary>Output only. Self link for the type provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
@@ -5599,7 +5598,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] A list of resource type providers supported by Deployment Manager.</summary>
+        /// <summary>Output only. A list of resource type providers supported by Deployment Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeProviders")]
         public virtual System.Collections.Generic.IList<TypeProvider> TypeProviders { get; set; } 
 
@@ -5613,7 +5612,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] A list of resource type info.</summary>
+        /// <summary>Output only. A list of resource type info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<TypeInfo> Types { get; set; } 
 
@@ -5628,7 +5627,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>[Output Only] A list of resource types supported by Deployment Manager.</summary>
+        /// <summary>Output only. A list of resource types supported by Deployment Manager.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<Type> Types { get; set; } 
 

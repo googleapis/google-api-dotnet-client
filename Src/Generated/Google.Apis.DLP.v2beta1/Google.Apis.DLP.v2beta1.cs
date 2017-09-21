@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170913 (986)
+ *      <tr><th>API Rev<td>20170918 (991)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -671,8 +671,8 @@ namespace Google.Apis.DLP.v2beta1
             }
 
 
-            /// <summary>Cancels an operation. Use the get method to check whether the cancellation succeeded or whether
-            /// the operation completed despite cancellation.</summary>
+            /// <summary>Cancels an operation. Use the `inspect.operations.get` to check whether the cancellation
+            /// succeeded or the operation completed despite cancellation.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(Google.Apis.DLP.v2beta1.Data.GoogleLongrunningCancelOperationRequest body, string name)
@@ -680,8 +680,8 @@ namespace Google.Apis.DLP.v2beta1
                 return new CancelRequest(service, body, name);
             }
 
-            /// <summary>Cancels an operation. Use the get method to check whether the cancellation succeeded or whether
-            /// the operation completed despite cancellation.</summary>
+            /// <summary>Cancels an operation. Use the `inspect.operations.get` to check whether the cancellation
+            /// succeeded or the operation completed despite cancellation.</summary>
             public class CancelRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -916,14 +916,14 @@ namespace Google.Apis.DLP.v2beta1
 
             }
 
-            /// <summary>Fetch the list of long running operations.</summary>
+            /// <summary>Fetches the list of long running operations.</summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Fetch the list of long running operations.</summary>
+            /// <summary>Fetches the list of long running operations.</summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -939,17 +939,17 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
+                /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -985,6 +985,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -997,15 +1006,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1215,8 +1215,8 @@ namespace Google.Apis.DLP.v2beta1
             }
 
 
-            /// <summary>Cancels an operation. Use the get method to check whether the cancellation succeeded or whether
-            /// the operation completed despite cancellation.</summary>
+            /// <summary>Cancels an operation. Use the `inspect.operations.get` to check whether the cancellation
+            /// succeeded or the operation completed despite cancellation.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the operation resource to be cancelled.</param>
             public virtual CancelRequest Cancel(Google.Apis.DLP.v2beta1.Data.GoogleLongrunningCancelOperationRequest body, string name)
@@ -1224,8 +1224,8 @@ namespace Google.Apis.DLP.v2beta1
                 return new CancelRequest(service, body, name);
             }
 
-            /// <summary>Cancels an operation. Use the get method to check whether the cancellation succeeded or whether
-            /// the operation completed despite cancellation.</summary>
+            /// <summary>Cancels an operation. Use the `inspect.operations.get` to check whether the cancellation
+            /// succeeded or the operation completed despite cancellation.</summary>
             public class CancelRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Cancel request.</summary>
@@ -1407,14 +1407,14 @@ namespace Google.Apis.DLP.v2beta1
 
             }
 
-            /// <summary>Fetch the list of long running operations.</summary>
+            /// <summary>Fetches the list of long running operations.</summary>
             /// <param name="name">The name of the operation's parent resource.</param>
             public virtual ListRequest List(string name)
             {
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Fetch the list of long running operations.</summary>
+            /// <summary>Fetches the list of long running operations.</summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta1.Data.GoogleLongrunningListOperationsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1430,7 +1430,7 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>This parameter supports filtering by done, ie done=true or done=false.</summary>
+                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
@@ -1438,7 +1438,7 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The list page size. The max allowed value is 256 and default is 100.</summary>
+                /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -1721,16 +1721,18 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
-        /// <summary>This field will contain an InspectOperationMetadata object. This will always be returned with the
+        /// <summary>This field will contain an InspectOperationMetadata object for `inspect.operations.create` or a
+        /// RiskAnalysisOperationMetadata object for `dataSource.analyze`.  This will always be returned with the
         /// Operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
-        /// <summary>The server-assigned name, The `name` should have the format of `inspect/operations/`.</summary>
+        /// <summary>The server-assigned name. The `name` should have the format of `inspect/operations/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>This field will contain an InspectOperationResult object.</summary>
+        /// <summary>This field will contain an InspectOperationResult object for `inspect.operations.create` or a
+        /// RiskAnalysisOperationResult object for `dataSource.analyze`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -1839,6 +1841,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Histogram bucket of value frequencies in the column.</summary>
     public class GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Total number of records in this bucket.</summary>
@@ -2097,9 +2100,9 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size
-    /// must be either 32 or 64 bytes. Outputs a 32 byte digest as an uppercase hex string (for example,
-    /// 41D1567F7F99F1DC2A5FAB886DEE5BEE). Currently, only string and integer values can be hashed.</summary>
+    /// <summary>Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. Outputs a 32
+    /// byte digest as an uppercase hex string (for example, 41D1567F7F99F1DC2A5FAB886DEE5BEE). Currently, only string
+    /// and integer values can be hashed.</summary>
     public class GooglePrivacyDlpV2beta1CryptoHashConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The key used by the hash function.</summary>
@@ -2137,10 +2140,12 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonAlphabet")]
         public virtual string CommonAlphabet { get; set; } 
 
-        /// <summary>The 'tweak', a context may be used for higher security since the same identifier in two different
-        /// contexts won't be given the same surrogate. If the context is not set, a default tweak will be used.
+        /// <summary>A context may be used for higher security since the same identifier in two different contexts
+        /// likely will be given a distinct surrogate. The principle is that the likeliness is inversely related to the
+        /// ratio of the number of distinct identifiers per context over the number of possible surrogates: As long as
+        /// this ratio is small, the likehood is large.
         ///
-        /// If the context is set but:
+        /// If the context is not set, a default tweak will be used. If the context is set but:
         ///
         /// 1. there is no record present when transforming a given value or 1. the field is not present when
         /// transforming a given value,
@@ -2153,7 +2158,9 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// The tweak is constructed as a sequence of bytes in big endian byte order such that:
         ///
         /// - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format
-        /// followed by a single byte of value 2</summary>
+        /// followed by a single byte of value 2
+        ///
+        /// This is also known as the 'tweak', as in tweakable encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual GooglePrivacyDlpV2beta1FieldId Context { get; set; } 
 
@@ -2468,18 +2475,18 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Info type description.</summary>
+    /// <summary>Description of the information type (infoType).</summary>
     public class GooglePrivacyDlpV2beta1InfoTypeDescription : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of categories this info type belongs to.</summary>
+        /// <summary>List of categories this infoType belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("categories")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1CategoryDescription> Categories { get; set; } 
 
-        /// <summary>Human readable form of the info type name.</summary>
+        /// <summary>Human readable form of the infoType name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
-        /// <summary>Internal name of the info type.</summary>
+        /// <summary>Internal name of the infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -2693,7 +2700,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The set of columns' values that share the same ldiversity value</summary>
+    /// <summary>The set of columns' values that share the same k-anonymity value.</summary>
     public class GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Size of the equivalence class, for example number of rows with the above set of values.</summary>
@@ -2709,6 +2716,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Histogram bucket of equivalence class sizes in the table.</summary>
     public class GooglePrivacyDlpV2beta1KAnonymityHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Total number of records in this bucket.</summary>
@@ -2810,7 +2818,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The set of columns' values that share the same ldiversity value.</summary>
+    /// <summary>The set of columns' values that share the same l-diversity value.</summary>
     public class GooglePrivacyDlpV2beta1LDiversityEquivalenceClass : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Size of the k-anonymity equivalence class.</summary>
@@ -2834,6 +2842,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Histogram bucket of sensitive value frequencies in the table.</summary>
     public class GooglePrivacyDlpV2beta1LDiversityHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Total number of records in this bucket.</summary>
@@ -3255,7 +3264,9 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Metadata returned within GetOperation for risk analysis.</summary>
+    /// <summary>Metadata returned within the
+    /// [`riskAnalysis.operations.get`](/dlp/docs/reference/rest/v2beta1/riskAnalysis.operations/get) for risk
+    /// analysis.</summary>
     public class GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time which this request was started.</summary>
@@ -3274,7 +3285,8 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Result of a risk analysis operation request.</summary>
+    /// <summary>Result of a risk analysis [`Operation`](/dlp/docs/reference/rest/v2beta1/inspect.operations)
+    /// request.</summary>
     public class GooglePrivacyDlpV2beta1RiskAnalysisOperationResult : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsResult")]

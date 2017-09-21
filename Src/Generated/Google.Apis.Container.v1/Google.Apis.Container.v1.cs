@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170901 (974)
+ *      <tr><th>API Rev<td>20170908 (981)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -2658,6 +2658,109 @@ namespace Google.Apis.Container.v1
 
                 }
 
+                /// <summary>Sets the maintenance policy for a cluster.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectId">The Google Developers Console [project ID or project
+                /// number](https://support.google.com/cloud/answer/6158840).</param>
+                /// <param name="zone">The name of the Google
+                /// Compute Engine [zone](/compute/docs/zones#available) in which the cluster resides.</param>
+                /// <param
+                /// name="clusterId">The name of the cluster to update.</param>
+                public virtual SetMaintenancePolicyRequest SetMaintenancePolicy(Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string projectId, string zone, string clusterId)
+                {
+                    return new SetMaintenancePolicyRequest(service, body, projectId, zone, clusterId);
+                }
+
+                /// <summary>Sets the maintenance policy for a cluster.</summary>
+                public class SetMaintenancePolicyRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new SetMaintenancePolicy request.</summary>
+                    public SetMaintenancePolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest body, string projectId, string zone, string clusterId)
+                        : base(service)
+                    {
+                        ProjectId = projectId;
+                        Zone = zone;
+                        ClusterId = clusterId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectId { get; private set; }
+
+                    /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
+                    /// the cluster resides.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Zone { get; private set; }
+
+                    /// <summary>The name of the cluster to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ClusterId { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Container.v1.Data.SetMaintenancePolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setMaintenancePolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy"; }
+                    }
+
+                    /// <summary>Initializes SetMaintenancePolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
                 /// <summary>Used to set master auth materials. Currently supports :- Changing the admin password of a
                 /// specific cluster. This can be either via password generation or explicitly set the
                 /// password.</summary>
@@ -3648,6 +3751,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
         public virtual string LoggingService { get; set; } 
 
+        /// <summary>Configure the maintenance policy for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
+        public virtual MaintenancePolicy MaintenancePolicy { get; set; } 
+
         /// <summary>The authentication information for accessing the master endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuth")]
         public virtual MasterAuth MasterAuth { get; set; } 
@@ -3822,6 +3929,25 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The node pool to create.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePool")]
         public virtual NodePool NodePool { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Time window specified for daily maintenance operations.</summary>
+    public class DailyMaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output only] Duration of the time window, automatically chosen to be smallest possible in the
+        /// given scenario. Duration will be in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format
+        /// "PTnHnMnS".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual string Duration { get; set; } 
+
+        /// <summary>Time within the maintenance window to start the maintenance operations. Time format should be in
+        /// [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) format "HH:MM”, where HH : [00-23] and MM : [00-59]
+        /// GMT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4019,6 +4145,28 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>A list of operations in the project in the specified zone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>MaintenancePolicy defines the maintenance policy to be used for the cluster.</summary>
+    public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the maintenance window in which maintenance may be performed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("window")]
+        public virtual MaintenanceWindow Window { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>MaintenanceWindow defines the maintenance window to be used for the cluster.</summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DailyMaintenanceWindow specifies a daily maintenance operation window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyMaintenanceWindow")]
+        public virtual DailyMaintenanceWindow DailyMaintenanceWindow { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4444,6 +4592,18 @@ namespace Google.Apis.Container.v1.Data
         /// the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingService")]
         public virtual string LoggingService { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>SetMaintenancePolicyRequest sets the maintenance policy for a cluster.</summary>
+    public class SetMaintenancePolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maintenance policy to be set for the cluster. An empty field clears the existing maintenance
+        /// policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicy")]
+        public virtual MaintenancePolicy MaintenancePolicy { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

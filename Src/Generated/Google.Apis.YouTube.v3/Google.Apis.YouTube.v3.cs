@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170903 (976)
+ *      <tr><th>API Rev<td>20170918 (991)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -13131,6 +13131,12 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Indicates whether this broadcast has low latency enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableLowLatency")]
         public virtual System.Nullable<bool> EnableLowLatency { get; set; } 
+
+        /// <summary>If both this and enable_low_latency are set, they must match. LATENCY_NORMAL should match
+        /// enable_low_latency=false LATENCY_LOW should match enable_low_latency=true LATENCY_ULTRA_LOW should have
+        /// enable_low_latency omitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyPreference")]
+        public virtual string LatencyPreference { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual string Mesh { get; set; } 

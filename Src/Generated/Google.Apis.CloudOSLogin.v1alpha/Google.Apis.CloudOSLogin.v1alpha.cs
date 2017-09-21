@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Google Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20170918 (991)
+ *      <tr><th>API Rev<td>20170920 (993)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
@@ -113,6 +113,12 @@ namespace Google.Apis.CloudOSLogin.v1alpha
 
             /// <summary>View your data across Google Cloud Platform services</summary>
             public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
+
+            /// <summary>View and manage your Google Compute Engine resources</summary>
+            public static string Compute = "https://www.googleapis.com/auth/compute";
+
+            /// <summary>View your Google Compute Engine resources</summary>
+            public static string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
 
         }
 

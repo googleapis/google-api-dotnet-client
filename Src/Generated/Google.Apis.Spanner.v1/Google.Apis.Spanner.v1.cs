@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170905 (978)
+ *      <tr><th>API Rev<td>20170914 (987)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -850,10 +850,6 @@ namespace Google.Apis.Spanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
-                        /// <summary>The standard list filter.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
                         /// <summary>The standard list page token.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -861,6 +857,10 @@ namespace Google.Apis.Spanner.v1
                         /// <summary>The standard list page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -896,15 +896,6 @@ namespace Google.Apis.Spanner.v1
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/operations$",
                                 });
                             RequestParameters.Add(
-                                "filter", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filter",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -917,6 +908,15 @@ namespace Google.Apis.Spanner.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1116,10 +1116,11 @@ namespace Google.Apis.Spanner.v1
                     ///
                     /// Idle sessions can be kept alive by sending a trivial SQL query periodically, e.g., `"SELECT
                     /// 1"`.</summary>
+                    /// <param name="body">The body of the request.</param>
                     /// <param name="database">Required. The database in which the new session is created.</param>
-                    public virtual CreateRequest Create(string database)
+                    public virtual CreateRequest Create(Google.Apis.Spanner.v1.Data.CreateSessionRequest body, string database)
                     {
-                        return new CreateRequest(service, database);
+                        return new CreateRequest(service, body, database);
                     }
 
                     /// <summary>Creates a new session. A session can be used to perform transactions that read and/or
@@ -1140,10 +1141,11 @@ namespace Google.Apis.Spanner.v1
                     public class CreateRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.Session>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, string database)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.CreateSessionRequest body, string database)
                             : base(service)
                         {
                             Database = database;
+                            Body = body;
                             InitParameters();
                         }
 
@@ -1152,6 +1154,12 @@ namespace Google.Apis.Spanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Database { get; private set; }
 
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.CreateSessionRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -1462,6 +1470,115 @@ namespace Google.Apis.Spanner.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Lists all sessions in a given database.</summary>
+                    /// <param name="database">Required. The database in which to list sessions.</param>
+                    public virtual ListRequest List(string database)
+                    {
+                        return new ListRequest(service, database);
+                    }
+
+                    /// <summary>Lists all sessions in a given database.</summary>
+                    public class ListRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.ListSessionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string database)
+                            : base(service)
+                        {
+                            Database = database;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The database in which to list sessions.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Database { get; private set; }
+
+                        /// <summary>An expression for filtering the results of the request. Filter rules are case
+                        /// insensitive. The fields eligible for filtering are:
+                        ///
+                        /// * labels.key where key is the name of a label
+                        ///
+                        /// Some examples of using filters are:
+                        ///
+                        /// * labels.env:* --> The session has the label "env". * labels.env:dev --> The session has the
+                        /// label "env" and the value of the label contains the string "dev".</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>If non-empty, `page_token` should contain a next_page_token from a previous
+                        /// ListSessionsResponse.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Number of sessions to be returned in the response. If 0 or less, defaults to the
+                        /// server's maximum allowed page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+database}/sessions"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "database", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "database",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                         }
 
@@ -2621,10 +2738,6 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2632,6 +2745,10 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2667,15 +2784,6 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2688,6 +2796,15 @@ namespace Google.Apis.Spanner.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3611,6 +3728,17 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request for CreateSession.</summary>
+    public class CreateSessionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The session to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("session")]
+        public virtual Session Session { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Cloud Spanner database.</summary>
     public class Database : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4000,6 +4128,22 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response for ListSessions.</summary>
+    public class ListSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>`next_page_token` can be sent in a subsequent ListSessions call to fetch more of the matching
+        /// sessions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of requested sessions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessions")]
+        public virtual System.Collections.Generic.IList<Session> Sessions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A modification to one or more Cloud Spanner rows.  Mutations can be applied to a Cloud Spanner database
     /// by sending them in a Commit call.</summary>
     public class Mutation : Google.Apis.Requests.IDirectResponseSchema
@@ -4036,7 +4180,7 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the value is `false`, it means the operation is still in progress. If true, the operation is
+        /// <summary>If the value is `false`, it means the operation is still in progress. If `true`, the operation is
         /// completed, and either `error` or `response` is available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
@@ -4320,7 +4464,7 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual KeySet KeySet { get; set; } 
 
         /// <summary>If greater than zero, only the first `limit` rows are yielded. If `limit` is zero, the default is
-        /// no limit.</summary>
+        /// no limit. A limit cannot be specified if partition_token is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; } 
 
@@ -4426,7 +4570,25 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>A session in the Cloud Spanner API.</summary>
     public class Session : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The name of the session.</summary>
+        /// <summary>Output only. The approximate timestamp when the session is last used. It is typically earlier than
+        /// the actual last use time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approximateLastUseTime")]
+        public virtual object ApproximateLastUseTime { get; set; } 
+
+        /// <summary>Output only. The timestamp when the session is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The labels for the session.
+        ///
+        /// * Label keys must be between 1 and 63 characters long and must conform to the following regular expression:
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?`. * Label values must be between 0 and 63 characters long and must conform to
+        /// the regular expression `([a-z]([-a-z0-9]*[a-z0-9])?)?`. * No more than 20 labels can be associated with a
+        /// given session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The name of the session.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
