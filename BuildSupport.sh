@@ -14,6 +14,8 @@ GOOGLE_APIS="Src/Support/Google.Apis"
 GOOGLE_APIS_AUTH="Src/Support/Google.Apis.Auth"
 GOOGLE_APIS_AUTH_MVC="Src/Support/Google.Apis.Auth.Mvc"
 
+rm -r {$GOOGLE_APIS_CORE,$GOOGLE_APIS,$GOOGLE_APIS_AUTH,$GOOGLE_APIS_AUTH_MVC}/{bin,obj} || true
+
 "$MSBUILD" -t:restore $GOOGLE_APIS_CORE
 "$MSBUILD" -t:restore $GOOGLE_APIS
 "$MSBUILD" -t:restore $GOOGLE_APIS_AUTH

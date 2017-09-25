@@ -1,6 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
   <Import Project="..\CommonProjectProperties.xml" />
+  <ItemGroup>
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.1.0-beta.69" PrivateAssets="all" />
+  </ItemGroup>
 
   <!-- build configuration -->
   <PropertyGroup>
@@ -18,20 +21,8 @@ The library supports service requests, media upload and download, etc.
 Supported Platforms:
 - .NET Framework 4.5+
 - NetStandard1.3, providing .NET Core support
+- UWP (Universal Windows Platform)
     </Description>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
-    <TargetFrameworkIdentifier>.NETStandard</TargetFrameworkIdentifier>
-    <TargetFrameworkVersion>v1.4</TargetFrameworkVersion>
-    <TargetFrameworkMoniker>UAP,Version=v10.0</TargetFrameworkMoniker>
-    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
-    <NugetTargetMoniker>UAP,Version=v10.0</NugetTargetMoniker>
-    <LanguageTargets>$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets</LanguageTargets>
-    <DefineConstants>$(DefineConstants);UAP10_0</DefineConstants>
-    <DefaultLanguage>en-US</DefaultLanguage>
   </PropertyGroup>
 
   <!-- package references; common then per-target -->
@@ -40,6 +31,10 @@ Supported Platforms:
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
   </ItemGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)' == 'uap10.0'">
+    <DefineConstants>$(DefineConstants);UAP10_0</DefineConstants>
+  </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
     <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
@@ -61,5 +56,6 @@ Supported Platforms:
       <PackagePath>lib\net45</PackagePath>
     </None>
   </ItemGroup>
-  
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 </Project>
