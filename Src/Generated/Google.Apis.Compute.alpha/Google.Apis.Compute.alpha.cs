@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170905 (978)
+ *      <tr><th>API Rev<td>20170908 (981)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -26302,6 +26302,252 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[0-9]{0,61}?",
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string project, string resource)
+        {
+            return new GetIamPolicyRequest(service, project, resource);
+        }
+
+        /// <summary>Gets the access control policy for a resource. May be empty if no such policy or resource
+        /// exists.</summary>
+        public class GetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenseCodes/{resource}/getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.alpha.Data.Policy body, string project, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
+        public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.Policy body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.Policy Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenseCodes/{resource}/setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z0-9](?:[-a-z0-9_]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.TestPermissionsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenseCodes/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:[-a-z0-9_]{0,62}[a-z0-9])?",
                     });
             }
 
@@ -52887,7 +53133,7 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A reserved address resource.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The static external IP address represented by this resource.</summary>
+        /// <summary>The static IP address represented by this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
@@ -54155,6 +54401,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affinityCookieTtlSec")]
         public virtual System.Nullable<int> AffinityCookieTtlSec { get; set; } 
 
+        /// <summary>Directs request to an App Engine app. cloudFunctionBackend and backends[] must be empty if this is
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineBackend")]
+        public virtual BackendServiceAppEngineBackend AppEngineBackend { get; set; } 
+
         /// <summary>The list of backends that serve this BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backends")]
         public virtual System.Collections.Generic.IList<Backend> Backends { get; set; } 
@@ -54162,6 +54413,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Cloud CDN configuration for this BackendService.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cdnPolicy")]
         public virtual BackendServiceCdnPolicy CdnPolicy { get; set; } 
+
+        /// <summary>Directs request to a cloud function. appEngineBackend and backends[] must be empty if this is
+        /// set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudFunctionBackend")]
+        public virtual BackendServiceCloudFunctionBackend CloudFunctionBackend { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("connectionDraining")]
         public virtual ConnectionDraining ConnectionDraining { get; set; } 
@@ -54356,6 +54612,27 @@ namespace Google.Apis.Compute.alpha.Data
         }
     }    
 
+    /// <summary>Configuration of a App Engine backend.</summary>
+    public class BackendServiceAppEngineBackend : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. App Engine app service name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appEngineService")]
+        public virtual string AppEngineService { get; set; } 
+
+        /// <summary>Required. Project ID of the project hosting the app. This is the project ID of this project.
+        /// Reference to another project is not allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; } 
+
+        /// <summary>Optional. Version of App Engine app service. When empty, App Engine will do its normal traffic
+        /// split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Message containing Cloud CDN configuration for a backend service.</summary>
     public class BackendServiceCdnPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -54375,6 +54652,22 @@ namespace Google.Apis.Compute.alpha.Data
         /// service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signedUrlKeyNames")]
         public virtual System.Collections.Generic.IList<string> SignedUrlKeyNames { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration of a Cloud Function backend.</summary>
+    public class BackendServiceCloudFunctionBackend : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A cloud function name. Special value ?*? represents all cloud functions in the
+        /// project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
+        public virtual string FunctionName { get; set; } 
+
+        /// <summary>Required. Project ID of the project hosting the cloud function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -56470,7 +56763,7 @@ namespace Google.Apis.Compute.alpha.Data
     {
         /// <summary>The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is supported. For newer
         /// Windows images, the server might also populate this property with the value WINDOWS to indicate that this is
-        /// a Windows image. This value is purely informational and does not enable or disable any features.</summary>
+        /// a Windows image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -57688,9 +57981,8 @@ namespace Google.Apis.Compute.alpha.Data
         /// Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.1621 or
         /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
         ///
-        /// For new Windows images, the server might also populate this field with the value WINDOWS, to indicate that
-        /// this is a Windows image. This value is purely informational and does not enable or disable any
-        /// features.</summary>
+        /// For newer Windows images, the server might also populate this property with the value WINDOWS to indicate
+        /// that this is a Windows image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
         public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
@@ -64736,8 +65028,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>[Output Only] A size of the the storage used by the snapshot. As snapshots share storage, this
-        /// number is expected to change with snapshot creation/deletion.</summary>
+        /// <summary>[Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number
+        /// is expected to change with snapshot creation/deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytes")]
         public virtual System.Nullable<long> StorageBytes { get; set; } 
 

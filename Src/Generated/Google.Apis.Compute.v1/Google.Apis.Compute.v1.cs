@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170905 (978)
+ *      <tr><th>API Rev<td>20170908 (981)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -141,13 +141,13 @@ namespace Google.Apis.Compute.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://www.googleapis.com/batch"; }
+            get { return "https://www.googleapis.com/batch/compute/v1"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath
         {
-            get { return "batch"; }
+            get { return "batch/compute/v1"; }
         }
         #endif
 
@@ -34848,7 +34848,7 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>A reserved address resource.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The static external IP address represented by this resource.</summary>
+        /// <summary>The static IP address represented by this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
@@ -37156,7 +37156,7 @@ namespace Google.Apis.Compute.v1.Data
     {
         /// <summary>The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is supported. For newer
         /// Windows images, the server might also populate this property with the value WINDOWS to indicate that this is
-        /// a Windows image. This value is purely informational and does not enable or disable any features.</summary>
+        /// a Windows image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -37623,9 +37623,8 @@ namespace Google.Apis.Compute.v1.Data
         /// Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.1621 or
         /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
         ///
-        /// For new Windows images, the server might also populate this field with the value WINDOWS, to indicate that
-        /// this is a Windows image. This value is purely informational and does not enable or disable any
-        /// features.</summary>
+        /// For newer Windows images, the server might also populate this property with the value WINDOWS to indicate
+        /// that this is a Windows image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
         public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
@@ -37700,6 +37699,23 @@ namespace Google.Apis.Compute.v1.Data
         /// image was taken from the current or a previous instance of a given disk name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskId")]
         public virtual string SourceDiskId { get; set; } 
+
+        /// <summary>URL of the source image used to create this image. This can be a full or valid partial URL. You
+        /// must provide exactly one of: - this property, or - the rawDisk.source property, or - the sourceDisk property
+        /// in order to create an image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
+        public virtual string SourceImage { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source image. Required if the source image is protected
+        /// by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImageEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceImageEncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] The ID value of the image used to create this image. This value may be used to
+        /// determine whether the image was taken from the current or a previous instance of a given image
+        /// name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImageId")]
+        public virtual string SourceImageId { get; set; } 
 
         /// <summary>The type of the image used to create this disk. The default and only value is RAW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
@@ -40917,8 +40933,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>[Output Only] A size of the the storage used by the snapshot. As snapshots share storage, this
-        /// number is expected to change with snapshot creation/deletion.</summary>
+        /// <summary>[Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number
+        /// is expected to change with snapshot creation/deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytes")]
         public virtual System.Nullable<long> StorageBytes { get; set; } 
 

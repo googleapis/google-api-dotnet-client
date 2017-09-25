@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170909 (982)
+ *      <tr><th>API Rev<td>20170918 (991)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -363,13 +363,11 @@ namespace Google.Apis.ServiceControl.v1
         /// executed.
         ///
         /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).
+        /// information, see [Cloud IAM](https://cloud.google.com/iam).
         ///
-        /// **NOTE:** the client code **must** fail-open if the server returns one of the following quota errors: -
-        /// `PROJECT_STATUS_UNAVAILABLE` -   `SERVICE_STATUS_UNAVAILABLE` -   `BILLING_STATUS_UNAVAILABLE` -
-        /// `QUOTA_SYSTEM_UNAVAILABLE`
-        ///
-        /// The server may inject above errors to prohibit any hard dependency on the quota system.</summary>
+        /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and
+        /// `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard
+        /// dependency on the quota functionality.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
         /// `"pubsub.googleapis.com"`.
@@ -384,13 +382,11 @@ namespace Google.Apis.ServiceControl.v1
         /// executed.
         ///
         /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).
+        /// information, see [Cloud IAM](https://cloud.google.com/iam).
         ///
-        /// **NOTE:** the client code **must** fail-open if the server returns one of the following quota errors: -
-        /// `PROJECT_STATUS_UNAVAILABLE` -   `SERVICE_STATUS_UNAVAILABLE` -   `BILLING_STATUS_UNAVAILABLE` -
-        /// `QUOTA_SYSTEM_UNAVAILABLE`
-        ///
-        /// The server may inject above errors to prohibit any hard dependency on the quota system.</summary>
+        /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and
+        /// `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard
+        /// dependency on the quota functionality.</summary>
         public class AllocateQuotaRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.AllocateQuotaResponse>
         {
             /// <summary>Constructs a new AllocateQuota request.</summary>
@@ -630,13 +626,11 @@ namespace Google.Apis.ServiceControl.v1
         /// <summary>Releases previously allocated quota done through AllocateQuota method.
         ///
         /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).
+        /// information, see [Cloud IAM](https://cloud.google.com/iam).
         ///
-        /// **NOTE:** the client code **must** fail-open if the server returns one of the following quota errors: -
-        /// `PROJECT_STATUS_UNAVAILABLE` -   `SERVICE_STATUS_UNAVAILABLE` -   `BILLING_STATUS_UNAVAILABLE` -
-        /// `QUOTA_SYSTEM_UNAVAILABLE`
-        ///
-        /// The server may inject above errors to prohibit any hard dependency on the quota system.</summary>
+        /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and
+        /// `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard
+        /// dependency on the quota functionality.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">Name of the service as specified in the service configuration. For example,
         /// `"pubsub.googleapis.com"`.
@@ -650,13 +644,11 @@ namespace Google.Apis.ServiceControl.v1
         /// <summary>Releases previously allocated quota done through AllocateQuota method.
         ///
         /// This method requires the `servicemanagement.services.quota` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).
+        /// information, see [Cloud IAM](https://cloud.google.com/iam).
         ///
-        /// **NOTE:** the client code **must** fail-open if the server returns one of the following quota errors: -
-        /// `PROJECT_STATUS_UNAVAILABLE` -   `SERVICE_STATUS_UNAVAILABLE` -   `BILLING_STATUS_UNAVAILABLE` -
-        /// `QUOTA_SYSTEM_UNAVAILABLE`
-        ///
-        /// The server may inject above errors to prohibit any hard dependency on the quota system.</summary>
+        /// **NOTE:** The client **must** fail-open on server errors `INTERNAL`, `UNKNOWN`, `DEADLINE_EXCEEDED`, and
+        /// `UNAVAILABLE`. To ensure system reliability, the server may inject these errors to prohibit any hard
+        /// dependency on the quota functionality.</summary>
         public class ReleaseQuotaRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.ReleaseQuotaResponse>
         {
             /// <summary>Constructs a new ReleaseQuota request.</summary>
@@ -926,16 +918,24 @@ namespace Google.Apis.ServiceControl.v1
 namespace Google.Apis.ServiceControl.v1.Data
 {    
 
+    public class AllocateInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of label keys that were unused by the server in processing the request. Thus, for similar
+        /// requests repeated in a certain future time window, the caller can choose to ignore these labels in the
+        /// requests to achieve better client-side cache hits and quota aggregation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unusedArguments")]
+        public virtual System.Collections.Generic.IList<string> UnusedArguments { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for the AllocateQuota method.</summary>
     public class AllocateQuotaRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Operation that describes the quota allocation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocateOperation")]
         public virtual QuotaOperation AllocateOperation { get; set; } 
-
-        /// <summary>Allocation mode for this operation. Deprecated: use QuotaMode inside the QuotaOperation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allocationMode")]
-        public virtual string AllocationMode { get; set; } 
 
         /// <summary>Specifies which version of service configuration should be used to process the request. If
         /// unspecified or no matching version can be found, the latest one will be used.</summary>
@@ -952,6 +952,10 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Indicates the decision of the allocate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allocateErrors")]
         public virtual System.Collections.Generic.IList<QuotaError> AllocateErrors { get; set; } 
+
+        /// <summary>WARNING: DO NOT use this field until this warning message is removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocateInfo")]
+        public virtual AllocateInfo AllocateInfo { get; set; } 
 
         /// <summary>The same operation_id value used in the AllocateQuotaRequest. Used for logging and diagnostics
         /// purposes.</summary>
@@ -997,6 +1001,11 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationInfo")]
         public virtual System.Collections.Generic.IList<AuthorizationInfo> AuthorizationInfo { get; set; } 
 
+        /// <summary>Other service-specific data about the request, response, and other information associated with the
+        /// current audited event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Metadata { get; set; } 
+
         /// <summary>The name of the service method or operation. For API calls, this should be the name of the API
         /// method. For example,
         ///
@@ -1033,7 +1042,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
-        /// <summary>Other service-specific data about the request, response, and other activities.</summary>
+        /// <summary>Deprecated, use `metadata` field instead. Other service-specific data about the request, response,
+        /// and other activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceData")]
         public virtual System.Collections.Generic.IDictionary<string,object> ServiceData { get; set; } 
 
@@ -1110,6 +1120,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains additional information about the check operation.</summary>
     public class CheckInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Consumer info of this check.</summary>
@@ -1252,6 +1263,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for QuotaController.EndReconciliation.</summary>
     public class EndReconciliationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Operation that describes the quota reconciliation.</summary>
@@ -1267,6 +1279,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for QuotaController.EndReconciliation.</summary>
     public class EndReconciliationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The same operation_id value used in the EndReconciliationRequest. Used for logging and diagnostics
@@ -1566,6 +1579,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; } 
 
+        /// <summary>The resources that are involved in the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<ResourceInfo> Resources { get; set; } 
 
@@ -1573,7 +1587,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>User defined labels for the resource that this operation is associated with.</summary>
+        /// <summary>User defined labels for the resource that this operation is associated with. Only a combination of
+        /// 1000 user labels per consumer project are allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
 
@@ -1581,6 +1596,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Represents error information for QuotaOperation.</summary>
     public class QuotaError : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Error code.</summary>
@@ -1770,6 +1786,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Contains additional info about the report operation.</summary>
     public class ReportInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Operation.operation_id value from the request.</summary>
@@ -1882,6 +1899,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for QuotaController.StartReconciliation.</summary>
     public class StartReconciliationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Operation that describes the quota reconciliation.</summary>
@@ -1897,6 +1915,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for QuotaController.StartReconciliation.</summary>
     public class StartReconciliationResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The same operation_id value used in the StartReconciliationRequest. Used for logging and

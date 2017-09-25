@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20170914 (987)
+ *      <tr><th>API Rev<td>20170921 (994)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -2060,7 +2060,9 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; } 
 
-        /// <summary>The type of instrument (VISA, Mastercard, etc).</summary>
+        /// <summary>The type of instrument.
+        ///
+        /// Acceptable values are: - "AMEX" - "DISCOVER" - "JCB" - "MASTERCARD" - "UNIONPAY" - "VISA" - ""</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

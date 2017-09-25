@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170914 (987)
+ *      <tr><th>API Rev<td>20170921 (994)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -2517,6 +2517,18 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
+            /// <summary>The country for which to get the datafeed status. If this parameter is provided then language
+            /// must also be provided. Note that this parameter is required for feeds targeting multiple countries and
+            /// languages, since a feed may have a different status for each target.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Country { get; set; }
+
+            /// <summary>The language for which to get the datafeed status. If this parameter is provided then country
+            /// must also be provided. Note that this parameter is required for feeds targeting multiple countries and
+            /// languages, since a feed may have a different status for each target.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Language { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2556,6 +2568,24 @@ namespace Google.Apis.ShoppingContent.v2
                         Name = "datafeedId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "country", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "country",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -5514,6 +5544,13 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
         public virtual string WebsiteUrl { get; set; } 
 
+        /// <summary>List of linked YouTube channels that are active or pending approval. To create a new link request,
+        /// add a new link with status active to the list. It will remain in a pending state until approved or rejected
+        /// in the YT Creator Studio interface. To delete an active link, or to cancel a link request, remove it from
+        /// the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("youtubeChannelLinks")]
+        public virtual System.Collections.Generic.IList<AccountYouTubeChannelLink> YoutubeChannelLinks { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5740,6 +5777,26 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>User's email address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class AccountYouTubeChannelLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Channel ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
+        public virtual string ChannelId { get; set; } 
+
+        /// <summary>Status of the link between this Merchant Center account and the YouTube channel. Upon retrieval, it
+        /// represents the actual status of the link and can be either active if it was approved in YT Creator Studio or
+        /// pending if it's pending approval. Upon insertion, it represents the intended status of the link. Re-
+        /// uploading a link with status active when it's still pending or with status pending when it's already active
+        /// will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status inactive
+        /// is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link
+        /// request if it was pending.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6116,8 +6173,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributeLanguage")]
         public virtual string AttributeLanguage { get; set; } 
 
-        /// <summary>The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for
-        /// targetCountry.</summary>
+        /// <summary>[DEPRECATED] Please use target.language instead. The two-letter ISO 639-1 language of the items in
+        /// the feed. Must be a valid language for targetCountry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
 
@@ -6142,8 +6199,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; } 
 
-        /// <summary>The list of intended destinations (corresponds to checked check boxes in Merchant
-        /// Center).</summary>
+        /// <summary>[DEPRECATED] Please use target.includedDestination instead. The list of intended destinations
+        /// (corresponds to checked check boxes in Merchant Center).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intendedDestinations")]
         public virtual System.Collections.Generic.IList<string> IntendedDestinations { get; set; } 
 
@@ -6155,10 +6212,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The country where the items in the feed will be included in the search index, represented as a CLDR
-        /// territory code.</summary>
+        /// <summary>[DEPRECATED] Please use target.country instead. The country where the items in the feed will be
+        /// included in the search index, represented as a CLDR territory code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; } 
+
+        /// <summary>The targets this feed should apply to (country, language, destinations).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targets")]
+        public virtual System.Collections.Generic.IList<DatafeedTarget> Targets { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6236,6 +6297,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
     /// asynchronously when the feed processing is finished.</summary>
     public class DatafeedStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The country for which the status is reported, represented as a  CLDR territory code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
         /// <summary>The ID of the feed for which the status is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeedId")]
         public virtual System.Nullable<ulong> DatafeedId { get; set; } 
@@ -6256,6 +6321,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// "content#datafeedStatus".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The two-letter ISO 639-1 language for which the status is reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; } 
 
         /// <summary>The last date at which the feed was uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUploadDate")]
@@ -6310,6 +6379,33 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The problematic value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DatafeedTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The country where the items in the feed will be included in the search index, represented as a
+        /// CLDR territory code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>The list of destinations to exclude for this target (corresponds to unchecked check boxes in
+        /// Merchant Center).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedDestinations")]
+        public virtual System.Collections.Generic.IList<string> ExcludedDestinations { get; set; } 
+
+        /// <summary>The list of destinations to include for this target (corresponds to checked check boxes in Merchant
+        /// Center). Default destinations are always included unless provided in the excluded_destination
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedDestinations")]
+        public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; } 
+
+        /// <summary>The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for
+        /// targetCountryLanguage.country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6420,9 +6516,19 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
 
-        /// <summary>The ID of the data feed to get or delete.</summary>
+        /// <summary>The country for which to get the datafeed status. If this parameter is provided then language must
+        /// also be provided. Note that for multi-target datafeeds this parameter is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>The ID of the data feed to get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeedId")]
         public virtual System.Nullable<ulong> DatafeedId { get; set; } 
+
+        /// <summary>The language for which to get the datafeed status. If this parameter is provided then country must
+        /// also be provided. Note that for multi-target datafeeds this parameter is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; } 
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
@@ -7237,7 +7343,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual string PhoneNumber { get; set; } 
 
-        /// <summary>The type of instrument (VISA, Mastercard, etc).</summary>
+        /// <summary>The type of instrument.
+        ///
+        /// Acceptable values are: - "AMEX" - "DISCOVER" - "JCB" - "MASTERCARD" - "UNIONPAY" - "VISA" - ""</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 

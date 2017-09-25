@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170905 (978)
+ *      <tr><th>API Rev<td>20170908 (981)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -19911,6 +19911,284 @@ namespace Google.Apis.Compute.beta
             }
 
         }
+
+        /// <summary>Updates the specified access config from an instance's network interface with the data included in
+        /// the request. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">The instance name for this request.</param>
+        /// <param
+        /// name="networkInterface">The name of the network interface where the access config is attached.</param>
+        public virtual UpdateAccessConfigRequest UpdateAccessConfig(Google.Apis.Compute.beta.Data.AccessConfig body, string project, string zone, string instance, string networkInterface)
+        {
+            return new UpdateAccessConfigRequest(service, body, project, zone, instance, networkInterface);
+        }
+
+        /// <summary>Updates the specified access config from an instance's network interface with the data included in
+        /// the request. This method supports PATCH semantics and uses the JSON merge patch format and processing
+        /// rules.</summary>
+        public class UpdateAccessConfigRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateAccessConfig request.</summary>
+            public UpdateAccessConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.AccessConfig body, string project, string zone, string instance, string networkInterface)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                NetworkInterface = networkInterface;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The instance name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>The name of the network interface where the access config is attached.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NetworkInterface { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.AccessConfig Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateAccessConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/updateAccessConfig"; }
+            }
+
+            /// <summary>Initializes UpdateAccessConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "networkInterface", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "networkInterface",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">The instance name for this request.</param>
+        /// <param
+        /// name="networkInterface">The name of the network interface to update.</param>
+        public virtual UpdateNetworkInterfaceRequest UpdateNetworkInterface(Google.Apis.Compute.beta.Data.NetworkInterface body, string project, string zone, string instance, string networkInterface)
+        {
+            return new UpdateNetworkInterfaceRequest(service, body, project, zone, instance, networkInterface);
+        }
+
+        /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
+        public class UpdateNetworkInterfaceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateNetworkInterface request.</summary>
+            public UpdateNetworkInterfaceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.NetworkInterface body, string project, string zone, string instance, string networkInterface)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                NetworkInterface = networkInterface;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The instance name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>The name of the network interface to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NetworkInterface { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.NetworkInterface Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateNetworkInterface"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/updateNetworkInterface"; }
+            }
+
+            /// <summary>Initializes UpdateNetworkInterface parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "networkInterface", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "networkInterface",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "interconnectAttachments" collection of methods.</summary>
@@ -33698,6 +33976,133 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Patches the specified subnetwork with the data included in the request. Only the following fields
+        /// within the subnetwork resource can be specified in the request: secondary_ip_range and
+        /// allow_subnet_cidr_routes_overlap. It is also mandatory to specify the current fingeprint of the subnetwork
+        /// resource being patched.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource to patch.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.beta.Data.Subnetwork body, string project, string region, string subnetwork)
+        {
+            return new PatchRequest(service, body, project, region, subnetwork);
+        }
+
+        /// <summary>Patches the specified subnetwork with the data included in the request. Only the following fields
+        /// within the subnetwork resource can be specified in the request: secondary_ip_range and
+        /// allow_subnet_cidr_routes_overlap. It is also mandatory to specify the current fingeprint of the subnetwork
+        /// resource being patched.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.Subnetwork body, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.Subnetwork Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Sets the access control policy on the specified resource. Replaces any existing policy.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -42299,6 +42704,16 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("natIP")]
         public virtual string NatIP { get; set; } 
 
+        /// <summary>The DNS domain name for the public PTR record. This field can only be set when the set_public_ptr
+        /// field is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicPtrDomainName")]
+        public virtual string PublicPtrDomainName { get; set; } 
+
+        /// <summary>Specifies whether a public DNS ?PTR? record should be created to map the external IP address of the
+        /// instance to a DNS domain name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setPublicPtr")]
+        public virtual System.Nullable<bool> SetPublicPtr { get; set; } 
+
         /// <summary>The type of configuration. The default and only option is ONE_TO_ONE_NAT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -42310,7 +42725,7 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>A reserved address resource.</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The static external IP address represented by this resource.</summary>
+        /// <summary>The static IP address represented by this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
@@ -45638,7 +46053,7 @@ namespace Google.Apis.Compute.beta.Data
     {
         /// <summary>The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is supported. For newer
         /// Windows images, the server might also populate this property with the value WINDOWS to indicate that this is
-        /// a Windows image. This value is purely informational and does not enable or disable any features.</summary>
+        /// a Windows image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -46234,9 +46649,8 @@ namespace Google.Apis.Compute.beta.Data
         /// Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.1621 or
         /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
         ///
-        /// For new Windows images, the server might also populate this field with the value WINDOWS, to indicate that
-        /// this is a Windows image. This value is purely informational and does not enable or disable any
-        /// features.</summary>
+        /// For newer Windows images, the server might also populate this property with the value WINDOWS to indicate
+        /// that this is a Windows image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
         public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
@@ -49436,6 +49850,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aliasIpRanges")]
         public virtual System.Collections.Generic.IList<AliasIpRange> AliasIpRanges { get; set; } 
 
+        /// <summary>Fingerprint hash of contents stored in this network interface. This field will be ignored when
+        /// inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to
+        /// update the NetworkInterface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
         /// <summary>[Output Only] Type of the resource. Always compute#networkInterface for network
         /// interfaces.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -51885,8 +52305,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>[Output Only] A size of the the storage used by the snapshot. As snapshots share storage, this
-        /// number is expected to change with snapshot creation/deletion.</summary>
+        /// <summary>[Output Only] A size of the storage used by the snapshot. As snapshots share storage, this number
+        /// is expected to change with snapshot creation/deletion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBytes")]
         public virtual System.Nullable<long> StorageBytes { get; set; } 
 
@@ -52094,6 +52514,20 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>A Subnetwork resource.</summary>
     public class Subnetwork : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether this subnetwork can conflict with static routes. Setting this to true allows this
+        /// subnetwork's primary and secondary ranges to conflict with routes that have already been configured on the
+        /// corresponding network. Static routes will take precedence over the subnetwork route if the route prefix
+        /// length is at least as large as the subnetwork prefix length.
+        ///
+        /// Also, packets destined to IPs within subnetwork may contain private/sensitive data and are prevented from
+        /// leaving the virtual network. Setting this field to true will disable this feature.
+        ///
+        /// The default value is false and applies to all existing subnetworks and automatically created subnetworks.
+        ///
+        /// This field cannot be set to true at resource creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowSubnetCidrRoutesOverlap")]
+        public virtual System.Nullable<bool> AllowSubnetCidrRoutesOverlap { get; set; } 
+
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
@@ -52102,6 +52536,12 @@ namespace Google.Apis.Compute.beta.Data
         /// field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
+        /// optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must
+        /// be provided in order to update the Subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
 
         /// <summary>[Output Only] The gateway address for default routes to reach destination addresses outside this
         /// subnetwork. This field can be set only at resource creation time.</summary>

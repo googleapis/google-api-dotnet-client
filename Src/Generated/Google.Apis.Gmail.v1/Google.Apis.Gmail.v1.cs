@@ -126,7 +126,7 @@ namespace Google.Apis.Gmail.v1
             /// <summary>View and modify but not delete your email</summary>
             public static string GmailModify = "https://www.googleapis.com/auth/gmail.modify";
 
-            /// <summary>View your emails messages and settings</summary>
+            /// <summary>View your email messages and settings</summary>
             public static string GmailReadonly = "https://www.googleapis.com/auth/gmail.readonly";
 
             /// <summary>Send email on your behalf</summary>
