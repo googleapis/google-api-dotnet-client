@@ -22,7 +22,7 @@ This package includes auth components like user-credential, authorization code f
 Supported Platforms:
 - .NET Framework 4.5+
 - NetStandard1.3, providing .NET Core support
-- UWP (Univeral Windows Platform)
+- UWP (Universal Windows Platform)
     </Description>
   </PropertyGroup>
   
