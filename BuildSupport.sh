@@ -14,14 +14,7 @@ GOOGLE_APIS="Src/Support/Google.Apis"
 GOOGLE_APIS_AUTH="Src/Support/Google.Apis.Auth"
 GOOGLE_APIS_AUTH_MVC="Src/Support/Google.Apis.Auth.Mvc"
 
-"$MSBUILD" -t:clean $GOOGLE_APIS_CORE
-"$MSBUILD" -t:clean $GOOGLE_APIS
-"$MSBUILD" -t:clean $GOOGLE_APIS_AUTH
-"$MSBUILD" -t:clean $GOOGLE_APIS_AUTH_MVC
-"$MSBUILD" -t:clean Src/Support/Google.Apis.PlatformServices
-"$MSBUILD" -t:clean Src/Support/Google.Apis.Auth.PlatformServices
-
-rm -r {$GOOGLE_APIS_CORE,$GOOGLE_APIS,$GOOGLE_APIS_AUTH,$GOOGLE_APIS_AUTH_MVC}/{bin,obj}
+rm -r {$GOOGLE_APIS_CORE,$GOOGLE_APIS,$GOOGLE_APIS_AUTH,$GOOGLE_APIS_AUTH_MVC}/{bin,obj} || true
 
 "$MSBUILD" -t:restore $GOOGLE_APIS_CORE
 "$MSBUILD" -t:restore $GOOGLE_APIS
