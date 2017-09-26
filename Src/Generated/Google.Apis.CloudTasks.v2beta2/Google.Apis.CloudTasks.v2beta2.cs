@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20170918 (991)
+ *      <tr><th>API Rev<td>20170926 (999)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -896,6 +896,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
+                        ///
+                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
+                        /// tasks than requested might be returned, even if more tasks exist; use
+                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>A token identifying the page of results to return.
                         ///
                         /// To request the first page results, page_token must be empty. To request the next page of
@@ -941,14 +949,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             FULL,
                         }
 
-                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
-                        ///
-                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
-                        /// tasks than requested might be returned, even if more tasks exist; use
-                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -983,6 +983,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -1004,15 +1013,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 "responseView", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "responseView",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1543,7 +1543,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Authorization requires the following [Google IAM](/iam) permission on the specified resource parent:
                 ///
-                /// * `cloudtasks.queues.getIamPolicy`</summary>
+                /// * `cloudtasks.queues.getIamPolicy` </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1557,7 +1557,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Authorization requires the following [Google IAM](/iam) permission on the specified resource parent:
                 ///
-                /// * `cloudtasks.queues.getIamPolicy`</summary>
+                /// * `cloudtasks.queues.getIamPolicy` </summary>
                 public class GetIamPolicyRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -2130,7 +2130,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Authorization requires the following [Google IAM](/iam) permission on the specified resource parent:
                 ///
-                /// * `cloudtasks.queues.setIamPolicy`</summary>
+                /// * `cloudtasks.queues.setIamPolicy` </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2143,7 +2143,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Authorization requires the following [Google IAM](/iam) permission on the specified resource parent:
                 ///
-                /// * `cloudtasks.queues.setIamPolicy`</summary>
+                /// * `cloudtasks.queues.setIamPolicy` </summary>
                 public class SetIamPolicyRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2208,7 +2208,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// return an empty set of permissions, not a google.rpc.Code.NOT_FOUND error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// tools, not for authorization checking. This operation may "fail open" without warning. </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2221,7 +2221,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// return an empty set of permissions, not a google.rpc.Code.NOT_FOUND error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
+                /// tools, not for authorization checking. This operation may "fail open" without warning. </summary>
                 public class TestIamPermissionsRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2366,6 +2366,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2373,10 +2377,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2412,6 +2412,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2424,15 +2433,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2469,7 +2469,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     ///
     /// This proto can only be used for tasks in a queue which has Queue.app_engine_http_target set.
     ///
-    /// Using this type of target requires [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
+    /// Using AppEngineHttpRequest requires [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
     /// Google IAM permission for the project and the following scope:
     ///
     /// `https://www.googleapis.com/auth/cloud-platform`
@@ -2571,8 +2571,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// AppEngineHttpRequest. The documentation for AppEngineHttpRequest explains how the task's host URL is
     /// constructed.
     ///
-    /// Using this type of queue configuration requires [`appengine.applications.get`](/appengine/docs/admin-api/access-
-    /// control) Google IAM permission for the project and the following scope:
+    /// Using AppEngineHttpTarget requires [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
+    /// Google IAM permission for the project and the following scope:
     ///
     /// `https://www.googleapis.com/auth/cloud-platform`</summary>
     public class AppEngineHttpTarget : Google.Apis.Requests.IDirectResponseSchema

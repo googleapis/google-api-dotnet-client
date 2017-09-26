@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170911 (984)
+ *      <tr><th>API Rev<td>20170918 (991)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2786,8 +2786,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
         public virtual string FieldPath { get; set; } 
 
-        /// <summary>If package_name is set and the non-compliance reason is APP_NOT_INSTALLED, the detailed reason the
-        /// app cannot be installed.</summary>
+        /// <summary>If package_name is set and the non-compliance reason is APP_NOT_INSTALLED or APP_NOT_UPDATED, the
+        /// detailed reason the app cannot be installed or updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installationFailureReason")]
         public virtual string InstallationFailureReason { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20170922 (995)
+ *      <tr><th>API Rev<td>20170925 (998)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3895,7 +3895,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
 
     public class FailureDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the failure was severe because the system under test crashed.</summary>
+        /// <summary>If the failure was severe because the system (app) under test crashed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crashed")]
         public virtual System.Nullable<bool> Crashed { get; set; } 
 
@@ -3904,7 +3904,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notInstalled")]
         public virtual System.Nullable<bool> NotInstalled { get; set; } 
 
-        /// <summary>If a native process other than the app crashed.</summary>
+        /// <summary>If a native process (including any other than the app) crashed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("otherNativeCrash")]
         public virtual System.Nullable<bool> OtherNativeCrash { get; set; } 
 
