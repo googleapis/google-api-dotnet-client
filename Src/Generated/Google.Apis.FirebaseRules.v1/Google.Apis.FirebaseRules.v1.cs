@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170919 (992)
+ *      <tr><th>API Rev<td>20170925 (998)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -614,6 +614,96 @@ namespace Google.Apis.FirebaseRules.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/releases/.+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Get the `Release` executable to use when enforcing rules.</summary>
+            /// <param name="name">Resource name of the `Release`.
+            ///
+            /// Format: `projects/{project_id}/releases/{release_id}`</param>
+            public virtual GetExecutableRequest GetExecutable(string name)
+            {
+                return new GetExecutableRequest(service, name);
+            }
+
+            /// <summary>Get the `Release` executable to use when enforcing rules.</summary>
+            public class GetExecutableRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.GetReleaseExecutableResponse>
+            {
+                /// <summary>Constructs a new GetExecutable request.</summary>
+                public GetExecutableRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the `Release`.
+                ///
+                /// Format: `projects/{project_id}/releases/{release_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The requested runtime executable version. Defaults to
+                /// FIREBASE_RULES_EXECUTABLE_V1</summary>
+                [Google.Apis.Util.RequestParameterAttribute("executableVersion", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ExecutableVersionEnum> ExecutableVersion { get; set; }
+
+                /// <summary>The requested runtime executable version. Defaults to
+                /// FIREBASE_RULES_EXECUTABLE_V1</summary>
+                public enum ExecutableVersionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("RELEASE_EXECUTABLE_VERSION_UNSPECIFIED")]
+                    RELEASEEXECUTABLEVERSIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("FIREBASE_RULES_EXECUTABLE_V1")]
+                    FIREBASERULESEXECUTABLEV1,
+                    [Google.Apis.Util.StringValueAttribute("FIREBASE_RULES_EXECUTABLE_V2")]
+                    FIREBASERULESEXECUTABLEV2,
+                }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getExecutable"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}:getExecutable"; }
+                }
+
+                /// <summary>Initializes GetExecutable parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/releases/.+$",
+                        });
+                    RequestParameters.Add(
+                        "executableVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "executableVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 
@@ -1404,6 +1494,33 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>The mock result of the function call.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual Result Result { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for FirebaseRulesService.GetReleaseExecutable</summary>
+    public class GetReleaseExecutableResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Executable view of the `Ruleset` referenced by the `Release`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executable")]
+        public virtual string Executable { get; set; } 
+
+        /// <summary>The Rules runtime version of the executable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executableVersion")]
+        public virtual string ExecutableVersion { get; set; } 
+
+        /// <summary>`Language` used to generate the executable bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("language")]
+        public virtual string Language { get; set; } 
+
+        /// <summary>`Ruleset` name associated with the `Release` executable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rulesetName")]
+        public virtual string RulesetName { get; set; } 
+
+        /// <summary>Timestamp for the most recent `Release.update_time`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API V2Beta Methods</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20170914 (987)
+ *      <tr><th>API Rev<td>20170925 (998)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>
@@ -4911,7 +4911,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Additional restrictions that must be met</summary>
+        /// <summary>Additional restrictions that must be met. All conditions must pass for the rule to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
 

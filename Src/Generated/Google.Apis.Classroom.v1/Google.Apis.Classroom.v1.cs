@@ -673,19 +673,19 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
-                /// a maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
                 /// of results should be returned.
                 ///
                 /// The list request must be otherwise identical to the one that resulted in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
+                /// a maximum.
+                ///
+                /// The server may return fewer than the specified number of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -721,18 +721,18 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -766,7 +766,7 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Creates announcement.
+            /// <summary>Creates an announcement.
             ///
             /// This method returns the following error codes:
             ///
@@ -782,7 +782,7 @@ namespace Google.Apis.Classroom.v1
                 return new CreateRequest(service, body, courseId);
             }
 
-            /// <summary>Creates announcement.
+            /// <summary>Creates an announcement.
             ///
             /// This method returns the following error codes:
             ///
@@ -850,7 +850,7 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Deletes a announcement.
+            /// <summary>Deletes an announcement.
             ///
             /// This request must be made by the Developer Console project of the [OAuth client
             /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item.
@@ -870,7 +870,7 @@ namespace Google.Apis.Classroom.v1
                 return new DeleteRequest(service, courseId, id);
             }
 
-            /// <summary>Deletes a announcement.
+            /// <summary>Deletes an announcement.
             ///
             /// This request must be made by the Developer Console project of the [OAuth client
             /// ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item.
@@ -949,7 +949,7 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Returns announcement.
+            /// <summary>Returns an announcement.
             ///
             /// This method returns the following error codes:
             ///
@@ -964,7 +964,7 @@ namespace Google.Apis.Classroom.v1
                 return new GetRequest(service, courseId, id);
             }
 
-            /// <summary>Returns announcement.
+            /// <summary>Returns an announcement.
             ///
             /// This method returns the following error codes:
             ///
@@ -1194,7 +1194,7 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Modifies assignee mode and options of a announcement.
+            /// <summary>Modifies assignee mode and options of an announcement.
             ///
             /// Only a teacher of the course that contains the announcement may call this method.
             ///
@@ -1212,7 +1212,7 @@ namespace Google.Apis.Classroom.v1
                 return new ModifyAssigneesRequest(service, body, courseId, id);
             }
 
-            /// <summary>Modifies assignee mode and options of a announcement.
+            /// <summary>Modifies assignee mode and options of an announcement.
             ///
             /// Only a teacher of the course that contains the announcement may call this method.
             ///
@@ -1295,7 +1295,7 @@ namespace Google.Apis.Classroom.v1
 
             }
 
-            /// <summary>Updates one or more fields of a announcement.
+            /// <summary>Updates one or more fields of an announcement.
             ///
             /// This method returns the following error codes:
             ///
@@ -1312,7 +1312,7 @@ namespace Google.Apis.Classroom.v1
                 return new PatchRequest(service, body, courseId, id);
             }
 
-            /// <summary>Updates one or more fields of a announcement.
+            /// <summary>Updates one or more fields of an announcement.
             ///
             /// This method returns the following error codes:
             ///
@@ -1348,7 +1348,9 @@ namespace Google.Apis.Classroom.v1
                 /// that does not support empty values is included in the update mask and not set in the Announcement
                 /// object, an `INVALID_ARGUMENT` error will be returned.
                 ///
-                /// The following fields may be specified by teachers: * `text` * `state` * `scheduled_time`</summary>
+                /// The following fields may be specified by teachers:
+                ///
+                /// * `text` * `state` * `scheduled_time`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -1617,6 +1619,14 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseWorkId { get; private set; }
 
+                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
+                    /// the specified identifier. The identifier can be one of the following:
+                    ///
+                    /// * the numeric identifier for the user * the email address of the user * the string literal
+                    /// `"me"`, indicating the requesting user</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserId { get; set; }
+
                     /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
                     /// the requested value. If unspecified, submissions are returned regardless of `late`
                     /// value.</summary>
@@ -1643,13 +1653,6 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may
-                    /// assign a maximum.
-                    ///
-                    /// The server may return fewer than the specified number of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Requested submission states. If specified, returned student submissions match one of
                     /// the specified submission states.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("states", Google.Apis.Util.RequestParameterType.Query)]
@@ -1673,13 +1676,12 @@ namespace Google.Apis.Classroom.v1
                         RECLAIMEDBYSTUDENT,
                     }
 
-                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
-                    /// the specified identifier. The identifier can be one of the following:
+                    /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may
+                    /// assign a maximum.
                     ///
-                    /// * the numeric identifier for the user * the email address of the user * the string literal
-                    /// `"me"`, indicating the requesting user</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string UserId { get; set; }
+                    /// The server may return fewer than the specified number of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1724,6 +1726,15 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "late", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "late",
@@ -1742,15 +1753,6 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "states", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "states",
@@ -1760,9 +1762,9 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "userId",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1972,7 +1974,9 @@ namespace Google.Apis.Classroom.v1
                     /// <summary>Mask that identifies which fields on the student submission to update. This field is
                     /// required to do an update. The update fails if invalid fields are specified.
                     ///
-                    /// The following fields may be specified by teachers: * `draft_grade` * `assigned_grade`</summary>
+                    /// The following fields may be specified by teachers:
+                    ///
+                    /// * `draft_grade` * `assigned_grade`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2777,6 +2781,20 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned.
+                ///
+                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional sort ordering for results. A comma-separated list of fields with an optional sort
+                /// direction keyword. Supported fields are `updateTime` and `dueDate`. Supported direction keywords are
+                /// `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `dueDate
+                /// asc,updateTime desc`, `updateTime,dueDate desc`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
                 /// a maximum.
                 ///
@@ -2802,20 +2820,6 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.StringValueAttribute("DELETED")]
                     DELETED,
                 }
-
-                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional sort ordering for results. A comma-separated list of fields with an optional sort
-                /// direction keyword. Supported fields are `updateTime` and `dueDate`. Supported direction keywords are
-                /// `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `dueDate
-                /// asc,updateTime desc`, `updateTime,dueDate desc`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2851,24 +2855,6 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "courseWorkStates", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "courseWorkStates",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2881,6 +2867,24 @@ namespace Google.Apis.Classroom.v1
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "courseWorkStates", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "courseWorkStates",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3056,8 +3060,10 @@ namespace Google.Apis.Classroom.v1
                 /// does not support empty values is included in the update mask and not set in the CourseWork object,
                 /// an `INVALID_ARGUMENT` error will be returned.
                 ///
-                /// The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date`
-                /// * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode`</summary>
+                /// The following fields may be specified by teachers:
+                ///
+                /// * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` *
+                /// `submission_modification_mode`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -3877,18 +3883,18 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Maximum number of items to return. Zero means no maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
                 /// of results should be returned.
                 ///
                 /// The list request must be otherwise identical to the one that resulted in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of items to return. Zero means no maximum.
+                ///
+                /// The server may return fewer than the specified number of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3924,18 +3930,18 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5939,6 +5945,13 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("studentId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string StudentId { get; private set; }
 
+                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
+                /// of results should be returned.
+                ///
+                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign
                 /// a maximum.
                 ///
@@ -5950,13 +5963,6 @@ namespace Google.Apis.Classroom.v1
                 /// this guardian link. This filter can only be used by domain administrators.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("invitedEmailAddress", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string InvitedEmailAddress { get; set; }
-
-                /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
-                /// of results should be returned.
-                ///
-                /// The list request must be otherwise identical to the one that resulted in this token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5992,6 +5998,15 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -6004,15 +6019,6 @@ namespace Google.Apis.Classroom.v1
                         "invitedEmailAddress", new Google.Apis.Discovery.Parameter
                         {
                             Name = "invitedEmailAddress",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6114,7 +6120,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
-        /// <summary>Assignee mode of the announcement. If unspecified, the default value is 'ALL_STUDENTS'.</summary>
+        /// <summary>Assignee mode of the announcement. If unspecified, the default value is `ALL_STUDENTS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assigneeMode")]
         public virtual string AssigneeMode { get; set; } 
 
@@ -6142,9 +6148,9 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Identifiers of students with access to the announcement. This field is set only if AssigneeMode is
-        /// 'INDIVIDUAL_STUDENTS'. If the mode is 'INDIVIDUAL_STUDENTS', then only students specified in this field will
-        /// be able to see the announcement.</summary>
+        /// <summary>Identifiers of students with access to the announcement. This field is set only if `assigneeMode`
+        /// is `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in
+        /// this field will be able to see the announcement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualStudentsOptions")]
         public virtual IndividualStudentsOptions IndividualStudentsOptions { get; set; } 
 
@@ -6459,7 +6465,7 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alternateLink")]
         public virtual string AlternateLink { get; set; } 
 
-        /// <summary>Assignee mode of the coursework. If unspecified, the default value is 'ALL_STUDENTS'.</summary>
+        /// <summary>Assignee mode of the coursework. If unspecified, the default value is `ALL_STUDENTS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assigneeMode")]
         public virtual string AssigneeMode { get; set; } 
 
@@ -6516,9 +6522,9 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Identifiers of students with access to the coursework. This field is set only if AssigneeMode is
-        /// 'INDIVIDUAL_STUDENTS'. If the mode is 'INDIVIDUAL_STUDENTS', then only students specified in this field will
-        /// be assigned the coursework.</summary>
+        /// <summary>Identifiers of students with access to the coursework. This field is set only if `assigneeMode` is
+        /// `INDIVIDUAL_STUDENTS`. If the `assigneeMode` is `INDIVIDUAL_STUDENTS`, then only students specified in this
+        /// field will be assigned the coursework.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualStudentsOptions")]
         public virtual IndividualStudentsOptions IndividualStudentsOptions { get; set; } 
 
@@ -6803,8 +6809,8 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Assignee details about a coursework/announcement. This field is set if and only if AssigneeMode is
-    /// 'INDIVIDUAL_STUDENTS'.</summary>
+    /// <summary>Assignee details about a coursework/announcement. This field is set if and only if `assigneeMode` is
+    /// `INDIVIDUAL_STUDENTS`.</summary>
     public class IndividualStudentsOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifiers for the students that have access to the coursework/announcement.</summary>
@@ -7064,7 +7070,7 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string AssigneeMode { get; set; } 
 
         /// <summary>Set which students can view or cannot view the announcement. Must be specified only when
-        /// AssigneeMode is /'INDIVIDUAL_STUDENTS/'.</summary>
+        /// `assigneeMode` is `INDIVIDUAL_STUDENTS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifyIndividualStudentsOptions")]
         public virtual ModifyIndividualStudentsOptions ModifyIndividualStudentsOptions { get; set; } 
 
@@ -7094,7 +7100,7 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string AssigneeMode { get; set; } 
 
         /// <summary>Set which students are assigned or not assigned to the coursework. Must be specified only when
-        /// AssigneeMode is /'INDIVIDUAL_STUDENTS/'.</summary>
+        /// `assigneeMode` is `INDIVIDUAL_STUDENTS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifyIndividualStudentsOptions")]
         public virtual ModifyIndividualStudentsOptions ModifyIndividualStudentsOptions { get; set; } 
 
@@ -7102,8 +7108,8 @@ namespace Google.Apis.Classroom.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Contains fields to add or remove students to an individual assignee coursework or
-    /// announcement.</summary>
+    /// <summary>Contains fields to add or remove students from a course work or announcement where the `assigneeMode`
+    /// is set to `INDIVIDUAL_STUDENTS`.</summary>
     public class ModifyIndividualStudentsOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Ids of students to be added as having access to this coursework/announcement.</summary>

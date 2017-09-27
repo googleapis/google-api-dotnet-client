@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170914 (987)
+ *      <tr><th>API Rev<td>20170925 (998)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -4426,6 +4426,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>User provided default credential for the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
+        public virtual Credential Credential { get; set; } 
+
         /// <summary>An optional user-provided description of the deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -4521,6 +4525,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 
     public class DeploymentUpdate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The user-provided default credential to use when deploying this preview.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
+        public virtual Credential Credential { get; set; } 
+
         /// <summary>Output only. An optional user-provided description of the deployment after the current update has
         /// been applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -5094,6 +5102,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; } 
 
+        /// <summary>Output only. The last used credential that successfully created/updated the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUsedCredential")]
+        public virtual Credential LastUsedCredential { get; set; } 
+
         /// <summary>Output only. URL of the manifest representing the current configuration of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
         public virtual string Manifest { get; set; } 
@@ -5187,6 +5199,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>The Access Control Policy to set on this resource after updating the resource itself.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessControl")]
         public virtual ResourceAccessControl AccessControl { get; set; } 
+
+        /// <summary>Output only. The credential that will be used creating/updating this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credential")]
+        public virtual Credential Credential { get; set; } 
 
         /// <summary>Output only. If errors are generated during update of the resource, this field will be
         /// populated.</summary>
@@ -5312,7 +5328,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Additional restrictions that must be met</summary>
+        /// <summary>Additional restrictions that must be met. All conditions must pass for the rule to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
 

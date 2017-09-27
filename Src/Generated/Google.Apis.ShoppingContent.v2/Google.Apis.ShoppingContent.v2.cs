@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170921 (994)
+ *      <tr><th>API Rev<td>20170926 (999)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -6403,7 +6403,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual System.Collections.Generic.IList<string> IncludedDestinations { get; set; } 
 
         /// <summary>The two-letter ISO 639-1 language of the items in the feed. Must be a valid language for
-        /// targetCountryLanguage.country.</summary>
+        /// targets[].country.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; } 
 
@@ -7301,7 +7301,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderLineItemShippingDetailsMethod : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier for the shipping. Optional.</summary>
+        /// <summary>The carrier for the shipping. Optional. See shipments[].carrier for a list of acceptable
+        /// values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -7474,7 +7475,12 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderShipment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier handling the shipment.</summary>
+        /// <summary>The carrier handling the shipment.
+        ///
+        /// Acceptable values are: - "gsx" - "ups" - "united parcel service" - "usps" - "united states postal service" -
+        /// "fedex" - "dhl" - "ecourier" - "cxt" - "google" - "on trac" - "ontrac" - "on-trac" - "on_trac" - "delvic" -
+        /// "dynamex" - "lasership" - "smartpost" - "fedex smartpost" - "mpx" - "uds" - "united delivery
+        /// service"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -7817,13 +7823,38 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersCustomBatchRequestEntryShipLineItems : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier handling the shipment.</summary>
+        /// <summary>Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See
+        /// shipments[].carrier in the  Orders resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
         /// <summary>Line items to ship.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual System.Collections.Generic.IList<OrderShipmentLineItemShipment> LineItems { get; set; } 
+
+        /// <summary>Deprecated. Please use shipmentInfo instead. The ID of the shipment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
+        public virtual string ShipmentId { get; set; } 
+
+        /// <summary>Shipment information. This field is repeated because a single line item can be shipped in several
+        /// packages (and have several tracking IDs).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentInfos")]
+        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> ShipmentInfos { get; set; } 
+
+        /// <summary>Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
+        public virtual string TrackingId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The carrier handling the shipment. See shipments[].carrier in the  Orders resource representation
+        /// for a list of acceptable values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
+        public virtual string Carrier { get; set; } 
 
         /// <summary>The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
@@ -7839,7 +7870,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersCustomBatchRequestEntryUpdateShipment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier handling the shipment. Not updated if missing.</summary>
+        /// <summary>The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders
+        /// resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -8030,7 +8062,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersShipLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier handling the shipment.</summary>
+        /// <summary>Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See
+        /// shipments[].carrier in the  Orders resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -8042,11 +8075,16 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
-        /// <summary>The ID of the shipment.</summary>
+        /// <summary>Deprecated. Please use shipmentInfo instead. The ID of the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentId")]
         public virtual string ShipmentId { get; set; } 
 
-        /// <summary>The tracking id for the shipment.</summary>
+        /// <summary>Shipment information. This field is repeated because a single line item can be shipped in several
+        /// packages (and have several tracking IDs).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipmentInfos")]
+        public virtual System.Collections.Generic.IList<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo> ShipmentInfos { get; set; } 
+
+        /// <summary>Deprecated. Please use shipmentInfo instead. The tracking id for the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
 
@@ -8100,7 +8138,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrdersUpdateShipmentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The carrier handling the shipment. Not updated if missing.</summary>
+        /// <summary>The carrier handling the shipment. Not updated if missing. See shipments[].carrier in the  Orders
+        /// resource representation for a list of acceptable values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 

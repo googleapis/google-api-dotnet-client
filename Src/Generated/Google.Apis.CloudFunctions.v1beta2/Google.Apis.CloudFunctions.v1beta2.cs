@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Google Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20170920 (993)
+ *      <tr><th>API Rev<td>20170926 (999)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -1217,10 +1217,9 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         /// Source Repository URLs in the following formats:
         ///
         /// To refer to a specific commit: `https://source.developers.google.com/projects/repos/revisions/paths` To
-        /// refer to a moveable alias (branch):
-        /// `https://source.developers.google.com/projects/repos/aliases/movable/paths` In particular, to refer to HEAD
-        /// use `master` moveable alias. To refer to a specific fixed alias (tag):
-        /// `https://source.developers.google.com/projects/repos/aliases/fixed/paths`
+        /// refer to a moveable alias (branch): `https://source.developers.google.com/projects/repos/moveable-
+        /// aliases/paths` In particular, to refer to HEAD use `master` moveable alias. To refer to a specific fixed
+        /// alias (tag): `https://source.developers.google.com/projects/repos/fixed-aliases/paths`
         ///
         /// You may omit `paths` if you want to use the main directory.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRepositoryUrl")]
@@ -1258,7 +1257,7 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         /// Handle an object changing in Google Cloud Storage `providers/cloud.storage/eventTypes/object.change`
         ///
         /// Handle a write to the Firebase Realtime Database
-        /// `providers/firebase.database/eventTypes/data.write`</summary>
+        /// `providers/google.firebase.database/eventTypes/ref.write`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; } 
 
