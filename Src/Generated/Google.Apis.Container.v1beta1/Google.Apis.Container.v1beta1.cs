@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170908 (981)
+ *      <tr><th>API Rev<td>20170915 (988)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -1178,12 +1178,6 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field is deprecated, use name
-                    /// instead.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ProjectId { get; set; }
-
                     /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
                     /// the cluster resides. This field is deprecated, use name instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
@@ -1193,6 +1187,12 @@ namespace Google.Apis.Container.v1beta1
                     /// instead.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClusterId { get; set; }
+
+                    /// <summary>The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840). This field is deprecated, use name
+                    /// instead.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1228,15 +1228,6 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
@@ -1249,6 +1240,15 @@ namespace Google.Apis.Container.v1beta1
                             "clusterId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4902,6 +4902,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetesDashboard")]
         public virtual KubernetesDashboard KubernetesDashboard { get; set; } 
 
+        /// <summary>Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the
+        /// Master, it does not track whether network policy is enabled for the nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPolicyConfig")]
+        public virtual NetworkPolicyConfig NetworkPolicyConfig { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5601,6 +5606,18 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it
+    /// does not track whether network policy is enabled for the nodes.</summary>
+    public class NetworkPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether NetworkPolicy is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Parameters that describe the nodes in a cluster.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5656,10 +5673,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
 
-        /// <summary>Minimum cpu/platform to be used by this instance. The instance may be scheduled on the specified or
-        /// newer cpu/platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
-        /// Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read Specifying a Minimum CPU
-        /// Platform.</summary>
+        /// <summary>Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or
+        /// newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel
+        /// Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU
+        /// platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 

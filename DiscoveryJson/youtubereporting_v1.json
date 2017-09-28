@@ -1,4 +1,6 @@
 {
+  "version": "v1",
+  "baseUrl": "https://youtubereporting.googleapis.com/",
   "canonicalName": "YouTube Reporting",
   "auth": {
     "oauth2": {
@@ -12,9 +14,9 @@
       }
     }
   },
-  "servicePath": "",
-  "description": "Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.",
   "kind": "discovery#restDescription",
+  "description": "Schedules reporting jobs containing your YouTube Analytics data and downloads the resulting bulk data reports in the form of CSV files.",
+  "servicePath": "",
   "rootUrl": "https://youtubereporting.googleapis.com/",
   "basePath": "",
   "ownerDomain": "google.com",
@@ -22,36 +24,42 @@
   "batchPath": "batch",
   "id": "youtubereporting:v1",
   "documentationLink": "https://developers.google.com/youtube/reporting/v1/reports/",
-  "revision": "20170925",
+  "revision": "20170926",
   "title": "YouTube Reporting API",
-  "discoveryVersion": "v1",
   "ownerName": "Google",
+  "discoveryVersion": "v1",
   "resources": {
     "jobs": {
       "resources": {
         "reports": {
           "methods": {
             "get": {
+              "path": "v1/jobs/{jobId}/reports/{reportId}",
+              "id": "youtubereporting.jobs.reports.get",
               "description": "Gets the metadata of a specific report.",
               "httpMethod": "GET",
-              "response": {
-                "$ref": "Report"
-              },
               "parameterOrder": [
                 "jobId",
                 "reportId"
               ],
+              "response": {
+                "$ref": "Report"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+                "https://www.googleapis.com/auth/yt-analytics.readonly"
+              ],
               "parameters": {
                 "onBehalfOfContentOwner": {
+                  "location": "query",
                   "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 },
                 "reportId": {
-                  "location": "path",
                   "description": "The ID of the report to retrieve.",
                   "type": "string",
-                  "required": true
+                  "required": true,
+                  "location": "path"
                 },
                 "jobId": {
                   "description": "The ID of the job.",
@@ -60,15 +68,10 @@
                   "location": "path"
                 }
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-                "https://www.googleapis.com/auth/yt-analytics.readonly"
-              ],
-              "flatPath": "v1/jobs/{jobId}/reports/{reportId}",
-              "path": "v1/jobs/{jobId}/reports/{reportId}",
-              "id": "youtubereporting.jobs.reports.get"
+              "flatPath": "v1/jobs/{jobId}/reports/{reportId}"
             },
             "list": {
+              "description": "Lists reports created by a specific job.\nReturns NOT_FOUND if the job does not exist.",
               "httpMethod": "GET",
               "response": {
                 "$ref": "ListReportsResponse"
@@ -76,11 +79,13 @@
               "parameterOrder": [
                 "jobId"
               ],
-              "scopes": [
-                "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-                "https://www.googleapis.com/auth/yt-analytics.readonly"
-              ],
               "parameters": {
+                "jobId": {
+                  "location": "path",
+                  "description": "The ID of the job.",
+                  "type": "string",
+                  "required": true
+                },
                 "createdAfter": {
                   "location": "query",
                   "format": "google-datetime",
@@ -94,15 +99,15 @@
                   "location": "query"
                 },
                 "pageToken": {
-                  "location": "query",
                   "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportsResponse.next_page_token\nreturned in response to the previous call to the `ListReports` method.",
-                  "type": "string"
+                  "type": "string",
+                  "location": "query"
                 },
                 "pageSize": {
-                  "location": "query",
                   "format": "int32",
                   "description": "Requested page size. Server may return fewer report types than requested.\nIf unspecified, server will pick an appropriate default.",
-                  "type": "integer"
+                  "type": "integer",
+                  "location": "query"
                 },
                 "onBehalfOfContentOwner": {
                   "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
@@ -114,28 +119,21 @@
                   "description": "If set, only reports whose start time is smaller than the specified\ndate/time are returned.",
                   "type": "string",
                   "location": "query"
-                },
-                "jobId": {
-                  "description": "The ID of the job.",
-                  "type": "string",
-                  "required": true,
-                  "location": "path"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+                "https://www.googleapis.com/auth/yt-analytics.readonly"
+              ],
               "flatPath": "v1/jobs/{jobId}/reports",
               "path": "v1/jobs/{jobId}/reports",
-              "id": "youtubereporting.jobs.reports.list",
-              "description": "Lists reports created by a specific job.\nReturns NOT_FOUND if the job does not exist."
+              "id": "youtubereporting.jobs.reports.list"
             }
           }
         }
       },
       "methods": {
         "create": {
-          "request": {
-            "$ref": "Job"
-          },
-          "description": "Creates a job and returns it.",
           "response": {
             "$ref": "Job"
           },
@@ -147,57 +145,57 @@
           ],
           "parameters": {
             "onBehalfOfContentOwner": {
-              "location": "query",
               "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-              "type": "string"
+              "type": "string",
+              "location": "query"
             }
           },
           "flatPath": "v1/jobs",
           "id": "youtubereporting.jobs.create",
-          "path": "v1/jobs"
+          "path": "v1/jobs",
+          "request": {
+            "$ref": "Job"
+          },
+          "description": "Creates a job and returns it."
         },
         "delete": {
+          "path": "v1/jobs/{jobId}",
+          "id": "youtubereporting.jobs.delete",
+          "description": "Deletes a job.",
+          "httpMethod": "DELETE",
+          "parameterOrder": [
+            "jobId"
+          ],
           "response": {
             "$ref": "Empty"
           },
-          "parameterOrder": [
-            "jobId"
-          ],
-          "httpMethod": "DELETE",
-          "parameters": {
-            "onBehalfOfContentOwner": {
-              "location": "query",
-              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
-              "type": "string"
-            },
-            "jobId": {
-              "description": "The ID of the job to delete.",
-              "type": "string",
-              "required": true,
-              "location": "path"
-            }
-          },
           "scopes": [
             "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
             "https://www.googleapis.com/auth/yt-analytics.readonly"
           ],
-          "flatPath": "v1/jobs/{jobId}",
-          "id": "youtubereporting.jobs.delete",
-          "path": "v1/jobs/{jobId}",
-          "description": "Deletes a job."
+          "parameters": {
+            "onBehalfOfContentOwner": {
+              "description": "The content owner's external ID on which behalf the user is acting on. If\nnot set, the user is acting for himself (his own channel).",
+              "type": "string",
+              "location": "query"
+            },
+            "jobId": {
+              "location": "path",
+              "description": "The ID of the job to delete.",
+              "type": "string",
+              "required": true
+            }
+          },
+          "flatPath": "v1/jobs/{jobId}"
         },
         "get": {
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "jobId"
+          ],
           "response": {
             "$ref": "Job"
           },
-          "parameterOrder": [
-            "jobId"
-          ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
           "parameters": {
             "onBehalfOfContentOwner": {
               "location": "query",
@@ -211,17 +209,28 @@
               "required": true
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
           "flatPath": "v1/jobs/{jobId}",
-          "id": "youtubereporting.jobs.get",
           "path": "v1/jobs/{jobId}",
+          "id": "youtubereporting.jobs.get",
           "description": "Gets a job."
         },
         "list": {
-          "httpMethod": "GET",
+          "id": "youtubereporting.jobs.list",
+          "path": "v1/jobs",
+          "description": "Lists jobs.",
           "response": {
             "$ref": "ListJobsResponse"
           },
           "parameterOrder": [],
+          "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
           "parameters": {
             "includeSystemManaged": {
               "description": "If set to true, also system-managed jobs will be returned; otherwise only\nuser-created jobs will be returned. System-managed jobs can neither be\nmodified nor deleted.",
@@ -229,9 +238,9 @@
               "location": "query"
             },
             "pageToken": {
-              "location": "query",
               "description": "A token identifying a page of results the server should return. Typically,\nthis is the value of\nListReportTypesResponse.next_page_token\nreturned in response to the previous call to the `ListJobs` method.",
-              "type": "string"
+              "type": "string",
+              "location": "query"
             },
             "pageSize": {
               "format": "int32",
@@ -245,29 +254,19 @@
               "type": "string"
             }
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
-          "flatPath": "v1/jobs",
-          "path": "v1/jobs",
-          "id": "youtubereporting.jobs.list",
-          "description": "Lists jobs."
+          "flatPath": "v1/jobs"
         }
       }
     },
     "reportTypes": {
       "methods": {
         "list": {
+          "description": "Lists report types.",
+          "httpMethod": "GET",
+          "parameterOrder": [],
           "response": {
             "$ref": "ListReportTypesResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
-            "https://www.googleapis.com/auth/yt-analytics.readonly"
-          ],
           "parameters": {
             "includeSystemManaged": {
               "location": "query",
@@ -291,24 +290,30 @@
               "type": "string"
             }
           },
+          "scopes": [
+            "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
+            "https://www.googleapis.com/auth/yt-analytics.readonly"
+          ],
           "flatPath": "v1/reportTypes",
-          "id": "youtubereporting.reportTypes.list",
           "path": "v1/reportTypes",
-          "description": "Lists report types."
+          "id": "youtubereporting.reportTypes.list"
         }
       }
     },
     "media": {
       "methods": {
         "download": {
+          "path": "v1/media/{+resourceName}",
+          "id": "youtubereporting.media.download",
+          "description": "Method for media download. Download is supported\non the URI `/v1/media/{+name}?alt=media`.",
           "supportsMediaDownload": true,
-          "response": {
-            "$ref": "Media"
-          },
+          "httpMethod": "GET",
           "parameterOrder": [
             "resourceName"
           ],
-          "httpMethod": "GET",
+          "response": {
+            "$ref": "Media"
+          },
           "parameters": {
             "resourceName": {
               "description": "Name of the media that is being downloaded.  See\nReadRequest.resource_name.",
@@ -322,10 +327,7 @@
             "https://www.googleapis.com/auth/yt-analytics-monetary.readonly",
             "https://www.googleapis.com/auth/yt-analytics.readonly"
           ],
-          "flatPath": "v1/media/{mediaId}",
-          "id": "youtubereporting.media.download",
-          "path": "v1/media/{+resourceName}",
-          "description": "Method for media download. Download is supported\non the URI `/v1/media/{+name}?alt=media`."
+          "flatPath": "v1/media/{mediaId}"
         }
       }
     }
@@ -342,33 +344,33 @@
       "type": "boolean",
       "location": "query"
     },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
+    "uploadType": {
       "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "$.xgafv": {
       "enum": [
         "1",
         "2"
       ],
       "description": "V1 error format.",
-      "type": "string"
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query"
     },
     "callback": {
+      "location": "query",
       "description": "JSONP",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "alt": {
       "enum": [
@@ -386,15 +388,15 @@
       "description": "Data format for response.",
       "default": "json"
     },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
     "key": {
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
       "location": "query"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
     },
     "quotaUser": {
       "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
@@ -402,10 +404,10 @@
       "location": "query"
     },
     "pp": {
-      "location": "query",
       "description": "Pretty-print response.",
       "default": "true",
-      "type": "boolean"
+      "type": "boolean",
+      "location": "query"
     },
     "bearer_token": {
       "location": "query",
@@ -421,16 +423,16 @@
   "schemas": {
     "ListReportsResponse": {
       "properties": {
-        "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListReportsRequest.page_token\nfield in the subsequent call to `ListReports` method to retrieve the next\npage of results.",
-          "type": "string"
-        },
         "reports": {
           "description": "The list of report types.",
           "items": {
             "$ref": "Report"
           },
           "type": "array"
+        },
+        "nextPageToken": {
+          "description": "A token to retrieve next page of results.\nPass this value in the\nListReportsRequest.page_token\nfield in the subsequent call to `ListReports` method to retrieve the next\npage of results.",
+          "type": "string"
         }
       },
       "id": "ListReportsResponse",
@@ -449,9 +451,11 @@
       "type": "object"
     },
     "ReportType": {
-      "description": "A report type.",
-      "type": "object",
       "properties": {
+        "name": {
+          "description": "The name of the report type (max. 100 characters).",
+          "type": "string"
+        },
         "systemManaged": {
           "description": "True if this a system-managed report type; otherwise false. Reporting jobs\nfor system-managed report types are created automatically and can thus not\nbe used in the `CreateJob` method.",
           "type": "boolean"
@@ -464,37 +468,35 @@
           "format": "google-datetime",
           "description": "The date/time when this report type was/will be deprecated.",
           "type": "string"
-        },
-        "name": {
-          "description": "The name of the report type (max. 100 characters).",
-          "type": "string"
         }
       },
-      "id": "ReportType"
+      "id": "ReportType",
+      "description": "A report type.",
+      "type": "object"
     },
     "ListReportTypesResponse": {
       "description": "Response message for ReportingService.ListReportTypes.",
       "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "A token to retrieve next page of results.\nPass this value in the\nListReportTypesRequest.page_token\nfield in the subsequent call to `ListReportTypes` method to retrieve the next\npage of results.",
+          "type": "string"
+        },
         "reportTypes": {
           "description": "The list of report types.",
           "items": {
             "$ref": "ReportType"
           },
           "type": "array"
-        },
-        "nextPageToken": {
-          "description": "A token to retrieve next page of results.\nPass this value in the\nListReportTypesRequest.page_token\nfield in the subsequent call to `ListReportTypes` method to retrieve the next\npage of results.",
-          "type": "string"
         }
       },
       "id": "ListReportTypesResponse"
     },
     "Empty": {
-      "properties": {},
-      "id": "Empty",
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object"
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
     },
     "Report": {
       "properties": {
@@ -520,14 +522,14 @@
           "description": "The server-generated ID of the report.",
           "type": "string"
         },
-        "jobExpireTime": {
-          "format": "google-datetime",
-          "description": "The date/time when the job this report belongs to will expire/expired.",
-          "type": "string"
-        },
         "endTime": {
           "format": "google-datetime",
           "description": "The end of the time period that the report instance covers. The value is\nexclusive.",
+          "type": "string"
+        },
+        "jobExpireTime": {
+          "format": "google-datetime",
+          "description": "The date/time when the job this report belongs to will expire/expired.",
           "type": "string"
         }
       },
@@ -536,6 +538,8 @@
       "type": "object"
     },
     "ListJobsResponse": {
+      "description": "Response message for ReportingService.ListJobs.",
+      "type": "object",
       "properties": {
         "jobs": {
           "description": "The list of jobs.",
@@ -549,20 +553,10 @@
           "type": "string"
         }
       },
-      "id": "ListJobsResponse",
-      "description": "Response message for ReportingService.ListJobs.",
-      "type": "object"
+      "id": "ListJobsResponse"
     },
     "Job": {
       "properties": {
-        "id": {
-          "description": "The server-generated ID of the job (max. 40 characters).",
-          "type": "string"
-        },
-        "systemManaged": {
-          "description": "True if this a system-managed job that cannot be modified by the user;\notherwise false.",
-          "type": "boolean"
-        },
         "createTime": {
           "format": "google-datetime",
           "description": "The creation date/time of the job.",
@@ -580,6 +574,14 @@
         "name": {
           "description": "The name of the job (max. 100 characters).",
           "type": "string"
+        },
+        "id": {
+          "description": "The server-generated ID of the job (max. 40 characters).",
+          "type": "string"
+        },
+        "systemManaged": {
+          "description": "True if this a system-managed job that cannot be modified by the user;\notherwise false.",
+          "type": "boolean"
         }
       },
       "id": "Job",
@@ -587,11 +589,9 @@
       "type": "object"
     }
   },
-  "protocol": "rest",
   "icons": {
     "x16": "http://www.google.com/images/icons/product/search-16.gif",
     "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "version": "v1",
-  "baseUrl": "https://youtubereporting.googleapis.com/"
+  "protocol": "rest"
 }

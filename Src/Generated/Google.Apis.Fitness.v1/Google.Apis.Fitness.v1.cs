@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fit/rest/'>Fitness</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170830 (972)
+ *      <tr><th>API Rev<td>20170922 (995)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fit/rest/'>
  *              https://developers.google.com/fit/rest/</a>
@@ -363,17 +363,17 @@ namespace Google.Apis.Fitness.v1
                 }
 
 
-                /// <summary>results ordered by descending end_time</summary>
-                /// <param name="userId">List data points for the person identified. Use "me" to indicate the authenticated user. Only
-                /// "me" is supported at this time.</param>
-                /// <param name="dataSourceId">The data stream ID of the data source
-                /// that created the dataset.</param>
+                /// <summary>Queries for user's data point changes for a particular data source.</summary>
+                /// <param name="userId">List data points for the person identified. Use me to indicate the authenticated user. Only me
+                /// is supported at this time.</param>
+                /// <param name="dataSourceId">The data stream ID of the data source that
+                /// created the dataset.</param>
                 public virtual ListRequest List(string userId, string dataSourceId)
                 {
                     return new ListRequest(service, userId, dataSourceId);
                 }
 
-                /// <summary>results ordered by descending end_time</summary>
+                /// <summary>Queries for user's data point changes for a particular data source.</summary>
                 public class ListRequest : FitnessBaseServiceRequest<Google.Apis.Fitness.v1.Data.ListDataPointChangesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -386,8 +386,8 @@ namespace Google.Apis.Fitness.v1
                     }
 
 
-                    /// <summary>List data points for the person identified. Use "me" to indicate the authenticated
-                    /// user. Only "me" is supported at this time.</summary>
+                    /// <summary>List data points for the person identified. Use me to indicate the authenticated user.
+                    /// Only me is supported at this time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string UserId { get; private set; }
 
@@ -396,7 +396,7 @@ namespace Google.Apis.Fitness.v1
                     public virtual string DataSourceId { get; private set; }
 
                     /// <summary>If specified, no more than this many data point changes will be included in the
-                    /// response. The default is 500 data point changes.</summary>
+                    /// response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("limit", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Limit { get; set; }
 
@@ -2267,12 +2267,12 @@ namespace Google.Apis.Fitness.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual string DataSourceId { get; set; } 
 
-        /// <summary>Data points that have been removed and will not be included in any other request for dataset
-        /// contents.</summary>
+        /// <summary>Deleted data points for the user. Note, for modifications this should be parsed before handling
+        /// insertions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedDataPoint")]
         public virtual System.Collections.Generic.IList<DataPoint> DeletedDataPoint { get; set; } 
 
-        /// <summary>Data points listed.</summary>
+        /// <summary>Inserted data points for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertedDataPoint")]
         public virtual System.Collections.Generic.IList<DataPoint> InsertedDataPoint { get; set; } 
 
