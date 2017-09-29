@@ -50,7 +50,7 @@ namespace IntegrationTests
         }
 
         [Fact]
-        public void List()
+        public void TranslateList()
         {
             GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
             TranslateService client = new TranslateService(new BaseClientService.Initializer
@@ -64,6 +64,45 @@ namespace IntegrationTests
 
             Assert.Single(response.Translations);
             Assert.Equal("Le temps froid sera bientôt terminé", response.Translations[0].TranslatedText);
+        }
+
+        [Fact]
+        public void Detect()
+        {
+            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
+            TranslateService client = new TranslateService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = "IntegrationTest"
+            });
+
+            var listRequest = client.Detections.Detect(new DetectLanguageRequest
+            {
+                Q = new List<string> { "The cold weather will soon be over" },
+            });
+            var response = listRequest.Execute();
+
+            Assert.Single(response.Detections);
+            Assert.Single(response.Detections[0]);
+            Assert.Equal("en", response.Detections[0][0].Language);
+        }
+
+        [Fact]
+        public void DetectList()
+        {
+            GoogleCredential credential = Helper.GetServiceCredential().CreateScoped(TranslateService.Scope.CloudTranslation);
+            TranslateService client = new TranslateService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = "IntegrationTest"
+            });
+
+            var listRequest = client.Detections.List("The cold weather will soon be over");
+            var response = listRequest.Execute();
+
+            Assert.Single(response.Detections);
+            Assert.Single(response.Detections[0]);
+            Assert.Equal("en", response.Detections[0][0].Language);
         }
     }
 }

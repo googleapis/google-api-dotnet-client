@@ -227,10 +227,7 @@ namespace Google.Apis.Services
         public ISerializer Serializer { get; private set; }
 
         /// <inheritdoc/>
-        public virtual string SerializeObject(object obj)
-        {
-            return Serializer.Serialize(obj);
-        }
+        public virtual string SerializeObject(object obj) => Serializer.Serialize(obj);
 
         /// <inheritdoc/>
         public virtual async Task<T> DeserializeResponse<T>(HttpResponseMessage response)
