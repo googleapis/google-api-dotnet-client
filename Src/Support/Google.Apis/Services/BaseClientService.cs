@@ -229,12 +229,6 @@ namespace Google.Apis.Services
         /// <inheritdoc/>
         public virtual string SerializeObject(object obj)
         {
-            if (HasFeature(Discovery.Features.LegacyDataResponse))
-            {
-                // Legacy path
-                var request = new StandardResponse<object> { Data = obj };
-                return Serializer.Serialize(request);
-            }
             return Serializer.Serialize(obj);
         }
 
