@@ -122,8 +122,9 @@ namespace Google.Apis.Tests.Apis.Services
         [Fact]
         public void TestSerialization_WithDataWrapping()
         {
+            // Requets should not be wrapped
             const string Response =
-                "{\"data\":{\"kind\":\"urlshortener#url\",\"longUrl\":\"http://google.com/\"}}";
+                "{\"kind\":\"urlshortener#url\",\"longUrl\":\"http://google.com/\"}";
 
             MockJsonSchema schema = new MockJsonSchema();
             schema.Kind = "urlshortener#url";
