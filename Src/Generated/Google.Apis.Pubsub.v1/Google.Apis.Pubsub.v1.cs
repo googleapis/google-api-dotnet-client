@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170829 (971)
+ *      <tr><th>API Rev<td>20170918 (991)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -2308,7 +2308,7 @@ namespace Google.Apis.Pubsub.v1.Data
         ///
         /// An empty `pushConfig` indicates that the Pub/Sub system should stop pushing messages from the given
         /// subscription and allow messages to be pulled and acknowledged - effectively pausing the subscription if
-        /// `Pull` is not called.</summary>
+        /// `Pull` or `StreamingPull` is not called.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
         public virtual PushConfig PushConfig { get; set; } 
 
@@ -2507,9 +2507,10 @@ namespace Google.Apis.Pubsub.v1.Data
         /// effort basis).
         ///
         /// For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value
-        /// for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using pull. The minimum
-        /// custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds
-        /// (10 minutes). If this parameter is 0, a default value of 10 seconds is used.
+        /// for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or
+        /// send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom
+        /// deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10
+        /// minutes). If this parameter is 0, a default value of 10 seconds is used.
         ///
         /// For push delivery, this value is also used to set the request timeout for the call to the push endpoint.
         ///

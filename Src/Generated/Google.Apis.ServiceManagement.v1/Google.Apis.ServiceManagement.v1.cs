@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170916 (989)
+ *      <tr><th>API Rev<td>20170926 (999)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1394,14 +1394,6 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>The token of the page to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The max number of items to include in the response list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
                 /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
                 /// filter='status=SUCCESS' -- To limit the results to those in
@@ -1409,6 +1401,14 @@ namespace Google.Apis.ServiceManagement.v1
                 /// filter='status=CANCELLED OR status=FAILED'</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The token of the page to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The max number of items to include in the response list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1444,6 +1444,15 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1456,15 +1465,6 @@ namespace Google.Apis.ServiceManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1908,10 +1908,6 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>The id of the service configuration resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConfigId { get; set; }
-
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1924,6 +1920,10 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
+
+            /// <summary>The id of the service configuration resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConfigId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1959,18 +1959,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "configId",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "configId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "configId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2708,6 +2708,44 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Billing related configuration of the service.
+    ///
+    /// The following example shows how to configure monitored resources and metrics for billing: monitored_resources: -
+    /// type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is
+    /// located in. - key: /name description: The name of the branch. metrics: - name:
+    /// library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 billing: consumer_destinations:
+    /// - monitored_resource: library.googleapis.com/branch metrics: -
+    /// library.googleapis.com/book/borrowed_count</summary>
+    public class Billing : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Billing configurations for sending metrics to the consumer project. There can be multiple consumer
+        /// destinations per service, each one must have a different monitored resource type. A metric can be used in at
+        /// most one consumer destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerDestinations")]
+        public virtual System.Collections.Generic.IList<BillingDestination> ConsumerDestinations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration of a specific billing destination (Currently only support bill against consumer
+    /// project).</summary>
+    public class BillingDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Names of the metrics to report to this billing destination. Each name must be defined in
+        /// Service.metrics section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+
+        /// <summary>The monitored resource type. The type must be defined in Service.monitored_resources
+        /// section.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
+        public virtual string MonitoredResource { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3330,6 +3368,11 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("flowName")]
         public virtual string FlowName { get; set; } 
 
+        /// <summary>Operation type which is a flow type and subtype info as that is missing in our datastore otherwise.
+        /// This maps to the ordinal value of the enum: jcg/api/tenant/operations/OperationNamespace.java</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual System.Nullable<int> OperationType { get; set; } 
+
         /// <summary>The full name of the resources that this flow is directly associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; } 
@@ -3337,6 +3380,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>The start time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("surface")]
+        public virtual string Surface { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4553,6 +4599,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>API backend configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backend")]
         public virtual Backend Backend { get; set; } 
+
+        /// <summary>Billing configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billing")]
+        public virtual Billing Billing { get; set; } 
 
         /// <summary>The semantic version of the service configuration. The config version affects the interpretation of
         /// the service configuration. For example, certain features are enabled by default for certain config versions.

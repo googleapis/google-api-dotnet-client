@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170922 (995)
+ *      <tr><th>API Rev<td>20170927 (1000)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>

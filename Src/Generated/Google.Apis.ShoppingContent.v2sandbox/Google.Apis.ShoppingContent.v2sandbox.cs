@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20170926 (999)
+ *      <tr><th>API Rev<td>20170928 (1001)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1840,6 +1840,10 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>Cancellations of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancellations")]
         public virtual System.Collections.Generic.IList<OrderCancellation> Cancellations { get; set; } 
+
+        /// <summary>The channel type of the order: "purchaseOnGoogle" or "googleExpress".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelType")]
+        public virtual string ChannelType { get; set; } 
 
         /// <summary>The id of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

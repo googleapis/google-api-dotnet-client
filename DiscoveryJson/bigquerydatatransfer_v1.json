@@ -1,8 +1,1147 @@
 {
+  "batchPath": "batch",
+  "fullyEncodeReservedExpansion": true,
+  "title": "BigQuery Data Transfer API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "methods": {
+            "get": {
+              "response": {
+                "$ref": "Location"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only"
+              ],
+              "parameters": {
+                "name": {
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/locations/[^/]+$",
+                  "location": "path",
+                  "description": "Resource name for the location."
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
+              "id": "bigquerydatatransfer.projects.locations.get",
+              "path": "v1/{+name}",
+              "description": "Get information about a location."
+            },
+            "list": {
+              "description": "Lists information about the supported locations for this service.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "ListLocationsResponse"
+              },
+              "parameters": {
+                "filter": {
+                  "location": "query",
+                  "description": "The standard list filter.",
+                  "type": "string"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "The standard list page token.",
+                  "type": "string"
+                },
+                "name": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "type": "string",
+                  "required": true
+                },
+                "pageSize": {
+                  "location": "query",
+                  "format": "int32",
+                  "description": "The standard list page size.",
+                  "type": "integer"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only"
+              ],
+              "flatPath": "v1/projects/{projectsId}/locations",
+              "path": "v1/{+name}/locations",
+              "id": "bigquerydatatransfer.projects.locations.list"
+            }
+          },
+          "resources": {
+            "transferConfigs": {
+              "methods": {
+                "patch": {
+                  "response": {
+                    "$ref": "TransferConfig"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "PATCH",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "authorizationCode": {
+                      "description": "Optional OAuth2 authorization code to use with this transfer configuration.\nIf it is provided, the transfer configuration will be associated with the\ngaia id of the authorizing user.\nIn order to obtain authorization_code, please make a\nrequest to\nhttps://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=\u003cdatatransferapiclientid\u003e&scope=\u003cdata_source_scopes\u003e&redirect_uri=\u003credirect_uri\u003e\n\n* client_id should be OAuth client_id of BigQuery DTS API for the given\n  data source returned by ListDataSources method.\n* data_source_scopes are the scopes returned by ListDataSources method.\n* redirect_uri is an optional parameter. If not specified, then\n  authorization code is posted to the opener of authorization flow window.\n  Otherwise it will be sent to the redirect uri. A special value of\n  urn:ietf:wg:oauth:2.0:oob means that authorization code should be\n  returned in the title bar of the browser, with the page text prompting\n  the user to copy the code and paste it in the application.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "updateMask": {
+                      "format": "google-fieldmask",
+                      "description": "Required list of fields to be updated in this request.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "name": {
+                      "description": "The resource name of the transfer config.\nTransfer config names have the form\n`projects/{project_id}/transferConfigs/{config_id}`.\nWhere `config_id` is usually a uuid, even though it is not\nguaranteed or required. The name is ignored when creating a transfer\nconfig.",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
+                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.patch",
+                  "path": "v1/{+name}",
+                  "request": {
+                    "$ref": "TransferConfig"
+                  },
+                  "description": "Updates a data transfer configuration.\nAll fields must be set, even if they are not updated."
+                },
+                "get": {
+                  "response": {
+                    "$ref": "TransferConfig"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "name": {
+                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-platform.read-only"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
+                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.get",
+                  "path": "v1/{+name}",
+                  "description": "Returns information about a data transfer config."
+                },
+                "delete": {
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "DELETE",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
+                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.delete",
+                  "path": "v1/{+name}",
+                  "description": "Deletes a data transfer configuration,\nincluding any associated transfer runs and logs."
+                },
+                "list": {
+                  "path": "v1/{+parent}/transferConfigs",
+                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.list",
+                  "description": "Returns information about all data transfers in the project.",
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "response": {
+                    "$ref": "ListTransferConfigsResponse"
+                  },
+                  "parameters": {
+                    "dataSourceIds": {
+                      "description": "When specified, only configurations of requested data sources are returned.",
+                      "type": "string",
+                      "repeated": true,
+                      "location": "query"
+                    },
+                    "parent": {
+                      "location": "path",
+                      "description": "The BigQuery project id for which data sources\nshould be returned: `projects/{project_id}`.",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Pagination token, which can be used to request a specific page\nof `ListTransfersRequest` list results. For multiple-page\nresults, `ListTransfersResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results."
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "format": "int32",
+                      "description": "Page size. The default page size is the maximum value of 1000 results.",
+                      "type": "integer"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-platform.read-only"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs"
+                },
+                "create": {
+                  "request": {
+                    "$ref": "TransferConfig"
+                  },
+                  "description": "Creates a new data transfer configuration.",
+                  "response": {
+                    "$ref": "TransferConfig"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "authorizationCode": {
+                      "description": "Optional OAuth2 authorization code to use with this transfer configuration.\nThis is required if new credentials are needed, as indicated by\n`CheckValidCreds`.\nIn order to obtain authorization_code, please make a\nrequest to\nhttps://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=\u003cdatatransferapiclientid\u003e&scope=\u003cdata_source_scopes\u003e&redirect_uri=\u003credirect_uri\u003e\n\n* client_id should be OAuth client_id of BigQuery DTS API for the given\n  data source returned by ListDataSources method.\n* data_source_scopes are the scopes returned by ListDataSources method.\n* redirect_uri is an optional parameter. If not specified, then\n  authorization code is posted to the opener of authorization flow window.\n  Otherwise it will be sent to the redirect uri. A special value of\n  urn:ietf:wg:oauth:2.0:oob means that authorization code should be\n  returned in the title bar of the browser, with the page text prompting\n  the user to copy the code and paste it in the application.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "location": "path",
+                      "description": "The BigQuery project id where the transfer configuration should be created.\nMust be in the format /projects/{project_id}/locations/{location_id}\nor\n/projects/{project_id}/locations/-\nIn case when '-' is specified as location_id, location is infered from\nthe destination dataset region.",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs",
+                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.create",
+                  "path": "v1/{+parent}/transferConfigs"
+                },
+                "scheduleRuns": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
+                      "location": "path",
+                      "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}`.",
+                      "type": "string",
+                      "required": true
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}:scheduleRuns",
+                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.scheduleRuns",
+                  "path": "v1/{+parent}:scheduleRuns",
+                  "request": {
+                    "$ref": "ScheduleTransferRunsRequest"
+                  },
+                  "description": "Creates transfer runs for a time range [range_start_time, range_end_time].\nFor each date - or whatever granularity the data source supports - in the\nrange, one transfer run is created.\nNote that runs are created per UTC time in the time range.",
+                  "response": {
+                    "$ref": "ScheduleTransferRunsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST"
+                }
+              },
+              "resources": {
+                "runs": {
+                  "methods": {
+                    "delete": {
+                      "path": "v1/{+name}",
+                      "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.delete",
+                      "description": "Deletes the specified transfer run.",
+                      "httpMethod": "DELETE",
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
+                          "location": "path",
+                          "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
+                          "type": "string",
+                          "required": true
+                        }
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}"
+                    },
+                    "list": {
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "response": {
+                        "$ref": "ListTransferRunsResponse"
+                      },
+                      "httpMethod": "GET",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                      ],
+                      "parameters": {
+                        "pageToken": {
+                          "location": "query",
+                          "description": "Pagination token, which can be used to request a specific page\nof `ListTransferRunsRequest` list results. For multiple-page\nresults, `ListTransferRunsResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
+                          "type": "string"
+                        },
+                        "pageSize": {
+                          "format": "int32",
+                          "description": "Page size. The default page size is the maximum value of 1000 results.",
+                          "type": "integer",
+                          "location": "query"
+                        },
+                        "states": {
+                          "repeated": true,
+                          "location": "query",
+                          "enum": [
+                            "TRANSFER_STATE_UNSPECIFIED",
+                            "INACTIVE",
+                            "PENDING",
+                            "RUNNING",
+                            "SUCCEEDED",
+                            "FAILED",
+                            "CANCELLED"
+                          ],
+                          "description": "When specified, only transfer runs with requested states are returned.",
+                          "type": "string"
+                        },
+                        "runAttempt": {
+                          "description": "Indicates how run attempts are to be pulled.",
+                          "type": "string",
+                          "location": "query",
+                          "enum": [
+                            "RUN_ATTEMPT_UNSPECIFIED",
+                            "LATEST"
+                          ]
+                        },
+                        "parent": {
+                          "type": "string",
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
+                          "location": "path",
+                          "description": "Name of transfer configuration for which transfer runs should be retrieved.\nFormat of transfer configuration resource name is:\n`projects/{project_id}/transferConfigs/{config_id}`."
+                        }
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs",
+                      "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.list",
+                      "path": "v1/{+parent}/runs",
+                      "description": "Returns information about running and completed jobs."
+                    },
+                    "get": {
+                      "httpMethod": "GET",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "response": {
+                        "$ref": "TransferRun"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
+                          "type": "string",
+                          "required": true,
+                          "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
+                      "path": "v1/{+name}",
+                      "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.get",
+                      "description": "Returns information about the particular transfer run."
+                    }
+                  },
+                  "resources": {
+                    "transferLogs": {
+                      "methods": {
+                        "list": {
+                          "httpMethod": "GET",
+                          "parameterOrder": [
+                            "parent"
+                          ],
+                          "response": {
+                            "$ref": "ListTransferLogsResponse"
+                          },
+                          "parameters": {
+                            "pageToken": {
+                              "location": "query",
+                              "description": "Pagination token, which can be used to request a specific page\nof `ListTransferLogsRequest` list results. For multiple-page\nresults, `ListTransferLogsResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
+                              "type": "string"
+                            },
+                            "pageSize": {
+                              "type": "integer",
+                              "location": "query",
+                              "format": "int32",
+                              "description": "Page size. The default page size is the maximum value of 1000 results."
+                            },
+                            "messageTypes": {
+                              "repeated": true,
+                              "location": "query",
+                              "enum": [
+                                "MESSAGE_SEVERITY_UNSPECIFIED",
+                                "INFO",
+                                "WARNING",
+                                "ERROR"
+                              ],
+                              "description": "Message types to return. If not populated - INFO, WARNING and ERROR\nmessages are returned.",
+                              "type": "string"
+                            },
+                            "parent": {
+                              "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
+                              "location": "path",
+                              "description": "Transfer run name in the form:\n`projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.",
+                              "type": "string",
+                              "required": true
+                            }
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/bigquery",
+                            "https://www.googleapis.com/auth/cloud-platform",
+                            "https://www.googleapis.com/auth/cloud-platform.read-only"
+                          ],
+                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}/transferLogs",
+                          "path": "v1/{+parent}/transferLogs",
+                          "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.transferLogs.list",
+                          "description": "Returns user facing log messages for the data transfer run."
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "dataSources": {
+              "methods": {
+                "list": {
+                  "response": {
+                    "$ref": "ListDataSourcesResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-platform.read-only"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "description": "The BigQuery project id for which data sources should be returned.\nMust be in the form: `projects/{project_id}`",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
+                    },
+                    "pageToken": {
+                      "location": "query",
+                      "description": "Pagination token, which can be used to request a specific page\nof `ListDataSourcesRequest` list results. For multiple-page\nresults, `ListDataSourcesResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
+                      "type": "string"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "format": "int32",
+                      "description": "Page size. The default page size is the maximum value of 1000 results.",
+                      "type": "integer"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources",
+                  "id": "bigquerydatatransfer.projects.locations.dataSources.list",
+                  "path": "v1/{+parent}/dataSources",
+                  "description": "Lists supported data sources and returns their settings,\nwhich can be used for UI rendering."
+                },
+                "get": {
+                  "path": "v1/{+name}",
+                  "id": "bigquerydatatransfer.projects.locations.dataSources.get",
+                  "description": "Retrieves a supported data source and returns its settings,\nwhich can be used for UI rendering.",
+                  "httpMethod": "GET",
+                  "response": {
+                    "$ref": "DataSource"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$",
+                      "location": "path",
+                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/dataSources/{data_source_id}`"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-platform.read-only"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources/{dataSourcesId}"
+                },
+                "checkValidCreds": {
+                  "response": {
+                    "$ref": "CheckValidCredsResponse"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-platform.read-only"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The data source in the form:\n`projects/{project_id}/dataSources/{data_source_id}`",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources/{dataSourcesId}:checkValidCreds",
+                  "id": "bigquerydatatransfer.projects.locations.dataSources.checkValidCreds",
+                  "path": "v1/{+name}:checkValidCreds",
+                  "request": {
+                    "$ref": "CheckValidCredsRequest"
+                  },
+                  "description": "Returns true if valid credentials exist for the given data source and\nrequesting user.\nSome data sources doesn't support service account, so we need to talk to\nthem on behalf of the end user. This API just checks whether we have OAuth\ntoken for the particular user, which is a pre-requisite before user can\ncreate a transfer config."
+                }
+              }
+            }
+          }
+        },
+        "transferConfigs": {
+          "resources": {
+            "runs": {
+              "methods": {
+                "list": {
+                  "description": "Returns information about running and completed jobs.",
+                  "response": {
+                    "$ref": "ListTransferRunsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "runAttempt": {
+                      "description": "Indicates how run attempts are to be pulled.",
+                      "type": "string",
+                      "location": "query",
+                      "enum": [
+                        "RUN_ATTEMPT_UNSPECIFIED",
+                        "LATEST"
+                      ]
+                    },
+                    "parent": {
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
+                      "location": "path",
+                      "description": "Name of transfer configuration for which transfer runs should be retrieved.\nFormat of transfer configuration resource name is:\n`projects/{project_id}/transferConfigs/{config_id}`."
+                    },
+                    "pageToken": {
+                      "description": "Pagination token, which can be used to request a specific page\nof `ListTransferRunsRequest` list results. For multiple-page\nresults, `ListTransferRunsResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageSize": {
+                      "location": "query",
+                      "format": "int32",
+                      "description": "Page size. The default page size is the maximum value of 1000 results.",
+                      "type": "integer"
+                    },
+                    "states": {
+                      "description": "When specified, only transfer runs with requested states are returned.",
+                      "type": "string",
+                      "repeated": true,
+                      "location": "query",
+                      "enum": [
+                        "TRANSFER_STATE_UNSPECIFIED",
+                        "INACTIVE",
+                        "PENDING",
+                        "RUNNING",
+                        "SUCCEEDED",
+                        "FAILED",
+                        "CANCELLED"
+                      ]
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-platform.read-only"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs",
+                  "id": "bigquerydatatransfer.projects.transferConfigs.runs.list",
+                  "path": "v1/{+parent}/runs"
+                },
+                "get": {
+                  "parameters": {
+                    "name": {
+                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform",
+                    "https://www.googleapis.com/auth/cloud-platform.read-only"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
+                  "id": "bigquerydatatransfer.projects.transferConfigs.runs.get",
+                  "path": "v1/{+name}",
+                  "description": "Returns information about the particular transfer run.",
+                  "response": {
+                    "$ref": "TransferRun"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET"
+                },
+                "delete": {
+                  "path": "v1/{+name}",
+                  "id": "bigquerydatatransfer.projects.transferConfigs.runs.delete",
+                  "description": "Deletes the specified transfer run.",
+                  "httpMethod": "DELETE",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/bigquery",
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
+                      "type": "string",
+                      "required": true,
+                      "pattern": "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}"
+                }
+              },
+              "resources": {
+                "transferLogs": {
+                  "methods": {
+                    "list": {
+                      "response": {
+                        "$ref": "ListTransferLogsResponse"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "parent": {
+                          "pattern": "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
+                          "location": "path",
+                          "description": "Transfer run name in the form:\n`projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.",
+                          "type": "string",
+                          "required": true
+                        },
+                        "pageToken": {
+                          "description": "Pagination token, which can be used to request a specific page\nof `ListTransferLogsRequest` list results. For multiple-page\nresults, `ListTransferLogsResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "pageSize": {
+                          "format": "int32",
+                          "description": "Page size. The default page size is the maximum value of 1000 results.",
+                          "type": "integer",
+                          "location": "query"
+                        },
+                        "messageTypes": {
+                          "enum": [
+                            "MESSAGE_SEVERITY_UNSPECIFIED",
+                            "INFO",
+                            "WARNING",
+                            "ERROR"
+                          ],
+                          "description": "Message types to return. If not populated - INFO, WARNING and ERROR\nmessages are returned.",
+                          "type": "string",
+                          "repeated": true,
+                          "location": "query"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                      ],
+                      "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}/transferLogs",
+                      "id": "bigquerydatatransfer.projects.transferConfigs.runs.transferLogs.list",
+                      "path": "v1/{+parent}/transferLogs",
+                      "description": "Returns user facing log messages for the data transfer run."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "methods": {
+            "patch": {
+              "path": "v1/{+name}",
+              "id": "bigquerydatatransfer.projects.transferConfigs.patch",
+              "request": {
+                "$ref": "TransferConfig"
+              },
+              "description": "Updates a data transfer configuration.\nAll fields must be set, even if they are not updated.",
+              "httpMethod": "PATCH",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "TransferConfig"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
+                  "location": "path",
+                  "description": "The resource name of the transfer config.\nTransfer config names have the form\n`projects/{project_id}/transferConfigs/{config_id}`.\nWhere `config_id` is usually a uuid, even though it is not\nguaranteed or required. The name is ignored when creating a transfer\nconfig.",
+                  "type": "string",
+                  "required": true
+                },
+                "authorizationCode": {
+                  "location": "query",
+                  "description": "Optional OAuth2 authorization code to use with this transfer configuration.\nIf it is provided, the transfer configuration will be associated with the\ngaia id of the authorizing user.\nIn order to obtain authorization_code, please make a\nrequest to\nhttps://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=\u003cdatatransferapiclientid\u003e&scope=\u003cdata_source_scopes\u003e&redirect_uri=\u003credirect_uri\u003e\n\n* client_id should be OAuth client_id of BigQuery DTS API for the given\n  data source returned by ListDataSources method.\n* data_source_scopes are the scopes returned by ListDataSources method.\n* redirect_uri is an optional parameter. If not specified, then\n  authorization code is posted to the opener of authorization flow window.\n  Otherwise it will be sent to the redirect uri. A special value of\n  urn:ietf:wg:oauth:2.0:oob means that authorization code should be\n  returned in the title bar of the browser, with the page text prompting\n  the user to copy the code and paste it in the application.",
+                  "type": "string"
+                },
+                "updateMask": {
+                  "location": "query",
+                  "format": "google-fieldmask",
+                  "description": "Required list of fields to be updated in this request.",
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}"
+            },
+            "get": {
+              "description": "Returns information about a data transfer config.",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "TransferConfig"
+              },
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
+              "id": "bigquerydatatransfer.projects.transferConfigs.get",
+              "path": "v1/{+name}"
+            },
+            "delete": {
+              "httpMethod": "DELETE",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "Empty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
+                  "location": "path",
+                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
+              "path": "v1/{+name}",
+              "id": "bigquerydatatransfer.projects.transferConfigs.delete",
+              "description": "Deletes a data transfer configuration,\nincluding any associated transfer runs and logs."
+            },
+            "list": {
+              "description": "Returns information about all data transfers in the project.",
+              "response": {
+                "$ref": "ListTransferConfigsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only"
+              ],
+              "parameters": {
+                "dataSourceIds": {
+                  "location": "query",
+                  "description": "When specified, only configurations of requested data sources are returned.",
+                  "type": "string",
+                  "repeated": true
+                },
+                "parent": {
+                  "description": "The BigQuery project id for which data sources\nshould be returned: `projects/{project_id}`.",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                },
+                "pageToken": {
+                  "location": "query",
+                  "description": "Pagination token, which can be used to request a specific page\nof `ListTransfersRequest` list results. For multiple-page\nresults, `ListTransfersResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "format": "int32",
+                  "description": "Page size. The default page size is the maximum value of 1000 results.",
+                  "type": "integer",
+                  "location": "query"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/transferConfigs",
+              "id": "bigquerydatatransfer.projects.transferConfigs.list",
+              "path": "v1/{+parent}/transferConfigs"
+            },
+            "create": {
+              "path": "v1/{+parent}/transferConfigs",
+              "id": "bigquerydatatransfer.projects.transferConfigs.create",
+              "description": "Creates a new data transfer configuration.",
+              "request": {
+                "$ref": "TransferConfig"
+              },
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "TransferConfig"
+              },
+              "parameters": {
+                "parent": {
+                  "description": "The BigQuery project id where the transfer configuration should be created.\nMust be in the format /projects/{project_id}/locations/{location_id}\nor\n/projects/{project_id}/locations/-\nIn case when '-' is specified as location_id, location is infered from\nthe destination dataset region.",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                },
+                "authorizationCode": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "Optional OAuth2 authorization code to use with this transfer configuration.\nThis is required if new credentials are needed, as indicated by\n`CheckValidCreds`.\nIn order to obtain authorization_code, please make a\nrequest to\nhttps://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=\u003cdatatransferapiclientid\u003e&scope=\u003cdata_source_scopes\u003e&redirect_uri=\u003credirect_uri\u003e\n\n* client_id should be OAuth client_id of BigQuery DTS API for the given\n  data source returned by ListDataSources method.\n* data_source_scopes are the scopes returned by ListDataSources method.\n* redirect_uri is an optional parameter. If not specified, then\n  authorization code is posted to the opener of authorization flow window.\n  Otherwise it will be sent to the redirect uri. A special value of\n  urn:ietf:wg:oauth:2.0:oob means that authorization code should be\n  returned in the title bar of the browser, with the page text prompting\n  the user to copy the code and paste it in the application."
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/transferConfigs"
+            },
+            "scheduleRuns": {
+              "request": {
+                "$ref": "ScheduleTransferRunsRequest"
+              },
+              "description": "Creates transfer runs for a time range [range_start_time, range_end_time].\nFor each date - or whatever granularity the data source supports - in the\nrange, one transfer run is created.\nNote that runs are created per UTC time in the time range.",
+              "response": {
+                "$ref": "ScheduleTransferRunsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}`.",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}:scheduleRuns",
+              "id": "bigquerydatatransfer.projects.transferConfigs.scheduleRuns",
+              "path": "v1/{+parent}:scheduleRuns"
+            }
+          }
+        },
+        "dataSources": {
+          "methods": {
+            "list": {
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "ListDataSourcesResponse"
+              },
+              "parameters": {
+                "pageToken": {
+                  "location": "query",
+                  "description": "Pagination token, which can be used to request a specific page\nof `ListDataSourcesRequest` list results. For multiple-page\nresults, `ListDataSourcesResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "format": "int32",
+                  "description": "Page size. The default page size is the maximum value of 1000 results.",
+                  "type": "integer"
+                },
+                "parent": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "The BigQuery project id for which data sources should be returned.\nMust be in the form: `projects/{project_id}`",
+                  "type": "string",
+                  "required": true
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only"
+              ],
+              "flatPath": "v1/projects/{projectsId}/dataSources",
+              "path": "v1/{+parent}/dataSources",
+              "id": "bigquerydatatransfer.projects.dataSources.list",
+              "description": "Lists supported data sources and returns their settings,\nwhich can be used for UI rendering."
+            },
+            "get": {
+              "description": "Retrieves a supported data source and returns its settings,\nwhich can be used for UI rendering.",
+              "response": {
+                "$ref": "DataSource"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "name": {
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/dataSources/[^/]+$",
+                  "location": "path",
+                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/dataSources/{data_source_id}`"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only"
+              ],
+              "flatPath": "v1/projects/{projectsId}/dataSources/{dataSourcesId}",
+              "id": "bigquerydatatransfer.projects.dataSources.get",
+              "path": "v1/{+name}"
+            },
+            "checkValidCreds": {
+              "path": "v1/{+name}:checkValidCreds",
+              "id": "bigquerydatatransfer.projects.dataSources.checkValidCreds",
+              "request": {
+                "$ref": "CheckValidCredsRequest"
+              },
+              "description": "Returns true if valid credentials exist for the given data source and\nrequesting user.\nSome data sources doesn't support service account, so we need to talk to\nthem on behalf of the end user. This API just checks whether we have OAuth\ntoken for the particular user, which is a pre-requisite before user can\ncreate a transfer config.",
+              "httpMethod": "POST",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "CheckValidCredsResponse"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/bigquery",
+                "https://www.googleapis.com/auth/cloud-platform",
+                "https://www.googleapis.com/auth/cloud-platform.read-only"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The data source in the form:\n`projects/{project_id}/dataSources/{data_source_id}`",
+                  "type": "string",
+                  "required": true,
+                  "pattern": "^projects/[^/]+/dataSources/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1/projects/{projectsId}/dataSources/{dataSourcesId}:checkValidCreds"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "default": "true",
+      "type": "boolean"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string"
+    },
+    "alt": {
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "pp": {
+      "location": "query",
+      "description": "Pretty-print response.",
+      "default": "true",
+      "type": "boolean"
+    },
+    "bearer_token": {
+      "location": "query",
+      "description": "OAuth bearer token.",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://bigquerydatatransfer.googleapis.com/",
+  "kind": "discovery#restDescription",
+  "description": "Transfers data from partner SaaS applications to Google BigQuery on a scheduled, managed basis.",
+  "servicePath": "",
   "basePath": "",
-  "revision": "20170925",
-  "documentationLink": "https://cloud.google.com/bigquery/",
   "id": "bigquerydatatransfer:v1",
+  "documentationLink": "https://cloud.google.com/bigquery/",
+  "revision": "20171001",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
@@ -10,6 +1149,37 @@
       "description": "Represents data source metadata. Metadata is sufficient to\nrender UI and request proper OAuth tokens.",
       "type": "object",
       "properties": {
+        "clientId": {
+          "description": "Data source client id which should be used to receive refresh token.\nWhen not supplied, no offline credentials are populated for data transfer.",
+          "type": "string"
+        },
+        "authorizationType": {
+          "description": "Indicates the type of authorization.",
+          "type": "string",
+          "enumDescriptions": [
+            "Type unspecified.",
+            "Use OAuth 2 authorization codes that can be exchanged\nfor a refresh token on the backend.",
+            "Return an authorization code for a given Google+ page that can then be\nexchanged for a refresh token on the backend."
+          ],
+          "enum": [
+            "AUTHORIZATION_TYPE_UNSPECIFIED",
+            "AUTHORIZATION_CODE",
+            "GOOGLE_PLUS_AUTHORIZATION_CODE"
+          ]
+        },
+        "supportsCustomSchedule": {
+          "description": "Specifies whether the data source supports a user defined schedule, or\noperates on the default schedule.\nWhen set to `true`, user can override default schedule.",
+          "type": "boolean"
+        },
+        "displayName": {
+          "description": "User friendly data source name.",
+          "type": "string"
+        },
+        "updateDeadlineSeconds": {
+          "format": "int32",
+          "description": "The number of seconds to wait for an update from the data source\nbefore BigQuery marks the transfer as failed.",
+          "type": "integer"
+        },
         "dataRefreshType": {
           "enumDescriptions": [
             "The data source won't support data auto refresh, which is default value.",
@@ -43,18 +1213,16 @@
           "description": "Indicates whether the data source supports multiple transfers\nto different BigQuery targets.",
           "type": "boolean"
         },
-        "defaultDataRefreshWindowDays": {
-          "format": "int32",
-          "description": "Default data refresh window on days.\nOnly meaningful when `data_refresh_type` = `SLIDING_WINDOW`.",
-          "type": "integer"
-        },
         "manualRunsDisabled": {
-          "type": "boolean",
-          "description": "Disables backfilling and manual run scheduling\nfor the data source."
+          "description": "Disables backfilling and manual run scheduling\nfor the data source.",
+          "type": "boolean"
+        },
+        "defaultDataRefreshWindowDays": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Default data refresh window on days.\nOnly meaningful when `data_refresh_type` = `SLIDING_WINDOW`."
         },
         "transferType": {
-          "description": "Transfer type. Currently supports only batch transfers,\nwhich are transfers that use the BigQuery batch APIs (load or\nquery) to ingest the data.",
-          "type": "string",
           "enumDescriptions": [
             "Invalid or Unknown transfer type placeholder.",
             "Batch data transfer.",
@@ -64,7 +1232,9 @@
             "TRANSFER_TYPE_UNSPECIFIED",
             "BATCH",
             "STREAMING"
-          ]
+          ],
+          "description": "Transfer type. Currently supports only batch transfers,\nwhich are transfers that use the BigQuery batch APIs (load or\nquery) to ingest the data.",
+          "type": "string"
         },
         "description": {
           "description": "User friendly data source description string.",
@@ -86,40 +1256,9 @@
           "type": "string"
         },
         "minimumScheduleInterval": {
-          "type": "string",
           "format": "google-duration",
-          "description": "The minimum interval between two consecutive scheduled runs."
-        },
-        "clientId": {
-          "description": "Data source client id which should be used to receive refresh token.\nWhen not supplied, no offline credentials are populated for data transfer.",
+          "description": "The minimum interval between two consecutive scheduled runs.",
           "type": "string"
-        },
-        "authorizationType": {
-          "description": "Indicates the type of authorization.",
-          "type": "string",
-          "enumDescriptions": [
-            "Type unspecified.",
-            "Use OAuth 2 authorization codes that can be exchanged\nfor a refresh token on the backend.",
-            "Return an authorization code for a given Google+ page that can then be\nexchanged for a refresh token on the backend."
-          ],
-          "enum": [
-            "AUTHORIZATION_TYPE_UNSPECIFIED",
-            "AUTHORIZATION_CODE",
-            "GOOGLE_PLUS_AUTHORIZATION_CODE"
-          ]
-        },
-        "supportsCustomSchedule": {
-          "description": "Specifies whether the data source supports a user defined schedule, or\noperates on the default schedule.\nWhen set to `true`, user can override default schedule.",
-          "type": "boolean"
-        },
-        "displayName": {
-          "description": "User friendly data source name.",
-          "type": "string"
-        },
-        "updateDeadlineSeconds": {
-          "format": "int32",
-          "description": "The number of seconds to wait for an update from the data source\nbefore BigQuery marks the transfer as failed.",
-          "type": "integer"
         }
       },
       "id": "DataSource"
@@ -148,23 +1287,22 @@
       "type": "object"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
       "type": "object",
       "properties": {
         "metadata": {
-          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation."
+          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
+          "type": "object"
         },
         "labels": {
-          "type": "object",
           "additionalProperties": {
             "type": "string"
           },
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}"
+          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
+          "type": "object"
         },
         "name": {
           "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
@@ -175,24 +1313,14 @@
           "type": "string"
         }
       },
-      "id": "Location"
+      "id": "Location",
+      "description": "A resource that represents Google Cloud Platform location."
     },
     "TransferConfig": {
       "description": "Represents a data transfer configuration. A transfer configuration\ncontains all metadata needed to perform a data transfer. For example,\n`destination_dataset_id` specifies where data should be stored.\nWhen a new transfer configuration is created, the specified\n`destination_dataset_id` is created when needed and shared with the\nappropriate data source service account.",
       "type": "object",
       "properties": {
-        "dataRefreshWindowDays": {
-          "format": "int32",
-          "description": "The number of days to look back to automatically refresh the data.\nFor example, if `data_refresh_window_days = 10`, then every day\nBigQuery reingests data for [today-10, today-1], rather than ingesting data\nfor just [today-1].\nOnly valid if the data source supports the feature. Set the value to  0\nto use the default value.",
-          "type": "integer"
-        },
-        "dataSourceId": {
-          "description": "Data source id. Cannot be changed once data transfer is created.",
-          "type": "string"
-        },
         "state": {
-          "description": "State of the most recently updated transfer run.\nOutput only.",
-          "type": "string",
           "enumDescriptions": [
             "State placeholder.",
             "Data transfer is inactive.",
@@ -210,19 +1338,21 @@
             "SUCCEEDED",
             "FAILED",
             "CANCELLED"
-          ]
+          ],
+          "description": "State of the most recently updated transfer run.\nOutput only.",
+          "type": "string"
         },
-        "name": {
-          "description": "The resource name of the transfer config.\nTransfer config names have the form\n`projects/{project_id}/transferConfigs/{config_id}`.\nWhere `config_id` is usually a uuid, even though it is not\nguaranteed or required. The name is ignored when creating a transfer\nconfig.",
+        "userId": {
+          "format": "int64",
+          "description": "Unique ID of the user on whose behalf transfer is done. Applicable only\nto data sources that do not support service accounts. When set to 0,\nthe data source service account credentials are used.\nOutput only.",
           "type": "string"
         },
         "destinationDatasetId": {
           "description": "The BigQuery target dataset id.",
           "type": "string"
         },
-        "userId": {
-          "format": "int64",
-          "description": "Unique ID of the user on whose behalf transfer is done. Applicable only\nto data sources that do not support service accounts. When set to 0,\nthe data source service account credentials are used.\nOutput only.",
+        "name": {
+          "description": "The resource name of the transfer config.\nTransfer config names have the form\n`projects/{project_id}/transferConfigs/{config_id}`.\nWhere `config_id` is usually a uuid, even though it is not\nguaranteed or required. The name is ignored when creating a transfer\nconfig.",
           "type": "string"
         },
         "params": {
@@ -241,14 +1371,14 @@
           "description": "User specified display name for the data transfer.",
           "type": "string"
         },
+        "nextRunTime": {
+          "format": "google-datetime",
+          "description": "Next time when data transfer will run.\nOutput only.",
+          "type": "string"
+        },
         "disabled": {
           "description": "Is this config disabled. When set to true, no runs are scheduled\nfor a given transfer.",
           "type": "boolean"
-        },
-        "nextRunTime": {
-          "type": "string",
-          "format": "google-datetime",
-          "description": "Next time when data transfer will run.\nOutput only."
         },
         "updateTime": {
           "format": "google-datetime",
@@ -258,6 +1388,15 @@
         "schedule": {
           "description": "Data transfer schedule.\nIf the data source does not support a custom schedule, this should be\nempty. If it is empty, the default value for the data source will be\nused.\nThe specified times are in UTC.\nExamples of valid format:\n`1st,3rd monday of month 15:30`,\n`every wed,fri of jan,jun 13:15`, and\n`first sunday of quarter 00:00`.\nSee more explanation about the format here:\nhttps://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format\nNOTE: the granularity should be at least 8 hours, or less frequent.",
           "type": "string"
+        },
+        "dataRefreshWindowDays": {
+          "format": "int32",
+          "description": "The number of days to look back to automatically refresh the data.\nFor example, if `data_refresh_window_days = 10`, then every day\nBigQuery reingests data for [today-10, today-1], rather than ingesting data\nfor just [today-1].\nOnly valid if the data source supports the feature. Set the value to  0\nto use the default value.",
+          "type": "integer"
+        },
+        "dataSourceId": {
+          "description": "Data source id. Cannot be changed once data transfer is created.",
+          "type": "string"
         }
       },
       "id": "TransferConfig"
@@ -266,41 +1405,11 @@
       "description": "Represents a data transfer run.",
       "type": "object",
       "properties": {
-        "datasetRegion": {
-          "description": "Region in which BigQuery dataset is located. Currently possible values are:\n\"US\" and \"EU\".\nOutput only.",
-          "type": "string"
-        },
-        "startTime": {
-          "format": "google-datetime",
-          "description": "Time when transfer run was started. Parameter ignored by server for input\nrequests.\nOutput only.",
-          "type": "string"
-        },
-        "scheduleTime": {
-          "format": "google-datetime",
-          "description": "Minimum time after which a transfer run can be started.",
-          "type": "string"
-        },
-        "schedule": {
-          "description": "Describes the schedule of this transfer run if it was created as part of\na regular schedule. For batch transfer runs that are directly created,\nthis is empty.\nNOTE: the system might choose to delay the schedule depending on the\ncurrent load, so `schedule_time` doesn't always matches this.\nOutput only.",
-          "type": "string"
-        },
-        "updateTime": {
-          "format": "google-datetime",
-          "description": "Last time the data transfer run state was updated.\nOutput only.",
-          "type": "string"
-        },
-        "runTime": {
-          "format": "google-datetime",
-          "description": "For batch transfer runs, specifies the date and time that\ndata should be ingested.",
-          "type": "string"
-        },
         "dataSourceId": {
           "description": "Data source id.\nOutput only.",
           "type": "string"
         },
         "state": {
-          "description": "Data transfer run state. Ignored for input requests.\nOutput only.",
-          "type": "string",
           "enumDescriptions": [
             "State placeholder.",
             "Data transfer is inactive.",
@@ -318,14 +1427,8 @@
             "SUCCEEDED",
             "FAILED",
             "CANCELLED"
-          ]
-        },
-        "destinationDatasetId": {
-          "description": "The BigQuery target dataset id.",
-          "type": "string"
-        },
-        "name": {
-          "description": "The resource name of the transfer run.\nTransfer run names have the form\n`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.\nThe name is ignored when creating a transfer run.",
+          ],
+          "description": "Data transfer run state. Ignored for input requests.\nOutput only.",
           "type": "string"
         },
         "userId": {
@@ -333,17 +1436,53 @@
           "description": "Unique ID of the user on whose behalf transfer is done. Applicable only\nto data sources that do not support service accounts. When set to 0,\nthe data source service account credentials are used.\nOutput only.",
           "type": "string"
         },
+        "name": {
+          "type": "string",
+          "description": "The resource name of the transfer run.\nTransfer run names have the form\n`projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`.\nThe name is ignored when creating a transfer run."
+        },
+        "destinationDatasetId": {
+          "description": "The BigQuery target dataset id.",
+          "type": "string"
+        },
         "params": {
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object.",
             "type": "any"
           },
-          "description": "Data transfer specific parameters.",
-          "type": "object"
+          "description": "Data transfer specific parameters."
         },
         "endTime": {
           "format": "google-datetime",
           "description": "Time when transfer run ended. Parameter ignored by server for input\nrequests.\nOutput only.",
+          "type": "string"
+        },
+        "startTime": {
+          "format": "google-datetime",
+          "description": "Time when transfer run was started. Parameter ignored by server for input\nrequests.\nOutput only.",
+          "type": "string"
+        },
+        "datasetRegion": {
+          "description": "Region in which BigQuery dataset is located. Currently possible values are:\n\"US\" and \"EU\".\nOutput only.",
+          "type": "string"
+        },
+        "scheduleTime": {
+          "format": "google-datetime",
+          "description": "Minimum time after which a transfer run can be started.",
+          "type": "string"
+        },
+        "updateTime": {
+          "format": "google-datetime",
+          "description": "Last time the data transfer run state was updated.\nOutput only.",
+          "type": "string"
+        },
+        "schedule": {
+          "description": "Describes the schedule of this transfer run if it was created as part of\na regular schedule. For batch transfer runs that are directly created,\nthis is empty.\nNOTE: the system might choose to delay the schedule depending on the\ncurrent load, so `schedule_time` doesn't always matches this.\nOutput only.",
+          "type": "string"
+        },
+        "runTime": {
+          "format": "google-datetime",
+          "description": "For batch transfer runs, specifies the date and time that\ndata should be ingested.",
           "type": "string"
         }
       },
@@ -356,15 +1495,15 @@
       "id": "CheckValidCredsRequest"
     },
     "CheckValidCredsResponse": {
-      "id": "CheckValidCredsResponse",
-      "description": "A response indicating whether the credentials exist and are valid.",
-      "type": "object",
       "properties": {
         "hasValidCreds": {
-          "description": "If set to `true`, the credentials exist and are valid.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "If set to `true`, the credentials exist and are valid."
         }
-      }
+      },
+      "id": "CheckValidCredsResponse",
+      "description": "A response indicating whether the credentials exist and are valid.",
+      "type": "object"
     },
     "ScheduleTransferRunsResponse": {
       "description": "A response to schedule transfer runs for a time range.",
@@ -379,24 +1518,6 @@
         }
       },
       "id": "ScheduleTransferRunsResponse"
-    },
-    "ListTransferLogsResponse": {
-      "properties": {
-        "transferMessages": {
-          "description": "The stored pipeline transfer messages.\nOutput only.",
-          "items": {
-            "$ref": "TransferMessage"
-          },
-          "type": "array"
-        },
-        "nextPageToken": {
-          "description": "The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`GetTransferRunLogRequest.page_token`\nto request the next page of list results.\nOutput only.",
-          "type": "string"
-        }
-      },
-      "id": "ListTransferLogsResponse",
-      "description": "The returned list transfer run messages.",
-      "type": "object"
     },
     "TransferMessage": {
       "description": "Represents a user facing message for a particular data transfer run.",
@@ -423,14 +1544,33 @@
           "description": "Message severity."
         },
         "messageTime": {
-          "type": "string",
           "format": "google-datetime",
-          "description": "Time when message was logged."
+          "description": "Time when message was logged.",
+          "type": "string"
         }
       },
       "id": "TransferMessage"
     },
+    "ListTransferLogsResponse": {
+      "description": "The returned list transfer run messages.",
+      "type": "object",
+      "properties": {
+        "transferMessages": {
+          "items": {
+            "$ref": "TransferMessage"
+          },
+          "type": "array",
+          "description": "The stored pipeline transfer messages.\nOutput only."
+        },
+        "nextPageToken": {
+          "description": "The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`GetTransferRunLogRequest.page_token`\nto request the next page of list results.\nOutput only.",
+          "type": "string"
+        }
+      },
+      "id": "ListTransferLogsResponse"
+    },
     "ListDataSourcesResponse": {
+      "description": "Returns list of supported data sources and their metadata.",
       "type": "object",
       "properties": {
         "dataSources": {
@@ -445,14 +1585,21 @@
           "type": "string"
         }
       },
-      "id": "ListDataSourcesResponse",
-      "description": "Returns list of supported data sources and their metadata."
+      "id": "ListDataSourcesResponse"
     },
     "DataSourceParameter": {
-      "id": "DataSourceParameter",
-      "description": "Represents a data source parameter with validation rules, so that\nparameters can be rendered in the UI. These parameters are given to us by\nsupported data sources, and include all needed information for rendering\nand validation.\nThus, whoever uses this api can decide to generate either generic ui,\nor custom data source specific forms.",
-      "type": "object",
       "properties": {
+        "description": {
+          "type": "string",
+          "description": "Parameter description."
+        },
+        "allowedValues": {
+          "description": "All possible values for the parameter.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
         "minValue": {
           "format": "double",
           "description": "For integer and double values specifies minimum allowed value.",
@@ -463,16 +1610,16 @@
           "type": "string"
         },
         "validationRegex": {
-          "type": "string",
-          "description": "Regular expression which can be used for parameter validation."
+          "description": "Regular expression which can be used for parameter validation.",
+          "type": "string"
         },
         "paramId": {
           "description": "Parameter identifier.",
           "type": "string"
         },
         "required": {
-          "description": "Is parameter required.",
-          "type": "boolean"
+          "type": "boolean",
+          "description": "Is parameter required."
         },
         "repeated": {
           "description": "Can parameter have multiple values.",
@@ -491,11 +1638,11 @@
           "type": "boolean"
         },
         "fields": {
+          "description": "When parameter is a record, describes child fields.",
           "items": {
             "$ref": "DataSourceParameter"
           },
-          "type": "array",
-          "description": "When parameter is a record, describes child fields."
+          "type": "array"
         },
         "maxValue": {
           "format": "double",
@@ -503,6 +1650,15 @@
           "type": "number"
         },
         "type": {
+          "enum": [
+            "TYPE_UNSPECIFIED",
+            "STRING",
+            "INTEGER",
+            "DOUBLE",
+            "BOOLEAN",
+            "RECORD",
+            "PLUS_PAGE"
+          ],
           "description": "Parameter type.",
           "type": "string",
           "enumDescriptions": [
@@ -513,94 +1669,77 @@
             "Boolean parameter.",
             "Record parameter.",
             "Page ID for a Google+ Page."
-          ],
-          "enum": [
-            "TYPE_UNSPECIFIED",
-            "STRING",
-            "INTEGER",
-            "DOUBLE",
-            "BOOLEAN",
-            "RECORD",
-            "PLUS_PAGE"
           ]
         },
         "recurse": {
           "description": "If set to true, schema should be taken from the parent with the same\nparameter_id. Only applicable when parameter type is RECORD.",
           "type": "boolean"
-        },
-        "description": {
-          "description": "Parameter description.",
-          "type": "string"
-        },
-        "allowedValues": {
-          "description": "All possible values for the parameter.",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
         }
-      }
+      },
+      "id": "DataSourceParameter",
+      "description": "Represents a data source parameter with validation rules, so that\nparameters can be rendered in the UI. These parameters are given to us by\nsupported data sources, and include all needed information for rendering\nand validation.\nThus, whoever uses this api can decide to generate either generic ui,\nor custom data source specific forms.",
+      "type": "object"
+    },
+    "ListTransferRunsResponse": {
+      "properties": {
+        "transferRuns": {
+          "items": {
+            "$ref": "TransferRun"
+          },
+          "type": "array",
+          "description": "The stored pipeline transfer runs.\nOutput only."
+        },
+        "nextPageToken": {
+          "description": "The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListTransferRunsRequest.page_token`\nto request the next page of list results.\nOutput only.",
+          "type": "string"
+        }
+      },
+      "id": "ListTransferRunsResponse",
+      "description": "The returned list of pipelines in the project.",
+      "type": "object"
     },
     "ListLocationsResponse": {
       "description": "The response message for Locations.ListLocations.",
       "type": "object",
       "properties": {
+        "nextPageToken": {
+          "description": "The standard List next-page token.",
+          "type": "string"
+        },
         "locations": {
           "description": "A list of locations that matches the specified filter in the request.",
           "items": {
             "$ref": "Location"
           },
           "type": "array"
-        },
-        "nextPageToken": {
-          "type": "string",
-          "description": "The standard List next-page token."
         }
       },
       "id": "ListLocationsResponse"
     },
-    "ListTransferRunsResponse": {
-      "id": "ListTransferRunsResponse",
-      "description": "The returned list of pipelines in the project.",
-      "type": "object",
-      "properties": {
-        "transferRuns": {
-          "description": "The stored pipeline transfer runs.\nOutput only.",
-          "items": {
-            "$ref": "TransferRun"
-          },
-          "type": "array"
-        },
-        "nextPageToken": {
-          "description": "The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListTransferRunsRequest.page_token`\nto request the next page of list results.\nOutput only.",
-          "type": "string"
-        }
-      }
-    },
     "ListTransferConfigsResponse": {
-      "description": "The returned list of pipelines in the project.",
-      "type": "object",
       "properties": {
-        "transferConfigs": {
-          "items": {
-            "$ref": "TransferConfig"
-          },
-          "type": "array",
-          "description": "The stored pipeline transfer configurations.\nOutput only."
-        },
         "nextPageToken": {
           "description": "The next-pagination token. For multiple-page list results,\nthis token can be used as the\n`ListTransferConfigsRequest.page_token`\nto request the next page of list results.\nOutput only.",
           "type": "string"
+        },
+        "transferConfigs": {
+          "description": "The stored pipeline transfer configurations.\nOutput only.",
+          "items": {
+            "$ref": "TransferConfig"
+          },
+          "type": "array"
         }
       },
-      "id": "ListTransferConfigsResponse"
+      "id": "ListTransferConfigsResponse",
+      "description": "The returned list of pipelines in the project.",
+      "type": "object"
     }
   },
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
   "canonicalName": "BigQuery Data Transfer",
   "auth": {
     "oauth2": {
@@ -619,1144 +1758,5 @@
   },
   "rootUrl": "https://bigquerydatatransfer.googleapis.com/",
   "ownerDomain": "google.com",
-  "name": "bigquerydatatransfer",
-  "batchPath": "batch",
-  "fullyEncodeReservedExpansion": true,
-  "title": "BigQuery Data Transfer API",
-  "ownerName": "Google",
-  "resources": {
-    "projects": {
-      "resources": {
-        "locations": {
-          "methods": {
-            "get": {
-              "parameters": {
-                "name": {
-                  "description": "Resource name for the location.",
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/locations/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only"
-              ],
-              "flatPath": "v1/projects/{projectsId}/locations/{locationsId}",
-              "id": "bigquerydatatransfer.projects.locations.get",
-              "path": "v1/{+name}",
-              "description": "Get information about a location.",
-              "response": {
-                "$ref": "Location"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET"
-            },
-            "list": {
-              "id": "bigquerydatatransfer.projects.locations.list",
-              "path": "v1/{+name}/locations",
-              "description": "Lists information about the supported locations for this service.",
-              "response": {
-                "$ref": "ListLocationsResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only"
-              ],
-              "parameters": {
-                "filter": {
-                  "location": "query",
-                  "description": "The standard list filter.",
-                  "type": "string"
-                },
-                "pageToken": {
-                  "location": "query",
-                  "description": "The standard list page token.",
-                  "type": "string"
-                },
-                "name": {
-                  "location": "path",
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^projects/[^/]+$"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "format": "int32",
-                  "description": "The standard list page size.",
-                  "type": "integer"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/locations"
-            }
-          },
-          "resources": {
-            "transferConfigs": {
-              "resources": {
-                "runs": {
-                  "methods": {
-                    "list": {
-                      "description": "Returns information about running and completed jobs.",
-                      "httpMethod": "GET",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "response": {
-                        "$ref": "ListTransferRunsResponse"
-                      },
-                      "parameters": {
-                        "runAttempt": {
-                          "location": "query",
-                          "enum": [
-                            "RUN_ATTEMPT_UNSPECIFIED",
-                            "LATEST"
-                          ],
-                          "description": "Indicates how run attempts are to be pulled.",
-                          "type": "string"
-                        },
-                        "parent": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
-                          "location": "path",
-                          "description": "Name of transfer configuration for which transfer runs should be retrieved.\nFormat of transfer configuration resource name is:\n`projects/{project_id}/transferConfigs/{config_id}`.",
-                          "type": "string",
-                          "required": true
-                        },
-                        "pageToken": {
-                          "type": "string",
-                          "location": "query",
-                          "description": "Pagination token, which can be used to request a specific page\nof `ListTransferRunsRequest` list results. For multiple-page\nresults, `ListTransferRunsResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results."
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "format": "int32",
-                          "description": "Page size. The default page size is the maximum value of 1000 results.",
-                          "type": "integer"
-                        },
-                        "states": {
-                          "description": "When specified, only transfer runs with requested states are returned.",
-                          "type": "string",
-                          "repeated": true,
-                          "location": "query",
-                          "enum": [
-                            "TRANSFER_STATE_UNSPECIFIED",
-                            "INACTIVE",
-                            "PENDING",
-                            "RUNNING",
-                            "SUCCEEDED",
-                            "FAILED",
-                            "CANCELLED"
-                          ]
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-platform.read-only"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs",
-                      "path": "v1/{+parent}/runs",
-                      "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.list"
-                    },
-                    "get": {
-                      "httpMethod": "GET",
-                      "response": {
-                        "$ref": "TransferRun"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
-                          "location": "path",
-                          "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
-                          "type": "string",
-                          "required": true
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-platform.read-only"
-                      ],
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
-                      "path": "v1/{+name}",
-                      "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.get",
-                      "description": "Returns information about the particular transfer run."
-                    },
-                    "delete": {
-                      "description": "Deletes the specified transfer run.",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "DELETE",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "location": "path",
-                          "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
-                          "type": "string",
-                          "required": true,
-                          "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$"
-                        }
-                      },
-                      "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
-                      "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.delete",
-                      "path": "v1/{+name}"
-                    }
-                  },
-                  "resources": {
-                    "transferLogs": {
-                      "methods": {
-                        "list": {
-                          "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}/runs/{runsId}/transferLogs",
-                          "path": "v1/{+parent}/transferLogs",
-                          "id": "bigquerydatatransfer.projects.locations.transferConfigs.runs.transferLogs.list",
-                          "description": "Returns user facing log messages for the data transfer run.",
-                          "httpMethod": "GET",
-                          "parameterOrder": [
-                            "parent"
-                          ],
-                          "response": {
-                            "$ref": "ListTransferLogsResponse"
-                          },
-                          "scopes": [
-                            "https://www.googleapis.com/auth/bigquery",
-                            "https://www.googleapis.com/auth/cloud-platform",
-                            "https://www.googleapis.com/auth/cloud-platform.read-only"
-                          ],
-                          "parameters": {
-                            "pageToken": {
-                              "location": "query",
-                              "description": "Pagination token, which can be used to request a specific page\nof `ListTransferLogsRequest` list results. For multiple-page\nresults, `ListTransferLogsResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
-                              "type": "string"
-                            },
-                            "pageSize": {
-                              "format": "int32",
-                              "description": "Page size. The default page size is the maximum value of 1000 results.",
-                              "type": "integer",
-                              "location": "query"
-                            },
-                            "messageTypes": {
-                              "enum": [
-                                "MESSAGE_SEVERITY_UNSPECIFIED",
-                                "INFO",
-                                "WARNING",
-                                "ERROR"
-                              ],
-                              "description": "Message types to return. If not populated - INFO, WARNING and ERROR\nmessages are returned.",
-                              "type": "string",
-                              "repeated": true,
-                              "location": "query"
-                            },
-                            "parent": {
-                              "description": "Transfer run name in the form:\n`projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`.",
-                              "type": "string",
-                              "required": true,
-                              "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
-                              "location": "path"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              },
-              "methods": {
-                "patch": {
-                  "httpMethod": "PATCH",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "TransferConfig"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "authorizationCode": {
-                      "location": "query",
-                      "description": "Optional OAuth2 authorization code to use with this transfer configuration.\nIf it is provided, the transfer configuration will be associated with the\ngaia id of the authorizing user.\nIn order to obtain authorization_code, please make a\nrequest to\nhttps://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=\u003cdatatransferapiclientid\u003e&scope=\u003cdata_source_scopes\u003e&redirect_uri=\u003credirect_uri\u003e\n\n* client_id should be OAuth client_id of BigQuery DTS API for the given\n  data source returned by ListDataSources method.\n* data_source_scopes are the scopes returned by ListDataSources method.\n* redirect_uri is an optional parameter. If not specified, then\n  authorization code is posted to the opener of authorization flow window.\n  Otherwise it will be sent to the redirect uri. A special value of\n  urn:ietf:wg:oauth:2.0:oob means that authorization code should be\n  returned in the title bar of the browser, with the page text prompting\n  the user to copy the code and paste it in the application.",
-                      "type": "string"
-                    },
-                    "updateMask": {
-                      "format": "google-fieldmask",
-                      "description": "Required list of fields to be updated in this request.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "name": {
-                      "description": "The resource name of the transfer config.\nTransfer config names have the form\n`projects/{project_id}/transferConfigs/{config_id}`.\nWhere `config_id` is usually a uuid, even though it is not\nguaranteed or required. The name is ignored when creating a transfer\nconfig.",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
-                  "path": "v1/{+name}",
-                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.patch",
-                  "request": {
-                    "$ref": "TransferConfig"
-                  },
-                  "description": "Updates a data transfer configuration.\nAll fields must be set, even if they are not updated."
-                },
-                "get": {
-                  "description": "Returns information about a data transfer config.",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "TransferConfig"
-                  },
-                  "parameters": {
-                    "name": {
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-platform.read-only"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
-                  "path": "v1/{+name}",
-                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.get"
-                },
-                "delete": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}",
-                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.delete",
-                  "path": "v1/{+name}",
-                  "description": "Deletes a data transfer configuration,\nincluding any associated transfer runs and logs.",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "parameters": {
-                    "name": {
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "list": {
-                  "response": {
-                    "$ref": "ListTransferConfigsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-platform.read-only"
-                  ],
-                  "parameters": {
-                    "pageSize": {
-                      "location": "query",
-                      "format": "int32",
-                      "description": "Page size. The default page size is the maximum value of 1000 results.",
-                      "type": "integer"
-                    },
-                    "dataSourceIds": {
-                      "location": "query",
-                      "description": "When specified, only configurations of requested data sources are returned.",
-                      "type": "string",
-                      "repeated": true
-                    },
-                    "parent": {
-                      "description": "The BigQuery project id for which data sources\nshould be returned: `projects/{project_id}`.",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "Pagination token, which can be used to request a specific page\nof `ListTransfersRequest` list results. For multiple-page\nresults, `ListTransfersResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs",
-                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.list",
-                  "path": "v1/{+parent}/transferConfigs",
-                  "description": "Returns information about all data transfers in the project."
-                },
-                "create": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs",
-                  "path": "v1/{+parent}/transferConfigs",
-                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.create",
-                  "request": {
-                    "$ref": "TransferConfig"
-                  },
-                  "description": "Creates a new data transfer configuration.",
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "response": {
-                    "$ref": "TransferConfig"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "description": "The BigQuery project id where the transfer configuration should be created.\nMust be in the format /projects/{project_id}/locations/{location_id}\nor\n/projects/{project_id}/locations/-\nIn case when '-' is specified as location_id, location is infered from\nthe destination dataset region.",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    },
-                    "authorizationCode": {
-                      "description": "Optional OAuth2 authorization code to use with this transfer configuration.\nThis is required if new credentials are needed, as indicated by\n`CheckValidCreds`.\nIn order to obtain authorization_code, please make a\nrequest to\nhttps://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=\u003cdatatransferapiclientid\u003e&scope=\u003cdata_source_scopes\u003e&redirect_uri=\u003credirect_uri\u003e\n\n* client_id should be OAuth client_id of BigQuery DTS API for the given\n  data source returned by ListDataSources method.\n* data_source_scopes are the scopes returned by ListDataSources method.\n* redirect_uri is an optional parameter. If not specified, then\n  authorization code is posted to the opener of authorization flow window.\n  Otherwise it will be sent to the redirect uri. A special value of\n  urn:ietf:wg:oauth:2.0:oob means that authorization code should be\n  returned in the title bar of the browser, with the page text prompting\n  the user to copy the code and paste it in the application.",
-                      "type": "string",
-                      "location": "query"
-                    }
-                  }
-                },
-                "scheduleRuns": {
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/transferConfigs/{transferConfigsId}:scheduleRuns",
-                  "path": "v1/{+parent}:scheduleRuns",
-                  "id": "bigquerydatatransfer.projects.locations.transferConfigs.scheduleRuns",
-                  "description": "Creates transfer runs for a time range [range_start_time, range_end_time].\nFor each date - or whatever granularity the data source supports - in the\nrange, one transfer run is created.\nNote that runs are created per UTC time in the time range.",
-                  "request": {
-                    "$ref": "ScheduleTransferRunsRequest"
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "response": {
-                    "$ref": "ScheduleTransferRunsResponse"
-                  },
-                  "parameters": {
-                    "parent": {
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/transferConfigs/[^/]+$",
-                      "location": "path",
-                      "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}`."
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                }
-              }
-            },
-            "dataSources": {
-              "methods": {
-                "list": {
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "response": {
-                    "$ref": "ListDataSourcesResponse"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-platform.read-only"
-                  ],
-                  "parameters": {
-                    "pageSize": {
-                      "format": "int32",
-                      "description": "Page size. The default page size is the maximum value of 1000 results.",
-                      "type": "integer",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path",
-                      "description": "The BigQuery project id for which data sources should be returned.\nMust be in the form: `projects/{project_id}`",
-                      "type": "string",
-                      "required": true
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "Pagination token, which can be used to request a specific page\nof `ListDataSourcesRequest` list results. For multiple-page\nresults, `ListDataSourcesResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources",
-                  "path": "v1/{+parent}/dataSources",
-                  "id": "bigquerydatatransfer.projects.locations.dataSources.list",
-                  "description": "Lists supported data sources and returns their settings,\nwhich can be used for UI rendering."
-                },
-                "get": {
-                  "response": {
-                    "$ref": "DataSource"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/dataSources/{data_source_id}`",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-platform.read-only"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources/{dataSourcesId}",
-                  "id": "bigquerydatatransfer.projects.locations.dataSources.get",
-                  "path": "v1/{+name}",
-                  "description": "Retrieves a supported data source and returns its settings,\nwhich can be used for UI rendering."
-                },
-                "checkValidCreds": {
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "CheckValidCredsResponse"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-platform.read-only"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The data source in the form:\n`projects/{project_id}/dataSources/{data_source_id}`",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/locations/[^/]+/dataSources/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/dataSources/{dataSourcesId}:checkValidCreds",
-                  "path": "v1/{+name}:checkValidCreds",
-                  "id": "bigquerydatatransfer.projects.locations.dataSources.checkValidCreds",
-                  "request": {
-                    "$ref": "CheckValidCredsRequest"
-                  },
-                  "description": "Returns true if valid credentials exist for the given data source and\nrequesting user.\nSome data sources doesn't support service account, so we need to talk to\nthem on behalf of the end user. This API just checks whether we have OAuth\ntoken for the particular user, which is a pre-requisite before user can\ncreate a transfer config."
-                }
-              }
-            }
-          }
-        },
-        "transferConfigs": {
-          "resources": {
-            "runs": {
-              "methods": {
-                "delete": {
-                  "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}",
-                  "id": "bigquerydatatransfer.projects.transferConfigs.runs.delete",
-                  "path": "v1/{+name}",
-                  "description": "Deletes the specified transfer run.",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
-                      "location": "path",
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`"
-                    }
-                  }
-                },
-                "list": {
-                  "description": "Returns information about running and completed jobs.",
-                  "response": {
-                    "$ref": "ListTransferRunsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-platform.read-only"
-                  ],
-                  "parameters": {
-                    "runAttempt": {
-                      "location": "query",
-                      "enum": [
-                        "RUN_ATTEMPT_UNSPECIFIED",
-                        "LATEST"
-                      ],
-                      "description": "Indicates how run attempts are to be pulled.",
-                      "type": "string"
-                    },
-                    "parent": {
-                      "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
-                      "location": "path",
-                      "description": "Name of transfer configuration for which transfer runs should be retrieved.\nFormat of transfer configuration resource name is:\n`projects/{project_id}/transferConfigs/{config_id}`.",
-                      "type": "string",
-                      "required": true
-                    },
-                    "pageToken": {
-                      "location": "query",
-                      "description": "Pagination token, which can be used to request a specific page\nof `ListTransferRunsRequest` list results. For multiple-page\nresults, `ListTransferRunsResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "format": "int32",
-                      "description": "Page size. The default page size is the maximum value of 1000 results.",
-                      "type": "integer",
-                      "location": "query"
-                    },
-                    "states": {
-                      "repeated": true,
-                      "location": "query",
-                      "enum": [
-                        "TRANSFER_STATE_UNSPECIFIED",
-                        "INACTIVE",
-                        "PENDING",
-                        "RUNNING",
-                        "SUCCEEDED",
-                        "FAILED",
-                        "CANCELLED"
-                      ],
-                      "description": "When specified, only transfer runs with requested states are returned.",
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs",
-                  "id": "bigquerydatatransfer.projects.transferConfigs.runs.list",
-                  "path": "v1/{+parent}/runs"
-                },
-                "get": {
-                  "id": "bigquerydatatransfer.projects.transferConfigs.runs.get",
-                  "path": "v1/{+name}",
-                  "description": "Returns information about the particular transfer run.",
-                  "response": {
-                    "$ref": "TransferRun"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}/runs/{run_id}`",
-                      "type": "string",
-                      "required": true,
-                      "pattern": "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/bigquery",
-                    "https://www.googleapis.com/auth/cloud-platform",
-                    "https://www.googleapis.com/auth/cloud-platform.read-only"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}"
-                }
-              },
-              "resources": {
-                "transferLogs": {
-                  "methods": {
-                    "list": {
-                      "description": "Returns user facing log messages for the data transfer run.",
-                      "httpMethod": "GET",
-                      "response": {
-                        "$ref": "ListTransferLogsResponse"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "scopes": [
-                        "https://www.googleapis.com/auth/bigquery",
-                        "https://www.googleapis.com/auth/cloud-platform",
-                        "https://www.googleapis.com/auth/cloud-platform.read-only"
-                      ],
-                      "parameters": {
-                        "parent": {
-                          "type": "string",
-                          "required": true,
-                          "pattern": "^projects/[^/]+/transferConfigs/[^/]+/runs/[^/]+$",
-                          "location": "path",
-                          "description": "Transfer run name in the form:\n`projects/{project_id}/transferConfigs/{config_Id}/runs/{run_id}`."
-                        },
-                        "pageToken": {
-                          "description": "Pagination token, which can be used to request a specific page\nof `ListTransferLogsRequest` list results. For multiple-page\nresults, `ListTransferLogsResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "format": "int32",
-                          "description": "Page size. The default page size is the maximum value of 1000 results.",
-                          "type": "integer"
-                        },
-                        "messageTypes": {
-                          "location": "query",
-                          "enum": [
-                            "MESSAGE_SEVERITY_UNSPECIFIED",
-                            "INFO",
-                            "WARNING",
-                            "ERROR"
-                          ],
-                          "description": "Message types to return. If not populated - INFO, WARNING and ERROR\nmessages are returned.",
-                          "type": "string",
-                          "repeated": true
-                        }
-                      },
-                      "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}/runs/{runsId}/transferLogs",
-                      "path": "v1/{+parent}/transferLogs",
-                      "id": "bigquerydatatransfer.projects.transferConfigs.runs.transferLogs.list"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "methods": {
-            "patch": {
-              "response": {
-                "$ref": "TransferConfig"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PATCH",
-              "parameters": {
-                "name": {
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
-                  "location": "path",
-                  "description": "The resource name of the transfer config.\nTransfer config names have the form\n`projects/{project_id}/transferConfigs/{config_id}`.\nWhere `config_id` is usually a uuid, even though it is not\nguaranteed or required. The name is ignored when creating a transfer\nconfig."
-                },
-                "authorizationCode": {
-                  "location": "query",
-                  "description": "Optional OAuth2 authorization code to use with this transfer configuration.\nIf it is provided, the transfer configuration will be associated with the\ngaia id of the authorizing user.\nIn order to obtain authorization_code, please make a\nrequest to\nhttps://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=\u003cdatatransferapiclientid\u003e&scope=\u003cdata_source_scopes\u003e&redirect_uri=\u003credirect_uri\u003e\n\n* client_id should be OAuth client_id of BigQuery DTS API for the given\n  data source returned by ListDataSources method.\n* data_source_scopes are the scopes returned by ListDataSources method.\n* redirect_uri is an optional parameter. If not specified, then\n  authorization code is posted to the opener of authorization flow window.\n  Otherwise it will be sent to the redirect uri. A special value of\n  urn:ietf:wg:oauth:2.0:oob means that authorization code should be\n  returned in the title bar of the browser, with the page text prompting\n  the user to copy the code and paste it in the application.",
-                  "type": "string"
-                },
-                "updateMask": {
-                  "location": "query",
-                  "format": "google-fieldmask",
-                  "description": "Required list of fields to be updated in this request.",
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
-              "id": "bigquerydatatransfer.projects.transferConfigs.patch",
-              "path": "v1/{+name}",
-              "description": "Updates a data transfer configuration.\nAll fields must be set, even if they are not updated.",
-              "request": {
-                "$ref": "TransferConfig"
-              }
-            },
-            "get": {
-              "httpMethod": "GET",
-              "response": {
-                "$ref": "TransferConfig"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
-              "path": "v1/{+name}",
-              "id": "bigquerydatatransfer.projects.transferConfigs.get",
-              "description": "Returns information about a data transfer config."
-            },
-            "delete": {
-              "httpMethod": "DELETE",
-              "response": {
-                "$ref": "Empty"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "parameters": {
-                "name": {
-                  "location": "path",
-                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/transferConfigs/{config_id}`",
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/transferConfigs/[^/]+$"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}",
-              "path": "v1/{+name}",
-              "id": "bigquerydatatransfer.projects.transferConfigs.delete",
-              "description": "Deletes a data transfer configuration,\nincluding any associated transfer runs and logs."
-            },
-            "list": {
-              "response": {
-                "$ref": "ListTransferConfigsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "pageToken": {
-                  "description": "Pagination token, which can be used to request a specific page\nof `ListTransfersRequest` list results. For multiple-page\nresults, `ListTransfersResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "format": "int32",
-                  "description": "Page size. The default page size is the maximum value of 1000 results.",
-                  "type": "integer"
-                },
-                "dataSourceIds": {
-                  "description": "When specified, only configurations of requested data sources are returned.",
-                  "type": "string",
-                  "repeated": true,
-                  "location": "query"
-                },
-                "parent": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "The BigQuery project id for which data sources\nshould be returned: `projects/{project_id}`.",
-                  "type": "string",
-                  "required": true
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only"
-              ],
-              "flatPath": "v1/projects/{projectsId}/transferConfigs",
-              "id": "bigquerydatatransfer.projects.transferConfigs.list",
-              "path": "v1/{+parent}/transferConfigs",
-              "description": "Returns information about all data transfers in the project."
-            },
-            "create": {
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "TransferConfig"
-              },
-              "parameters": {
-                "parent": {
-                  "description": "The BigQuery project id where the transfer configuration should be created.\nMust be in the format /projects/{project_id}/locations/{location_id}\nor\n/projects/{project_id}/locations/-\nIn case when '-' is specified as location_id, location is infered from\nthe destination dataset region.",
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path"
-                },
-                "authorizationCode": {
-                  "location": "query",
-                  "description": "Optional OAuth2 authorization code to use with this transfer configuration.\nThis is required if new credentials are needed, as indicated by\n`CheckValidCreds`.\nIn order to obtain authorization_code, please make a\nrequest to\nhttps://www.gstatic.com/bigquerydatatransfer/oauthz/auth?client_id=\u003cdatatransferapiclientid\u003e&scope=\u003cdata_source_scopes\u003e&redirect_uri=\u003credirect_uri\u003e\n\n* client_id should be OAuth client_id of BigQuery DTS API for the given\n  data source returned by ListDataSources method.\n* data_source_scopes are the scopes returned by ListDataSources method.\n* redirect_uri is an optional parameter. If not specified, then\n  authorization code is posted to the opener of authorization flow window.\n  Otherwise it will be sent to the redirect uri. A special value of\n  urn:ietf:wg:oauth:2.0:oob means that authorization code should be\n  returned in the title bar of the browser, with the page text prompting\n  the user to copy the code and paste it in the application.",
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/transferConfigs",
-              "path": "v1/{+parent}/transferConfigs",
-              "id": "bigquerydatatransfer.projects.transferConfigs.create",
-              "description": "Creates a new data transfer configuration.",
-              "request": {
-                "$ref": "TransferConfig"
-              }
-            },
-            "scheduleRuns": {
-              "description": "Creates transfer runs for a time range [range_start_time, range_end_time].\nFor each date - or whatever granularity the data source supports - in the\nrange, one transfer run is created.\nNote that runs are created per UTC time in the time range.",
-              "request": {
-                "$ref": "ScheduleTransferRunsRequest"
-              },
-              "response": {
-                "$ref": "ScheduleTransferRunsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "parameters": {
-                "parent": {
-                  "pattern": "^projects/[^/]+/transferConfigs/[^/]+$",
-                  "location": "path",
-                  "description": "Transfer configuration name in the form:\n`projects/{project_id}/transferConfigs/{config_id}`.",
-                  "type": "string",
-                  "required": true
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/transferConfigs/{transferConfigsId}:scheduleRuns",
-              "id": "bigquerydatatransfer.projects.transferConfigs.scheduleRuns",
-              "path": "v1/{+parent}:scheduleRuns"
-            }
-          }
-        },
-        "dataSources": {
-          "methods": {
-            "list": {
-              "response": {
-                "$ref": "ListDataSourcesResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "pageToken": {
-                  "type": "string",
-                  "location": "query",
-                  "description": "Pagination token, which can be used to request a specific page\nof `ListDataSourcesRequest` list results. For multiple-page\nresults, `ListDataSourcesResponse` outputs\na `next_page` token, which can be used as the\n`page_token` value to request the next page of list results."
-                },
-                "pageSize": {
-                  "type": "integer",
-                  "location": "query",
-                  "format": "int32",
-                  "description": "Page size. The default page size is the maximum value of 1000 results."
-                },
-                "parent": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "The BigQuery project id for which data sources should be returned.\nMust be in the form: `projects/{project_id}`",
-                  "type": "string",
-                  "required": true
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only"
-              ],
-              "flatPath": "v1/projects/{projectsId}/dataSources",
-              "id": "bigquerydatatransfer.projects.dataSources.list",
-              "path": "v1/{+parent}/dataSources",
-              "description": "Lists supported data sources and returns their settings,\nwhich can be used for UI rendering."
-            },
-            "get": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "DataSource"
-              },
-              "parameters": {
-                "name": {
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/dataSources/[^/]+$",
-                  "location": "path",
-                  "description": "The field will contain name of the resource requested, for example:\n`projects/{project_id}/dataSources/{data_source_id}`"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only"
-              ],
-              "flatPath": "v1/projects/{projectsId}/dataSources/{dataSourcesId}",
-              "path": "v1/{+name}",
-              "id": "bigquerydatatransfer.projects.dataSources.get",
-              "description": "Retrieves a supported data source and returns its settings,\nwhich can be used for UI rendering."
-            },
-            "checkValidCreds": {
-              "request": {
-                "$ref": "CheckValidCredsRequest"
-              },
-              "description": "Returns true if valid credentials exist for the given data source and\nrequesting user.\nSome data sources doesn't support service account, so we need to talk to\nthem on behalf of the end user. This API just checks whether we have OAuth\ntoken for the particular user, which is a pre-requisite before user can\ncreate a transfer config.",
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "CheckValidCredsResponse"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/bigquery",
-                "https://www.googleapis.com/auth/cloud-platform",
-                "https://www.googleapis.com/auth/cloud-platform.read-only"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The data source in the form:\n`projects/{project_id}/dataSources/{data_source_id}`",
-                  "type": "string",
-                  "required": true,
-                  "pattern": "^projects/[^/]+/dataSources/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1/projects/{projectsId}/dataSources/{dataSourcesId}:checkValidCreds",
-              "path": "v1/{+name}:checkValidCreds",
-              "id": "bigquerydatatransfer.projects.dataSources.checkValidCreds"
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "alt": {
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ]
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "type": "string",
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token."
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "pp": {
-      "location": "query",
-      "description": "Pretty-print response.",
-      "default": "true",
-      "type": "boolean"
-    },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "default": "true",
-      "type": "boolean",
-      "location": "query"
-    },
-    "uploadType": {
-      "type": "string",
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\")."
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "$.xgafv": {
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ]
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://bigquerydatatransfer.googleapis.com/",
-  "servicePath": "",
-  "kind": "discovery#restDescription",
-  "description": "Transfers data from partner SaaS applications to Google BigQuery on a scheduled, managed basis."
+  "name": "bigquerydatatransfer"
 }

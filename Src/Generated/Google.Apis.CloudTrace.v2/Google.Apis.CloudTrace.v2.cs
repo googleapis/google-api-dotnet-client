@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170919 (992)
+ *      <tr><th>API Rev<td>20170927 (1000)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -411,7 +411,7 @@ namespace Google.Apis.CloudTrace.v2
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name of the span in the following format:
                 ///
-                ///     projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.
+                ///     projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.
                 /// [SPAN_ID] is a unique identifier for a span within a trace, assigned when the span is created.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudTrace.v2.Data.Span body, string name)
                 {
@@ -433,8 +433,8 @@ namespace Google.Apis.CloudTrace.v2
 
                     /// <summary>The resource name of the span in the following format:
                     ///
-                    /// projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a
-                    /// project. [SPAN_ID] is a unique identifier for a span within a trace, assigned when the span is
+                    /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within
+                    /// a project. [SPAN_ID] is a unique identifier for a span within a trace, assigned when the span is
                     /// created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -765,7 +765,7 @@ namespace Google.Apis.CloudTrace.v2.Data
 
         /// <summary>The resource name of the span in the following format:
         ///
-        /// projects/[PROJECT_ID]traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.
+        /// projects/[PROJECT_ID]/traces/[TRACE_ID]/spans/SPAN_ID is a unique identifier for a trace within a project.
         /// [SPAN_ID] is a unique identifier for a span within a trace, assigned when the span is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 

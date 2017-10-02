@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170926 (999)
+ *      <tr><th>API Rev<td>20170928 (1001)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -585,9 +585,8 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> DryRun { get; set; }
 
-            /// <summary>Flag to delete sub-accounts with products. The default value of false will become active on
-            /// September 28, 2017.</summary>
-            /// [default: true]
+            /// <summary>Flag to delete sub-accounts with products. The default value is false.</summary>
+            /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Force { get; set; }
 
@@ -648,7 +647,7 @@ namespace Google.Apis.ShoppingContent.v2
                         Name = "force",
                         IsRequired = false,
                         ParameterType = "query",
-                        DefaultValue = "true",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
             }
@@ -7123,6 +7122,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Cancellations of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancellations")]
         public virtual System.Collections.Generic.IList<OrderCancellation> Cancellations { get; set; } 
+
+        /// <summary>The channel type of the order: "purchaseOnGoogle" or "googleExpress".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelType")]
+        public virtual string ChannelType { get; set; } 
 
         /// <summary>The id of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

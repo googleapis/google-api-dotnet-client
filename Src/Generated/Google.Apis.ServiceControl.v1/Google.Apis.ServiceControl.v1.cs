@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170918 (991)
+ *      <tr><th>API Rev<td>20170925 (998)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1569,11 +1569,12 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string OperationName { get; set; } 
 
         /// <summary>Represents the properties needed for quota check. Applicable only if this operation is for a quota
-        /// check request.</summary>
+        /// check request. If this is not specified, no quota check will be performed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaProperties")]
         public virtual QuotaProperties QuotaProperties { get; set; } 
 
-        /// <summary>The resource name of the parent of a resource in the resource hierarchy.
+        /// <summary>DO NOT USE. This field is deprecated, use "resources" field instead. The resource name of the
+        /// parent of a resource in the resource hierarchy.
         ///
         /// This can be in one of the following formats: - “projects/” - “folders/” - “organizations/”</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
@@ -1703,16 +1704,6 @@ namespace Google.Apis.ServiceControl.v1.Data
     /// <summary>Represents the properties needed for quota operations.</summary>
     public class QuotaProperties : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>LimitType IDs that should be used for checking quota. Key in this map should be a valid LimitType
-        /// string, and the value is the ID to be used. For example, an entry  will cause all user quota limits to use
-        /// 123 as the user ID. See google/api/quota.proto for the definition of LimitType. CLIENT_PROJECT: Not
-        /// supported. USER: Value of this entry will be used for enforcing user-level quota limits. If none specified,
-        /// caller IP passed in the servicecontrol.googleapis.com/caller_ip label will be used instead. If the server
-        /// cannot resolve a value for this LimitType, an error will be thrown. No validation will be performed on this
-        /// ID. Deprecated: use servicecontrol.googleapis.com/user label to send user ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("limitByIds")]
-        public virtual System.Collections.Generic.IDictionary<string,string> LimitByIds { get; set; } 
-
         /// <summary>Quota mode for this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMode")]
         public virtual string QuotaMode { get; set; } 
@@ -1862,12 +1853,21 @@ namespace Google.Apis.ServiceControl.v1.Data
     public class RequestMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The IP address of the caller. For caller from internet, this will be public IPv4 or IPv6 address.
-        /// For caller from GCE VM with external IP address, this will be the VM's external IP address. For caller from
-        /// GCE VM without external IP address, if the VM is in the same GCP organization (or project) as the accessed
-        /// resource, `caller_ip` will be the GCE VM's internal IPv4 address, otherwise it will be redacted to "gce-
-        /// internal-ip". See https://cloud.google.com/compute/docs/vpc/ for more information.</summary>
+        /// For caller from a Compute Engine VM with external IP address, this will be the VM's external IP address. For
+        /// caller from a Compute Engine VM without external IP address, if the VM is in the same organization (or
+        /// project) as the accessed resource, `caller_ip` will be the VM's internal IPv4 address, otherwise the
+        /// `caller_ip` will be redacted to "gce-internal-ip". See https://cloud.google.com/compute/docs/vpc/ for more
+        /// information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("callerIp")]
         public virtual string CallerIp { get; set; } 
+
+        /// <summary>The network of the caller. Set only if the network host project is part of the same GCP
+        /// organization (or project) as the accessed resource. See https://cloud.google.com/compute/docs/vpc/ for more
+        /// information. This is a scheme-less URI full resource name. For example:
+        ///
+        /// "//compute.googleapis.com/projects/PROJECT_ID/global/networks/NETWORK_ID"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callerNetwork")]
+        public virtual string CallerNetwork { get; set; } 
 
         /// <summary>The user agent of the caller. This information is not authenticated and should be treated
         /// accordingly. For example:
@@ -1883,7 +1883,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>DO NOT USE. This definition is not ready for use yet.</summary>
+    /// <summary>Describes a resource associated with this operation.</summary>
     public class ResourceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The identifier of the parent of this resource instance. Must be in one of the following formats: -
