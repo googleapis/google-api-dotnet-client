@@ -14,6 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Too slow in net core
+#if !NETCOREAPP1_0 && !NETCOREAPP1_1
+
 using Google.Apis.Json;
 using Google.Apis.Services;
 using Google.Apis.Tests.Mocks;
@@ -1010,3 +1013,4 @@ namespace Google.Apis.Tests.Apis.Upload
         }
     }
 }
+#endif

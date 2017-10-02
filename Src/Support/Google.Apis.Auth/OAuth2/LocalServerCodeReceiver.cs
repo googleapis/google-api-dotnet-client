@@ -358,7 +358,7 @@ namespace Google.Apis.Auth.OAuth2
         public async Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
             CancellationToken taskCancellationToken)
         {
-            var authorizationUrl = url.Build().ToString();
+            var authorizationUrl = url.Build().AbsoluteUri;
             // The listener type depends on platform:
             // * .NET desktop: System.Net.HttpListener
             // * .NET Core: LimitedLocalhostHttpServer (above, HttpListener is not available in any version of netstandard)
