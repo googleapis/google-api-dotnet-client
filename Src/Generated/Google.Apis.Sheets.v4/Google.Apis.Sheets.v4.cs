@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20170922 (995)
+ *      <tr><th>API Rev<td>20170929 (1002)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -395,7 +395,7 @@ namespace Google.Apis.Sheets.v4
             }
 
 
-            /// <summary>Returns the developer metadata with the specified id. The caller must specify the spreadsheet
+            /// <summary>Returns the developer metadata with the specified ID. The caller must specify the spreadsheet
             /// ID and the developer metadata's unique metadataId.</summary>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve metadata from.</param>
             /// <param
@@ -405,7 +405,7 @@ namespace Google.Apis.Sheets.v4
                 return new GetRequest(service, spreadsheetId, metadataId);
             }
 
-            /// <summary>Returns the developer metadata with the specified id. The caller must specify the spreadsheet
+            /// <summary>Returns the developer metadata with the specified ID. The caller must specify the spreadsheet
             /// ID and the developer metadata's unique metadataId.</summary>
             public class GetRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.DeveloperMetadata>
             {
@@ -731,11 +731,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines if the update response should include the values of the cells that were
-                /// appended. By default, responses do not include the updated values.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
-
                 /// <summary>Determines how values in the response should be rendered. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -798,6 +793,11 @@ namespace Google.Apis.Sheets.v4
                     FORMATTEDSTRING,
                 }
 
+                /// <summary>Determines if the update response should include the values of the cells that were
+                /// appended. By default, responses do not include the updated values.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
@@ -847,15 +847,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
@@ -886,6 +877,15 @@ namespace Google.Apis.Sheets.v4
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeValuesInResponse",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1066,33 +1066,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("spreadsheetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SpreadsheetId { get; private set; }
 
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
-
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                public enum MajorDimensionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
-                    DIMENSIONUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("ROWS")]
-                    ROWS,
-                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
-                    COLUMNS,
-                }
-
-                /// <summary>The A1 notation of the values to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
-
                 /// <summary>How dates, times, and durations should be represented in the output. This is ignored if
                 /// value_render_option is FORMATTED_VALUE. The default dateTime render option is
                 /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
@@ -1126,6 +1099,33 @@ namespace Google.Apis.Sheets.v4
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA,
                 }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                public enum MajorDimensionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
+                    DIMENSIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("ROWS")]
+                    ROWS,
+                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
+                    COLUMNS,
+                }
+
+                /// <summary>The A1 notation of the values to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("ranges", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Ranges { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1161,24 +1161,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "ranges", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "ranges",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dateTimeRenderOption",
@@ -1196,13 +1178,31 @@ namespace Google.Apis.Sheets.v4
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "majorDimension", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "majorDimension",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "ranges", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ranges",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
 
-            /// <summary>Returns one or more ranges of values from a spreadsheet that match the specified data filters.
-            /// The caller must specify the spreadsheet ID and one or more DataFilters.  Ranges that match any of the
-            /// data filters in the request will be returned.</summary>
+            /// <summary>Returns one or more ranges of values that match the specified data filters. The caller must
+            /// specify the spreadsheet ID and one or more DataFilters.  Ranges that match any of the data filters in
+            /// the request will be returned.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="spreadsheetId">The ID of the spreadsheet to retrieve data from.</param>
             public virtual BatchGetByDataFilterRequest BatchGetByDataFilter(Google.Apis.Sheets.v4.Data.BatchGetValuesByDataFilterRequest body, string spreadsheetId)
@@ -1210,9 +1210,9 @@ namespace Google.Apis.Sheets.v4
                 return new BatchGetByDataFilterRequest(service, body, spreadsheetId);
             }
 
-            /// <summary>Returns one or more ranges of values from a spreadsheet that match the specified data filters.
-            /// The caller must specify the spreadsheet ID and one or more DataFilters.  Ranges that match any of the
-            /// data filters in the request will be returned.</summary>
+            /// <summary>Returns one or more ranges of values that match the specified data filters. The caller must
+            /// specify the spreadsheet ID and one or more DataFilters.  Ranges that match any of the data filters in
+            /// the request will be returned.</summary>
             public class BatchGetByDataFilterRequest : SheetsBaseServiceRequest<Google.Apis.Sheets.v4.Data.BatchGetValuesByDataFilterResponse>
             {
                 /// <summary>Constructs a new BatchGetByDataFilter request.</summary>
@@ -1696,6 +1696,13 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
+                /// <summary>Determines if the update response should include the values of the cells that were updated.
+                /// By default, responses do not include the updated values. If the range to write was larger than than
+                /// the range actually written, the response will include all values in the requested range (excluding
+                /// trailing empty rows and columns).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
+
                 /// <summary>Determines how values in the response should be rendered. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -1744,13 +1751,6 @@ namespace Google.Apis.Sheets.v4
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING,
                 }
-
-                /// <summary>Determines if the update response should include the values of the cells that were updated.
-                /// By default, responses do not include the updated values. If the range to write was larger than than
-                /// the range actually written, the response will include all values in the requested range (excluding
-                /// trailing empty rows and columns).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1801,6 +1801,15 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeValuesInResponse",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
@@ -1822,15 +1831,6 @@ namespace Google.Apis.Sheets.v4
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2535,6 +2535,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
 
+        /// <summary>The axis title text position.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("titleTextPosition")]
+        public virtual TextPosition TitleTextPosition { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2591,6 +2595,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The type of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chartType")]
         public virtual string ChartType { get; set; } 
+
+        /// <summary>The behavior of tooltips and data highlighting when hovering on data and chart area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compareMode")]
+        public virtual string CompareMode { get; set; } 
 
         /// <summary>The domain of data this is charting. Only a single domain is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domains")]
@@ -2827,7 +2835,7 @@ namespace Google.Apis.Sheets.v4.Data
     public class BatchUpdateValuesByDataFilterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The new values to apply to the spreadsheet.  If more than one range is matched by the specified
-        /// DataFilter the specified values will be applied to all of of those ranges.</summary>
+        /// DataFilter the specified values will be applied to all of those ranges.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual System.Collections.Generic.IList<DataFilterValueRange> Data { get; set; } 
 
@@ -3361,6 +3369,18 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pieChart")]
         public virtual PieChartSpec PieChart { get; set; } 
 
+        /// <summary>The subtitle of the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
+        public virtual string Subtitle { get; set; } 
+
+        /// <summary>The subtitle text format. Strikethrough and underline are not supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitleTextFormat")]
+        public virtual TextFormat SubtitleTextFormat { get; set; } 
+
+        /// <summary>The subtitle text position. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitleTextPosition")]
+        public virtual TextPosition SubtitleTextPosition { get; set; } 
+
         /// <summary>The title of the chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; } 
@@ -3368,6 +3388,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The title text format. Strikethrough and underline are not supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleTextFormat")]
         public virtual TextFormat TitleTextFormat { get; set; } 
+
+        /// <summary>The title text position. This field is optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("titleTextPosition")]
+        public virtual TextPosition TitleTextPosition { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3879,28 +3903,28 @@ namespace Google.Apis.Sheets.v4.Data
     }    
 
     /// <summary>Selects DeveloperMetadata that matches all of the specified fields.  For example, if only a metadata ID
-    /// is specified this will consider the DeveloperMetadata with that particular unique ID. If a metadata key is
-    /// specified, all developer metadata with that key will be considered.  If a key, visibility, and location type are
-    /// all specified, then all developer metadata with that key, visibility, and associated with a location of that
-    /// type will be considered.  In general, this selects all DeveloperMetadata that matches the intersection of all
-    /// the specified fields; any field or combination of fields may be specified.</summary>
+    /// is specified this considers the DeveloperMetadata with that particular unique ID. If a metadata key is
+    /// specified, this considers all developer metadata with that key.  If a key, visibility, and location type are all
+    /// specified, this considers all developer metadata with that key and visibility that are associated with a
+    /// location of that type.  In general, this selects all DeveloperMetadata that matches the intersection of all the
+    /// specified fields; any field or combination of fields may be specified.</summary>
     public class DeveloperMetadataLookup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Determines how this lookup matches the location.  If this field is specified as EXACT, only
-        /// developer metadata associated on the exact location specified will be matched.  If this field is specified
-        /// to INTERSECTING, developer metadata associated on intersecting locations will also be matched.  If left
-        /// unspecified, this field will assume a default value of INTERSECTING. If this field is specified, a
-        /// metadataLocation must also be specified.</summary>
+        /// developer metadata associated on the exact location specified is matched.  If this field is specified to
+        /// INTERSECTING, developer metadata associated on intersecting locations is also matched.  If left unspecified,
+        /// this field assumes a default value of INTERSECTING. If this field is specified, a metadataLocation must also
+        /// be specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationMatchingStrategy")]
         public virtual string LocationMatchingStrategy { get; set; } 
 
         /// <summary>Limits the selected developer metadata to those entries which are associated with locations of the
-        /// specified type.  For example, specifying this as ROW will only consider developer metadata associated on
-        /// rows.  If left unspecified, all location types will be considered.  This field cannot be specified as
-        /// SPREADSHEET when the locationMatchingStrategy is specified as INTERSECTING or when the metadataLocation is
-        /// specified as a non-spreadsheet location: spreadsheet metadata cannot intersect any other developer metadata
-        /// location.  This field also must be left unspecified when the locationMatchingStrategy is specified as
-        /// EXACT.</summary>
+        /// specified type.  For example, when this field is specified as ROW this lookup only considers developer
+        /// metadata associated on rows.  If the field is left unspecified, all location types are considered.  This
+        /// field cannot be specified as SPREADSHEET when the locationMatchingStrategy is specified as INTERSECTING or
+        /// when the metadataLocation is specified as a non-spreadsheet location: spreadsheet metadata cannot intersect
+        /// any other developer metadata location.  This field also must be left unspecified when the
+        /// locationMatchingStrategy is specified as EXACT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationType")]
         public virtual string LocationType { get; set; } 
 
@@ -3926,7 +3950,7 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string MetadataValue { get; set; } 
 
         /// <summary>Limits the selected developer metadata to that which has a matching DeveloperMetadata.visibility.
-        /// If left unspecified, all developer metadata visibile to the requesting project will be considered.</summary>
+        /// If left unspecified, all developer metadata visibile to the requesting project is considered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; } 
 
@@ -5660,6 +5684,17 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The character index where this run starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Position settings for text.</summary>
+    public class TextPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Horizontal alignment setting for the piece of text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
+        public virtual string HorizontalAlignment { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
