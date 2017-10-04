@@ -119,7 +119,7 @@ namespace Google.Apis.Auth.OAuth2.Web
                 }
                 codeRequest.State = oauthState;
 
-                return new AuthResult { RedirectUri = codeRequest.Build().ToString() };
+                return new AuthResult { RedirectUri = codeRequest.Build().AbsoluteUri };
             }
 
             return new AuthResult { Credential = new UserCredential(flow, userId, token) };

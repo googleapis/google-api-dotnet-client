@@ -41,7 +41,7 @@ namespace Google.Apis.Auth.OAuth2
         public Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
             CancellationToken taskCancellationToken)
         {
-            var authorizationUrl = url.Build().ToString();
+            var authorizationUrl = url.Build().AbsoluteUri;
 
 #if NETSTANDARD1_3
             Logger.Debug("Requested user open a browser with \"{0}\" URL", authorizationUrl);

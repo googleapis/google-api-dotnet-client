@@ -167,7 +167,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.ToString(), cancellationToken)
+            var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.AbsoluteUri, cancellationToken)
                 .ConfigureAwait(false);
             AccessMethod.Intercept(request, accessToken);
         }
