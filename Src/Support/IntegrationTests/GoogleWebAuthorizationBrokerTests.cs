@@ -36,8 +36,9 @@ namespace IntegrationTests
 
             // Test the initial authorization.
             // NullDataStore is used to ensure the AuthorizationUrl is definitely used.
+            // "email" scope requested first to test for second scope being passed correctly to auth URL.
             UserCredential cred = await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                Helper.GetClientSecretStream(), new string[] { StorageService.Scope.CloudPlatformReadOnly },
+                Helper.GetClientSecretStream(), new string[] { "email", StorageService.Scope.CloudPlatformReadOnly },
                 "user", CancellationToken.None, new NullDataStore());
             Assert.NotNull(cred);
 

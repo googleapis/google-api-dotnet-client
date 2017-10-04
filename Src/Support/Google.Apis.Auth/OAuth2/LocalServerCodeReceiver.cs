@@ -360,7 +360,7 @@ namespace Google.Apis.Auth.OAuth2
         public async Task<AuthorizationCodeResponseUrl> ReceiveCodeAsync(AuthorizationCodeRequestUrl url,
             CancellationToken taskCancellationToken)
         {
-            var authorizationUrl = url.Build().ToString();
+            var authorizationUrl = url.Build().AbsoluteUri;
             // The listener type depends on platform:
             // * .NET desktop: System.Net.HttpListener
             // * .NET Core: LimitedLocalhostHttpServer (above, HttpListener is not available in any version of netstandard)
@@ -426,7 +426,10 @@ namespace Google.Apis.Auth.OAuth2
             // This is best-effort only, but should work most of the time.
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                Process.Start(new ProcessStartInfo("cmd", $"/c start {url.Replace("&", "^&")}") { CreateNoWindow = true });
+                // See https://stackoverflow.com/a/6040946/44360 for why this is required
+                url = System.Text.RegularExpressions.Regex.Replace(url, @"(\\*)" + "\"", @"$1$1\" + "\"");
+                url = System.Text.RegularExpressions.Regex.Replace(url, @"(\\+)$", @"$1$1");
+                Process.Start(new ProcessStartInfo("cmd", $"/c start \"\" \"{url}\"") { CreateNoWindow = true });
                 return true;
             }
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
