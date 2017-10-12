@@ -45,6 +45,21 @@ namespace Google.Apis.Http
         [VisibleForTestOnly]
         public const int MaxAllowedNumTries = 20;
 
+        /// <summary>
+        /// Key for unsuccessful response handlers in an <see cref="HttpRequestMessage"/> properties.
+        /// </summary>
+        public const string UnsuccessfulResponseHandlerKey = "__UnsuccessfulResponseHandlerKey";
+
+        /// <summary>
+        /// Key for unsuccessful response handlers in an <see cref="HttpRequestMessage"/> properties.
+        /// </summary>
+        public const string ExceptionHandlerKey = "__ExceptionHandlerKey";
+
+        /// <summary>
+        /// Key for unsuccessful response handlers in an <see cref="HttpRequestMessage"/> properties.
+        /// </summary>
+        public const string ExecuteInterceptorKey = "__ExecuteInterceptorKey";
+
         /// <summary>The current API version of this client library.</summary>
         private static readonly string ApiVersion = Google.Apis.Util.Utilities.GetLibraryVersion();
 
@@ -382,10 +397,15 @@ namespace Google.Apis.Http
                 lastException = null;
 
                 // We keep a local list of the interceptors, since we can't call await inside lock.
-                IEnumerable<IHttpExecuteInterceptor> interceptors;
+                List<IHttpExecuteInterceptor> interceptors;
                 lock (executeInterceptorsLock)
                 {
                     interceptors = executeInterceptors.ToList();
+                }
+                if (request.Properties.TryGetValue(ExecuteInterceptorKey, out var interceptorsValue) &&
+                    interceptorsValue is List<IHttpExecuteInterceptor> perCallinterceptors)
+                {
+                    interceptors.AddRange(perCallinterceptors);
                 }
 
                 // Intercept the request.
@@ -430,10 +450,15 @@ namespace Google.Apis.Http
                     var exceptionHandled = false;
 
                     // We keep a local list of the handlers, since we can't call await inside lock.
-                    IEnumerable<IHttpExceptionHandler> handlers;
+                    List<IHttpExceptionHandler> handlers;
                     lock (exceptionHandlersLock)
                     {
                         handlers = exceptionHandlers.ToList();
+                    }
+                    if (request.Properties.TryGetValue(ExceptionHandlerKey, out var handlersValue) &&
+                        handlersValue is List<IHttpExceptionHandler> perCallHandlers)
+                    {
+                        handlers.AddRange(perCallHandlers);
                     }
 
                     // Try to handle the exception with each handler.
@@ -488,11 +513,17 @@ namespace Google.Apis.Http
                         bool errorHandled = false;
 
                         // We keep a local list of the handlers, since we can't call await inside lock.
-                        IEnumerable<IHttpUnsuccessfulResponseHandler> handlers;
+                        List<IHttpUnsuccessfulResponseHandler> handlers;
                         lock (unsuccessfulResponseHandlersLock)
                         {
                             handlers = unsuccessfulResponseHandlers.ToList();
                         }
+                        if (request.Properties.TryGetValue(UnsuccessfulResponseHandlerKey, out var handlersValue) &&
+                            handlersValue is List<IHttpUnsuccessfulResponseHandler> perCallHandlers)
+                        {
+                            handlers.AddRange(perCallHandlers);
+                        }
+
                         // Try to handle the abnormal HTTP response with each handler.
                         foreach (var handler in handlers)
                         {
