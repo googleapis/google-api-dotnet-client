@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   
   <Import Project="..\CommonProjectProperties.xml" />
 
   <!-- build configuration -->
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45;netstandard1.3</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netstandard1.3</TargetFrameworks>
   </PropertyGroup>
 
   <!-- nupkg information -->
@@ -17,6 +17,7 @@ The Google APIs Core Library contains the Google APIs HTTP layer, JSON support, 
 Supported Platforms:
 - .NET Framework 4.5+
 - NetStandard1.3, providing .NET Core support
+- NetStandard2.0, providing .NET Core 2.0 support
     </Description>
   </PropertyGroup>
   
@@ -26,8 +27,8 @@ Supported Platforms:
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.3.0" />
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3' or '$(TargetFramework)'=='netstandard2.0'">
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
