@@ -15,7 +15,7 @@ limitations under the License.
 */
 
 // Too slow in net core
-#if !NETCOREAPP1_0 && !NETCOREAPP1_1
+#if !NETCOREAPP1_0 && !NETCOREAPP1_1 && !NETCOREAPP2_0
 
 using Google.Apis.Json;
 using Google.Apis.Services;
