@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Google Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20170926 (999)
+ *      <tr><th>API Rev<td>20171009 (1012)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -807,6 +807,156 @@ namespace Google.Apis.CloudFunctions.v1beta2
 
                 }
 
+                /// <summary>Returns a signed URL for downloading deployed function source code. The URL is only valid
+                /// for a limited period and should be used within minutes after generation. For more information about
+                /// the signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of function for which source code Google Cloud Storage signed URL should be
+                /// generated.</param>
+                public virtual GenerateDownloadUrlRequest GenerateDownloadUrl(Google.Apis.CloudFunctions.v1beta2.Data.GenerateDownloadUrlRequest body, string name)
+                {
+                    return new GenerateDownloadUrlRequest(service, body, name);
+                }
+
+                /// <summary>Returns a signed URL for downloading deployed function source code. The URL is only valid
+                /// for a limited period and should be used within minutes after generation. For more information about
+                /// the signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls</summary>
+                public class GenerateDownloadUrlRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v1beta2.Data.GenerateDownloadUrlResponse>
+                {
+                    /// <summary>Constructs a new GenerateDownloadUrl request.</summary>
+                    public GenerateDownloadUrlRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v1beta2.Data.GenerateDownloadUrlRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of function for which source code Google Cloud Storage signed URL should be
+                    /// generated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v1beta2.Data.GenerateDownloadUrlRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "generateDownloadUrl"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+name}:generateDownloadUrl"; }
+                    }
+
+                    /// <summary>Initializes GenerateDownloadUrl parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns a signed URL for uploading a function source code. For more information about the
+                /// signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls Once the
+                /// function source code upload is complete, the used signed URL should be provided in CreateFunction or
+                /// UpdateFunction request as a reference to the function source code.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">The project and location in which the Google Cloud Storage signed URL should be generated,
+                /// specified in the format `projects/locations</param>
+                public virtual GenerateUploadUrlRequest GenerateUploadUrl(Google.Apis.CloudFunctions.v1beta2.Data.GenerateUploadUrlRequest body, string parent)
+                {
+                    return new GenerateUploadUrlRequest(service, body, parent);
+                }
+
+                /// <summary>Returns a signed URL for uploading a function source code. For more information about the
+                /// signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls Once the
+                /// function source code upload is complete, the used signed URL should be provided in CreateFunction or
+                /// UpdateFunction request as a reference to the function source code.</summary>
+                public class GenerateUploadUrlRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v1beta2.Data.GenerateUploadUrlResponse>
+                {
+                    /// <summary>Constructs a new GenerateUploadUrl request.</summary>
+                    public GenerateUploadUrlRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudFunctions.v1beta2.Data.GenerateUploadUrlRequest body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The project and location in which the Google Cloud Storage signed URL should be
+                    /// generated, specified in the format `projects/locations</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudFunctions.v1beta2.Data.GenerateUploadUrlRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "generateUploadUrl"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+parent}/functions:generateUploadUrl"; }
+                    }
+
+                    /// <summary>Initializes GenerateUploadUrl parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Returns a function with the given name from the requested project.</summary>
                 /// <param name="name">The name of the function which details should be obtained.</param>
                 public virtual GetRequest Get(string name)
@@ -1050,10 +1200,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1061,6 +1207,10 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1096,15 +1246,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1117,6 +1258,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1225,6 +1375,11 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceRepositoryUrl")]
         public virtual string SourceRepositoryUrl { get; set; } 
 
+        /// <summary>The Google Cloud Storage signed URL used for source uploading, generated by
+        /// google.cloud.functions.v1beta2.GenerateUploadUrl</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUploadUrl")]
+        public virtual string SourceUploadUrl { get; set; } 
+
         /// <summary>Output only. Status of the function deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
@@ -1290,6 +1445,48 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         /// <summary>If specified, then the function will be retried in case of a failure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retry")]
         public virtual Retry Retry { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request of `GenerateDownloadUrl` method.</summary>
+    public class GenerateDownloadUrlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The optional version of function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual System.Nullable<ulong> VersionId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response of `GenerateDownloadUrl` method.</summary>
+    public class GenerateDownloadUrlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generated Google Cloud Storage signed URL that should be used for function source code
+        /// download.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
+        public virtual string DownloadUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request of `GenerateUploadUrl` method.</summary>
+    public class GenerateUploadUrlRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response of `GenerateUploadUrl` method.</summary>
+    public class GenerateUploadUrlResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The generated Google Cloud Storage signed URL that should be used for a function source code
+        /// upload. The uploaded file should be a zip archive which contains a function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadUrl")]
+        public virtual string UploadUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

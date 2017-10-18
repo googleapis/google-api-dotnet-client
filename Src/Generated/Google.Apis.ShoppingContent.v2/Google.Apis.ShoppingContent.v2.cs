@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170928 (1001)
+ *      <tr><th>API Rev<td>20171016 (1019)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -6172,8 +6172,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributeLanguage")]
         public virtual string AttributeLanguage { get; set; } 
 
-        /// <summary>[DEPRECATED] Please use target.language instead. The two-letter ISO 639-1 language of the items in
-        /// the feed. Must be a valid language for targetCountry.</summary>
+        /// <summary>[DEPRECATED] Please use targets[].language instead. The two-letter ISO 639-1 language of the items
+        /// in the feed. Must be a valid language for targetCountry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
 
@@ -6198,7 +6198,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; } 
 
-        /// <summary>[DEPRECATED] Please use target.includedDestination instead. The list of intended destinations
+        /// <summary>[DEPRECATED] Please use targets[].includedDestinations instead. The list of intended destinations
         /// (corresponds to checked check boxes in Merchant Center).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intendedDestinations")]
         public virtual System.Collections.Generic.IList<string> IntendedDestinations { get; set; } 
@@ -6211,7 +6211,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[DEPRECATED] Please use target.country instead. The country where the items in the feed will be
+        /// <summary>[DEPRECATED] Please use targets[].country instead. The country where the items in the feed will be
         /// included in the search index, represented as a CLDR territory code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; } 
@@ -6667,16 +6667,17 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postalCodeGroupNames")]
         public virtual System.Collections.Generic.IList<string> PostalCodeGroupNames { get; set; } 
 
-        /// <summary>be "infinity". For example [{"value": "10", "currency": "USD"}, {"value": "500", "currency":
-        /// "USD"}, {"value": "infinity", "currency": "USD"}] represents the headers "<= $10", " $500". All prices
-        /// within a service must have the same currency. Must be non-empty. Can only be set if all other fields are not
-        /// set.</summary>
+        /// <summary>A list of inclusive order price upper bounds. The last price's value can be "infinity". For example
+        /// [{"value": "10", "currency": "USD"}, {"value": "500", "currency": "USD"}, {"value": "infinity", "currency":
+        /// "USD"}] represents the headers "<= $10", " $500". All prices within a service must have the same currency.
+        /// Must be non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prices")]
         public virtual System.Collections.Generic.IList<Price> Prices { get; set; } 
 
-        /// <summary>be "infinity". For example [{"value": "10", "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value":
-        /// "infinity", "unit": "kg"}] represents the headers "<= 10kg", " 50kg". All weights within a service must have
-        /// the same unit. Must be non-empty. Can only be set if all other fields are not set.</summary>
+        /// <summary>A list of inclusive order weight upper bounds. The last weight's value can be "infinity". For
+        /// example [{"value": "10", "unit": "kg"}, {"value": "50", "unit": "kg"}, {"value": "infinity", "unit": "kg"}]
+        /// represents the headers "<= 10kg", " 50kg". All weights within a service must have the same unit. Must be
+        /// non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weights")]
         public virtual System.Collections.Generic.IList<Weight> Weights { get; set; } 
 

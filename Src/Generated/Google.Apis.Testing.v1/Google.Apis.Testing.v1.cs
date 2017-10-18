@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Google Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170922 (995)
+ *      <tr><th>API Rev<td>20171012 (1015)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1548,8 +1548,14 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual Account Account { get; set; } 
 
-        /// <summary>The directories on the device to upload to GCS at the end of the test; they must be absolute,
-        /// whitelisted paths. Refer to RegularFile for whitelisted paths. Optional</summary>
+        /// <summary>List of directories on the device to upload to GCS at the end of the test; they must be absolute
+        /// paths under /sdcard or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and /
+        ///
+        /// Note: The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if
+        /// /sdcard on a particular device does not map to external storage, the system will replace it with the
+        /// external storage path prefix for that device.
+        ///
+        /// Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("directoriesToPull")]
         public virtual System.Collections.Generic.IList<string> DirectoriesToPull { get; set; } 
 
@@ -1557,7 +1563,9 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environmentVariables")]
         public virtual System.Collections.Generic.IList<EnvironmentVariable> EnvironmentVariables { get; set; } 
 
-        /// <summary>Optional</summary>
+        /// <summary>List of files to push to the device before starting the test.
+        ///
+        /// Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filesToPush")]
         public virtual System.Collections.Generic.IList<DeviceFile> FilesToPush { get; set; } 
 

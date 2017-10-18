@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20170926 (999)
+ *      <tr><th>API Rev<td>20171010 (1013)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -407,7 +407,7 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 /// <summary>Creates new workflow template.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required The "resource name" of the region, as described in
+                /// <param name="parent">Required. The "resource name" of the region, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate body, string parent)
                 {
@@ -427,7 +427,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the region, as described in
+                    /// <summary>Required. The "resource name" of the region, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -477,7 +477,7 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Deletes a workflow template. It does not cancel in-progress workflows.</summary>
-                /// <param name="name">Required The "resource name" of the workflow template, as described in
+                /// <param name="name">Required. The "resource name" of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
                 public virtual DeleteRequest Delete(string name)
@@ -497,14 +497,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the workflow template, as described in
+                    /// <summary>Required. The "resource name" of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional The version of workflow template to delete. If specified, will only delete the
-                    /// template if the current server version matches specified version.</summary>
+                    /// <summary>Optional. The version of workflow template to delete. If specified, will only delete
+                    /// the template if the current server version matches specified version.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Version { get; set; }
 
@@ -556,7 +556,7 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 /// <summary>Retrieves the latest workflow template.Can retrieve previously instantiated template by
                 /// specifying optional version parameter.</summary>
-                /// <param name="name">Required The "resource name" of the workflow template, as described in
+                /// <param name="name">Required. The "resource name" of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
                 public virtual GetRequest Get(string name)
@@ -577,13 +577,13 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the workflow template, as described in
+                    /// <summary>Required. The "resource name" of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional The version of workflow template to retrieve. Only previously instatiated
+                    /// <summary>Optional. The version of workflow template to retrieve. Only previously instatiated
                     /// versions can be retrieved.If unspecified, retrieves the current version.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Version { get; set; }
@@ -642,7 +642,7 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// google.cloud.dataproc.v1beta2.WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result
                 /// will always be google.protobuf.Empty.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required The "resource name" of the workflow template, as described in
+                /// <param name="name">Required. The "resource name" of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
                 public virtual InstantiateRequest Instantiate(Google.Apis.Dataproc.v1beta2.Data.InstantiateWorkflowTemplateRequest body, string name)
@@ -669,7 +669,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the workflow template, as described in
+                    /// <summary>Required. The "resource name" of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -719,7 +719,7 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
-                /// <param name="parent">Required The "resource name" of the region, as described in
+                /// <param name="parent">Required. The "resource name" of the region, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -738,18 +738,18 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the region, as described in
+                    /// <summary>Required. The "resource name" of the region, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional The page token, returned by a previous call, to request the next page of
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional The maximum number of results to return in each response.</summary>
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -811,7 +811,7 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// <summary>Updates (replaces) workflow template. The updated template must contain version that
                 /// matches the current server version.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output-only The "resource name" of the template, as described in
+                /// <param name="name">Output only. The "resource name" of the template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate body, string name)
@@ -833,7 +833,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Output-only The "resource name" of the template, as described in
+                    /// <summary>Output only. The "resource name" of the template, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -1058,6 +1058,11 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
+
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1106,6 +1111,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Name = "clusterName",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterUuid",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1405,6 +1419,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The standard List page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
                     /// have the following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
@@ -1416,14 +1438,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The standard List page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1468,15 +1482,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1489,6 +1494,15 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2132,15 +2146,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
-                    /// results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
                     /// named cluster.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
@@ -2171,6 +2176,15 @@ namespace Google.Apis.Dataproc.v1beta2
                         [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
                         NONACTIVE,
                     }
+
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2215,24 +2229,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "clusterName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterName",
@@ -2254,6 +2250,24 @@ namespace Google.Apis.Dataproc.v1beta2
                             "jobStateMatcher", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "jobStateMatcher",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2825,7 +2839,7 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 /// <summary>Creates new workflow template.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required The "resource name" of the region, as described in
+                /// <param name="parent">Required. The "resource name" of the region, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
                 public virtual CreateRequest Create(Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate body, string parent)
                 {
@@ -2845,7 +2859,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the region, as described in
+                    /// <summary>Required. The "resource name" of the region, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2895,7 +2909,7 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Deletes a workflow template. It does not cancel in-progress workflows.</summary>
-                /// <param name="name">Required The "resource name" of the workflow template, as described in
+                /// <param name="name">Required. The "resource name" of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
                 public virtual DeleteRequest Delete(string name)
@@ -2915,14 +2929,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the workflow template, as described in
+                    /// <summary>Required. The "resource name" of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional The version of workflow template to delete. If specified, will only delete the
-                    /// template if the current server version matches specified version.</summary>
+                    /// <summary>Optional. The version of workflow template to delete. If specified, will only delete
+                    /// the template if the current server version matches specified version.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Version { get; set; }
 
@@ -2974,7 +2988,7 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 /// <summary>Retrieves the latest workflow template.Can retrieve previously instantiated template by
                 /// specifying optional version parameter.</summary>
-                /// <param name="name">Required The "resource name" of the workflow template, as described in
+                /// <param name="name">Required. The "resource name" of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
                 public virtual GetRequest Get(string name)
@@ -2995,13 +3009,13 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the workflow template, as described in
+                    /// <summary>Required. The "resource name" of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional The version of workflow template to retrieve. Only previously instatiated
+                    /// <summary>Optional. The version of workflow template to retrieve. Only previously instatiated
                     /// versions can be retrieved.If unspecified, retrieves the current version.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> Version { get; set; }
@@ -3060,7 +3074,7 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// google.cloud.dataproc.v1beta2.WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result
                 /// will always be google.protobuf.Empty.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required The "resource name" of the workflow template, as described in
+                /// <param name="name">Required. The "resource name" of the workflow template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
                 public virtual InstantiateRequest Instantiate(Google.Apis.Dataproc.v1beta2.Data.InstantiateWorkflowTemplateRequest body, string name)
@@ -3087,7 +3101,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the workflow template, as described in
+                    /// <summary>Required. The "resource name" of the workflow template, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3137,7 +3151,7 @@ namespace Google.Apis.Dataproc.v1beta2
                 }
 
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
-                /// <param name="parent">Required The "resource name" of the region, as described in
+                /// <param name="parent">Required. The "resource name" of the region, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
                 public virtual ListRequest List(string parent)
                 {
@@ -3156,18 +3170,18 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Required The "resource name" of the region, as described in
+                    /// <summary>Required. The "resource name" of the region, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional The page token, returned by a previous call, to request the next page of
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Optional The maximum number of results to return in each response.</summary>
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -3229,7 +3243,7 @@ namespace Google.Apis.Dataproc.v1beta2
                 /// <summary>Updates (replaces) workflow template. The updated template must contain version that
                 /// matches the current server version.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Output-only The "resource name" of the template, as described in
+                /// <param name="name">Output only. The "resource name" of the template, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form
                 /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</param>
                 public virtual UpdateRequest Update(Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate body, string name)
@@ -3251,7 +3265,7 @@ namespace Google.Apis.Dataproc.v1beta2
                     }
 
 
-                    /// <summary>Output-only The "resource name" of the template, as described in
+                    /// <summary>Output only. The "resource name" of the template, as described in
                     /// https://cloud.google.com/apis/design/resource_names of the form
                     /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -3472,15 +3486,15 @@ namespace Google.Apis.Dataproc.v1beta2.Data
 
     public class ClusterOperation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only Indicates the operation is done.</summary>
+        /// <summary>Output only. Indicates the operation is done.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>Output-only Error, if operation failed.</summary>
+        /// <summary>Output only. Error, if operation failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual string Error { get; set; } 
 
-        /// <summary>Output-only The id of the cluster operation.</summary>
+        /// <summary>Output only. The id of the cluster operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
 
@@ -3553,11 +3567,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A selector that chooses target cluster for jobs based on metadata.</summary>
     public class ClusterSelector : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required The cluster labels. Cluster must have all labels to match.</summary>
+        /// <summary>Required. The cluster labels. Cluster must have all labels to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> ClusterLabels { get; set; } 
 
-        /// <summary>Required The cluster target zone.</summary>
+        /// <summary>Optional. The zone where workflow process executes. This parameter does not affect the selection of
+        /// the cluster.If unspecified, the zone of the first cluster matching the selector is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -3840,15 +3855,15 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A request to instantiate a workflow template.</summary>
     public class InstantiateWorkflowTemplateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional A tag that prevents multiple concurrent workflow instances with the same tag from running.
-        /// This mitigates risk of concurrent instances started due to retries.It is recommended to always set this
-        /// value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
+        /// <summary>Optional. A tag that prevents multiple concurrent workflow instances with the same tag from
+        /// running. This mitigates risk of concurrent instances started due to retries.It is recommended to always set
+        /// this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only
         /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
         /// characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
         public virtual string InstanceId { get; set; } 
 
-        /// <summary>Optional The version of workflow template to instantiate. If specified, the workflow will be
+        /// <summary>Optional. The version of workflow template to instantiate. If specified, the workflow will be
         /// instantiated only if the current version of the workflow template has the supplied version.This option
         /// cannot be used to instantiate a previous version of workflow template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -4077,13 +4092,13 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A response to a request to list workflow templates in a project.</summary>
     public class ListWorkflowTemplatesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only This token is included in the response if there are more results to fetch. To fetch
+        /// <summary>Output only. This token is included in the response if there are more results to fetch. To fetch
         /// additional results, provide this value as the page_token in a subsequent
         /// ListWorkflowTemplatesRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>Output-only WorkflowTemplates list.</summary>
+        /// <summary>Output only. WorkflowTemplates list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templates")]
         public virtual System.Collections.Generic.IList<WorkflowTemplate> Templates { get; set; } 
 
@@ -4106,16 +4121,16 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Cluster that is managed by the workflow.</summary>
     public class ManagedCluster : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required The cluster name. Cluster names within a project must be unique. Names from deleted
+        /// <summary>Required. The cluster name. Cluster names within a project must be unique. Names from deleted
         /// clusters can be reused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Required The cluster configuration.</summary>
+        /// <summary>Required. The cluster configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual ClusterConfig Config { get; set; } 
 
-        /// <summary>Optional The labels to associate with this cluster.Label keys must be between 1 and 63 characters
+        /// <summary>Optional. The labels to associate with this cluster.Label keys must be between 1 and 63 characters
         /// long, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62}Label values must be
         /// between 1 and 63 characters long, and must conform to the following PCRE regular expression:
         /// \p{Ll}\p{Lo}\p{N}_-{0,63}No more than 64 labels can be associated with a given cluster.</summary>
@@ -4205,10 +4220,10 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hiveJob")]
         public virtual HiveJob HiveJob { get; set; } 
 
-        /// <summary>Optional The labels to associate with this job.Label keys must be between 1 and 63 characters long,
-        /// and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1 and
-        /// 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No more
-        /// than 64 labels can be associated with a given job.</summary>
+        /// <summary>Optional. The labels to associate with this job.Label keys must be between 1 and 63 characters
+        /// long, and must conform to the following regular expression: \p{Ll}\p{Lo}{0,62}Label values must be between 1
+        /// and 63 characters long, and must conform to the following regular expression: \p{Ll}\p{Lo}\p{N}_-{0,63}No
+        /// more than 64 labels can be associated with a given job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
@@ -4216,7 +4231,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pigJob")]
         public virtual PigJob PigJob { get; set; } 
 
-        /// <summary>Optional The optional list of prerequisite job step_ids. If not specified, the job will start at
+        /// <summary>Optional. The optional list of prerequisite job step_ids. If not specified, the job will start at
         /// the beginning of workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStepIds")]
         public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; } 
@@ -4225,7 +4240,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pysparkJob")]
         public virtual PySparkJob PysparkJob { get; set; } 
 
-        /// <summary>Optional Job scheduling configuration.</summary>
+        /// <summary>Optional. Job scheduling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
         public virtual JobScheduling Scheduling { get; set; } 
 
@@ -4237,7 +4252,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
-        /// <summary>Required The step id. The id must be unique among all jobs within the template.The step id is used
+        /// <summary>Required. The step id. The id must be unique among all jobs within the template.The step id is used
         /// as prefix for job id, as job workflow-step-id label, and in prerequisite_step_ids field from other
         /// steps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
@@ -4567,7 +4582,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>The workflow graph.</summary>
     public class WorkflowGraph : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The workflow nodes.</summary>
+        /// <summary>Output only. The workflow nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<WorkflowNode> Nodes { get; set; } 
 
@@ -4578,31 +4593,31 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A Cloud Dataproc workflow template resource.</summary>
     public class WorkflowMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The name of the managed cluster.</summary>
+        /// <summary>Output only. The name of the managed cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only The create cluster operation metadata.</summary>
+        /// <summary>Output only. The create cluster operation metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createCluster")]
         public virtual ClusterOperation CreateCluster { get; set; } 
 
-        /// <summary>Output-only The delete cluster operation metadata.</summary>
+        /// <summary>Output only. The delete cluster operation metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteCluster")]
         public virtual ClusterOperation DeleteCluster { get; set; } 
 
-        /// <summary>Output-only The workflow graph.</summary>
+        /// <summary>Output only. The workflow graph.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("graph")]
         public virtual WorkflowGraph Graph { get; set; } 
 
-        /// <summary>Output-only The workflow state.</summary>
+        /// <summary>Output only. The workflow state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only The "resource name" of the template.</summary>
+        /// <summary>Output only. The "resource name" of the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("template")]
         public virtual string Template { get; set; } 
 
-        /// <summary>Output-only The version of template at the time of workflow instantiation.</summary>
+        /// <summary>Output only. The version of template at the time of workflow instantiation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
@@ -4613,23 +4628,23 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>The workflow node.</summary>
     public class WorkflowNode : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The error detail.</summary>
+        /// <summary>Output only. The error detail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual string Error { get; set; } 
 
-        /// <summary>Output-only The job id; populated after the node enters RUNNING state.</summary>
+        /// <summary>Output only. The job id; populated after the node enters RUNNING state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
 
-        /// <summary>Output-only Node's prerequisite nodes.</summary>
+        /// <summary>Output only. Node's prerequisite nodes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prerequisiteStepIds")]
         public virtual System.Collections.Generic.IList<string> PrerequisiteStepIds { get; set; } 
 
-        /// <summary>Output-only The node state.</summary>
+        /// <summary>Output only. The node state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only The name of the node.</summary>
+        /// <summary>Output only. The name of the node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stepId")]
         public virtual string StepId { get; set; } 
 
@@ -4640,19 +4655,19 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A Cloud Dataproc workflow template resource.</summary>
     public class WorkflowTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only The time template was created.</summary>
+        /// <summary>Output only. The time template was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>Required The template id.</summary>
+        /// <summary>Required. The template id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
-        /// <summary>Required The Directed Acyclic Graph of Jobs to submit.</summary>
+        /// <summary>Required. The Directed Acyclic Graph of Jobs to submit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
         public virtual System.Collections.Generic.IList<OrderedJob> Jobs { get; set; } 
 
-        /// <summary>Optional The labels to associate with this template. These labels will be propagated to all jobs
+        /// <summary>Optional. The labels to associate with this template. These labels will be propagated to all jobs
         /// and clusters created by the workflow instance.Label keys must contain 1 to 63 characters, and must conform
         /// to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).Label values may be empty, but, if present, must contain
         /// 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt).No more than 32
@@ -4660,21 +4675,21 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Output-only The "resource name" of the template, as described in
+        /// <summary>Output only. The "resource name" of the template, as described in
         /// https://cloud.google.com/apis/design/resource_names of the form
         /// projects/{project_id}/regions/{region}/workflowTemplates/{template_id}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Required WorkflowTemplate scheduling information.</summary>
+        /// <summary>Required. WorkflowTemplate scheduling information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("placement")]
         public virtual WorkflowTemplatePlacement Placement { get; set; } 
 
-        /// <summary>Output-only The time template was last updated.</summary>
+        /// <summary>Output only. The time template was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Optional Used to perform a consistent read-modify-write.This field should be left blank for a
+        /// <summary>Optional. Used to perform a consistent read-modify-write.This field should be left blank for a
         /// CreateWorkflowTemplate request. It is required for an UpdateWorkflowTemplate request, and must match the
         /// current server version. A typical update template flow would fetch the current template with a
         /// GetWorkflowTemplate request, which will return the current template with the version field filled in with
@@ -4690,12 +4705,12 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Specifies workflow execution target.Either managed_cluster or cluster_selector is required.</summary>
     public class WorkflowTemplatePlacement : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional A selector that chooses target cluster for jobs based on metadata.The selector is
+        /// <summary>Optional. A selector that chooses target cluster for jobs based on metadata.The selector is
         /// evaluated at the time each job is submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterSelector")]
         public virtual ClusterSelector ClusterSelector { get; set; } 
 
-        /// <summary>Optional A cluster that is managed by the workflow.</summary>
+        /// <summary>Optional. A cluster that is managed by the workflow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedCluster")]
         public virtual ManagedCluster ManagedCluster { get; set; } 
 

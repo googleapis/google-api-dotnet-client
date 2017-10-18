@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170922 (995)
+ *      <tr><th>API Rev<td>20171012 (1015)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1128,7 +1128,8 @@ namespace Google.Apis.Vision.v1.Data
     /// (for example, adult, spoof, medical, violence).</summary>
     public class SafeSearchAnnotation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Represents the adult content likelihood for the image.</summary>
+        /// <summary>Represents the adult content likelihood for the image. Adult content may contain elements such as
+        /// nudity, pornographic images or cartoons, or sexual activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adult")]
         public virtual string Adult { get; set; } 
 
@@ -1141,7 +1142,7 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spoof")]
         public virtual string Spoof { get; set; } 
 
-        /// <summary>Violence likelihood.</summary>
+        /// <summary>Likelihood that this image contains violent content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violence")]
         public virtual string Violence { get; set; } 
 

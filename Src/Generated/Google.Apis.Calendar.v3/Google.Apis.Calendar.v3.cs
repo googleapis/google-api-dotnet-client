@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170919 (992)
+ *      <tr><th>API Rev<td>20171010 (1013)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -510,6 +510,11 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("calendarId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CalendarId { get; private set; }
 
+            /// <summary>Whether to send notifications about the calendar sharing change. Optional. The default is
+            /// True.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SendNotifications { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.AclRule Body { get; set; }
@@ -546,6 +551,15 @@ namespace Google.Apis.Calendar.v3
                         Name = "calendarId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sendNotifications", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendNotifications",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -711,6 +725,11 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("ruleId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RuleId { get; private set; }
 
+            /// <summary>Whether to send notifications about the calendar sharing change. Note that there are no
+            /// notifications on access removal. Optional. The default is True.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SendNotifications { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Calendar.v3.Data.AclRule Body { get; set; }
@@ -759,6 +778,15 @@ namespace Google.Apis.Calendar.v3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "sendNotifications", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendNotifications",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -796,6 +824,11 @@ namespace Google.Apis.Calendar.v3
             /// <summary>ACL rule identifier.</summary>
             [Google.Apis.Util.RequestParameterAttribute("ruleId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string RuleId { get; private set; }
+
+            /// <summary>Whether to send notifications about the calendar sharing change. Note that there are no
+            /// notifications on access removal. Optional. The default is True.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sendNotifications", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SendNotifications { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -842,6 +875,15 @@ namespace Google.Apis.Calendar.v3
                         Name = "ruleId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sendNotifications", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sendNotifications",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });

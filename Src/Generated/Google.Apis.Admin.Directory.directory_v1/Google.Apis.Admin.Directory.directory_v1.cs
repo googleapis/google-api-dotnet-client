@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20170830 (972)
+ *      <tr><th>API Rev<td>20171006 (1009)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -76,6 +76,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             notifications = new NotificationsResource(this);
             orgunits = new OrgunitsResource(this);
             privileges = new PrivilegesResource(this);
+            resolvedAppAccessSettings = new ResolvedAppAccessSettingsResource(this);
             resources = new ResourcesResource(this);
             roleAssignments = new RoleAssignmentsResource(this);
             roles = new RolesResource(this);
@@ -305,6 +306,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public virtual PrivilegesResource Privileges
         {
             get { return privileges; }
+        }
+
+        private readonly ResolvedAppAccessSettingsResource resolvedAppAccessSettings;
+
+        /// <summary>Gets the ResolvedAppAccessSettings resource.</summary>
+        public virtual ResolvedAppAccessSettingsResource ResolvedAppAccessSettings
+        {
+            get { return resolvedAppAccessSettings; }
         }
 
         private readonly ResourcesResource resources;
@@ -4985,6 +4994,113 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
     }
 
+    /// <summary>The "resolvedAppAccessSettings" collection of methods.</summary>
+    public class ResolvedAppAccessSettingsResource
+    {
+        private const string Resource = "resolvedAppAccessSettings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ResolvedAppAccessSettingsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves resolved app access settings of the logged in user.</summary>
+        public virtual GetSettingsRequest GetSettings()
+        {
+            return new GetSettingsRequest(service);
+        }
+
+        /// <summary>Retrieves resolved app access settings of the logged in user.</summary>
+        public class GetSettingsRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.AppAccessCollections>
+        {
+            /// <summary>Constructs a new GetSettings request.</summary>
+            public GetSettingsRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "GetSettings"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "resolvedappaccesssettings"; }
+            }
+
+            /// <summary>Initializes GetSettings parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Retrieves the list of apps trusted by the admin of the logged in user.</summary>
+        public virtual ListTrustedAppsRequest ListTrustedApps()
+        {
+            return new ListTrustedAppsRequest(service);
+        }
+
+        /// <summary>Retrieves the list of apps trusted by the admin of the logged in user.</summary>
+        public class ListTrustedAppsRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.TrustedApps>
+        {
+            /// <summary>Constructs a new ListTrustedApps request.</summary>
+            public ListTrustedAppsRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "ListTrustedApps"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "trustedapps"; }
+            }
+
+            /// <summary>Initializes ListTrustedApps parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+    }
+
     /// <summary>The "resources" collection of methods.</summary>
     public class ResourcesResource
     {
@@ -5341,7 +5457,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             }
 
-            /// <summary>Updates a calendar resource. This method supports patch semantics.</summary>
+            /// <summary>Updates a calendar resource.
+            ///
+            /// This method supports patch semantics, meaning you only need to include the fields you wish to update.
+            /// Fields that are not present in the request will be preserved. This method supports patch
+            /// semantics.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
@@ -5352,7 +5472,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new PatchRequest(service, body, customer, calendarResourceId);
             }
 
-            /// <summary>Updates a calendar resource. This method supports patch semantics.</summary>
+            /// <summary>Updates a calendar resource.
+            ///
+            /// This method supports patch semantics, meaning you only need to include the fields you wish to update.
+            /// Fields that are not present in the request will be preserved. This method supports patch
+            /// semantics.</summary>
             public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -5427,7 +5551,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             }
 
-            /// <summary>Updates a calendar resource.</summary>
+            /// <summary>Updates a calendar resource.
+            ///
+            /// This method supports patch semantics, meaning you only need to include the fields you wish to update.
+            /// Fields that are not present in the request will be preserved.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
             /// use the my_customer alias to represent your account's customer ID.</param>
@@ -5438,7 +5565,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 return new UpdateRequest(service, body, customer, calendarResourceId);
             }
 
-            /// <summary>Updates a calendar resource.</summary>
+            /// <summary>Updates a calendar resource.
+            ///
+            /// This method supports patch semantics, meaning you only need to include the fields you wish to update.
+            /// Fields that are not present in the request will be preserved.</summary>
             public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.CalendarResource>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -9027,6 +9157,46 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
+    /// <summary>JSON template for App Access Collections Resource object in Directory API.</summary>
+    public class AppAccessCollections : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of blocked api access buckets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockedApiAccessBuckets")]
+        public virtual System.Collections.Generic.IList<string> BlockedApiAccessBuckets { get; set; } 
+
+        /// <summary>Boolean to indicate whether to enforce app access settings on Android Drive or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforceSettingsForAndroidDrive")]
+        public virtual System.Nullable<bool> EnforceSettingsForAndroidDrive { get; set; } 
+
+        /// <summary>Error message provided by the Admin that will be shown to the user when an app is
+        /// blocked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; } 
+
+        /// <summary>ETag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Identifies the resource as an app access collection. Value:
+        /// admin#directory#appaccesscollection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Unique ID of app access collection. (Readonly)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
+        public virtual System.Nullable<long> ResourceId { get; set; } 
+
+        /// <summary>Resource name given by the customer while creating/updating. Should be unique under given
+        /// customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; } 
+
+        /// <summary>Boolean that indicates whether to trust domain owned apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustDomainOwnedApps")]
+        public virtual System.Nullable<bool> TrustDomainOwnedApps { get; set; } 
+
+    }    
+
     /// <summary>The template that returns individual ASP (Access Code) data.</summary>
     public class Asp : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10448,6 +10618,50 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>The type of the API resource. This is always admin#directory#tokenList.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+    }    
+
+    /// <summary>JSON template for Trusted App Ids Resource object in Directory API.</summary>
+    public class TrustedAppId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Android package name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidPackageName")]
+        public virtual string AndroidPackageName { get; set; } 
+
+        /// <summary>SHA1 signature of the app certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateHashSHA1")]
+        public virtual string CertificateHashSHA1 { get; set; } 
+
+        /// <summary>SHA256 signature of the app certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificateHashSHA256")]
+        public virtual string CertificateHashSHA256 { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Identifies the resource as a trusted AppId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+    }    
+
+    /// <summary>JSON template for Trusted Apps response object of a user in Directory API.</summary>
+    public class TrustedApps : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ETag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Identifies the resource as trusted apps response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>Trusted Apps list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trustedApps")]
+        public virtual System.Collections.Generic.IList<TrustedAppId> TrustedAppsValue { get; set; } 
 
     }    
 

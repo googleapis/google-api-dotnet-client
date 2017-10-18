@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Google Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20170929 (1002)
+ *      <tr><th>API Rev<td>20171014 (1017)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170925 (998)
+ *      <tr><th>API Rev<td>20171007 (1010)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -965,17 +965,11 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Quota metrics to indicate the result of allocation. Depending on the request, one or more of the
         /// following metrics will be included:
         ///
-        /// 1. For rate quota, per quota group or per quota metric incremental usage will be specified using the
-        /// following delta metric: "serviceruntime.googleapis.com/api/consumer/quota_used_count"
+        /// 1. Per quota group or per quota metric incremental usage will be specified using the following delta metric
+        /// : "serviceruntime.googleapis.com/api/consumer/quota_used_count"
         ///
-        /// 2. For allocation quota, per quota metric total usage will be specified using the following gauge metric:
-        /// "serviceruntime.googleapis.com/allocation/consumer/quota_used_count"
-        ///
-        /// 3. For both rate quota and allocation quota, the quota limit reached condition will be specified using the
-        /// following boolean metric: "serviceruntime.googleapis.com/quota/exceeded"
-        ///
-        /// 4. For allocation quota, value for each quota limit associated with the metrics will be specified using the
-        /// following gauge metric: "serviceruntime.googleapis.com/quota/limit"</summary>
+        /// 2. The quota limit reached condition will be specified using the following boolean metric :
+        /// "serviceruntime.googleapis.com/quota/exceeded"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
         public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
 
@@ -1004,7 +998,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Other service-specific data about the request, response, and other information associated with the
         /// current audited event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Metadata { get; set; } 
+        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
 
         /// <summary>The name of the service method or operation. For API calls, this should be the name of the API
         /// method. For example,
@@ -1668,7 +1662,9 @@ namespace Google.Apis.ServiceControl.v1.Data
 
         /// <summary>Fully qualified name of the API method for which this quota operation is requested. This name is
         /// used for matching quota rules or metric rules and billing status rules defined in service configuration.
-        /// This field is not required if the quota operation is performed on non-API resources.
+        ///
+        /// This field should not be set if any of the following is true: (1) the quota operation is performed on non-
+        /// API resources. (2) quota_metrics is set because the caller is doing quota override.
         ///
         /// Example of an RPC method name: google.example.library.v1.LibraryService.CreateShelf</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
@@ -1689,7 +1685,9 @@ namespace Google.Apis.ServiceControl.v1.Data
         ///
         /// Within a single operation, it is not allowed to have more than one MetricValue instances that have the same
         /// metric names and identical label value combinations. If a request has such duplicated MetricValue instances,
-        /// the entire request is rejected with an invalid argument error.</summary>
+        /// the entire request is rejected with an invalid argument error.
+        ///
+        /// This field is mutually exclusive with method_name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quotaMetrics")]
         public virtual System.Collections.Generic.IList<MetricValueSet> QuotaMetrics { get; set; } 
 

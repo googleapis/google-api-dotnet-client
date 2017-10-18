@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170908 (981)
+ *      <tr><th>API Rev<td>20170919 (992)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -17822,6 +17822,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
+            /// <summary>Specifies instance template to create the instance.
+            ///
+            /// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs
+            /// to an instance template: -
+            /// https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate
+            /// - projects/project/global/global/instanceTemplates/instanceTemplate -
+            /// global/instancesTemplates/instanceTemplate</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sourceInstanceTemplate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceInstanceTemplate { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Instance Body { get; set; }
@@ -17874,6 +17884,15 @@ namespace Google.Apis.Compute.beta
                     "requestId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sourceInstanceTemplate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sourceInstanceTemplate",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -42787,9 +42806,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The status of the address, which can be either IN_USE or RESERVED. An address that is
-        /// RESERVED is currently reserved and available to use. An IN_USE address is currently being used by another
-        /// resource and is not available.</summary>
+        /// <summary>[Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An
+        /// address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently
+        /// reserved and available to use. An IN_USE address is currently being used by another resource and is not
+        /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -45649,16 +45669,21 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Encapsulates numeric value that can be either absolute or relative.</summary>
     public class FixedOrPercent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Absolute value calculated based on mode: mode = fixed -> calculated = fixed = percent
-        /// -> calculated = ceiling(percent/100 * base_value)</summary>
+        /// <summary>[Output Only] Absolute value of VM instances calculated based on the specific mode.
+        ///
+        /// - If the value is fixed, then the caculated value is equal to the fixed value. - If the value is a percent,
+        /// then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a
+        /// managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a
+        /// remainder, the number is rounded up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calculated")]
         public virtual System.Nullable<int> Calculated { get; set; } 
 
-        /// <summary>fixed must be non-negative.</summary>
+        /// <summary>Specifies a fixed number of VM instances. This must be a positive integer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixed")]
         public virtual System.Nullable<int> Fixed__ { get; set; } 
 
-        /// <summary>percent must belong to [0, 100].</summary>
+        /// <summary>Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for
+        /// 80%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
         public virtual System.Nullable<int> Percent { get; set; } 
 
@@ -46087,6 +46112,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
 
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -46116,6 +46146,11 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The request path of the HTTPS health check request. The default value is /.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
+
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -47381,12 +47416,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updatePolicy")]
         public virtual InstanceGroupManagerUpdatePolicy UpdatePolicy { get; set; } 
 
-        /// <summary>Versions supported by this IGM. User should set this field if they need fine-grained control over
-        /// how many instances in each version are run by this IGM. Versions are keyed by instanceTemplate. Every
-        /// instanceTemplate can appear at most once. This field overrides instanceTemplate field. If both
-        /// instanceTemplate and versions are set, the user receives a warning. "instanceTemplate: X" is semantically
-        /// equivalent to "versions [ { instanceTemplate: X } ]". Exactly one version must have targetSize field left
-        /// unset. Size of such a version will be calculated automatically.</summary>
+        /// <summary>Specifies the instance templates used by this managed instance group to create instances.
+        ///
+        /// Each version is defined by an instanceTemplate. Every template can appear at most once per instance group.
+        /// This field overrides the top-level instanceTemplate field. Read more about the relationships between these
+        /// fields. Exactly one version must leave the targetSize field unset. That version will be applied to all
+        /// remaining instances. For more information, read about canary updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<InstanceGroupManagerVersion> Versions { get; set; } 
 
@@ -47649,17 +47684,27 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagerUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum number of instances that can be created above the InstanceGroupManager.targetSize during
-        /// the update process. By default, a fixed value of 1 is used. Using maxSurge > 0 will cause instance names to
-        /// change during the update process. At least one of { maxSurge, maxUnavailable } must be greater than
-        /// 0.</summary>
+        /// <summary>The maximum number of instances that can be created above the specified targetSize during the
+        /// update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a
+        /// percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances
+        /// will be rounded up if necessary.
+        ///
+        /// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about
+        /// maxSurge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSurge")]
         public virtual FixedOrPercent MaxSurge { get; set; } 
 
-        /// <summary>Maximum number of instances that can be unavailable during the update process. The instance is
-        /// considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2.
-        /// Instance's liveness health check result was observed to be HEALTHY at least once. By default, a fixed value
-        /// of 1 is used. At least one of { maxSurge, maxUnavailable } must be greater than 0.</summary>
+        /// <summary>The maximum number of instances that can be unavailable during the update process. An instance is
+        /// considered available if all of the following conditions are satisfied:
+        ///
+        /// - The instance's status is RUNNING. - If there is a health check on the instance grourp, the instance's
+        /// liveness health check result must be HEALTHY at least once. If there is no health check on the group, then
+        /// the instance only needs to have a status of RUNNING to be considered available.  By default, a fixed value
+        /// of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more
+        /// instances. If you set a percentage, the number of instances will be rounded up if necessary.
+        ///
+        /// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about
+        /// maxUnavailable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
         public virtual FixedOrPercent MaxUnavailable { get; set; } 
 
@@ -47668,8 +47713,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minReadySec")]
         public virtual System.Nullable<int> MinReadySec { get; set; } 
 
-        /// <summary>Minimal action to be taken on an instance. The order of action types is: RESTART <
-        /// REPLACE.</summary>
+        /// <summary>Minimal action to be taken on an instance. You can specify either RESTART to restart existing
+        /// instances or REPLACE to delete and create new instances from the target template. If you specify a
+        /// code>RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that
+        /// the minimal action you specify is not enough to perform the update, it might perform a more disruptive
+        /// action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
 
@@ -47690,10 +47738,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Intended number of instances that are created from instanceTemplate. The final number of instances
-        /// created from instanceTemplate will be equal to: * if expressed as fixed number: min(targetSize.fixed,
-        /// instanceGroupManager.targetSize), * if expressed as percent: ceiling(targetSize.percent *
-        /// InstanceGroupManager.targetSize). If unset, this version will handle all the remaining instances.</summary>
+        /// <summary>Specifies the intended number of instances to be created from the instanceTemplate. The final
+        /// number of instances created from the template will be equal to: - If expressed as a fixed number, the
+        /// minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. - if expressed as a percent,
+        /// the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder,
+        /// the number is rounded up.  If unset, this version will update any remaining instances not updated by another
+        /// version. Read Starting a canary update for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSize")]
         public virtual FixedOrPercent TargetSize { get; set; } 
 
@@ -51899,7 +51949,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Additional restrictions that must be met</summary>
+        /// <summary>Additional restrictions that must be met. All conditions must pass for the rule to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
 

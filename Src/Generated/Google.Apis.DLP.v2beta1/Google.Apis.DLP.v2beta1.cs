@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170928 (1001)
+ *      <tr><th>API Rev<td>20171010 (1013)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -939,6 +939,10 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -946,10 +950,6 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -985,6 +985,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -997,15 +1006,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1088,6 +1088,11 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
+                    /// value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Restricts findings to items that match. Supports info_type and likelihood.
                     ///
                     /// Examples:
@@ -1102,11 +1107,6 @@ namespace Google.Apis.DLP.v2beta1
                     /// page of data.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Maximum number of results to return. If 0, the implementation selects a reasonable
-                    /// value.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1142,6 +1142,15 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1154,15 +1163,6 @@ namespace Google.Apis.DLP.v2beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1430,10 +1430,6 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1441,6 +1437,10 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1476,15 +1476,6 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^riskAnalysis/operations$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1497,6 +1488,15 @@ namespace Google.Apis.DLP.v2beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2164,6 +2164,23 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Custom information type provided by the user. Used to find domain-specific sensitive information
+    /// configurable to the data in question.</summary>
+    public class GooglePrivacyDlpV2beta1CustomInfoType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dictionary-based custom info type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
+        public virtual GooglePrivacyDlpV2beta1Dictionary Dictionary { get; set; } 
+
+        /// <summary>Info type configuration. All custom info types must have configurations that do not conflict with
+        /// built-in info types or other custom info types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Record key for a finding in Cloud Datastore.</summary>
     public class GooglePrivacyDlpV2beta1DatastoreKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2256,6 +2273,18 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>A review of the transformations that took place for each item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaries")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1DeidentificationSummary> Summaries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Custom information type based on a dictionary of words or phrases. This can be used to match sensitive
+    /// information specific to the data, such as a list of employee IDs or job titles.</summary>
+    public class GooglePrivacyDlpV2beta1Dictionary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of words or phrases to search for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wordList")]
+        public virtual GooglePrivacyDlpV2beta1WordList WordList { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2541,6 +2570,10 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// min_likelihood are currently used.</summary>
     public class GooglePrivacyDlpV2beta1InspectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Custom info types provided by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customInfoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1CustomInfoType> CustomInfoTypes { get; set; } 
+
         /// <summary>When true, excludes type information of the findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeTypes")]
         public virtual System.Nullable<bool> ExcludeTypes { get; set; } 
@@ -3482,6 +3515,18 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>A value contained in the field in question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual GooglePrivacyDlpV2beta1Value Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message defining a list of words or phrases to search for in the data.</summary>
+    public class GooglePrivacyDlpV2beta1WordList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Words or phrases defining the dictionary. No word can be shorter than 3 characters in length. To
+        /// match, there must be whitespace or punctuation around the targeted string. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<string> Words { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

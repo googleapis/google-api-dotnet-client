@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery Data Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171001 (1004)
+ *      <tr><th>API Rev<td>20171016 (1019)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1960,10 +1960,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1971,6 +1967,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2006,15 +2006,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2027,6 +2018,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2378,6 +2378,13 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Pagination token, which can be used to request a specific page of
+                    /// `ListTransferRunsRequest` list results. For multiple-page results, `ListTransferRunsResponse`
+                    /// outputs a `next_page` token, which can be used as the `page_token` value to request the next
+                    /// page of list results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Page size. The default page size is the maximum value of 1000 results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2418,13 +2425,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                         LATEST,
                     }
 
-                    /// <summary>Pagination token, which can be used to request a specific page of
-                    /// `ListTransferRunsRequest` list results. For multiple-page results, `ListTransferRunsResponse`
-                    /// outputs a `next_page` token, which can be used as the `page_token` value to request the next
-                    /// page of list results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -2459,6 +2459,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                                 Pattern = @"^projects/[^/]+/transferConfigs/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -2480,15 +2489,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             "runAttempt", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "runAttempt",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2857,6 +2857,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Required list of fields to be updated in this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Optional OAuth2 authorization code to use with this transfer configuration. If it is
                 /// provided, the transfer configuration will be associated with the gaia id of the authorizing user. In
                 /// order to obtain authorization_code, please make a request to
@@ -2871,10 +2875,6 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// application.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("authorizationCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AuthorizationCode { get; set; }
-
-                /// <summary>Required list of fields to be updated in this request.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -2916,18 +2916,18 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                             Pattern = @"^projects/[^/]+/transferConfigs/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "authorizationCode", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "authorizationCode",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "authorizationCode", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "authorizationCode",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3220,8 +3220,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSources")]
         public virtual System.Collections.Generic.IList<DataSource> DataSources { get; set; } 
 
-        /// <summary>The next-pagination token. For multiple-page list results, this token can be used as the
-        /// `ListDataSourcesRequest.page_token` to request the next page of list results. Output only.</summary>
+        /// <summary>Output only. The next-pagination token. For multiple-page list results, this token can be used as
+        /// the `ListDataSourcesRequest.page_token` to request the next page of list results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -3247,12 +3247,12 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     /// <summary>The returned list of pipelines in the project.</summary>
     public class ListTransferConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The next-pagination token. For multiple-page list results, this token can be used as the
-        /// `ListTransferConfigsRequest.page_token` to request the next page of list results. Output only.</summary>
+        /// <summary>Output only. The next-pagination token. For multiple-page list results, this token can be used as
+        /// the `ListTransferConfigsRequest.page_token` to request the next page of list results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The stored pipeline transfer configurations. Output only.</summary>
+        /// <summary>Output only. The stored pipeline transfer configurations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferConfigs")]
         public virtual System.Collections.Generic.IList<TransferConfig> TransferConfigs { get; set; } 
 
@@ -3263,12 +3263,12 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     /// <summary>The returned list transfer run messages.</summary>
     public class ListTransferLogsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The next-pagination token. For multiple-page list results, this token can be used as the
-        /// `GetTransferRunLogRequest.page_token` to request the next page of list results. Output only.</summary>
+        /// <summary>Output only. The next-pagination token. For multiple-page list results, this token can be used as
+        /// the `GetTransferRunLogRequest.page_token` to request the next page of list results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The stored pipeline transfer messages. Output only.</summary>
+        /// <summary>Output only. The stored pipeline transfer messages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferMessages")]
         public virtual System.Collections.Generic.IList<TransferMessage> TransferMessages { get; set; } 
 
@@ -3279,12 +3279,12 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     /// <summary>The returned list of pipelines in the project.</summary>
     public class ListTransferRunsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The next-pagination token. For multiple-page list results, this token can be used as the
-        /// `ListTransferRunsRequest.page_token` to request the next page of list results. Output only.</summary>
+        /// <summary>Output only. The next-pagination token. For multiple-page list results, this token can be used as
+        /// the `ListTransferRunsRequest.page_token` to request the next page of list results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
-        /// <summary>The stored pipeline transfer runs. Output only.</summary>
+        /// <summary>Output only. The stored pipeline transfer runs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transferRuns")]
         public virtual System.Collections.Generic.IList<TransferRun> TransferRuns { get; set; } 
 
@@ -3361,8 +3361,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual string DataSourceId { get; set; } 
 
-        /// <summary>Region in which BigQuery dataset is located. Currently possible values are: "US" and "EU". Output
-        /// only.</summary>
+        /// <summary>Output only. Region in which BigQuery dataset is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetRegion")]
         public virtual string DatasetRegion { get; set; } 
 
@@ -3384,7 +3383,7 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Next time when data transfer will run. Output only.</summary>
+        /// <summary>Output only. Next time when data transfer will run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRunTime")]
         public virtual object NextRunTime { get; set; } 
 
@@ -3401,17 +3400,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; } 
 
-        /// <summary>State of the most recently updated transfer run. Output only.</summary>
+        /// <summary>Output only. State of the most recently updated transfer run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Data transfer modification time. Ignored by server on input. Output only.</summary>
+        /// <summary>Output only. Data transfer modification time. Ignored by server on input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Unique ID of the user on whose behalf transfer is done. Applicable only to data sources that do not
-        /// support service accounts. When set to 0, the data source service account credentials are used. Output
-        /// only.</summary>
+        /// <summary>Output only. Unique ID of the user on whose behalf transfer is done. Applicable only to data
+        /// sources that do not support service accounts. When set to 0, the data source service account credentials are
+        /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual System.Nullable<long> UserId { get; set; } 
 
@@ -3441,12 +3440,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
     /// <summary>Represents a data transfer run.</summary>
     public class TransferRun : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Data source id. Output only.</summary>
+        /// <summary>Output only. Data source id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSourceId")]
         public virtual string DataSourceId { get; set; } 
 
-        /// <summary>Region in which BigQuery dataset is located. Currently possible values are: "US" and "EU". Output
-        /// only.</summary>
+        /// <summary>Output only. Region in which BigQuery dataset is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetRegion")]
         public virtual string DatasetRegion { get; set; } 
 
@@ -3454,8 +3452,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destinationDatasetId")]
         public virtual string DestinationDatasetId { get; set; } 
 
-        /// <summary>Time when transfer run ended. Parameter ignored by server for input requests. Output
-        /// only.</summary>
+        /// <summary>Output only. Time when transfer run ended. Parameter ignored by server for input
+        /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
@@ -3473,10 +3471,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
         public virtual object RunTime { get; set; } 
 
-        /// <summary>Describes the schedule of this transfer run if it was created as part of a regular schedule. For
-        /// batch transfer runs that are directly created, this is empty. NOTE: the system might choose to delay the
-        /// schedule depending on the current load, so `schedule_time` doesn't always matches this. Output
-        /// only.</summary>
+        /// <summary>Output only. Describes the schedule of this transfer run if it was created as part of a regular
+        /// schedule. For batch transfer runs that are scheduled manually, this is empty. NOTE: the system might choose
+        /// to delay the schedule depending on the current load, so `schedule_time` doesn't always matches
+        /// this.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; } 
 
@@ -3484,22 +3482,22 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
 
-        /// <summary>Time when transfer run was started. Parameter ignored by server for input requests. Output
-        /// only.</summary>
+        /// <summary>Output only. Time when transfer run was started. Parameter ignored by server for input
+        /// requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Data transfer run state. Ignored for input requests. Output only.</summary>
+        /// <summary>Output only. Data transfer run state. Ignored for input requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Last time the data transfer run state was updated. Output only.</summary>
+        /// <summary>Output only. Last time the data transfer run state was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
-        /// <summary>Unique ID of the user on whose behalf transfer is done. Applicable only to data sources that do not
-        /// support service accounts. When set to 0, the data source service account credentials are used. Output
-        /// only.</summary>
+        /// <summary>Output only. Unique ID of the user on whose behalf transfer is done. Applicable only to data
+        /// sources that do not support service accounts. When set to 0, the data source service account credentials are
+        /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual System.Nullable<long> UserId { get; set; } 
 

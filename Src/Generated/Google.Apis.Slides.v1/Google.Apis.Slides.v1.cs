@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170926 (999)
+ *      <tr><th>API Rev<td>20171012 (1015)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -1533,6 +1533,44 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Groups objects to create an object group. For example, groups PageElements to create a Group on the
+    /// same page as all the children.</summary>
+    public class GroupObjectsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object IDs of the objects to group.
+        ///
+        /// Only page elements can be grouped. There should be at least two page elements on the same page that are not
+        /// already in another group. Some page elements, such as videos, tables and placeholder shapes cannot be
+        /// grouped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("childrenObjectIds")]
+        public virtual System.Collections.Generic.IList<string> ChildrenObjectIds { get; set; } 
+
+        /// <summary>A user-supplied object ID for the group to be created.
+        ///
+        /// If you specify an ID, it must be unique among all pages and page elements in the presentation. The ID must
+        /// start with an alphanumeric character or an underscore (matches regex `[a-zA-Z0-9_]`); remaining characters
+        /// may include those as well as a hyphen or colon (matches regex `[a-zA-Z0-9_-:]`). The length of the ID must
+        /// not be less than 5 or greater than 50.
+        ///
+        /// If you don't specify an ID, a unique one is generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupObjectId")]
+        public virtual string GroupObjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of grouping objects.</summary>
+    public class GroupObjectsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object ID of the created group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A PageElement kind representing an image.</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1572,7 +1610,7 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual Link Link { get; set; } 
 
-        /// <summary>The outline of the image. If not set, the the image has no outline.</summary>
+        /// <summary>The outline of the image. If not set, the image has no outline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outline")]
         public virtual Outline Outline { get; set; } 
 
@@ -1867,6 +1905,25 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The human-readable name of the master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Merges cells in a Table.</summary>
+    public class MergeTableCellsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object ID of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The table range specifying which cells of the table to merge.
+        ///
+        /// Any text in the cells being merged will be concatenated and stored in the upper-left ("head") cell of the
+        /// range. If the range is non-rectangular (which can occur in some cases where the range covers cells that are
+        /// already merged), a 400 bad request error is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
+        public virtual TableRange TableRange { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2551,6 +2608,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateObject")]
         public virtual DuplicateObjectRequest DuplicateObject { get; set; } 
 
+        /// <summary>Groups objects, such as page elements.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupObjects")]
+        public virtual GroupObjectsRequest GroupObjects { get; set; } 
+
         /// <summary>Inserts columns into a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTableColumns")]
         public virtual InsertTableColumnsRequest InsertTableColumns { get; set; } 
@@ -2562,6 +2623,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Inserts text into a shape or table cell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertText")]
         public virtual InsertTextRequest InsertText { get; set; } 
+
+        /// <summary>Merges cells in a Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergeTableCells")]
+        public virtual MergeTableCellsRequest MergeTableCells { get; set; } 
 
         /// <summary>Refreshes a Google Sheets chart.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshSheetsChart")]
@@ -2578,6 +2643,14 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Replaces all instances of specified text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllText")]
         public virtual ReplaceAllTextRequest ReplaceAllText { get; set; } 
+
+        /// <summary>Ungroups objects, such as groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ungroupObjects")]
+        public virtual UngroupObjectsRequest UngroupObjects { get; set; } 
+
+        /// <summary>Unmerges cells in a Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unmergeTableCells")]
+        public virtual UnmergeTableCellsRequest UnmergeTableCells { get; set; } 
 
         /// <summary>Updates the properties of an Image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateImageProperties")]
@@ -2607,9 +2680,21 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateSlidesPosition")]
         public virtual UpdateSlidesPositionRequest UpdateSlidesPosition { get; set; } 
 
+        /// <summary>Updates the properties of the table borders in a Table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTableBorderProperties")]
+        public virtual UpdateTableBorderPropertiesRequest UpdateTableBorderProperties { get; set; } 
+
         /// <summary>Updates the properties of a TableCell.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTableCellProperties")]
         public virtual UpdateTableCellPropertiesRequest UpdateTableCellProperties { get; set; } 
+
+        /// <summary>Updates the properties of a Table column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTableColumnProperties")]
+        public virtual UpdateTableColumnPropertiesRequest UpdateTableColumnProperties { get; set; } 
+
+        /// <summary>Updates the properties of a Table row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTableRowProperties")]
+        public virtual UpdateTableRowPropertiesRequest UpdateTableRowProperties { get; set; } 
 
         /// <summary>Updates the styling of text within a Shape or Table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTextStyle")]
@@ -2657,6 +2742,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The result of duplicating an object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateObject")]
         public virtual DuplicateObjectResponse DuplicateObject { get; set; } 
+
+        /// <summary>The result of grouping objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupObjects")]
+        public virtual GroupObjectsResponse GroupObjects { get; set; } 
 
         /// <summary>The result of replacing all shapes matching some criteria with an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllShapesWithImage")]
@@ -2775,7 +2864,7 @@ namespace Google.Apis.Slides.v1.Data
     {
         /// <summary>The background fill property state.
         ///
-        /// Updating the the fill on a shape will implicitly update this field to `RENDERED`, unless another value is
+        /// Updating the fill on a shape will implicitly update this field to `RENDERED`, unless another value is
         /// specified in the same request. To have no fill on a shape, set this field to `NOT_RENDERED`. In this case,
         /// any other fill fields set in the same request will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
@@ -2972,6 +3061,14 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Nullable<int> Columns { get; set; } 
 
+        /// <summary>Properties of horizontal cell borders.
+        ///
+        /// A table's horizontal cell borders are represented as a grid. The grid has one more row than the number of
+        /// rows in the table and the same number of columns as the table. For example, if the table is 3 x 3, its
+        /// horizontal borders will be represented as a grid with 4 rows and 3 columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalBorderRows")]
+        public virtual System.Collections.Generic.IList<TableBorderRow> HorizontalBorderRows { get; set; } 
+
         /// <summary>Number of rows in the table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Nullable<int> Rows { get; set; } 
@@ -2986,6 +3083,71 @@ namespace Google.Apis.Slides.v1.Data
         /// 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRows")]
         public virtual System.Collections.Generic.IList<TableRow> TableRows { get; set; } 
+
+        /// <summary>Properties of vertical cell borders.
+        ///
+        /// A table's vertical cell borders are represented as a grid. The grid has the same number of rows as the table
+        /// and one more column than the number of columns in the table. For example, if the table is 3 x 3, its
+        /// vertical borders will be represented as a grid with 3 rows and 4 columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalBorderRows")]
+        public virtual System.Collections.Generic.IList<TableBorderRow> VerticalBorderRows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The properties of each border cell.</summary>
+    public class TableBorderCell : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The location of the border within the border table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual TableCellLocation Location { get; set; } 
+
+        /// <summary>The border properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableBorderProperties")]
+        public virtual TableBorderProperties TableBorderProperties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The fill of the border.</summary>
+    public class TableBorderFill : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Solid fill.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solidFill")]
+        public virtual SolidFill SolidFill { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The border styling properties of the TableBorderCell.</summary>
+    public class TableBorderProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dash style of the border.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dashStyle")]
+        public virtual string DashStyle { get; set; } 
+
+        /// <summary>The fill of the table border.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableBorderFill")]
+        public virtual TableBorderFill TableBorderFill { get; set; } 
+
+        /// <summary>The thickness of the border.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
+        public virtual Dimension Weight { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contents of each border row in a table.</summary>
+    public class TableBorderRow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Properties of each border cell. When a border's adjacent table cells are merged, it is not included
+        /// in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableBorderCells")]
+        public virtual System.Collections.Generic.IList<TableBorderCell> TableBorderCells { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3023,8 +3185,8 @@ namespace Google.Apis.Slides.v1.Data
     {
         /// <summary>The background fill property state.
         ///
-        /// Updating the the fill on a table cell will implicitly update this field to `RENDERED`, unless another value
-        /// is specified in the same request. To have no fill on a table cell, set this field to `NOT_RENDERED`. In this
+        /// Updating the fill on a table cell will implicitly update this field to `RENDERED`, unless another value is
+        /// specified in the same request. To have no fill on a table cell, set this field to `NOT_RENDERED`. In this
         /// case, any other fill fields set in the same request will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
@@ -3117,6 +3279,22 @@ namespace Google.Apis.Slides.v1.Data
         /// the length of this collection does not always match the number of columns of the entire table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCells")]
         public virtual System.Collections.Generic.IList<TableCell> TableCells { get; set; } 
+
+        /// <summary>Properties of the row.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRowProperties")]
+        public virtual TableRowProperties TableRowProperties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Properties of each row in a table.</summary>
+    public class TableRowProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Minimum height of the row. The row will be rendered in the Slides editor at a height equal to or
+        /// greater than this value in order to show all the text in the row's cell(s).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minRowHeight")]
+        public virtual Dimension MinRowHeight { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3344,6 +3522,39 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Ungroups objects, such as groups.</summary>
+    public class UngroupObjectsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object IDs of the objects to ungroup.
+        ///
+        /// Only groups that are not inside other groups can be ungrouped. All the groups should be on the same page.
+        /// The group itself is deleted. The visual sizes and positions of all the children are preserved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectIds")]
+        public virtual System.Collections.Generic.IList<string> ObjectIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Unmerges cells in a Table.</summary>
+    public class UnmergeTableCellsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The object ID of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The table range specifying which cells of the table to unmerge.
+        ///
+        /// All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected.
+        /// If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells,
+        /// the text will remain in the upper-left ("head") cell of the resulting block of unmerged cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
+        public virtual TableRange TableRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Update the properties of an Image.</summary>
     public class UpdateImagePropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3530,6 +3741,44 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Updates the properties of the table borders in a Table.</summary>
+    public class UpdateTableBorderPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The border position in the table range the updates should apply to. If a border position is not
+        /// specified, the updates will apply to all borders in the table range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("borderPosition")]
+        public virtual string BorderPosition { get; set; } 
+
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `tableBorderProperties` is implied and should not be
+        /// specified. A single `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example to update the table border solid fill color, set `fields` to
+        /// `"tableBorderFill.solidFill.color"`.
+        ///
+        /// To reset a property to its default value, include its field name in the field mask but leave the field
+        /// itself unset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The object ID of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The table border properties to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableBorderProperties")]
+        public virtual TableBorderProperties TableBorderProperties { get; set; } 
+
+        /// <summary>The table range representing the subset of the table to which the updates are applied. If a table
+        /// range is not specified, the updates will apply to the entire table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
+        public virtual TableRange TableRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Update the properties of a TableCell.</summary>
     public class UpdateTableCellPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3558,6 +3807,73 @@ namespace Google.Apis.Slides.v1.Data
         /// range is not specified, the updates will apply to the entire table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableRange")]
         public virtual TableRange TableRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the properties of a Table column.</summary>
+    public class UpdateTableColumnPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of zero-based indices specifying which columns to update. If no indices are provided, all
+        /// columns in the table will be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> ColumnIndices { get; set; } 
+
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `tableColumnProperties` is implied and should not be
+        /// specified. A single `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example to update the column width, set `fields` to `"column_width"`.
+        ///
+        /// If '"column_width"' is included in the field mask but the property is left unset, the column width will
+        /// default to 406,400 EMU (32 points).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The object ID of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The table column properties to update.
+        ///
+        /// If the value of `table_column_properties#column_width` in the request is less than 406,400 EMU (32 points),
+        /// a 400 bad request error is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableColumnProperties")]
+        public virtual TableColumnProperties TableColumnProperties { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the properties of a Table row.</summary>
+    public class UpdateTableRowPropertiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fields that should be updated.
+        ///
+        /// At least one field must be specified. The root `tableRowProperties` is implied and should not be specified.
+        /// A single `"*"` can be used as short-hand for listing every field.
+        ///
+        /// For example to update the minimum row height, set `fields` to `"min_row_height"`.
+        ///
+        /// If '"min_row_height"' is included in the field mask but the property is left unset, the minimum row height
+        /// will default to 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
+
+        /// <summary>The object ID of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The list of zero-based indices specifying which rows to update. If no indices are provided, all
+        /// rows in the table will be updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowIndices")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> RowIndices { get; set; } 
+
+        /// <summary>The table row properties to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableRowProperties")]
+        public virtual TableRowProperties TableRowProperties { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

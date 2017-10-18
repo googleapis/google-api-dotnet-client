@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20171002 (1005)
+ *      <tr><th>API Rev<td>20171017 (1020)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3938,6 +3938,78 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Graphics statistics for the App. The information is collected from 'adb shell dumpsys graphicsstats'.
+    /// For more info see: https://developer.android.com/training/testing/performance.html Statistics will only be
+    /// present for API 23+.</summary>
+    public class GraphicsStats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Histogram of frame render times. There should be 154 buckets ranging from [5ms, 6ms) to [4950ms,
+        /// infinity)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buckets")]
+        public virtual System.Collections.Generic.IList<GraphicsStatsBucket> Buckets { get; set; } 
+
+        /// <summary>Total "high input latency" events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("highInputLatencyCount")]
+        public virtual System.Nullable<long> HighInputLatencyCount { get; set; } 
+
+        /// <summary>Total frames with slow render time. Should be <= total_frames.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jankyFrames")]
+        public virtual System.Nullable<long> JankyFrames { get; set; } 
+
+        /// <summary>Total "missed vsync" events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("missedVsyncCount")]
+        public virtual System.Nullable<long> MissedVsyncCount { get; set; } 
+
+        /// <summary>50th percentile frame render time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p50Millis")]
+        public virtual System.Nullable<long> P50Millis { get; set; } 
+
+        /// <summary>90th percentile frame render time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p90Millis")]
+        public virtual System.Nullable<long> P90Millis { get; set; } 
+
+        /// <summary>95th percentile frame render time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p95Millis")]
+        public virtual System.Nullable<long> P95Millis { get; set; } 
+
+        /// <summary>99th percentile frame render time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("p99Millis")]
+        public virtual System.Nullable<long> P99Millis { get; set; } 
+
+        /// <summary>Total "slow bitmap upload" events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slowBitmapUploadCount")]
+        public virtual System.Nullable<long> SlowBitmapUploadCount { get; set; } 
+
+        /// <summary>Total "slow draw" events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slowDrawCount")]
+        public virtual System.Nullable<long> SlowDrawCount { get; set; } 
+
+        /// <summary>Total "slow UI thread" events.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("slowUiThreadCount")]
+        public virtual System.Nullable<long> SlowUiThreadCount { get; set; } 
+
+        /// <summary>Total frames rendered by package.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFrames")]
+        public virtual System.Nullable<long> TotalFrames { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GraphicsStatsBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of frames in the bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frameCount")]
+        public virtual System.Nullable<long> FrameCount { get; set; } 
+
+        /// <summary>Lower bound of render time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderMillis")]
+        public virtual System.Nullable<long> RenderMillis { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A History represents a sorted list of Executions ordered by the start_timestamp_millis field
     /// (descending). It can be used to group all the Executions of a continuous build.
     ///
@@ -4215,6 +4287,11 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         /// <summary>A tool results execution ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
         public virtual string ExecutionId { get; set; } 
+
+        /// <summary>Graphics statistics for the entire run. Statistics are reset at the beginning of the run and
+        /// collected at the end of the run.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("graphicsStats")]
+        public virtual GraphicsStats GraphicsStats { get; set; } 
 
         /// <summary>A tool results history ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]

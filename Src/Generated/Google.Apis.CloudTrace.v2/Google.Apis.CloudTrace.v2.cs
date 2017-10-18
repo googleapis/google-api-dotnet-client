@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170927 (1000)
+ *      <tr><th>API Rev<td>20171016 (1019)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -686,6 +686,31 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An event describing a message sent/received between Spans.</summary>
+    public class MessageEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of compressed bytes sent or received. If missing assumed to be the same size as
+        /// uncompressed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compressedSizeBytes")]
+        public virtual System.Nullable<long> CompressedSizeBytes { get; set; } 
+
+        /// <summary>An identifier for the MessageEvent's message that can be used to match SENT and RECEIVED
+        /// MessageEvents. It is recommended to be unique within a Span.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; } 
+
+        /// <summary>Type of MessageEvent. Indicates whether the message was sent or received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The number of uncompressed bytes sent or received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uncompressedSizeBytes")]
+        public virtual System.Nullable<long> UncompressedSizeBytes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Binary module.</summary>
     public class Module : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -697,34 +722,6 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// to 256 bytes).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("module")]
         public virtual TruncatableString ModuleValue { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>An event describing an RPC message sent or received on the network.</summary>
-    public class NetworkEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The number of compressed bytes sent or received.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("compressedMessageSize")]
-        public virtual System.Nullable<ulong> CompressedMessageSize { get; set; } 
-
-        /// <summary>An identifier for the message, which must be unique in this span.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual System.Nullable<ulong> MessageId { get; set; } 
-
-        /// <summary>For sent messages, this is the time at which the first bit was sent. For received messages, this is
-        /// the time at which the last bit was received.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual object Time { get; set; } 
-
-        /// <summary>Type of NetworkEvent. Indicates whether the RPC message was sent or received.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; } 
-
-        /// <summary>The number of uncompressed bytes sent or received.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uncompressedMessageSize")]
-        public virtual System.Nullable<ulong> UncompressedMessageSize { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -743,7 +740,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// <summary>An optional number of child spans that were generated while this span was active. If set, allows
         /// implementation to detect missing child spans.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("childSpanCount")]
-        public virtual System.Nullable<long> ChildSpanCount { get; set; } 
+        public virtual System.Nullable<int> ChildSpanCount { get; set; } 
 
         /// <summary>A description of the span's operation (up to 128 bytes). Stackdriver Trace displays the description
         /// in the {% dynamic print site_values.console_name %}. For example, the display name can be a qualified method
@@ -798,7 +795,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
 
-        /// <summary>The included time events. There can be up to 32 annotations and 128 network events per
+        /// <summary>The included time events. There can be up to 32 annotations and 128 message events per
         /// span.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeEvents")]
         public virtual TimeEvents TimeEvents { get; set; } 
@@ -877,7 +874,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// Subsequent spans within the same request can refer to that stack trace by only setting
         /// `stackTraceHashId`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackTraceHashId")]
-        public virtual System.Nullable<ulong> StackTraceHashId { get; set; } 
+        public virtual System.Nullable<long> StackTraceHashId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -946,16 +943,16 @@ namespace Google.Apis.CloudTrace.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A time-stamped annotation or network event in the Span.</summary>
+    /// <summary>A time-stamped annotation or message event in the Span.</summary>
     public class TimeEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Text annotation with a set of attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
         public virtual Annotation Annotation { get; set; } 
 
-        /// <summary>An event describing an RPC message sent/received on the network.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkEvent")]
-        public virtual NetworkEvent NetworkEvent { get; set; } 
+        /// <summary>An event describing a message sent/received between Spans.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageEvent")]
+        public virtual MessageEvent MessageEvent { get; set; } 
 
         /// <summary>The timestamp indicating the time the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
@@ -966,7 +963,7 @@ namespace Google.Apis.CloudTrace.v2.Data
     }    
 
     /// <summary>A collection of `TimeEvent`s. A `TimeEvent` is a time-stamped annotation on the span, consisting of
-    /// either user-supplied key:value pairs, or details of an RPC message sent/received on the network.</summary>
+    /// either user-supplied key:value pairs, or details of a message sent/received between Spans.</summary>
     public class TimeEvents : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The number of dropped annotations in all the included time events. If the value is 0, then no
@@ -974,10 +971,10 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("droppedAnnotationsCount")]
         public virtual System.Nullable<int> DroppedAnnotationsCount { get; set; } 
 
-        /// <summary>The number of dropped network events in all the included time events. If the value is 0, then no
-        /// network events were dropped.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("droppedNetworkEventsCount")]
-        public virtual System.Nullable<int> DroppedNetworkEventsCount { get; set; } 
+        /// <summary>The number of dropped message events in all the included time events. If the value is 0, then no
+        /// message events were dropped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("droppedMessageEventsCount")]
+        public virtual System.Nullable<int> DroppedMessageEventsCount { get; set; } 
 
         /// <summary>A collection of `TimeEvent`s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeEvent")]

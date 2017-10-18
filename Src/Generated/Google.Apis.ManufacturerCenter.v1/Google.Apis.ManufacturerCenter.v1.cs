@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170808 (950)
+ *      <tr><th>API Rev<td>20171011 (1014)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -915,7 +915,7 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productPageUrl")]
         public virtual string ProductPageUrl { get; set; } 
 
-        /// <summary>The category of the product. For more information, see
+        /// <summary>The type or category of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#producttype.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productType")]
         public virtual System.Collections.Generic.IList<string> ProductType { get; set; } 
@@ -950,9 +950,9 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedRetailPrice")]
         public virtual Price SuggestedRetailPrice { get; set; } 
 
-        /// <summary>The target account id. Should only be used in the accounts of the data partners.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("targetAccountId")]
-        public virtual System.Nullable<long> TargetAccountId { get; set; } 
+        /// <summary>The target client id. Should only be used in the accounts of the data partners.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetClientId")]
+        public virtual string TargetClientId { get; set; } 
 
         /// <summary>The theme of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#theme.</summary>

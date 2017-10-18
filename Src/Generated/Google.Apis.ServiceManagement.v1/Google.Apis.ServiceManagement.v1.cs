@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170926 (999)
+ *      <tr><th>API Rev<td>20171013 (1016)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1394,14 +1394,6 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
-                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
-                /// filter='status=SUCCESS' -- To limit the results to those in
-                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
-                /// filter='status=CANCELLED OR status=FAILED'</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1409,6 +1401,14 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>The max number of items to include in the response list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
+                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
+                /// filter='status=SUCCESS' -- To limit the results to those in
+                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
+                /// filter='status=CANCELLED OR status=FAILED'</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1444,15 +1444,6 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1465,6 +1456,15 @@ namespace Google.Apis.ServiceManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1908,10 +1908,6 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
-            /// <summary>The id of the service configuration resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConfigId { get; set; }
-
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1924,6 +1920,10 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
+
+            /// <summary>The id of the service configuration resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConfigId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1959,18 +1959,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "configId",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "configId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "configId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2081,14 +2081,6 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Requested size of the next page of data.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Include services produced by the specified project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProducerProjectId { get; set; }
-
             /// <summary>Include services consumed by the specified consumer.
             ///
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
@@ -2098,6 +2090,14 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Requested size of the next page of data.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Include services produced by the specified project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProducerProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2124,24 +2124,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "producerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "producerProjectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
@@ -2154,6 +2136,24 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "producerProjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "producerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2710,9 +2710,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
 
     /// <summary>Billing related configuration of the service.
     ///
-    /// The following example shows how to configure monitored resources and metrics for billing: monitored_resources: -
-    /// type: library.googleapis.com/branch labels: - key: /city description: The city where the library branch is
-    /// located in. - key: /name description: The name of the branch. metrics: - name:
+    /// The following example shows how to configure monitored resources and metrics for billing:
+    ///
+    /// monitored_resources: - type: library.googleapis.com/branch labels: - key: /city description: The city where the
+    /// library branch is located in. - key: /name description: The name of the branch. metrics: - name:
     /// library.googleapis.com/book/borrowed_count metric_kind: DELTA value_type: INT64 billing: consumer_destinations:
     /// - monitored_resource: library.googleapis.com/branch metrics: -
     /// library.googleapis.com/book/borrowed_count</summary>
@@ -3168,7 +3169,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     public class Endpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>DEPRECATED: This field is no longer supported. Instead of using aliases, please specify multiple
-        /// google.api.Endpoint for each of the intented alias.
+        /// google.api.Endpoint for each of the intended aliases.
         ///
         /// Additional names that this endpoint will be hosted on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliases")]
@@ -3945,7 +3946,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string Description { get; set; } 
 
         /// <summary>A concise name for the metric, which can be displayed in user interfaces. Use sentence case without
-        /// an ending period, for example "Request count".</summary>
+        /// an ending period, for example "Request count". This field is optional but it is recommended to be set for
+        /// any metrics associated with user-visible concepts, such as Quota.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -3961,12 +3963,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metricKind")]
         public virtual string MetricKind { get; set; } 
 
-        /// <summary>The resource name of the metric descriptor. Depending on the implementation, the name typically
-        /// includes: (1) the parent resource name that defines the scope of the metric type or of its data; and (2) the
-        /// metric's URL-encoded type, which also appears in the `type` field of this descriptor. For example, following
-        /// is the resource name of a custom metric within the GCP project `my-project-id`:
-        ///
-        /// "projects/my-project-id/metricDescriptors/custom.googleapis.com%2Finvoice%2Fpaid%2Famount"</summary>
+        /// <summary>The resource name of the metric descriptor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4484,44 +4481,31 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual System.Nullable<long> MaxLimit { get; set; } 
 
         /// <summary>The name of the metric this quota limit applies to. The quota limits with the same metric will be
-        /// checked together during runtime. The metric must be defined within the service config.
-        ///
-        /// Used by metric-based quotas only.</summary>
+        /// checked together during runtime. The metric must be defined within the service config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
 
-        /// <summary>Name of the quota limit. The name is used to refer to the limit when overriding the default limit
-        /// on per-consumer basis.
+        /// <summary>Name of the quota limit.
         ///
-        /// For metric-based quota limits, the name must be provided, and it must be unique within the service. The name
-        /// can only include alphanumeric characters as well as '-'.
+        /// The name must be provided, and it must be unique within the service. The name can only include alphanumeric
+        /// characters as well as '-'.
         ///
-        /// The maximum length of the limit name is 64 characters.
-        ///
-        /// The name of a limit is used as a unique identifier for this limit. Therefore, once a limit has been put into
-        /// use, its name should be immutable. You can use the display_name field to provide a user-friendly name for
-        /// the limit. The display name can be evolved over time without affecting the identity of the limit.</summary>
+        /// The maximum length of the limit name is 64 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>Specify the unit of the quota limit. It uses the same syntax as Metric.unit. The supported unit
         /// kinds are determined by the quota backend system.
         ///
-        /// The [Google Service Control](https://cloud.google.com/service-control) supports the following unit
-        /// components: * One of the time intevals: * "/min"  for quota every minute. * "/d"  for quota every 24 hours,
-        /// starting 00:00 US Pacific Time. * Otherwise the quota won't be reset by time, such as storage limit. * One
-        /// and only one of the granted containers: * "/{project}" quota for a project
-        ///
         /// Here are some examples: * "1/min/{project}" for quota per minute per project.
         ///
         /// Note: the order of unit components is insignificant. The "1" at the beginning is required to follow the
-        /// metric unit syntax.
-        ///
-        /// Used by metric-based quotas only.</summary>
+        /// metric unit syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
-        /// <summary>Tiered limit values, currently only STANDARD is supported.</summary>
+        /// <summary>Tiered limit values. You must specify this as a key:value pair, with an integer value that is the
+        /// maximum number of requests allowed for the specified unit. Currently only STANDARD is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IDictionary<string,System.Nullable<long>> Values { get; set; } 
 
@@ -5089,7 +5073,8 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string Selector { get; set; } 
 
         /// <summary>True, if the method should skip service control. If so, no control plane feature (like quota and
-        /// billing) will be enabled.</summary>
+        /// billing) will be enabled. This flag is used by ESP to allow some Endpoints customers to bypass Google
+        /// internal checks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipServiceControl")]
         public virtual System.Nullable<bool> SkipServiceControl { get; set; } 
 

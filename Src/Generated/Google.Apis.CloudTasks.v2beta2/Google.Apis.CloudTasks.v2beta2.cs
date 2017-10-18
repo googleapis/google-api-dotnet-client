@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20170930 (1003)
+ *      <tr><th>API Rev<td>20171017 (1020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -604,7 +604,11 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// tos/batch) or the batching documentation for your client library, for example
                     /// https://developers.google.com/api-client-library/python/guide/batch.
                     ///
-                    /// Tasks cannot be updated after creation; there is no UpdateTask command.</summary>
+                    /// Tasks cannot be updated after creation; there is no UpdateTask command.
+                    ///
+                    /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), the maximum task size
+                    /// is 100KB. * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this the maximum task size
+                    /// is 1MB.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required.
                     ///
@@ -622,7 +626,11 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// tos/batch) or the batching documentation for your client library, for example
                     /// https://developers.google.com/api-client-library/python/guide/batch.
                     ///
-                    /// Tasks cannot be updated after creation; there is no UpdateTask command.</summary>
+                    /// Tasks cannot be updated after creation; there is no UpdateTask command.
+                    ///
+                    /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), the maximum task size
+                    /// is 100KB. * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this the maximum task size
+                    /// is 1MB.</summary>
                     public class CreateRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Task>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -896,22 +904,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>A token identifying the page of results to return.
-                        ///
-                        /// To request the first page results, page_token must be empty. To request the next page of
-                        /// results, page_token must be the value of ListTasksResponse.next_page_token returned from the
-                        /// previous call to CloudTasks.ListTasks method.
-                        ///
-                        /// The page token is valid for only 2 hours.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary> Sort order used for the query. The fields supported for sorting are
-                        /// Task.schedule_time and PullMessage.tag. All results will be returned in ascending order. The
-                        /// default ordering is by Task.schedule_time.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string OrderBy { get; set; }
-
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
                         /// By default response_view is Task.View.BASIC; not all information is retrieved by default
@@ -940,6 +932,22 @@ namespace Google.Apis.CloudTasks.v2beta2
                             [Google.Apis.Util.StringValueAttribute("FULL")]
                             FULL,
                         }
+
+                        /// <summary> Sort order used for the query. The fields supported for sorting are
+                        /// Task.schedule_time and PullMessage.tag. All results will be returned in ascending order. The
+                        /// default ordering is by Task.schedule_time.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>A token identifying the page of results to return.
+                        ///
+                        /// To request the first page results, page_token must be empty. To request the next page of
+                        /// results, page_token must be the value of ListTasksResponse.next_page_token returned from the
+                        /// previous call to CloudTasks.ListTasks method.
+                        ///
+                        /// The page token is valid for only 2 hours.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
 
                         /// <summary>Requested page size. Fewer tasks than requested might be returned.
                         ///
@@ -983,9 +991,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "responseView", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "responseView",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1001,9 +1009,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "responseView", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "responseView",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1031,7 +1039,12 @@ namespace Google.Apis.CloudTasks.v2beta2
                     ///
                     /// The payload is intended to store data that the lease holder needs to perform the work associated
                     /// with the task. To return the payloads in the PullTasksResponse, set
-                    /// PullTasksRequest.response_view to Task.View.FULL.</summary>
+                    /// PullTasksRequest.response_view to Task.View.FULL.
+                    ///
+                    /// A maximum of 10 qps of CloudTasks.PullTasks requests are allowed per queue.
+                    /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
+                    /// google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
+                    /// RateLimits.max_tasks_dispatched_per_second is exceeded.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -1050,7 +1063,12 @@ namespace Google.Apis.CloudTasks.v2beta2
                     ///
                     /// The payload is intended to store data that the lease holder needs to perform the work associated
                     /// with the task. To return the payloads in the PullTasksResponse, set
-                    /// PullTasksRequest.response_view to Task.View.FULL.</summary>
+                    /// PullTasksRequest.response_view to Task.View.FULL.
+                    ///
+                    /// A maximum of 10 qps of CloudTasks.PullTasks requests are allowed per queue.
+                    /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
+                    /// google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
+                    /// RateLimits.max_tasks_dispatched_per_second is exceeded.</summary>
                     public class PullRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.PullTasksResponse>
                     {
                         /// <summary>Constructs a new Pull request.</summary>
@@ -2536,11 +2554,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>The HTTP method to use for the request. The default is POST.
         ///
         /// The app's request handler for the task's target URL must be able to handle HTTP requests with this
-        /// http_method, otherwise the task attempt will fail with error code 405 "Method Not Allowed" because "the
-        /// method specified in the Request-Line is not allowed for the resource identified by the Request-URI". See
-        /// [Writing a push task request handler](/appengine/docs/java/taskqueue/push/creating-
-        /// handlers#writing_a_push_task_request_handler) and the documentation for the request handlers in the language
-        /// your app is written in e.g. [python
+        /// http_method, otherwise the task attempt will fail with error code 405 (Method Not Allowed). See the Request-
+        /// Line is not allowed for the resource identified by the Request-URI". See [Writing a push task request
+        /// handler](/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the
+        /// documentation for the request handlers in the language your app is written in e.g. [python
         /// RequestHandler](/appengine/docs/python/tools/webapp/requesthandlerclass).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; } 
@@ -2555,9 +2572,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>The relative URL.
         ///
-        /// The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path, query
-        /// string arguments, and `#` fragments. If the relative URL is empty, then the root path "/" will be used. No
-        /// spaces are allowed, and the maximum length allowed is 2083 characters.</summary>
+        /// The relative URL must begin with "/" and must be a valid HTTP relative URL. It can contain a path and query
+        /// string arguments. If the relative URL is empty, then the root path "/" will be used. No spaces are allowed,
+        /// and the maximum length allowed is 2083 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relativeUrl")]
         public virtual string RelativeUrl { get; set; } 
 
@@ -2850,17 +2867,22 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// name for the task in Task.name. If a name is not specified then the system will generate a random unique
         /// task id, which will be returned in the response's Task.name.
         ///
-        /// Explicitly specifying a Task.name enables task de-duplication. If a task's name is identical to the name of
-        /// an existing task or a task that was deleted or completed within the last ~10 days then the call to
-        /// CloudTasks.CreateTask will fail with google.rpc.Code.ALREADY_EXISTS. Because there is an extra lookup cost
-        /// to identify duplicate task names, these CloudTasks.CreateTask calls have significantly increased latency.
-        /// Using hashed strings for the task id or for the prefix of the task id is recommended. Choosing task ids that
-        /// are sequential or have sequential prefixes, for example using a timestamp, causes an increase in latency and
-        /// error rates in all task commands. The infrastructure relies on an approximately uniform distribution of task
-        /// ids to store and serve tasks efficiently.
+        /// If Task.schedule_time is not set or is in the past then Cloud Tasks will set it to the current time.
         ///
-        /// If Task.schedule_time is not set or is in the past then Cloud Tasks will set it to the current
-        /// time.</summary>
+        /// Task De-duplication:
+        ///
+        /// Explicitly specifying a task ID enables task de-duplication.  If a task's ID is identical to that of an
+        /// existing task or a task that was deleted or completed recently then the call will fail with
+        /// google.rpc.Code.ALREADY_EXISTS. If the task's queue was created using Cloud Tasks, then another task with
+        /// the same name can't be created for ~1hour after the original task was deleted or completed. If the task's
+        /// queue was created using queue.yaml or queue.xml, then another task with the same name can't be created for
+        /// ~9days after the original task was deleted or completed.
+        ///
+        /// Because there is an extra lookup cost to identify duplicate task names, these CloudTasks.CreateTask calls
+        /// have significantly increased latency. Using hashed strings for the task id or for the prefix of the task id
+        /// is recommended. Choosing task ids that are sequential or have sequential prefixes, for example using a
+        /// timestamp, causes an increase in latency and error rates in all task commands. The infrastructure relies on
+        /// an approximately uniform distribution of task ids to store and serve tasks efficiently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("task")]
         public virtual Task Task { get; set; } 
 
@@ -3073,19 +3095,14 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>`filter` can be used to specify a subset of tasks to lease.
         ///
         /// When `filter` is set to `tag=` then the PullTasksResponse will contain only tasks whose PullMessage.tag is
-        /// equal to ``. `` can be a bytes encoded as a string and must be less than 500 bytes. If `` includes
-        /// whitespace or special characters (characters which aren't letters, numbers, or underscores), then it must be
-        /// double-quoted. Double quotes and backslashes in quoted strings must be escaped by preceding it with a
-        /// backslash (`\`).
+        /// equal to ``. `` must be less than 500 bytes.
         ///
-        /// When `filter` is set to `tag=oldest_tag()`, only tasks which have the same tag as the task with the oldest
-        /// schedule_time will be returned.
+        /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have the same tag as the task with the
+        /// oldest schedule_time will be returned.
         ///
         /// Grammar Syntax:
         ///
-        /// * `filter = "tag=" comparable`
-        ///
-        /// *  `comparable = tag | function`
+        /// * `filter = "tag=" tag | "tag_function=" function`
         ///
         /// * `tag = string | bytes`
         ///
@@ -3208,6 +3225,18 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queueState")]
         public virtual string QueueState { get; set; } 
 
+        /// <summary>Rate limits for task dispatches.
+        ///
+        /// Queue.rate_limits and Queue.retry_config are related because they both control task attempts however they
+        /// control how tasks are attempted in different ways:
+        ///
+        /// * Queue.rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the
+        /// queue, regardless of whether the dispatch is from a first attempt or a retry). * Queue.retry_config controls
+        /// what happens to particular a task after its first attempt fails. That is, Queue.retry_config controls task
+        /// retries (the second attempt, third attempt, etc).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rateLimits")]
+        public virtual RateLimits RateLimits { get; set; } 
+
         /// <summary>Settings that determine the retry behavior.
         ///
         /// * For tasks created using Cloud Tasks: the queue-level retry settings apply to all tasks in the queue that
@@ -3218,9 +3247,60 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
         public virtual RetryConfig RetryConfig { get; set; } 
 
-        /// <summary>Config for throttling task dispatches.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("throttleConfig")]
-        public virtual ThrottleConfig ThrottleConfig { get; set; } 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Rate limits.
+    ///
+    /// This message determines the maximum rate that tasks can be dispatched by a queue, regardless of whether the
+    /// dispatch is a first task attempt or a retry.</summary>
+    public class RateLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only.
+        ///
+        /// The max burst size limits how fast the queue is processed when many tasks are in the queue and the rate is
+        /// high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued,
+        /// but still limits resource usage when many tasks are enqueued in a short period of time.
+        ///
+        /// * For App Engine queues, if RateLimits.max_tasks_dispatched_per_second is 1, this field is 10; otherwise
+        /// this field is RateLimits.max_tasks_dispatched_per_second / 5. * For pull queues, this field is output only
+        /// and always 10,000.
+        ///
+        /// Note: For App Engine queues that were created through `queue.yaml/xml`, `max_burst_size` might not have the
+        /// same settings as specified above; CloudTasks.UpdateQueue can be used to set `max_burst_size` only to the
+        /// values specified above.
+        ///
+        /// This field has the same meaning as [bucket_size in
+        /// queue.yaml](/appengine/docs/standard/python/config/queueref#bucket_size).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
+        public virtual System.Nullable<int> MaxBurstSize { get; set; } 
+
+        /// <summary>The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue.
+        /// After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent
+        /// requests decreases.
+        ///
+        /// The maximum allowed value is 5,000.
+        ///
+        /// * For App Engine queues, this field is 10 by default. * For pull queues, this field is output only and
+        /// always -1, which indicates no limit.
+        ///
+        /// This field has the same meaning as [max_concurrent_requests in
+        /// queue.yaml](/appengine/docs/standard/python/config/queueref#max_concurrent_requests).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentTasks")]
+        public virtual System.Nullable<int> MaxConcurrentTasks { get; set; } 
+
+        /// <summary>The maximum rate at which tasks are dispatched from this queue.
+        ///
+        /// The maximum allowed value is 500.
+        ///
+        /// * For App Engine queues, this field is 1 by default. * For pull queues, this field is output only and always
+        /// 10,000.
+        ///
+        /// This field has the same meaning as [rate in
+        /// queue.yaml](/appengine/docs/standard/python/config/queueref#rate).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTasksDispatchedPerSecond")]
+        public virtual System.Nullable<double> MaxTasksDispatchedPerSecond { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3269,11 +3349,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
     /// <summary>Retry config.
     ///
-    /// These settings determine retry behavior.
-    ///
-    /// If a task does not complete successfully, meaning that an acknowledgement is not received from the handler
-    /// before the [deadline](/appengine/docs/python/taskqueue/push/#the_task_deadline), then it will be retried with
-    /// exponential backoff according to the settings in RetryConfig.</summary>
+    /// These settings determine how a failed task attempt is retried.</summary>
     public class RetryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The maximum number of attempts for a task.
@@ -3288,36 +3364,53 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 1 hour by default.
         /// * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.
         ///
-        /// `max_backoff` will be truncated to the nearest second.</summary>
+        /// `max_backoff` will be truncated to the nearest second.
+        ///
+        /// This field has the same meaning as [max_backoff_seconds in
+        /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBackoff")]
         public virtual object MaxBackoff { get; set; } 
 
-        /// <summary>The maximum number of times that the interval between failed task retries will be doubled before
-        /// the increase becomes constant. The constant is: 2**(max_doublings - 1) * RetryConfig.min_backoff.
+        /// <summary>The time between retries increases exponentially `max_doublings` times. `max_doublings` is maximum
+        /// number of times that the interval between failed task retries will be doubled before the interval increases
+        /// linearly. After max_doublings intervals, the retry interval will be 2^(max_doublings - 1) *
+        /// RetryConfig.min_backoff.
         ///
         /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 16 by default. *
-        /// For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.</summary>
+        /// For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.
+        ///
+        /// This field has the same meaning as [max_doublings in
+        /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDoublings")]
         public virtual System.Nullable<int> MaxDoublings { get; set; } 
+
+        /// <summary>If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured
+        /// from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been
+        /// attempted RetryConfig.max_attempts times, no further attempts will be made and the task will be deleted.
+        ///
+        /// If zero, then the task age is unlimited.
+        ///
+        /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 0 seconds by
+        /// default. * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.
+        ///
+        /// `max_retry_duration` will be truncated to the nearest second.
+        ///
+        /// This field has the same meaning as [task_age_limit in
+        /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRetryDuration")]
+        public virtual object MaxRetryDuration { get; set; } 
 
         /// <summary>The minimum amount of time to wait before retrying a task after it fails.
         ///
         /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 0.1 seconds by
         /// default. * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.
         ///
-        /// `min_backoff` will be truncated to the nearest second.</summary>
+        /// `min_backoff` will be truncated to the nearest second.
+        ///
+        /// This field has the same meaning as [min_backoff_seconds in
+        /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minBackoff")]
         public virtual object MinBackoff { get; set; } 
-
-        /// <summary>If positive, task_age_limit specifies the time limit for retrying a failed task, measured from when
-        /// the task was first run. If specified with RetryConfig.max_attempts, the task will be retried until both
-        /// limits are reached.
-        ///
-        /// If zero, then the task age is unlimited. This field is zero by default.
-        ///
-        /// `task_age_limit` will be truncated to the nearest second.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("taskAgeLimit")]
-        public virtual object TaskAgeLimit { get; set; } 
 
         /// <summary>If true, then the number of attempts is unlimited.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unlimitedAttempts")]
@@ -3558,60 +3651,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Throttle config.
-    ///
-    /// These settings determine the throttling behavior.</summary>
-    public class ThrottleConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only.
-        ///
-        /// The max burst size limits how fast the queue is processed when many tasks are in the queue and the rate is
-        /// high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued,
-        /// but still limits resource usage when many tasks are enqueued in a short period of time.
-        ///
-        /// * For App Engine queues, if ThrottleConfig.max_tasks_dispatched_per_second is 1, this field is 10; otherwise
-        /// this field is ThrottleConfig.max_tasks_dispatched_per_second / 5. * For pull queues, this field is output
-        /// only and always 10,000.
-        ///
-        /// Note: For App Engine queues that were created through `queue.yaml/xml`, `max_burst_size` might not have the
-        /// same settings as specified above; CloudTasks.UpdateQueue can be used to set `max_burst_size` only to the
-        /// values specified above.
-        ///
-        /// This field has the same meaning as [bucket_size in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#bucket_size).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
-        public virtual System.Nullable<int> MaxBurstSize { get; set; } 
-
-        /// <summary>The maximum number of outstanding tasks that Cloud Tasks allows to be dispatched for this queue.
-        /// After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of outstanding
-        /// requests decreases.
-        ///
-        /// The maximum allowed value is 5,000.
-        ///
-        /// * For App Engine queues, this field is 10 by default. * For pull queues, this field is output only and
-        /// always -1, which indicates no limit.
-        ///
-        /// This field has the same meaning as [max_concurrent_requests in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#max_concurrent_requests).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxOutstandingTasks")]
-        public virtual System.Nullable<int> MaxOutstandingTasks { get; set; } 
-
-        /// <summary>The maximum rate at which tasks are dispatched from this queue.
-        ///
-        /// The maximum allowed value is 500.
-        ///
-        /// * For App Engine queues, this field is 1 by default. * For pull queues, this field is output only and always
-        /// 10,000.
-        ///
-        /// This field has the same meaning as [rate in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#rate).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxTasksDispatchedPerSecond")]
-        public virtual System.Nullable<double> MaxTasksDispatchedPerSecond { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
