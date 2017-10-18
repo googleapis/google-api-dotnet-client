@@ -418,7 +418,7 @@ namespace Google.Apis.Auth.OAuth2
             return new AuthorizationCodeResponseUrl(queryParams);
         }
 
-        private bool OpenBrowser(string url)
+        protected virtual bool OpenBrowser(string url)
         {
             // See https://github.com/dotnet/corefx/issues/10361
             // This is best-effort only, but should work most of the time.
