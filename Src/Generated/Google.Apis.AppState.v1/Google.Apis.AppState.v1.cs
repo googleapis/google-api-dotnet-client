@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/games/services/web/api/states'>Google App State API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171012 (1015)
+ *      <tr><th>API Rev<td>20171017 (1020)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/games/services/web/api/states'>
  *              https://developers.google.com/games/services/web/api/states</a>
