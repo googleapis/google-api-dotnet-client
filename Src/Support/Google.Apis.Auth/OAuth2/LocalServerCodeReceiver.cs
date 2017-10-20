@@ -93,7 +93,7 @@ namespace Google.Apis.Auth.OAuth2
                 if (s_callbackUriTemplate == null)
                 {
                     s_callbackUriTemplate = CallbackUriTemplate127001;
-#if NETSTANDARD1_3
+#if NETSTANDARD1_3 || NETSTANDARD2_0
                     // No check required on NETStandard, it uses TcpListener which can only use IP adddresses, not DNS names.
 #elif NET45
                     // On first run, check whether it's possible to start a listener on 127.0.0.1
@@ -407,7 +407,7 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
-#if NETSTANDARD1_3
+#if NETSTANDARD1_3 || NETSTANDARD2_0
         private LimitedLocalhostHttpServer StartListener() => LimitedLocalhostHttpServer.Start(RedirectUri);
 
         private async Task<AuthorizationCodeResponseUrl> GetResponseFromListener(LimitedLocalhostHttpServer server, CancellationToken ct)
@@ -418,7 +418,7 @@ namespace Google.Apis.Auth.OAuth2
             return new AuthorizationCodeResponseUrl(queryParams);
         }
 
-        private bool OpenBrowser(string url)
+        protected virtual bool OpenBrowser(string url)
         {
             // See https://github.com/dotnet/corefx/issues/10361
             // This is best-effort only, but should work most of the time.
