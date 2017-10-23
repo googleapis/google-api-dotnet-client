@@ -1,25 +1,27 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Core", "Google.Apis.Core\Google.Apis.Core.csproj", "{556BEB88-1F3B-4EFA-B912-828C90AC3BEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Core", "Google.Apis.Core\Google.Apis.Core.csproj", "{556BEB88-1F3B-4EFA-B912-828C90AC3BEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis", "Google.Apis\Google.Apis.csproj", "{A0E0F5AA-6A5F-44A1-8DC7-0443F01C72E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis", "Google.Apis\Google.Apis.csproj", "{A0E0F5AA-6A5F-44A1-8DC7-0443F01C72E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Tests", "Google.Apis.Tests\Google.Apis.Tests.csproj", "{B8D261F0-4C17-4887-BBC3-CBBFDF0D5328}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Tests", "Google.Apis.Tests\Google.Apis.Tests.csproj", "{B8D261F0-4C17-4887-BBC3-CBBFDF0D5328}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.PlatformServices", "Google.Apis.PlatformServices\Google.Apis.PlatformServices.csproj", "{44D57EC1-3859-483C-8904-4E6D14DE6115}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.PlatformServices", "Google.Apis.PlatformServices\Google.Apis.PlatformServices.csproj", "{44D57EC1-3859-483C-8904-4E6D14DE6115}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Auth", "Google.Apis.Auth\Google.Apis.Auth.csproj", "{4CBC15CC-B05F-4219-8FB3-8923D552673E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth", "Google.Apis.Auth\Google.Apis.Auth.csproj", "{4CBC15CC-B05F-4219-8FB3-8923D552673E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Auth.PlatformServices", "Google.Apis.Auth.PlatformServices\Google.Apis.Auth.PlatformServices.csproj", "{11BB1D61-8D13-4443-9B5B-76613302BC0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.PlatformServices", "Google.Apis.Auth.PlatformServices\Google.Apis.Auth.PlatformServices.csproj", "{11BB1D61-8D13-4443-9B5B-76613302BC0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Auth.Tests", "Google.Apis.Auth.Tests\Google.Apis.Auth.Tests.csproj", "{F106E24E-49F8-4D86-8CBF-9616178CA08C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.Tests", "Google.Apis.Auth.Tests\Google.Apis.Auth.Tests.csproj", "{F106E24E-49F8-4D86-8CBF-9616178CA08C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{AB7DA6CF-0100-4941-BD4B-BEE1AA80C6AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{AB7DA6CF-0100-4941-BD4B-BEE1AA80C6AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.Mvc", "Google.Apis.Auth.Mvc\Google.Apis.Auth.Mvc.csproj", "{22ED8B87-9A8E-4330-8011-318A85F545DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Google.Apis.Auth.AspMvcCore", "Google.Apis.Auth.AspMvcCore\Google.Apis.Auth.AspMvcCore.csproj", "{CDAF4410-9BF2-43CF-9038-C2EB97D2DDDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,8 +65,15 @@ Global
 		{22ED8B87-9A8E-4330-8011-318A85F545DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22ED8B87-9A8E-4330-8011-318A85F545DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22ED8B87-9A8E-4330-8011-318A85F545DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDAF4410-9BF2-43CF-9038-C2EB97D2DDDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDAF4410-9BF2-43CF-9038-C2EB97D2DDDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDAF4410-9BF2-43CF-9038-C2EB97D2DDDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDAF4410-9BF2-43CF-9038-C2EB97D2DDDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E7FD8CDE-C78E-4254-837E-2FB9BD458BC4}
 	EndGlobalSection
 EndGlobal
