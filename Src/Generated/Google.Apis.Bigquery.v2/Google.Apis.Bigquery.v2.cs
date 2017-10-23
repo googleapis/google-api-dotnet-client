@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170923 (996)
+ *      <tr><th>API Rev<td>20171015 (1018)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3400,13 +3400,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schemaInlineFormat")]
         public virtual string SchemaInlineFormat { get; set; } 
 
-        /// <summary>[Experimental] Allows the schema of the desitination table to be updated as a side effect of the
-        /// load job if a schema is autodetected or supplied in the job configuration. Schema update options are
-        /// supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and
-        /// the destination table is a partition of a table, specified by partition decorators. For normal tables,
-        /// WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are specified:
-        /// ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a
-        /// required field in the original schema to nullable.</summary>
+        /// <summary>Allows the schema of the desitination table to be updated as a side effect of the load job if a
+        /// schema is autodetected or supplied in the job configuration. Schema update options are supported in two
+        /// cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
+        /// table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will
+        /// always overwrite the schema. One or more of the following values are specified: ALLOW_FIELD_ADDITION: allow
+        /// adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow relaxing a required field in the
+        /// original schema to nullable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
         public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; } 
 
@@ -3431,8 +3431,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; } 
 
-        /// <summary>[Experimental] If specified, configures time-based partitioning for the destination
-        /// table.</summary>
+        /// <summary>If specified, configures time-based partitioning for the destination table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; } 
 
@@ -3520,12 +3519,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
         public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; } 
 
-        /// <summary>[Experimental] Allows the schema of the destination table to be updated as a side effect of the
-        /// query job. Schema update options are supported in two cases: when writeDisposition is WRITE_APPEND; when
-        /// writeDisposition is WRITE_TRUNCATE and the destination table is a partition of a table, specified by
-        /// partition decorators. For normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the
-        /// following values are specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema.
-        /// ALLOW_FIELD_RELAXATION: allow relaxing a required field in the original schema to nullable.</summary>
+        /// <summary>Allows the schema of the destination table to be updated as a side effect of the query job. Schema
+        /// update options are supported in two cases: when writeDisposition is WRITE_APPEND; when writeDisposition is
+        /// WRITE_TRUNCATE and the destination table is a partition of a table, specified by partition decorators. For
+        /// normal tables, WRITE_TRUNCATE will always overwrite the schema. One or more of the following values are
+        /// specified: ALLOW_FIELD_ADDITION: allow adding a nullable field to the schema. ALLOW_FIELD_RELAXATION: allow
+        /// relaxing a required field in the original schema to nullable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaUpdateOptions")]
         public virtual System.Collections.Generic.IList<string> SchemaUpdateOptions { get; set; } 
 
@@ -3535,8 +3534,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableDefinitions")]
         public virtual System.Collections.Generic.IDictionary<string,ExternalDataConfiguration> TableDefinitions { get; set; } 
 
-        /// <summary>[Experimental] If specified, configures time-based partitioning for the destination
-        /// table.</summary>
+        /// <summary>If specified, configures time-based partitioning for the destination table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; } 
 
@@ -4212,7 +4210,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
         public virtual TableReference TableReference { get; set; } 
 
-        /// <summary>[Experimental] If specified, configures time-based partitioning for this table.</summary>
+        /// <summary>If specified, configures time-based partitioning for this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
         public virtual TimePartitioning TimePartitioning { get; set; } 
 
@@ -4392,6 +4390,16 @@ namespace Google.Apis.Bigquery.v2.Data
 
         public class TablesData
         {
+            /// <summary>The time when this table was created, in milliseconds since the epoch.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+            public virtual System.Nullable<long> CreationTime { get; set; } 
+
+            /// <summary>[Optional] The time when this table expires, in milliseconds since the epoch. If not present,
+            /// the table will persist indefinitely. Expired tables will be deleted and their storage
+            /// reclaimed.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+            public virtual System.Nullable<long> ExpirationTime { get; set; } 
+
             /// <summary>The user-friendly name for this table.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
             public virtual string FriendlyName { get; set; } 
@@ -4413,7 +4421,7 @@ namespace Google.Apis.Bigquery.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
             public virtual TableReference TableReference { get; set; } 
 
-            /// <summary>[Experimental] The time-based partitioning for this table.</summary>
+            /// <summary>The time-based partitioning for this table.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("timePartitioning")]
             public virtual TimePartitioning TimePartitioning { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170908 (981)
+ *      <tr><th>API Rev<td>20171011 (1014)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>
  *              https://cloud.google.com/source-repositories/docs/apis</a>
@@ -1058,7 +1058,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
-        /// <summary>ID of the webhook listening to updates to trigger mirroring. Removing this webook from the other
+        /// <summary>ID of the webhook listening to updates to trigger mirroring. Removing this webhook from the other
         /// hosting service will stop Google Cloud Source Repositories from receiving notifications, and thereby
         /// disabling mirroring.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookId")]
