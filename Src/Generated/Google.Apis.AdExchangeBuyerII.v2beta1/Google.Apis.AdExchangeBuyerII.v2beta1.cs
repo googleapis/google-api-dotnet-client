@@ -631,16 +631,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("clientAccountId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClientAccountId { get; private set; }
 
+                    /// <summary>Requested page size. Server may return fewer clients than requested. If unspecified,
+                    /// server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListClientUserInvitationsResponse.nextPageToken returned from the previous call to the
                     /// clients.invitations.list method.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size. Server may return fewer clients than requested. If unspecified,
-                    /// server will pick an appropriate default.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -685,18 +685,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2351,11 +2351,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                     /// <summary>Lists all metrics that are measured in terms of number of bids.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     public virtual ListRequest List(string filterSetName)
                     {
                         return new ListRequest(service, filterSetName);
@@ -2374,11 +2378,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
@@ -2500,11 +2508,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                     /// <summary>List all errors that occurred in bid responses, with the number of bid responses
                     /// affected for each reason.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     public virtual ListRequest List(string filterSetName)
                     {
                         return new ListRequest(service, filterSetName);
@@ -2524,13 +2536,26 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Account ID of the buyer.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> AccountId { get; set; }
 
                         /// <summary>The ID of the filter set to apply.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2541,15 +2566,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// the bidResponseErrors.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Account ID of the buyer.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> AccountId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2585,24 +2601,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -2615,6 +2613,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "accountId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "accountId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2650,11 +2666,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                     /// <summary>List all reasons for which bid responses were considered to have no applicable bids,
                     /// with the number of bid responses affected for each reason.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     public virtual ListRequest List(string filterSetName)
                     {
                         return new ListRequest(service, filterSetName);
@@ -2674,13 +2694,21 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
+
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous
@@ -2696,10 +2724,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// <summary>Account ID of the buyer.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<long> AccountId { get; set; }
-
-                        /// <summary>The ID of the filter set to apply.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2735,6 +2759,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -2756,15 +2789,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "accountId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "accountId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2800,11 +2824,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                     /// <summary>List all reasons that caused a bid request not to be sent for an impression, with the
                     /// number of bid requests not sent for each reason.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     public virtual ListRequest List(string filterSetName)
                     {
                         return new ListRequest(service, filterSetName);
@@ -2824,22 +2852,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
-
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Account ID of the buyer.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> AccountId { get; set; }
 
                         /// <summary>The ID of the filter set to apply.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2850,6 +2873,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// to the filteredBidRequests.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Account ID of the buyer.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> AccountId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2885,24 +2917,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "accountId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "accountId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "filterSetId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filterSetId",
@@ -2915,6 +2929,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "accountId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "accountId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2975,11 +3007,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                         /// <summary>List all creatives associated with a specific reason for which bids were filtered,
                         /// with the number of bids filtered for each creative.</summary>
-                        /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                        /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                        /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                        /// set for the child seat buyer account 456   whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</param>
+                        /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder   123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</param>
                         /// <param name="creativeStatusId">The ID of the creative
                         /// status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/ad-
                         /// exchange/rtb/downloads/creative-status-codes).</param>
@@ -3003,11 +3039,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                             /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                            /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" -
-                            /// For an account-level filter set for the buyer account representing bidder 123:
-                            /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the
-                            /// child seat buyer account 456 whose bidder is 123:
-                            /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                            /// example:
+                            ///
+                            /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                            ///
+                            /// - For an account-level filter set for the buyer account representing bidder 123:
+                            /// `bidders/123/accounts/123/filterSets/abc`
+                            ///
+                            /// - For an account-level filter set for the child seat buyer account 456 whose bidder is
+                            /// 123: `bidders/123/accounts/456/filterSets/abc`</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string FilterSetName { get; private set; }
 
@@ -3016,14 +3056,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             /// /creative-status-codes).</summary>
                             [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual int CreativeStatusId { get; private set; }
-
-                            /// <summary>Account ID of the buyer.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<long> AccountId { get; set; }
-
-                            /// <summary>The ID of the filter set to apply.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<long> FilterSetId { get; set; }
 
                             /// <summary>A token identifying a page of results the server should return. Typically, this
                             /// is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned
@@ -3035,6 +3067,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             /// unspecified, the server will pick an appropriate default.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Account ID of the buyer.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<long> AccountId { get; set; }
+
+                            /// <summary>The ID of the filter set to apply.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -3079,24 +3119,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "accountId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "accountId",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "filterSetId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filterSetId",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
                                     "pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
@@ -3109,6 +3131,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     "pageSize", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "accountId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "accountId",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "filterSetId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filterSetId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -3144,11 +3184,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                         /// <summary>List all details associated with a specific reason for which bids were filtered,
                         /// with the number of bids filtered for each detail.</summary>
-                        /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                        /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                        /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                        /// set for the child seat buyer account 456   whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</param>
+                        /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder   123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</param>
                         /// <param name="creativeStatusId">The ID of the creative
                         /// status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/ad-
                         /// exchange/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86,
@@ -3173,11 +3217,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                             /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                            /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" -
-                            /// For an account-level filter set for the buyer account representing bidder 123:
-                            /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the
-                            /// child seat buyer account 456 whose bidder is 123:
-                            /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                            /// example:
+                            ///
+                            /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                            ///
+                            /// - For an account-level filter set for the buyer account representing bidder 123:
+                            /// `bidders/123/accounts/123/filterSets/abc`
+                            ///
+                            /// - For an account-level filter set for the child seat buyer account 456 whose bidder is
+                            /// 123: `bidders/123/accounts/456/filterSets/abc`</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string FilterSetName { get; private set; }
 
@@ -3292,11 +3340,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                     /// <summary>List all reasons for which bids were filtered, with the number of bids filtered for
                     /// each reason.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     public virtual ListRequest List(string filterSetName)
                     {
                         return new ListRequest(service, filterSetName);
@@ -3316,11 +3368,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
@@ -3441,11 +3497,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                     /// <summary>Lists all metrics that are measured in terms of number of impressions.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     public virtual ListRequest List(string filterSetName)
                     {
                         return new ListRequest(service, filterSetName);
@@ -3464,17 +3524,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
-
-                        /// <summary>The ID of the filter set to apply.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to
@@ -3490,6 +3550,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// <summary>Account ID of the buyer.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<long> AccountId { get; set; }
+
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -3525,15 +3589,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -3555,6 +3610,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "accountId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "accountId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3590,11 +3654,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                     /// <summary>List all reasons for which bids lost in the auction, with the number of bids that lost
                     /// for each reason.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     public virtual ListRequest List(string filterSetName)
                     {
                         return new ListRequest(service, filterSetName);
@@ -3614,11 +3682,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
@@ -3740,11 +3812,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                     /// <summary>List all reasons for which winning bids were not billable, with the number of bids not
                     /// billed for each reason.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     public virtual ListRequest List(string filterSetName)
                     {
                         return new ListRequest(service, filterSetName);
@@ -3764,13 +3840,26 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Account ID of the buyer.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> AccountId { get; set; }
 
                         /// <summary>The ID of the filter set to apply.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
@@ -3781,15 +3870,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// call to the nonBillableWinningBids.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Account ID of the buyer.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> AccountId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -3825,24 +3905,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -3860,6 +3922,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                         }
 
                     }
@@ -3867,10 +3947,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>Creates the specified filter set for the account with the given account ID.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="ownerName">Name of the owner (bidder or account) of the filter set to be created. For example: - For a
-                /// bidder-level filter set for bidder 123: "bidders/123" - For an account-level filter set for the buyer account
-                /// representing bidder   123: "bidders/123/accounts/123" - For an account-level filter set for the child seat buyer
-                /// account 456   whose bidder is 123: "bidders/123/accounts/456"</param>
+                /// <param name="ownerName">Name of the owner (bidder or account) of the filter set to be created. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123: `bidders/123`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123: `bidders/123/accounts/123`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456`</param>
                 public virtual CreateRequest Create(Google.Apis.AdExchangeBuyerII.v2beta1.Data.FilterSet body, string ownerName)
                 {
                     return new CreateRequest(service, body, ownerName);
@@ -3889,11 +3973,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the owner (bidder or account) of the filter set to be created. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123" - For an account-level filter set
-                    /// for the buyer account representing bidder 123: "bidders/123/accounts/123" - For an account-level
-                    /// filter set for the child seat buyer account 456 whose bidder is 123:
-                    /// "bidders/123/accounts/456"</summary>
+                    /// <summary>Name of the owner (bidder or account) of the filter set to be created. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("ownerName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string OwnerName { get; private set; }
 
@@ -3969,10 +4057,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 }
 
                 /// <summary>Deletes the requested filter set from the account with the given account ID.</summary>
-                /// <param name="name">Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123:
-                /// "bidders/123/filterSets/abc" - For an account-level filter set for the buyer account representing bidder   123:
-                /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat buyer account 456
-                /// whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="name">Full name of the resource to delete. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -3990,11 +4083,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Full name of the resource to delete. For example: - For a bidder-level filter set for
-                    /// bidder 123: "bidders/123/filterSets/abc" - For an account-level filter set for the buyer account
-                    /// representing bidder 123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456 whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Full name of the resource to delete. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4062,10 +4159,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 }
 
                 /// <summary>Retrieves the requested filter set for the account with the given account ID.</summary>
-                /// <param name="name">Full name of the resource being requested. For example: - For a bidder-level filter set for
-                /// bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for the buyer account representing
-                /// bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat buyer
-                /// account 456   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="name">Full name of the resource being requested. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -4083,11 +4185,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Full name of the resource being requested. For example: - For a bidder-level filter set
-                    /// for bidder 123: "bidders/123/filterSets/abc" - For an account-level filter set for the buyer
-                    /// account representing bidder 123: "bidders/123/accounts/123/filterSets/abc" - For an account-
-                    /// level filter set for the child seat buyer account 456 whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Full name of the resource being requested. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -4155,10 +4261,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 }
 
                 /// <summary>Lists all filter sets for the account with the given account ID.</summary>
-                /// <param name="ownerName">Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a
-                /// bidder-level filter set for bidder 123: "bidders/123" - For an account-level filter set for the buyer account
-                /// representing bidder   123: "bidders/123/accounts/123" - For an account-level filter set for the child seat buyer
-                /// account 456   whose bidder is 123: "bidders/123/accounts/456"</param>
+                /// <param name="ownerName">Name of the owner (bidder or account) of the filter sets to be listed. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123: `bidders/123`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123: `bidders/123/accounts/123`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456`</param>
                 public virtual ListRequest List(string ownerName)
                 {
                     return new ListRequest(service, ownerName);
@@ -4176,11 +4286,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the owner (bidder or account) of the filter sets to be listed. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123" - For an account-level filter set
-                    /// for the buyer account representing bidder 123: "bidders/123/accounts/123" - For an account-level
-                    /// filter set for the child seat buyer account 456 whose bidder is 123:
-                    /// "bidders/123/accounts/456"</summary>
+                    /// <summary>Name of the owner (bidder or account) of the filter sets to be listed. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("ownerName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string OwnerName { get; private set; }
 
@@ -4320,11 +4434,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                 /// <summary>Lists all metrics that are measured in terms of number of bids.</summary>
-                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                /// set for the child seat buyer account 456   whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual ListRequest List(string filterSetName)
                 {
                     return new ListRequest(service, filterSetName);
@@ -4342,11 +4460,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For an account-
-                    /// level filter set for the buyer account representing bidder 123:
-                    /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat
-                    /// buyer account 456 whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
@@ -4468,11 +4590,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>List all errors that occurred in bid responses, with the number of bid responses affected
                 /// for each reason.</summary>
-                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                /// set for the child seat buyer account 456   whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual ListRequest List(string filterSetName)
                 {
                     return new ListRequest(service, filterSetName);
@@ -4491,19 +4617,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For an account-
-                    /// level filter set for the buyer account representing bidder 123:
-                    /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat
-                    /// buyer account 456 whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
-
-                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
-                    /// value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the
-                    /// bidResponseErrors.list method.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
                     /// <summary>Requested page size. The server may return fewer results than requested. If
                     /// unspecified, the server will pick an appropriate default.</summary>
@@ -4517,6 +4641,12 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>The ID of the filter set to apply.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> FilterSetId { get; set; }
+
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to the
+                    /// bidResponseErrors.list method.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4552,15 +4682,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -4582,6 +4703,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "filterSetId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filterSetId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4617,11 +4747,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>List all reasons for which bid responses were considered to have no applicable bids, with
                 /// the number of bid responses affected for each reason.</summary>
-                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                /// set for the child seat buyer account 456   whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual ListRequest List(string filterSetName)
                 {
                     return new ListRequest(service, filterSetName);
@@ -4640,11 +4774,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For an account-
-                    /// level filter set for the buyer account representing bidder 123:
-                    /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat
-                    /// buyer account 456 whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
@@ -4766,11 +4904,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>List all reasons that caused a bid request not to be sent for an impression, with the
                 /// number of bid requests not sent for each reason.</summary>
-                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                /// set for the child seat buyer account 456   whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual ListRequest List(string filterSetName)
                 {
                     return new ListRequest(service, filterSetName);
@@ -4789,17 +4931,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For an account-
-                    /// level filter set for the buyer account representing bidder 123:
-                    /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat
-                    /// buyer account 456 whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
-
-                    /// <summary>The ID of the filter set to apply.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the
@@ -4815,6 +4957,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Account ID of the buyer.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> AccountId { get; set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4850,15 +4996,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filterSetId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -4880,6 +5017,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "accountId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "accountId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4940,11 +5086,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                     /// <summary>List all creatives associated with a specific reason for which bids were filtered, with
                     /// the number of bids filtered for each creative.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     /// <param name="creativeStatusId">The ID of the creative
                     /// status for which to retrieve a breakdown by creative. See [creative-status-codes](https://developers.google.com/ad-
                     /// exchange/rtb/downloads/creative-status-codes).</param>
@@ -4968,11 +5118,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
@@ -4981,14 +5135,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// status-codes).</summary>
                         [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual int CreativeStatusId { get; private set; }
-
-                        /// <summary>Account ID of the buyer.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> AccountId { get; set; }
-
-                        /// <summary>The ID of the filter set to apply.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned from the
@@ -5000,6 +5146,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// unspecified, the server will pick an appropriate default.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Account ID of the buyer.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> AccountId { get; set; }
+
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -5044,24 +5198,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "accountId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "accountId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -5074,6 +5210,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "accountId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "accountId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -5109,11 +5263,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                     /// <summary>List all details associated with a specific reason for which bids were filtered, with
                     /// the number of bids filtered for each detail.</summary>
-                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                    /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                    /// set for the child seat buyer account 456   whose bidder is 123:
-                    /// "bidders/123/accounts/456/filterSets/abc"</param>
+                    /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder   123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</param>
                     /// <param name="creativeStatusId">The ID of the creative
                     /// status for which to retrieve a breakdown by detail. See [creative-status-codes](https://developers.google.com/ad-
                     /// exchange/rtb/downloads/creative-status-codes). Details are only available for statuses 10, 14, 15, 17, 18, 19, 86,
@@ -5138,11 +5296,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                         /// <summary>Name of the filter set that should be applied to the requested metrics. For
-                        /// example: - For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For
-                        /// an account-level filter set for the buyer account representing bidder 123:
-                        /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child
-                        /// seat buyer account 456 whose bidder is 123:
-                        /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                        /// example:
+                        ///
+                        /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the buyer account representing bidder 123:
+                        /// `bidders/123/accounts/123/filterSets/abc`
+                        ///
+                        /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                        /// `bidders/123/accounts/456/filterSets/abc`</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
@@ -5257,11 +5419,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>List all reasons for which bids were filtered, with the number of bids filtered for each
                 /// reason.</summary>
-                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                /// set for the child seat buyer account 456   whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual ListRequest List(string filterSetName)
                 {
                     return new ListRequest(service, filterSetName);
@@ -5280,13 +5446,21 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For an account-
-                    /// level filter set for the buyer account representing bidder 123:
-                    /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat
-                    /// buyer account 456 whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the
@@ -5302,10 +5476,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Account ID of the buyer.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> AccountId { get; set; }
-
-                    /// <summary>The ID of the filter set to apply.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5341,6 +5511,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -5362,15 +5541,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "accountId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "accountId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filterSetId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5405,11 +5575,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
 
                 /// <summary>Lists all metrics that are measured in terms of number of impressions.</summary>
-                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                /// set for the child seat buyer account 456   whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual ListRequest List(string filterSetName)
                 {
                     return new ListRequest(service, filterSetName);
@@ -5427,13 +5601,23 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For an account-
-                    /// level filter set for the buyer account representing bidder 123:
-                    /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat
-                    /// buyer account 456 whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
+                    /// value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the
+                    /// impressionMetrics.list method.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
                     /// <summary>Requested page size. The server may return fewer results than requested. If
                     /// unspecified, the server will pick an appropriate default.</summary>
@@ -5447,12 +5631,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>The ID of the filter set to apply.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> FilterSetId { get; set; }
-
-                    /// <summary>A token identifying a page of results the server should return. Typically, this is the
-                    /// value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to the
-                    /// impressionMetrics.list method.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5488,6 +5666,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -5509,15 +5696,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "filterSetId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filterSetId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5553,11 +5731,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>List all reasons for which bids lost in the auction, with the number of bids that lost for
                 /// each reason.</summary>
-                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                /// set for the child seat buyer account 456   whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual ListRequest List(string filterSetName)
                 {
                     return new ListRequest(service, filterSetName);
@@ -5576,11 +5758,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For an account-
-                    /// level filter set for the buyer account representing bidder 123:
-                    /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat
-                    /// buyer account 456 whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
@@ -5702,11 +5888,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
                 /// <summary>List all reasons for which winning bids were not billable, with the number of bids not
                 /// billed for each reason.</summary>
-                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example: -
-                /// For a bidder-level filter set for bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for
-                /// the buyer account representing bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter
-                /// set for the child seat buyer account 456   whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</param>
+                /// <param name="filterSetName">Name of the filter set that should be applied to the requested metrics. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder   123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</param>
                 public virtual ListRequest List(string filterSetName)
                 {
                     return new ListRequest(service, filterSetName);
@@ -5725,13 +5915,21 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     }
 
 
-                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example: -
-                    /// For a bidder-level filter set for bidder 123: "bidders/123/filterSets/abc" - For an account-
-                    /// level filter set for the buyer account representing bidder 123:
-                    /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat
-                    /// buyer account 456 whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</summary>
+                    /// <summary>Name of the filter set that should be applied to the requested metrics. For example:
+                    ///
+                    /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the buyer account representing bidder 123:
+                    /// `bidders/123/accounts/123/filterSets/abc`
+                    ///
+                    /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                    /// `bidders/123/accounts/456/filterSets/abc`</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the
@@ -5747,10 +5945,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Account ID of the buyer.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> AccountId { get; set; }
-
-                    /// <summary>The ID of the filter set to apply.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5786,6 +5980,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -5812,25 +6015,20 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "filterSetId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
             }
 
             /// <summary>Creates the specified filter set for the account with the given account ID.</summary>
-            /// <param name="ownerName">Name of the owner (bidder or account) of the filter set to be created. For example: - For a
-            /// bidder-level filter set for bidder 123: "bidders/123" - For an account-level filter set for the buyer account
-            /// representing bidder   123: "bidders/123/accounts/123" - For an account-level filter set for the child seat buyer
-            /// account 456   whose bidder is 123: "bidders/123/accounts/456"</param>
+            /// <param name="ownerName">Name of the owner (bidder or account) of the filter set to be created. For example:
+            ///
+            /// - For a bidder-level filter set for bidder 123: `bidders/123`
+            ///
+            /// - For an account-level filter set for the buyer account representing bidder   123: `bidders/123/accounts/123`
+            ///
+            /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+            /// `bidders/123/accounts/456`</param>
             public virtual CreateRequest Create(string ownerName)
             {
                 return new CreateRequest(service, ownerName);
@@ -5848,41 +6046,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 }
 
 
-                /// <summary>Name of the owner (bidder or account) of the filter set to be created. For example: - For a
-                /// bidder-level filter set for bidder 123: "bidders/123" - For an account-level filter set for the
-                /// buyer account representing bidder 123: "bidders/123/accounts/123" - For an account-level filter set
-                /// for the child seat buyer account 456 whose bidder is 123: "bidders/123/accounts/456"</summary>
+                /// <summary>Name of the owner (bidder or account) of the filter set to be created. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123: `bidders/123`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder 123:
+                /// `bidders/123/accounts/123`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ownerName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string OwnerName { get; private set; }
-
-                /// <summary>The end date of the filter set, specified as the number of days before today. E.g. for a
-                /// range where the last date is today, 0.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.relativeDateRange.offsetDays", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> FilterSetRelativeDateRangeOffsetDays { get; set; }
-
-                /// <summary>Whether the filter set is transient, or should be persisted indefinitely. By default,
-                /// filter sets are not transient. If transient, it will be available for at least 1 hour after
-                /// creation.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("isTransient", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IsTransient { get; set; }
-
-                /// <summary>The ID of the buyer account on which to filter; optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.buyerAccountId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> FilterSetBuyerAccountId { get; set; }
-
-                /// <summary>The account ID of the buyer who owns this filter set. The value of this field is ignored in
-                /// create operations.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.ownerAccountId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> FilterSetOwnerAccountId { get; set; }
-
-                /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-                /// year/month where the day is not significant.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.startDate.day", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> FilterSetAbsoluteDateRangeStartDateDay { get; set; }
-
-                /// <summary>The start timestamp of the real-time RTB metrics aggregation.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.realtimeTimeRange.startTimestamp", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object FilterSetRealtimeTimeRangeStartTimestamp { get; set; }
 
                 /// <summary>Month of year. Must be from 1 to 12.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.startDate.month", Google.Apis.Util.RequestParameterType.Query)]
@@ -5901,7 +6075,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// one of the patterns:
                 ///
                 /// - `bidders/filterSets` (for accessing bidder-level troubleshooting data) -
-                /// `bidders/accounts/filterSets` (for accessing buyer-level troubleshooting data)</summary>
+                /// `bidders/accounts/filterSets` (for accessing buyer-level troubleshooting data)
+                ///
+                /// This field is required in create operations.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSet.name", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string FilterSetName { get; set; }
 
@@ -5975,21 +6151,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("filterSet.filterSetId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> FilterSetFilterSetId { get; set; }
 
-                /// <summary>The format on which to filter; optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.format", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<FilterSetFormatEnum> FilterSetFormat { get; set; }
-
-                /// <summary>The format on which to filter; optional.</summary>
-                public enum FilterSetFormatEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("FORMAT_UNSPECIFIED")]
-                    FORMATUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("DISPLAY")]
-                    DISPLAY,
-                    [Google.Apis.Util.StringValueAttribute("VIDEO")]
-                    VIDEO,
-                }
-
                 /// <summary>The granularity of time intervals if a time series breakdown is desired;
                 /// optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSet.timeSeriesGranularity", Google.Apis.Util.RequestParameterType.Query)]
@@ -6007,9 +6168,53 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     DAILY,
                 }
 
+                /// <summary>The format on which to filter; optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.format", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<FilterSetFormatEnum> FilterSetFormat { get; set; }
+
+                /// <summary>The format on which to filter; optional.</summary>
+                public enum FilterSetFormatEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FORMAT_UNSPECIFIED")]
+                    FORMATUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("DISPLAY")]
+                    DISPLAY,
+                    [Google.Apis.Util.StringValueAttribute("VIDEO")]
+                    VIDEO,
+                }
+
                 /// <summary>The ID of the creative on which to filter; optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSet.creativeId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string FilterSetCreativeId { get; set; }
+
+                /// <summary>The end date of the filter set, specified as the number of days before today. E.g. for a
+                /// range where the last date is today, 0.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.relativeDateRange.offsetDays", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> FilterSetRelativeDateRangeOffsetDays { get; set; }
+
+                /// <summary>Whether the filter set is transient, or should be persisted indefinitely. By default,
+                /// filter sets are not transient. If transient, it will be available for at least 1 hour after
+                /// creation.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("isTransient", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IsTransient { get; set; }
+
+                /// <summary>The ID of the buyer account on which to filter; optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.buyerAccountId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> FilterSetBuyerAccountId { get; set; }
+
+                /// <summary>The account ID of the buyer who owns this filter set. The value of this field is ignored in
+                /// create operations.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.ownerAccountId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> FilterSetOwnerAccountId { get; set; }
+
+                /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+                /// year/month where the day is not significant.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.startDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> FilterSetAbsoluteDateRangeStartDateDay { get; set; }
+
+                /// <summary>The start timestamp of the real-time RTB metrics aggregation.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.realtimeTimeRange.startTimestamp", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object FilterSetRealtimeTimeRangeStartTimestamp { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -6043,60 +6248,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^bidders/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "filterSet.relativeDateRange.offsetDays", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.relativeDateRange.offsetDays",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "isTransient", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "isTransient",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.buyerAccountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.buyerAccountId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.ownerAccountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.ownerAccountId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.absoluteDateRange.startDate.day", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.absoluteDateRange.startDate.day",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.realtimeTimeRange.startTimestamp", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.realtimeTimeRange.startTimestamp",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "filterSet.absoluteDateRange.startDate.month", new Google.Apis.Discovery.Parameter
@@ -6216,18 +6367,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filterSet.format", new Google.Apis.Discovery.Parameter
+                        "filterSet.timeSeriesGranularity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "filterSet.format",
+                            Name = "filterSet.timeSeriesGranularity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filterSet.timeSeriesGranularity", new Google.Apis.Discovery.Parameter
+                        "filterSet.format", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "filterSet.timeSeriesGranularity",
+                            Name = "filterSet.format",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6242,15 +6393,74 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "filterSet.relativeDateRange.offsetDays", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.relativeDateRange.offsetDays",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "isTransient", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "isTransient",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.buyerAccountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.buyerAccountId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.ownerAccountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.ownerAccountId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.absoluteDateRange.startDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.absoluteDateRange.startDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.realtimeTimeRange.startTimestamp", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.realtimeTimeRange.startTimestamp",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
 
             /// <summary>Deletes the requested filter set from the account with the given account ID.</summary>
-            /// <param name="name">Full name of the resource to delete. For example: - For a bidder-level filter set for bidder 123:
-            /// "bidders/123/filterSets/abc" - For an account-level filter set for the buyer account representing bidder   123:
-            /// "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat buyer account 456
-            /// whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</param>
+            /// <param name="name">Full name of the resource to delete. For example:
+            ///
+            /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+            ///
+            /// - For an account-level filter set for the buyer account representing bidder   123:
+            /// `bidders/123/accounts/123/filterSets/abc`
+            ///
+            /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+            /// `bidders/123/accounts/456/filterSets/abc`</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -6268,11 +6478,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 }
 
 
-                /// <summary>Full name of the resource to delete. For example: - For a bidder-level filter set for
-                /// bidder 123: "bidders/123/filterSets/abc" - For an account-level filter set for the buyer account
-                /// representing bidder 123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set
-                /// for the child seat buyer account 456 whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                /// <summary>Full name of the resource to delete. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder 123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -6340,10 +6554,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             }
 
             /// <summary>Retrieves the requested filter set for the account with the given account ID.</summary>
-            /// <param name="name">Full name of the resource being requested. For example: - For a bidder-level filter set for
-            /// bidder 123:   "bidders/123/filterSets/abc" - For an account-level filter set for the buyer account representing
-            /// bidder   123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set for the child seat buyer
-            /// account 456   whose bidder is 123: "bidders/123/accounts/456/filterSets/abc"</param>
+            /// <param name="name">Full name of the resource being requested. For example:
+            ///
+            /// - For a bidder-level filter set for bidder 123:   `bidders/123/filterSets/abc`
+            ///
+            /// - For an account-level filter set for the buyer account representing bidder   123:
+            /// `bidders/123/accounts/123/filterSets/abc`
+            ///
+            /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+            /// `bidders/123/accounts/456/filterSets/abc`</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -6361,21 +6580,25 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 }
 
 
-                /// <summary>Full name of the resource being requested. For example: - For a bidder-level filter set for
-                /// bidder 123: "bidders/123/filterSets/abc" - For an account-level filter set for the buyer account
-                /// representing bidder 123: "bidders/123/accounts/123/filterSets/abc" - For an account-level filter set
-                /// for the child seat buyer account 456 whose bidder is 123:
-                /// "bidders/123/accounts/456/filterSets/abc"</summary>
+                /// <summary>Full name of the resource being requested. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123: `bidders/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder 123:
+                /// `bidders/123/accounts/123/filterSets/abc`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456/filterSets/abc`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
-                /// <summary>The ID of the filter set to get.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> FilterSetId { get; set; }
 
                 /// <summary>Account ID of the buyer.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> AccountId { get; set; }
+
+                /// <summary>The ID of the filter set to get.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -6411,18 +6634,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filterSetId", new Google.Apis.Discovery.Parameter
+                        "accountId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "filterSetId",
+                            Name = "accountId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
+                        "filterSetId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "accountId",
+                            Name = "filterSetId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6433,10 +6656,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             }
 
             /// <summary>Lists all filter sets for the account with the given account ID.</summary>
-            /// <param name="ownerName">Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a
-            /// bidder-level filter set for bidder 123: "bidders/123" - For an account-level filter set for the buyer account
-            /// representing bidder   123: "bidders/123/accounts/123" - For an account-level filter set for the child seat buyer
-            /// account 456   whose bidder is 123: "bidders/123/accounts/456"</param>
+            /// <param name="ownerName">Name of the owner (bidder or account) of the filter sets to be listed. For example:
+            ///
+            /// - For a bidder-level filter set for bidder 123: `bidders/123`
+            ///
+            /// - For an account-level filter set for the buyer account representing bidder   123: `bidders/123/accounts/123`
+            ///
+            /// - For an account-level filter set for the child seat buyer account 456   whose bidder is 123:
+            /// `bidders/123/accounts/456`</param>
             public virtual ListRequest List(string ownerName)
             {
                 return new ListRequest(service, ownerName);
@@ -6454,10 +6681,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 }
 
 
-                /// <summary>Name of the owner (bidder or account) of the filter sets to be listed. For example: - For a
-                /// bidder-level filter set for bidder 123: "bidders/123" - For an account-level filter set for the
-                /// buyer account representing bidder 123: "bidders/123/accounts/123" - For an account-level filter set
-                /// for the child seat buyer account 456 whose bidder is 123: "bidders/123/accounts/456"</summary>
+                /// <summary>Name of the owner (bidder or account) of the filter sets to be listed. For example:
+                ///
+                /// - For a bidder-level filter set for bidder 123: `bidders/123`
+                ///
+                /// - For an account-level filter set for the buyer account representing bidder 123:
+                /// `bidders/123/accounts/123`
+                ///
+                /// - For an account-level filter set for the child seat buyer account 456 whose bidder is 123:
+                /// `bidders/123/accounts/456`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ownerName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string OwnerName { get; private set; }
 
@@ -7064,7 +7296,9 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// the patterns:
         ///
         /// - `bidders/filterSets` (for accessing bidder-level troubleshooting data) - `bidders/accounts/filterSets`
-        /// (for accessing buyer-level troubleshooting data)</summary>
+        /// (for accessing buyer-level troubleshooting data)
+        ///
+        /// This field is required in create operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

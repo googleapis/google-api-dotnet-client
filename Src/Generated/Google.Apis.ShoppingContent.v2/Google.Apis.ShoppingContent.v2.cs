@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171016 (1019)
+ *      <tr><th>API Rev<td>20171020 (1023)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -387,20 +387,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Claims the website of a Merchant Center sub-account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself for any Merchant Center account,
-        /// or any sub-account when the managing account is a multi-client account.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account whose website is claimed.</param>
+        /// <summary>Claims the website of a Merchant Center sub-account.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account whose website
+        /// is claimed.</param>
         public virtual ClaimwebsiteRequest Claimwebsite(ulong merchantId, ulong accountId)
         {
             return new ClaimwebsiteRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Claims the website of a Merchant Center sub-account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself for any Merchant Center account,
-        /// or any sub-account when the managing account is a multi-client account.</summary>
+        /// <summary>Claims the website of a Merchant Center sub-account.</summary>
         public class ClaimwebsiteRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountsClaimWebsiteResponse>
         {
             /// <summary>Constructs a new Claimwebsite request.</summary>
@@ -413,7 +410,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -549,18 +547,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Deletes a Merchant Center sub-account. This method can only be called for multi-client
-        /// accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account.</param>
+        /// <summary>Deletes a Merchant Center sub-account.</summary>
+        /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
+        /// <param
+        /// name="accountId">The ID of the account.</param>
         public virtual DeleteRequest Delete(ulong merchantId, ulong accountId)
         {
             return new DeleteRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Deletes a Merchant Center sub-account. This method can only be called for multi-client
-        /// accounts.</summary>
+        /// <summary>Deletes a Merchant Center sub-account.</summary>
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -573,7 +569,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. This must be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -654,20 +650,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account.</param>
+        /// <summary>Retrieves a Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account.</summary>
+        /// <summary>Retrieves a Merchant Center account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -680,7 +672,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -734,17 +727,15 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Creates a Merchant Center sub-account. This method can only be called for multi-client
-        /// accounts.</summary>
+        /// <summary>Creates a Merchant Center sub-account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.Account body, ulong merchantId)
         {
             return new InsertRequest(service, body, merchantId);
         }
 
-        /// <summary>Creates a Merchant Center sub-account. This method can only be called for multi-client
-        /// accounts.</summary>
+        /// <summary>Creates a Merchant Center sub-account.</summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -757,7 +748,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. This must be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -817,16 +808,14 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the sub-accounts in your Merchant Center account. This method can only be called for multi-
-        /// client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the sub-accounts in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the sub-accounts in your Merchant Center account. This method can only be called for multi-
-        /// client accounts.</summary>
+        /// <summary>Lists the sub-accounts in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -838,7 +827,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. This must be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -905,21 +894,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account. This method supports patch semantics.</summary>
+        /// <summary>Updates a Merchant Center account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account.</param>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2.Data.Account body, ulong merchantId, ulong accountId)
         {
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account. This method supports patch semantics.</summary>
+        /// <summary>Updates a Merchant Center account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -933,7 +918,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -1006,21 +992,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account.</summary>
+        /// <summary>Updates a Merchant Center account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account.</param>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2.Data.Account body, ulong merchantId, ulong accountId)
         {
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates a Merchant Center account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account.</summary>
+        /// <summary>Updates a Merchant Center account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Account>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1034,7 +1016,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -1177,20 +1160,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the status of a Merchant Center account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself for any Merchant Center account,
-        /// or any sub-account when the managing account is a multi-client account.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account.</param>
+        /// <summary>Retrieves the status of a Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the status of a Merchant Center account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself for any Merchant Center account,
-        /// or any sub-account when the managing account is a multi-client account.</summary>
+        /// <summary>Retrieves the status of a Merchant Center account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1203,7 +1182,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -1257,16 +1237,14 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account. This method can only be
-        /// called for multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account. This method can only be
-        /// called for multi-client accounts.</summary>
+        /// <summary>Lists the statuses of the sub-accounts in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1278,7 +1256,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. This must be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -1428,20 +1406,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account for which to get/update account tax settings.</param>
+        /// <summary>Retrieves the tax settings of the account.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account for which to
+        /// get/update account tax settings.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account.</summary>
+        /// <summary>Retrieves the tax settings of the account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1454,7 +1429,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -1508,16 +1484,14 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account. This method can only be
-        /// called for multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account. This method can only be
-        /// called for multi-client accounts.</summary>
+        /// <summary>Lists the tax settings of the sub-accounts in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccounttaxListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1529,7 +1503,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. This must be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -1596,21 +1570,18 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account. This method supports patch semantics.</summary>
+        /// <summary>Updates the tax settings of the account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account for which to get/update account tax settings.</param>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account for which to
+        /// get/update account tax settings.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2.Data.AccountTax body, ulong merchantId, ulong accountId)
         {
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account. This method supports patch semantics.</summary>
+        /// <summary>Updates the tax settings of the account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1624,7 +1595,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -1697,21 +1669,18 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account.</summary>
+        /// <summary>Updates the tax settings of the account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account for which to get/update account tax settings.</param>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account for which to
+        /// get/update account tax settings.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2.Data.AccountTax body, ulong merchantId, ulong accountId)
         {
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the tax settings of the account. This method can only be called for accounts to which the
-        /// managing account has access: either the managing account itself for any Merchant Center account, or any sub-
-        /// account when the managing account is a multi-client account.</summary>
+        /// <summary>Updates the tax settings of the account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.AccountTax>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -1725,7 +1694,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -1881,17 +1851,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Deletes a datafeed configuration from your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts.</summary>
-        /// <param name="merchantId"></param>
-        /// <param name="datafeedId"></param>
+        /// <summary>Deletes a datafeed configuration from your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual DeleteRequest Delete(ulong merchantId, ulong datafeedId)
         {
             return new DeleteRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Deletes a datafeed configuration from your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts.</summary>
+        /// <summary>Deletes a datafeed configuration from your Merchant Center account.</summary>
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1904,11 +1873,12 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-
+            /// <summary>The ID of the account that manages the datafeed. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-
+            /// <summary>The ID of the datafeed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
@@ -1971,17 +1941,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves a datafeed configuration from your Merchant Center account. This method can only be
-        /// called for non-multi-client accounts.</summary>
-        /// <param name="merchantId"></param>
-        /// <param name="datafeedId"></param>
+        /// <summary>Retrieves a datafeed configuration from your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual GetRequest Get(ulong merchantId, ulong datafeedId)
         {
             return new GetRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Retrieves a datafeed configuration from your Merchant Center account. This method can only be
-        /// called for non-multi-client accounts.</summary>
+        /// <summary>Retrieves a datafeed configuration from your Merchant Center account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1994,11 +1963,12 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-
+            /// <summary>The ID of the account that manages the datafeed. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-
+            /// <summary>The ID of the datafeed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
@@ -2048,17 +2018,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Registers a datafeed configuration with your Merchant Center account. This method can only be
-        /// called for non-multi-client accounts.</summary>
+        /// <summary>Registers a datafeed configuration with your Merchant Center account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId"></param>
+        /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
+        /// account.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.Datafeed body, ulong merchantId)
         {
             return new InsertRequest(service, body, merchantId);
         }
 
-        /// <summary>Registers a datafeed configuration with your Merchant Center account. This method can only be
-        /// called for non-multi-client accounts.</summary>
+        /// <summary>Registers a datafeed configuration with your Merchant Center account.</summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -2071,7 +2040,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-
+            /// <summary>The ID of the account that manages the datafeed. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -2131,16 +2101,15 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the datafeeds in your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the datafeeds in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the datafeeds. This account cannot be a multi-client
+        /// account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the datafeeds in your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Lists the datafeeds in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2152,7 +2121,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the datafeeds. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -2219,18 +2189,19 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts. This method supports patch semantics.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method supports patch
+        /// semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId"></param>
-        /// <param name="datafeedId"></param>
+        /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2.Data.Datafeed body, ulong merchantId, ulong datafeedId)
         {
             return new PatchRequest(service, body, merchantId, datafeedId);
         }
 
-        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts. This method supports patch semantics.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method supports patch
+        /// semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2244,11 +2215,12 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-
+            /// <summary>The ID of the account that manages the datafeed. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-
+            /// <summary>The ID of the datafeed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
@@ -2317,18 +2289,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId"></param>
-        /// <param name="datafeedId"></param>
+        /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2.Data.Datafeed body, ulong merchantId, ulong datafeedId)
         {
             return new UpdateRequest(service, body, merchantId, datafeedId);
         }
 
-        /// <summary>Updates a datafeed configuration of your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts.</summary>
+        /// <summary>Updates a datafeed configuration of your Merchant Center account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Datafeed>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -2342,11 +2313,12 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-
+            /// <summary>The ID of the account that manages the datafeed. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-
+            /// <summary>The ID of the datafeed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
@@ -2485,17 +2457,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the status of a datafeed from your Merchant Center account. This method can only be
-        /// called for non-multi-client accounts.</summary>
-        /// <param name="merchantId"></param>
-        /// <param name="datafeedId"></param>
+        /// <summary>Retrieves the status of a datafeed from your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="datafeedId">The ID of the datafeed.</param>
         public virtual GetRequest Get(ulong merchantId, ulong datafeedId)
         {
             return new GetRequest(service, merchantId, datafeedId);
         }
 
-        /// <summary>Retrieves the status of a datafeed from your Merchant Center account. This method can only be
-        /// called for non-multi-client accounts.</summary>
+        /// <summary>Retrieves the status of a datafeed from your Merchant Center account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2508,11 +2479,12 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-
+            /// <summary>The ID of the account that manages the datafeed. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-
+            /// <summary>The ID of the datafeed.</summary>
             [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong DatafeedId { get; private set; }
 
@@ -2592,16 +2564,15 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the statuses of the datafeeds in your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the statuses of the datafeeds in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the datafeeds. This account cannot be a multi-client
+        /// account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the statuses of the datafeeds in your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts.</summary>
+        /// <summary>Lists the statuses of the datafeeds in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2613,7 +2584,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the datafeeds. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -2698,8 +2670,7 @@ namespace Google.Apis.ShoppingContent.v2
 
 
         /// <summary>Updates price and availability for multiple products or stores in a single request. This operation
-        /// does not update the expiration date of the products. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// does not update the expiration date of the products.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.InventoryCustomBatchRequest body)
         {
@@ -2707,8 +2678,7 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Updates price and availability for multiple products or stores in a single request. This operation
-        /// does not update the expiration date of the products. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// does not update the expiration date of the products.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.InventoryCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -2767,24 +2737,20 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates price and availability of a product in your Merchant Center account. This operation does
-        /// not update the expiration date of the product. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Updates price and availability of a product in your Merchant Center account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="storeCode">The code of the
-        /// store for which to update price and availability. Use online to update price and availability of an online
-        /// product.</param>
-        /// <param name="productId">The ID of the product for which to update price and
-        /// availability.</param>
+        /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="storeCode">The code of the store for which to update price and availability.
+        /// Use online to update price and availability of an online product.</param>
+        /// <param name="productId">The REST
+        /// id of the product for which to update price and availability.</param>
         public virtual SetRequest Set(Google.Apis.ShoppingContent.v2.Data.InventorySetRequest body, ulong merchantId, string storeCode, string productId)
         {
             return new SetRequest(service, body, merchantId, storeCode, productId);
         }
 
-        /// <summary>Updates price and availability of a product in your Merchant Center account. This operation does
-        /// not update the expiration date of the product. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Updates price and availability of a product in your Merchant Center account.</summary>
         public class SetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.InventorySetResponse>
         {
             /// <summary>Constructs a new Set request.</summary>
@@ -2799,7 +2765,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that contains the product. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -2808,7 +2775,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("storeCode", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string StoreCode { get; private set; }
 
-            /// <summary>The ID of the product for which to update price and availability.</summary>
+            /// <summary>The REST id of the product for which to update price and availability.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
@@ -2903,19 +2870,17 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-        /// <summary>Marks an order as acknowledged. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Marks an order as acknowledged.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the
-        /// order.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
         public virtual AcknowledgeRequest Acknowledge(Google.Apis.ShoppingContent.v2.Data.OrdersAcknowledgeRequest body, ulong merchantId, string orderId)
         {
             return new AcknowledgeRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Marks an order as acknowledged. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Marks an order as acknowledged.</summary>
         public class AcknowledgeRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersAcknowledgeResponse>
         {
             /// <summary>Constructs a new Acknowledge request.</summary>
@@ -2929,7 +2894,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -2989,18 +2954,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment". This method
-        /// can only be called for non-multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the test
-        /// order to modify.</param>
+        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".</summary>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the test order to modify.</param>
         public virtual AdvancetestorderRequest Advancetestorder(ulong merchantId, string orderId)
         {
             return new AdvancetestorderRequest(service, merchantId, orderId);
         }
 
-        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment". This method
-        /// can only be called for non-multi-client accounts.</summary>
+        /// <summary>Sandbox only. Moves a test order from state "inProgress" to state "pendingShipment".</summary>
         public class AdvancetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersAdvanceTestOrderResponse>
         {
             /// <summary>Constructs a new Advancetestorder request.</summary>
@@ -3013,7 +2976,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3067,19 +3030,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Cancels all line items in an order, making a full refund. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Cancels all line items in an order, making a full refund.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the order
-        /// to cancel.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order to cancel.</param>
         public virtual CancelRequest Cancel(Google.Apis.ShoppingContent.v2.Data.OrdersCancelRequest body, ulong merchantId, string orderId)
         {
             return new CancelRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Cancels all line items in an order, making a full refund. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Cancels all line items in an order, making a full refund.</summary>
         public class CancelRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCancelResponse>
         {
             /// <summary>Constructs a new Cancel request.</summary>
@@ -3093,7 +3054,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3153,19 +3114,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Cancels a line item, making a full refund. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Cancels a line item, making a full refund.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the
-        /// order.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
         public virtual CancellineitemRequest Cancellineitem(Google.Apis.ShoppingContent.v2.Data.OrdersCancelLineItemRequest body, ulong merchantId, string orderId)
         {
             return new CancellineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Cancels a line item, making a full refund. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Cancels a line item, making a full refund.</summary>
         public class CancellineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCancelLineItemResponse>
         {
             /// <summary>Constructs a new Cancellineitem request.</summary>
@@ -3179,7 +3138,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3239,17 +3198,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Sandbox only. Creates a test order. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Sandbox only. Creates a test order.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <param name="merchantId">The ID of the account that should manage the order. This cannot be a multi-client
+        /// account.</param>
         public virtual CreatetestorderRequest Createtestorder(Google.Apis.ShoppingContent.v2.Data.OrdersCreateTestOrderRequest body, ulong merchantId)
         {
             return new CreatetestorderRequest(service, body, merchantId);
         }
 
-        /// <summary>Sandbox only. Creates a test order. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Sandbox only. Creates a test order.</summary>
         public class CreatetestorderRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCreateTestOrderResponse>
         {
             /// <summary>Constructs a new Createtestorder request.</summary>
@@ -3262,7 +3220,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that should manage the order. This cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3309,16 +3268,14 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves or modifies multiple orders in a single request. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Retrieves or modifies multiple orders in a single request.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.OrdersCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-        /// <summary>Retrieves or modifies multiple orders in a single request. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Retrieves or modifies multiple orders in a single request.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -3364,18 +3321,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves an order from your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the
-        /// order.</param>
+        /// <summary>Retrieves an order from your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
         public virtual GetRequest Get(ulong merchantId, string orderId)
         {
             return new GetRequest(service, merchantId, orderId);
         }
 
-        /// <summary>Retrieves an order from your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Retrieves an order from your Merchant Center account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Order>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3388,7 +3343,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3442,18 +3397,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves an order using merchant order id. This method can only be called for non-multi-client
-        /// accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="merchantOrderId">The merchant
-        /// order id to be looked for.</param>
+        /// <summary>Retrieves an order using merchant order id.</summary>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="merchantOrderId">The merchant order id to be looked for.</param>
         public virtual GetbymerchantorderidRequest Getbymerchantorderid(ulong merchantId, string merchantOrderId)
         {
             return new GetbymerchantorderidRequest(service, merchantId, merchantOrderId);
         }
 
-        /// <summary>Retrieves an order using merchant order id. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Retrieves an order using merchant order id.</summary>
         public class GetbymerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersGetByMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Getbymerchantorderid request.</summary>
@@ -3466,7 +3419,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3521,17 +3474,17 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Sandbox only. Retrieves an order template that can be used to quickly create a new order in
-        /// sandbox. This method can only be called for non-multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="templateName">The name of the
-        /// template to retrieve.</param>
+        /// sandbox.</summary>
+        /// <param name="merchantId">The ID of the account that should manage the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="templateName">The name of the template to retrieve.</param>
         public virtual GettestordertemplateRequest Gettestordertemplate(ulong merchantId, GettestordertemplateRequest.TemplateNameEnum templateName)
         {
             return new GettestordertemplateRequest(service, merchantId, templateName);
         }
 
         /// <summary>Sandbox only. Retrieves an order template that can be used to quickly create a new order in
-        /// sandbox. This method can only be called for non-multi-client accounts.</summary>
+        /// sandbox.</summary>
         public class GettestordertemplateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersGetTestOrderTemplateResponse>
         {
             /// <summary>Constructs a new Gettestordertemplate request.</summary>
@@ -3544,7 +3497,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that should manage the order. This cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3611,16 +3565,15 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the orders in your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the orders in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the orders in your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Lists the orders in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3632,7 +3585,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3817,19 +3770,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the order
-        /// to refund.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order to refund.</param>
         public virtual RefundRequest Refund(Google.Apis.ShoppingContent.v2.Data.OrdersRefundRequest body, ulong merchantId, string orderId)
         {
             return new RefundRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Refund a portion of the order, up to the full amount paid. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Refund a portion of the order, up to the full amount paid.</summary>
         public class RefundRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersRefundResponse>
         {
             /// <summary>Constructs a new Refund request.</summary>
@@ -3843,7 +3794,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3903,17 +3854,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Returns a line item. This method can only be called for non-multi-client accounts.</summary>
+        /// <summary>Returns a line item.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the
-        /// order.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
         public virtual ReturnlineitemRequest Returnlineitem(Google.Apis.ShoppingContent.v2.Data.OrdersReturnLineItemRequest body, ulong merchantId, string orderId)
         {
             return new ReturnlineitemRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Returns a line item. This method can only be called for non-multi-client accounts.</summary>
+        /// <summary>Returns a line item.</summary>
         public class ReturnlineitemRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersReturnLineItemResponse>
         {
             /// <summary>Constructs a new Returnlineitem request.</summary>
@@ -3927,7 +3878,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -3987,19 +3938,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Marks line item(s) as shipped. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Marks line item(s) as shipped.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the
-        /// order.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
         public virtual ShiplineitemsRequest Shiplineitems(Google.Apis.ShoppingContent.v2.Data.OrdersShipLineItemsRequest body, ulong merchantId, string orderId)
         {
             return new ShiplineitemsRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Marks line item(s) as shipped. This method can only be called for non-multi-client
-        /// accounts.</summary>
+        /// <summary>Marks line item(s) as shipped.</summary>
         public class ShiplineitemsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersShipLineItemsResponse>
         {
             /// <summary>Constructs a new Shiplineitems request.</summary>
@@ -4013,7 +3962,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -4073,19 +4022,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the merchant order ID for a given order. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Updates the merchant order ID for a given order.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the
-        /// order.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
         public virtual UpdatemerchantorderidRequest Updatemerchantorderid(Google.Apis.ShoppingContent.v2.Data.OrdersUpdateMerchantOrderIdRequest body, ulong merchantId, string orderId)
         {
             return new UpdatemerchantorderidRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Updates the merchant order ID for a given order. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Updates the merchant order ID for a given order.</summary>
         public class UpdatemerchantorderidRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersUpdateMerchantOrderIdResponse>
         {
             /// <summary>Constructs a new Updatemerchantorderid request.</summary>
@@ -4099,7 +4046,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -4159,19 +4106,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates a shipment's status, carrier, and/or tracking ID. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Updates a shipment's status, carrier, and/or tracking ID.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="orderId">The ID of the
-        /// order.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
         public virtual UpdateshipmentRequest Updateshipment(Google.Apis.ShoppingContent.v2.Data.OrdersUpdateShipmentRequest body, ulong merchantId, string orderId)
         {
             return new UpdateshipmentRequest(service, body, merchantId, orderId);
         }
 
-        /// <summary>Updates a shipment's status, carrier, and/or tracking ID. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Updates a shipment's status, carrier, and/or tracking ID.</summary>
         public class UpdateshipmentRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.OrdersUpdateShipmentResponse>
         {
             /// <summary>Constructs a new Updateshipment request.</summary>
@@ -4185,7 +4130,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -4262,16 +4207,14 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-        /// <summary>Retrieves, inserts, and deletes multiple products in a single request. This method can only be
-        /// called for non-multi-client accounts.</summary>
+        /// <summary>Retrieves, inserts, and deletes multiple products in a single request.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.ProductsCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-        /// <summary>Retrieves, inserts, and deletes multiple products in a single request. This method can only be
-        /// called for non-multi-client accounts.</summary>
+        /// <summary>Retrieves, inserts, and deletes multiple products in a single request.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -4330,18 +4273,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Deletes a product from your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="productId">The ID of the
-        /// product.</param>
+        /// <summary>Deletes a product from your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="productId">The REST id of the product.</param>
         public virtual DeleteRequest Delete(ulong merchantId, string productId)
         {
             return new DeleteRequest(service, merchantId, productId);
         }
 
-        /// <summary>Deletes a product from your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Deletes a product from your Merchant Center account.</summary>
         public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4354,11 +4295,12 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that contains the product. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the product.</summary>
+            /// <summary>The REST id of the product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
@@ -4421,18 +4363,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves a product from your Merchant Center account. This method can only be called for non-
-        /// multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="productId">The ID of the
-        /// product.</param>
+        /// <summary>Retrieves a product from your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="productId">The REST id of the product.</param>
         public virtual GetRequest Get(ulong merchantId, string productId)
         {
             return new GetRequest(service, merchantId, productId);
         }
 
-        /// <summary>Retrieves a product from your Merchant Center account. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Retrieves a product from your Merchant Center account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Product>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4445,11 +4385,12 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that contains the product. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the product.</summary>
+            /// <summary>The REST id of the product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
@@ -4500,18 +4441,17 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Uploads a product to your Merchant Center account. If an item with the same channel,
-        /// contentLanguage, offerId, and targetCountry already exists, this method updates that entry. This method can
-        /// only be called for non-multi-client accounts.</summary>
+        /// contentLanguage, offerId, and targetCountry already exists, this method updates that entry.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
+        /// account.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.Product body, ulong merchantId)
         {
             return new InsertRequest(service, body, merchantId);
         }
 
         /// <summary>Uploads a product to your Merchant Center account. If an item with the same channel,
-        /// contentLanguage, offerId, and targetCountry already exists, this method updates that entry. This method can
-        /// only be called for non-multi-client accounts.</summary>
+        /// contentLanguage, offerId, and targetCountry already exists, this method updates that entry.</summary>
         public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.Product>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4524,7 +4464,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that contains the product. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -4584,16 +4525,15 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the products in your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the products in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that contains the products. This account cannot be a multi-client
+        /// account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the products in your Merchant Center account. This method can only be called for non-multi-
-        /// client accounts.</summary>
+        /// <summary>Lists the products in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4605,7 +4545,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that contains the products. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -4703,16 +4644,14 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-        /// <summary>Gets the statuses of multiple products in a single request. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Gets the statuses of multiple products in a single request.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.ProductstatusesCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-        /// <summary>Gets the statuses of multiple products in a single request. This method can only be called for non-
-        /// multi-client accounts.</summary>
+        /// <summary>Gets the statuses of multiple products in a single request.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductstatusesCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -4772,18 +4711,16 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Gets the status of a product from your Merchant Center account. This method can only be called for
-        /// non-multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="productId">The ID of the
-        /// product.</param>
+        /// <summary>Gets the status of a product from your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that contains the product. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="productId">The REST id of the product.</param>
         public virtual GetRequest Get(ulong merchantId, string productId)
         {
             return new GetRequest(service, merchantId, productId);
         }
 
-        /// <summary>Gets the status of a product from your Merchant Center account. This method can only be called for
-        /// non-multi-client accounts.</summary>
+        /// <summary>Gets the status of a product from your Merchant Center account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductStatus>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4796,11 +4733,12 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that contains the product. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the product.</summary>
+            /// <summary>The REST id of the product.</summary>
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
@@ -4864,16 +4802,15 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the statuses of the products in your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the statuses of the products in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that contains the products. This account cannot be a multi-client
+        /// account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the statuses of the products in your Merchant Center account. This method can only be called
-        /// for non-multi-client accounts.</summary>
+        /// <summary>Lists the statuses of the products in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ProductstatusesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4885,7 +4822,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the account that contains the products. This account cannot be a multi-client
+            /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -5063,20 +5001,17 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the shipping settings of the account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself for any Merchant Center account,
-        /// or any sub-account when the managing account is a multi-client account.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account for which to get/update shipping settings.</param>
+        /// <summary>Retrieves the shipping settings of the account.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account for which to
+        /// get/update shipping settings.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the shipping settings of the account. This method can only be called for accounts to
-        /// which the managing account has access: either the managing account itself for any Merchant Center account,
-        /// or any sub-account when the managing account is a multi-client account.</summary>
+        /// <summary>Retrieves the shipping settings of the account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5089,7 +5024,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -5203,16 +5139,14 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account. This method can
-        /// only be called for multi-client accounts.</summary>
-        /// <param name="merchantId">The ID of the managing account.</param>
+        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account. This method can
-        /// only be called for multi-client accounts.</summary>
+        /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingsettingsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -5224,7 +5158,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. This must be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -5291,23 +5225,18 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
-        /// the managing account has access: either the managing account itself for any Merchant Center account, or any
-        /// sub-account when the managing account is a multi-client account. This method supports patch
-        /// semantics.</summary>
+        /// <summary>Updates the shipping settings of the account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account for which to get/update shipping settings.</param>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account for which to
+        /// get/update shipping settings.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2.Data.ShippingSettings body, ulong merchantId, ulong accountId)
         {
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
-        /// the managing account has access: either the managing account itself for any Merchant Center account, or any
-        /// sub-account when the managing account is a multi-client account. This method supports patch
-        /// semantics.</summary>
+        /// <summary>Updates the shipping settings of the account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5321,7 +5250,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -5394,21 +5324,18 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
-        /// the managing account has access: either the managing account itself for any Merchant Center account, or any
-        /// sub-account when the managing account is a multi-client account.</summary>
+        /// <summary>Updates the shipping settings of the account.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the managing account.</param>
-        /// <param name="accountId">The ID of the
-        /// account for which to get/update shipping settings.</param>
+        /// <param name="merchantId">The ID of the managing account. If this account is not a multi-client account, then this
+        /// parameter must be the same as accountId.</param>
+        /// <param name="accountId">The ID of the account for which to
+        /// get/update shipping settings.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2.Data.ShippingSettings body, ulong merchantId, ulong accountId)
         {
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the shipping settings of the account. This method can only be called for accounts to which
-        /// the managing account has access: either the managing account itself for any Merchant Center account, or any
-        /// sub-account when the managing account is a multi-client account.</summary>
+        /// <summary>Updates the shipping settings of the account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -5422,7 +5349,8 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the managing account.</summary>
+            /// <summary>The ID of the managing account. If this account is not a multi-client account, then this
+            /// parameter must be the same as accountId.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -8377,7 +8305,9 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
         public virtual string Gtin { get; set; } 
 
-        /// <summary>The REST id of the product.</summary>
+        /// <summary>The REST id of the product. Content API methods that operate on products take this as their
+        /// productId parameter. The REST id for a product is of the form
+        /// channel:contentLanguage:targetCountry:offerId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -8440,9 +8370,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipack")]
         public virtual System.Nullable<long> Multipack { get; set; } 
 
-        /// <summary>An identifier of the item. Leading and trailing whitespaces are stripped and multiple whitespaces
-        /// are replaced by a single whitespace upon submission. Only valid unicode characters are accepted. See the
-        /// products feed specification for details.</summary>
+        /// <summary>A unique identifier for the item. Leading and trailing whitespaces are stripped and multiple
+        /// whitespaces are replaced by a single whitespace upon submission. Only valid unicode characters are accepted.
+        /// See the products feed specification for details. Note: Content API methods that operate on products take the
+        /// REST id of the product, not this identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerId")]
         public virtual string OfferId { get; set; } 
 
