@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170912 (985)
+ *      <tr><th>API Rev<td>20171017 (1020)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -616,10 +616,6 @@ namespace Google.Apis.Datastore.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -627,6 +623,10 @@ namespace Google.Apis.Datastore.v1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -662,15 +662,6 @@ namespace Google.Apis.Datastore.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -683,6 +674,15 @@ namespace Google.Apis.Datastore.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -950,6 +950,74 @@ namespace Google.Apis.Datastore.v1
             }
 
             /// <summary>Initializes Lookup parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">The ID of the project against which to make the request.</param>
+        public virtual ReserveIdsRequest ReserveIds(Google.Apis.Datastore.v1.Data.ReserveIdsRequest body, string projectId)
+        {
+            return new ReserveIdsRequest(service, body, projectId);
+        }
+
+        /// <summary>Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.</summary>
+        public class ReserveIdsRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.ReserveIdsResponse>
+        {
+            /// <summary>Constructs a new ReserveIds request.</summary>
+            public ReserveIdsRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.ReserveIdsRequest body, string projectId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the project against which to make the request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Datastore.v1.Data.ReserveIdsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "reserveIds"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/projects/{projectId}:reserveIds"; }
+            }
+
+            /// <summary>Initializes ReserveIds parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1943,6 +2011,28 @@ namespace Google.Apis.Datastore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("previousTransaction")]
         public virtual string PreviousTransaction { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for Datastore.ReserveIds.</summary>
+    public class ReserveIdsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If not empty, the ID of the database against which to make the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; } 
+
+        /// <summary>A list of keys with complete key paths whose numeric IDs should not be auto-allocated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keys")]
+        public virtual System.Collections.Generic.IList<Key> Keys { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for Datastore.ReserveIds.</summary>
+    public class ReserveIdsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

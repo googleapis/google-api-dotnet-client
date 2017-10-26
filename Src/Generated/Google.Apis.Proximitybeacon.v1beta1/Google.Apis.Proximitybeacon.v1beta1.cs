@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/beacons/proximity/'>Google Proximity Beacon API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20170913 (986)
+ *      <tr><th>API Rev<td>20171017 (1020)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/beacons/proximity/'>
  *              https://developers.google.com/beacons/proximity/</a>
@@ -530,17 +530,17 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("beaconName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BeaconName { get; private set; }
 
-                /// <summary>Specifies the namespace and type of attachments to delete in `namespace/type` format.
-                /// Accepts `*` to specify "all types in all namespaces". Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("namespacedType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string NamespacedType { get; set; }
-
                 /// <summary>The project id to delete beacon attachments under. This field can be used when "*" is
                 /// specified to mean all attachment namespaces. Projects may have multiple attachments with multiple
                 /// namespaces. If "*" is specified and the projectId string is empty, then the project making the
                 /// request is used. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
+
+                /// <summary>Specifies the namespace and type of attachments to delete in `namespace/type` format.
+                /// Accepts `*` to specify "all types in all namespaces". Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("namespacedType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string NamespacedType { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -576,18 +576,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "namespacedType", new Google.Apis.Discovery.Parameter
+                        "projectId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "namespacedType",
+                            Name = "projectId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
+                        "namespacedType", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectId",
+                            Name = "namespacedType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -973,11 +973,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("beaconName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BeaconName { get; private set; }
 
-                /// <summary>Requests only diagnostic records for the given project id. If not set, then the project
-                /// making the request will be used for looking up diagnostic records. Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ProjectId { get; set; }
-
                 /// <summary>Requests results that occur after the `page_token`, obtained from the response to a
                 /// previous request. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -998,12 +993,19 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                     WRONGLOCATION,
                     [Google.Apis.Util.StringValueAttribute("LOW_BATTERY")]
                     LOWBATTERY,
+                    [Google.Apis.Util.StringValueAttribute("LOW_ACTIVITY")]
+                    LOWACTIVITY,
                 }
 
                 /// <summary>Specifies the maximum number of results to return. Defaults to 10. Maximum 1000.
                 /// Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Requests only diagnostic records for the given project id. If not set, then the project
+                /// making the request will be used for looking up diagnostic records. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ProjectId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1039,15 +1041,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1069,6 +1062,15 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2254,6 +2256,22 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
         /// (with padding) in responses. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
+
+        /// <summary>The distance away from the beacon at which this attachment should be delivered to a mobile app.
+        ///
+        /// Setting this to a value greater than zero indicates that the app should behave as if the beacon is "seen"
+        /// when the mobile device is less than this distance away from the beacon.
+        ///
+        /// Different attachments on the same beacon can have different max distances.
+        ///
+        /// Note that even though this value is expressed with fractional meter precision, real-world behavior is likley
+        /// to be much less precise than one meter, due to the nature of current Bluetooth radio technology.
+        ///
+        /// Optional. When not set or zero, the attachment should be delivered at the beacon's outer limit of detection.
+        ///
+        /// Negative values are invalid and return an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDistanceMeters")]
+        public virtual System.Nullable<double> MaxDistanceMeters { get; set; } 
 
         /// <summary>Specifies what kind of attachment this is. Tells a client how to interpret the `data` field. Format
         /// is namespace/type. Namespace provides type separation between clients. Type describes the type of `data`,

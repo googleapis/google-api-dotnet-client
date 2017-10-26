@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170915 (988)
+ *      <tr><th>API Rev<td>20170929 (1002)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -4629,7 +4629,7 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>SetMasterAuthRequest updates the admin password of a cluster.</summary>
     public class SetMasterAuthRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The exact form of action to be taken on the master auth</summary>
+        /// <summary>The exact form of action to be taken on the master auth.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 

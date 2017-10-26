@@ -30,6 +30,7 @@ using Google.Apis.Services;
 using Google.Apis.Testing;
 using Google.Apis.Util;
 using Google.Apis.Requests.Parameters;
+using System.Runtime.ExceptionServices;
 
 namespace Google.Apis.Requests
 {
@@ -53,6 +54,10 @@ namespace Google.Apis.Requests
         /// Gets or sets the callback for modifying HTTP requests made by this service request.
         /// </summary>
         public Action<HttpRequestMessage> ModifyRequest { get; set; }
+
+        private List<IHttpUnsuccessfulResponseHandler> _unsuccessfulResponseHandlers;
+        private List<IHttpExceptionHandler> _exceptionHandlers;
+        private List<IHttpExecuteInterceptor> _executeInterceptors;
 
         #region IClientServiceRequest Properties
 
@@ -106,11 +111,9 @@ namespace Google.Apis.Requests
             catch (AggregateException aex)
             {
                 // If an exception was thrown during the tasks, unwrap and throw it.
-                throw aex.InnerException;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+                ExceptionDispatchInfo.Capture(aex.InnerException ?? aex).Throw();
+                // Won't get here, but compiler requires it
+                throw;
             }
         }
 
@@ -197,6 +200,48 @@ namespace Google.Apis.Requests
 
         #endregion
 
+        /// <summary>
+        /// Add an unsuccessful response handler for this request only.
+        /// </summary>
+        /// <param name="handler">The unsuccessful response handler. Must not be <c>null</c>.</param>
+        public void AddUnsuccessfulResponseHandler(IHttpUnsuccessfulResponseHandler handler)
+        {
+            handler.ThrowIfNull(nameof(handler));
+            if (_unsuccessfulResponseHandlers == null)
+            {
+                _unsuccessfulResponseHandlers = new List<IHttpUnsuccessfulResponseHandler>();
+            }
+            _unsuccessfulResponseHandlers.Add(handler);
+        }
+
+        /// <summary>
+        /// Add an exception handler for this request only.
+        /// </summary>
+        /// <param name="handler">The exception handler. Must not be <c>null</c>.</param>
+        public void AddExceptionHandler(IHttpExceptionHandler handler)
+        {
+            handler.ThrowIfNull(nameof(handler));
+            if (_exceptionHandlers == null)
+            {
+                _exceptionHandlers = new List<IHttpExceptionHandler>();
+            }
+            _exceptionHandlers.Add(handler);
+        }
+
+        /// <summary>
+        /// Add an unsuccessful response handler for this request only.
+        /// </summary>
+        /// <param name="handler">The unsuccessful response handler. Must not be <c>null</c>.</param>
+        public void AddExecuteInterceptor(IHttpExecuteInterceptor handler)
+        {
+            handler.ThrowIfNull(nameof(handler));
+            if (_executeInterceptors == null)
+            {
+                _executeInterceptors = new List<IHttpExecuteInterceptor>();
+            }
+            _executeInterceptors.Add(handler);
+        }
+
         /// <inheritdoc/>
         public HttpRequestMessage CreateRequest(Nullable<bool> overrideGZipEnabled = null)
         {
@@ -206,6 +251,18 @@ namespace Google.Apis.Requests
             request.SetRequestSerailizedContent(service, body, overrideGZipEnabled.HasValue
                 ? overrideGZipEnabled.Value : service.GZipEnabled);
             AddETag(request);
+            if (_unsuccessfulResponseHandlers != null)
+            {
+                request.Properties.Add(ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey, _unsuccessfulResponseHandlers);
+            }
+            if (_exceptionHandlers != null)
+            {
+                request.Properties.Add(ConfigurableMessageHandler.ExceptionHandlerKey, _exceptionHandlers);
+            }
+            if (_executeInterceptors != null)
+            {
+                request.Properties.Add(ConfigurableMessageHandler.ExecuteInterceptorKey, _executeInterceptors);
+            }
             ModifyRequest?.Invoke(request);
             return request;
         }

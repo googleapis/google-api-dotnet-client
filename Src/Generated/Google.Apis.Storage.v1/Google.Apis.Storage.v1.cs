@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170920 (993)
+ *      <tr><th>API Rev<td>20171011 (1014)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -368,7 +368,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -459,7 +459,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -543,7 +543,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -622,7 +622,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -706,7 +706,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -805,7 +805,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -918,7 +918,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1034,7 +1034,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1134,7 +1134,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1279,7 +1279,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1416,7 +1416,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1607,7 +1607,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1733,7 +1733,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1820,7 +1820,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Permissions { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -1984,7 +1984,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2206,7 +2206,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2297,7 +2297,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2381,7 +2381,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2470,7 +2470,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2574,7 +2574,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2673,7 +2673,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Entity { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2785,7 +2785,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("notification", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Notification { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2874,7 +2874,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("notification", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Notification { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -2958,7 +2958,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3037,7 +3037,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Bucket { get; private set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3149,7 +3149,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3271,7 +3271,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3386,7 +3386,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3496,7 +3496,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3611,7 +3611,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3741,7 +3741,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -3921,7 +3921,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KmsKeyName { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -4220,7 +4220,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("sourceGeneration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> SourceGeneration { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -4515,7 +4515,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -4694,7 +4694,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -4896,7 +4896,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5078,7 +5078,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5416,7 +5416,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5492,7 +5492,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5705,7 +5705,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -5999,7 +5999,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("sourceGeneration", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> SourceGeneration { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6247,7 +6247,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6366,7 +6366,7 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> Generation { get; set; }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6548,7 +6548,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6792,7 +6792,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
@@ -6971,7 +6971,7 @@ namespace Google.Apis.Storage.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The project to be billed for this request, for Requester Pays buckets.</summary>
+                /// <summary>The project to be billed for this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string UserProject { get; set; }
 

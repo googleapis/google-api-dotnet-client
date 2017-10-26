@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20170928 (1001)
+ *      <tr><th>API Rev<td>20171024 (1027)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -939,6 +939,10 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -946,10 +950,6 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -985,6 +985,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -997,15 +1006,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1430,6 +1430,10 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1437,10 +1441,6 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1476,6 +1476,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^riskAnalysis/operations$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1488,15 +1497,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2112,10 +2112,10 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Replaces an identifier with an surrogate using FPE with the FFX mode of operation. The identifier must
+    /// <summary>Replaces an identifier with a surrogate using FPE with the FFX mode of operation. The identifier must
     /// be representable by the US-ASCII character set. For a given crypto key and context, the same identifier will be
-    /// replaced with the same surrogate. Note that a given identifier must be either the empty string or be at least
-    /// two characters long.</summary>
+    /// replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the
+    /// identifier is the empty string, it will be skipped.</summary>
     public class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("commonAlphabet")]
@@ -2159,6 +2159,23 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>The native way to select the alphabet. Must be in the range [2, 62].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("radix")]
         public virtual System.Nullable<int> Radix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Custom information type provided by the user. Used to find domain-specific sensitive information
+    /// configurable to the data in question.</summary>
+    public class GooglePrivacyDlpV2beta1CustomInfoType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Dictionary-based custom info type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
+        public virtual GooglePrivacyDlpV2beta1Dictionary Dictionary { get; set; } 
+
+        /// <summary>Info type configuration. All custom info types must have configurations that do not conflict with
+        /// built-in info types or other custom info types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2256,6 +2273,29 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>A review of the transformations that took place for each item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaries")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1DeidentificationSummary> Summaries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Custom information type based on a dictionary of words or phrases. This can be used to match sensitive
+    /// information specific to the data, such as a list of employee IDs or job titles.
+    ///
+    /// Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic
+    /// Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced
+    /// with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases
+    /// "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be
+    /// of a different type than the adjacent characters within the word, so letters must be next to non-letters and
+    /// digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text
+    /// "jen123" but will return no matches for "jennifer".
+    ///
+    /// Dictionary words containing a large number of characters that are not letters or digits may result in unexpected
+    /// findings because such characters are treated as whitespace.</summary>
+    public class GooglePrivacyDlpV2beta1Dictionary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of words or phrases to search for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wordList")]
+        public virtual GooglePrivacyDlpV2beta1WordList WordList { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2422,7 +2462,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Configuration for determing how redaction of images should occur.</summary>
+    /// <summary>Configuration for determining how redaction of images should occur.</summary>
     public class GooglePrivacyDlpV2beta1ImageRedactionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Only one per info_type should be provided per request. If not specified, and redact_all_text is
@@ -2541,6 +2581,10 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// min_likelihood are currently used.</summary>
     public class GooglePrivacyDlpV2beta1InspectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Custom info types provided by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customInfoTypes")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1CustomInfoType> CustomInfoTypes { get; set; } 
+
         /// <summary>When true, excludes type information of the findings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeTypes")]
         public virtual System.Nullable<bool> ExcludeTypes { get; set; } 
@@ -2667,7 +2711,11 @@ namespace Google.Apis.DLP.v2beta1.Data
     public class GooglePrivacyDlpV2beta1KAnonymityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional message indicating that each distinct `EntityId` should not contribute to the k-anonymity
-        /// count more than once per equivalence class.</summary>
+        /// count more than once per equivalence class. If an entity_id appears on several rows with different quasi-
+        /// identifier tuples, it will contribute to each count exactly once. This can lead to unexpected results,
+        /// consider for example the following table: entity_id | quasi_id -------------------- 1 |    "foo" 2 |
+        /// "bar" 3 |    "foo" 3 |    "bar" The anonymity value associated to entity_id 3 will be 2, even if it is the
+        /// only entity_id to be associated to both values "foo" and "bar".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
         public virtual GooglePrivacyDlpV2beta1EntityId EntityId { get; set; } 
 
@@ -3137,7 +3185,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A condition for determing whether a transformation should be applied to a field.</summary>
+    /// <summary>A condition for determining whether a transformation should be applied to a field.</summary>
     public class GooglePrivacyDlpV2beta1RecordCondition : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
@@ -3482,6 +3530,18 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>A value contained in the field in question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual GooglePrivacyDlpV2beta1Value Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message defining a list of words or phrases to search for in the data.</summary>
+    public class GooglePrivacyDlpV2beta1WordList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every
+        /// phrase must contain at least 2 characters that are letters or digits. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("words")]
+        public virtual System.Collections.Generic.IList<string> Words { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

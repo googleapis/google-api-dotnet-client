@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20170807 (949)
+ *      <tr><th>API Rev<td>20171011 (1014)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -1495,6 +1495,92 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Demotes the standalone instance to be a read replica Cloud SQL instance of an on-premises
+        /// master.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">ID of the project that contains the instance.</param>
+        /// <param name="instance">Cloud SQL
+        /// instance name.</param>
+        public virtual DemoteMasterRequest DemoteMaster(Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest body, string project, string instance)
+        {
+            return new DemoteMasterRequest(service, body, project, instance);
+        }
+
+        /// <summary>Demotes the standalone instance to be a read replica Cloud SQL instance of an on-premises
+        /// master.</summary>
+        public class DemoteMasterRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new DemoteMaster request.</summary>
+            public DemoteMasterRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest body, string project, string instance)
+                : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.InstancesDemoteMasterRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "demoteMaster"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{project}/instances/{instance}/demoteMaster"; }
+            }
+
+            /// <summary>Initializes DemoteMaster parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -4343,6 +4429,75 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Read-replica configuration for connecting to the on-premises master.</summary>
+    public class DemoteMasterConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always sql#demoteMasterConfiguration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>MySQL specific configuration when replicating from a MySQL on-premises master. Replication
+        /// configuration information such as the username, password, certificates, and keys are not stored in the
+        /// instance metadata. The configuration information is used only to set up the replication connection and is
+        /// stored by MySQL in a file named master.info in the data directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlReplicaConfiguration")]
+        public virtual DemoteMasterMySqlReplicaConfiguration MysqlReplicaConfiguration { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Database instance demote master context.</summary>
+    public class DemoteMasterContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always sql#demoteMasterContext.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The name of the instance which will act as on-premises master in the replication setup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterInstanceName")]
+        public virtual string MasterInstanceName { get; set; } 
+
+        /// <summary>Configuration specific to read-replicas replicating from the on-premises master.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaConfiguration")]
+        public virtual DemoteMasterConfiguration ReplicaConfiguration { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Read-replica configuration specific to MySQL databases.</summary>
+    public class DemoteMasterMySqlReplicaConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>PEM representation of the trusted CA's x509 certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
+        public virtual string CaCertificate { get; set; } 
+
+        /// <summary>PEM representation of the slave's x509 certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientCertificate")]
+        public virtual string ClientCertificate { get; set; } 
+
+        /// <summary>PEM representation of the slave's private key. The corresponsing public key is encoded in the
+        /// client's certificate. The format of the slave's private key can be either PKCS #1 or PKCS #8.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientKey")]
+        public virtual string ClientKey { get; set; } 
+
+        /// <summary>This is always sql#demoteMasterMysqlReplicaConfiguration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The password for the replication connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; } 
+
+        /// <summary>The username for the replication connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Database instance export context.</summary>
     public class ExportContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4535,6 +4690,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Contains details about the clone operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloneContext")]
         public virtual CloneContext CloneContext { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Database demote master request.</summary>
+    public class InstancesDemoteMasterRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains details about the demoteMaster operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("demoteMasterContext")]
+        public virtual DemoteMasterContext DemoteMasterContext { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/activity/'>G Suite Activity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170921 (994)
+ *      <tr><th>API Rev<td>20171017 (1020)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/activity/'>
  *              https://developers.google.com/google-apps/activity/</a>

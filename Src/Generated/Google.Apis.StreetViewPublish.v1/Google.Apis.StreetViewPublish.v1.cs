@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170930 (1003)
+ *      <tr><th>API Rev<td>20171024 (1027)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -910,6 +910,11 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
+            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
+            /// `photoIds==&...`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
+
             /// <summary>Specifies if a download URL for the photo bytes should be returned in the Photo
             /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -924,11 +929,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
-
-            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
-            /// `photoIds==&...`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -955,18 +955,18 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "photoIds", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "photoIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "photoIds", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "photoIds",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1070,6 +1070,10 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
+            /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of photos to return. `pageSize` must be non-negative. If `pageSize` is zero
             /// or is not provided, the default page size of 100 will be used. The number of photos returned in the
             /// response may be less than `pageSize` if the number of photos that belong to the user is less than
@@ -1098,10 +1102,6 @@ namespace Google.Apis.StreetViewPublish.v1
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>The nextPageToken value returned from a previous ListPhotos request, if any.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1127,6 +1127,15 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1148,15 +1157,6 @@ namespace Google.Apis.StreetViewPublish.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1253,25 +1253,7 @@ namespace Google.Apis.StreetViewPublish.v1.Data
 
     /// <summary>An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing
     /// degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard.
-    /// Values must be within normalized ranges.
-    ///
-    /// Example of normalization code in Python:
-    ///
-    /// def NormalizeLongitude(longitude): Wraps decimal degrees longitude to [-180.0, 180.0]. q, r = divmod(longitude,
-    /// 360.0) if r > 180.0 or (r == 180.0 and q <= -1.0): return r - 360.0 return r
-    ///
-    /// def NormalizeLatLng(latitude, longitude): Wraps decimal degrees latitude and longitude to [-90.0, 90.0] and
-    /// [-180.0, 180.0], respectively. r = latitude % 360.0 if r <= 90.0: return r, NormalizeLongitude(longitude) elif r
-    /// >= 270.0: return r - 360, NormalizeLongitude(longitude) else: return 180 - r, NormalizeLongitude(longitude +
-    /// 180.0)
-    ///
-    /// assert 180.0 == NormalizeLongitude(180.0) assert -180.0 == NormalizeLongitude(-180.0) assert -179.0 ==
-    /// NormalizeLongitude(181.0) assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0) assert (0.0, 0.0) ==
-    /// NormalizeLatLng(-360.0, 0.0) assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0) assert (-85.0, -170.0) ==
-    /// NormalizeLatLng(-95.0, 10.0) assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0) assert (-90.0, -10.0) ==
-    /// NormalizeLatLng(-90.0, -10.0) assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0) assert (0.0, -170.0) ==
-    /// NormalizeLatLng(180.0, 10.0) assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0) assert (90.0, 10.0) ==
-    /// NormalizeLatLng(-270.0, 10.0)</summary>
+    /// Values must be within normalized ranges.</summary>
     public class LatLng : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
@@ -1449,8 +1431,8 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>Raw pose measurement for an entity.</summary>
     public class Pose : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Altitude of the pose in meters above ground level (as defined by WGS84). NaN indicates an
-        /// unmeasured quantity.</summary>
+        /// <summary>Altitude of the pose in meters above WGS84 ellipsoid. NaN indicates an unmeasured
+        /// quantity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
         public virtual System.Nullable<double> Altitude { get; set; } 
 

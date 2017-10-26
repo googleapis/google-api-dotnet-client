@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20170908 (981)
+ *      <tr><th>API Rev<td>20171010 (1013)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -17822,6 +17822,16 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; set; }
 
+            /// <summary>Specifies instance template to create the instance.
+            ///
+            /// This field is optional. It can be a full or partial URL. For example, the following are all valid URLs
+            /// to an instance template: -
+            /// https://www.googleapis.com/compute/v1/projects/project/global/global/instanceTemplates/instanceTemplate
+            /// - projects/project/global/global/instanceTemplates/instanceTemplate -
+            /// global/instancesTemplates/instanceTemplate</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sourceInstanceTemplate", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceInstanceTemplate { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.beta.Data.Instance Body { get; set; }
@@ -17874,6 +17884,15 @@ namespace Google.Apis.Compute.beta
                     "requestId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sourceInstanceTemplate", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sourceInstanceTemplate",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -18319,6 +18338,133 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets deletion protection on the instance.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual SetDeletionProtectionRequest SetDeletionProtection(string project, string zone, string resource)
+        {
+            return new SetDeletionProtectionRequest(service, project, zone, resource);
+        }
+
+        /// <summary>Sets deletion protection on the instance.</summary>
+        public class SetDeletionProtectionRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetDeletionProtection request.</summary>
+            public SetDeletionProtectionRequest(Google.Apis.Services.IClientService service, string project, string zone, string resource)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>Whether the resource should be protected against deletion.</summary>
+            /// [default: true]
+            [Google.Apis.Util.RequestParameterAttribute("deletionProtection", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DeletionProtection { get; set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setDeletionProtection"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{resource}/setDeletionProtection"; }
+            }
+
+            /// <summary>Initializes SetDeletionProtection parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "deletionProtection", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deletionProtection",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "true",
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -19695,9 +19841,9 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a
-        /// later time. Stopped instances do not incur per-minute, virtual machine usage charges while they are stopped,
-        /// but any resources that the virtual machine is using, such as persistent disks and static IP addresses, will
-        /// continue to be charged until they are deleted. For more information, see Stopping an instance.</summary>
+        /// later time. Stopped instances do not incur VM usage charges while they are stopped. However, resources that
+        /// the VM is using, such as persistent disks and static IP addresses, will continue to be charged until they
+        /// are deleted. For more information, see Stopping an instance.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -19708,9 +19854,9 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Stops a running instance, shutting it down cleanly, and allows you to restart the instance at a
-        /// later time. Stopped instances do not incur per-minute, virtual machine usage charges while they are stopped,
-        /// but any resources that the virtual machine is using, such as persistent disks and static IP addresses, will
-        /// continue to be charged until they are deleted. For more information, see Stopping an instance.</summary>
+        /// later time. Stopped instances do not incur VM usage charges while they are stopped. However, resources that
+        /// the VM is using, such as persistent disks and static IP addresses, will continue to be charged until they
+        /// are deleted. For more information, see Stopping an instance.</summary>
         public class StopRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Stop request.</summary>
@@ -42787,9 +42933,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The status of the address, which can be either IN_USE or RESERVED. An address that is
-        /// RESERVED is currently reserved and available to use. An IN_USE address is currently being used by another
-        /// resource and is not available.</summary>
+        /// <summary>[Output Only] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An
+        /// address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently
+        /// reserved and available to use. An IN_USE address is currently being used by another resource and is not
+        /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
@@ -43101,7 +43248,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string Mode { get; set; } 
 
         /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new
-        /// instance, one of initializeParams.sourceImage or disks.source is required.
+        /// instance, one of initializeParams.sourceImage or disks.source is required except for local SSD.
         ///
         /// If desired, you can also attach existing non-root persistent disks using this property. This field is only
         /// applicable for persistent disks.
@@ -43153,7 +43300,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string DiskType { get; set; } 
 
         /// <summary>The source image to create this disk. When creating a new instance, one of
-        /// initializeParams.sourceImage or disks.source is required.
+        /// initializeParams.sourceImage or disks.source is required except for local SSD.
         ///
         /// To create a disk with one of the public operating system images, specify the image by its family name. For
         /// example, specify family/debian-8 to use the latest Debian 8 image:
@@ -43606,7 +43753,7 @@ namespace Google.Apis.Compute.beta.Data
     {
         /// <summary>A filter string, compatible with a Stackdriver Monitoring filter string for TimeSeries.list API
         /// call. This filter is used to select a specific TimeSeries for the purpose of autoscaling and to determine
-        /// whether the metric is exporting per-instance or global data.
+        /// whether the metric is exporting per-instance or per-group data.
         ///
         /// For the filter to be valid for autoscaling purposes, the following rules apply: - You can only use the AND
         /// operator for joining selectors. - You can only use direct equality comparison operator (=) without any
@@ -43616,7 +43763,7 @@ namespace Google.Apis.Compute.beta.Data
         /// to include a separate TimeSeries for each instance in a group. In such a case, you cannot filter on resource
         /// labels. If the resource type is any other value, the autoscaler expects this metric to contain values that
         /// apply to the entire autoscaled instance group and resource label filtering can be performed to point
-        /// autoscaler at the correct TimeSeries to scale upon. This is / called a global metric for the purpose of
+        /// autoscaler at the correct TimeSeries to scale upon. This is called a per-group metric for the purpose of
         /// autoscaling.
         ///
         /// If not specified, the type defaults to gce_instance.
@@ -43628,18 +43775,16 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>The identifier (type) of the Stackdriver Monitoring metric. The metric cannot have negative values
-        /// and should be a utilization metric, which means that the number of virtual machines handling requests should
-        /// increase or decrease proportionally to the metric.
+        /// <summary>The identifier (type) of the Stackdriver Monitoring metric. The metric cannot have negative values.
         ///
         /// The metric must have a value type of INT64 or DOUBLE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metric")]
         public virtual string Metric { get; set; } 
 
-        /// <summary>If scaling is based on a global metric value that represents the total amount of work to be done or
-        /// resource usage, set this value to an amount assigned for a single instance of the scaled group. Autoscaler
-        /// will keep the number of instances proportional to the value of this metric, the metric itself should not
-        /// change value due to group resizing.
+        /// <summary>If scaling is based on a per-group metric value that represents the total amount of work to be done
+        /// or resource usage, set this value to an amount assigned for a single instance of the scaled group.
+        /// Autoscaler will keep the number of instances proportional to the value of this metric, the metric itself
+        /// should not change value due to group resizing.
         ///
         /// A good metric to use with the target is for example
         /// pubsub.googleapis.com/subscription/num_undelivered_messages or a custom metric exporting the total number of
@@ -43650,7 +43795,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("singleInstanceAssignment")]
         public virtual System.Nullable<double> SingleInstanceAssignment { get; set; } 
 
-        /// <summary>The target value of the metric that autoscaler should maintain. This must be a positive value.
+        /// <summary>The target value of the metric that autoscaler should maintain. This must be a positive value. A
+        /// utilization metric scales number of virtual machines handling requests to increase or decrease
+        /// proportionally to the metric.
         ///
         /// For example, a good metric to use as a utilization_target is
         /// compute.googleapis.com/instance/network/received_bytes_count. The autoscaler will work to keep this value
@@ -45527,9 +45674,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetServiceAccounts")]
         public virtual System.Collections.Generic.IList<string> TargetServiceAccounts { get; set; } 
 
-        /// <summary>A list of instance tags indicating sets of instances located in the network that may make network
-        /// connections as specified in allowed[]. If no targetTags are specified, the firewall rule applies to all
-        /// instances on the specified network.</summary>
+        /// <summary>A list of tags that controls which instances the firewall rule applies to. If targetTags are
+        /// specified, then the firewall rule applies only to instances in the VPC network that have one of those tags.
+        /// If no targetTags are specified, the firewall rule applies to all instances on the specified
+        /// network.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetTags")]
         public virtual System.Collections.Generic.IList<string> TargetTags { get; set; } 
 
@@ -45649,16 +45797,21 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Encapsulates numeric value that can be either absolute or relative.</summary>
     public class FixedOrPercent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Absolute value calculated based on mode: mode = fixed -> calculated = fixed = percent
-        /// -> calculated = ceiling(percent/100 * base_value)</summary>
+        /// <summary>[Output Only] Absolute value of VM instances calculated based on the specific mode.
+        ///
+        /// - If the value is fixed, then the caculated value is equal to the fixed value. - If the value is a percent,
+        /// then the calculated value is percent/100 * targetSize. For example, the calculated value of a 80% of a
+        /// managed instance group with 150 instances would be (80/100 * 150) = 120 VM instances. If there is a
+        /// remainder, the number is rounded up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calculated")]
         public virtual System.Nullable<int> Calculated { get; set; } 
 
-        /// <summary>fixed must be non-negative.</summary>
+        /// <summary>Specifies a fixed number of VM instances. This must be a positive integer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixed")]
         public virtual System.Nullable<int> Fixed__ { get; set; } 
 
-        /// <summary>percent must belong to [0, 100].</summary>
+        /// <summary>Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for
+        /// 80%.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("percent")]
         public virtual System.Nullable<int> Percent { get; set; } 
 
@@ -45672,15 +45825,24 @@ namespace Google.Apis.Compute.beta.Data
     {
         /// <summary>The IP address that this forwarding rule is serving on behalf of.
         ///
-        /// For global forwarding rules, the address must be a global IP. For regional forwarding rules, the address
-        /// must live in the same region as the forwarding rule. By default, this field is empty and an ephemeral IPv4
-        /// address from the same scope (global or regional) will be assigned. A regional forwarding rule supports IPv4
-        /// only. A global forwarding rule supports either IPv4 or IPv6.
+        /// Addresses are restricted based on the forwarding rule's load balancing scheme (EXTERNAL or INTERNAL) and
+        /// scope (global or regional).
+        ///
+        /// When the load balancing scheme is EXTERNAL, for global forwarding rules, the address must be a global IP,
+        /// and for regional forwarding rules, the address must live in the same region as the forwarding rule. If this
+        /// field is empty, an ephemeral IPv4 address from the same scope (global or regional) will be assigned. A
+        /// regional forwarding rule supports IPv4 only. A global forwarding rule supports either IPv4 or IPv6.
         ///
         /// When the load balancing scheme is INTERNAL, this can only be an RFC 1918 IP address belonging to the
-        /// network/subnetwork configured for the forwarding rule. A reserved address cannot be used. If the field is
-        /// empty, the IP address will be automatically allocated from the internal IP range of the subnetwork or
-        /// network configured for this forwarding rule.</summary>
+        /// network/subnet configured for the forwarding rule. By default, if this field is empty, an ephemeral internal
+        /// IP address will be automatically allocated from the IP range of the subnet or network configured for this
+        /// forwarding rule.
+        ///
+        /// An address can be specified either by a literal IP address or a URL reference to an existing Address
+        /// resource. The following examples are all valid: - 100.1.2.3 -
+        /// https://www.googleapis.com/compute/v1/projects/project/regions/region/addresses/address -
+        /// projects/project/regions/region/addresses/address - regions/region/addresses/address -
+        /// global/addresses/address - address</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("IPAddress")]
         public virtual string IPAddress { get; set; } 
 
@@ -46087,6 +46249,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
 
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -46116,6 +46283,11 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The request path of the HTTPS health check request. The default value is /.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
         public virtual string RequestPath { get; set; } 
+
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46868,6 +47040,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
+        /// <summary>Whether the resource should be protected against deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionProtection")]
+        public virtual System.Nullable<bool> DeletionProtection { get; set; } 
+
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -47381,12 +47557,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updatePolicy")]
         public virtual InstanceGroupManagerUpdatePolicy UpdatePolicy { get; set; } 
 
-        /// <summary>Versions supported by this IGM. User should set this field if they need fine-grained control over
-        /// how many instances in each version are run by this IGM. Versions are keyed by instanceTemplate. Every
-        /// instanceTemplate can appear at most once. This field overrides instanceTemplate field. If both
-        /// instanceTemplate and versions are set, the user receives a warning. "instanceTemplate: X" is semantically
-        /// equivalent to "versions [ { instanceTemplate: X } ]". Exactly one version must have targetSize field left
-        /// unset. Size of such a version will be calculated automatically.</summary>
+        /// <summary>Specifies the instance templates used by this managed instance group to create instances.
+        ///
+        /// Each version is defined by an instanceTemplate. Every template can appear at most once per instance group.
+        /// This field overrides the top-level instanceTemplate field. Read more about the relationships between these
+        /// fields. Exactly one version must leave the targetSize field unset. That version will be applied to all
+        /// remaining instances. For more information, read about canary updates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versions")]
         public virtual System.Collections.Generic.IList<InstanceGroupManagerVersion> Versions { get; set; } 
 
@@ -47649,17 +47825,27 @@ namespace Google.Apis.Compute.beta.Data
 
     public class InstanceGroupManagerUpdatePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum number of instances that can be created above the InstanceGroupManager.targetSize during
-        /// the update process. By default, a fixed value of 1 is used. Using maxSurge > 0 will cause instance names to
-        /// change during the update process. At least one of { maxSurge, maxUnavailable } must be greater than
-        /// 0.</summary>
+        /// <summary>The maximum number of instances that can be created above the specified targetSize during the
+        /// update process. By default, a fixed value of 1 is used. This value can be either a fixed number or a
+        /// percentage if the instance group has 10 or more instances. If you set a percentage, the number of instances
+        /// will be rounded up if necessary.
+        ///
+        /// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about
+        /// maxSurge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxSurge")]
         public virtual FixedOrPercent MaxSurge { get; set; } 
 
-        /// <summary>Maximum number of instances that can be unavailable during the update process. The instance is
-        /// considered available if all of the following conditions are satisfied: 1. Instance's status is RUNNING. 2.
-        /// Instance's liveness health check result was observed to be HEALTHY at least once. By default, a fixed value
-        /// of 1 is used. At least one of { maxSurge, maxUnavailable } must be greater than 0.</summary>
+        /// <summary>The maximum number of instances that can be unavailable during the update process. An instance is
+        /// considered available if all of the following conditions are satisfied:
+        ///
+        /// - The instance's status is RUNNING. - If there is a health check on the instance grourp, the instance's
+        /// liveness health check result must be HEALTHY at least once. If there is no health check on the group, then
+        /// the instance only needs to have a status of RUNNING to be considered available.  By default, a fixed value
+        /// of 1 is used. This value can be either a fixed number or a percentage if the instance group has 10 or more
+        /// instances. If you set a percentage, the number of instances will be rounded up if necessary.
+        ///
+        /// At least one of either maxSurge or maxUnavailable must be greater than 0. Learn more about
+        /// maxUnavailable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxUnavailable")]
         public virtual FixedOrPercent MaxUnavailable { get; set; } 
 
@@ -47668,8 +47854,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minReadySec")]
         public virtual System.Nullable<int> MinReadySec { get; set; } 
 
-        /// <summary>Minimal action to be taken on an instance. The order of action types is: RESTART <
-        /// REPLACE.</summary>
+        /// <summary>Minimal action to be taken on an instance. You can specify either RESTART to restart existing
+        /// instances or REPLACE to delete and create new instances from the target template. If you specify a
+        /// code>RESTART, the Updater will attempt to perform that action only. However, if the Updater determines that
+        /// the minimal action you specify is not enough to perform the update, it might perform a more disruptive
+        /// action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimalAction")]
         public virtual string MinimalAction { get; set; } 
 
@@ -47690,10 +47879,12 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Intended number of instances that are created from instanceTemplate. The final number of instances
-        /// created from instanceTemplate will be equal to: * if expressed as fixed number: min(targetSize.fixed,
-        /// instanceGroupManager.targetSize), * if expressed as percent: ceiling(targetSize.percent *
-        /// InstanceGroupManager.targetSize). If unset, this version will handle all the remaining instances.</summary>
+        /// <summary>Specifies the intended number of instances to be created from the instanceTemplate. The final
+        /// number of instances created from the template will be equal to: - If expressed as a fixed number, the
+        /// minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. - if expressed as a percent,
+        /// the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder,
+        /// the number is rounded up.  If unset, this version will update any remaining instances not updated by another
+        /// version. Read Starting a canary update for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSize")]
         public virtual FixedOrPercent TargetSize { get; set; } 
 
@@ -48555,7 +48746,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support Interconnect. Next available tag: 23</summary>
+    /// <summary>Protocol definitions for Mixer API to support Interconnect. Next available tag: 25</summary>
     public class Interconnect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Administrative status of the interconnect. When this is set to ?true?, the Interconnect is
@@ -48569,12 +48760,6 @@ namespace Google.Apis.Compute.beta.Data
         /// LAG.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("circuitInfos")]
         public virtual System.Collections.Generic.IList<InterconnectCircuitInfo> CircuitInfos { get; set; } 
-
-        /// <summary>[Output Only] URL to retrieve the Letter Of Authority and Customer Facility Assignment (LOA-CFA)
-        /// documentation relating to this Interconnect. This documentation authorizes the facility provider to connect
-        /// to the specified crossconnect ports.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("connectionAuthorization")]
-        public virtual string ConnectionAuthorization { get; set; } 
 
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
@@ -48669,7 +48854,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support InterconnectAttachment. Next available tag: 18</summary>
+    /// <summary>Protocol definitions for Mixer API to support InterconnectAttachment. Next available tag: 23</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this
@@ -49211,10 +49396,6 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>URL for the region of this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
-
-        /// <summary>Scope key for the region of this location.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionKey")]
-        public virtual string RegionKey { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -51899,7 +52080,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; } 
 
-        /// <summary>Additional restrictions that must be met</summary>
+        /// <summary>Additional restrictions that must be met. All conditions must pass for the rule to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
 

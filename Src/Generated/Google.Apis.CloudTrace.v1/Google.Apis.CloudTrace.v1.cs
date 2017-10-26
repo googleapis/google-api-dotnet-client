@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170927 (1000)
+ *      <tr><th>API Rev<td>20171020 (1023)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -485,40 +485,6 @@ namespace Google.Apis.CloudTrace.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
-                ///
-                /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
-                /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
-                /// root span)
-                ///
-                /// Descending order can be specified by appending `desc` to the sort field (for example, `name desc`).
-                ///
-                /// Only one sort field is permitted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string OrderBy { get; set; }
-
-                /// <summary>An optional filter against labels for the request.
-                ///
-                /// By default, searches use prefix matching. To specify exact match, prepend a plus symbol (`+`) to the
-                /// search term. Multiple terms are ANDed. Syntax:
-                ///
-                /// *   `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root span starts with
-                /// `NAME_PREFIX`. *   `+root:NAME` or `+NAME`: Return traces where any root span's name is exactly
-                /// `NAME`. *   `span:NAME_PREFIX`: Return traces where any span starts with `NAME_PREFIX`. *
-                /// `+span:NAME`: Return traces where any span's name is exactly `NAME`. *   `latency:DURATION`: Return
-                /// traces whose overall latency is greater or equal to than `DURATION`. Accepted units are nanoseconds
-                /// (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For example, `latency:24ms` returns
-                /// traces whose overall latency is greater than or equal to 24 milliseconds. *   `label:LABEL_KEY`:
-                /// Return all traces containing the specified label key (exact match, case-sensitive) regardless of the
-                /// key:value pair's value (including empty values). *   `LABEL_KEY:VALUE_PREFIX`: Return all traces
-                /// containing the specified label key (exact match, case-sensitive) whose value starts with
-                /// `VALUE_PREFIX`. Both a key and a value must be specified. *   `+LABEL_KEY:VALUE`: Return all traces
-                /// containing a key:value pair exactly matching the specified text. Both a key and a value must be
-                /// specified. *   `method:VALUE`: Equivalent to `/http/method:VALUE`. *   `url:VALUE`: Equivalent to
-                /// `/http/url:VALUE`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>End of the time interval (inclusive) during which the trace data was collected from the
                 /// application.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
@@ -557,6 +523,40 @@ namespace Google.Apis.CloudTrace.v1
                     COMPLETE,
                 }
 
+                /// <summary>Field used to sort the returned traces. Optional. Can be one of the following:
+                ///
+                /// *   `trace_id` *   `name` (`name` field of root span in the trace) *   `duration` (difference
+                /// between `end_time` and `start_time` fields of the root span) *   `start` (`start_time` field of the
+                /// root span)
+                ///
+                /// Descending order can be specified by appending `desc` to the sort field (for example, `name desc`).
+                ///
+                /// Only one sort field is permitted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>An optional filter against labels for the request.
+                ///
+                /// By default, searches use prefix matching. To specify exact match, prepend a plus symbol (`+`) to the
+                /// search term. Multiple terms are ANDed. Syntax:
+                ///
+                /// *   `root:NAME_PREFIX` or `NAME_PREFIX`: Return traces where any root span starts with
+                /// `NAME_PREFIX`. *   `+root:NAME` or `+NAME`: Return traces where any root span's name is exactly
+                /// `NAME`. *   `span:NAME_PREFIX`: Return traces where any span starts with `NAME_PREFIX`. *
+                /// `+span:NAME`: Return traces where any span's name is exactly `NAME`. *   `latency:DURATION`: Return
+                /// traces whose overall latency is greater or equal to than `DURATION`. Accepted units are nanoseconds
+                /// (`ns`), milliseconds (`ms`), and seconds (`s`). Default is `ms`. For example, `latency:24ms` returns
+                /// traces whose overall latency is greater than or equal to 24 milliseconds. *   `label:LABEL_KEY`:
+                /// Return all traces containing the specified label key (exact match, case-sensitive) regardless of the
+                /// key:value pair's value (including empty values). *   `LABEL_KEY:VALUE_PREFIX`: Return all traces
+                /// containing the specified label key (exact match, case-sensitive) whose value starts with
+                /// `VALUE_PREFIX`. Both a key and a value must be specified. *   `+LABEL_KEY:VALUE`: Return all traces
+                /// containing a key:value pair exactly matching the specified text. Both a key and a value must be
+                /// specified. *   `method:VALUE`: Equivalent to `/http/method:VALUE`. *   `url:VALUE`: Equivalent to
+                /// `/http/url:VALUE`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -587,24 +587,6 @@ namespace Google.Apis.CloudTrace.v1
                             Name = "projectId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -648,6 +630,24 @@ namespace Google.Apis.CloudTrace.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

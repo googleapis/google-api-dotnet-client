@@ -1196,5 +1196,95 @@ namespace Google.Apis.Tests.Apis.Requests
 
         #endregion
 
+        private class TestHttpHandler : HttpMessageHandler
+        {
+            public TestHttpHandler(Func<HttpRequestMessage, HttpResponseMessage> fn) => _fn = fn;
+
+            private Func<HttpRequestMessage, HttpResponseMessage> _fn;
+
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) =>
+                Task.FromResult(_fn(request));
+        }
+
+        private class TestUnsuccessfulResponseHandler : IHttpUnsuccessfulResponseHandler
+        {
+            public int Count { get; private set; } = 0;
+            public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args) => Task.FromResult(++Count == 0);
+        }
+
+        [Fact]
+        public void PerCallUnsuccessfulResponseHandler()
+        {
+            var response = new HttpResponseMessage(HttpStatusCode.BadRequest);
+            using (var service = new MockClientService(new BaseClientService.Initializer
+            {
+                HttpClientFactory = new MockHttpClientFactory(new TestHttpHandler(_ => response))
+            }))
+            {
+                var request = new TestClientServiceRequest(service, "GET", null);
+                Assert.Throws<ArgumentNullException>(() => request.AddUnsuccessfulResponseHandler(null));
+                var handler = new TestUnsuccessfulResponseHandler();
+                request.AddUnsuccessfulResponseHandler(handler);
+                var httpRequest = request.CreateRequest();
+                Assert.Equal(handler, ((List<IHttpUnsuccessfulResponseHandler>)httpRequest.Properties
+                    [ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey]).Single());
+                Assert.Throws<GoogleApiException>(() => request.Execute());
+                Assert.True(handler.Count > 0);
+            }
+        }
+
+        private class TestExceptionHandler : IHttpExceptionHandler
+        {
+            public int Count { get; private set; } = 0;
+            public Task<bool> HandleExceptionAsync(HandleExceptionArgs args) => Task.FromResult(++Count == 0);
+        }
+
+        [Fact]
+        public void PerCallExceptionHandler()
+        {
+            using (var service = new MockClientService(new BaseClientService.Initializer
+            {
+                HttpClientFactory = new MockHttpClientFactory(new TestHttpHandler(_ => throw new Exception("mymsg")))
+            }))
+            {
+                var request = new TestClientServiceRequest(service, "GET", null);
+                Assert.Throws<ArgumentNullException>(() => request.AddExceptionHandler(null));
+                var handler = new TestExceptionHandler();
+                request.AddExceptionHandler(handler);
+                var httpRequest = request.CreateRequest();
+                Assert.Equal(handler, ((List<IHttpExceptionHandler>)httpRequest.Properties
+                    [ConfigurableMessageHandler.ExceptionHandlerKey]).Single());
+                var ex = Assert.Throws<Exception>(() => request.Execute());
+                Assert.Equal("mymsg", ex.Message);
+                Assert.True(handler.Count > 0);
+            }
+        }
+
+        private class TestExecuteInterceptor : IHttpExecuteInterceptor
+        {
+            public int Count { get; private set; } = 0;
+            public Task InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken) => Task.FromResult(++Count == 0);
+        }
+
+        [Fact]
+        public void PerCallExecutionInterceptor()
+        {
+            using (var service = new MockClientService(new BaseClientService.Initializer
+            {
+                HttpClientFactory = new MockHttpClientFactory(new TestHttpHandler(_ => throw new Exception("mymsg")))
+            }))
+            {
+                var request = new TestClientServiceRequest(service, "GET", null);
+                Assert.Throws<ArgumentNullException>(() => request.AddExecuteInterceptor(null));
+                var interceptor = new TestExecuteInterceptor();
+                request.AddExecuteInterceptor(interceptor);
+                var httpRequest = request.CreateRequest();
+                Assert.Equal(interceptor, ((List<IHttpExecuteInterceptor>)httpRequest.Properties
+                    [ConfigurableMessageHandler.ExecuteInterceptorKey]).Single());
+                Assert.Throws<Exception>(() => request.Execute());
+                Assert.True(interceptor.Count > 0);
+            }
+        }
+
     }
 }

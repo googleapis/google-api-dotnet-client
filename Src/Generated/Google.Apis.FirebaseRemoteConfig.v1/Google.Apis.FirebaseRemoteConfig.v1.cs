@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/remote-config/'>Firebase Remote Config API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170912 (985)
+ *      <tr><th>API Rev<td>20171023 (1026)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/remote-config/'>
  *              https://firebase.google.com/docs/remote-config/</a>
@@ -525,8 +525,8 @@ namespace Google.Apis.FirebaseRemoteConfig.v1.Data
 {    
 
     /// <summary>* The RemoteConfig consists of a list of conditions (which can be thought of as named "if" statements)
-    /// and a map of parameters (parameter key to a stucture containing an optional default value, as well as a optional
-    /// submap of (condition name to value when that condition is true).</summary>
+    /// and a map of parameters (parameter key to a structure containing an optional default value, as well as a
+    /// optional submap of (condition name to value when that condition is true).</summary>
     public class RemoteConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of named conditions. The order *does* affect the semantics. The condition_name values of
@@ -560,6 +560,13 @@ namespace Google.Apis.FirebaseRemoteConfig.v1.Data
     /// RemoteConfig template.</summary>
     public class RemoteConfigCondition : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. A description for this Condition. Length must be less than or equal to 100 characters (or
+        /// more precisely, unicode code points, which is defined in
+        /// java/com/google/wireless/android/config/ConstsExporter.java). A description may contain any Unicode
+        /// characters</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; } 
@@ -593,6 +600,13 @@ namespace Google.Apis.FirebaseRemoteConfig.v1.Data
         /// true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
         public virtual RemoteConfigParameterValue DefaultValue { get; set; } 
+
+        /// <summary>Optional. A description for this Parameter. Length must be less than or equal to 100 characters (or
+        /// more precisely, unicode code points, which is defined in
+        /// java/com/google/wireless/android/config/ConstsExporter.java). A description may contain any Unicode
+        /// characters</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

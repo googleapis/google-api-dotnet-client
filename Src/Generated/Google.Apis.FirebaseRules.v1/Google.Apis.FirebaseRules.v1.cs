@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170925 (998)
+ *      <tr><th>API Rev<td>20171021 (1024)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -738,6 +738,17 @@ namespace Google.Apis.FirebaseRules.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Next page token for the next batch of `Release` instances.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
+                /// service may choose to load fewer than `page_size` results due to the size of the output. To traverse
+                /// all of the releases, the caller should iterate until the `page_token` on the response is
+                /// empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>`Release` filter. The list method supports filters with restrictions on the `Release.name`,
                 /// `Release.ruleset_name`, and `Release.test_suite_name`.
                 ///
@@ -760,17 +771,6 @@ namespace Google.Apis.FirebaseRules.v1
                 /// `test_suite_name=projects/foo/testsuites/uuid1`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Next page token for the next batch of `Release` instances.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
-                /// service may choose to load fewer than `page_size` results due to the size of the output. To traverse
-                /// all of the releases, the caller should iterate until the `page_token` on the response is
-                /// empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -806,15 +806,6 @@ namespace Google.Apis.FirebaseRules.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -831,6 +822,93 @@ namespace Google.Apis.FirebaseRules.v1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Update a `Release` via PATCH.
+            ///
+            /// Only updates to the `ruleset_name` and `test_suite_name` fields will be honored. `Release` rename is not
+            /// supported. To create a `Release` use the CreateRelease method.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Resource name for the project which owns this `Release`.
+            ///
+            /// Format: `projects/{project_id}`</param>
+            public virtual PatchRequest Patch(Google.Apis.FirebaseRules.v1.Data.UpdateReleaseRequest body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Update a `Release` via PATCH.
+            ///
+            /// Only updates to the `ruleset_name` and `test_suite_name` fields will be honored. `Release` rename is not
+            /// supported. To create a `Release` use the CreateRelease method.</summary>
+            public class PatchRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.Release>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseRules.v1.Data.UpdateReleaseRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name for the project which owns this `Release`.
+                ///
+                /// Format: `projects/{project_id}`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.FirebaseRules.v1.Data.UpdateReleaseRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/releases/.+$",
                         });
                 }
 
@@ -1213,6 +1291,15 @@ namespace Google.Apis.FirebaseRules.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>`Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`.
+                ///
+                /// Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to
+                /// the RFC 3339 date/time specifications.
+                ///
+                /// Example: `create_time > date("2017-01-01") AND name=UUID-*`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Next page token for loading the next batch of `Ruleset` instances.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1222,15 +1309,6 @@ namespace Google.Apis.FirebaseRules.v1
                 /// the releases, caller should iterate until the `page_token` is empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>`Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`.
-                ///
-                /// Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to
-                /// the RFC 3339 date/time specifications.
-                ///
-                /// Example: `create_time > date("2017-01-01") AND name=UUID-*`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1266,6 +1344,15 @@ namespace Google.Apis.FirebaseRules.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1278,15 +1365,6 @@ namespace Google.Apis.FirebaseRules.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1810,6 +1888,21 @@ namespace Google.Apis.FirebaseRules.v1.Data
         /// <summary>Collection of test cases associated with the `TestSuite`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCases")]
         public virtual System.Collections.Generic.IList<TestCase> TestCases { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for FirebaseRulesService.UpdateReleasePatch.</summary>
+    public class UpdateReleaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>`Release` to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("release")]
+        public virtual Release Release { get; set; } 
+
+        /// <summary>Specifies which fields to update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

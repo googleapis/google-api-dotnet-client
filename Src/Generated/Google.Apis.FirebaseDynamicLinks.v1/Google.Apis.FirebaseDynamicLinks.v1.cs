@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170926 (999)
+ *      <tr><th>API Rev<td>20171022 (1025)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -661,6 +661,17 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Desktop related attributes to the Dynamic Link.</summary>
+    public class DesktopInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Link to open on desktop.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desktopFallbackLink")]
+        public virtual string DesktopFallbackLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Signals associated with the device making the request.</summary>
     public class DeviceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -719,6 +730,11 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidInfo")]
         public virtual AndroidInfo AndroidInfo { get; set; } 
+
+        /// <summary>Desktop related information. See desktop related parameters in the
+        /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desktopInfo")]
+        public virtual DesktopInfo DesktopInfo { get; set; } 
 
         /// <summary>Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn
         /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain
