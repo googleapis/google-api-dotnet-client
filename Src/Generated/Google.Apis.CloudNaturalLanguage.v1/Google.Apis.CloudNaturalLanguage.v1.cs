@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171016 (1019)
+ *      <tr><th>API Rev<td>20171026 (1029)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -631,6 +631,59 @@ namespace Google.Apis.CloudNaturalLanguage.v1
             }
 
         }
+
+        /// <summary>Classifies a document into categories.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ClassifyTextRequest ClassifyText(Google.Apis.CloudNaturalLanguage.v1.Data.ClassifyTextRequest body)
+        {
+            return new ClassifyTextRequest(service, body);
+        }
+
+        /// <summary>Classifies a document into categories.</summary>
+        public class ClassifyTextRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1.Data.ClassifyTextResponse>
+        {
+            /// <summary>Constructs a new ClassifyText request.</summary>
+            public ClassifyTextRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1.Data.ClassifyTextRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudNaturalLanguage.v1.Data.ClassifyTextRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "classifyText"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/documents:classifyText"; }
+            }
+
+            /// <summary>Initializes ClassifyText parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
     }
 }
 
@@ -792,6 +845,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// <summary>The text annotations response message.</summary>
     public class AnnotateTextResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Categories identified in the input document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<ClassificationCategory> Categories { get; set; } 
+
         /// <summary>The overall sentiment for the document. Populated if the user enables
         /// AnnotateTextRequest.Features.extract_document_sentiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentSentiment")]
@@ -816,6 +873,44 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         /// enables AnnotateTextRequest.Features.extract_syntax.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokens")]
         public virtual System.Collections.Generic.IList<Token> Tokens { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a category returned from the text classifier.</summary>
+    public class ClassificationCategory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The classifier's confidence of the category. Number represents how certain the classifier is that
+        /// this category represents the given text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
+        /// <summary>The name of the category representing the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The document classification request message.</summary>
+    public class ClassifyTextRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Input document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual Document Document { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The document classification response message.</summary>
+    public class ClassifyTextResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Categories representing the input document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<ClassificationCategory> Categories { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -938,6 +1033,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// enable that specific analysis for the input.</summary>
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Classify the full document into categories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classifyText")]
+        public virtual System.Nullable<bool> ClassifyText { get; set; } 
+
         /// <summary>Extract document-level sentiment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractDocumentSentiment")]
         public virtual System.Nullable<bool> ExtractDocumentSentiment { get; set; } 

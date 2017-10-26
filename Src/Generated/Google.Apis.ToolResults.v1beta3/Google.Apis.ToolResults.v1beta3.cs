@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20171023 (1026)
+ *      <tr><th>API Rev<td>20171024 (1027)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3569,10 +3569,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testTargets")]
         public virtual System.Collections.Generic.IList<string> TestTargets { get; set; } 
 
-        /// <summary>The flag indicates whether Android Test Orchestrator will be used to run test or not. Test
-        /// orchestrator is used if either: - orchestrator_option field is USE_ORCHESTRATOR, and test runner is
-        /// compatible with orchestrator. Or - orchestrator_option field is unspecified or
-        /// ORCHESTRATOR_OPTION_UNSPECIFIED, and test runner is compatible with orchestrator.</summary>
+        /// <summary>The flag indicates whether Android Test Orchestrator will be used to run test or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useOrchestrator")]
         public virtual System.Nullable<bool> UseOrchestrator { get; set; } 
 

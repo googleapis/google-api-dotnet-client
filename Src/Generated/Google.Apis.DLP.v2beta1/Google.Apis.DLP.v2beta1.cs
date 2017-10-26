@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171017 (1020)
+ *      <tr><th>API Rev<td>20171024 (1027)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -2112,10 +2112,10 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Replaces an identifier with an surrogate using FPE with the FFX mode of operation. The identifier must
+    /// <summary>Replaces an identifier with a surrogate using FPE with the FFX mode of operation. The identifier must
     /// be representable by the US-ASCII character set. For a given crypto key and context, the same identifier will be
-    /// replaced with the same surrogate. Note that a given identifier must be either the empty string or be at least
-    /// two characters long.</summary>
+    /// replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the
+    /// identifier is the empty string, it will be skipped.</summary>
     public class GooglePrivacyDlpV2beta1CryptoReplaceFfxFpeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("commonAlphabet")]
@@ -2282,7 +2282,7 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// information specific to the data, such as a list of employee IDs or job titles.
     ///
     /// Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic
-    /// Multilingual Plane](https://en.wikipedia.org/wiki/Plane_(Unicode)#Basic_Multilingual_Plane) will be replaced
+    /// Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced
     /// with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases
     /// "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be
     /// of a different type than the adjacent characters within the word, so letters must be next to non-letters and
@@ -2711,7 +2711,11 @@ namespace Google.Apis.DLP.v2beta1.Data
     public class GooglePrivacyDlpV2beta1KAnonymityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional message indicating that each distinct `EntityId` should not contribute to the k-anonymity
-        /// count more than once per equivalence class.</summary>
+        /// count more than once per equivalence class. If an entity_id appears on several rows with different quasi-
+        /// identifier tuples, it will contribute to each count exactly once. This can lead to unexpected results,
+        /// consider for example the following table: entity_id | quasi_id -------------------- 1 |    "foo" 2 |
+        /// "bar" 3 |    "foo" 3 |    "bar" The anonymity value associated to entity_id 3 will be 2, even if it is the
+        /// only entity_id to be associated to both values "foo" and "bar".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
         public virtual GooglePrivacyDlpV2beta1EntityId EntityId { get; set; } 
 

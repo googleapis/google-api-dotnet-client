@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171012 (1015)
+ *      <tr><th>API Rev<td>20171023 (1026)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -996,7 +996,7 @@ namespace Google.Apis.Slides.v1.Data
         /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
         /// format.
         ///
-        /// The provided URL can be at maximum 2K bytes large.</summary>
+        /// The provided URL can be at most 2 kB in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -1999,9 +1999,9 @@ namespace Google.Apis.Slides.v1.Data
 
         /// <summary>The outline property state.
         ///
-        /// Updating the the outline on a page element will implicitly update this field to`RENDERED`, unless another
-        /// value is specified in the same request. To have no outline on a page element, set this field to
-        /// `NOT_RENDERED`. In this case, any other outline fields set in the same request will be ignored.</summary>
+        /// Updating the outline on a page element will implicitly update this field to `RENDERED`, unless another value
+        /// is specified in the same request. To have no outline on a page element, set this field to `NOT_RENDERED`. In
+        /// this case, any other outline fields set in the same request will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
 
@@ -2439,7 +2439,7 @@ namespace Google.Apis.Slides.v1.Data
         /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
         /// format.
         ///
-        /// The provided URL can be at maximum 2K bytes large.</summary>
+        /// The provided URL can be at most 2 kB in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; } 
 
@@ -2809,9 +2809,9 @@ namespace Google.Apis.Slides.v1.Data
 
         /// <summary>The shadow property state.
         ///
-        /// Updating the the shadow on a page element will implicitly update this field to `RENDERED`, unless another
-        /// value is specified in the same request. To have no shadow on a page element, set this field to
-        /// `NOT_RENDERED`. In this case, any other shadow fields set in the same request will be ignored.</summary>
+        /// Updating the shadow on a page element will implicitly update this field to `RENDERED`, unless another value
+        /// is specified in the same request. To have no shadow on a page element, set this field to `NOT_RENDERED`. In
+        /// this case, any other shadow fields set in the same request will be ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyState")]
         public virtual string PropertyState { get; set; } 
 
@@ -3025,7 +3025,7 @@ namespace Google.Apis.Slides.v1.Data
         /// Pictures must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or
         /// GIF format.
         ///
-        /// The provided URL can be at maximum 2K bytes large.</summary>
+        /// The provided URL can be at most 2 kB in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentUrl")]
         public virtual string ContentUrl { get; set; } 
 

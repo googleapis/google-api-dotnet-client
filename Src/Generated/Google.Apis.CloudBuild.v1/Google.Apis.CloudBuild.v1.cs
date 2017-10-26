@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171023 (1026)
+ *      <tr><th>API Rev<td>20171025 (1028)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -542,6 +542,10 @@ namespace Google.Apis.CloudBuild.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -549,10 +553,6 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -588,6 +588,15 @@ namespace Google.Apis.CloudBuild.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -600,15 +609,6 @@ namespace Google.Apis.CloudBuild.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -927,10 +927,6 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
-                /// <summary>The raw filter text to constrain the results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -938,6 +934,10 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Number of results to return in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The raw filter text to constrain the results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -973,15 +973,6 @@ namespace Google.Apis.CloudBuild.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -996,6 +987,143 @@ namespace Google.Apis.CloudBuild.v1
                             Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Creates a new build based on the given build.
+            ///
+            /// This API creates a new build using the original build request,  which may or may not result in an
+            /// identical build.
+            ///
+            /// For triggered builds:
+            ///
+            /// * Triggered builds resolve to a precise revision, so a retry of a triggered build will result in a build
+            /// that uses the same revision.
+            ///
+            /// For non-triggered builds that specify RepoSource:
+            ///
+            /// * If the original build built from the tip of a branch, the retried build will build from the tip of
+            /// that branch, which may not be the same revision as the original build. * If the original build specified
+            /// a commit sha or revision ID, the retried build will use the identical source.
+            ///
+            /// For builds that specify StorageSource:
+            ///
+            /// * If the original build pulled source from a GCS object without specifying the generation of the object,
+            /// the new build will use the current object, which may be different from the original build source. * If
+            /// the original build pulled source from a GCS object and specified the generation of the object, the new
+            /// build will attempt to use the same object, which may or may not be available depending on the bucket's
+            /// lifecycle management settings.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectId">ID of the project.</param>
+            /// <param name="id">Build ID of the original
+            /// build.</param>
+            public virtual RetryRequest Retry(Google.Apis.CloudBuild.v1.Data.RetryBuildRequest body, string projectId, string id)
+            {
+                return new RetryRequest(service, body, projectId, id);
+            }
+
+            /// <summary>Creates a new build based on the given build.
+            ///
+            /// This API creates a new build using the original build request,  which may or may not result in an
+            /// identical build.
+            ///
+            /// For triggered builds:
+            ///
+            /// * Triggered builds resolve to a precise revision, so a retry of a triggered build will result in a build
+            /// that uses the same revision.
+            ///
+            /// For non-triggered builds that specify RepoSource:
+            ///
+            /// * If the original build built from the tip of a branch, the retried build will build from the tip of
+            /// that branch, which may not be the same revision as the original build. * If the original build specified
+            /// a commit sha or revision ID, the retried build will use the identical source.
+            ///
+            /// For builds that specify StorageSource:
+            ///
+            /// * If the original build pulled source from a GCS object without specifying the generation of the object,
+            /// the new build will use the current object, which may be different from the original build source. * If
+            /// the original build pulled source from a GCS object and specified the generation of the object, the new
+            /// build will attempt to use the same object, which may or may not be available depending on the bucket's
+            /// lifecycle management settings.</summary>
+            public class RetryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Retry request.</summary>
+                public RetryRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.RetryBuildRequest body, string projectId, string id)
+                    : base(service)
+                {
+                    ProjectId = projectId;
+                    Id = id;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>ID of the project.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+                /// <summary>Build ID of the original build.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Id { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudBuild.v1.Data.RetryBuildRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "retry"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{projectId}/builds/{id}:retry"; }
+                }
+
+                /// <summary>Initializes Retry parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "id", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "id",
+                            IsRequired = true,
+                            ParameterType = "path",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -1385,6 +1513,89 @@ namespace Google.Apis.CloudBuild.v1
                 }
 
                 /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "projectId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "triggerId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "triggerId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Runs a BuildTrigger at a particular source revision.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectId">ID of the project.</param>
+            /// <param name="triggerId">ID of the trigger.</param>
+            public virtual RunRequest Run(Google.Apis.CloudBuild.v1.Data.RepoSource body, string projectId, string triggerId)
+            {
+                return new RunRequest(service, body, projectId, triggerId);
+            }
+
+            /// <summary>Runs a BuildTrigger at a particular source revision.</summary>
+            public class RunRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Run request.</summary>
+                public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudBuild.v1.Data.RepoSource body, string projectId, string triggerId)
+                    : base(service)
+                {
+                    ProjectId = projectId;
+                    TriggerId = triggerId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>ID of the project.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectId { get; private set; }
+
+                /// <summary>ID of the trigger.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string TriggerId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudBuild.v1.Data.RepoSource Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "run"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{projectId}/triggers/{triggerId}:run"; }
+                }
+
+                /// <summary>Initializes Run parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -1868,6 +2079,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<BuiltImage> Images { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>RetryBuildRequest specifies a build to retry.</summary>
+    public class RetryBuildRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

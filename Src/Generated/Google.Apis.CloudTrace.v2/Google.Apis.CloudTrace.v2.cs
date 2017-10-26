@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171016 (1019)
+ *      <tr><th>API Rev<td>20171020 (1023)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -777,7 +777,8 @@ namespace Google.Apis.CloudTrace.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sameProcessAsParentSpan")]
         public virtual System.Nullable<bool> SameProcessAsParentSpan { get; set; } 
 
-        /// <summary>The [SPAN_ID] portion of the span's resource name.</summary>
+        /// <summary>The [SPAN_ID] portion of the span's resource name. The ID is a 16-character hexadecimal encoding of
+        /// an 8-byte array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171004 (1007)
+ *      <tr><th>API Rev<td>20171011 (1014)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -1279,7 +1279,7 @@ namespace Google.Apis.Storage.v1
                 NoAcl,
             }
 
-            /// <summary>The project to be billed for this request</summary>
+            /// <summary>The project to be billed for this request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
 
