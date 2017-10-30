@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20171010 (1013)
+ *      <tr><th>API Rev<td>20171026 (1029)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -58828,6 +58828,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// For a full list of restrictions, read the Specifications for custom machine types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
+
+        /// <summary>Maintenance policies applied to this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicies")]
+        public virtual System.Collections.Generic.IList<string> MaintenancePolicies { get; set; } 
 
         /// <summary>The metadata key/value pairs assigned to this instance. This includes custom metadata and
         /// predefined keys.</summary>

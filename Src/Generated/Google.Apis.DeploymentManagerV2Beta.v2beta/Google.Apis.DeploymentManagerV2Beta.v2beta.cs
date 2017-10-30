@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API V2Beta Methods</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20170928 (1001)
+ *      <tr><th>API Rev<td>20171025 (1028)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>
@@ -4979,6 +4979,10 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         /// <summary>Which interpreter (python or jinja) should be used during expansion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpreter")]
         public virtual string Interpreter { get; set; } 
+
+        /// <summary>The filename of the mainTemplate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainTemplate")]
+        public virtual string MainTemplate { get; set; } 
 
         /// <summary>The contents of the template schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]

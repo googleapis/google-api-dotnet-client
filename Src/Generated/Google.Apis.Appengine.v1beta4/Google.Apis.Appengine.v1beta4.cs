@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20171009 (1012)
+ *      <tr><th>API Rev<td>20171026 (1029)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -487,10 +487,6 @@ namespace Google.Apis.Appengine.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -498,6 +494,10 @@ namespace Google.Apis.Appengine.v1beta4
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -533,15 +533,6 @@ namespace Google.Apis.Appengine.v1beta4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -554,6 +545,15 @@ namespace Google.Apis.Appengine.v1beta4
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2164,6 +2164,10 @@ namespace Google.Apis.Appengine.v1beta4
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2171,10 +2175,6 @@ namespace Google.Apis.Appengine.v1beta4
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2210,6 +2210,15 @@ namespace Google.Apis.Appengine.v1beta4
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2222,15 +2231,6 @@ namespace Google.Apis.Appengine.v1beta4
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2734,6 +2734,28 @@ namespace Google.Apis.Appengine.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides
+    /// tooling for serving Open API and gRPC endpoints via an NGINX proxy.The fields here refer to the name and
+    /// configuration id of a "service" resource in the Service Management API (https://cloud.google.com/service-
+    /// management/overview).</summary>
+    public class EndpointsApiService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Endpoints service configuration id as specified by the Service Management API. For example
+        /// "2016-09-19r1"By default, the Endpoints service configuration id is fixed and config_id must be specified.
+        /// To keep the Endpoints service configuration id updated with each rollout, specify RolloutStrategy.MANAGED
+        /// and omit config_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configId")]
+        public virtual string ConfigId { get; set; } 
+
+        /// <summary>Endpoints service name which is the name of the "service" resource in the Service Management API.
+        /// For example "myapi.endpoints.myproject.cloud.goog"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Custom static error page to be served when an error occurs.</summary>
     public class ErrorHandler : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3186,35 +3208,6 @@ namespace Google.Apis.Appengine.v1beta4.Data
 
         /// <summary>Name of the resource that this operation is acting on. Example:
         /// apps/myapp/modules/default.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; } 
-
-        /// <summary>User who requested this operation.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual string User { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata for the given google.longrunning.Operation.</summary>
-    public class OperationMetadataExperimental : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time that this operation completed.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; } 
-
-        /// <summary>Time that this operation was created.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; } 
-
-        /// <summary>API method that initiated this operation. Example:
-        /// google.appengine.experimental.CustomDomains.CreateCustomDomain.@OutputOnly</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("method")]
-        public virtual string Method { get; set; } 
-
-        /// <summary>Name of the resource that this operation is acting on. Example:
-        /// apps/myapp/customDomains/example.com.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]
         public virtual string Target { get; set; } 
 
@@ -3695,6 +3688,11 @@ namespace Google.Apis.Appengine.v1beta4.Data
         /// is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual Deployment Deployment { get; set; } 
+
+        /// <summary>Cloud Endpoints configuration.If endpoints_api_service is set, the Cloud Endpoints Extensible
+        /// Service Proxy will be provided to serve the API implemented by the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointsApiService")]
+        public virtual EndpointsApiService EndpointsApiService { get; set; } 
 
         /// <summary>App Engine execution environment to use for this version.Defaults to 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]

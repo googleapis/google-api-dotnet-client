@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171025 (1028)
+ *      <tr><th>API Rev<td>20171026 (1029)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1021,11 +1021,11 @@ namespace Google.Apis.CloudBuild.v1
             ///
             /// For builds that specify StorageSource:
             ///
-            /// * If the original build pulled source from a GCS object without specifying the generation of the object,
-            /// the new build will use the current object, which may be different from the original build source. * If
-            /// the original build pulled source from a GCS object and specified the generation of the object, the new
-            /// build will attempt to use the same object, which may or may not be available depending on the bucket's
-            /// lifecycle management settings.</summary>
+            /// * If the original build pulled source from Cloud Storage without specifying the generation of the
+            /// object, the new build will use the current object, which may be different from the original build
+            /// source. * If the original build pulled source from Cloud Storage and specified the generation of the
+            /// object, the new build will attempt to use the same object, which may or may not be available depending
+            /// on the bucket's lifecycle management settings.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">ID of the project.</param>
             /// <param name="id">Build ID of the original
@@ -1053,11 +1053,11 @@ namespace Google.Apis.CloudBuild.v1
             ///
             /// For builds that specify StorageSource:
             ///
-            /// * If the original build pulled source from a GCS object without specifying the generation of the object,
-            /// the new build will use the current object, which may be different from the original build source. * If
-            /// the original build pulled source from a GCS object and specified the generation of the object, the new
-            /// build will attempt to use the same object, which may or may not be available depending on the bucket's
-            /// lifecycle management settings.</summary>
+            /// * If the original build pulled source from Cloud Storage without specifying the generation of the
+            /// object, the new build will use the current object, which may be different from the original build
+            /// source. * If the original build pulled source from Cloud Storage and specified the generation of the
+            /// object, the new build will attempt to use the same object, which may or may not be available depending
+            /// on the bucket's lifecycle management settings.</summary>
             public class RetryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
             {
                 /// <summary>Constructs a new Retry request.</summary>

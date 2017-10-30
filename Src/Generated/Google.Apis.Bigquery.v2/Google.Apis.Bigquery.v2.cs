@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171015 (1018)
+ *      <tr><th>API Rev<td>20171022 (1025)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3732,6 +3732,20 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] Whether the query result was fetched from the query cache.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheHit")]
         public virtual System.Nullable<bool> CacheHit { get; set; } 
+
+        /// <summary>[Output-only, Experimental] The DDL operation performed, possibly dependent on the pre-existence of
+        /// the DDL target. Possible values (new values might be added in the future): "CREATE": The query created the
+        /// DDL target. "SKIP": No-op. Example cases: the query is CREATE TABLE IF NOT EXISTS while the table already
+        /// exists, or the query is DROP TABLE IF EXISTS while the table does not exist. "REPLACE": The query replaced
+        /// the DDL target. Example case: the query is CREATE OR REPLACE TABLE, and the table already exists. "DROP":
+        /// The query deleted the DDL target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlOperationPerformed")]
+        public virtual string DdlOperationPerformed { get; set; } 
+
+        /// <summary>[Output-only, Experimental] The DDL target table. Present only for CREATE/DROP TABLE/VIEW
+        /// queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetTable")]
+        public virtual TableReference DdlTargetTable { get; set; } 
 
         /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
         /// INSERT, UPDATE or DELETE.</summary>

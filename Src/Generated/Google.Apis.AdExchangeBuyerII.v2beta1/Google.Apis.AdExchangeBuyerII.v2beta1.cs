@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171024 (1027)
+ *      <tr><th>API Rev<td>20171026 (1029)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>
@@ -2548,6 +2548,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> FilterSetId { get; set; }
+
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListBidResponseErrorsResponse.nextPageToken returned from the previous call to
                         /// the bidResponseErrors.list method.</summary>
@@ -2562,10 +2566,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// <summary>Account ID of the buyer.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<long> AccountId { get; set; }
-
-                        /// <summary>The ID of the filter set to apply.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2601,6 +2601,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -2622,15 +2631,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "accountId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "accountId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2706,6 +2706,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> FilterSetId { get; set; }
+
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListBidResponsesWithoutBidsResponse.nextPageToken returned from the previous
                         /// call to the bidResponsesWithoutBids.list method.</summary>
@@ -2720,10 +2724,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// <summary>Account ID of the buyer.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<long> AccountId { get; set; }
-
-                        /// <summary>The ID of the filter set to apply.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2759,6 +2759,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -2780,15 +2789,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "accountId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "accountId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3057,14 +3057,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual int CreativeStatusId { get; private set; }
 
-                            /// <summary>Account ID of the buyer.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<long> AccountId { get; set; }
-
-                            /// <summary>The ID of the filter set to apply.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<long> FilterSetId { get; set; }
-
                             /// <summary>A token identifying a page of results the server should return. Typically, this
                             /// is the value of ListCreativeStatusBreakdownByCreativeResponse.nextPageToken returned
                             /// from the previous call to the filteredBids.creatives.list method.</summary>
@@ -3075,6 +3067,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             /// unspecified, the server will pick an appropriate default.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Account ID of the buyer.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<long> AccountId { get; set; }
+
+                            /// <summary>The ID of the filter set to apply.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -3119,24 +3119,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "accountId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "accountId",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "filterSetId", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "filterSetId",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
                                     "pageToken", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageToken",
@@ -3149,6 +3131,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     "pageSize", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "accountId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "accountId",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "filterSetId", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filterSetId",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -3236,6 +3236,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             [Google.Apis.Util.RequestParameterAttribute("creativeStatusId", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual int CreativeStatusId { get; private set; }
 
+                            /// <summary>Account ID of the buyer.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<long> AccountId { get; set; }
+
+                            /// <summary>The ID of the filter set to apply.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<long> FilterSetId { get; set; }
+
                             /// <summary>A token identifying a page of results the server should return. Typically, this
                             /// is the value of ListCreativeStatusBreakdownByDetailResponse.nextPageToken returned from
                             /// the previous call to the filteredBids.details.list method.</summary>
@@ -3246,14 +3254,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             /// unspecified, the server will pick an appropriate default.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
-
-                            /// <summary>Account ID of the buyer.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<long> AccountId { get; set; }
-
-                            /// <summary>The ID of the filter set to apply.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -3298,24 +3298,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
                                     "accountId", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "accountId",
@@ -3328,6 +3310,24 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     "filterSetId", new Google.Apis.Discovery.Parameter
                                     {
                                         Name = "filterSetId",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                RequestParameters.Add(
+                                    "pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -3380,10 +3380,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
-                        /// <summary>The ID of the filter set to apply.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> FilterSetId { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the
                         /// filteredBids.list method.</summary>
@@ -3398,6 +3394,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// <summary>Account ID of the buyer.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<long> AccountId { get; set; }
+
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -3433,15 +3433,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -3463,6 +3454,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "accountId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "accountId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3536,10 +3536,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
-                        /// <summary>The ID of the filter set to apply.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> FilterSetId { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListImpressionMetricsResponse.nextPageToken returned from the previous call to
                         /// the impressionMetrics.list method.</summary>
@@ -3554,6 +3550,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// <summary>Account ID of the buyer.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<long> AccountId { get; set; }
+
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -3589,15 +3589,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -3619,6 +3610,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "accountId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "accountId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3694,10 +3694,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
-                        /// <summary>The ID of the filter set to apply.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> FilterSetId { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the
                         /// losingBids.list method.</summary>
@@ -3712,6 +3708,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         /// <summary>Account ID of the buyer.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<long> AccountId { get; set; }
+
+                        /// <summary>The ID of the filter set to apply.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -3747,15 +3747,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "filterSetId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "filterSetId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -3777,6 +3768,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 "accountId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "accountId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "filterSetId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filterSetId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4095,13 +4095,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The ID of the filter set to delete.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> FilterSetId { get; set; }
-
                     /// <summary>Account ID of the buyer.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> AccountId { get; set; }
+
+                    /// <summary>The ID of the filter set to delete.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4137,18 +4137,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            "accountId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "filterSetId",
+                                Name = "accountId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "accountId", new Google.Apis.Discovery.Parameter
+                            "filterSetId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "accountId",
+                                Name = "filterSetId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5458,10 +5458,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
-                    /// <summary>The ID of the filter set to apply.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> FilterSetId { get; set; }
-
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListFilteredBidsResponse.nextPageToken returned from the previous call to the
                     /// filteredBids.list method.</summary>
@@ -5476,6 +5472,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Account ID of the buyer.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> AccountId { get; set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5511,15 +5511,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filterSetId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -5541,6 +5532,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "accountId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "accountId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5770,10 +5770,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
-                    /// <summary>The ID of the filter set to apply.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> FilterSetId { get; set; }
-
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListLosingBidsResponse.nextPageToken returned from the previous call to the
                     /// losingBids.list method.</summary>
@@ -5788,6 +5784,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Account ID of the buyer.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> AccountId { get; set; }
+
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5823,15 +5823,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filterSetId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -5853,6 +5844,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "accountId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "accountId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5927,6 +5927,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
+                    /// <summary>The ID of the filter set to apply.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<long> FilterSetId { get; set; }
+
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListNonBillableWinningBidsResponse.nextPageToken returned from the previous call to the
                     /// nonBillableWinningBids.list method.</summary>
@@ -5941,10 +5945,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// <summary>Account ID of the buyer.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<long> AccountId { get; set; }
-
-                    /// <summary>The ID of the filter set to apply.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filterSetId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<long> FilterSetId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -5980,6 +5980,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filterSetId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filterSetId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -6001,15 +6010,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "accountId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "accountId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filterSetId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filterSetId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6057,6 +6057,61 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// `bidders/123/accounts/456`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ownerName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string OwnerName { get; private set; }
+
+                /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
+                /// year/month where the day is not significant.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.endDate.day", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> FilterSetAbsoluteDateRangeEndDateDay { get; set; }
+
+                /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.startDate.year", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> FilterSetAbsoluteDateRangeStartDateYear { get; set; }
+
+                /// <summary>A user-defined name of the filter set. Filter set names must be unique globally and match
+                /// one of the patterns:
+                ///
+                /// - `bidders/filterSets` (for accessing bidder-level troubleshooting data) -
+                /// `bidders/accounts/filterSets` (for accessing buyer-level troubleshooting data)
+                ///
+                /// This field is required in create operations.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.name", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string FilterSetName { get; set; }
+
+                /// <summary>The list of platforms on which to filter; may be empty. The filters represented by multiple
+                /// platforms are ORed together (i.e. if non-empty, results must match any one of the
+                /// platforms).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.platforms", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<FilterSetPlatformsEnum> FilterSetPlatforms { get; set; }
+
+                /// <summary>The list of platforms on which to filter; may be empty. The filters represented by multiple
+                /// platforms are ORed together (i.e. if non-empty, results must match any one of the
+                /// platforms).</summary>
+                public enum FilterSetPlatformsEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("PLATFORM_UNSPECIFIED")]
+                    PLATFORMUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("DESKTOP")]
+                    DESKTOP,
+                    [Google.Apis.Util.StringValueAttribute("TABLET")]
+                    TABLET,
+                    [Google.Apis.Util.StringValueAttribute("MOBILE")]
+                    MOBILE,
+                }
+
+                /// <summary>Account ID of the buyer.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> AccountId { get; set; }
+
+                /// <summary>The number of days in the requested date range. E.g. for a range spanning today, 1. For a
+                /// range spanning the last 7 days, 7.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.relativeDateRange.durationDays", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> FilterSetRelativeDateRangeDurationDays { get; set; }
+
+                /// <summary>The ID of the deal on which to filter; optional. This field may be set only for a filter
+                /// set that accesses buyer-level troubleshooting data, i.e. one whose name matches the
+                /// `bidders/accounts/filterSets` pattern.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filterSet.dealId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> FilterSetDealId { get; set; }
 
                 /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.endDate.year", Google.Apis.Util.RequestParameterType.Query)]
@@ -6143,15 +6198,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("isTransient", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IsTransient { get; set; }
 
-                /// <summary>The ID of the buyer account on which to filter; optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.buyerAccountId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> FilterSetBuyerAccountId { get; set; }
-
-                /// <summary>The account ID of the buyer who owns this filter set. The value of this field is ignored in
-                /// create operations.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.ownerAccountId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> FilterSetOwnerAccountId { get; set; }
-
                 /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
                 /// year/month where the day is not significant.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.startDate.day", Google.Apis.Util.RequestParameterType.Query)]
@@ -6164,61 +6210,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 /// <summary>Month of year. Must be from 1 to 12.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.startDate.month", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> FilterSetAbsoluteDateRangeStartDateMonth { get; set; }
-
-                /// <summary>Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a
-                /// year/month where the day is not significant.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.endDate.day", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> FilterSetAbsoluteDateRangeEndDateDay { get; set; }
-
-                /// <summary>Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.absoluteDateRange.startDate.year", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> FilterSetAbsoluteDateRangeStartDateYear { get; set; }
-
-                /// <summary>A user-defined name of the filter set. Filter set names must be unique globally and match
-                /// one of the patterns:
-                ///
-                /// - `bidders/filterSets` (for accessing bidder-level troubleshooting data) -
-                /// `bidders/accounts/filterSets` (for accessing buyer-level troubleshooting data)
-                ///
-                /// This field is required in create operations.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.name", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string FilterSetName { get; set; }
-
-                /// <summary>The list of platforms on which to filter; may be empty. The filters represented by multiple
-                /// platforms are ORed together (i.e. if non-empty, results must match any one of the
-                /// platforms).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.platforms", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<FilterSetPlatformsEnum> FilterSetPlatforms { get; set; }
-
-                /// <summary>The list of platforms on which to filter; may be empty. The filters represented by multiple
-                /// platforms are ORed together (i.e. if non-empty, results must match any one of the
-                /// platforms).</summary>
-                public enum FilterSetPlatformsEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("PLATFORM_UNSPECIFIED")]
-                    PLATFORMUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("DESKTOP")]
-                    DESKTOP,
-                    [Google.Apis.Util.StringValueAttribute("TABLET")]
-                    TABLET,
-                    [Google.Apis.Util.StringValueAttribute("MOBILE")]
-                    MOBILE,
-                }
-
-                /// <summary>The number of days in the requested date range. E.g. for a range spanning today, 1. For a
-                /// range spanning the last 7 days, 7.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.relativeDateRange.durationDays", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> FilterSetRelativeDateRangeDurationDays { get; set; }
-
-                /// <summary>Account ID of the buyer.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> AccountId { get; set; }
-
-                /// <summary>The ID of the deal on which to filter; optional. This field may be set only for a filter
-                /// set that accesses buyer-level troubleshooting data, i.e. one whose name matches the
-                /// `bidders/accounts/filterSets` pattern.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filterSet.dealId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> FilterSetDealId { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -6252,6 +6243,69 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^bidders/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filterSet.absoluteDateRange.endDate.day", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.absoluteDateRange.endDate.day",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.absoluteDateRange.startDate.year", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.absoluteDateRange.startDate.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.name",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.platforms", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.platforms",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "accountId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.relativeDateRange.durationDays", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.relativeDateRange.durationDays",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filterSet.dealId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filterSet.dealId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "filterSet.absoluteDateRange.endDate.year", new Google.Apis.Discovery.Parameter
@@ -6344,24 +6398,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filterSet.buyerAccountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.buyerAccountId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.ownerAccountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.ownerAccountId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filterSet.absoluteDateRange.startDate.day", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filterSet.absoluteDateRange.startDate.day",
@@ -6383,69 +6419,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         "filterSet.absoluteDateRange.startDate.month", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filterSet.absoluteDateRange.startDate.month",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.absoluteDateRange.endDate.day", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.absoluteDateRange.endDate.day",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.absoluteDateRange.startDate.year", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.absoluteDateRange.startDate.year",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.name",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.platforms", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.platforms",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.relativeDateRange.durationDays", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.relativeDateRange.durationDays",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filterSet.dealId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filterSet.dealId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -7271,10 +7244,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("absoluteDateRange")]
         public virtual AbsoluteDateRange AbsoluteDateRange { get; set; } 
 
-        /// <summary>The ID of the buyer account on which to filter; optional.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buyerAccountId")]
-        public virtual System.Nullable<long> BuyerAccountId { get; set; } 
-
         /// <summary>The ID of the creative on which to filter; optional. This field may be set only for a filter set
         /// that accesses buyer-level troubleshooting data, i.e. one whose name matches the
         /// `bidders/accounts/filterSets` pattern.</summary>
@@ -7309,11 +7278,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// This field is required in create operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
-
-        /// <summary>The account ID of the buyer who owns this filter set. The value of this field is ignored in create
-        /// operations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerAccountId")]
-        public virtual System.Nullable<long> OwnerAccountId { get; set; } 
 
         /// <summary>The list of platforms on which to filter; may be empty. The filters represented by multiple
         /// platforms are ORed together (i.e. if non-empty, results must match any one of the platforms).</summary>

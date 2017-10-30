@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20170928 (1001)
+ *      <tr><th>API Rev<td>20171025 (1028)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -4128,6 +4128,22 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
 namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
 {    
 
+    /// <summary>Async options that determine when a resource should finish.</summary>
+    public class AsyncOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Method regex where this policy will apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodMatch")]
+        public virtual string MethodMatch { get; set; } 
+
+        /// <summary>Deployment manager will poll instances for this API resource setting a RUNNING state, and blocking
+        /// until polling conditions tell whether the resource is completed or failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingOptions")]
+        public virtual PollingOptions PollingOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
     /// AuditLogConfigs.
@@ -4610,6 +4626,21 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class Diagnostic : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>JsonPath expression on the resource that if non empty, indicates that this field needs to be
+        /// extracted as a diagnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; } 
+
+        /// <summary>Level to record this diagnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an expression text. Example:
     ///
     /// title: "User account presence" description: "Determines whether the request has a user account" expression:
@@ -5011,6 +5042,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
     /// <summary>Options allows customized resource handling by Deployment Manager.</summary>
     public class Options : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Options regarding how to thread async requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asyncOptions")]
+        public virtual System.Collections.Generic.IList<AsyncOptions> AsyncOptions { get; set; } 
+
         /// <summary>The mappings that apply for requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputMappings")]
         public virtual System.Collections.Generic.IList<InputMapping> InputMappings { get; set; } 
@@ -5080,6 +5115,33 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
+    }    
+
+    public class PollingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An array of diagnostics to be collected by Deployment Manager, these diagnostics will be displayed
+        /// to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnostics")]
+        public virtual System.Collections.Generic.IList<Diagnostic> Diagnostics { get; set; } 
+
+        /// <summary>JsonPath expression that determines if the request failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failCondition")]
+        public virtual string FailCondition { get; set; } 
+
+        /// <summary>JsonPath expression that determines if the request is completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishCondition")]
+        public virtual string FinishCondition { get; set; } 
+
+        /// <summary>JsonPath expression that evaluates to string, it indicates where to poll.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingLink")]
+        public virtual string PollingLink { get; set; } 
+
+        /// <summary>JsonPath expression, after polling is completed, indicates where to fetch the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
+        public virtual string TargetLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
@@ -5396,6 +5458,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>Which interpreter (python or jinja) should be used during expansion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interpreter")]
         public virtual string Interpreter { get; set; } 
+
+        /// <summary>The filename of the mainTemplate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainTemplate")]
+        public virtual string MainTemplate { get; set; } 
 
         /// <summary>The contents of the template schema.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]

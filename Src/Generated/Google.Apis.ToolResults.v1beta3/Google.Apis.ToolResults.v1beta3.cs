@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20171025 (1028)
+ *      <tr><th>API Rev<td>20171027 (1030)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3669,17 +3669,23 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }</summary>
     public class Any : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A URL/resource name whose content describes the type of the serialized protocol buffer message.
+        /// <summary>A URL/resource name that uniquely identifies the type of the serialized protocol buffer message.
+        /// The last segment of the URL's path must represent the fully qualified name of the type (as in
+        /// `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not
+        /// accepted).
         ///
-        /// For URLs which use the scheme `http`, `https`, or no scheme, the following restrictions and interpretations
-        /// apply:
+        /// In practice, teams usually precompile into the binary all types that they expect it to use in the context of
+        /// Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type
+        /// server that maps type URLs to message definitions as follows:
         ///
-        /// * If no scheme is provided, `https` is assumed. * The last segment of the URL's path must represent the
-        /// fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical
-        /// form (e.g., leading "." is not accepted). * An HTTP GET on the URL must yield a [google.protobuf.Type][]
-        /// value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the
-        /// URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be
-        /// preserved on changes to types. (Use versioned type names to manage breaking changes.)
+        /// * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a
+        /// [google.protobuf.Type][] value in binary format, or produce an error. * Applications are allowed to cache
+        /// lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore,
+        /// binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking
+        /// changes.)
+        ///
+        /// Note: this functionality is not currently available in the official protobuf release, and it is not used for
+        /// type URLs beginning with type.googleapis.com.
         ///
         /// Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific
         /// semantics.</summary>
