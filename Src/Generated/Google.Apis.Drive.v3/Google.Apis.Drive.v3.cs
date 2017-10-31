@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171013 (1016)
+ *      <tr><th>API Rev<td>20171020 (1023)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2884,6 +2884,13 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("transferOwnership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
 
+            /// <summary>Whether the request should be treated as if it was issued by a domain administrator; if set to
+            /// true, then the requester will be granted access if they are an administrator of the domain to which the
+            /// item belongs.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Drive.v3.Data.Permission Body { get; set; }
@@ -2959,6 +2966,15 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = "false",
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2997,6 +3013,13 @@ namespace Google.Apis.Drive.v3
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
+            /// <summary>Whether the request should be treated as if it was issued by a domain administrator; if set to
+            /// true, then the requester will be granted access if they are an administrator of the domain to which the
+            /// item belongs.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3049,6 +3072,15 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = "false",
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3087,6 +3119,13 @@ namespace Google.Apis.Drive.v3
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
+            /// <summary>Whether the request should be treated as if it was issued by a domain administrator; if set to
+            /// true, then the requester will be granted access if they are an administrator of the domain to which the
+            /// item belongs.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3139,6 +3178,15 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = "false",
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3183,6 +3231,13 @@ namespace Google.Apis.Drive.v3
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("supportsTeamDrives", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SupportsTeamDrives { get; set; }
+
+            /// <summary>Whether the request should be treated as if it was issued by a domain administrator; if set to
+            /// true, then the requester will be granted access if they are an administrator of the domain to which the
+            /// item belongs.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -3244,6 +3299,15 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = "false",
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3295,6 +3359,13 @@ namespace Google.Apis.Drive.v3
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("transferOwnership", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> TransferOwnership { get; set; }
+
+            /// <summary>Whether the request should be treated as if it was issued by a domain administrator; if set to
+            /// true, then the requester will be granted access if they are an administrator of the domain to which the
+            /// item belongs.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3366,6 +3437,15 @@ namespace Google.Apis.Drive.v3
                     "transferOwnership", new Google.Apis.Discovery.Parameter
                     {
                         Name = "transferOwnership",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = "false",
@@ -4480,6 +4560,13 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("teamDriveId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string TeamDriveId { get; private set; }
 
+            /// <summary>Whether the request should be treated as if it was issued by a domain administrator; if set to
+            /// true, then the requester will be granted access if they are an administrator of the domain to which the
+            /// Team Drive belongs.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -4513,6 +4600,15 @@ namespace Google.Apis.Drive.v3
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
+                        Pattern = null,
+                    });
             }
 
         }
@@ -4544,6 +4640,17 @@ namespace Google.Apis.Drive.v3
             /// <summary>Page token for Team Drives.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Query string for searching Team Drives.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Q { get; set; }
+
+            /// <summary>Whether the request should be treated as if it was issued by a domain administrator; if set to
+            /// true, then all Team Drives of the domain in which the requester is an administrator are
+            /// returned.</summary>
+            /// [default: false]
+            [Google.Apis.Util.RequestParameterAttribute("useDomainAdminAccess", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UseDomainAdminAccess { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -4585,6 +4692,24 @@ namespace Google.Apis.Drive.v3
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "q", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "q",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "useDomainAdminAccess", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "useDomainAdminAccess",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "false",
                         Pattern = null,
                     });
             }
@@ -5985,6 +6110,24 @@ namespace Google.Apis.Drive.v3.Data
         /// request that does not set themeId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorRgb")]
         public virtual string ColorRgb { get; set; } 
+
+        /// <summary>The time at which the Team Drive was created (RFC 3339 date-time).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdTime")]
+        public virtual string CreatedTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> CreatedTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedTimeRaw);
+            }
+            set
+            {
+                CreatedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
 
         /// <summary>The ID of this Team Drive which is also the ID of the top level folder for this Team
         /// Drive.</summary>
