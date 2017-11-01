@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170913 (986)
+ *      <tr><th>API Rev<td>20171030 (1033)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -5076,59 +5076,6 @@ namespace Google.Apis.AndroidPublisher.v2
         }
 
 
-
-        /// <param name="body">The body of the request.</param>
-        public virtual BatchRequest Batch(Google.Apis.AndroidPublisher.v2.Data.InappproductsBatchRequest body)
-        {
-            return new BatchRequest(service, body);
-        }
-
-
-        public class BatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.InappproductsBatchResponse>
-        {
-            /// <summary>Constructs a new Batch request.</summary>
-            public BatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidPublisher.v2.Data.InappproductsBatchRequest body)
-                : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.AndroidPublisher.v2.Data.InappproductsBatchRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "batch"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "inappproducts/batch"; }
-            }
-
-            /// <summary>Initializes Batch parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-            }
-
-        }
-
         /// <summary>Delete an in-app product for an app.</summary>
         /// <param name="packageName">Unique identifier for the Android app with the in-app product; for example,
         /// "com.spiffygame".</param>
@@ -7275,80 +7222,6 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class InappproductsBatchRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("entrys")]
-        public virtual System.Collections.Generic.IList<InappproductsBatchRequestEntry> Entrys { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class InappproductsBatchRequestEntry : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("inappproductsinsertrequest")]
-        public virtual InappproductsInsertRequest Inappproductsinsertrequest { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("inappproductsupdaterequest")]
-        public virtual InappproductsUpdateRequest Inappproductsupdaterequest { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("methodName")]
-        public virtual string MethodName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class InappproductsBatchResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("entrys")]
-        public virtual System.Collections.Generic.IList<InappproductsBatchResponseEntry> Entrys { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "androidpublisher#inappproductsBatchResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class InappproductsBatchResponseEntry : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
-        public virtual System.Nullable<long> BatchId { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("inappproductsinsertresponse")]
-        public virtual InappproductsInsertResponse Inappproductsinsertresponse { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("inappproductsupdateresponse")]
-        public virtual InappproductsUpdateResponse Inappproductsupdateresponse { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class InappproductsInsertRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("inappproduct")]
-        public virtual InAppProduct Inappproduct { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class InappproductsInsertResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("inappproduct")]
-        public virtual InAppProduct Inappproduct { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class InappproductsListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("inappproduct")]
@@ -7364,24 +7237,6 @@ namespace Google.Apis.AndroidPublisher.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
         public virtual TokenPagination TokenPagination { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class InappproductsUpdateRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("inappproduct")]
-        public virtual InAppProduct Inappproduct { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class InappproductsUpdateResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("inappproduct")]
-        public virtual InAppProduct Inappproduct { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

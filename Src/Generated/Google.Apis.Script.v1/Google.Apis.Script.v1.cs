@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Apps Script Execution API Version v1
+ *   Google Apps Script API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script Execution API</a>
+ *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171016 (1019)
+ *      <tr><th>API Rev<td>20171024 (1027)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Apps Script Execution API can be found at
+ * The complete API documentation for using Google Apps Script API can be found at
  * <a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.Script.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Apps Script Execution API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Apps Script API.</summary>
         public class Scope
         {
             /// <summary>Read, send, delete, and manage your email</summary>
@@ -387,7 +387,7 @@ namespace Google.Apis.Script.v1
 
 
         /// <summary>Runs a function in an Apps Script project. The project must be deployed for use with the Apps
-        /// Script Execution API.
+        /// Script API.
         ///
         /// This method requires authorization with an OAuth 2.0 token that includes at least one of the scopes listed
         /// in the [Authorization](#authorization) section; script projects that do not require authorization cannot be
@@ -403,7 +403,7 @@ namespace Google.Apis.Script.v1
         }
 
         /// <summary>Runs a function in an Apps Script project. The project must be deployed for use with the Apps
-        /// Script Execution API.
+        /// Script API.
         ///
         /// This method requires authorization with an OAuth 2.0 token that includes at least one of the scopes listed
         /// in the [Authorization](#authorization) section; script projects that do not require authorization cannot be
@@ -475,10 +475,10 @@ namespace Google.Apis.Script.v1
 namespace Google.Apis.Script.v1.Data
 {    
 
-    /// <summary>An object that provides information about the nature of an error in the Apps Script Execution API. If
-    /// an `run` call succeeds but the script function (or Apps Script itself) throws an exception, the response body's
-    /// `error` field contains a `Status` object. The `Status` object's `details` field contains an array with a single
-    /// one of these `ExecutionError` objects.</summary>
+    /// <summary>An object that provides information about the nature of an error resulting from an attempted execution
+    /// of a script function using the Apps Script API. If a run or runAsync call succeeds but the script function (or
+    /// Apps Script itself) throws an exception, the response body's error field contains a Status object. The `Status`
+    /// object's `details` field contains an array with a single one of these `ExecutionError` objects.</summary>
     public class ExecutionError : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The error message thrown by Apps Script, usually localized into the user's language.</summary>
@@ -504,7 +504,7 @@ namespace Google.Apis.Script.v1.Data
     public class ExecutionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If `true` and the user is an owner of the script, the script runs at the most recently saved
-        /// version rather than the version deployed for use with the Execution API. Optional; default is
+        /// version rather than the version deployed for use with the Apps Script API. Optional; default is
         /// `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("devMode")]
         public virtual System.Nullable<bool> DevMode { get; set; } 
@@ -522,12 +522,12 @@ namespace Google.Apis.Script.v1.Data
         public virtual System.Collections.Generic.IList<object> Parameters { get; set; } 
 
         /// <summary>For Android add-ons only. An ID that represents the user's current session in the Android app for
-        /// Google Docs or Sheets, included as extra data in the
-        /// [`Intent`](https://developer.android.com/guide/components/intents-filters.html) that launches the add-on.
-        /// When an Android add-on is run with a session state, it gains the privileges of a
-        /// [bound](https://developers.google.com/apps-script/guides/bound) script that is, it can access information
-        /// like the user's current cursor position (in Docs) or selected cell (in Sheets). To retrieve the state, call
-        /// `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`. Optional.</summary>
+        /// Google Docs or Sheets, included as extra data in the [Intent](https://developer.android.com/guide/components
+        /// /intents-filters.html) that launches the add-on. When an Android add-on is run with a session state, it
+        /// gains the privileges of a [bound](https://developers.google.com/apps-script/guides/bound) scriptthat is, it
+        /// can access information like the user's current cursor position (in Docs) or selected cell (in Sheets). To
+        /// retrieve the state, call `Intent.getStringExtra("com.google.android.apps.docs.addons.SessionState")`.
+        /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionState")]
         public virtual string SessionState { get; set; } 
 
@@ -535,13 +535,13 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An object that provides the return value of a function executed through the Apps Script Execution API.
-    /// If a `run` call succeeds and the script function returns successfully, the response body's `response` field
-    /// contains this `ExecutionResponse` object.</summary>
+    /// <summary>An object that provides the return value of a function executed using the Apps Script API. If the
+    /// script function returns successfully, the response body's response field contains this `ExecutionResponse`
+    /// object.</summary>
     public class ExecutionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The return value of the script function. The type matches the object type returned in Apps Script.
-        /// Functions called through the Execution API cannot return Apps Script-specific objects (such as a `Document`
+        /// Functions called using the Apps Script API cannot return Apps Script-specific objects (such as a `Document`
         /// or a `Calendar`); they can only return primitive types such as a `string`, `number`, `array`, `object`, or
         /// `boolean`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
@@ -551,36 +551,34 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response will not arrive until the function finishes executing. The maximum runtime is listed in
-    /// the guide to [limitations in Apps Script](https://developers.google.com/apps-
-    /// script/guides/services/quotas#current_limitations). If the script function returns successfully, the `response`
-    /// field will contain an `ExecutionResponse` object with the function's return value in the object's `result`
-    /// field. If the script function (or Apps Script itself) throws an exception, the `error` field will contain a
-    /// `Status` object. The `Status` object's `details` field will contain an array with a single `ExecutionError`
-    /// object that provides information about the nature of the error. If the `run` call itself fails (for example,
-    /// because of a malformed request or an authorization error), the method will return an HTTP response code in the
-    /// 4XX range with a different format for the response body. Client libraries will automatically convert a 4XX
-    /// response into an exception class.</summary>
+    /// <summary>A representation of a execution of an Apps Script function that is started using run or runAsync. The
+    /// execution response does not arrive until the function finishes executing. The maximum execution runtime is
+    /// listed in the [Apps Script quotas guide](/apps-script/guides/services/quotas#current_limitations). After the
+    /// execution is started, it can have one of four outcomes: If the script function returns successfully, the
+    /// response field contains an ExecutionResponse object with the function's return value in the object's `result`
+    /// field. If the script function (or Apps Script itself) throws an exception, the error field contains a Status
+    /// object. The `Status` object's `details` field contains an array with a single ExecutionError object that
+    /// provides information about the nature of the error. If the execution was asynchronous and has not yet completed,
+    /// the done field is `false` and the neither the `response` nor `error` fields are present. If the `run` or
+    /// `runAsync` call itself fails (for example, because of a malformed request or an authorization error), the method
+    /// returns an HTTP response code in the 4XX range with a different format for the response body. Client libraries
+    /// automatically convert a 4XX response into an exception class. </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field is only used with asynchronous executions and indicates whether or not the script
-        /// execution has completed. A completed execution has a populated response field containing the
-        /// `ExecutionResponse` from function that was executed.</summary>
+        /// <summary>This field is only used with asynchronous executions. It indicates whether the script execution has
+        /// completed. A completed execution has a populated `response` field containing the ExecutionResponse from
+        /// function that was executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this
-        /// field will contain a `Status` object. The `Status` object's `details` field will contain an array with a
-        /// single `ExecutionError` object that provides information about the nature of the error.</summary>
+        /// <summary>If a `run` or `runAsync` call succeeds but the script function (or Apps Script itself) throws an
+        /// exception, this field contains a Status object. The `Status` object's `details` field contains an array with
+        /// a single ExecutionError object that provides information about the nature of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
-        /// <summary>This field is not used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Metadata { get; set; } 
-
-        /// <summary>If the script function returns successfully, this field will contain an `ExecutionResponse` object
-        /// with the function's return value as the object's `result` field.</summary>
+        /// <summary>If the script function returns successfully, this field contains an ExecutionResponse object with
+        /// the function's return value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
 
@@ -603,22 +601,22 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the
-    /// response body's `error` field will contain this `Status` object.</summary>
+    /// <summary>If a `run` or `runAsync` call succeeds but the script function (or Apps Script itself) throws an
+    /// exception, the response body's error field contains this `Status` object.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status code. For this API, this value will always be 3, corresponding to an INVALID_ARGUMENT
-        /// error.</summary>
+        /// <summary>The status code. For this API, this value either: 3, indicating an `INVALID_ARGUMENT` error, or  1,
+        /// indicating a `CANCELLED` asynchronous execution. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
-        /// <summary>An array that contains a single `ExecutionError` object that provides information about the nature
-        /// of the error.</summary>
+        /// <summary>An array that contains a single ExecutionError object that provides information about the nature of
+        /// the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string,object>> Details { get; set; } 
 
         /// <summary>A developer-facing error message, which is in English. Any user-facing error message is localized
-        /// and sent in the [`google.rpc.Status.details`](google.rpc.Status.details) field, or localized by the
+        /// and sent in the [google.rpc.Status.details](google.rpc.Status.details) field, or localized by the
         /// client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 

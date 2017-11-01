@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171020 (1023)
+ *      <tr><th>API Rev<td>20171025 (1028)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -7035,6 +7035,88 @@ namespace Google.Apis.AndroidEnterprise.v1
             }
 
             /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Revokes access to all devices currently provisioned to the user. The user will no longer be able to
+        /// use the managed Play store on any of their managed devices.
+        ///
+        /// This call only works with EMM-managed accounts.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        public virtual RevokeDeviceAccessRequest RevokeDeviceAccess(string enterpriseId, string userId)
+        {
+            return new RevokeDeviceAccessRequest(service, enterpriseId, userId);
+        }
+
+        /// <summary>Revokes access to all devices currently provisioned to the user. The user will no longer be able to
+        /// use the managed Play store on any of their managed devices.
+        ///
+        /// This call only works with EMM-managed accounts.</summary>
+        public class RevokeDeviceAccessRequest : AndroidEnterpriseBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new RevokeDeviceAccess request.</summary>
+            public RevokeDeviceAccessRequest(Google.Apis.Services.IClientService service, string enterpriseId, string userId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "revokeDeviceAccess"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/deviceAccess"; }
+            }
+
+            /// <summary>Initializes RevokeDeviceAccess parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();

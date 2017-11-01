@@ -731,6 +731,36 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
+                /// <summary>Determines how values in the response should be rendered. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ResponseValueRenderOptionEnum> ResponseValueRenderOption { get; set; }
+
+                /// <summary>Determines how values in the response should be rendered. The default render option is
+                /// ValueRenderOption.FORMATTED_VALUE.</summary>
+                public enum ResponseValueRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
+                    FORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
+                    UNFORMATTEDVALUE,
+                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
+                    FORMULA,
+                }
+
+                /// <summary>How the input data should be inserted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("insertDataOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<InsertDataOptionEnum> InsertDataOption { get; set; }
+
+                /// <summary>How the input data should be inserted.</summary>
+                public enum InsertDataOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("OVERWRITE")]
+                    OVERWRITE,
+                    [Google.Apis.Util.StringValueAttribute("INSERT_ROWS")]
+                    INSERTROWS,
+                }
+
                 /// <summary>How the input data should be interpreted.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("valueInputOption", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ValueInputOptionEnum> ValueInputOption { get; set; }
@@ -767,36 +797,6 @@ namespace Google.Apis.Sheets.v4
                 /// appended. By default, responses do not include the updated values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
-
-                /// <summary>Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ResponseValueRenderOptionEnum> ResponseValueRenderOption { get; set; }
-
-                /// <summary>Determines how values in the response should be rendered. The default render option is
-                /// ValueRenderOption.FORMATTED_VALUE.</summary>
-                public enum ResponseValueRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
-                    FORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("UNFORMATTED_VALUE")]
-                    UNFORMATTEDVALUE,
-                    [Google.Apis.Util.StringValueAttribute("FORMULA")]
-                    FORMULA,
-                }
-
-                /// <summary>How the input data should be inserted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("insertDataOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<InsertDataOptionEnum> InsertDataOption { get; set; }
-
-                /// <summary>How the input data should be inserted.</summary>
-                public enum InsertDataOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("OVERWRITE")]
-                    OVERWRITE,
-                    [Google.Apis.Util.StringValueAttribute("INSERT_ROWS")]
-                    INSERTROWS,
-                }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -847,6 +847,24 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "responseValueRenderOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "responseValueRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "insertDataOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "insertDataOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "valueInputOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueInputOption",
@@ -868,24 +886,6 @@ namespace Google.Apis.Sheets.v4
                         "includeValuesInResponse", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "responseValueRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseValueRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "insertDataOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "insertDataOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1696,13 +1696,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines if the update response should include the values of the cells that were updated.
-                /// By default, responses do not include the updated values. If the range to write was larger than than
-                /// the range actually written, the response will include all values in the requested range (excluding
-                /// trailing empty rows and columns).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
-
                 /// <summary>Determines how values in the response should be rendered. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -1751,6 +1744,13 @@ namespace Google.Apis.Sheets.v4
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING,
                 }
+
+                /// <summary>Determines if the update response should include the values of the cells that were updated.
+                /// By default, responses do not include the updated values. If the range to write was larger than than
+                /// the range actually written, the response will include all values in the requested range (excluding
+                /// trailing empty rows and columns).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1801,15 +1801,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
@@ -1831,6 +1822,15 @@ namespace Google.Apis.Sheets.v4
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeValuesInResponse",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
