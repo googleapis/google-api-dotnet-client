@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/error-reporting/'>Stackdriver Error Reporting API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20171014 (1017)
+ *      <tr><th>API Rev<td>20171027 (1030)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/error-reporting/'>
  *              https://cloud.google.com/error-reporting/</a>
@@ -409,10 +409,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>[Required] The group for which events shall be returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string GroupId { get; set; }
-
                 /// <summary>[Optional] The exact value to match against [`ServiceContext.service`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.service", Google.Apis.Util.RequestParameterType.Query)]
@@ -457,6 +453,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     PERIOD30DAYS,
                 }
 
+                /// <summary>[Required] The group for which events shall be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string GroupId { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -489,15 +489,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "groupId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "groupId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "serviceFilter.service", new Google.Apis.Discovery.Parameter
@@ -548,6 +539,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "timeRange.period", new Google.Apis.Discovery.Parameter
                         {
                             Name = "timeRange.period",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "groupId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "groupId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -692,11 +692,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>[Optional] The preferred duration for a single returned `TimedCount`. If not set, no timed
-                /// counts are returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("timedCountDuration", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object TimedCountDuration { get; set; }
-
                 /// <summary>[Optional] A `next_page_token` provided by a previous response. To view additional results,
                 /// pass this token along with the identical query parameters as the first request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -789,6 +784,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("alignmentTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object AlignmentTime { get; set; }
 
+                /// <summary>[Optional] The preferred duration for a single returned `TimedCount`. If not set, no timed
+                /// counts are returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("timedCountDuration", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object TimedCountDuration { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -821,15 +821,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "timedCountDuration", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "timedCountDuration",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
@@ -916,6 +907,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "alignmentTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "alignmentTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "timedCountDuration", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "timedCountDuration",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

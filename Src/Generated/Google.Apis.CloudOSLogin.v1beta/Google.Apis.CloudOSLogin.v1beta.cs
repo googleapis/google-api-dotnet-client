@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Google Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20171014 (1017)
+ *      <tr><th>API Rev<td>20171101 (1035)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
@@ -361,10 +361,98 @@ namespace Google.Apis.CloudOSLogin.v1beta
         public UsersResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            projects = new ProjectsResource(service);
             sshPublicKeys = new SshPublicKeysResource(service);
 
         }
 
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
+        }
+
+        /// <summary>The "projects" collection of methods.</summary>
+        public class ProjectsResource
+        {
+            private const string Resource = "projects";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ProjectsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Deletes a POSIX account.</summary>
+            /// <param name="name">A reference to the POSIX account to update. POSIX accounts are identified by the project ID they
+            /// are associated with. A reference to the POSIX account is in format `users/{user}/projects/{project}`.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a POSIX account.</summary>
+            public class DeleteRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1beta.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>A reference to the POSIX account to update. POSIX accounts are identified by the project ID
+                /// they are associated with. A reference to the POSIX account is in format
+                /// `users/{user}/projects/{project}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1beta/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^users/[^/]+/projects/[^/]+$",
+                        });
+                }
+
+            }
+        }
         private readonly SshPublicKeysResource sshPublicKeys;
 
         /// <summary>Gets the SshPublicKeys resource.</summary>
@@ -691,6 +779,10 @@ namespace Google.Apis.CloudOSLogin.v1beta
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>The project ID of the Google Cloud Platform project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.CloudOSLogin.v1beta.Data.SshPublicKey Body { get; set; }
@@ -729,6 +821,15 @@ namespace Google.Apis.CloudOSLogin.v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^users/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -787,9 +888,13 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The POSIX account information associated with a Directory API User.</summary>
+    /// <summary>The POSIX account information associated with a Google account.</summary>
     public class PosixAccount : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A POSIX account identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
         /// <summary>The GECOS (user information) entry for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gecos")]
         public virtual string Gecos { get; set; } 
@@ -827,14 +932,14 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The SSH public key information associated with a Directory API User.</summary>
+    /// <summary>The SSH public key information associated with a Google account.</summary>
     public class SshPublicKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An expiration time in microseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTimeUsec")]
         public virtual System.Nullable<long> ExpirationTimeUsec { get; set; } 
 
-        /// <summary>The SHA-256 fingerprint of the SSH public key. Output only.</summary>
+        /// <summary>Output only. The SHA-256 fingerprint of the SSH public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171027 (1030)
+ *      <tr><th>API Rev<td>20171101 (1035)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -904,14 +904,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
-                        ///
-                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
-                        /// tasks than requested might be returned, even if more tasks exist; use
-                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
                         /// By default response_view is Task.View.BASIC; not all information is retrieved by default
@@ -957,6 +949,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
+                        ///
+                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
+                        /// tasks than requested might be returned, even if more tasks exist; use
+                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -991,15 +991,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "responseView", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "responseView",
@@ -1021,6 +1012,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1879,11 +1879,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// If a queue is paused then the system will stop executing the tasks in the queue until it is resumed
                 /// via CloudTasks.ResumeQueue. Tasks can still be added when the queue is paused. The state of the
-                /// queue is stored in Queue.queue_state; if paused it will be set to Queue.QueueState.PAUSED.
-                ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).</summary>
+                /// queue is stored in Queue.queue_state; if paused it will be set to Queue.QueueState.PAUSED.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required.
                 ///
@@ -1897,11 +1893,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// If a queue is paused then the system will stop executing the tasks in the queue until it is resumed
                 /// via CloudTasks.ResumeQueue. Tasks can still be added when the queue is paused. The state of the
-                /// queue is stored in Queue.queue_state; if paused it will be set to Queue.QueueState.PAUSED.
-                ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).</summary>
+                /// queue is stored in Queue.queue_state; if paused it will be set to Queue.QueueState.PAUSED.</summary>
                 public class PauseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Queue>
                 {
                     /// <summary>Constructs a new Pause request.</summary>
@@ -2053,10 +2045,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// The state of a queue is stored in Queue.queue_state; after calling this method it will be set to
                 /// Queue.QueueState.RUNNING.
                 ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).
-                ///
                 /// WARNING: Resuming many high-QPS queues at the same time can lead to target overloading. If you are
                 /// resuming high-QPS queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling
                 /// Risks](/cloud-tasks/pdfs/managing-cloud-tasks-scaling-risks-2017-06-05.pdf).</summary>
@@ -2074,10 +2062,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// This method resumes a queue after it has been Queue.QueueState.PAUSED or Queue.QueueState.DISABLED.
                 /// The state of a queue is stored in Queue.queue_state; after calling this method it will be set to
                 /// Queue.QueueState.RUNNING.
-                ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).
                 ///
                 /// WARNING: Resuming many high-QPS queues at the same time can lead to target overloading. If you are
                 /// resuming high-QPS queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling
@@ -2384,10 +2368,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2395,6 +2375,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2430,15 +2414,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2451,6 +2426,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

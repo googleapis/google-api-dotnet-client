@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/streetview/publish/'>Street View Publish API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171030 (1033)
+ *      <tr><th>API Rev<td>20171101 (1035)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/streetview/publish/'>
  *              https://developers.google.com/streetview/publish/</a>
@@ -375,9 +375,9 @@ namespace Google.Apis.StreetViewPublish.v1
         ///
         /// This method returns the following error codes:
         ///
-        /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the upload
-        /// reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the storage
-        /// limit.</summary>
+        /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if the uploaded photo is not a 360 photo.
+        /// * google.rpc.Code.NOT_FOUND if the upload reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if
+        /// the account has reached the storage limit.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.StreetViewPublish.v1.Data.Photo body)
         {
@@ -394,9 +394,9 @@ namespace Google.Apis.StreetViewPublish.v1
         ///
         /// This method returns the following error codes:
         ///
-        /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the upload
-        /// reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if the account has reached the storage
-        /// limit.</summary>
+        /// * google.rpc.Code.INVALID_ARGUMENT if the request is malformed or if the uploaded photo is not a 360 photo.
+        /// * google.rpc.Code.NOT_FOUND if the upload reference does not exist. * google.rpc.Code.RESOURCE_EXHAUSTED if
+        /// the account has reached the storage limit.</summary>
         public class CreateRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Photo>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -910,11 +910,6 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
-            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
-            /// `photoIds==&...`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
-
             /// <summary>Specifies if a download URL for the photo bytes should be returned in the Photo
             /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -929,6 +924,11 @@ namespace Google.Apis.StreetViewPublish.v1
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
+
+            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
+            /// `photoIds==&...`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -955,18 +955,18 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "photoIds", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "photoIds",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "photoIds", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "photoIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

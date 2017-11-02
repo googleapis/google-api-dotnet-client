@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20171027 (1030)
+ *      <tr><th>API Rev<td>20171031 (1034)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -1033,7 +1033,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
     /// enable that specific analysis for the input.</summary>
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Classify the full document into categories.</summary>
+        /// <summary>Classify the full document into categories. If this is true, the API will use the default model
+        /// which classifies into a [predefined taxonomy](/natural-language/docs/categories).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("classifyText")]
         public virtual System.Nullable<bool> ClassifyText { get; set; } 
 
