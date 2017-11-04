@@ -45,11 +45,11 @@ namespace Google.Apis.Auth.OAuth2.AspMvcCore.Filters
         /// <summary>Parses the HTTP request query parameters into the Authorization code response.</summary>
         internal static void ParseRequest(this AuthorizationCodeResponseUrl authorizationCode, HttpRequest request)
         {
-
             var queryDic = QueryHelpers.ParseQuery(request.QueryString.ToString());
             authorizationCode.Code = queryDic["code"];
             authorizationCode.State = queryDic["state"];
 
+            // if there is no error these are not present in the query string, check first
             if (queryDic.ContainsKey("error")) authorizationCode.Error = queryDic["error"];
             if (queryDic.ContainsKey("error_description")) authorizationCode.Error = queryDic["error_description"];
             if (queryDic.ContainsKey("error_uri")) authorizationCode.Error = queryDic["error_uri"];

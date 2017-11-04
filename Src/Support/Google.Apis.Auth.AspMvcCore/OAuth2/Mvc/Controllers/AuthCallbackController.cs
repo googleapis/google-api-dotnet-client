@@ -63,17 +63,12 @@ namespace Google.Apis.Auth.OAuth2.AspMvcCore.Controllers
         /// The authorization callback which receives an authorization code which contains an error or a code.
         /// If a code is available the method exchange the coed with an access token and redirect back to the original
         /// page which initialized the auth process (using the state parameter).
-        /// <para>
-        /// The current timeout is set to 10 seconds. You can change the default behavior by setting 
-        /// <see cref="System.Web.Mvc.AsyncTimeoutAttribute"/> with a different value on your controller.
-        /// </para>
         /// </summary>
         /// <param name="authorizationCode">Authorization code response which contains the code or an error.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
         /// <returns>
         /// Redirect action to the state parameter or <see cref="OnTokenError"/> in case of an error.
         /// </returns>
-        // [AsyncTimeout(10000)] -- nothing in asp net core to accomplish same thing?
         public async virtual Task<ActionResult> IndexAsync(AuthorizationCodeResponseUrl authorizationCode,
             CancellationToken taskCancellationToken)
         {
