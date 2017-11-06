@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud Runtime Configuration API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20171023 (1026)
+ *      <tr><th>API Rev<td>20171030 (1033)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -864,16 +864,16 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
+                    /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
+                    /// previous list request to get the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>The flag indicates whether the user wants to return values of variables. If true, then
                     /// only those variables that user has IAM GetVariable permission will be returned along with their
                     /// values.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("returnValues", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ReturnValues { get; set; }
-
-                    /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
-                    /// previous list request to get the next page of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
                     /// <summary>Specifies the number of results to return per page. If there are fewer elements than
                     /// the specified number, returns all elements.</summary>
@@ -923,18 +923,18 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "returnValues", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "returnValues",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "returnValues", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "returnValues",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2448,8 +2448,9 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         ///
         /// projects/[PROJECT_ID]/configs/[CONFIG_NAME]
         ///
-        /// The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches RFC
-        /// 1035 segment specification. The length of `[CONFIG_NAME]` must be less than 64 bytes.
+        /// The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches [0-9A-
+        /// Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression. The length of `[CONFIG_NAME]` must be less
+        /// than 64 characters.
         ///
         /// You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format.
         /// After you create the resource, you cannot change the resource's name.</summary>
@@ -2575,7 +2576,8 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         /// The `[VARIABLE_NAME]` can contain ASCII letters, numbers, slashes and dashes. Slashes are used as path
         /// element separators and are not part of the `[VARIABLE_NAME]` itself, so `[VARIABLE_NAME]` must contain at
         /// least one non-slash character. Multiple slashes are coalesced into single slash character. Each path segment
-        /// should follow RFC 1035 segment specification. The length of a `[VARIABLE_NAME]` must be less than 256 bytes.
+        /// should match [0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression. The length of a
+        /// `[VARIABLE_NAME]` must be less than 256 characters.
         ///
         /// Once you create a variable, you cannot change the variable name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

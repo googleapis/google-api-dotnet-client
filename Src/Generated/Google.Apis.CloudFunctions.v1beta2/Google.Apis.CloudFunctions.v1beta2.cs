@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Google Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20171025 (1028)
+ *      <tr><th>API Rev<td>20171101 (1035)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -1430,7 +1430,7 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         /// <summary>The hostname of the service that should be observed.
         ///
         /// If no string is provided, the default service implementing the API will be used. For example,
-        /// `storage.googleapis.com` is the default for all event types in the 'google.storage` namespace.</summary>
+        /// `storage.googleapis.com` is the default for all event types in the `google.storage` namespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
@@ -1627,6 +1627,10 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
+        /// <summary>The last update timestamp of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
         /// <summary>Version id of the function created or updated by an API call. This field is only pupulated for
         /// Create and Update operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
@@ -1651,6 +1655,10 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         /// <summary>Type of operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The last update timestamp of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
 
         /// <summary>Version id of the function created or updated by an API call. This field is only pupulated for
         /// Create and Update operations.</summary>

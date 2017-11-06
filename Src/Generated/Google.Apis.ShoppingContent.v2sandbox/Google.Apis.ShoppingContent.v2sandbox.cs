@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20171025 (1028)
+ *      <tr><th>API Rev<td>20171102 (1036)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1819,10 +1819,6 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancellations")]
         public virtual System.Collections.Generic.IList<OrderCancellation> Cancellations { get; set; } 
 
-        /// <summary>The channel type of the order: "purchaseOnGoogle" or "googleExpress".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelType")]
-        public virtual string ChannelType { get; set; } 
-
         /// <summary>The id of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
@@ -2214,7 +2210,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
     public class OrderShipmentLineItemShipment : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The id of the line item that is shipped.</summary>
+        /// <summary>The id of the line item that is shipped. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
 
@@ -2270,7 +2266,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; } 
 
-        /// <summary>The ID of the line item to cancel.</summary>
+        /// <summary>The ID of the line item to cancel. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
 
@@ -2460,7 +2456,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; } 
 
-        /// <summary>The ID of the line item to cancel.</summary>
+        /// <summary>The ID of the line item to cancel. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
 
@@ -2500,7 +2496,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
     public class OrdersCustomBatchRequestEntryReturnLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the line item to return.</summary>
+        /// <summary>The ID of the line item to return. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
 
@@ -2720,7 +2716,7 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
     public class OrdersReturnLineItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ID of the line item to return.</summary>
+        /// <summary>The ID of the line item to return. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
 

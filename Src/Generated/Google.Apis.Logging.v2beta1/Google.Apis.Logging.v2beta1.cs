@@ -1163,17 +1163,17 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1209,18 +1209,18 @@ namespace Google.Apis.Logging.v2beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1993,6 +1993,15 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
+
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -2002,15 +2011,6 @@ namespace Google.Apis.Logging.v2beta1
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
-
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -2052,18 +2052,18 @@ namespace Google.Apis.Logging.v2beta1
                             Pattern = @"^projects/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

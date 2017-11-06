@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171022 (1025)
+ *      <tr><th>API Rev<td>20171027 (1030)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3400,7 +3400,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schemaInlineFormat")]
         public virtual string SchemaInlineFormat { get; set; } 
 
-        /// <summary>Allows the schema of the desitination table to be updated as a side effect of the load job if a
+        /// <summary>Allows the schema of the destination table to be updated as a side effect of the load job if a
         /// schema is autodetected or supplied in the job configuration. Schema update options are supported in two
         /// cases: when writeDisposition is WRITE_APPEND; when writeDisposition is WRITE_TRUNCATE and the destination
         /// table is a partition of a table, specified by partition decorators. For normal tables, WRITE_TRUNCATE will
