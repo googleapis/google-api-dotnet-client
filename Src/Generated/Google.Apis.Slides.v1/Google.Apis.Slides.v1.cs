@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171023 (1026)
+ *      <tr><th>API Rev<td>20171102 (1036)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -503,6 +503,21 @@ namespace Google.Apis.Slides.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageObjectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string PageObjectId { get; private set; }
 
+                /// <summary>The optional mime type of the thumbnail image.
+                ///
+                /// If you don't specify the mime type, the default mime type will be PNG.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("thumbnailProperties.mimeType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ThumbnailPropertiesMimeTypeEnum> ThumbnailPropertiesMimeType { get; set; }
+
+                /// <summary>The optional mime type of the thumbnail image.
+                ///
+                /// If you don't specify the mime type, the default mime type will be PNG.</summary>
+                public enum ThumbnailPropertiesMimeTypeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("PNG")]
+                    PNG,
+                }
+
                 /// <summary>The optional thumbnail image size.
                 ///
                 /// If you don't specify the size, the server chooses a default size of the image.</summary>
@@ -518,21 +533,6 @@ namespace Google.Apis.Slides.v1
                     THUMBNAILSIZEUNSPECIFIED,
                     [Google.Apis.Util.StringValueAttribute("LARGE")]
                     LARGE,
-                }
-
-                /// <summary>The optional mime type of the thumbnail image.
-                ///
-                /// If you don't specify the mime type, the default mime type will be PNG.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("thumbnailProperties.mimeType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ThumbnailPropertiesMimeTypeEnum> ThumbnailPropertiesMimeType { get; set; }
-
-                /// <summary>The optional mime type of the thumbnail image.
-                ///
-                /// If you don't specify the mime type, the default mime type will be PNG.</summary>
-                public enum ThumbnailPropertiesMimeTypeEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("PNG")]
-                    PNG,
                 }
 
 
@@ -578,18 +578,18 @@ namespace Google.Apis.Slides.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "thumbnailProperties.thumbnailSize", new Google.Apis.Discovery.Parameter
+                        "thumbnailProperties.mimeType", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "thumbnailProperties.thumbnailSize",
+                            Name = "thumbnailProperties.mimeType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "thumbnailProperties.mimeType", new Google.Apis.Discovery.Parameter
+                        "thumbnailProperties.thumbnailSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "thumbnailProperties.mimeType",
+                            Name = "thumbnailProperties.thumbnailSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
