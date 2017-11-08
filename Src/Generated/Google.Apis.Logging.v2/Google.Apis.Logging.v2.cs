@@ -1433,15 +1433,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -1451,6 +1442,15 @@ namespace Google.Apis.Logging.v2
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1492,18 +1492,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1549,15 +1549,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -1567,6 +1558,15 @@ namespace Google.Apis.Logging.v2
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -1608,18 +1608,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3181,15 +3181,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -3199,6 +3190,15 @@ namespace Google.Apis.Logging.v2
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -3240,18 +3240,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^folders/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3297,15 +3297,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -3315,6 +3306,15 @@ namespace Google.Apis.Logging.v2
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -3356,18 +3356,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^folders/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4662,15 +4662,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -4680,6 +4671,15 @@ namespace Google.Apis.Logging.v2
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -4721,18 +4721,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4778,15 +4778,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -4796,6 +4787,15 @@ namespace Google.Apis.Logging.v2
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -4837,18 +4837,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6251,15 +6251,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -6269,6 +6260,15 @@ namespace Google.Apis.Logging.v2
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -6310,18 +6310,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^projects/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6367,15 +6367,6 @@ namespace Google.Apis.Logging.v2
                 [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string SinkName { get; private set; }
 
-                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
-                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
-                /// new values of this field: If the old and new values of this field are both false or both true, then
-                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
-                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
-                /// is true and the new value is set to false or defaulted to false.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
                 /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field
                 /// will be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
                 /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -6385,6 +6376,15 @@ namespace Google.Apis.Logging.v2
                 /// buffers/docs/reference/google.protobuf#fieldmaskExample: updateMask=filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
+
+                /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the
+                /// effect of this field on the value of writer_identity in the updated sink depends on both the old and
+                /// new values of this field: If the old and new values of this field are both false or both true, then
+                /// there is no change to the sink's writer_identity. If the old value is false and the new value is
+                /// true, then writer_identity is changed to a unique service account. It is an error if the old value
+                /// is true and the new value is set to false or defaulted to false.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -6426,18 +6426,18 @@ namespace Google.Apis.Logging.v2
                             Pattern = @"^projects/[^/]+/sinks/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "uniqueWriterIdentity",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "uniqueWriterIdentity",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6820,15 +6820,6 @@ namespace Google.Apis.Logging.v2
             [Google.Apis.Util.RequestParameterAttribute("sinkName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SinkName { get; private set; }
 
-            /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the effect of
-            /// this field on the value of writer_identity in the updated sink depends on both the old and new values of
-            /// this field: If the old and new values of this field are both false or both true, then there is no change
-            /// to the sink's writer_identity. If the old value is false and the new value is true, then writer_identity
-            /// is changed to a unique service account. It is an error if the old value is true and the new value is set
-            /// to false or defaulted to false.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
-
             /// <summary>Optional. Field mask that specifies the fields in sink that need an update. A sink field will
             /// be overwritten if, and only if, it is in the update mask. name and output only fields cannot be
             /// updated.An empty updateMask is temporarily treated as using the following mask for backwards
@@ -6838,6 +6829,15 @@ namespace Google.Apis.Logging.v2
             /// updateMask=filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
+
+            /// <summary>Optional. See sinks.create for a description of this field. When updating a sink, the effect of
+            /// this field on the value of writer_identity in the updated sink depends on both the old and new values of
+            /// this field: If the old and new values of this field are both false or both true, then there is no change
+            /// to the sink's writer_identity. If the old value is false and the new value is true, then writer_identity
+            /// is changed to a unique service account. It is an error if the old value is true and the new value is set
+            /// to false or defaulted to false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -6879,18 +6879,18 @@ namespace Google.Apis.Logging.v2
                         Pattern = @"^[^/]+/[^/]+/sinks/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
+                    "updateMask", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "uniqueWriterIdentity",
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "updateMask", new Google.Apis.Discovery.Parameter
+                    "uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "updateMask",
+                        Name = "uniqueWriterIdentity",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

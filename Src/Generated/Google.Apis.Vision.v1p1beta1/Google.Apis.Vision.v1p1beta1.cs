@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20171102 (1036)
+ *      <tr><th>API Rev<td>20171107 (1041)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -417,6 +417,89 @@ namespace Google.Apis.Vision.v1p1beta1
 namespace Google.Apis.Vision.v1p1beta1.Data
 {    
 
+    /// <summary>Represents a color in the RGBA color space. This representation is designed for simplicity of
+    /// conversion to/from color representations in various languages over compactness; for example, the fields of this
+    /// representation can be trivially provided to the constructor of "java.awt.Color" in Java; it can also be
+    /// trivially provided to UIColor's "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little work, it
+    /// can be easily formatted into a CSS "rgba()" string in JavaScript, as well. Here are some examples:
+    ///
+    /// Example (Java):
+    ///
+    /// import com.google.type.Color;
+    ///
+    /// // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
+    /// protocolor.getAlpha().getValue() : 1.0;
+    ///
+    /// return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
+    ///
+    /// public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float)
+    /// color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
+    /// Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int
+    /// alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float)
+    /// alpha) / denominator) .build()); } return resultBuilder.build(); } // ...
+    ///
+    /// Example (iOS / Obj-C):
+    ///
+    /// // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor
+    /// green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if
+    /// (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue
+    /// alpha:alpha]; }
+    ///
+    /// static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed: green: blue:
+    /// alpha:]) { return nil; } Color* result = [Color alloc] init]; [result setRed:red]; [result setGreen:green];
+    /// [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result
+    /// autorelease]; return result; } // ...
+    ///
+    /// Example (JavaScript):
+    ///
+    /// // ...
+    ///
+    /// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green
+    /// || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green =
+    /// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255);
+    ///
+    /// if (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); }
+    ///
+    /// var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(',
+    /// rgbParams, ',', alphaFrac, ')'].join(''); };
+    ///
+    /// var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue);
+    /// var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for
+    /// (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return
+    /// resultBuilder.join(''); };
+    ///
+    /// // ...</summary>
+    public class Color : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fraction of this color that should be applied to the pixel. That is, the final pixel color is
+        /// defined by the equation:
+        ///
+        /// pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
+        ///
+        /// This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a
+        /// completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is
+        /// possible to distinguish between a default value and the value being unset. If omitted, this color object is
+        /// to be rendered as a solid color (as if the alpha value had been explicitly given with a value of
+        /// 1.0).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
+        public virtual System.Nullable<float> Alpha { get; set; } 
+
+        /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blue")]
+        public virtual System.Nullable<float> Blue { get; set; } 
+
+        /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("green")]
+        public virtual System.Nullable<float> Green { get; set; } 
+
+        /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("red")]
+        public virtual System.Nullable<float> Red { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request for performing Google Cloud Vision API tasks over a user-provided image, with user-requested
     /// features.</summary>
     public class GoogleCloudVisionV1p1beta1AnnotateImageRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -447,7 +530,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>If set, represents the error message for the operation. Note that filled-in image annotations are
         /// guaranteed to be correct, even when `error` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual GoogleRpcStatus Error { get; set; } 
+        public virtual Status Error { get; set; } 
 
         /// <summary>If present, face detection has completed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("faceAnnotations")]
@@ -560,7 +643,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     {
         /// <summary>RGB components of the color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual GoogleTypeColor Color { get; set; } 
+        public virtual Color Color { get; set; } 
 
         /// <summary>The fraction of pixels the color occupies in the image. Value in range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pixelFraction")]
@@ -880,11 +963,11 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     {
         /// <summary>Max lat/long pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxLatLng")]
-        public virtual GoogleTypeLatLng MaxLatLng { get; set; } 
+        public virtual LatLng MaxLatLng { get; set; } 
 
         /// <summary>Min lat/long pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLatLng")]
-        public virtual GoogleTypeLatLng MinLatLng { get; set; } 
+        public virtual LatLng MinLatLng { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -895,7 +978,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     {
         /// <summary>lat/long location coordinates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latLng")]
-        public virtual GoogleTypeLatLng LatLng { get; set; } 
+        public virtual LatLng LatLng { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1283,6 +1366,23 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing
+    /// degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard.
+    /// Values must be within normalized ranges.</summary>
+    public class LatLng : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; } 
+
+        /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
     /// is designed to be:
@@ -1326,7 +1426,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     ///
     /// - Logging. If some API errors are stored in logs, the message `Status` could be used directly after any
     /// stripping needed for security/privacy reasons.</summary>
-    public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
@@ -1341,106 +1441,6 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents a color in the RGBA color space. This representation is designed for simplicity of
-    /// conversion to/from color representations in various languages over compactness; for example, the fields of this
-    /// representation can be trivially provided to the constructor of "java.awt.Color" in Java; it can also be
-    /// trivially provided to UIColor's "+colorWithRed:green:blue:alpha" method in iOS; and, with just a little work, it
-    /// can be easily formatted into a CSS "rgba()" string in JavaScript, as well. Here are some examples:
-    ///
-    /// Example (Java):
-    ///
-    /// import com.google.type.Color;
-    ///
-    /// // ... public static java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-    /// protocolor.getAlpha().getValue() : 1.0;
-    ///
-    /// return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(), protocolor.getBlue(), alpha); }
-    ///
-    /// public static Color toProto(java.awt.Color color) { float red = (float) color.getRed(); float green = (float)
-    /// color.getGreen(); float blue = (float) color.getBlue(); float denominator = 255.0; Color.Builder resultBuilder =
-    /// Color .newBuilder() .setRed(red / denominator) .setGreen(green / denominator) .setBlue(blue / denominator); int
-    /// alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha( FloatValue .newBuilder() .setValue(((float)
-    /// alpha) / denominator) .build()); } return resultBuilder.build(); } // ...
-    ///
-    /// Example (iOS / Obj-C):
-    ///
-    /// // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor red]; float green = [protocolor
-    /// green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor alpha]; float alpha = 1.0; if
-    /// (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor colorWithRed:red green:green blue:blue
-    /// alpha:alpha]; }
-    ///
-    /// static Color* toProto(UIColor* color) { CGFloat red, green, blue, alpha; if (![color getRed: green: blue:
-    /// alpha:]) { return nil; } Color* result = [Color alloc] init]; [result setRed:red]; [result setGreen:green];
-    /// [result setBlue:blue]; if (alpha <= 0.9999) { [result setAlpha:floatWrapperWithValue(alpha)]; } [result
-    /// autorelease]; return result; } // ...
-    ///
-    /// Example (JavaScript):
-    ///
-    /// // ...
-    ///
-    /// var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac = rgb_color.green
-    /// || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green =
-    /// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255);
-    ///
-    /// if (!('alpha' in rgb_color)) { return rgbToCssColor_(red, green, blue); }
-    ///
-    /// var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green, blue].join(','); return ['rgba(',
-    /// rgbParams, ',', alphaFrac, ')'].join(''); };
-    ///
-    /// var rgbToCssColor_ = function(red, green, blue) { var rgbNumber = new Number((red << 16) | (green << 8) | blue);
-    /// var hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for
-    /// (var i = 0; i < missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return
-    /// resultBuilder.join(''); };
-    ///
-    /// // ...</summary>
-    public class GoogleTypeColor : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The fraction of this color that should be applied to the pixel. That is, the final pixel color is
-        /// defined by the equation:
-        ///
-        /// pixel color = alpha * (this color) + (1.0 - alpha) * (background color)
-        ///
-        /// This means that a value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a
-        /// completely transparent color. This uses a wrapper message rather than a simple float scalar so that it is
-        /// possible to distinguish between a default value and the value being unset. If omitted, this color object is
-        /// to be rendered as a solid color (as if the alpha value had been explicitly given with a value of
-        /// 1.0).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
-        public virtual System.Nullable<float> Alpha { get; set; } 
-
-        /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blue")]
-        public virtual System.Nullable<float> Blue { get; set; } 
-
-        /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("green")]
-        public virtual System.Nullable<float> Green { get; set; } 
-
-        /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("red")]
-        public virtual System.Nullable<float> Red { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing
-    /// degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard.
-    /// Values must be within normalized ranges.</summary>
-    public class GoogleTypeLatLng : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
-        public virtual System.Nullable<double> Latitude { get; set; } 
-
-        /// <summary>The longitude in degrees. It must be in the range [-180.0, +180.0].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
-        public virtual System.Nullable<double> Longitude { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

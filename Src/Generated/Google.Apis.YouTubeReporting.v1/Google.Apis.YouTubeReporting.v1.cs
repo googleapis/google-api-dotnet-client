@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>YouTube Reporting API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171101 (1035)
+ *      <tr><th>API Rev<td>20171106 (1040)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>
  *              https://developers.google.com/youtube/reporting/v1/reports/</a>
@@ -873,16 +873,16 @@ namespace Google.Apis.YouTubeReporting.v1
             [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OnBehalfOfContentOwner { get; set; }
 
-            /// <summary>If set to true, also system-managed jobs will be returned; otherwise only user-created jobs
-            /// will be returned. System-managed jobs can neither be modified nor deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
-
             /// <summary>A token identifying a page of results the server should return. Typically, this is the value of
             /// ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs`
             /// method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>If set to true, also system-managed jobs will be returned; otherwise only user-created jobs
+            /// will be returned. System-managed jobs can neither be modified nor deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
 
             /// <summary>Requested page size. Server may return fewer jobs than requested. If unspecified, server will
             /// pick an appropriate default.</summary>
@@ -923,18 +923,18 @@ namespace Google.Apis.YouTubeReporting.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "includeSystemManaged", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "includeSystemManaged",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "includeSystemManaged", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "includeSystemManaged",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1124,16 +1124,16 @@ namespace Google.Apis.YouTubeReporting.v1
             [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OnBehalfOfContentOwner { get; set; }
 
-            /// <summary>If set to true, also system-managed report types will be returned; otherwise only the report
-            /// types that can be used to create new reporting jobs will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
-
             /// <summary>A token identifying a page of results the server should return. Typically, this is the value of
             /// ListReportTypesResponse.next_page_token returned in response to the previous call to the
             /// `ListReportTypes` method.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>If set to true, also system-managed report types will be returned; otherwise only the report
+            /// types that can be used to create new reporting jobs will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
 
             /// <summary>Requested page size. Server may return fewer report types than requested. If unspecified,
             /// server will pick an appropriate default.</summary>
@@ -1174,18 +1174,18 @@ namespace Google.Apis.YouTubeReporting.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "includeSystemManaged", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "includeSystemManaged",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "includeSystemManaged", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "includeSystemManaged",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

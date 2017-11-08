@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171024 (1027)
+ *      <tr><th>API Rev<td>20171102 (1036)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -554,7 +554,7 @@ namespace Google.Apis.Script.v1.Data
     /// <summary>A representation of a execution of an Apps Script function that is started using run or runAsync. The
     /// execution response does not arrive until the function finishes executing. The maximum execution runtime is
     /// listed in the [Apps Script quotas guide](/apps-script/guides/services/quotas#current_limitations). After the
-    /// execution is started, it can have one of four outcomes: If the script function returns successfully, the
+    /// execution is started, it can have one of four outcomes:   If the script function returns successfully, the
     /// response field contains an ExecutionResponse object with the function's return value in the object's `result`
     /// field. If the script function (or Apps Script itself) throws an exception, the error field contains a Status
     /// object. The `Status` object's `details` field contains an array with a single ExecutionError object that
@@ -605,8 +605,8 @@ namespace Google.Apis.Script.v1.Data
     /// exception, the response body's error field contains this `Status` object.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status code. For this API, this value either: 3, indicating an `INVALID_ARGUMENT` error, or  1,
-        /// indicating a `CANCELLED` asynchronous execution. </summary>
+        /// <summary>The status code. For this API, this value either:   3, indicating an `INVALID_ARGUMENT` error, or
+        /// 1, indicating a `CANCELLED` asynchronous execution. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
