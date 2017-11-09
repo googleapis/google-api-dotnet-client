@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Google Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20171024 (1027)
+ *      <tr><th>API Rev<td>20171108 (1042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -642,6 +642,15 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportRequests")]
         public virtual System.Collections.Generic.IList<ReportRequest> ReportRequests { get; set; } 
 
+        /// <summary>Enables [resource based quotas](/analytics/devguides/reporting/core/v4/limits-
+        /// quotas#analytics_reporting_api_v4), (defaults to `False`). If this field is set to `True` the per view
+        /// (profile) quotas are governed by the computational cost of the request. Note that using cost based quotas
+        /// will higher enable sampling rates. (10 Million for `SMALL`, 100M for `LARGE`. See the [limits and quotas
+        /// documentation](/analytics/devguides/reporting/core/v4/limits-quotas#analytics_reporting_api_v4) for
+        /// details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useResourceQuotas")]
+        public virtual System.Nullable<bool> UseResourceQuotas { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -649,9 +658,18 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     /// <summary>The main response class which holds the reports from the Reporting API `batchGet` call.</summary>
     public class GetReportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The amount of resource quota tokens deducted to execute the query. Includes all
+        /// responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryCost")]
+        public virtual System.Nullable<int> QueryCost { get; set; } 
+
         /// <summary>Responses corresponding to each of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reports")]
         public virtual System.Collections.Generic.IList<Report> Reports { get; set; } 
+
+        /// <summary>The amount of resource quota remaining for the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceQuotasRemaining")]
+        public virtual ResourceQuotasRemaining ResourceQuotasRemaining { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1076,6 +1094,21 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         /// <summary>List of metrics for each requested DateRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual System.Collections.Generic.IList<DateRangeValues> Metrics { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The resource quota tokens remaining for the property after the request is completed.</summary>
+    public class ResourceQuotasRemaining : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Daily resource quota remaining remaining.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyQuotaTokensRemaining")]
+        public virtual System.Nullable<int> DailyQuotaTokensRemaining { get; set; } 
+
+        /// <summary>Hourly resource quota tokens remaining.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hourlyQuotaTokensRemaining")]
+        public virtual System.Nullable<int> HourlyQuotaTokensRemaining { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

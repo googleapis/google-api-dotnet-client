@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171103 (1037)
+ *      <tr><th>API Rev<td>20171108 (1042)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1285,13 +1285,6 @@ namespace Google.Apis.ServiceUser.v1.Data
         /// to proceed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowCors")]
         public virtual System.Nullable<bool> AllowCors { get; set; } 
-
-        /// <summary>The list of APIs served by this endpoint.
-        ///
-        /// If no APIs are specified this translates to "all APIs" exported by the service, as defined in the top-level
-        /// service configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apis")]
-        public virtual System.Collections.Generic.IList<string> Apis { get; set; } 
 
         /// <summary>The list of features enabled on this endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("features")]

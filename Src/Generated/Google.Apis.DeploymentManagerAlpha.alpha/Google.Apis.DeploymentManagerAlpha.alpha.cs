@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20171025 (1028)
+ *      <tr><th>API Rev<td>20171102 (1036)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -396,7 +396,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -472,7 +472,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -768,7 +768,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -852,7 +852,7 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = @"[a-z](?:[-a-z0-9_.]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -4304,7 +4304,8 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<CompositeTypeLabelEntry> Labels { get; set; } 
 
-        /// <summary>Name of the composite type.</summary>
+        /// <summary>Name of the composite type, must follow the expression:
+        /// [a-z]([-a-z0-9_.]{0,61}[a-z0-9])?.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
