@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171031 (1034)
+ *      <tr><th>API Rev<td>20171108 (1042)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -682,6 +682,12 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// <summary>Device language code setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Device language code raw setting. iOS does returns language code in different format than iOS
+        /// WebView. For example WebView returns en_US, but iOS returns en-US. Field below will return raw value
+        /// returned by iOS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCodeRaw")]
+        public virtual string LanguageCodeRaw { get; set; } 
 
         /// <summary>Device display resolution height.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenResolutionHeight")]

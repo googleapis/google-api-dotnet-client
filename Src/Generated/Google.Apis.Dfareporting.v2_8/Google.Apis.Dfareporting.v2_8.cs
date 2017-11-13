@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v2.8
- *      <tr><th>API Rev<td>20170818 (960)
+ *      <tr><th>API Rev<td>20171109 (1043)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -22765,7 +22765,7 @@ namespace Google.Apis.Dfareporting.v2_8.Data
         /// NZD - "24" for MYR - "25" for BRL - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS
         /// - "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN -
         /// "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB -
-        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN</summary>
+        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
         public virtual System.Nullable<long> CurrencyId { get; set; } 
 
@@ -24513,7 +24513,7 @@ namespace Google.Apis.Dfareporting.v2_8.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
         public virtual string BackgroundColor { get; set; } 
 
-        /// <summary>Click-through URL for backup image. Applicable to the following creative types: FLASH_INPAGE and
+        /// <summary>Click-through URL for backup image. Applicable to the following creative types: FLASH_INPAGE, and
         /// HTML5_BANNER. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupImageClickThroughUrl")]
         public virtual string BackupImageClickThroughUrl { get; set; } 
@@ -25913,7 +25913,7 @@ namespace Google.Apis.Dfareporting.v2_8.Data
         /// "24" for MYR - "25" for BRL - "26" for PTE - "27" for MXP - "28" for CLP - "29" for TRY - "30" for ARS -
         /// "31" for PEN - "32" for ILS - "33" for CHF - "34" for VEF - "35" for COP - "36" for GTQ - "37" for PLN -
         /// "39" for INR - "40" for THB - "41" for IDR - "42" for CZK - "43" for RON - "44" for HUF - "45" for RUB -
-        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN</summary>
+        /// "46" for AED - "47" for BGN - "48" for HRK - "49" for MXN - "50" for NGN</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyId")]
         public virtual System.Nullable<long> CurrencyId { get; set; } 
 
@@ -26416,7 +26416,8 @@ namespace Google.Apis.Dfareporting.v2_8.Data
     /// <summary>Floodlight Activity GenerateTag Response</summary>
     public class FloodlightActivitiesGenerateTagResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Generated tag for this floodlight activity.</summary>
+        /// <summary>Generated tag for this Floodlight activity. For global site tags, this is the event
+        /// snippet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("floodlightActivityTag")]
         public virtual string FloodlightActivityTag { get; set; } 
 
@@ -26567,7 +26568,7 @@ namespace Google.Apis.Dfareporting.v2_8.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tagFormat")]
         public virtual string TagFormat { get; set; } 
 
-        /// <summary>Value of the cat= paramter in the floodlight tag, which the ad servers use to identify the
+        /// <summary>Value of the cat= parameter in the floodlight tag, which the ad servers use to identify the
         /// activity. This is optional: if empty, a new tag string will be generated for you. This string must be 1 to 8
         /// characters long, with valid characters being [a-z][A-Z][0-9][-][ _ ]. This tag string must also be unique
         /// among activities of the same activity group. This field is read-only after insertion.</summary>
@@ -29234,7 +29235,7 @@ namespace Google.Apis.Dfareporting.v2_8.Data
             public virtual System.Collections.Generic.IList<SortedDimension> Dimensions { get; set; } 
 
             /// <summary>Whether to enable all reach dimension combinations in the report. Defaults to false. If
-            /// enabled, the date range of the report should be within the last three months.</summary>
+            /// enabled, the date range of the report should be within the last 42 days.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("enableAllDimensionCombinations")]
             public virtual System.Nullable<bool> EnableAllDimensionCombinations { get; set; } 
 

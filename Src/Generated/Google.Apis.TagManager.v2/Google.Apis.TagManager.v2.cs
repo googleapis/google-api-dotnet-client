@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>Tag Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170915 (988)
+ *      <tr><th>API Rev<td>20171108 (1042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager/api/v2/'>
  *              https://developers.google.com/tag-manager/api/v2/</a>
@@ -1682,6 +1682,14 @@ namespace Google.Apis.TagManager.v2
                             DebugMode,
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
                             DeviceName,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
+                            ElementVisibilityFirstTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
+                            ElementVisibilityRatio,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
+                            ElementVisibilityRecentTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
+                            ElementVisibilityTime,
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
                             EnvironmentName,
                             [Google.Apis.Util.StringValueAttribute("errorLine")]
@@ -1782,14 +1790,18 @@ namespace Google.Apis.TagManager.v2
                             Referrer,
                             [Google.Apis.Util.StringValueAttribute("resolution")]
                             Resolution,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
+                            ScrollDepthDirection,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
+                            ScrollDepthThreshold,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
+                            ScrollDepthUnits,
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
                             SdkVersion,
                             [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
                             VideoCurrentTime,
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
                             VideoDuration,
-                            [Google.Apis.Util.StringValueAttribute("videoElapsedTime")]
-                            VideoElapsedTime,
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
                             VideoPercent,
                             [Google.Apis.Util.StringValueAttribute("videoProvider")]
@@ -1956,6 +1968,14 @@ namespace Google.Apis.TagManager.v2
                             DebugMode,
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
                             DeviceName,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
+                            ElementVisibilityFirstTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
+                            ElementVisibilityRatio,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
+                            ElementVisibilityRecentTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
+                            ElementVisibilityTime,
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
                             EnvironmentName,
                             [Google.Apis.Util.StringValueAttribute("errorLine")]
@@ -2056,14 +2076,18 @@ namespace Google.Apis.TagManager.v2
                             Referrer,
                             [Google.Apis.Util.StringValueAttribute("resolution")]
                             Resolution,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
+                            ScrollDepthDirection,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
+                            ScrollDepthThreshold,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
+                            ScrollDepthUnits,
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
                             SdkVersion,
                             [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
                             VideoCurrentTime,
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
                             VideoDuration,
-                            [Google.Apis.Util.StringValueAttribute("videoElapsedTime")]
-                            VideoElapsedTime,
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
                             VideoPercent,
                             [Google.Apis.Util.StringValueAttribute("videoProvider")]
@@ -2305,6 +2329,14 @@ namespace Google.Apis.TagManager.v2
                             DebugMode,
                             [Google.Apis.Util.StringValueAttribute("deviceName")]
                             DeviceName,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityFirstTime")]
+                            ElementVisibilityFirstTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRatio")]
+                            ElementVisibilityRatio,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityRecentTime")]
+                            ElementVisibilityRecentTime,
+                            [Google.Apis.Util.StringValueAttribute("elementVisibilityTime")]
+                            ElementVisibilityTime,
                             [Google.Apis.Util.StringValueAttribute("environmentName")]
                             EnvironmentName,
                             [Google.Apis.Util.StringValueAttribute("errorLine")]
@@ -2405,14 +2437,18 @@ namespace Google.Apis.TagManager.v2
                             Referrer,
                             [Google.Apis.Util.StringValueAttribute("resolution")]
                             Resolution,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthDirection")]
+                            ScrollDepthDirection,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthThreshold")]
+                            ScrollDepthThreshold,
+                            [Google.Apis.Util.StringValueAttribute("scrollDepthUnits")]
+                            ScrollDepthUnits,
                             [Google.Apis.Util.StringValueAttribute("sdkVersion")]
                             SdkVersion,
                             [Google.Apis.Util.StringValueAttribute("videoCurrentTime")]
                             VideoCurrentTime,
                             [Google.Apis.Util.StringValueAttribute("videoDuration")]
                             VideoDuration,
-                            [Google.Apis.Util.StringValueAttribute("videoElapsedTime")]
-                            VideoElapsedTime,
                             [Google.Apis.Util.StringValueAttribute("videoPercent")]
                             VideoPercent,
                             [Google.Apis.Util.StringValueAttribute("videoProvider")]
@@ -7329,6 +7365,10 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>GTM Tag's API relative path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; } 
+
+        /// <summary>Indicates whether the tag is paused, which prevents the tag from firing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paused")]
+        public virtual System.Nullable<bool> Paused { get; set; } 
 
         /// <summary>User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags
         /// with higher numeric value fire first. A tag's priority can be a positive or negative value. The default

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/tag-manager/api/v1/'>Tag Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20160310 (434)
+ *      <tr><th>API Rev<td>20171108 (1042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/tag-manager/api/v1/'>
  *              https://developers.google.com/tag-manager/api/v1/</a>
@@ -5677,6 +5677,10 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; } 
 
+        /// <summary>True if the tag is paused.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paused")]
+        public virtual System.Nullable<bool> Paused { get; set; } 
+
         /// <summary>User defined numeric priority of the tag. Tags are fired asynchronously in order of priority. Tags
         /// with higher numeric value fire first. A tag's priority can be a positive or negative value. The default
         /// value is 0.</summary>
@@ -5751,14 +5755,14 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
         public virtual string ContainerId { get; set; } 
 
+        /// <summary>A visibility trigger minimum continuous visible time (in milliseconds). Only valid for AMP
+        /// Visibility trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("continuousTimeMinMilliseconds")]
+        public virtual Parameter ContinuousTimeMinMilliseconds { get; set; } 
+
         /// <summary>Used in the case of custom event, which is fired iff all Conditions are true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customEventFilter")]
         public virtual System.Collections.Generic.IList<Condition> CustomEventFilter { get; set; } 
-
-        /// <summary>Reloads the videos in the page that don't already have the YT API enabled. If false, only capture
-        /// events from videos that already have the API enabled. Only valid for YouTube triggers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableAllVideos")]
-        public virtual Parameter EnableAllVideos { get; set; } 
 
         /// <summary>Name of the GTM event that is fired. Only valid for Timer triggers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
@@ -5773,23 +5777,49 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
+        /// <summary>List of integer percentage values for scroll triggers. The trigger will fire when each percentage
+        /// is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalScrollPercentageList")]
+        public virtual Parameter HorizontalScrollPercentageList { get; set; } 
+
         /// <summary>Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer
         /// triggers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interval")]
         public virtual Parameter Interval { get; set; } 
+
+        /// <summary>Time between Timer Events to fire (in seconds). Only valid for AMP Timer trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intervalSeconds")]
+        public virtual Parameter IntervalSeconds { get; set; } 
 
         /// <summary>Limit of the number of GTM events this Timer Trigger will fire. If no limit is set, we will
         /// continue to fire GTM events until the user leaves the page. Only valid for Timer triggers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual Parameter Limit { get; set; } 
 
+        /// <summary>Max time to fire Timer Events (in seconds). Only valid for AMP Timer trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTimerLengthSeconds")]
+        public virtual Parameter MaxTimerLengthSeconds { get; set; } 
+
         /// <summary>Trigger display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>Additional parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; } 
+
         /// <summary>Parent folder id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentFolderId")]
         public virtual string ParentFolderId { get; set; } 
+
+        /// <summary>A click trigger CSS selector (i.e. "a", "button" etc.). Only valid for AMP Click trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual Parameter Selector { get; set; } 
+
+        /// <summary>A visibility trigger minimum total visible time (in milliseconds). Only valid for AMP Visibility
+        /// trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalTimeMinMilliseconds")]
+        public virtual Parameter TotalTimeMinMilliseconds { get; set; } 
 
         /// <summary>The Trigger ID uniquely identifies the GTM Trigger.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
@@ -5806,10 +5836,22 @@ namespace Google.Apis.TagManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueTriggerId")]
         public virtual Parameter UniqueTriggerId { get; set; } 
 
-        /// <summary>List of integer percentage values. The trigger will fire as each percentage is reached in any
-        /// instrumented videos. Only valid for YouTube triggers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoPercentageList")]
-        public virtual Parameter VideoPercentageList { get; set; } 
+        /// <summary>List of integer percentage values for scroll triggers. The trigger will fire when each percentage
+        /// is reached when the view is scrolled vertically. Only valid for AMP scroll triggers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalScrollPercentageList")]
+        public virtual Parameter VerticalScrollPercentageList { get; set; } 
+
+        /// <summary>A visibility trigger CSS selector (i.e. "#id"). Only valid for AMP Visibility trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibilitySelector")]
+        public virtual Parameter VisibilitySelector { get; set; } 
+
+        /// <summary>A visibility trigger maximum percent visibility. Only valid for AMP Visibility trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMax")]
+        public virtual Parameter VisiblePercentageMax { get; set; } 
+
+        /// <summary>A visibility trigger minimum percent visibility. Only valid for AMP Visibility trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visiblePercentageMin")]
+        public virtual Parameter VisiblePercentageMin { get; set; } 
 
         /// <summary>Whether or not we should delay the form submissions or link opening until all of the tags have
         /// fired (by preventing the default action and later simulating the default action). Only valid for Form

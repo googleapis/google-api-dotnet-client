@@ -849,17 +849,17 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("beaconName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BeaconName { get; private set; }
 
+                /// <summary>Specifies the namespace and type of attachment to include in response in namespace/type
+                /// format. Accepts `*` to specify "all types in all namespaces".</summary>
+                [Google.Apis.Util.RequestParameterAttribute("namespacedType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string NamespacedType { get; set; }
+
                 /// <summary>The project id to list beacon attachments under. This field can be used when "*" is
                 /// specified to mean all attachment namespaces. Projects may have multiple attachments with multiple
                 /// namespaces. If "*" is specified and the projectId string is empty, then the project making the
                 /// request is used. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
-
-                /// <summary>Specifies the namespace and type of attachment to include in response in namespace/type
-                /// format. Accepts `*` to specify "all types in all namespaces".</summary>
-                [Google.Apis.Util.RequestParameterAttribute("namespacedType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string NamespacedType { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -895,18 +895,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
+                        "namespacedType", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectId",
+                            Name = "namespacedType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "namespacedType", new Google.Apis.Discovery.Parameter
+                        "projectId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "namespacedType",
+                            Name = "projectId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -978,11 +978,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>Specifies the maximum number of results to return. Defaults to 10. Maximum 1000.
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Requests only beacons that have the given alert. For example, to find beacons that have low
                 /// batteries use `alert_filter=LOW_BATTERY`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alertFilter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1001,6 +996,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                     [Google.Apis.Util.StringValueAttribute("LOW_ACTIVITY")]
                     LOWACTIVITY,
                 }
+
+                /// <summary>Specifies the maximum number of results to return. Defaults to 10. Maximum 1000.
+                /// Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Requests only diagnostic records for the given project id. If not set, then the project
                 /// making the request will be used for looking up diagnostic records. Optional.</summary>
@@ -1050,18 +1050,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "alertFilter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "alertFilter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "alertFilter", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "alertFilter",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1581,6 +1581,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>The maximum number of records to return for this request, up to a server-defined upper
+            /// limit.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>Filter query string that supports the following field filters:
             ///
             /// * **description:`""`** For example: **description:"Room 3"** Returns beacons whose description matches
@@ -1623,11 +1628,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }
 
-            /// <summary>The maximum number of records to return for this request, up to a server-defined upper
-            /// limit.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>The project id to list beacons under. If not present then the project credential that made the
             /// request is used as the project. Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1667,18 +1667,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "q",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "q", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "q",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
