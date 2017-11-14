@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/beacons/proximity/'>Google Proximity Beacon API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20171017 (1020)
+ *      <tr><th>API Rev<td>20171112 (1046)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/beacons/proximity/'>
  *              https://developers.google.com/beacons/proximity/</a>
@@ -530,17 +530,17 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("beaconName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string BeaconName { get; private set; }
 
-                /// <summary>Specifies the namespace and type of attachments to delete in `namespace/type` format.
-                /// Accepts `*` to specify "all types in all namespaces". Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("namespacedType", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string NamespacedType { get; set; }
-
                 /// <summary>The project id to delete beacon attachments under. This field can be used when "*" is
                 /// specified to mean all attachment namespaces. Projects may have multiple attachments with multiple
                 /// namespaces. If "*" is specified and the projectId string is empty, then the project making the
                 /// request is used. Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
+
+                /// <summary>Specifies the namespace and type of attachments to delete in `namespace/type` format.
+                /// Accepts `*` to specify "all types in all namespaces". Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("namespacedType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string NamespacedType { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -576,18 +576,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             Pattern = @"^beacons/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "namespacedType", new Google.Apis.Discovery.Parameter
+                        "projectId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "namespacedType",
+                            Name = "projectId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
+                        "namespacedType", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectId",
+                            Name = "namespacedType",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -978,6 +978,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>Specifies the maximum number of results to return. Defaults to 10. Maximum 1000.
+                /// Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Requests only beacons that have the given alert. For example, to find beacons that have low
                 /// batteries use `alert_filter=LOW_BATTERY`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("alertFilter", Google.Apis.Util.RequestParameterType.Query)]
@@ -996,11 +1001,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                     [Google.Apis.Util.StringValueAttribute("LOW_ACTIVITY")]
                     LOWACTIVITY,
                 }
-
-                /// <summary>Specifies the maximum number of results to return. Defaults to 10. Maximum 1000.
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Requests only diagnostic records for the given project id. If not set, then the project
                 /// making the request will be used for looking up diagnostic records. Optional.</summary>
@@ -1050,18 +1050,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "alertFilter", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "alertFilter",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "alertFilter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "alertFilter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1581,11 +1581,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The maximum number of records to return for this request, up to a server-defined upper
-            /// limit.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Filter query string that supports the following field filters:
             ///
             /// * **description:`""`** For example: **description:"Room 3"** Returns beacons whose description matches
@@ -1628,6 +1623,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("q", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Q { get; set; }
 
+            /// <summary>The maximum number of records to return for this request, up to a server-defined upper
+            /// limit.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The project id to list beacons under. If not present then the project credential that made the
             /// request is used as the project. Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1667,18 +1667,18 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "q", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "q",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "q", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "q",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2154,6 +2154,21 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; } 
 
+        /// <summary>The distance away from the beacon at which this attachment should be delivered to a mobile app.
+        ///
+        /// Setting this to a value greater than zero indicates that the app should behave as if the beacon is "seen"
+        /// when the mobile device is less than this distance away from the beacon.
+        ///
+        /// Different attachments on the same beacon can have different max distances.
+        ///
+        /// Note that even though this value is expressed with fractional meter precision, real-world behavior is likley
+        /// to be much less precise than one meter, due to the nature of current Bluetooth radio technology.
+        ///
+        /// Optional. When not set or zero, the attachment should be delivered at the beacon's outer limit of
+        /// detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDistanceMeters")]
+        public virtual System.Nullable<double> MaxDistanceMeters { get; set; } 
+
         /// <summary>Specifies what kind of attachment this is. Tells a client how to interpret the `data` field. Format
         /// is namespace/type, for example scrupulous-wombat-12345/welcome-message</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedType")]
@@ -2501,25 +2516,7 @@ namespace Google.Apis.Proximitybeacon.v1beta1.Data
 
     /// <summary>An object representing a latitude/longitude pair. This is expressed as a pair of doubles representing
     /// degrees latitude and degrees longitude. Unless specified otherwise, this must conform to the WGS84 standard.
-    /// Values must be within normalized ranges.
-    ///
-    /// Example of normalization code in Python:
-    ///
-    /// def NormalizeLongitude(longitude): Wraps decimal degrees longitude to [-180.0, 180.0]. q, r = divmod(longitude,
-    /// 360.0) if r > 180.0 or (r == 180.0 and q <= -1.0): return r - 360.0 return r
-    ///
-    /// def NormalizeLatLng(latitude, longitude): Wraps decimal degrees latitude and longitude to [-90.0, 90.0] and
-    /// [-180.0, 180.0], respectively. r = latitude % 360.0 if r <= 90.0: return r, NormalizeLongitude(longitude) elif r
-    /// >= 270.0: return r - 360, NormalizeLongitude(longitude) else: return 180 - r, NormalizeLongitude(longitude +
-    /// 180.0)
-    ///
-    /// assert 180.0 == NormalizeLongitude(180.0) assert -180.0 == NormalizeLongitude(-180.0) assert -179.0 ==
-    /// NormalizeLongitude(181.0) assert (0.0, 0.0) == NormalizeLatLng(360.0, 0.0) assert (0.0, 0.0) ==
-    /// NormalizeLatLng(-360.0, 0.0) assert (85.0, 180.0) == NormalizeLatLng(95.0, 0.0) assert (-85.0, -170.0) ==
-    /// NormalizeLatLng(-95.0, 10.0) assert (90.0, 10.0) == NormalizeLatLng(90.0, 10.0) assert (-90.0, -10.0) ==
-    /// NormalizeLatLng(-90.0, -10.0) assert (0.0, -170.0) == NormalizeLatLng(-180.0, 10.0) assert (0.0, -170.0) ==
-    /// NormalizeLatLng(180.0, 10.0) assert (-90.0, 10.0) == NormalizeLatLng(270.0, 10.0) assert (90.0, 10.0) ==
-    /// NormalizeLatLng(-270.0, 10.0)</summary>
+    /// Values must be within normalized ranges.</summary>
     public class LatLng : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The latitude in degrees. It must be in the range [-90.0, +90.0].</summary>

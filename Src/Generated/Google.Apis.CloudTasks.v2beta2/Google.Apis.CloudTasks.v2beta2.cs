@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171106 (1040)
+ *      <tr><th>API Rev<td>20171110 (1044)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -436,7 +436,11 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// The lease holder must acknowledge a task within the PullTasksRequest.lease_duration or the lease
                     /// will expire and the task will become ready to be returned in a different PullTasksResponse.
                     /// After the task is acknowledged, it will not be returned by a later CloudTasks.PullTasks,
-                    /// CloudTasks.GetTask, or CloudTasks.ListTasks.</summary>
+                    /// CloudTasks.GetTask, or CloudTasks.ListTasks.
+                    ///
+                    /// To acknowledge multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1
+                    /// /how-tos/batch) or the batching documentation for your client library, for example
+                    /// https://developers.google.com/api-client-library/python/guide/batch.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -454,7 +458,11 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// The lease holder must acknowledge a task within the PullTasksRequest.lease_duration or the lease
                     /// will expire and the task will become ready to be returned in a different PullTasksResponse.
                     /// After the task is acknowledged, it will not be returned by a later CloudTasks.PullTasks,
-                    /// CloudTasks.GetTask, or CloudTasks.ListTasks.</summary>
+                    /// CloudTasks.GetTask, or CloudTasks.ListTasks.
+                    ///
+                    /// To acknowledge multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1
+                    /// /how-tos/batch) or the batching documentation for your client library, for example
+                    /// https://developers.google.com/api-client-library/python/guide/batch.</summary>
                     public class AcknowledgeRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Empty>
                     {
                         /// <summary>Constructs a new Acknowledge request.</summary>
@@ -1561,7 +1569,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Authorization requires the following [Google IAM](/iam) permission on the specified resource parent:
                 ///
-                /// * `cloudtasks.queues.getIamPolicy` </summary>
+                /// * `cloudtasks.queues.getIamPolicy`</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -1575,7 +1583,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Authorization requires the following [Google IAM](/iam) permission on the specified resource parent:
                 ///
-                /// * `cloudtasks.queues.getIamPolicy` </summary>
+                /// * `cloudtasks.queues.getIamPolicy`</summary>
                 public class GetIamPolicyRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -1667,18 +1675,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "app_engine_http_target: *".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested_page size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
@@ -1695,6 +1691,18 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "app_engine_http_target: *".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested_page size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1730,15 +1738,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1751,6 +1750,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1772,10 +1780,8 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
                 ///
-                /// * `PROJECT_ID` can contain uppercase and lowercase letters,   numbers, hyphens, colons, and periods; that is, it
-                /// must match   the regular expression: `[a-zA-Z\\d-:\\.]+`. * `QUEUE_ID` can contain uppercase and lowercase letters,
-                /// numbers, and hyphens; that is, it must match the regular   expression: `[a-zA-Z\\d-]+`. The maximum length is 100
-                /// characters.
+                /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),    hyphens (-), colons (:), or periods (.). *
+                /// `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or   hyphens (-). The maximum length is 100 characters.
                 ///
                 /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudTasks.v2beta2.Data.Queue body, string name)
@@ -1807,10 +1813,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// The queue name must have the following format:
                     /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
                     ///
-                    /// * `PROJECT_ID` can contain uppercase and lowercase letters, numbers, hyphens, colons, and
-                    /// periods; that is, it must match the regular expression: `[a-zA-Z\\d-:\\.]+`. * `QUEUE_ID` can
-                    /// contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the
-                    /// regular expression: `[a-zA-Z\\d-]+`. The maximum length is 100 characters.
+                    /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or
+                    /// periods (.). * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The
+                    /// maximum length is 100 characters.
                     ///
                     /// Caller-specified and required in CreateQueueRequest, after which it becomes output
                     /// only.</summary>
@@ -2135,7 +2140,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Authorization requires the following [Google IAM](/iam) permission on the specified resource parent:
                 ///
-                /// * `cloudtasks.queues.setIamPolicy` </summary>
+                /// * `cloudtasks.queues.setIamPolicy`</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2151,7 +2156,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Authorization requires the following [Google IAM](/iam) permission on the specified resource parent:
                 ///
-                /// * `cloudtasks.queues.setIamPolicy` </summary>
+                /// * `cloudtasks.queues.setIamPolicy`</summary>
                 public class SetIamPolicyRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Policy>
                 {
                     /// <summary>Constructs a new SetIamPolicy request.</summary>
@@ -2216,7 +2221,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// return an empty set of permissions, not a google.rpc.Code.NOT_FOUND error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning. </summary>
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
                 /// documentation for the appropriate value for this field.</param>
@@ -2229,7 +2234,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// return an empty set of permissions, not a google.rpc.Code.NOT_FOUND error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
-                /// tools, not for authorization checking. This operation may "fail open" without warning. </summary>
+                /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
                 public class TestIamPermissionsRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.TestIamPermissionsResponse>
                 {
                     /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2374,10 +2379,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2385,6 +2386,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2420,15 +2425,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2441,6 +2437,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2544,10 +2549,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>The HTTP method to use for the request. The default is POST.
         ///
         /// The app's request handler for the task's target URL must be able to handle HTTP requests with this
-        /// http_method, otherwise the task attempt will fail with error code 405 (Method Not Allowed). See the Request-
-        /// Line is not allowed for the resource identified by the Request-URI". See [Writing a push task request
-        /// handler](/appengine/docs/java/taskqueue/push/creating-handlers#writing_a_push_task_request_handler) and the
-        /// documentation for the request handlers in the language your app is written in e.g. [python
+        /// http_method, otherwise the task attempt will fail with error code 405 (Method Not Allowed). See [Writing a
+        /// push task request handler](/appengine/docs/java/taskqueue/push/creating-
+        /// handlers#writing_a_push_task_request_handler) and the documentation for the request handlers in the language
+        /// your app is written in e.g. [python
         /// RequestHandler](/appengine/docs/python/tools/webapp/requesthandlerclass).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; } 
@@ -2615,10 +2620,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// routing](/appengine/docs/flexible/python/how-requests-are-routed).</summary>
     public class AppEngineRouting : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only.
+        /// <summary>Output only. The host that the task is sent to.
         ///
-        /// The host that the task is sent to. For more information, see [How Requests are
-        /// Routed](/appengine/docs/standard/python/how-requests-are-routed).
+        /// For more information, see [How Requests are Routed](/appengine/docs/standard/python/how-requests-are-
+        /// routed).
         ///
         /// The host is constructed as:
         ///
@@ -2736,34 +2741,26 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>The status of a task attempt.</summary>
     public class AttemptStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only.
-        ///
-        /// The time that this attempt was dispatched.
+        /// <summary>Output only. The time that this attempt was dispatched.
         ///
         /// `dispatch_time` will be truncated to the nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchTime")]
         public virtual object DispatchTime { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The response from the target for this attempt.
+        /// <summary>Output only. The response from the target for this attempt.
         ///
         /// If the task has not been attempted or the task is currently running then the response status is
         /// google.rpc.Code.UNKNOWN.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseStatus")]
         public virtual Status ResponseStatus { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The time that this attempt response was received.
+        /// <summary>Output only. The time that this attempt response was received.
         ///
         /// `response_time` will be truncated to the nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseTime")]
         public virtual object ResponseTime { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The time that this attempt was scheduled.
+        /// <summary>Output only. The time that this attempt was scheduled.
         ///
         /// `schedule_time` will be truncated to the nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
@@ -3038,9 +3035,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; } 
 
-        /// <summary>A meta-data tag for this task.
+        /// <summary>The task's tag.
         ///
-        /// This value is used by CloudTasks.PullTasks calls when PullTasksRequest.filter is `tag=`.
+        /// Tags allow similar tasks to be processed in a batch. If you label tasks with a tag, your task worker can
+        /// pull tasks with the same tag using PullTasksRequest.filter. For example, if you want to aggregate the events
+        /// associated with a specific user once a day, you could tag tasks with the user ID.
+        ///
+        /// The task's tag can only be set when the task is created.
         ///
         /// The tag must be less than 500 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
@@ -3173,10 +3174,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         ///
-        /// * `PROJECT_ID` can contain uppercase and lowercase letters, numbers, hyphens, colons, and periods; that is,
-        /// it must match the regular expression: `[a-zA-Z\\d-:\\.]+`. * `QUEUE_ID` can contain uppercase and lowercase
-        /// letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum
-        /// length is 100 characters.
+        /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). *
+        /// `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100
+        /// characters.
         ///
         /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3192,9 +3192,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pullTarget")]
         public virtual PullTarget PullTarget { get; set; } 
 
-        /// <summary>Output only.
+        /// <summary>Output only. The last time this queue was purged.
         ///
-        /// The last time this queue was purged. All tasks that were created before this time were purged.
+        /// All tasks that were created before this time were purged.
         ///
         /// A queue can be purged using CloudTasks.PurgeQueue, the [App Engine Task Queue SDK, or the Cloud
         /// Console](/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-
@@ -3205,9 +3205,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
         public virtual object PurgeTime { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The state of the queue.
+        /// <summary>Output only. The state of the queue.
         ///
         /// `queue_state` can only be changed by called CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
         /// [queue.yaml](/appengine/docs/python/config/queueref). CloudTasks.UpdateQueue cannot be used to change
@@ -3247,11 +3245,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// dispatch is a first task attempt or a retry.</summary>
     public class RateLimits : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only.
+        /// <summary>Output only. The max burst size.
         ///
-        /// The max burst size limits how fast the queue is processed when many tasks are in the queue and the rate is
-        /// high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued,
-        /// but still limits resource usage when many tasks are enqueued in a short period of time.
+        /// Max burst size limits how fast the queue is processed when many tasks are in the queue and the rate is high.
+        /// This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but
+        /// still limits resource usage when many tasks are enqueued in a short period of time.
         ///
         /// * For App Engine queues, if RateLimits.max_tasks_dispatched_per_second is 1, this field is 10; otherwise
         /// this field is RateLimits.max_tasks_dispatched_per_second / 5. * For pull queues, this field is output only
@@ -3518,9 +3516,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineTaskTarget")]
         public virtual AppEngineTaskTarget AppEngineTaskTarget { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The time that the task was created.
+        /// <summary>Output only. The time that the task was created.
         ///
         /// `create_time` will be truncated to the nearest second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -3531,12 +3527,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// The task name must have the following format:
         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         ///
-        /// * `PROJECT_ID` can contain uppercase and lowercase letters, numbers, hyphens, colons, and periods; that is,
-        /// it must match the regular expression: `[a-zA-Z\\d-:\\.]+`. * `QUEUE_ID` can contain uppercase and lowercase
-        /// letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum
-        /// length is 100 characters. * `TASK_ID` contain uppercase and lowercase letters, numbers, underscores, and
-        /// hyphens; that is, it must match the regular expression: `[a-zA-Z\\d_-]+`. The maximum length is 500
-        /// characters.
+        /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). *
+        /// `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100
+        /// characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores
+        /// (_). The maximum length is 500 characters.
         ///
         /// Optionally caller-specified in CreateTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3565,15 +3559,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// Task status.</summary>
+        /// <summary>Output only. The task status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskStatus")]
         public virtual TaskStatus TaskStatus { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The view specifies which subset of the Task has been returned.</summary>
+        /// <summary>Output only. The view specifies which subset of the Task has been returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual string View { get; set; } 
 
@@ -3584,24 +3574,19 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>Status of the task.</summary>
     public class TaskStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only.
+        /// <summary>Output only. The number of attempts dispatched.
         ///
-        /// The number of attempts dispatched. This count includes tasks which have been dispatched but haven't received
-        /// a response.</summary>
+        /// This count includes tasks which have been dispatched but haven't received a response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptDispatchCount")]
         public virtual System.Nullable<long> AttemptDispatchCount { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The number of attempts which have received a response.
+        /// <summary>Output only. The number of attempts which have received a response.
         ///
         /// This field is not calculated for [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptResponseCount")]
         public virtual System.Nullable<long> AttemptResponseCount { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The status of the task's first attempt.
+        /// <summary>Output only. The status of the task's first attempt.
         ///
         /// Only AttemptStatus.dispatch_time will be set. The other AttemptStatus information is not retained by Cloud
         /// Tasks.
@@ -3610,9 +3595,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firstAttemptStatus")]
         public virtual AttemptStatus FirstAttemptStatus { get; set; } 
 
-        /// <summary>Output only.
-        ///
-        /// The status of the task's last attempt.
+        /// <summary>Output only. The status of the task's last attempt.
         ///
         /// This field is not calculated for [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptStatus")]

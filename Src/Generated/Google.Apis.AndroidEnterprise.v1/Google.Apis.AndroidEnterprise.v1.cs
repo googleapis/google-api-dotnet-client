@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171101 (1035)
+ *      <tr><th>API Rev<td>20171108 (1042)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -72,6 +72,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             installs = new InstallsResource(this);
             managedconfigurationsfordevice = new ManagedconfigurationsfordeviceResource(this);
             managedconfigurationsforuser = new ManagedconfigurationsforuserResource(this);
+            managedconfigurationssettings = new ManagedconfigurationssettingsResource(this);
             permissions = new PermissionsResource(this);
             products = new ProductsResource(this);
             serviceaccountkeys = new ServiceaccountkeysResource(this);
@@ -190,6 +191,14 @@ namespace Google.Apis.AndroidEnterprise.v1
         public virtual ManagedconfigurationsforuserResource Managedconfigurationsforuser
         {
             get { return managedconfigurationsforuser; }
+        }
+
+        private readonly ManagedconfigurationssettingsResource managedconfigurationssettings;
+
+        /// <summary>Gets the Managedconfigurationssettings resource.</summary>
+        public virtual ManagedconfigurationssettingsResource Managedconfigurationssettings
+        {
+            get { return managedconfigurationssettings; }
         }
 
         private readonly PermissionsResource permissions;
@@ -4168,8 +4177,11 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Adds or updates a per-user managed configuration for an app for the specified user. This method
-        /// supports patch semantics.</summary>
+        /// <summary>Adds or updates the managed configuration settings for an app for the specified user. If you
+        /// support the Managed configurations iframe, you can apply managed configurations to a user by specifying an
+        /// mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply
+        /// managed configurations by passing a list of managed properties. This method supports patch
+        /// semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
@@ -4181,8 +4193,11 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new PatchRequest(service, body, enterpriseId, userId, managedConfigurationForUserId);
         }
 
-        /// <summary>Adds or updates a per-user managed configuration for an app for the specified user. This method
-        /// supports patch semantics.</summary>
+        /// <summary>Adds or updates the managed configuration settings for an app for the specified user. If you
+        /// support the Managed configurations iframe, you can apply managed configurations to a user by specifying an
+        /// mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply
+        /// managed configurations by passing a list of managed properties. This method supports patch
+        /// semantics.</summary>
         public class PatchRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4270,7 +4285,10 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Adds or updates a per-user managed configuration for an app for the specified user.</summary>
+        /// <summary>Adds or updates the managed configuration settings for an app for the specified user. If you
+        /// support the Managed configurations iframe, you can apply managed configurations to a user by specifying an
+        /// mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply
+        /// managed configurations by passing a list of managed properties.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         /// <param name="userId">The ID of the
@@ -4282,7 +4300,10 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new UpdateRequest(service, body, enterpriseId, userId, managedConfigurationForUserId);
         }
 
-        /// <summary>Adds or updates a per-user managed configuration for an app for the specified user.</summary>
+        /// <summary>Adds or updates the managed configuration settings for an app for the specified user. If you
+        /// support the Managed configurations iframe, you can apply managed configurations to a user by specifying an
+        /// mcmId and its associated configuration variables (if any) in the request. Alternatively, all EMMs can apply
+        /// managed configurations by passing a list of managed properties.</summary>
         public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfiguration>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -4361,6 +4382,101 @@ namespace Google.Apis.AndroidEnterprise.v1
                     "managedConfigurationForUserId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "managedConfigurationForUserId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "managedconfigurationssettings" collection of methods.</summary>
+    public class ManagedconfigurationssettingsResource
+    {
+        private const string Resource = "managedconfigurationssettings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ManagedconfigurationssettingsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Lists all the managed configurations settings for the specified app. Only the ID and the name is
+        /// set.</summary>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="productId">The ID of the product
+        /// for which the managed configurations settings applies to.</param>
+        public virtual ListRequest List(string enterpriseId, string productId)
+        {
+            return new ListRequest(service, enterpriseId, productId);
+        }
+
+        /// <summary>Lists all the managed configurations settings for the specified app. Only the ID and the name is
+        /// set.</summary>
+        public class ListRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.ManagedConfigurationsSettingsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string enterpriseId, string productId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                ProductId = productId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the product for which the managed configurations settings applies to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProductId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/products/{productId}/managedConfigurationsSettings"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "productId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "productId",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -7648,6 +7764,28 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A configuration variables resource contains the managed configuration settings ID to be applied to a
+    /// single user, as well as the variable set that is attributed to the user. The variable set will be used to
+    /// replace placeholders in the managed configuration settings.</summary>
+    public class ConfigurationVariables : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#configurationVariables".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ID of the managed configurations settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcmId")]
+        public virtual string McmId { get; set; } 
+
+        /// <summary>The variable set that is attributed to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variableSet")]
+        public virtual System.Collections.Generic.IList<VariableSet> VariableSet { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Devices resource represents a mobile device managed by the EMM and belonging to a specific enterprise
     /// user.
     ///
@@ -8056,11 +8194,15 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A managed configuration resource contains the set of managed properties that have been configured for
-    /// an Android app. The app's developer would have defined configurable properties in the managed configurations
-    /// schema.</summary>
+    /// <summary>A managed configuration resource contains the set of managed properties defined by the app developer in
+    /// the app's managed configurations schema, as well as any configuration variables defined for the user.</summary>
     public class ManagedConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Contains the ID of the managed configuration profile and the set of configuration variables (if
+        /// any) defined for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationVariables")]
+        public virtual ConfigurationVariables ConfigurationVariables { get; set; } 
+
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "androidenterprise#managedConfiguration".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -8106,6 +8248,49 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>A managed configuration for an app for a specific user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationForUser")]
         public virtual System.Collections.Generic.IList<ManagedConfiguration> ManagedConfigurationForUser { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A managed configurations settings resource contains the set of managed properties that have been
+    /// configured for an Android app to be applied to a set of users. The app's developer would have defined
+    /// configurable properties in the managed configurations schema.</summary>
+    public class ManagedConfigurationsSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#managedConfigurationsSettings".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The set of managed properties for this configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedProperty")]
+        public virtual System.Collections.Generic.IList<ManagedProperty> ManagedProperty { get; set; } 
+
+        /// <summary>The ID of the managed configurations settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mcmId")]
+        public virtual string McmId { get; set; } 
+
+        /// <summary>The name of the managed configurations settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The managed configurations settings for a product.</summary>
+    public class ManagedConfigurationsSettingsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#managedConfigurationsSettingsListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>A managed configurations settings for an app that may be assigned to a group of users in an
+        /// enterprise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedConfigurationsSettings")]
+        public virtual System.Collections.Generic.IList<ManagedConfigurationsSettings> ManagedConfigurationsSettings { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8917,6 +9102,28 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>A user of an enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual System.Collections.Generic.IList<User> User { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A variable set is a key-value pair of EMM-provided placeholders and its corresponding value, which is
+    /// attributed to a user. For example, $FIRSTNAME could be a placeholder, and its value could be Alice. Placeholders
+    /// should start with a '$' sign and should be alphanumeric only.</summary>
+    public class VariableSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "androidenterprise#variableSet".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The placeholder string; defined by EMM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholder")]
+        public virtual string Placeholder { get; set; } 
+
+        /// <summary>The value of the placeholder, specific to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userValue")]
+        public virtual string UserValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
