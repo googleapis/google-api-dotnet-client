@@ -409,11 +409,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>[Optional] The exact value to match against [`ServiceContext.version`](/error-
-                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ServiceFilterVersion { get; set; }
-
                 /// <summary>[Optional] The exact value to match against [`ServiceContext.resource_type`](/error-
                 /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("serviceFilter.resourceType", Google.Apis.Util.RequestParameterType.Query)]
@@ -457,6 +452,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
+                /// <summary>[Optional] The exact value to match against [`ServiceContext.version`](/error-
+                /// reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("serviceFilter.version", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ServiceFilterVersion { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -489,15 +489,6 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "serviceFilter.version", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceFilter.version",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "serviceFilter.resourceType", new Google.Apis.Discovery.Parameter
@@ -548,6 +539,15 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "serviceFilter.version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "serviceFilter.version",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

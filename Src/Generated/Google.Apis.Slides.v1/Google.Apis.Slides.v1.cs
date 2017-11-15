@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171102 (1036)
+ *      <tr><th>API Rev<td>20171113 (1047)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2885,6 +2885,12 @@ namespace Google.Apis.Slides.v1.Data
     /// corresponding property_state field value.</summary>
     public class ShapeProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The alignment of the content in the shape. If unspecified, the alignment is inherited from a parent
+        /// placeholder if it exists. If the shape has no parent, the default alignment matches the alignment for new
+        /// shapes created in the Slides editor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentAlignment")]
+        public virtual string ContentAlignment { get; set; } 
+
         /// <summary>The hyperlink destination of the shape. If unset, there is no link. Links are not inherited from
         /// parent placeholders.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
@@ -3217,6 +3223,11 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The properties of the TableCell.</summary>
     public class TableCellProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The alignment of the content in the table cell. The default alignment matches the alignment for
+        /// newly created table cells in the Slides editor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentAlignment")]
+        public virtual string ContentAlignment { get; set; } 
+
         /// <summary>The background fill of the table cell. The default fill matches the fill for newly created table
         /// cells in the Slides editor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableCellBackgroundFill")]

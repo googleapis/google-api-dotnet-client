@@ -1,507 +1,31 @@
 {
-  "ownerName": "Google",
-  "resources": {
-    "operations": {
-      "methods": {
-        "list": {
-          "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
-          "response": {
-            "$ref": "ListOperationsResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "filter": {
-              "description": "The standard list filter.",
-              "type": "string",
-              "location": "query"
-            },
-            "name": {
-              "description": "The name of the operation's parent resource.",
-              "type": "string",
-              "location": "query"
-            },
-            "pageToken": {
-              "description": "The standard list page token.",
-              "type": "string",
-              "location": "query"
-            },
-            "pageSize": {
-              "description": "The standard list page size.",
-              "format": "int32",
-              "type": "integer",
-              "location": "query"
-            }
-          },
-          "flatPath": "v1/operations",
-          "path": "v1/operations",
-          "id": "cloudfunctions.operations.list"
-        },
-        "get": {
-          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-          "response": {
-            "$ref": "Operation"
-          },
-          "parameterOrder": [
-            "name"
-          ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "name": {
-              "description": "The name of the operation resource.",
-              "required": true,
-              "type": "string",
-              "pattern": "^operations/[^/]+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1/operations/{operationsId}",
-          "path": "v1/{+name}",
-          "id": "cloudfunctions.operations.get"
-        }
-      }
-    },
-    "projects": {
-      "resources": {
-        "locations": {
-          "methods": {
-            "list": {
-              "description": "Lists information about the supported locations for this service.",
-              "response": {
-                "$ref": "ListLocationsResponse"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "filter": {
-                  "location": "query",
-                  "description": "The standard list filter.",
-                  "type": "string"
-                },
-                "name": {
-                  "location": "path",
-                  "description": "The resource that owns the locations collection, if applicable.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                },
-                "pageToken": {
-                  "description": "The standard list page token.",
-                  "type": "string",
-                  "location": "query"
-                },
-                "pageSize": {
-                  "description": "The standard list page size.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1/projects/{projectsId}/locations",
-              "path": "v1/{+name}/locations",
-              "id": "cloudfunctions.projects.locations.list"
-            }
-          },
-          "resources": {
-            "functions": {
-              "methods": {
-                "create": {
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "location"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "location": {
-                      "description": "The project and location in which the function should be created, specified\nin the format `projects/*/locations/*`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions",
-                  "path": "v1/{+location}/functions",
-                  "id": "cloudfunctions.projects.locations.functions.create",
-                  "description": "Creates a new function. If a function with the given name already exists in\nthe specified project, the long running operation will return\n`ALREADY_EXISTS` error.",
-                  "request": {
-                    "$ref": "CloudFunction"
-                  }
-                },
-                "call": {
-                  "response": {
-                    "$ref": "CallFunctionResponse"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
-                      "location": "path",
-                      "description": "The name of the function to be called.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:call",
-                  "path": "v1/{+name}:call",
-                  "id": "cloudfunctions.projects.locations.functions.call",
-                  "request": {
-                    "$ref": "CallFunctionRequest"
-                  },
-                  "description": "Invokes synchronously deployed function. To be used for testing, very\nlimited traffic allowed."
-                },
-                "generateUploadUrl": {
-                  "response": {
-                    "$ref": "GenerateUploadUrlResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "parent": {
-                      "location": "path",
-                      "description": "The project and location in which the Google Cloud Storage signed URL\nshould be generated, specified in the format `projects/*/locations/*",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions:generateUploadUrl",
-                  "path": "v1/{+parent}/functions:generateUploadUrl",
-                  "id": "cloudfunctions.projects.locations.functions.generateUploadUrl",
-                  "request": {
-                    "$ref": "GenerateUploadUrlRequest"
-                  },
-                  "description": "Returns a signed URL for uploading a function source code.\nFor more information about the signed URL usage see:\nhttps://cloud.google.com/storage/docs/access-control/signed-urls\nOnce the function source code upload is complete, the used signed\nURL should be provided in CreateFunction or UpdateFunction request\nas a reference to the function source code."
-                },
-                "generateDownloadUrl": {
-                  "request": {
-                    "$ref": "GenerateDownloadUrlRequest"
-                  },
-                  "description": "Returns a signed URL for downloading deployed function source code.\nThe URL is only valid for a limited period and should be used within\nminutes after generation.\nFor more information about the signed URL usage see:\nhttps://cloud.google.com/storage/docs/access-control/signed-urls",
-                  "response": {
-                    "$ref": "GenerateDownloadUrlResponse"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "name": {
-                      "location": "path",
-                      "description": "The name of function for which source code Google Cloud Storage signed\nURL should be generated.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:generateDownloadUrl",
-                  "path": "v1/{+name}:generateDownloadUrl",
-                  "id": "cloudfunctions.projects.locations.functions.generateDownloadUrl"
-                },
-                "get": {
-                  "response": {
-                    "$ref": "CloudFunction"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the function which details should be obtained.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}",
-                  "path": "v1/{+name}",
-                  "id": "cloudfunctions.projects.locations.functions.get",
-                  "description": "Returns a function with the given name from the requested project."
-                },
-                "patch": {
-                  "path": "v1/{+name}",
-                  "id": "cloudfunctions.projects.locations.functions.patch",
-                  "description": "Updates existing function.",
-                  "request": {
-                    "$ref": "CloudFunction"
-                  },
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "PATCH",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "updateMask": {
-                      "description": "Required list of fields to be updated in this request.",
-                      "format": "google-fieldmask",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "name": {
-                      "location": "path",
-                      "description": "A user-defined name of the function. Function names must be unique\nglobally and match pattern `projects/*/locations/*/functions/*`",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}"
-                },
-                "delete": {
-                  "description": "Deletes a function with the given name from the specified project. If the\ngiven function is used by some trigger, the trigger will be updated to\nremove this function.",
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "DELETE",
-                  "parameters": {
-                    "name": {
-                      "description": "The name of the function which should be deleted.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}",
-                  "path": "v1/{+name}",
-                  "id": "cloudfunctions.projects.locations.functions.delete"
-                },
-                "list": {
-                  "description": "Returns a list of functions that belong to the requested project.",
-                  "response": {
-                    "$ref": "ListFunctionsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "pageToken": {
-                      "location": "query",
-                      "description": "The value returned by the last\n`ListFunctionsResponse`; indicates that\nthis is a continuation of a prior `ListFunctions` call, and that the\nsystem should return the next page of data.",
-                      "type": "string"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "Maximum number of functions to return per call.",
-                      "format": "int32",
-                      "type": "integer"
-                    },
-                    "parent": {
-                      "description": "The project and location from which the function should be listed,\nspecified in the format `projects/*/locations/*`\nIf you want to list functions in all locations, use \"-\" in place of a\nlocation.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/locations/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions",
-                  "path": "v1/{+parent}/functions",
-                  "id": "cloudfunctions.projects.locations.functions.list"
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "fields": {
-      "location": "query",
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "pp": {
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "bearer_token": {
-      "description": "OAuth bearer token.",
-      "type": "string",
-      "location": "query"
-    }
-  },
-  "version": "v1",
-  "baseUrl": "https://cloudfunctions.googleapis.com/",
   "kind": "discovery#restDescription",
   "description": "API for managing lightweight user-provided functions executed in response to events.",
   "servicePath": "",
   "basePath": "",
-  "id": "cloudfunctions:v1",
+  "revision": "20171110",
   "documentationLink": "https://cloud.google.com/functions",
-  "revision": "20171107",
+  "id": "cloudfunctions:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "GenerateUploadUrlResponse": {
-      "description": "Response of `GenerateSourceUploadUrl` method.",
+    "ListFunctionsResponse": {
+      "description": "Response for the `ListFunctions` method.",
       "type": "object",
       "properties": {
-        "uploadUrl": {
-          "description": "The generated Google Cloud Storage signed URL that should be used for a\nfunction source code upload. The uploaded file should be a zip archive\nwhich contains a function.",
-          "type": "string"
-        }
-      },
-      "id": "GenerateUploadUrlResponse"
-    },
-    "ListFunctionsResponse": {
-      "properties": {
-        "nextPageToken": {
-          "description": "If not empty, indicates that there may be more functions that match\nthe request; this value should be passed in a new\ngoogle.cloud.functions.v1.ListFunctionsRequest\nto get more functions.",
-          "type": "string"
-        },
         "functions": {
           "description": "The functions that match the request.",
           "type": "array",
           "items": {
             "$ref": "CloudFunction"
           }
-        }
-      },
-      "id": "ListFunctionsResponse",
-      "description": "Response for the `ListFunctions` method.",
-      "type": "object"
-    },
-    "CallFunctionResponse": {
-      "description": "Response of `CallFunction` method.",
-      "type": "object",
-      "properties": {
-        "result": {
-          "description": "Result populated for successful execution of synchronous function. Will\nnot be populated if function does not return a result through context.",
-          "type": "string"
         },
-        "error": {
-          "description": "Either system or user-function generated error. Set if execution\nwas not successful.",
-          "type": "string"
-        },
-        "executionId": {
-          "description": "Execution id of function invocation.",
+        "nextPageToken": {
+          "description": "If not empty, indicates that there may be more functions that match\nthe request; this value should be passed in a new\ngoogle.cloud.functions.v1.ListFunctionsRequest\nto get more functions.",
           "type": "string"
         }
       },
-      "id": "CallFunctionResponse"
+      "id": "ListFunctionsResponse"
     },
     "ListLocationsResponse": {
       "description": "The response message for Locations.ListLocations.",
@@ -515,13 +39,34 @@
           }
         },
         "nextPageToken": {
-          "description": "The standard List next-page token.",
-          "type": "string"
+          "type": "string",
+          "description": "The standard List next-page token."
         }
       },
       "id": "ListLocationsResponse"
     },
+    "CallFunctionResponse": {
+      "description": "Response of `CallFunction` method.",
+      "type": "object",
+      "properties": {
+        "executionId": {
+          "description": "Execution id of function invocation.",
+          "type": "string"
+        },
+        "result": {
+          "type": "string",
+          "description": "Result populated for successful execution of synchronous function. Will\nnot be populated if function does not return a result through context."
+        },
+        "error": {
+          "description": "Either system or user-function generated error. Set if execution\nwas not successful.",
+          "type": "string"
+        }
+      },
+      "id": "CallFunctionResponse"
+    },
     "EventTrigger": {
+      "description": "Describes EventTrigger, used to request events be sent from another\nservice.",
+      "type": "object",
       "properties": {
         "failurePolicy": {
           "description": "Specifies policy for failed executions.",
@@ -540,46 +85,23 @@
           "type": "string"
         }
       },
-      "id": "EventTrigger",
-      "description": "Describes EventTrigger, used to request events be sent from another\nservice.",
-      "type": "object"
+      "id": "EventTrigger"
     },
     "FailurePolicy": {
+      "type": "object",
       "properties": {
         "retry": {
-          "description": "If specified, then the function will be retried in case of a failure.",
-          "$ref": "Retry"
+          "$ref": "Retry",
+          "description": "If specified, then the function will be retried in case of a failure."
         }
       },
       "id": "FailurePolicy",
-      "description": "Describes the policy in case of function's execution failure.\nIf empty, then defaults to ignoring failures (i.e. not retrying them).",
-      "type": "object"
-    },
-    "GenerateDownloadUrlRequest": {
-      "description": "Request of `GenerateDownloadUrl` method.",
-      "type": "object",
-      "properties": {
-        "versionId": {
-          "description": "The optional version of function. If not set, default, current version\nis used.",
-          "format": "uint64",
-          "type": "string"
-        }
-      },
-      "id": "GenerateDownloadUrlRequest"
+      "description": "Describes the policy in case of function's execution failure.\nIf empty, then defaults to ignoring failures (i.e. not retrying them)."
     },
     "OperationMetadataV1": {
       "description": "Metadata describing an Operation",
       "type": "object",
       "properties": {
-        "updateTime": {
-          "description": "The last update timestamp of the operation.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "target": {
-          "description": "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1",
-          "type": "string"
-        },
         "request": {
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
@@ -594,7 +116,6 @@
           "type": "string"
         },
         "type": {
-          "description": "Type of operation.",
           "type": "string",
           "enumDescriptions": [
             "Unknown operation type.",
@@ -607,19 +128,37 @@
             "CREATE_FUNCTION",
             "UPDATE_FUNCTION",
             "DELETE_FUNCTION"
-          ]
+          ],
+          "description": "Type of operation."
+        },
+        "updateTime": {
+          "description": "The last update timestamp of the operation.",
+          "format": "google-datetime",
+          "type": "string"
+        },
+        "target": {
+          "description": "Target of the operation - for example\nprojects/project-1/locations/region-1/functions/function-1",
+          "type": "string"
         }
       },
       "id": "OperationMetadataV1"
+    },
+    "GenerateDownloadUrlRequest": {
+      "description": "Request of `GenerateDownloadUrl` method.",
+      "type": "object",
+      "properties": {
+        "versionId": {
+          "description": "The optional version of function. If not set, default, current version\nis used.",
+          "format": "uint64",
+          "type": "string"
+        }
+      },
+      "id": "GenerateDownloadUrlRequest"
     },
     "Operation": {
       "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
       "type": "object",
       "properties": {
-        "error": {
-          "description": "The error result of the operation in case of failure or cancellation.",
-          "$ref": "Status"
-        },
         "metadata": {
           "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
           "type": "object",
@@ -643,6 +182,10 @@
         "name": {
           "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
           "type": "string"
+        },
+        "error": {
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
         }
       },
       "id": "Operation"
@@ -674,7 +217,6 @@
           "type": "string"
         },
         "type": {
-          "description": "Type of operation.",
           "type": "string",
           "enumDescriptions": [
             "Unknown operation type.",
@@ -687,7 +229,8 @@
             "CREATE_FUNCTION",
             "UPDATE_FUNCTION",
             "DELETE_FUNCTION"
-          ]
+          ],
+          "description": "Type of operation."
         }
       },
       "id": "OperationMetadataV1Beta2"
@@ -704,11 +247,11 @@
           "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
           "type": "array",
           "items": {
+            "type": "object",
             "additionalProperties": {
               "description": "Properties of the object. Contains field @type with type URL.",
               "type": "any"
-            },
-            "type": "object"
+            }
           }
         },
         "code": {
@@ -719,22 +262,8 @@
       },
       "id": "Status"
     },
-    "SourceRepository": {
-      "description": "Describes SourceRepository, used to represent parameters related to\nsource repository where a function is hosted.",
-      "type": "object",
-      "properties": {
-        "deployedUrl": {
-          "description": "Output only. The URL pointing to the hosted repository where the function\nwere defined at the time of deployment. It always points to a specific\ncommit in the format described above.",
-          "type": "string"
-        },
-        "url": {
-          "description": "The URL pointing to the hosted repository where the function is defined.\nThere are supported Cloud Source Repository URLs in the following\nformats:\n\nTo refer to a specific commit:\n`https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`\nTo refer to a moveable alias (branch):\n`https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`\nIn particular, to refer to HEAD use `master` moveable alias.\nTo refer to a specific fixed alias (tag):\n`https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`\n\nYou may omit `paths/*` if you want to use the main directory.",
-          "type": "string"
-        }
-      },
-      "id": "SourceRepository"
-    },
     "CallFunctionRequest": {
+      "id": "CallFunctionRequest",
       "description": "Request for the `CallFunction` method.",
       "type": "object",
       "properties": {
@@ -742,11 +271,35 @@
           "description": "Input to be passed to the function.",
           "type": "string"
         }
+      }
+    },
+    "SourceRepository": {
+      "description": "Describes SourceRepository, used to represent parameters related to\nsource repository where a function is hosted.",
+      "type": "object",
+      "properties": {
+        "url": {
+          "description": "The URL pointing to the hosted repository where the function is defined.\nThere are supported Cloud Source Repository URLs in the following\nformats:\n\nTo refer to a specific commit:\n`https://source.developers.google.com/projects/*/repos/*/revisions/*/paths/*`\nTo refer to a moveable alias (branch):\n`https://source.developers.google.com/projects/*/repos/*/moveable-aliases/*/paths/*`\nIn particular, to refer to HEAD use `master` moveable alias.\nTo refer to a specific fixed alias (tag):\n`https://source.developers.google.com/projects/*/repos/*/fixed-aliases/*/paths/*`\n\nYou may omit `paths/*` if you want to use the main directory.",
+          "type": "string"
+        },
+        "deployedUrl": {
+          "description": "Output only. The URL pointing to the hosted repository where the function\nwere defined at the time of deployment. It always points to a specific\ncommit in the format described above.",
+          "type": "string"
+        }
       },
-      "id": "CallFunctionRequest"
+      "id": "SourceRepository"
     },
     "CloudFunction": {
+      "description": "Describes a Cloud Function that contains user computation executed in\nresponse to an event. It encapsulate function and triggers configurations.",
+      "type": "object",
       "properties": {
+        "sourceArchiveUrl": {
+          "description": "The Google Cloud Storage URL, starting with gs://, pointing to the zip\narchive which contains the function.",
+          "type": "string"
+        },
+        "sourceRepository": {
+          "$ref": "SourceRepository",
+          "description": "**Beta Feature**\n\nThe source repository where a function is hosted."
+        },
         "entryPoint": {
           "description": "The name of the function (as defined in source code) that will be\nexecuted. Defaults to the resource name suffix, if not specified. For\nbackward compatibility, if function with given name is not found, then the\nsystem will try to use function named \"function\".\nFor Node.js this is name of a function exported by the module specified\nin `source_location`.",
           "type": "string"
@@ -764,15 +317,20 @@
           "type": "string"
         },
         "httpsTrigger": {
-          "description": "An HTTPS endpoint type of source that can be triggered via URL.",
-          "$ref": "HttpsTrigger"
+          "$ref": "HttpsTrigger",
+          "description": "An HTTPS endpoint type of source that can be triggered via URL."
         },
         "serviceAccountEmail": {
-          "description": "Output only. The email of the function's service account.",
-          "type": "string"
+          "type": "string",
+          "description": "Output only. The email of the function's service account."
         },
         "description": {
-          "description": "User-provided description of a function.",
+          "type": "string",
+          "description": "User-provided description of a function."
+        },
+        "timeout": {
+          "description": "The function execution timeout. Execution is considered failed and\ncan be terminated if the function is not completed at the end of the\ntimeout period. Defaults to 60 seconds.",
+          "format": "google-duration",
           "type": "string"
         },
         "status": {
@@ -795,18 +353,13 @@
           "description": "Output only. Status of the function deployment.",
           "type": "string"
         },
-        "eventTrigger": {
-          "description": "A source that fires events in response to a condition in another service.",
-          "$ref": "EventTrigger"
-        },
         "sourceUploadUrl": {
           "description": "The Google Cloud Storage signed URL used for source uploading, generated\nby google.cloud.functions.v1.GenerateUploadUrl",
           "type": "string"
         },
-        "timeout": {
-          "description": "The function execution timeout. Execution is considered failed and\ncan be terminated if the function is not completed at the end of the\ntimeout period. Defaults to 60 seconds.",
-          "format": "google-duration",
-          "type": "string"
+        "eventTrigger": {
+          "$ref": "EventTrigger",
+          "description": "A source that fires events in response to a condition in another service."
         },
         "availableMemoryMb": {
           "description": "The amount of memory in MB available for a function.\nDefaults to 256MB.",
@@ -821,19 +374,9 @@
           "description": "Output only.\nThe version identifier of the Cloud Function. Each deployment attempt\nresults in a new version of a function being created.",
           "format": "int64",
           "type": "string"
-        },
-        "sourceArchiveUrl": {
-          "description": "The Google Cloud Storage URL, starting with gs://, pointing to the zip\narchive which contains the function.",
-          "type": "string"
-        },
-        "sourceRepository": {
-          "description": "**Beta Feature**\n\nThe source repository where a function is hosted.",
-          "$ref": "SourceRepository"
         }
       },
-      "id": "CloudFunction",
-      "description": "Describes a Cloud Function that contains user computation executed in\nresponse to an event. It encapsulate function and triggers configurations.",
-      "type": "object"
+      "id": "CloudFunction"
     },
     "HttpsTrigger": {
       "description": "Describes HttpsTrigger, could be used to connect web hooks to function.",
@@ -847,34 +390,34 @@
       "id": "HttpsTrigger"
     },
     "Location": {
-      "description": "A resource that represents Google Cloud Platform location.",
       "type": "object",
       "properties": {
+        "labels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}"
+        },
         "name": {
           "description": "Resource name for the location, which may vary between implementations.\nFor example: `\"projects/example-project/locations/us-east1\"`",
           "type": "string"
         },
         "locationId": {
-          "description": "The canonical id for this location. For example: `\"us-east1\"`.",
-          "type": "string"
+          "type": "string",
+          "description": "The canonical id for this location. For example: `\"us-east1\"`."
         },
         "metadata": {
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           },
-          "description": "Service-specific metadata. For example the available capacity at the given\nlocation.",
-          "type": "object"
-        },
-        "labels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Cross-service attributes for the location. For example\n\n    {\"cloud.googleapis.com/region\": \"us-east1\"}",
-          "type": "object"
+          "description": "Service-specific metadata. For example the available capacity at the given\nlocation."
         }
       },
-      "id": "Location"
+      "id": "Location",
+      "description": "A resource that represents Google Cloud Platform location."
     },
     "GenerateDownloadUrlResponse": {
       "description": "Response of `GenerateDownloadUrl` method.",
@@ -888,16 +431,16 @@
       "id": "GenerateDownloadUrlResponse"
     },
     "Retry": {
-      "properties": {},
-      "id": "Retry",
       "description": "Describes the retry policy in case of function's execution failure.\nA function execution will be retried on any failure.\nA failed execution will be retried up to 7 days with an exponential backoff\n(capped at 10 seconds).\nRetried execution is charged as any other execution.",
-      "type": "object"
+      "type": "object",
+      "properties": {},
+      "id": "Retry"
     },
     "GenerateUploadUrlRequest": {
-      "properties": {},
       "id": "GenerateUploadUrlRequest",
       "description": "Request of `GenerateSourceUploadUrl` method.",
-      "type": "object"
+      "type": "object",
+      "properties": {}
     },
     "ListOperationsResponse": {
       "description": "The response message for Operations.ListOperations.",
@@ -916,6 +459,17 @@
         }
       },
       "id": "ListOperationsResponse"
+    },
+    "GenerateUploadUrlResponse": {
+      "properties": {
+        "uploadUrl": {
+          "description": "The generated Google Cloud Storage signed URL that should be used for a\nfunction source code upload. The uploaded file should be a zip archive\nwhich contains a function.",
+          "type": "string"
+        }
+      },
+      "id": "GenerateUploadUrlResponse",
+      "description": "Response of `GenerateSourceUploadUrl` method.",
+      "type": "object"
     }
   },
   "protocol": "rest",
@@ -938,5 +492,451 @@
   "name": "cloudfunctions",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
-  "title": "Google Cloud Functions API"
+  "title": "Google Cloud Functions API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "locations": {
+          "resources": {
+            "functions": {
+              "methods": {
+                "create": {
+                  "request": {
+                    "$ref": "CloudFunction"
+                  },
+                  "description": "Creates a new function. If a function with the given name already exists in\nthe specified project, the long running operation will return\n`ALREADY_EXISTS` error.",
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "location"
+                  ],
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameters": {
+                    "location": {
+                      "location": "path",
+                      "description": "The project and location in which the function should be created, specified\nin the format `projects/*/locations/*`",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions",
+                  "id": "cloudfunctions.projects.locations.functions.create",
+                  "path": "v1/{+location}/functions"
+                },
+                "call": {
+                  "request": {
+                    "$ref": "CallFunctionRequest"
+                  },
+                  "description": "Invokes synchronously deployed function. To be used for testing, very\nlimited traffic allowed.",
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "CallFunctionResponse"
+                  },
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                      "location": "path",
+                      "description": "The name of the function to be called.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:call",
+                  "id": "cloudfunctions.projects.locations.functions.call",
+                  "path": "v1/{+name}:call"
+                },
+                "generateUploadUrl": {
+                  "path": "v1/{+parent}/functions:generateUploadUrl",
+                  "id": "cloudfunctions.projects.locations.functions.generateUploadUrl",
+                  "description": "Returns a signed URL for uploading a function source code.\nFor more information about the signed URL usage see:\nhttps://cloud.google.com/storage/docs/access-control/signed-urls\nOnce the function source code upload is complete, the used signed\nURL should be provided in CreateFunction or UpdateFunction request\nas a reference to the function source code.",
+                  "request": {
+                    "$ref": "GenerateUploadUrlRequest"
+                  },
+                  "response": {
+                    "$ref": "GenerateUploadUrlResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "description": "The project and location in which the Google Cloud Storage signed URL\nshould be generated, specified in the format `projects/*/locations/*",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions:generateUploadUrl"
+                },
+                "generateDownloadUrl": {
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "GenerateDownloadUrlResponse"
+                  },
+                  "parameters": {
+                    "name": {
+                      "description": "The name of function for which source code Google Cloud Storage signed\nURL should be generated.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}:generateDownloadUrl",
+                  "id": "cloudfunctions.projects.locations.functions.generateDownloadUrl",
+                  "path": "v1/{+name}:generateDownloadUrl",
+                  "request": {
+                    "$ref": "GenerateDownloadUrlRequest"
+                  },
+                  "description": "Returns a signed URL for downloading deployed function source code.\nThe URL is only valid for a limited period and should be used within\nminutes after generation.\nFor more information about the signed URL usage see:\nhttps://cloud.google.com/storage/docs/access-control/signed-urls"
+                },
+                "get": {
+                  "parameters": {
+                    "name": {
+                      "description": "The name of the function which details should be obtained.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}",
+                  "path": "v1/{+name}",
+                  "id": "cloudfunctions.projects.locations.functions.get",
+                  "description": "Returns a function with the given name from the requested project.",
+                  "response": {
+                    "$ref": "CloudFunction"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET"
+                },
+                "patch": {
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}",
+                  "path": "v1/{+name}",
+                  "id": "cloudfunctions.projects.locations.functions.patch",
+                  "description": "Updates existing function.",
+                  "request": {
+                    "$ref": "CloudFunction"
+                  },
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "PATCH",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "A user-defined name of the function. Function names must be unique\nglobally and match pattern `projects/*/locations/*/functions/*`",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$",
+                      "location": "path"
+                    },
+                    "updateMask": {
+                      "location": "query",
+                      "description": "Required list of fields to be updated in this request.",
+                      "format": "google-fieldmask",
+                      "type": "string"
+                    }
+                  }
+                },
+                "delete": {
+                  "description": "Deletes a function with the given name from the specified project. If the\ngiven function is used by some trigger, the trigger will be updated to\nremove this function.",
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "DELETE",
+                  "parameters": {
+                    "name": {
+                      "location": "path",
+                      "description": "The name of the function which should be deleted.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+/functions/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions/{functionsId}",
+                  "path": "v1/{+name}",
+                  "id": "cloudfunctions.projects.locations.functions.delete"
+                },
+                "list": {
+                  "description": "Returns a list of functions that belong to the requested project.",
+                  "response": {
+                    "$ref": "ListFunctionsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "pageToken": {
+                      "description": "The value returned by the last\n`ListFunctionsResponse`; indicates that\nthis is a continuation of a prior `ListFunctions` call, and that the\nsystem should return the next page of data.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageSize": {
+                      "description": "Maximum number of functions to return per call.",
+                      "format": "int32",
+                      "type": "integer",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "description": "The project and location from which the function should be listed,\nspecified in the format `projects/*/locations/*`\nIf you want to list functions in all locations, use \"-\" in place of a\nlocation.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/locations/[^/]+$",
+                      "location": "path"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1/projects/{projectsId}/locations/{locationsId}/functions",
+                  "path": "v1/{+parent}/functions",
+                  "id": "cloudfunctions.projects.locations.functions.list"
+                }
+              }
+            }
+          },
+          "methods": {
+            "list": {
+              "response": {
+                "$ref": "ListLocationsResponse"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "filter": {
+                  "type": "string",
+                  "location": "query",
+                  "description": "The standard list filter."
+                },
+                "name": {
+                  "location": "path",
+                  "description": "The resource that owns the locations collection, if applicable.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$"
+                },
+                "pageToken": {
+                  "description": "The standard list page token.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "description": "The standard list page size.",
+                  "format": "int32",
+                  "type": "integer",
+                  "location": "query"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1/projects/{projectsId}/locations",
+              "path": "v1/{+name}/locations",
+              "id": "cloudfunctions.projects.locations.list",
+              "description": "Lists information about the supported locations for this service."
+            }
+          }
+        }
+      }
+    },
+    "operations": {
+      "methods": {
+        "list": {
+          "path": "v1/operations",
+          "id": "cloudfunctions.operations.list",
+          "description": "Lists operations that match the specified filter in the request. If the\nserver doesn't support this method, it returns `UNIMPLEMENTED`.\n\nNOTE: the `name` binding allows API services to override the binding\nto use different resource name schemes, such as `users/*/operations`. To\noverride the binding, API services can add a binding such as\n`\"/v1/{name=users/*}/operations\"` to their service configuration.\nFor backwards compatibility, the default name includes the operations\ncollection id, however overriding users must ensure the name binding\nis the parent resource, without the operations collection id.",
+          "response": {
+            "$ref": "ListOperationsResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "GET",
+          "parameters": {
+            "filter": {
+              "description": "The standard list filter.",
+              "type": "string",
+              "location": "query"
+            },
+            "name": {
+              "description": "The name of the operation's parent resource.",
+              "type": "string",
+              "location": "query"
+            },
+            "pageToken": {
+              "description": "The standard list page token.",
+              "type": "string",
+              "location": "query"
+            },
+            "pageSize": {
+              "description": "The standard list page size.",
+              "format": "int32",
+              "type": "integer",
+              "location": "query"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/operations"
+        },
+        "get": {
+          "parameters": {
+            "name": {
+              "description": "The name of the operation resource.",
+              "required": true,
+              "type": "string",
+              "pattern": "^operations/[^/]+$",
+              "location": "path"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1/operations/{operationsId}",
+          "id": "cloudfunctions.operations.get",
+          "path": "v1/{+name}",
+          "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "name"
+          ],
+          "response": {
+            "$ref": "Operation"
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "pp": {
+      "location": "query",
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "bearer_token": {
+      "location": "query",
+      "description": "OAuth bearer token.",
+      "type": "string"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    }
+  },
+  "version": "v1",
+  "baseUrl": "https://cloudfunctions.googleapis.com/"
 }

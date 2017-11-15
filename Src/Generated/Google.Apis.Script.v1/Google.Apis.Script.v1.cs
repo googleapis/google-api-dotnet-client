@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171109 (1043)
+ *      <tr><th>API Rev<td>20171113 (1047)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -476,9 +476,9 @@ namespace Google.Apis.Script.v1.Data
 {    
 
     /// <summary>An object that provides information about the nature of an error resulting from an attempted execution
-    /// of a script function using the Apps Script API. If a run or runAsync call succeeds but the script function (or
-    /// Apps Script itself) throws an exception, the response body's error field contains a Status object. The `Status`
-    /// object's `details` field contains an array with a single one of these `ExecutionError` objects.</summary>
+    /// of a script function using the Apps Script API. If a run call succeeds but the script function (or Apps Script
+    /// itself) throws an exception, the response body's error field contains a Status object. The `Status` object's
+    /// `details` field contains an array with a single one of these `ExecutionError` objects.</summary>
     public class ExecutionError : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The error message thrown by Apps Script, usually localized into the user's language.</summary>
@@ -551,29 +551,28 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A representation of a execution of an Apps Script function that is started using run or runAsync. The
-    /// execution response does not arrive until the function finishes executing. The maximum execution runtime is
-    /// listed in the [Apps Script quotas guide](/apps-script/guides/services/quotas#current_limitations). After the
-    /// execution is started, it can have one of four outcomes:   If the script function returns successfully, the
-    /// response field contains an ExecutionResponse object with the function's return value in the object's `result`
-    /// field. If the script function (or Apps Script itself) throws an exception, the error field contains a Status
-    /// object. The `Status` object's `details` field contains an array with a single ExecutionError object that
-    /// provides information about the nature of the error. If the execution was asynchronous and has not yet completed,
-    /// the done field is `false` and the neither the `response` nor `error` fields are present. If the `run` or
-    /// `runAsync` call itself fails (for example, because of a malformed request or an authorization error), the method
-    /// returns an HTTP response code in the 4XX range with a different format for the response body. Client libraries
-    /// automatically convert a 4XX response into an exception class. </summary>
+    /// <summary>A representation of a execution of an Apps Script function that is started using run. The execution
+    /// response does not arrive until the function finishes executing. The maximum execution runtime is listed in the
+    /// [Apps Script quotas guide](/apps-script/guides/services/quotas#current_limitations). After the execution is
+    /// started, it can have one of four outcomes:   If the script function returns successfully, the response field
+    /// contains an ExecutionResponse object with the function's return value in the object's `result` field. If the
+    /// script function (or Apps Script itself) throws an exception, the error field contains a Status object. The
+    /// `Status` object's `details` field contains an array with a single ExecutionError object that provides
+    /// information about the nature of the error. If the execution has not yet completed, the done field is `false` and
+    /// the neither the `response` nor `error` fields are present. If the `run` call itself fails (for example, because
+    /// of a malformed request or an authorization error), the method returns an HTTP response code in the 4XX range
+    /// with a different format for the response body. Client libraries automatically convert a 4XX response into an
+    /// exception class. </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>This field is only used with asynchronous executions. It indicates whether the script execution has
-        /// completed. A completed execution has a populated `response` field containing the ExecutionResponse from
-        /// function that was executed.</summary>
+        /// <summary>This field indicates whether the script execution has completed. A completed execution has a
+        /// populated `response` field containing the ExecutionResponse from function that was executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>If a `run` or `runAsync` call succeeds but the script function (or Apps Script itself) throws an
-        /// exception, this field contains a Status object. The `Status` object's `details` field contains an array with
-        /// a single ExecutionError object that provides information about the nature of the error.</summary>
+        /// <summary>If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, this
+        /// field contains a Status object. The `Status` object's `details` field contains an array with a single
+        /// ExecutionError object that provides information about the nature of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 
@@ -601,12 +600,12 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>If a `run` or `runAsync` call succeeds but the script function (or Apps Script itself) throws an
-    /// exception, the response body's error field contains this `Status` object.</summary>
+    /// <summary>If a `run` call succeeds but the script function (or Apps Script itself) throws an exception, the
+    /// response body's error field contains this `Status` object.</summary>
     public class Status : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status code. For this API, this value either:   3, indicating an `INVALID_ARGUMENT` error, or
-        /// 1, indicating a `CANCELLED` asynchronous execution. </summary>
+        /// 1, indicating a `CANCELLED` execution. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual System.Nullable<int> Code { get; set; } 
 
