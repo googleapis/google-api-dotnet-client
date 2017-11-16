@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171105 (1039)
+ *      <tr><th>API Rev<td>20171113 (1047)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -566,14 +566,14 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>A positive number that is the maximum number of results to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The beginning of the time interval. The default value for the start time is
                     /// the end time. The start time must not be later than the end time.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object IntervalStartTime { get; set; }
+
+                    /// <summary>A positive number that is the maximum number of results to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -636,18 +636,18 @@ namespace Google.Apis.Monitoring.v3
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "interval.startTime", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "interval.startTime",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "interval.startTime", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "interval.startTime",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -890,12 +890,6 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
-                /// parentName field contains the group name. If no groups have this parent, the results are
-                /// empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ChildrenOfGroup { get; set; }
-
                 /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns the descendants
                 /// of the specified group. This is a superset of the results returned by the childrenOfGroup filter,
                 /// and includes children-of-children, and so forth.</summary>
@@ -918,6 +912,12 @@ namespace Google.Apis.Monitoring.v3
                 /// the results are empty.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("ancestorsOfGroup", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string AncestorsOfGroup { get; set; }
+
+                /// <summary>A group name: "projects/{project_id_or_number}/groups/{group_id}". Returns groups whose
+                /// parentName field contains the group name. If no groups have this parent, the results are
+                /// empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("childrenOfGroup", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ChildrenOfGroup { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -953,15 +953,6 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "childrenOfGroup", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "childrenOfGroup",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "descendantsOfGroup", new Google.Apis.Discovery.Parameter
                         {
                             Name = "descendantsOfGroup",
@@ -992,6 +983,15 @@ namespace Google.Apis.Monitoring.v3
                         "ancestorsOfGroup", new Google.Apis.Discovery.Parameter
                         {
                             Name = "ancestorsOfGroup",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "childrenOfGroup", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "childrenOfGroup",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1339,6 +1339,13 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>If this field is empty, all custom and system-defined metric descriptors are returned.
+                /// Otherwise, the filter specifies which metric descriptors are to be returned. For example, the
+                /// following filter matches all custom metrics: metric.type = starts_with("custom.googleapis.com/")
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
@@ -1348,13 +1355,6 @@ namespace Google.Apis.Monitoring.v3
                 /// <summary>A positive number that is the maximum number of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>If this field is empty, all custom and system-defined metric descriptors are returned.
-                /// Otherwise, the filter specifies which metric descriptors are to be returned. For example, the
-                /// following filter matches all custom metrics: metric.type = starts_with("custom.googleapis.com/")
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1390,6 +1390,15 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1402,15 +1411,6 @@ namespace Google.Apis.Monitoring.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1537,6 +1537,13 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>An optional filter describing the descriptors to be returned. The filter can reference the
+                /// descriptor's type and labels. For example, the following filter returns only Google Compute Engine
+                /// descriptors that have an id label: resource.type = starts_with("gce_") AND resource.label:id
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
                 /// previous call to this method. Using this field causes the method to return additional results from
                 /// the previous method call.</summary>
@@ -1546,13 +1553,6 @@ namespace Google.Apis.Monitoring.v3
                 /// <summary>A positive number that is the maximum number of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>An optional filter describing the descriptors to be returned. The filter can reference the
-                /// descriptor's type and labels. For example, the following filter returns only Google Compute Engine
-                /// descriptors that have an id label: resource.type = starts_with("gce_") AND resource.label:id
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1588,6 +1588,15 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1600,15 +1609,6 @@ namespace Google.Apis.Monitoring.v3
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2982,6 +2982,34 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Nimbus InternalCheckers.</summary>
+    public class InternalChecker : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The checker ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkerId")]
+        public virtual string CheckerId { get; set; } 
+
+        /// <summary>The checker's human-readable name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The GCP zone the uptime check should egress from. Only respected for internal uptime checks, where
+        /// internal_network is specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcpZone")]
+        public virtual string GcpZone { get; set; } 
+
+        /// <summary>The internal network to perform this uptime check on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>The GCP project ID. Not necessarily the same as the project_id for the config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A description of a label.</summary>
     public class LabelDescriptor : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3201,22 +3229,10 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
-        /// <summary>The unit in which the metric value is reported. It is only applicable if the value_type is INT64,
-        /// DOUBLE, or DISTRIBUTION. The supported units are a subset of The Unified Code for Units of Measure
-        /// (http://unitsofmeasure.org/ucum.html) standard:Basic units (UNIT) bit bit By byte s second min minute h hour
-        /// d dayPrefixes (PREFIX) k kilo (10**3) M mega (10**6) G giga (10**9) T tera (10**12) P peta (10**15) E exa
-        /// (10**18) Z zetta (10**21) Y yotta (10**24) m milli (10**-3) u micro (10**-6) n nano (10**-9) p pico
-        /// (10**-12) f femto (10**-15) a atto (10**-18) z zepto (10**-21) y yocto (10**-24) Ki kibi (2**10) Mi mebi
-        /// (2**20) Gi gibi (2**30) Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/s.The
-        /// grammar also includes these connectors: / division (as an infix operator, e.g. 1/s). . multiplication (as an
-        /// infix operator, e.g. GBy.d)The grammar for a unit is as follows: Expression = Component { "." Component } {
-        /// "/" Component } ;
-        ///
-        /// Component = [ PREFIX ] UNIT [ Annotation ] | Annotation | "1" ;
-        ///
-        /// Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT and is  equivalent to 1
-        /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of
-        /// non-blank printable ASCII characters not  containing '{' or '}'.</summary>
+        /// <summary>Optional. The unit in which the metric value is reported. For example, kBy/s means kilobytes/sec,
+        /// and 1 is the dimensionless unit. The supported units are a subset of The Unified Code for Units of Measure
+        /// standard (http://unitsofmeasure.org/ucum.html). This field is part of the metric's documentation, but it is
+        /// ignored by Stackdriver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 
@@ -3569,6 +3585,10 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>Contains information needed to make an HTTP or HTTPS check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpCheck")]
         public virtual HttpCheck HttpCheck { get; set; } 
+
+        /// <summary>The internal checkers that this check will egress from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalCheckers")]
+        public virtual System.Collections.Generic.IList<InternalChecker> InternalCheckers { get; set; } 
 
         /// <summary>The monitored resource associated with the configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]

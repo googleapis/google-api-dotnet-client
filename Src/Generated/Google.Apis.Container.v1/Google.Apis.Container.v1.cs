@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171030 (1033)
+ *      <tr><th>API Rev<td>20171111 (1045)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -3727,8 +3727,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("initialNodeCount")]
         public virtual System.Nullable<int> InitialNodeCount { get; set; } 
 
-        /// <summary>[Output only] The resource URLs of [instance groups](/compute/docs/instance-groups/) associated
-        /// with this cluster.</summary>
+        /// <summary>Deprecated. Use node_pools.instance_group_urls.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
         public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; } 
 
@@ -4403,8 +4402,8 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("initialNodeCount")]
         public virtual System.Nullable<int> InitialNodeCount { get; set; } 
 
-        /// <summary>[Output only] The resource URLs of [instance groups](/compute/docs/instance-groups/) associated
-        /// with this node pool.</summary>
+        /// <summary>[Output only] The resource URLs of the [managed instance groups](/compute/docs/instance-groups
+        /// /creating-groups-of-managed-instances) associated with this node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupUrls")]
         public virtual System.Collections.Generic.IList<string> InstanceGroupUrls { get; set; } 
 

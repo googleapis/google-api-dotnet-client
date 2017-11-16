@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20171006 (1009)
+ *      <tr><th>API Rev<td>20171113 (1047)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -1057,7 +1057,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 SupportEndDate,
             }
 
-            /// <summary>Full path of the organization unit or its Id</summary>
+            /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrgUnitPath { get; set; }
 
@@ -1203,17 +1203,17 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Move or insert multiple Chrome OS Devices to Organization Unit</summary>
+        /// <summary>Move or insert multiple Chrome OS Devices to organizational unit</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
-        /// the target organization unit or its Id</param>
+        /// the target organizational unit or its ID</param>
         public virtual MoveDevicesToOuRequest MoveDevicesToOu(Google.Apis.Admin.Directory.directory_v1.Data.ChromeOsMoveDevicesToOu body, string customerId, string orgUnitPath)
         {
             return new MoveDevicesToOuRequest(service, body, customerId, orgUnitPath);
         }
 
-        /// <summary>Move or insert multiple Chrome OS Devices to Organization Unit</summary>
+        /// <summary>Move or insert multiple Chrome OS Devices to organizational unit</summary>
         public class MoveDevicesToOuRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new MoveDevicesToOu request.</summary>
@@ -1231,7 +1231,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Full path of the target organization unit or its Id</summary>
+            /// <summary>Full path of the target organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrgUnitPath { get; private set; }
 
@@ -2367,7 +2367,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
             /// <summary>Remove a alias for the group</summary>
-            /// <param name="groupKey">Email or immutable Id of the group</param>
+            /// <param name="groupKey">Email or immutable ID of the group</param>
             /// <param name="alias">The alias to be
             /// removed</param>
             public virtual DeleteRequest Delete(string groupKey, string alias)
@@ -2388,7 +2388,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the group</summary>
+                /// <summary>Email or immutable ID of the group</summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string GroupKey { get; private set; }
 
@@ -2444,7 +2444,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Add a alias for the group</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="groupKey">Email or immutable Id of the group</param>
+            /// <param name="groupKey">Email or immutable ID of the group</param>
             public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Alias body, string groupKey)
             {
                 return new InsertRequest(service, body, groupKey);
@@ -2463,7 +2463,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the group</summary>
+                /// <summary>Email or immutable ID of the group</summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string GroupKey { get; private set; }
 
@@ -2511,7 +2511,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>List all aliases for a group</summary>
-            /// <param name="groupKey">Email or immutable Id of the group</param>
+            /// <param name="groupKey">Email or immutable ID of the group</param>
             public virtual ListRequest List(string groupKey)
             {
                 return new ListRequest(service, groupKey);
@@ -2529,7 +2529,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the group</summary>
+                /// <summary>Email or immutable ID of the group</summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string GroupKey { get; private set; }
 
@@ -2572,7 +2572,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Delete Group</summary>
-        /// <param name="groupKey">Email or immutable Id of the group</param>
+        /// <param name="groupKey">Email or immutable ID of the group</param>
         public virtual DeleteRequest Delete(string groupKey)
         {
             return new DeleteRequest(service, groupKey);
@@ -2590,7 +2590,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group</summary>
+            /// <summary>Email or immutable ID of the group</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
@@ -2632,7 +2632,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Group</summary>
-        /// <param name="groupKey">Email or immutable Id of the group</param>
+        /// <param name="groupKey">Email or immutable ID of the group</param>
         public virtual GetRequest Get(string groupKey)
         {
             return new GetRequest(service, groupKey);
@@ -2650,7 +2650,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group</summary>
+            /// <summary>Email or immutable ID of the group</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
@@ -2780,8 +2780,8 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Email or immutable Id of the user if only those groups are to be listed, the given user is a
-            /// member of. If Id, it should match with id of user object</summary>
+            /// <summary>Email or immutable ID of the user if only those groups are to be listed, the given user is a
+            /// member of. If ID, it should match with id of user object</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserKey { get; set; }
 
@@ -2860,7 +2860,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update Group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="groupKey">Email or immutable Id of the group. If Id, it should match with id of group
+        /// <param name="groupKey">Email or immutable ID of the group. If ID, it should match with id of group
         /// object</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Group body, string groupKey)
         {
@@ -2880,7 +2880,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group. If Id, it should match with id of group object</summary>
+            /// <summary>Email or immutable ID of the group. If ID, it should match with id of group object</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
@@ -2929,7 +2929,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update Group</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="groupKey">Email or immutable Id of the group. If Id, it should match with id of group
+        /// <param name="groupKey">Email or immutable ID of the group. If ID, it should match with id of group
         /// object</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Group body, string groupKey)
         {
@@ -2949,7 +2949,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group. If Id, it should match with id of group object</summary>
+            /// <summary>Email or immutable ID of the group. If ID, it should match with id of group object</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
@@ -3014,9 +3014,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Remove membership.</summary>
-        /// <param name="groupKey">Email or immutable Id of the group</param>
+        /// <param name="groupKey">Email or immutable ID of the group</param>
         /// <param name="memberKey">Email or immutable
-        /// Id of the member</param>
+        /// ID of the member</param>
         public virtual DeleteRequest Delete(string groupKey, string memberKey)
         {
             return new DeleteRequest(service, groupKey, memberKey);
@@ -3035,11 +3035,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group</summary>
+            /// <summary>Email or immutable ID of the group</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
-            /// <summary>Email or immutable Id of the member</summary>
+            /// <summary>Email or immutable ID of the member</summary>
             [Google.Apis.Util.RequestParameterAttribute("memberKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MemberKey { get; private set; }
 
@@ -3090,9 +3090,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve Group Member</summary>
-        /// <param name="groupKey">Email or immutable Id of the group</param>
+        /// <param name="groupKey">Email or immutable ID of the group</param>
         /// <param name="memberKey">Email or immutable
-        /// Id of the member</param>
+        /// ID of the member</param>
         public virtual GetRequest Get(string groupKey, string memberKey)
         {
             return new GetRequest(service, groupKey, memberKey);
@@ -3111,11 +3111,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group</summary>
+            /// <summary>Email or immutable ID of the group</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
-            /// <summary>Email or immutable Id of the member</summary>
+            /// <summary>Email or immutable ID of the member</summary>
             [Google.Apis.Util.RequestParameterAttribute("memberKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MemberKey { get; private set; }
 
@@ -3165,9 +3165,85 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
+        /// <summary>Checks Membership of an user within a Group</summary>
+        /// <param name="groupKey">Email or immutable Id of the group</param>
+        /// <param name="memberKey">Email or immutable
+        /// Id of the member</param>
+        public virtual HasMemberRequest HasMember(string groupKey, string memberKey)
+        {
+            return new HasMemberRequest(service, groupKey, memberKey);
+        }
+
+        /// <summary>Checks Membership of an user within a Group</summary>
+        public class HasMemberRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.MembersHasMember>
+        {
+            /// <summary>Constructs a new HasMember request.</summary>
+            public HasMemberRequest(Google.Apis.Services.IClientService service, string groupKey, string memberKey)
+                : base(service)
+            {
+                GroupKey = groupKey;
+                MemberKey = memberKey;
+                InitParameters();
+            }
+
+
+            /// <summary>Email or immutable Id of the group</summary>
+            [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string GroupKey { get; private set; }
+
+            /// <summary>Email or immutable Id of the member</summary>
+            [Google.Apis.Util.RequestParameterAttribute("memberKey", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string MemberKey { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "hasMember"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "groups/{groupKey}/hasMember/{memberKey}"; }
+            }
+
+            /// <summary>Initializes HasMember parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "groupKey", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "groupKey",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "memberKey", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "memberKey",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Add user to the specified group.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="groupKey">Email or immutable Id of the group</param>
+        /// <param name="groupKey">Email or immutable ID of the group</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey)
         {
             return new InsertRequest(service, body, groupKey);
@@ -3186,7 +3262,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group</summary>
+            /// <summary>Email or immutable ID of the group</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
@@ -3234,7 +3310,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Retrieve all members in a group (paginated)</summary>
-        /// <param name="groupKey">Email or immutable Id of the group</param>
+        /// <param name="groupKey">Email or immutable ID of the group</param>
         public virtual ListRequest List(string groupKey)
         {
             return new ListRequest(service, groupKey);
@@ -3252,7 +3328,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group</summary>
+            /// <summary>Email or immutable ID of the group</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
@@ -3335,9 +3411,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update membership of a user in the specified group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="groupKey">Email or immutable Id of the group. If Id, it should match with id of group
+        /// <param name="groupKey">Email or immutable ID of the group. If ID, it should match with id of group
         /// object</param>
-        /// <param name="memberKey">Email or immutable Id of the user. If Id, it should match with id of
+        /// <param name="memberKey">Email or immutable ID of the user. If ID, it should match with id of
         /// member object</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
         {
@@ -3358,11 +3434,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group. If Id, it should match with id of group object</summary>
+            /// <summary>Email or immutable ID of the group. If ID, it should match with id of group object</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
-            /// <summary>Email or immutable Id of the user. If Id, it should match with id of member object</summary>
+            /// <summary>Email or immutable ID of the user. If ID, it should match with id of member object</summary>
             [Google.Apis.Util.RequestParameterAttribute("memberKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MemberKey { get; private set; }
 
@@ -3420,9 +3496,9 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>Update membership of a user in the specified group.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="groupKey">Email or immutable Id of the group. If Id, it should match with id of group
+        /// <param name="groupKey">Email or immutable ID of the group. If ID, it should match with id of group
         /// object</param>
-        /// <param name="memberKey">Email or immutable Id of the user. If Id, it should match with id of
+        /// <param name="memberKey">Email or immutable ID of the user. If ID, it should match with id of
         /// member object</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Member body, string groupKey, string memberKey)
         {
@@ -3443,11 +3519,11 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group. If Id, it should match with id of group object</summary>
+            /// <summary>Email or immutable ID of the group. If ID, it should match with id of group object</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
-            /// <summary>Email or immutable Id of the user. If Id, it should match with id of member object</summary>
+            /// <summary>Email or immutable ID of the user. If ID, it should match with id of member object</summary>
             [Google.Apis.Util.RequestParameterAttribute("memberKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MemberKey { get; private set; }
 
@@ -4431,16 +4507,16 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
 
-        /// <summary>Remove Organization Unit</summary>
+        /// <summary>Remove organizational unit</summary>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
-        /// the organization unit or its Id</param>
+        /// the organizational unit or its ID</param>
         public virtual DeleteRequest Delete(string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new DeleteRequest(service, customerId, orgUnitPath);
         }
 
-        /// <summary>Remove Organization Unit</summary>
+        /// <summary>Remove organizational unit</summary>
         public class DeleteRequest : DirectoryBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4457,7 +4533,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Full path of the organization unit or its Id</summary>
+            /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual Google.Apis.Util.Repeatable<string> OrgUnitPath { get; private set; }
 
@@ -4507,16 +4583,16 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Retrieve Organization Unit</summary>
+        /// <summary>Retrieve organizational unit</summary>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
-        /// the organization unit or its Id</param>
+        /// the organizational unit or its ID</param>
         public virtual GetRequest Get(string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new GetRequest(service, customerId, orgUnitPath);
         }
 
-        /// <summary>Retrieve Organization Unit</summary>
+        /// <summary>Retrieve organizational unit</summary>
         public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4533,7 +4609,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Full path of the organization unit or its Id</summary>
+            /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual Google.Apis.Util.Repeatable<string> OrgUnitPath { get; private set; }
 
@@ -4583,7 +4659,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Add Organization Unit</summary>
+        /// <summary>Add organizational unit</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId)
@@ -4591,7 +4667,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             return new InsertRequest(service, body, customerId);
         }
 
-        /// <summary>Add Organization Unit</summary>
+        /// <summary>Add organizational unit</summary>
         public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4651,14 +4727,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Retrieve all Organization Units</summary>
+        /// <summary>Retrieve all organizational units</summary>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         public virtual ListRequest List(string customerId)
         {
             return new ListRequest(service, customerId);
         }
 
-        /// <summary>Retrieve all Organization Units</summary>
+        /// <summary>Retrieve all organizational units</summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnits>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -4674,7 +4750,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>the URL-encoded organization unit's path or its Id</summary>
+            /// <summary>the URL-encoded organizational unit's path or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrgUnitPath { get; set; }
 
@@ -4685,7 +4761,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             /// <summary>Whether to return all sub-organizations or just immediate children</summary>
             public enum TypeEnum
             {
-                /// <summary>All sub-organization units.</summary>
+                /// <summary>All sub-organizational units.</summary>
                 [Google.Apis.Util.StringValueAttribute("all")]
                 All,
                 /// <summary>Immediate children only (default).</summary>
@@ -4748,17 +4824,17 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Update Organization Unit. This method supports patch semantics.</summary>
+        /// <summary>Update organizational unit. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
-        /// the organization unit or its Id</param>
+        /// the organizational unit or its ID</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new PatchRequest(service, body, customerId, orgUnitPath);
         }
 
-        /// <summary>Update Organization Unit. This method supports patch semantics.</summary>
+        /// <summary>Update organizational unit. This method supports patch semantics.</summary>
         public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4776,7 +4852,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Full path of the organization unit or its Id</summary>
+            /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual Google.Apis.Util.Repeatable<string> OrgUnitPath { get; private set; }
 
@@ -4832,17 +4908,17 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Update Organization Unit</summary>
+        /// <summary>Update organizational unit</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="orgUnitPath">Full path of
-        /// the organization unit or its Id</param>
+        /// the organizational unit or its ID</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit body, string customerId, Google.Apis.Util.Repeatable<string> orgUnitPath)
         {
             return new UpdateRequest(service, body, customerId, orgUnitPath);
         }
 
-        /// <summary>Update Organization Unit</summary>
+        /// <summary>Update organizational unit</summary>
         public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.OrgUnit>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -4860,7 +4936,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Full path of the organization unit or its Id</summary>
+            /// <summary>Full path of the organizational unit or its ID</summary>
             [Google.Apis.Util.RequestParameterAttribute("orgUnitPath", Google.Apis.Util.RequestParameterType.Path)]
             public virtual Google.Apis.Util.Repeatable<string> OrgUnitPath { get; private set; }
 
@@ -6510,7 +6586,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>Delete schema</summary>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
-        /// immutable Id of the schema</param>
+        /// immutable ID of the schema</param>
         public virtual DeleteRequest Delete(string customerId, string schemaKey)
         {
             return new DeleteRequest(service, customerId, schemaKey);
@@ -6533,7 +6609,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Name or immutable Id of the schema</summary>
+            /// <summary>Name or immutable ID of the schema</summary>
             [Google.Apis.Util.RequestParameterAttribute("schemaKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SchemaKey { get; private set; }
 
@@ -6586,7 +6662,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <summary>Retrieve schema</summary>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
-        /// immutable Id of the schema</param>
+        /// immutable ID of the schema</param>
         public virtual GetRequest Get(string customerId, string schemaKey)
         {
             return new GetRequest(service, customerId, schemaKey);
@@ -6609,7 +6685,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Name or immutable Id of the schema</summary>
+            /// <summary>Name or immutable ID of the schema</summary>
             [Google.Apis.Util.RequestParameterAttribute("schemaKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SchemaKey { get; private set; }
 
@@ -6791,7 +6867,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
-        /// immutable Id of the schema.</param>
+        /// immutable ID of the schema.</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
         {
             return new PatchRequest(service, body, customerId, schemaKey);
@@ -6815,7 +6891,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Name or immutable Id of the schema.</summary>
+            /// <summary>Name or immutable ID of the schema.</summary>
             [Google.Apis.Util.RequestParameterAttribute("schemaKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SchemaKey { get; private set; }
 
@@ -6875,7 +6951,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         /// <param name="body">The body of the request.</param>
         /// <param name="customerId">Immutable ID of the G Suite account</param>
         /// <param name="schemaKey">Name or
-        /// immutable Id of the schema.</param>
+        /// immutable ID of the schema.</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Schema body, string customerId, string schemaKey)
         {
             return new UpdateRequest(service, body, customerId, schemaKey);
@@ -6899,7 +6975,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CustomerId { get; private set; }
 
-            /// <summary>Name or immutable Id of the schema.</summary>
+            /// <summary>Name or immutable ID of the schema.</summary>
             [Google.Apis.Util.RequestParameterAttribute("schemaKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SchemaKey { get; private set; }
 
@@ -7233,7 +7309,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
             /// <summary>Remove a alias for the user</summary>
-            /// <param name="userKey">Email or immutable Id of the user</param>
+            /// <param name="userKey">Email or immutable ID of the user</param>
             /// <param name="alias">The alias to be
             /// removed</param>
             public virtual DeleteRequest Delete(string userKey, string alias)
@@ -7254,7 +7330,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the user</summary>
+                /// <summary>Email or immutable ID of the user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
@@ -7310,7 +7386,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Add a alias for the user</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userKey">Email or immutable Id of the user</param>
+            /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Alias body, string userKey)
             {
                 return new InsertRequest(service, body, userKey);
@@ -7329,7 +7405,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the user</summary>
+                /// <summary>Email or immutable ID of the user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
@@ -7377,7 +7453,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>List all aliases for a user</summary>
-            /// <param name="userKey">Email or immutable Id of the user</param>
+            /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual ListRequest List(string userKey)
             {
                 return new ListRequest(service, userKey);
@@ -7395,7 +7471,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the user</summary>
+                /// <summary>Email or immutable ID of the user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
@@ -7462,7 +7538,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Watch for changes in user aliases list</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userKey">Email or immutable Id of the user</param>
+            /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual WatchRequest Watch(Google.Apis.Admin.Directory.directory_v1.Data.Channel body, string userKey)
             {
                 return new WatchRequest(service, body, userKey);
@@ -7481,7 +7557,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the user</summary>
+                /// <summary>Email or immutable ID of the user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
@@ -7577,7 +7653,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
             /// <summary>Remove photos for the user</summary>
-            /// <param name="userKey">Email or immutable Id of the user</param>
+            /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual DeleteRequest Delete(string userKey)
             {
                 return new DeleteRequest(service, userKey);
@@ -7595,7 +7671,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the user</summary>
+                /// <summary>Email or immutable ID of the user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
@@ -7637,7 +7713,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
             /// <summary>Retrieve photo of a user</summary>
-            /// <param name="userKey">Email or immutable Id of the user</param>
+            /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual GetRequest Get(string userKey)
             {
                 return new GetRequest(service, userKey);
@@ -7655,7 +7731,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the user</summary>
+                /// <summary>Email or immutable ID of the user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
@@ -7698,7 +7774,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Add a photo for the user. This method supports patch semantics.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userKey">Email or immutable Id of the user</param>
+            /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
             {
                 return new PatchRequest(service, body, userKey);
@@ -7717,7 +7793,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the user</summary>
+                /// <summary>Email or immutable ID of the user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
@@ -7766,7 +7842,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
             /// <summary>Add a photo for the user</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="userKey">Email or immutable Id of the user</param>
+            /// <param name="userKey">Email or immutable ID of the user</param>
             public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.UserPhoto body, string userKey)
             {
                 return new UpdateRequest(service, body, userKey);
@@ -7785,7 +7861,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 }
 
 
-                /// <summary>Email or immutable Id of the user</summary>
+                /// <summary>Email or immutable ID of the user</summary>
                 [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string UserKey { get; private set; }
 
@@ -7834,7 +7910,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Delete user</summary>
-        /// <param name="userKey">Email or immutable Id of the user</param>
+        /// <param name="userKey">Email or immutable ID of the user</param>
         public virtual DeleteRequest Delete(string userKey)
         {
             return new DeleteRequest(service, userKey);
@@ -7852,7 +7928,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the user</summary>
+            /// <summary>Email or immutable ID of the user</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
 
@@ -7894,7 +7970,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>retrieve user</summary>
-        /// <param name="userKey">Email or immutable Id of the user</param>
+        /// <param name="userKey">Email or immutable ID of the user</param>
         public virtual GetRequest Get(string userKey)
         {
             return new GetRequest(service, userKey);
@@ -7912,7 +7988,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the user</summary>
+            /// <summary>Email or immutable ID of the user</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
 
@@ -8354,7 +8430,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>change admin status of a user</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="userKey">Email or immutable Id of the user as admin</param>
+        /// <param name="userKey">Email or immutable ID of the user as admin</param>
         public virtual MakeAdminRequest MakeAdmin(Google.Apis.Admin.Directory.directory_v1.Data.UserMakeAdmin body, string userKey)
         {
             return new MakeAdminRequest(service, body, userKey);
@@ -8373,7 +8449,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the user as admin</summary>
+            /// <summary>Email or immutable ID of the user as admin</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
 
@@ -8422,7 +8498,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>update user. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="userKey">Email or immutable Id of the user. If Id, it should match with id of user object</param>
+        /// <param name="userKey">Email or immutable ID of the user. If ID, it should match with id of user object</param>
         public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
         {
             return new PatchRequest(service, body, userKey);
@@ -8441,7 +8517,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the user. If Id, it should match with id of user object</summary>
+            /// <summary>Email or immutable ID of the user. If ID, it should match with id of user object</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
 
@@ -8558,7 +8634,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         /// <summary>update user</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="userKey">Email or immutable Id of the user. If Id, it should match with id of user object</param>
+        /// <param name="userKey">Email or immutable ID of the user. If ID, it should match with id of user object</param>
         public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.User body, string userKey)
         {
             return new UpdateRequest(service, body, userKey);
@@ -8577,7 +8653,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the user. If Id, it should match with id of user object</summary>
+            /// <summary>Email or immutable ID of the user. If ID, it should match with id of user object</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
 
@@ -8929,7 +9005,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
 
         /// <summary>Generate new backup verification codes for the user.</summary>
-        /// <param name="userKey">Email or immutable Id of the user</param>
+        /// <param name="userKey">Email or immutable ID of the user</param>
         public virtual GenerateRequest Generate(string userKey)
         {
             return new GenerateRequest(service, userKey);
@@ -8947,7 +9023,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the user</summary>
+            /// <summary>Email or immutable ID of the user</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
 
@@ -8989,7 +9065,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
         }
 
         /// <summary>Invalidate the current backup verification codes for the user.</summary>
-        /// <param name="userKey">Email or immutable Id of the user</param>
+        /// <param name="userKey">Email or immutable ID of the user</param>
         public virtual InvalidateRequest Invalidate(string userKey)
         {
             return new InvalidateRequest(service, userKey);
@@ -9007,7 +9083,7 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the user</summary>
+            /// <summary>Email or immutable ID of the user</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserKey { get; private set; }
 
@@ -9901,6 +9977,17 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
+    }    
+
+    /// <summary>JSON template for Has Member response in Directory API.</summary>
+    public class MembersHasMember : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies whether given user is a member or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isMember")]
+        public virtual System.Nullable<bool> IsMember { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>JSON template for Mobile Device resource in Directory API.</summary>
@@ -11275,6 +11362,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for a POSIX account entry. Description of the field family: go/fbs-posix.</summary>
     public class UserPosixAccount : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A POSIX account field identifier. (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual string AccountId { get; set; } 
+
         /// <summary>The GECOS (user information) for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gecos")]
         public virtual string Gecos { get; set; } 

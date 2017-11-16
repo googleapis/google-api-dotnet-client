@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171031 (1034)
+ *      <tr><th>API Rev<td>20171114 (1048)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -939,6 +939,10 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -946,10 +950,6 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -985,6 +985,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -997,15 +1006,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
