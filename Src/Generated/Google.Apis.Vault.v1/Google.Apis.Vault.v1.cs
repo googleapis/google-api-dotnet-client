@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>Google Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170812 (954)
+ *      <tr><th>API Rev<td>20171026 (1029)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -908,15 +908,15 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
-                /// <summary>The number of holds to return in the response, between 0 and 100 inclusive. Leaving this
-                /// empty, or as 0, is the same as page_size = 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The pagination token as returned in the response. An empty token means start from the
                 /// beginning.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The number of holds to return in the response, between 0 and 100 inclusive. Leaving this
+                /// empty, or as 0, is the same as page_size = 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -952,18 +952,18 @@ namespace Google.Apis.Vault.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1899,12 +1899,12 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Query options for group holds.</summary>
     public class HeldGroupsQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The end date range for the search query. These timestamps are in GMT and rounded down to the start
+        /// <summary>The end time range for the search query. These timestamps are in GMT and rounded down to the start
         /// of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>The start date range for the search query. These timestamps are in GMT and rounded down to the
+        /// <summary>The start time range for the search query. These timestamps are in GMT and rounded down to the
         /// start of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
@@ -1920,12 +1920,12 @@ namespace Google.Apis.Vault.v1.Data
     /// <summary>Query options for mail holds.</summary>
     public class HeldMailQuery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The end date range for the search query. These timestamps are in GMT and rounded down to the start
+        /// <summary>The end time range for the search query. These timestamps are in GMT and rounded down to the start
         /// of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>The start date range for the search query. These timestamps are in GMT and rounded down to the
+        /// <summary>The start time range for the search query. These timestamps are in GMT and rounded down to the
         /// start of the given date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 

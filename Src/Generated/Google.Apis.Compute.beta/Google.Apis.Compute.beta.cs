@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20171114 (1048)
+ *      <tr><th>API Rev<td>20171107 (1041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -87,6 +87,7 @@ namespace Google.Apis.Compute.beta
             interconnectAttachments = new InterconnectAttachmentsResource(this);
             interconnectLocations = new InterconnectLocationsResource(this);
             interconnects = new InterconnectsResource(this);
+            licenseCodes = new LicenseCodesResource(this);
             licenses = new LicensesResource(this);
             machineTypes = new MachineTypesResource(this);
             networks = new NetworksResource(this);
@@ -362,6 +363,14 @@ namespace Google.Apis.Compute.beta
         public virtual InterconnectsResource Interconnects
         {
             get { return interconnects; }
+        }
+
+        private readonly LicenseCodesResource licenseCodes;
+
+        /// <summary>Gets the LicenseCodes resource.</summary>
+        public virtual LicenseCodesResource LicenseCodes
+        {
+            get { return licenseCodes; }
         }
 
         private readonly LicensesResource licenses;
@@ -12355,7 +12364,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Retrieves the list of private images available to the specified project. Private images are images
+        /// <summary>Retrieves the list of custom images available to the specified project. Custom images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
         /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
         /// use this method to make a request to the respective image project, such as debian-cloud or windows-
@@ -12366,7 +12375,7 @@ namespace Google.Apis.Compute.beta
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of private images available to the specified project. Private images are images
+        /// <summary>Retrieves the list of custom images available to the specified project. Custom images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
         /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
         /// use this method to make a request to the respective image project, such as debian-cloud or windows-
@@ -21929,6 +21938,101 @@ namespace Google.Apis.Compute.beta
         }
     }
 
+    /// <summary>The "licenseCodes" collection of methods.</summary>
+    public class LicenseCodesResource
+    {
+        private const string Resource = "licenseCodes";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LicenseCodesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Return a specified license code. License codes are mirrored across all projects that have
+        /// permissions to read the License Code.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="licenseCode">Number corresponding to
+        /// the License code resource to return.</param>
+        public virtual GetRequest Get(string project, string licenseCode)
+        {
+            return new GetRequest(service, project, licenseCode);
+        }
+
+        /// <summary>Return a specified license code. License codes are mirrored across all projects that have
+        /// permissions to read the License Code.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.LicenseCode>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string licenseCode)
+                : base(service)
+            {
+                Project = project;
+                LicenseCode = licenseCode;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Number corresponding to the License code resource to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("licenseCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string LicenseCode { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenseCodes/{licenseCode}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "licenseCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "licenseCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[0-9]{0,61}?",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "licenses" collection of methods.</summary>
     public class LicensesResource
     {
@@ -21944,6 +22048,104 @@ namespace Google.Apis.Compute.beta
 
         }
 
+
+        /// <summary>Deletes the specified license.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="license">Name of the license
+        /// resource to delete.</param>
+        public virtual DeleteRequest Delete(string project, string license)
+        {
+            return new DeleteRequest(service, project, license);
+        }
+
+        /// <summary>Deletes the specified license.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string license)
+                : base(service)
+            {
+                Project = project;
+                License = license;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the license resource to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("license", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string License { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenses/{license}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "license", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "license",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
 
         /// <summary>Returns the specified License resource.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -22016,6 +22218,246 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Create a License resource in the specified project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.beta.Data.License body, string project)
+        {
+            return new InsertRequest(service, body, project);
+        }
+
+        /// <summary>Create a License resource in the specified project.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.License body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.License Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenses"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of licenses available in the specified project. This method does not get any
+        /// licenses that belong to other projects, including licenses attached to publicly-available images, like
+        /// Debian 8. If you want to get a list of publicly-available licenses, use this method to make a request to the
+        /// respective image project, such as debian-cloud or windows-cloud.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual ListRequest List(string project)
+        {
+            return new ListRequest(service, project);
+        }
+
+        /// <summary>Retrieves the list of licenses available in the specified project. This method does not get any
+        /// licenses that belong to other projects, including licenses attached to publicly-available images, like
+        /// Debian 8. If you want to get a list of publicly-available licenses, use this method to make a request to the
+        /// respective image project, such as debian-cloud or windows-cloud.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.LicensesListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project)
+                : base(service)
+            {
+                Project = project;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
+            /// format: field_name comparison_string literal_string.
+            ///
+            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
+            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
+            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
+            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
+            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            ///
+            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
+            /// example-instance.
+            ///
+            /// You can filter on nested fields. For example, you could filter on instances that have set the
+            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
+            /// organize and search for results based on label values.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
+            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/licenses"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -42875,7 +43317,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
-        /// <summary>The type of address to reserve. If unspecified, defaults to EXTERNAL.</summary>
+        /// <summary>The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to
+        /// EXTERNAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressType")]
         public virtual string AddressType { get; set; } 
 
@@ -43311,14 +43754,14 @@ namespace Google.Apis.Compute.beta.Data
         ///
         /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
         ///
-        /// To create a disk with a private image that you created, specify the image name in the following format:
+        /// To create a disk with a custom image that you created, specify the image name in the following format:
         ///
-        /// global/images/my-private-image
+        /// global/images/my-custom-image
         ///
-        /// You can also specify a private image by its image family, which returns the latest version of the image in
+        /// You can also specify a custom image by its image family, which returns the latest version of the image in
         /// that family. Replace the image name with family/family-name:
         ///
-        /// global/images/family/my-private-family
+        /// global/images/family/my-image-family
         ///
         /// If the source image is deleted later, this field will not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
@@ -44933,6 +45376,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastDetachTimestamp")]
         public virtual string LastDetachTimestamp { get; set; } 
 
+        /// <summary>Integer license codes indicating which licenses are attached to this disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
+
         /// <summary>Any applicable publicly visible licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
         public virtual System.Collections.Generic.IList<string> Licenses { get; set; } 
@@ -44975,14 +45422,14 @@ namespace Google.Apis.Compute.beta.Data
         ///
         /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
         ///
-        /// To create a disk with a private image that you created, specify the image name in the following format:
+        /// To create a disk with a custom image that you created, specify the image name in the following format:
         ///
-        /// global/images/my-private-image
+        /// global/images/my-custom-image
         ///
-        /// You can also specify a private image by its image family, which returns the latest version of the image in
+        /// You can also specify a custom image by its image family, which returns the latest version of the image in
         /// that family. Replace the image name with family/family-name:
         ///
-        /// global/images/family/my-private-family</summary>
+        /// global/images/family/my-image-family</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; } 
 
@@ -46859,6 +47306,10 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Labels to apply to this image. These can be later modified by the setLabels method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Integer license codes indicating which licenses are attached to this image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
 
         /// <summary>Any applicable license URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("licenses")]
@@ -48746,13 +49197,13 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support Interconnect. Next available tag: 25</summary>
+    /// <summary>Represents an Interconnects resource. The Interconnects resource is a dedicated connection between
+    /// Google's network and your on-premises network. For more information, see the  Dedicated overview page.</summary>
     public class Interconnect : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Administrative status of the interconnect. When this is set to ?true?, the Interconnect is
-        /// functional and may carry traffic (assuming there are functional InterconnectAttachments and other
-        /// requirements are satisfied). When set to ?false?, no packets will be carried over this Interconnect and no
-        /// BGP routes will be exchanged over it. By default, it is set to ?true?.</summary>
+        /// <summary>Administrative status of the interconnect. When this is set to true, the Interconnect is functional
+        /// and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes
+        /// are exchanged over it. By default, the status is set to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEnabled")]
         public virtual System.Nullable<bool> AdminEnabled { get; set; } 
 
@@ -48799,6 +49250,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachments")]
         public virtual System.Collections.Generic.IList<string> InterconnectAttachments { get; set; } 
 
+        /// <summary>Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor of "DEDICATED"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectType")]
         public virtual string InterconnectType { get; set; } 
 
@@ -48806,6 +49258,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Type of link requested. This field indicates speed of each of the links in the bundle, not the
+        /// entire bundle. Only 10G per link is allowed for a dedicated interconnect. Options: Ethernet_10G_LR</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
         public virtual string LinkType { get; set; } 
 
@@ -48854,7 +49308,8 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support InterconnectAttachment. Next available tag: 23</summary>
+    /// <summary>Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see  Creating
+    /// VLAN Attachments.</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this
@@ -48871,8 +49326,7 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerRouterIpAddress")]
         public virtual string CustomerRouterIpAddress { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
-        /// resource.</summary>
+        /// <summary>An optional description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -48909,8 +49363,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationalStatus")]
         public virtual string OperationalStatus { get; set; } 
 
-        /// <summary>[Output Only] Information specific to a Private InterconnectAttachment. Only populated if the
-        /// interconnect that this is attached is of type IT_PRIVATE.</summary>
+        /// <summary>[Output Only] Information specific to an InterconnectAttachment. This property is populated if the
+        /// interconnect that this is attached to is of type DEDICATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateInterconnectInfo")]
         public virtual InterconnectAttachmentPrivateInfo PrivateInterconnectInfo { get; set; } 
 
@@ -49077,8 +49531,8 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>Private information for an interconnect attachment when this belongs to an interconnect of type
-    /// IT_PRIVATE.</summary>
+    /// <summary>Information for an interconnect attachment when this belongs to an interconnect of type
+    /// DEDICATED.</summary>
     public class InterconnectAttachmentPrivateInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer,
@@ -49146,8 +49600,7 @@ namespace Google.Apis.Compute.beta.Data
     /// Google, so all fields are output only. Next id: 4</summary>
     public class InterconnectCircuitInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Customer-side demarc ID for this circuit. This will only be set if it was provided by the Customer
-        /// to Google during circuit turn-up.</summary>
+        /// <summary>Customer-side demarc ID for this circuit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerDemarcId")]
         public virtual string CustomerDemarcId { get; set; } 
 
@@ -49237,7 +49690,9 @@ namespace Google.Apis.Compute.beta.Data
         }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support InterconnectLocation.</summary>
+    /// <summary>Represents an InterconnectLocations resource. The InterconnectLocations resource describes the
+    /// locations where you can connect to Google's networks. For more information, see  Colocation
+    /// Facilities.</summary>
     public class InterconnectLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The postal address of the Point of Presence, each line in the address is separated by
@@ -49245,17 +49700,18 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
-        /// <summary>Availability zone for this location. Within a city, maintenance will not be simultaneously
-        /// scheduled in more than one availability zone. Example: "zone1" or "zone2".</summary>
+        /// <summary>[Output Only] Availability zone for this location. Within a metropolitan area (metro), maintenance
+        /// will not be simultaneously scheduled in more than one availability zone. Example: "zone1" or
+        /// "zone2".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityZone")]
         public virtual string AvailabilityZone { get; set; } 
 
-        /// <summary>City designator used by the Interconnect UI to locate this InterconnectLocation within the
-        /// Continent. For example: "Chicago, IL", "Amsterdam, Netherlands".</summary>
+        /// <summary>[Output Only] Metropolitan area designator that indicates which city an interconnect is located.
+        /// For example: "Chicago, IL", "Amsterdam, Netherlands".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; } 
 
-        /// <summary>Continent for this location. Used by the location picker in the Interconnect UI.</summary>
+        /// <summary>[Output Only] Continent for this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continent")]
         public virtual string Continent { get; set; } 
 
@@ -49409,13 +49865,16 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedCircuits")]
         public virtual System.Collections.Generic.IList<string> AffectedCircuits { get; set; } 
 
-        /// <summary>Short user-visible description of the purpose of the outage.</summary>
+        /// <summary>A description about the purpose of the outage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Scheduled end time for the outage (milliseconds since Unix epoch).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual System.Nullable<long> EndTime { get; set; } 
 
+        /// <summary>Form this outage is expected to take. Note that the "IT_" versions of this enum have been
+        /// deprecated in favor of the unprefixed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueType")]
         public virtual string IssueType { get; set; } 
 
@@ -49423,13 +49882,17 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The party that generated this notification. Note that "NSRC_GOOGLE" has been deprecated in favor of
+        /// "GOOGLE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
-        /// <summary>Scheduled start and end times for the outage (milliseconds since Unix epoch).</summary>
+        /// <summary>Scheduled start time for the outage (milliseconds since Unix epoch).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual System.Nullable<long> StartTime { get; set; } 
 
+        /// <summary>State of this notification. Note that the "NS_" versions of this enum have been deprecated in favor
+        /// of the unprefixed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
@@ -49445,12 +49908,75 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chargesUseFee")]
         public virtual System.Nullable<bool> ChargesUseFee { get; set; } 
 
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>An optional textual description of the resource; provided by the client when the resource is
+        /// created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
         /// <summary>[Output Only] Type of resource. Always compute#license for licenses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>[Output Only] The unique code used to attach this license to images, snapshots, and
+        /// disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCode")]
+        public virtual System.Nullable<ulong> LicenseCode { get; set; } 
+
         /// <summary>[Output Only] Name of the resource. The name is 1-63 characters long and complies with
         /// RFC1035.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceRequirements")]
+        public virtual LicenseResourceRequirements ResourceRequirements { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>If false, licenses will not be copied from the source resource when creating an image from a disk,
+        /// disk from snapshot, or snapshot from disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferable")]
+        public virtual System.Nullable<bool> Transferable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LicenseCode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
+        public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>[Output Only] Description of this License Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
+        /// server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<ulong> Id { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#licenseCode for licenses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] URL and description aliases of Licenses with the same License Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseAlias")]
+        public virtual System.Collections.Generic.IList<LicenseCodeLicenseAlias> LicenseAlias { get; set; } 
+
+        /// <summary>[Output Only] Name of the resource. The name is 1-20 characters long and must be a valid 64 bit
+        /// integer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -49458,8 +49984,114 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>[Output Only] Current state of this License Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>[Output Only] If true, the license will remain attached when creating images or snapshots from
+        /// disks. Otherwise, the license is not transferred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transferable")]
+        public virtual System.Nullable<bool> Transferable { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    public class LicenseCodeLicenseAlias : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Description of this License Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Output Only] URL of license corresponding to this License Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LicenseResourceRequirements : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and
+        /// Instance start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minGuestCpuCount")]
+        public virtual System.Nullable<int> MinGuestCpuCount { get; set; } 
+
+        /// <summary>Minimum memory required to use the Instance. Enforced at Instance creation and Instance
+        /// start.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minMemoryMb")]
+        public virtual System.Nullable<int> MinMemoryMb { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LicensesListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of License resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<License> Items { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual LicensesListResponse.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
     }    
 
     /// <summary>Specifies what kind of log the caller must write</summary>
@@ -52434,6 +53066,10 @@ namespace Google.Apis.Compute.beta.Data
         /// may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Integer license codes indicating which licenses are attached to this snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("licenseCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> LicenseCodes { get; set; } 
 
         /// <summary>[Output Only] A list of public visible licenses that apply to this snapshot. This can be because
         /// the original image had licenses attached (such as a Windows image).</summary>

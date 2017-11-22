@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171110 (1044)
+ *      <tr><th>API Rev<td>20171117 (1051)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -1332,9 +1332,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Creates a queue.
                 ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).</summary>
+                /// WARNING: Using this method may have unintended side effects if you are using an App Engine
+                /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required.
                 ///
@@ -1349,9 +1349,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Creates a queue.
                 ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).</summary>
+                /// WARNING: Using this method may have unintended side effects if you are using an App Engine
+                /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
                 public class CreateRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Queue>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1423,9 +1423,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Note: If you delete a queue, a queue with the same name can't be created for 7 days.
                 ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).</summary>
+                /// WARNING: Using this method may have unintended side effects if you are using an App Engine
+                /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
                 /// <param name="name">Required.
                 ///
                 /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
@@ -1440,9 +1440,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// Note: If you delete a queue, a queue with the same name can't be created for 7 days.
                 ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).</summary>
+                /// WARNING: Using this method may have unintended side effects if you are using an App Engine
+                /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
                 public class DeleteRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1772,9 +1772,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// This method creates the queue if it does not exist and updates the queue if it does exist.
                 ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).</summary>
+                /// WARNING: Using this method may have unintended side effects if you are using an App Engine
+                /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The queue name.
                 ///
@@ -1793,9 +1793,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// This method creates the queue if it does not exist and updates the queue if it does exist.
                 ///
-                /// WARNING: This method is only available to whitelisted users. Using this method carries some risk.
-                /// Read [Overview of Queue Management and queue.yaml](/cloud-tasks/docs/queue-yaml) carefully and then
-                /// sign up for [whitelist access to this method](https://goo.gl/Fe5mUy).</summary>
+                /// WARNING: Using this method may have unintended side effects if you are using an App Engine
+                /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
                 public class PatchRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Queue>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -2379,6 +2379,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2386,10 +2390,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2425,6 +2425,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2437,15 +2446,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3301,10 +3301,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// The desired new lease duration, starting from now.
         ///
-        /// The maximum lease duration is 1 week. `new_lease_duration` will be truncated to the nearest
-        /// second.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newLeaseDuration")]
-        public virtual object NewLeaseDuration { get; set; } 
+        /// The maximum lease duration is 1 week. `lease_duration` will be truncated to the nearest second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leaseDuration")]
+        public virtual object LeaseDuration { get; set; } 
 
         /// <summary>The response_view specifies which subset of the Task will be returned.
         ///
@@ -3359,10 +3358,17 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxBackoff")]
         public virtual object MaxBackoff { get; set; } 
 
-        /// <summary>The time between retries increases exponentially `max_doublings` times. `max_doublings` is maximum
-        /// number of times that the interval between failed task retries will be doubled before the interval increases
-        /// linearly. After max_doublings intervals, the retry interval will be 2^(max_doublings - 1) *
-        /// RetryConfig.min_backoff.
+        /// <summary>The time between retries will double `max_doublings` times.
+        ///
+        /// A task's retry interval starts at RetryConfig.min_backoff, then doubles `max_doublings` times, then
+        /// increases linearly, and finally retries retries at intervals of RetryConfig.max_backoff up to max_attempts
+        /// times.
+        ///
+        /// For example, if RetryConfig.min_backoff is 10s, RetryConfig.max_backoff is 300s, and `max_doublings` is 3,
+        /// then the a task will first be retried in 10s. The retry interval will double three times, and then increase
+        /// linearly by 2^3 * 10s. Finally, the task will retry at intervals of RetryConfig.max_backoff until the task
+        /// has been attempted `max_attempts` times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s,
+        /// 300s, 300s, ....
         ///
         /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 16 by default. *
         /// For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171011 (1014)
+ *      <tr><th>API Rev<td>20171110 (1044)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>
  *              https://cloud.google.com/source-repositories/docs/apis</a>
@@ -1117,7 +1117,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     /// <summary>A repository (or repo) is a Git repository storing versioned source content.</summary>
     public class Repo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>How this repository mirrors a repository managed by another service.</summary>
+        /// <summary>How this repository mirrors a repository managed by another service. Read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mirrorConfig")]
         public virtual MirrorConfig MirrorConfig { get; set; } 
 
@@ -1126,11 +1126,11 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The disk usage of the repo, in bytes. Only returned by GetRepo.</summary>
+        /// <summary>The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; } 
 
-        /// <summary>URL to clone the repository from Google Cloud Source Repositories.</summary>
+        /// <summary>URL to clone the repository from Google Cloud Source Repositories. Read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 

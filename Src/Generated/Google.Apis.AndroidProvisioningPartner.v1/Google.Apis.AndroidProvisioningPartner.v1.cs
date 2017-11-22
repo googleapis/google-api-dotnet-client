@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171105 (1039)
+ *      <tr><th>API Rev<td>20171118 (1052)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -467,7 +467,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             /// owner roles can manage devices and EMM configs by calling API methods or using their zero-touch
             /// enrollment portal. The API doesn't notify the customer that they have access.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The parent resource ID in format `partners/[PARTNER_ID]` that identifies the
+            /// <param name="parent">Required. The parent resource ID in the format `partners/[PARTNER_ID]` that identifies the
             /// reseller.</param>
             public virtual CreateRequest Create(Google.Apis.AndroidProvisioningPartner.v1.Data.CreateCustomerRequest body, string parent)
             {
@@ -489,7 +489,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
 
 
-                /// <summary>Required. The parent resource ID in format `partners/[PARTNER_ID]` that identifies the
+                /// <summary>Required. The parent resource ID in the format `partners/[PARTNER_ID]` that identifies the
                 /// reseller.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -1343,30 +1343,35 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Android device.</summary>
+    /// <summary>An Android device registered for zero-touch enrollment.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Claims.</summary>
+        /// <summary>Output only. The provisioning claims for a device. Devices claimed for zero-touch enrollment have a
+        /// claim with the type `SECTION_TYPE_ZERO_TOUCH`. Call `partners.devices.unclaim` or
+        /// `partners.devices.unclaimAsync` to remove the device from zero-touch enrollment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claims")]
         public virtual System.Collections.Generic.IList<DeviceClaim> Claims { get; set; } 
 
-        /// <summary>The resource name of the configuration. Only set for customers.</summary>
+        /// <summary>Not available to resellers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
         public virtual string Configuration { get; set; } 
 
-        /// <summary>Device ID.</summary>
+        /// <summary>Output only. The ID of the device. Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual System.Nullable<long> DeviceId { get; set; } 
 
-        /// <summary>Device identifier.</summary>
+        /// <summary>The hardware IDs that identify a manufactured device. To learn more, read [Identifiers](/zero-
+        /// touch/guides/identifiers).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
         public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
 
-        /// <summary>Device metadata.</summary>
+        /// <summary>The metadata attached to the device. Structured as key-value pairs. To learn more, read [Device
+        /// metadata](/zero-touch/guides/metadata).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceMetadata")]
         public virtual DeviceMetadata DeviceMetadata { get; set; } 
 
-        /// <summary>Resource name in `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.</summary>
+        /// <summary>Output only. The API resource name in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
+        /// Assigned by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1374,14 +1379,16 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Information about a device claimed for a partner.</summary>
+    /// <summary>A record of a device claimed by a reseller for a customer. Devices claimed for zero-touch enrollment
+    /// have a claim with the type `SECTION_TYPE_ZERO_TOUCH`. To learn more, read [Claim devices for customers](/zero-
+    /// touch/guides/how-it-works#claim).</summary>
     public class DeviceClaim : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Owner ID.</summary>
+        /// <summary>The ID of the Customer that purchased the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ownerCompanyId")]
         public virtual System.Nullable<long> OwnerCompanyId { get; set; } 
 
-        /// <summary>Section type of the device claim.</summary>
+        /// <summary>Output only. The type of claim made on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; } 
 
@@ -1389,23 +1396,25 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Identifies a unique device.</summary>
+    /// <summary>Encapsulates hardware and product IDs to identify a manufactured device. To learn more, read
+    /// [Identifiers](/zero-touch/guides/identifiers).</summary>
     public class DeviceIdentifier : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>IMEI number.</summary>
+        /// <summary>The device’s IMEI number. Validated on input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual string Imei { get; set; } 
 
-        /// <summary>Manufacturer name to match `android.os.Build.MANUFACTURER` (required). Allowed values listed in
-        /// [manufacturer names](/zero-touch/resources/manufacturer-names).</summary>
+        /// <summary>Required. The device manufacturer’s name. Matches the device's built-in value returned from
+        /// `android.os.Build.MANUFACTURER`. Allowed values are listed in [manufacturer names](/zero-touch/resources
+        /// /manufacturer-names).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
         public virtual string Manufacturer { get; set; } 
 
-        /// <summary>MEID number.</summary>
+        /// <summary>The device’s MEID number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; } 
 
-        /// <summary>Serial number (optional).</summary>
+        /// <summary>The manufacturer's serial number for the device. This value might not be unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; } 
 
@@ -1413,10 +1422,11 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A key-value pair of the device metadata.</summary>
+    /// <summary>Metadata entries that can be attached to a `Device`. To learn more, read [Device metadata](/zero-
+    /// touch/guides/metadata).</summary>
     public class DeviceMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Metadata entries</summary>
+        /// <summary>Metadata entries recorded as key-value pairs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entries")]
         public virtual System.Collections.Generic.IDictionary<string,string> Entries { get; set; } 
 

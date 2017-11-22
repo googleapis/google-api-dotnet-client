@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Google Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171107 (1041)
+ *      <tr><th>API Rev<td>20171116 (1050)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>

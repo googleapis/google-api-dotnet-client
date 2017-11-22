@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171114 (1048)
+ *      <tr><th>API Rev<td>20171107 (1041)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -10837,7 +10837,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Retrieves the list of private images available to the specified project. Private images are images
+        /// <summary>Retrieves the list of custom images available to the specified project. Custom images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
         /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
         /// use this method to make a request to the respective image project, such as debian-cloud or windows-
@@ -10848,7 +10848,7 @@ namespace Google.Apis.Compute.v1
             return new ListRequest(service, project);
         }
 
-        /// <summary>Retrieves the list of private images available to the specified project. Private images are images
+        /// <summary>Retrieves the list of custom images available to the specified project. Custom images are images
         /// you create that belong to your project. This method does not get any images that belong to other projects,
         /// including publicly-available images, like Debian 8. If you want to get a list of publicly-available images,
         /// use this method to make a request to the respective image project, such as debian-cloud or windows-
@@ -36728,7 +36728,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string AddressValue { get; set; } 
 
-        /// <summary>The type of address to reserve. If unspecified, defaults to EXTERNAL.</summary>
+        /// <summary>The type of address to reserve, either INTERNAL or EXTERNAL. If unspecified, defaults to
+        /// EXTERNAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressType")]
         public virtual string AddressType { get; set; } 
 
@@ -37146,14 +37147,14 @@ namespace Google.Apis.Compute.v1.Data
         ///
         /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
         ///
-        /// To create a disk with a private image that you created, specify the image name in the following format:
+        /// To create a disk with a custom image that you created, specify the image name in the following format:
         ///
-        /// global/images/my-private-image
+        /// global/images/my-custom-image
         ///
-        /// You can also specify a private image by its image family, which returns the latest version of the image in
+        /// You can also specify a custom image by its image family, which returns the latest version of the image in
         /// that family. Replace the image name with family/family-name:
         ///
-        /// global/images/family/my-private-family
+        /// global/images/family/my-image-family
         ///
         /// If the source image is deleted later, this field will not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
@@ -38617,14 +38618,14 @@ namespace Google.Apis.Compute.v1.Data
         ///
         /// projects/debian-cloud/global/images/debian-8-jessie-vYYYYMMDD
         ///
-        /// To create a disk with a private image that you created, specify the image name in the following format:
+        /// To create a disk with a custom image that you created, specify the image name in the following format:
         ///
-        /// global/images/my-private-image
+        /// global/images/my-custom-image
         ///
-        /// You can also specify a private image by its image family, which returns the latest version of the image in
+        /// You can also specify a custom image by its image family, which returns the latest version of the image in
         /// that family. Replace the image name with family/family-name:
         ///
-        /// global/images/family/my-private-family</summary>
+        /// global/images/family/my-image-family</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
         public virtual string SourceImage { get; set; } 
 
@@ -41986,13 +41987,13 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support Interconnect. Next available tag: 25</summary>
+    /// <summary>Represents an Interconnects resource. The Interconnects resource is a dedicated connection between
+    /// Google's network and your on-premises network. For more information, see the  Dedicated overview page.</summary>
     public class Interconnect : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Administrative status of the interconnect. When this is set to ?true?, the Interconnect is
-        /// functional and may carry traffic (assuming there are functional InterconnectAttachments and other
-        /// requirements are satisfied). When set to ?false?, no packets will be carried over this Interconnect and no
-        /// BGP routes will be exchanged over it. By default, it is set to ?true?.</summary>
+        /// <summary>Administrative status of the interconnect. When this is set to true, the Interconnect is functional
+        /// and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes
+        /// are exchanged over it. By default, the status is set to true.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEnabled")]
         public virtual System.Nullable<bool> AdminEnabled { get; set; } 
 
@@ -42039,6 +42040,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachments")]
         public virtual System.Collections.Generic.IList<string> InterconnectAttachments { get; set; } 
 
+        /// <summary>Type of interconnect. Note that "IT_PRIVATE" has been deprecated in favor of "DEDICATED"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectType")]
         public virtual string InterconnectType { get; set; } 
 
@@ -42046,6 +42048,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>Type of link requested. This field indicates speed of each of the links in the bundle, not the
+        /// entire bundle. Only 10G per link is allowed for a dedicated interconnect. Options: Ethernet_10G_LR</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
         public virtual string LinkType { get; set; } 
 
@@ -42094,7 +42098,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support InterconnectAttachment. Next available tag: 23</summary>
+    /// <summary>Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see  Creating
+    /// VLAN Attachments.</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this
@@ -42111,8 +42116,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customerRouterIpAddress")]
         public virtual string CustomerRouterIpAddress { get; set; } 
 
-        /// <summary>An optional description of this resource. Provide this property when you create the
-        /// resource.</summary>
+        /// <summary>An optional description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -42149,8 +42153,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationalStatus")]
         public virtual string OperationalStatus { get; set; } 
 
-        /// <summary>[Output Only] Information specific to a Private InterconnectAttachment. Only populated if the
-        /// interconnect that this is attached is of type IT_PRIVATE.</summary>
+        /// <summary>[Output Only] Information specific to an InterconnectAttachment. This property is populated if the
+        /// interconnect that this is attached to is of type DEDICATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateInterconnectInfo")]
         public virtual InterconnectAttachmentPrivateInfo PrivateInterconnectInfo { get; set; } 
 
@@ -42317,8 +42321,8 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Private information for an interconnect attachment when this belongs to an interconnect of type
-    /// IT_PRIVATE.</summary>
+    /// <summary>Information for an interconnect attachment when this belongs to an interconnect of type
+    /// DEDICATED.</summary>
     public class InterconnectAttachmentPrivateInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] 802.1q encapsulation tag to be used for traffic between Google and the customer,
@@ -42386,8 +42390,7 @@ namespace Google.Apis.Compute.v1.Data
     /// Google, so all fields are output only. Next id: 4</summary>
     public class InterconnectCircuitInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Customer-side demarc ID for this circuit. This will only be set if it was provided by the Customer
-        /// to Google during circuit turn-up.</summary>
+        /// <summary>Customer-side demarc ID for this circuit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerDemarcId")]
         public virtual string CustomerDemarcId { get; set; } 
 
@@ -42477,7 +42480,9 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Protocol definitions for Mixer API to support InterconnectLocation.</summary>
+    /// <summary>Represents an InterconnectLocations resource. The InterconnectLocations resource describes the
+    /// locations where you can connect to Google's networks. For more information, see  Colocation
+    /// Facilities.</summary>
     public class InterconnectLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The postal address of the Point of Presence, each line in the address is separated by
@@ -42485,17 +42490,18 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; } 
 
-        /// <summary>Availability zone for this location. Within a city, maintenance will not be simultaneously
-        /// scheduled in more than one availability zone. Example: "zone1" or "zone2".</summary>
+        /// <summary>[Output Only] Availability zone for this location. Within a metropolitan area (metro), maintenance
+        /// will not be simultaneously scheduled in more than one availability zone. Example: "zone1" or
+        /// "zone2".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availabilityZone")]
         public virtual string AvailabilityZone { get; set; } 
 
-        /// <summary>City designator used by the Interconnect UI to locate this InterconnectLocation within the
-        /// Continent. For example: "Chicago, IL", "Amsterdam, Netherlands".</summary>
+        /// <summary>[Output Only] Metropolitan area designator that indicates which city an interconnect is located.
+        /// For example: "Chicago, IL", "Amsterdam, Netherlands".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("city")]
         public virtual string City { get; set; } 
 
-        /// <summary>Continent for this location. Used by the location picker in the Interconnect UI.</summary>
+        /// <summary>[Output Only] Continent for this location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("continent")]
         public virtual string Continent { get; set; } 
 
@@ -42649,13 +42655,16 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("affectedCircuits")]
         public virtual System.Collections.Generic.IList<string> AffectedCircuits { get; set; } 
 
-        /// <summary>Short user-visible description of the purpose of the outage.</summary>
+        /// <summary>A description about the purpose of the outage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Scheduled end time for the outage (milliseconds since Unix epoch).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual System.Nullable<long> EndTime { get; set; } 
 
+        /// <summary>Form this outage is expected to take. Note that the "IT_" versions of this enum have been
+        /// deprecated in favor of the unprefixed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issueType")]
         public virtual string IssueType { get; set; } 
 
@@ -42663,13 +42672,17 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
+        /// <summary>The party that generated this notification. Note that "NSRC_GOOGLE" has been deprecated in favor of
+        /// "GOOGLE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
-        /// <summary>Scheduled start and end times for the outage (milliseconds since Unix epoch).</summary>
+        /// <summary>Scheduled start time for the outage (milliseconds since Unix epoch).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual System.Nullable<long> StartTime { get; set; } 
 
+        /// <summary>State of this notification. Note that the "NS_" versions of this enum have been deprecated in favor
+        /// of the unprefixed values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
