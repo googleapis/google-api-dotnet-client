@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171114 (1048)
+ *      <tr><th>API Rev<td>20171121 (1055)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1088,15 +1088,6 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood.
-                    ///
-                    /// Examples:
-                    ///
-                    /// - info_type=EMAIL_ADDRESS - info_type=PHONE_NUMBER,EMAIL_ADDRESS - likelihood=VERY_LIKELY -
-                    /// likelihood=VERY_LIKELY,LIKELY - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The value returned by the last `ListInspectFindingsResponse`; indicates that this is a
                     /// continuation of a prior `ListInspectFindings` call, and that the system should return the next
                     /// page of data.</summary>
@@ -1107,6 +1098,15 @@ namespace Google.Apis.DLP.v2beta1
                     /// value.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood.
+                    ///
+                    /// Examples:
+                    ///
+                    /// - info_type=EMAIL_ADDRESS - info_type=PHONE_NUMBER,EMAIL_ADDRESS - likelihood=VERY_LIKELY -
+                    /// likelihood=VERY_LIKELY,LIKELY - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1142,15 +1142,6 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1163,6 +1154,15 @@ namespace Google.Apis.DLP.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1430,10 +1430,6 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1441,6 +1437,10 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1476,15 +1476,6 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^riskAnalysis/operations$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1497,6 +1488,15 @@ namespace Google.Apis.DLP.v2beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1750,6 +1750,29 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>Input dataset to compute metrics over.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceTable")]
         public virtual GooglePrivacyDlpV2beta1BigQueryTable SourceTable { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An auxiliary table contains statistical information on the relative frequency of different quasi-
+    /// identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative
+    /// frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the
+    /// corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).</summary>
+    public class GooglePrivacyDlpV2beta1AuxiliaryTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Quasi-identifier columns. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1QuasiIdField> QuasiIds { get; set; } 
+
+        /// <summary>The relative frequency column must contain a floating-point number between 0 and 1 (inclusive).
+        /// Null values are assumed to be zero. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeFrequency")]
+        public virtual GooglePrivacyDlpV2beta1FieldId RelativeFrequency { get; set; } 
+
+        /// <summary>Auxiliary table location. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual GooglePrivacyDlpV2beta1BigQueryTable Table { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2710,12 +2733,14 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>k-anonymity metric, used for analysis of reidentification risk.</summary>
     public class GooglePrivacyDlpV2beta1KAnonymityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional message indicating that each distinct `EntityId` should not contribute to the k-anonymity
+        /// <summary>Optional message indicating that each distinct entity_id should not contribute to the k-anonymity
         /// count more than once per equivalence class. If an entity_id appears on several rows with different quasi-
-        /// identifier tuples, it will contribute to each count exactly once. This can lead to unexpected results,
-        /// consider for example the following table: entity_id | quasi_id -------------------- 1 |    "foo" 2 |
-        /// "bar" 3 |    "foo" 3 |    "bar" The anonymity value associated to entity_id 3 will be 2, even if it is the
-        /// only entity_id to be associated to both values "foo" and "bar".</summary>
+        /// identifier tuples, it will contribute to each count exactly once.
+        ///
+        /// This can lead to unexpected results. Consider a table where ID 1 is associated to quasi-identifier "foo", ID
+        /// 2 to "bar", and ID 3 to *both* quasi-identifiers "foo" and "bar" (on separate rows), and where this ID is
+        /// used as entity_id. Then, the anonymity value associated to ID 3 will be 2, even if it is the only ID to be
+        /// associated to both values "foo" and "bar".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
         public virtual GooglePrivacyDlpV2beta1EntityId EntityId { get; set; } 
 
@@ -2775,6 +2800,90 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>Histogram of k-anonymity equivalence classes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassHistogramBuckets")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1KAnonymityHistogramBucket> EquivalenceClassHistogramBuckets { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk"
+    /// in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can
+    /// be done using publicly available data (like the US Census), or using a custom statistical model (indicated as
+    /// one or several BigQuery tables), or by extrapolating from the distribution of values in the input
+    /// dataset.</summary>
+    public class GooglePrivacyDlpV2beta1KMapEstimationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-
+        /// identifiers column must appear in exactly one column of one auxiliary table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryTables")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1AuxiliaryTable> AuxiliaryTables { get; set; } 
+
+        /// <summary>Fields considered to be quasi-identifiers. No two columns can have the same tag.
+        /// [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1TaggedField> QuasiIds { get; set; } 
+
+        /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Required if no column is tagged
+        /// with a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A KMapEstimationHistogramBucket message with the following values: min_anonymity: 3 max_anonymity: 5
+    /// frequency: 42 means that there are 42 records whose quasi-identifier values correspond to 3, 4 or 5 people in
+    /// the overlying population. An important particular case is when min_anonymity = max_anonymity = 1: the frequency
+    /// field then corresponds to the number of uniquely identifiable records.</summary>
+    public class GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of records within these anonymity bounds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
+        public virtual System.Nullable<long> BucketSize { get; set; } 
+
+        /// <summary>Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per
+        /// bucket is capped at 20.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues> BucketValues { get; set; } 
+
+        /// <summary>Always greater than or equal to min_anonymity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxAnonymity")]
+        public virtual System.Nullable<long> MaxAnonymity { get; set; } 
+
+        /// <summary>Always positive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAnonymity")]
+        public virtual System.Nullable<long> MinAnonymity { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A tuple of values for the quasi-identifier columns.</summary>
+    public class GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The estimated anonymity for these quasi-identifier values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedAnonymity")]
+        public virtual System.Nullable<long> EstimatedAnonymity { get; set; } 
+
+        /// <summary>The quasi-identifier values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Value> QuasiIdsValues { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Result of the reidentifiability analysis. Note that these results are an estimation, not exact
+    /// values.</summary>
+    public class GooglePrivacyDlpV2beta1KMapEstimationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn't correspond to any
+        /// such interval, the associated frequency is zero. For example, the following records: {min_anonymity: 1,
+        /// max_anonymity: 1, frequency: 17} {min_anonymity: 2, max_anonymity: 3, frequency: 42} {min_anonymity: 5,
+        /// max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or
+        /// larger than 10.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationHistogram")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket> KMapEstimationHistogram { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3137,6 +3246,9 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityConfig")]
         public virtual GooglePrivacyDlpV2beta1KAnonymityConfig KAnonymityConfig { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationConfig")]
+        public virtual GooglePrivacyDlpV2beta1KMapEstimationConfig KMapEstimationConfig { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("lDiversityConfig")]
         public virtual GooglePrivacyDlpV2beta1LDiversityConfig LDiversityConfig { get; set; } 
 
@@ -3165,6 +3277,20 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which
+    /// column in the statistical model.</summary>
+    public class GooglePrivacyDlpV2beta1QuasiIdField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
+        public virtual string CustomTag { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual GooglePrivacyDlpV2beta1FieldId Field { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3343,6 +3469,9 @@ namespace Google.Apis.DLP.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityResult")]
         public virtual GooglePrivacyDlpV2beta1KAnonymityResult KAnonymityResult { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationResult")]
+        public virtual GooglePrivacyDlpV2beta1KMapEstimationResult KMapEstimationResult { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("lDiversityResult")]
         public virtual GooglePrivacyDlpV2beta1LDiversityResult LDiversityResult { get; set; } 
 
@@ -3418,6 +3547,32 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>The zero-based index of the row where the finding is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowIndex")]
         public virtual System.Nullable<long> RowIndex { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A column with a semantic tag attached.</summary>
+    public class GooglePrivacyDlpV2beta1TaggedField : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
+        /// that contains statistical information on the possible values of this column (below).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
+        public virtual string CustomTag { get; set; } 
+
+        /// <summary>Identifies the column. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual GooglePrivacyDlpV2beta1FieldId Field { get; set; } 
+
+        /// <summary>If no semantic tag is indicated, we infer the statistical model from the distribution of values in
+        /// the input data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inferred")]
+        public virtual GoogleProtobufEmpty Inferred { get; set; } 
+
+        /// <summary>A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of
+        /// population, if available. We currently support US ZIP codes, region codes, ages and genders.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
