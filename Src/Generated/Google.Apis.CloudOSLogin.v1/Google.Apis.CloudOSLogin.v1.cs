@@ -19,13 +19,13 @@
 
 /**
  * \brief
- *   Google Cloud OS Login API Version v1alpha
+ *   Google Cloud OS Login API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Google Cloud OS Login API</a>
- *      <tr><th>API Version<td>v1alpha
+ *      <tr><th>API Version<td>v1
  *      <tr><th>API Rev<td>20171120 (1054)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
@@ -43,13 +43,13 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.CloudOSLogin.v1alpha
+namespace Google.Apis.CloudOSLogin.v1
 {
     /// <summary>The CloudOSLogin Service.</summary>
     public class CloudOSLoginService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1alpha";
+        public const string Version = "v1";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
@@ -111,14 +111,8 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
 
-            /// <summary>View your data across Google Cloud Platform services</summary>
-            public static string CloudPlatformReadOnly = "https://www.googleapis.com/auth/cloud-platform.read-only";
-
             /// <summary>View and manage your Google Compute Engine resources</summary>
             public static string Compute = "https://www.googleapis.com/auth/compute";
-
-            /// <summary>View your Google Compute Engine resources</summary>
-            public static string ComputeReadonly = "https://www.googleapis.com/auth/compute.readonly";
 
         }
 
@@ -399,7 +393,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             }
 
             /// <summary>Deletes a POSIX account.</summary>
-            public class DeleteRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1alpha.Data.Empty>
+            public class DeleteRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -432,7 +426,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1alpha/{+name}"; }
+                    get { return "v1/{+name}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -486,7 +480,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             }
 
             /// <summary>Deletes an SSH public key.</summary>
-            public class DeleteRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1alpha.Data.Empty>
+            public class DeleteRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
                 public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -519,7 +513,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1alpha/{+name}"; }
+                    get { return "v1/{+name}"; }
                 }
 
                 /// <summary>Initializes Delete parameter list.</summary>
@@ -549,7 +543,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             }
 
             /// <summary>Retrieves an SSH public key.</summary>
-            public class GetRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey>
+            public class GetRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1.Data.SshPublicKey>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -582,7 +576,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1alpha/{+name}"; }
+                    get { return "v1/{+name}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -608,17 +602,17 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The fingerprint of the public key to update. Public keys are identified by their SHA-256
             /// fingerprint. The fingerprint of the public key is in format `users/{user}/sshPublicKeys/{fingerprint}`.</param>
-            public virtual PatchRequest Patch(Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey body, string name)
+            public virtual PatchRequest Patch(Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string name)
             {
                 return new PatchRequest(service, body, name);
             }
 
             /// <summary>Updates an SSH public key and returns the profile information. This method supports patch
             /// semantics.</summary>
-            public class PatchRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey>
+            public class PatchRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1.Data.SshPublicKey>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey body, string name)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string name)
                     : base(service)
                 {
                     Name = name;
@@ -639,7 +633,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey Body { get; set; }
+                Google.Apis.CloudOSLogin.v1.Data.SshPublicKey Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -659,7 +653,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v1alpha/{+name}"; }
+                    get { return "v1/{+name}"; }
                 }
 
                 /// <summary>Initializes Patch parameter list.</summary>
@@ -700,7 +694,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
 
         /// <summary>Retrieves the profile information used for logging in to a virtual machine on Google Compute
         /// Engine.</summary>
-        public class GetLoginProfileRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1alpha.Data.LoginProfile>
+        public class GetLoginProfileRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1.Data.LoginProfile>
         {
             /// <summary>Constructs a new GetLoginProfile request.</summary>
             public GetLoginProfileRequest(Google.Apis.Services.IClientService service, string name)
@@ -731,7 +725,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1alpha/{+name}/loginProfile"; }
+                get { return "v1/{+name}/loginProfile"; }
             }
 
             /// <summary>Initializes GetLoginProfile parameter list.</summary>
@@ -756,17 +750,17 @@ namespace Google.Apis.CloudOSLogin.v1alpha
         /// set when no username and UID exist as part of the login profile.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">The unique ID for the user in format `users/{user}`.</param>
-        public virtual ImportSshPublicKeyRequest ImportSshPublicKey(Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey body, string parent)
+        public virtual ImportSshPublicKeyRequest ImportSshPublicKey(Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string parent)
         {
             return new ImportSshPublicKeyRequest(service, body, parent);
         }
 
         /// <summary>Adds an SSH public key and returns the profile information. Default POSIX account information is
         /// set when no username and UID exist as part of the login profile.</summary>
-        public class ImportSshPublicKeyRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1alpha.Data.ImportSshPublicKeyResponse>
+        public class ImportSshPublicKeyRequest : CloudOSLoginBaseServiceRequest<Google.Apis.CloudOSLogin.v1.Data.ImportSshPublicKeyResponse>
         {
             /// <summary>Constructs a new ImportSshPublicKey request.</summary>
-            public ImportSshPublicKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey body, string parent)
+            public ImportSshPublicKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudOSLogin.v1.Data.SshPublicKey body, string parent)
                 : base(service)
             {
                 Parent = parent;
@@ -785,7 +779,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.CloudOSLogin.v1alpha.Data.SshPublicKey Body { get; set; }
+            Google.Apis.CloudOSLogin.v1.Data.SshPublicKey Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -805,7 +799,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1alpha/{+parent}:importSshPublicKey"; }
+                get { return "v1/{+parent}:importSshPublicKey"; }
             }
 
             /// <summary>Initializes ImportSshPublicKey parameter list.</summary>
@@ -837,7 +831,7 @@ namespace Google.Apis.CloudOSLogin.v1alpha
     }
 }
 
-namespace Google.Apis.CloudOSLogin.v1alpha.Data
+namespace Google.Apis.CloudOSLogin.v1.Data
 {    
 
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
@@ -867,11 +861,11 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
     /// Engine.</summary>
     public class LoginProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A unique user ID for identifying the user.</summary>
+        /// <summary>The primary email address that uniquely identifies the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The list of POSIX accounts associated with the Directory API user.</summary>
+        /// <summary>The list of POSIX accounts associated with the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posixAccounts")]
         public virtual System.Collections.Generic.IList<PosixAccount> PosixAccounts { get; set; } 
 
@@ -879,7 +873,8 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
         public virtual System.Collections.Generic.IDictionary<string,SshPublicKey> SshPublicKeys { get; set; } 
 
-        /// <summary>Indicates if the user is suspended.</summary>
+        /// <summary>Indicates if the user is suspended. A suspended user cannot log in but their profile information is
+        /// retained.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
         public virtual System.Nullable<bool> Suspended { get; set; } 
 

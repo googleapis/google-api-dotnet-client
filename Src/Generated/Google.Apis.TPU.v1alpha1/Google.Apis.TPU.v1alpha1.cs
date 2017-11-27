@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tpu/'>Cloud TPU API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20171108 (1042)
+ *      <tr><th>API Rev<td>20171121 (1055)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tpu/'>
  *              https://cloud.google.com/tpu/</a>
@@ -693,20 +693,22 @@ namespace Google.Apis.TPU.v1alpha1
                 }
 
                 /// <summary>Reimage a node's OS.</summary>
+                /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name.</param>
-                public virtual ReimageRequest Reimage(string name)
+                public virtual ReimageRequest Reimage(Google.Apis.TPU.v1alpha1.Data.ReimageNodeRequest body, string name)
                 {
-                    return new ReimageRequest(service, name);
+                    return new ReimageRequest(service, body, name);
                 }
 
                 /// <summary>Reimage a node's OS.</summary>
                 public class ReimageRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
                 {
                     /// <summary>Constructs a new Reimage request.</summary>
-                    public ReimageRequest(Google.Apis.Services.IClientService service, string name)
+                    public ReimageRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.ReimageNodeRequest body, string name)
                         : base(service)
                     {
                         Name = name;
+                        Body = body;
                         InitParameters();
                     }
 
@@ -715,10 +717,12 @@ namespace Google.Apis.TPU.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The version for reimage to create.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("tensorflowVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string TensorflowVersion { get; set; }
 
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v1alpha1.Data.ReimageNodeRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -752,34 +756,27 @@ namespace Google.Apis.TPU.v1alpha1
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
                             });
-                        RequestParameters.Add(
-                            "tensorflowVersion", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "tensorflowVersion",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
 
                 /// <summary>Resets a node, which stops and starts the VM.</summary>
+                /// <param name="body">The body of the request.</param>
                 /// <param name="name">The resource name.</param>
-                public virtual ResetRequest Reset(string name)
+                public virtual ResetRequest Reset(Google.Apis.TPU.v1alpha1.Data.ResetNodeRequest body, string name)
                 {
-                    return new ResetRequest(service, name);
+                    return new ResetRequest(service, body, name);
                 }
 
                 /// <summary>Resets a node, which stops and starts the VM.</summary>
                 public class ResetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
                 {
                     /// <summary>Constructs a new Reset request.</summary>
-                    public ResetRequest(Google.Apis.Services.IClientService service, string name)
+                    public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.ResetNodeRequest body, string name)
                         : base(service)
                     {
                         Name = name;
+                        Body = body;
                         InitParameters();
                     }
 
@@ -788,6 +785,12 @@ namespace Google.Apis.TPU.v1alpha1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v1alpha1.Data.ResetNodeRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
 
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
@@ -1244,6 +1247,10 @@ namespace Google.Apis.TPU.v1alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1251,10 +1258,6 @@ namespace Google.Apis.TPU.v1alpha1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1290,6 +1293,15 @@ namespace Google.Apis.TPU.v1alpha1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1302,15 +1314,6 @@ namespace Google.Apis.TPU.v1alpha1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1564,6 +1567,24 @@ namespace Google.Apis.TPU.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for ReimageNode.</summary>
+    public class ReimageNodeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The version for reimage to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tensorflowVersion")]
+        public virtual string TensorflowVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for ResetNode.</summary>
+    public class ResetNodeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
