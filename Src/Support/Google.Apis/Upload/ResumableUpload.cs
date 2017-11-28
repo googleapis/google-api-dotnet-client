@@ -621,13 +621,23 @@ namespace Google.Apis.Upload
                     Method = HttpConsts.Put
                 }.CreateRequest();
 
-            // Prepare next chunk to send.
-            int contentLength = ContentStream.CanSeek
-                ? PrepareNextChunkKnownSize(request, stream, cancellationToken)
-                : PrepareNextChunkUnknownSize(request, stream, cancellationToken);
+            // Prepare next chunk to send. This is always read into memory one way or another.
+            byte[] chunk;
+            int chunkLength;
+            if (ContentStream.CanSeek)
+            {
+                PrepareNextChunkKnownSize(stream, cancellationToken, out chunk, out chunkLength);
+            }
+            else
+            {
+                PrepareNextChunkUnknownSize(stream, cancellationToken, out chunk, out chunkLength);
+            }
 
-            BytesClientSent = BytesServerReceived + contentLength;
+            var content = new ByteArrayContent(chunk, 0, chunkLength);
+            content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkLength));
+            request.Content = content;
 
+            BytesClientSent = BytesServerReceived + chunkLength;
             Logger.Debug("MediaUpload[{0}] - Sending bytes={1}-{2}", UploadUri, BytesServerReceived,
                 BytesClientSent - 1);
 
@@ -679,9 +689,10 @@ namespace Google.Apis.Upload
             LastMediaRequest = null;
         }
 
+        // TODO: Make this and the next method read the stream using ReadAsync?
+
         /// <summary>Prepares the given request with the next chunk in case the steam length is unknown.</summary>
-        private int PrepareNextChunkUnknownSize(HttpRequestMessage request, Stream stream,
-            CancellationToken cancellationToken)
+        private void PrepareNextChunkUnknownSize(Stream stream, CancellationToken cancellationToken, out byte[] chunk, out int chunkLength)
         {
             if (LastMediaRequest == null)
             {
@@ -711,24 +722,19 @@ namespace Google.Apis.Upload
                     StreamLength = BytesServerReceived + LastMediaLength;
                 }
             }
-            // Set Content-Length and Content-Range.
-            int contentLength = Math.Min(ChunkSize, LastMediaLength);
-            var byteArrayContent = new ByteArrayContent(LastMediaRequest, 0, contentLength);
-            byteArrayContent.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, contentLength));
-            request.Content = byteArrayContent;
-            return contentLength;
+
+            // If we've read an extra byte, it'll be included in the next chunk.
+            chunkLength = Math.Min(ChunkSize, LastMediaLength);
+            chunk = LastMediaRequest;
         }
 
         /// <summary>Prepares the given request with the next chunk in case the steam length is known.</summary>
-        private int PrepareNextChunkKnownSize(HttpRequestMessage request, Stream stream,
-            CancellationToken cancellationToken)
+        private void PrepareNextChunkKnownSize(Stream stream, CancellationToken cancellationToken, out byte[] chunk, out int chunkLength)
         {
             int chunkSize = (int)Math.Min(StreamLength - BytesServerReceived, (long)ChunkSize);
 
             // Stream length is known and it supports seek and position operations.
             // We can change the stream position and read bytes from the last point.
-            byte[] buffer = new byte[Math.Min(chunkSize, BufferSize)];
-
             // If the number of bytes received by the server isn't equal to the amount of bytes the client sent, we 
             // need to change the position of the input stream, otherwise we can continue from the current position.
             if (stream.Position != BytesServerReceived)
@@ -736,26 +742,24 @@ namespace Google.Apis.Upload
                 stream.Position = BytesServerReceived;
             }
 
-            MemoryStream ms = new MemoryStream(chunkSize);
+            chunk = new byte[chunkSize];
+            int bytesLeft = chunkSize;
             int bytesRead = 0;
-            while (true)
+            while (bytesLeft > 0)
             {
                 cancellationToken.ThrowIfCancellationRequested();
-
-                // Read from input stream and write to output stream.
-                // TODO(peleyal): write a utility similar to (.NET 4 Stream.CopyTo method).
-                int len = stream.Read(buffer, 0, (int)Math.Min(buffer.Length, chunkSize - bytesRead));
-                if (len == 0) break;
-                ms.Write(buffer, 0, len);
+                // Make sure we only read at most BufferSize bytes at a time.
+                int readSize = Math.Min(bytesLeft, BufferSize);
+                int len = stream.Read(chunk, bytesRead, readSize);
+                if (len == 0)
+                {
+                    // Presumably the stream lied about its length. Not great, but we still have a chunk to send.
+                    break;
+                }
                 bytesRead += len;
+                bytesLeft -= len;
             }
-
-            // Set the stream position to beginning and wrap it with stream content.
-            ms.Position = 0;
-            request.Content = new StreamContent(ms);
-            request.Content.Headers.Add("Content-Range", GetContentRangeHeader(BytesServerReceived, chunkSize));
-
-            return chunkSize;
+            chunkLength = bytesRead;
         }
 
         /// <summary>Returns the next byte index need to be sent.</summary>
