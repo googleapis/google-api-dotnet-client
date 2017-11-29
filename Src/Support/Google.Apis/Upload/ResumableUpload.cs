@@ -200,6 +200,11 @@ namespace Google.Apis.Upload
         /// <summary>Event called whenever the progress of the upload changes.</summary>
         public event Action<IUploadProgress> ProgressChanged;
 
+        /// <summary>
+        /// Interceptor used to propagate data successfully uploaded on each chunk.
+        /// </summary>
+        public StreamInterceptor UploadStreamInterceptor { get; set; }
+
         #endregion //Events
 
         #region Error handling (Exception and 5xx)
@@ -643,7 +648,12 @@ namespace Google.Apis.Upload
 
             HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
-            return await HandleResponse(response).ConfigureAwait(false);
+            var completed = await HandleResponse(response).ConfigureAwait(false);
+
+            // If we've got an interceptor (e.g. for hashing), we can use it now that
+            // we know the server has accepted the chunk.
+            UploadStreamInterceptor?.Invoke(chunk, 0, chunkLength);
+            return completed;
         }
 
         /// <summary>Handles a media upload HTTP response.</summary>
