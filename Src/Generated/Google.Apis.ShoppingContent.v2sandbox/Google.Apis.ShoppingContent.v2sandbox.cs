@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20171102 (1036)
+ *      <tr><th>API Rev<td>20171124 (1058)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -2172,10 +2172,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
     {
         /// <summary>The carrier handling the shipment.
         ///
-        /// Acceptable values are: - "gsx" - "ups" - "united parcel service" - "usps" - "united states postal service" -
-        /// "fedex" - "dhl" - "ecourier" - "cxt" - "google" - "on trac" - "ontrac" - "on-trac" - "on_trac" - "delvic" -
-        /// "dynamex" - "lasership" - "smartpost" - "fedex smartpost" - "mpx" - "uds" - "united delivery
-        /// service"</summary>
+        /// Acceptable values are: - "gsx" - "ups" - "usps" - "fedex" - "dhl" - "ecourier" - "cxt" - "google" - "ontrac"
+        /// - "emsy" - "ont" - "deliv" - "dynamex" - "lasership" - "mpx" - "uds"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("carrier")]
         public virtual string Carrier { get; set; } 
 
@@ -2213,6 +2211,11 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>The id of the line item that is shipped. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
+
+        /// <summary>The ID of the product to ship. This is the REST ID used in the products service. Either lineItemId
+        /// or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
 
         /// <summary>The quantity that is shipped.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
@@ -2266,6 +2269,16 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; } 
 
+        /// <summary>Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based
+        /// on the price and tax of the items involved. The amount must not be larger than the net amount left on the
+        /// order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
+        public virtual Price AmountPretax { get; set; } 
+
+        /// <summary>Tax amount that correspond to cancellation amount in amountPretax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
+        public virtual Price AmountTax { get; set; } 
+
         /// <summary>The ID of the line item to cancel. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
@@ -2273,6 +2286,11 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
+
+        /// <summary>The ID of the product to cancel. This is the REST ID used in the products service. Either
+        /// lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
 
         /// <summary>The quantity to cancel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
@@ -2456,9 +2474,24 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; } 
 
+        /// <summary>Amount to refund for the cancelation. Optional. If not set, Google will calculate the default based
+        /// on the price and tax of the items involved. The amount must not be larger than the net amount left on the
+        /// order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
+        public virtual Price AmountPretax { get; set; } 
+
+        /// <summary>Tax amount that correspond to cancellation amount in amountPretax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
+        public virtual Price AmountTax { get; set; } 
+
         /// <summary>The ID of the line item to cancel. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
+
+        /// <summary>The ID of the product to cancel. This is the REST ID used in the products service. Either
+        /// lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
 
         /// <summary>The quantity to cancel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
@@ -2482,6 +2515,15 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; } 
 
+        /// <summary>The amount that is refunded. Either amount or amountPretax and amountTax should be
+        /// filled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
+        public virtual Price AmountPretax { get; set; } 
+
+        /// <summary>Tax amount that correspond to refund amount in amountPretax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
+        public virtual Price AmountTax { get; set; } 
+
         /// <summary>The reason for the refund.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; } 
@@ -2499,6 +2541,11 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>The ID of the line item to return. Either lineItemId or productId is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
         public virtual string LineItemId { get; set; } 
+
+        /// <summary>The ID of the product to return. This is the REST ID used in the products service. Either
+        /// lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
 
         /// <summary>The quantity to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
@@ -2683,6 +2730,15 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual Price Amount { get; set; } 
 
+        /// <summary>The amount that is refunded. Either amount or amountPretax and amountTax should be
+        /// filled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountPretax")]
+        public virtual Price AmountPretax { get; set; } 
+
+        /// <summary>Tax amount that correspond to refund amount in amountPretax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("amountTax")]
+        public virtual Price AmountTax { get; set; } 
+
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
@@ -2723,6 +2779,11 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
         public virtual string OperationId { get; set; } 
+
+        /// <summary>The ID of the product to return. This is the REST ID used in the products service. Either
+        /// lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
 
         /// <summary>The quantity to return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
@@ -2900,6 +2961,11 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>Line items that are ordered. At least one line item must be provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
         public virtual System.Collections.Generic.IList<TestOrderLineItem> LineItems { get; set; } 
+
+        /// <summary>Determines if test order must be pulled by merchant or pushed to merchant via push
+        /// integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationMode")]
+        public virtual string NotificationMode { get; set; } 
 
         /// <summary>The details of the payment method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paymentMethod")]

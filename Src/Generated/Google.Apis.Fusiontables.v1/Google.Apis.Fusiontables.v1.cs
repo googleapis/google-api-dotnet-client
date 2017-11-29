@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fusiontables'>Fusion Tables API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170413 (833)
+ *      <tr><th>API Rev<td>20171117 (1051)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fusiontables'>
  *              https://developers.google.com/fusiontables</a>

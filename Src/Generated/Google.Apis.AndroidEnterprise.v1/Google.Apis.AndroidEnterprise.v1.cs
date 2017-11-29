@@ -651,6 +651,121 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
+        /// <summary>Updates the device policy. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="deviceId">The ID of the device.</param>
+        public virtual PatchRequest Patch(Google.Apis.AndroidEnterprise.v1.Data.Device body, string enterpriseId, string userId, string deviceId)
+        {
+            return new PatchRequest(service, body, enterpriseId, userId, deviceId);
+        }
+
+        /// <summary>Updates the device policy. This method supports patch semantics.</summary>
+        public class PatchRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Device>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Device body, string enterpriseId, string userId, string deviceId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                DeviceId = deviceId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The ID of the device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DeviceId { get; private set; }
+
+            /// <summary>Mask that identifies which fields to update. If not set, all modifiable fields will be
+            /// modified.
+            ///
+            /// When set in a query parameter, this field should be specified as updateMask=,,...</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.Device Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "deviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Sets whether a device's access to Google services is enabled or disabled. The device state takes
         /// effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise,
         /// the device state is ignored and all devices are allowed access to Google services. This is only supported
@@ -749,6 +864,121 @@ namespace Google.Apis.AndroidEnterprise.v1
                         Name = "deviceId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the device policy</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="enterpriseId">The ID of the enterprise.</param>
+        /// <param name="userId">The ID of the
+        /// user.</param>
+        /// <param name="deviceId">The ID of the device.</param>
+        public virtual UpdateRequest Update(Google.Apis.AndroidEnterprise.v1.Data.Device body, string enterpriseId, string userId, string deviceId)
+        {
+            return new UpdateRequest(service, body, enterpriseId, userId, deviceId);
+        }
+
+        /// <summary>Updates the device policy</summary>
+        public class UpdateRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.Device>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidEnterprise.v1.Data.Device body, string enterpriseId, string userId, string deviceId)
+                : base(service)
+            {
+                EnterpriseId = enterpriseId;
+                UserId = userId;
+                DeviceId = deviceId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the enterprise.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enterpriseId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EnterpriseId { get; private set; }
+
+            /// <summary>The ID of the user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string UserId { get; private set; }
+
+            /// <summary>The ID of the device.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("deviceId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DeviceId { get; private set; }
+
+            /// <summary>Mask that identifies which fields to update. If not set, all modifiable fields will be
+            /// modified.
+            ///
+            /// When set in a query parameter, this field should be specified as updateMask=,,...</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.AndroidEnterprise.v1.Data.Device Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "enterpriseId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "enterpriseId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "deviceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "deviceId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -7787,10 +8017,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     }    
 
     /// <summary>A Devices resource represents a mobile device managed by the EMM and belonging to a specific enterprise
-    /// user.
-    ///
-    /// This collection cannot be modified via the API. It is automatically populated as devices are set up to be
-    /// managed.</summary>
+    /// user.</summary>
     public class Device : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Google Play Services Android ID for the device encoded as a lowercase hex string. For example,
@@ -7814,6 +8041,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// DPC.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managementType")]
         public virtual string ManagementType { get; set; } 
+
+        /// <summary>The policy enforced on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8508,6 +8739,27 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The device policy for a given managed device.</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The availability granted to the device for the specified products. "all" gives the device access to
+        /// all products, regardless of approval status. "allApproved" entitles the device to access all products that
+        /// are approved for the enterprise. "allApproved" and "all" do not enable automatic visibility of "alpha" or
+        /// "beta" tracks. "whitelist" grants the device access the products specified in productPolicy[]. Only products
+        /// that are approved or products that were previously approved (products with revoked approval) by the
+        /// enterprise can be whitelisted. If no value is provided, the availability set at the user level is applied by
+        /// default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAvailabilityPolicy")]
+        public virtual string ProductAvailabilityPolicy { get; set; } 
+
+        /// <summary>The list of product policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productPolicy")]
+        public virtual System.Collections.Generic.IList<ProductPolicy> ProductPolicy { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A Products resource represents an app in the Google Play store that is available to at least some users
     /// in the enterprise. (Some apps are restricted to a single enterprise, and no information about them is made
     /// available outside that enterprise.)
@@ -8654,6 +8906,31 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// <summary>The ID of the app that the permissions relate to, e.g. "app:com.google.android.gm".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The policy for a product.</summary>
+    public class ProductPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the product. For example, "app:com.google.android.gm".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>Grants visibility to the specified track(s) of the product to the device. The track available to
+        /// the device is based on the following order of preference: alpha, beta, production. For example, if an app
+        /// has a prod version, a beta version and an alpha version and the enterprise has been granted visibility to
+        /// both the alpha and beta tracks, if tracks is {"beta", "production"} then the beta version of the app is made
+        /// available to the device. If there are no app versions in the specified track adding the "alpha" and "beta"
+        /// values to the list of tracks will have no effect. Note that the enterprise requires access to alpha and/or
+        /// beta tracks before users can be granted visibility to apps in those tracks.
+        ///
+        /// The allowed sets are: {} (considered equivalent to {"production"}) {"production"} {"beta", "production"}
+        /// {"alpha", "beta", "production"} The order of elements is not relevant. Any other set of tracks will be
+        /// rejected with an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<string> Tracks { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

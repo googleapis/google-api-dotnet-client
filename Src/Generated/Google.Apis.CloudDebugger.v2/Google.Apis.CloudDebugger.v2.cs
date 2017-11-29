@@ -974,11 +974,6 @@ namespace Google.Apis.CloudDebugger.v2
                     [Google.Apis.Util.RequestParameterAttribute("waitToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string WaitToken { get; set; }
 
-                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
-                    /// `google.com/intellij/v1`).</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClientVersion { get; set; }
-
                     /// <summary>Only breakpoints with the specified action will pass the filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("action.value", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ActionValueEnum> ActionValue { get; set; }
@@ -991,6 +986,11 @@ namespace Google.Apis.CloudDebugger.v2
                         [Google.Apis.Util.StringValueAttribute("LOG")]
                         LOG,
                     }
+
+                    /// <summary>The client version making the call. Schema: `domain/type/version` (e.g.,
+                    /// `google.com/intellij/v1`).</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clientVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClientVersion { get; set; }
 
                     /// <summary>When set to `true`, the response includes the list of breakpoints set by any user.
                     /// Otherwise, it includes only breakpoints set by the caller.</summary>
@@ -1054,18 +1054,18 @@ namespace Google.Apis.CloudDebugger.v2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clientVersion", new Google.Apis.Discovery.Parameter
+                            "action.value", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clientVersion",
+                                Name = "action.value",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "action.value", new Google.Apis.Discovery.Parameter
+                            "clientVersion", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "action.value",
+                                Name = "clientVersion",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/N7H5o8Hb9wEfHoFiBuHmBtdf6Zo\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/AvlLdigTa17vP1NBDxU0VXxheAI\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20171119",
+ "revision": "20171121",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",

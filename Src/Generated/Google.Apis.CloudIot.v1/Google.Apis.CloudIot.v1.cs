@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Google Cloud IoT API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171110 (1044)
+ *      <tr><th>API Rev<td>20171122 (1056)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -880,18 +880,6 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
-                        /// continuation of a prior `ListDevices` call, and that the system should return the next page
-                        /// of data.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields
-                        /// `id`, and `num_id` are always returned by default, along with any other fields
-                        /// specified.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object FieldMask { get; set; }
-
                         /// <summary>The maximum number of devices to return in the response. If this value is zero, the
                         /// service will select a default size. A call may return fewer objects than requested, but if
                         /// there is a non-empty `page_token`, it indicates that more entries are available.</summary>
@@ -908,6 +896,18 @@ namespace Google.Apis.CloudIot.v1
                         /// cannot hold more than 10,000 entries.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
+
+                        /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
+                        /// continuation of a prior `ListDevices` call, and that the system should return the next page
+                        /// of data.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields
+                        /// `id`, and `num_id` are always returned by default, along with any other fields
+                        /// specified.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object FieldMask { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -943,24 +943,6 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "fieldMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "fieldMask",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
@@ -982,6 +964,24 @@ namespace Google.Apis.CloudIot.v1
                                 "deviceNumIds", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "deviceNumIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "fieldMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "fieldMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/fusiontables'>Fusion Tables API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20170413 (833)
+ *      <tr><th>API Rev<td>20171117 (1051)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/fusiontables'>
  *              https://developers.google.com/fusiontables</a>
@@ -2391,6 +2391,68 @@ namespace Google.Apis.Fusiontables.v2
                         Name = "replaceViewDefinition",
                         IsRequired = false,
                         ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Replaces rows of the table with the rows of the spreadsheet that is first imported from. Current
+        /// rows remain visible until all replacement rows are ready.</summary>
+        /// <param name="tableId">Table whose rows will be replaced from the spreadsheet.</param>
+        public virtual RefetchSheetRequest RefetchSheet(string tableId)
+        {
+            return new RefetchSheetRequest(service, tableId);
+        }
+
+        /// <summary>Replaces rows of the table with the rows of the spreadsheet that is first imported from. Current
+        /// rows remain visible until all replacement rows are ready.</summary>
+        public class RefetchSheetRequest : FusiontablesBaseServiceRequest<Google.Apis.Fusiontables.v2.Data.Task>
+        {
+            /// <summary>Constructs a new RefetchSheet request.</summary>
+            public RefetchSheetRequest(Google.Apis.Services.IClientService service, string tableId)
+                : base(service)
+            {
+                TableId = tableId;
+                InitParameters();
+            }
+
+
+            /// <summary>Table whose rows will be replaced from the spreadsheet.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("tableId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string TableId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "refetchSheet"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "tables/{tableId}/refetch"; }
+            }
+
+            /// <summary>Initializes RefetchSheet parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "tableId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "tableId",
+                        IsRequired = true,
+                        ParameterType = "path",
                         DefaultValue = null,
                         Pattern = null,
                     });

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171117 (1051)
+ *      <tr><th>API Rev<td>20171123 (1057)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -1225,7 +1225,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// dispatched now.
                     ///
                     /// When this method is called, Cloud Tasks will dispatch the task to its target, even if the queue
-                    /// is Queue.QueueState.PAUSED.
+                    /// is Queue.State.PAUSED.
                     ///
                     /// The dispatched task is returned. That is, the task that is returned contains the
                     /// Task.task_status after the task is dispatched but before the task is received by its target.
@@ -1237,7 +1237,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                     ///
                     /// CloudTasks.RunTask returns google.rpc.Code.NOT_FOUND when it is called on a task that has
                     /// already succeeded or permanently failed. google.rpc.Code.FAILED_PRECONDITION is returned when
-                    /// CloudTasks.RunTask is called on task that is dispatched or already running.</summary>
+                    /// CloudTasks.RunTask is called on task that is dispatched or already running.
+                    ///
+                    /// CloudTasks.RunTask cannot be called on pull tasks.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -1254,7 +1256,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// dispatched now.
                     ///
                     /// When this method is called, Cloud Tasks will dispatch the task to its target, even if the queue
-                    /// is Queue.QueueState.PAUSED.
+                    /// is Queue.State.PAUSED.
                     ///
                     /// The dispatched task is returned. That is, the task that is returned contains the
                     /// Task.task_status after the task is dispatched but before the task is received by its target.
@@ -1266,7 +1268,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                     ///
                     /// CloudTasks.RunTask returns google.rpc.Code.NOT_FOUND when it is called on a task that has
                     /// already succeeded or permanently failed. google.rpc.Code.FAILED_PRECONDITION is returned when
-                    /// CloudTasks.RunTask is called on task that is dispatched or already running.</summary>
+                    /// CloudTasks.RunTask is called on task that is dispatched or already running.
+                    ///
+                    /// CloudTasks.RunTask cannot be called on pull tasks.</summary>
                     public class RunRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Task>
                     {
                         /// <summary>Constructs a new Run request.</summary>
@@ -1781,7 +1785,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
                 ///
                 /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),    hyphens (-), colons (:), or periods (.). *
-                /// `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or   hyphens (-). The maximum length is 100 characters.
+                /// `LOCATION_ID` is the canonical ID for the queue's location.    The list of available locations can be obtained by
+                /// calling    google.cloud.location.Locations.ListLocations.    For more information, see
+                /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+                /// hyphens (-). The maximum length is 100 characters.
                 ///
                 /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudTasks.v2beta2.Data.Queue body, string name)
@@ -1814,8 +1821,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
                     ///
                     /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or
-                    /// periods (.). * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The
-                    /// maximum length is 100 characters.
+                    /// periods (.). * `LOCATION_ID` is the canonical ID for the queue's location. The list of available
+                    /// locations can be obtained by calling google.cloud.location.Locations.ListLocations. For more
+                    /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters
+                    /// ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
                     ///
                     /// Caller-specified and required in CreateQueueRequest, after which it becomes output
                     /// only.</summary>
@@ -1884,7 +1893,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// If a queue is paused then the system will stop executing the tasks in the queue until it is resumed
                 /// via CloudTasks.ResumeQueue. Tasks can still be added when the queue is paused. The state of the
-                /// queue is stored in Queue.queue_state; if paused it will be set to Queue.QueueState.PAUSED.</summary>
+                /// queue is stored in Queue.state; if paused it will be set to Queue.State.PAUSED.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required.
                 ///
@@ -1898,7 +1907,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// If a queue is paused then the system will stop executing the tasks in the queue until it is resumed
                 /// via CloudTasks.ResumeQueue. Tasks can still be added when the queue is paused. The state of the
-                /// queue is stored in Queue.queue_state; if paused it will be set to Queue.QueueState.PAUSED.</summary>
+                /// queue is stored in Queue.state; if paused it will be set to Queue.State.PAUSED.</summary>
                 public class PauseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Queue>
                 {
                     /// <summary>Constructs a new Pause request.</summary>
@@ -2046,9 +2055,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Resume a queue.
                 ///
-                /// This method resumes a queue after it has been Queue.QueueState.PAUSED or Queue.QueueState.DISABLED.
-                /// The state of a queue is stored in Queue.queue_state; after calling this method it will be set to
-                /// Queue.QueueState.RUNNING.
+                /// This method resumes a queue after it has been Queue.State.PAUSED or Queue.State.DISABLED. The state
+                /// of a queue is stored in Queue.state; after calling this method it will be set to
+                /// Queue.State.RUNNING.
                 ///
                 /// WARNING: Resuming many high-QPS queues at the same time can lead to target overloading. If you are
                 /// resuming high-QPS queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling
@@ -2064,9 +2073,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Resume a queue.
                 ///
-                /// This method resumes a queue after it has been Queue.QueueState.PAUSED or Queue.QueueState.DISABLED.
-                /// The state of a queue is stored in Queue.queue_state; after calling this method it will be set to
-                /// Queue.QueueState.RUNNING.
+                /// This method resumes a queue after it has been Queue.State.PAUSED or Queue.State.DISABLED. The state
+                /// of a queue is stored in Queue.state; after calling this method it will be set to
+                /// Queue.State.RUNNING.
                 ///
                 /// WARNING: Resuming many high-QPS queues at the same time can lead to target overloading. If you are
                 /// resuming high-QPS queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling
@@ -2379,10 +2388,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2390,6 +2395,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2425,15 +2434,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -2446,6 +2446,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3175,8 +3184,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         ///
         /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). *
-        /// `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100
-        /// characters.
+        /// `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained
+        /// by calling google.cloud.location.Locations.ListLocations. For more information, see
+        /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        /// hyphens (-). The maximum length is 100 characters.
         ///
         /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3205,14 +3216,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
         public virtual object PurgeTime { get; set; } 
 
-        /// <summary>Output only. The state of the queue.
-        ///
-        /// `queue_state` can only be changed by called CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
-        /// [queue.yaml](/appengine/docs/python/config/queueref). CloudTasks.UpdateQueue cannot be used to change
-        /// `queue_state`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queueState")]
-        public virtual string QueueState { get; set; } 
-
         /// <summary>Rate limits for task dispatches.
         ///
         /// Queue.rate_limits and Queue.retry_config are related because they both control task attempts however they
@@ -3234,6 +3237,14 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// documentation](/appengine/docs/standard/python/taskqueue/push/retrying-tasks).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryConfig")]
         public virtual RetryConfig RetryConfig { get; set; } 
+
+        /// <summary>Output only. The state of the queue.
+        ///
+        /// `state` can only be changed by called CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
+        /// [queue.yaml](/appengine/docs/python/config/queueref). CloudTasks.UpdateQueue cannot be used to change
+        /// `state`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3283,7 +3294,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// The maximum allowed value is 500.
         ///
         /// * For App Engine queues, this field is 1 by default. * For pull queues, this field is output only and always
-        /// 10,000.
+        /// 10,000. In addition to the `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of
+        /// CloudTasks.PullTasks requests are allowed per queue.
         ///
         /// This field has the same meaning as [rate in
         /// queue.yaml](/appengine/docs/standard/python/config/queueref#rate).</summary>
@@ -3534,9 +3546,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         ///
         /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). *
-        /// `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100
-        /// characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores
-        /// (_). The maximum length is 500 characters.
+        /// `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained
+        /// by calling google.cloud.location.Locations.ListLocations. For more information, see
+        /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        /// hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers
+        /// ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         ///
         /// Optionally caller-specified in CreateTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
