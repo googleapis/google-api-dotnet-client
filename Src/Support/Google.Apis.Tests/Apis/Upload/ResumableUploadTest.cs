@@ -455,6 +455,32 @@ namespace Google.Apis.Tests.Apis.Upload
             }
         }
 
+        // As TestUploadInMultipleChunks, but testing stream interception
+        [Theory, CombinatorialData]
+        public void TestUploadInMultipleChunks_Interception(
+            [CombinatorialValues(true, false)] bool knownSize,
+            [CombinatorialValues(100, 400, 1000)] int chunkSize)
+        {
+            // One fewer interception call than server calls, as there's no initialization call.
+            var expectedInterceptionCount = (uploadLength + chunkSize - 1) / chunkSize;
+            using (var server = new MultiChunkServer(_server))
+            using (var service = new MockClientService(server.HttpPrefix))
+            {
+                var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
+                var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
+                int interceptionCount = 0;
+                MemoryStream interceptedBytes = new MemoryStream();
+                uploader.UploadStreamInterceptor = (buffer, offset, count) =>
+                {
+                    interceptedBytes.Write(buffer, offset, count);
+                    interceptionCount++;
+                };
+                var progress = uploader.Upload();
+                Assert.Equal(expectedInterceptionCount, interceptionCount);
+                Assert.Equal(uploadTestBytes, interceptedBytes.ToArray());
+            }
+        }
+
         /// <summary>
         /// Check the upload progress is correct during upload.
         /// </summary>
