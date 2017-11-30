@@ -369,6 +369,16 @@ namespace Google.Apis.Kgsearch.v1
             }
 
 
+            /// <summary>Restricts returned entities with these types, e.g. Person (as defined in
+            /// http://schema.org/Person). If multiple types are specified, returned entities will contain one or more
+            /// of these types.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Types { get; set; }
+
+            /// <summary>Enables indenting of json results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Indent { get; set; }
+
             /// <summary>The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.</summary>
             [Google.Apis.Util.RequestParameterAttribute("languages", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Languages { get; set; }
@@ -389,16 +399,6 @@ namespace Google.Apis.Kgsearch.v1
             /// <summary>The literal query string for search.</summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
-
-            /// <summary>Restricts returned entities with these types, e.g. Person (as defined in
-            /// http://schema.org/Person). If multiple types are specified, returned entities will contain one or more
-            /// of these types.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("types", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Types { get; set; }
-
-            /// <summary>Enables indenting of json results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("indent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Indent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -424,6 +424,24 @@ namespace Google.Apis.Kgsearch.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "types", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "types",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "indent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "indent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "languages", new Google.Apis.Discovery.Parameter
                     {
@@ -464,24 +482,6 @@ namespace Google.Apis.Kgsearch.v1
                     "query", new Google.Apis.Discovery.Parameter
                     {
                         Name = "query",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "types", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "types",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "indent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "indent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

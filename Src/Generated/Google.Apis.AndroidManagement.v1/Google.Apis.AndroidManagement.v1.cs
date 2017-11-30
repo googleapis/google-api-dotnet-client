@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171113 (1047)
+ *      <tr><th>API Rev<td>20171127 (1061)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2079,6 +2079,21 @@ namespace Google.Apis.AndroidManagement.v1
 namespace Google.Apis.AndroidManagement.v1.Data
 {    
 
+    /// <summary>Configuration for an always-on VPN connection.</summary>
+    public class AlwaysOnVpnPackage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disallows networking when the VPN is not connected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockdownEnabled")]
+        public virtual System.Nullable<bool> LockdownEnabled { get; set; } 
+
+        /// <summary>The package name of the VPN app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A compliance rule condition which is satisfied if the Android Framework API level on the device does
     /// not meet a minimum requirement. There can only be one rule with this type of condition per policy.</summary>
     public class ApiLevelCondition : Google.Apis.Requests.IDirectResponseSchema
@@ -2869,6 +2884,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A list of package names.</summary>
+    public class PackageNameList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of package names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageNames")]
+        public virtual System.Collections.Generic.IList<string> PackageNames { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Requirements for the password used to unlock a device.</summary>
     public class PasswordRequirements : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2974,6 +3000,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>A policy, which governs behavior for a device.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Account types that cannot be managed by the user. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountTypesWithManagementDisabled")]
+        public virtual System.Collections.Generic.IList<string> AccountTypesWithManagementDisabled { get; set; } 
+
         /// <summary>Whether adding new users and profiles is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addUserDisabled")]
         public virtual System.Nullable<bool> AddUserDisabled { get; set; } 
@@ -2981,6 +3012,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether adjusting the master volume is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adjustVolumeDisabled")]
         public virtual System.Nullable<bool> AdjustVolumeDisabled { get; set; } 
+
+        /// <summary>Configuration for an always-on VPN connection. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alwaysOnVpnPackage")]
+        public virtual AlwaysOnVpnPackage AlwaysOnVpnPackage { get; set; } 
 
         /// <summary>Policy applied to apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
@@ -2997,15 +3033,51 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blockApplicationsEnabled")]
         public virtual System.Nullable<bool> BlockApplicationsEnabled { get; set; } 
 
+        /// <summary>Whether configuring bluetooth is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bluetoothConfigDisabled")]
+        public virtual System.Nullable<bool> BluetoothConfigDisabled { get; set; } 
+
+        /// <summary>Whether bluetooth contact sharing is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bluetoothContactSharingDisabled")]
+        public virtual System.Nullable<bool> BluetoothContactSharingDisabled { get; set; } 
+
+        /// <summary>Whether bluetooth is disabled. Prefer this setting over bluetooth_config_disabled because
+        /// bluetooth_config_disabled can be bypassed by the user. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bluetoothDisabled")]
+        public virtual System.Nullable<bool> BluetoothDisabled { get; set; } 
+
         /// <summary>Whether all cameras on the device are disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cameraDisabled")]
         public virtual System.Nullable<bool> CameraDisabled { get; set; } 
+
+        /// <summary>Whether configuring cell broadcast is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellBroadcastsConfigDisabled")]
+        public virtual System.Nullable<bool> CellBroadcastsConfigDisabled { get; set; } 
 
         /// <summary>Rules declaring which mitigating actions to take when a device is not compliant with its policy.
         /// When the conditions for multiple rules are satisfied, all of the mitigating actions for the rules are taken.
         /// There is a maximum limit of 100 rules.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRules")]
         public virtual System.Collections.Generic.IList<ComplianceRule> ComplianceRules { get; set; } 
+
+        /// <summary>Whether creating windows besides app windows is disabled. Requires the beta version of Android
+        /// Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createWindowsDisabled")]
+        public virtual System.Nullable<bool> CreateWindowsDisabled { get; set; } 
+
+        /// <summary>Whether configuring user credentials is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialsConfigDisabled")]
+        public virtual System.Nullable<bool> CredentialsConfigDisabled { get; set; } 
+
+        /// <summary>Whether roaming data services are disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRoamingDisabled")]
+        public virtual System.Nullable<bool> DataRoamingDisabled { get; set; } 
 
         /// <summary>Whether the user is allowed to enable debugging features.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debuggingFeaturesAllowed")]
@@ -3014,6 +3086,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The default permission policy for requests for runtime permissions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPermissionPolicy")]
         public virtual string DefaultPermissionPolicy { get; set; } 
+
+        /// <summary>Whether application verification is forced to be enabled. Requires the beta version of Android
+        /// Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ensureVerifyAppsEnabled")]
+        public virtual System.Nullable<bool> EnsureVerifyAppsEnabled { get; set; } 
 
         /// <summary>Whether factory resetting from settings is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("factoryResetDisabled")]
@@ -3030,6 +3107,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("funDisabled")]
         public virtual System.Nullable<bool> FunDisabled { get; set; } 
 
+        /// <summary>Whether user installation of apps is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("installAppsDisabled")]
+        public virtual System.Nullable<bool> InstallAppsDisabled { get; set; } 
+
         /// <summary>Whether the user is allowed to enable the "Unknown Sources" setting, which allows installation of
         /// apps from unknown sources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installUnknownSourcesAllowed")]
@@ -3039,14 +3121,34 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyguardDisabled")]
         public virtual System.Nullable<bool> KeyguardDisabled { get; set; } 
 
+        /// <summary>Disabled keyguard customizations, such as widgets. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyguardDisabledFeatures")]
+        public virtual System.Collections.Generic.IList<string> KeyguardDisabledFeatures { get; set; } 
+
+        /// <summary>A message displayed to the user in the device administators settings screen. Requires the beta
+        /// version of Android Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longSupportMessage")]
+        public virtual UserFacingMessage LongSupportMessage { get; set; } 
+
         /// <summary>Maximum time in milliseconds for user activity until the device will lock. A value of 0 means there
         /// is no restriction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maximumTimeToLock")]
         public virtual System.Nullable<long> MaximumTimeToLock { get; set; } 
 
+        /// <summary>Whether configuring mobile networks is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileNetworksConfigDisabled")]
+        public virtual System.Nullable<bool> MobileNetworksConfigDisabled { get; set; } 
+
         /// <summary>Whether adding or removing accounts is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modifyAccountsDisabled")]
         public virtual System.Nullable<bool> ModifyAccountsDisabled { get; set; } 
+
+        /// <summary>Whether the user mounting physical external media is disabled. Requires the beta version of Android
+        /// Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPhysicalMediaDisabled")]
+        public virtual System.Nullable<bool> MountPhysicalMediaDisabled { get; set; } 
 
         /// <summary>The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3061,17 +3163,44 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkEscapeHatchEnabled")]
         public virtual System.Nullable<bool> NetworkEscapeHatchEnabled { get; set; } 
 
+        /// <summary>Whether resetting network settings is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkResetDisabled")]
+        public virtual System.Nullable<bool> NetworkResetDisabled { get; set; } 
+
         /// <summary>Network configuration for the device. See configure networks for more information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openNetworkConfiguration")]
         public virtual System.Collections.Generic.IDictionary<string,object> OpenNetworkConfiguration { get; set; } 
+
+        /// <summary>Whether using NFC to beam out data from apps is disabled. Requires the beta version of Android
+        /// Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outgoingBeamDisabled")]
+        public virtual System.Nullable<bool> OutgoingBeamDisabled { get; set; } 
+
+        /// <summary>Whether outgoing calls are disabled. Requires the beta version of Android Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outgoingCallsDisabled")]
+        public virtual System.Nullable<bool> OutgoingCallsDisabled { get; set; } 
 
         /// <summary>Password requirements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordRequirements")]
         public virtual PasswordRequirements PasswordRequirements { get; set; } 
 
+        /// <summary>If present, only input methods provided by packages in this list are permitted. If this field is
+        /// present, but the list is empty, then only system input methods are permitted. Requires the beta version of
+        /// Android Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permittedInputMethods")]
+        public virtual PackageNameList PermittedInputMethods { get; set; } 
+
         /// <summary>Default intent handler activities.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistentPreferredActivities")]
         public virtual System.Collections.Generic.IList<PersistentPreferredActivity> PersistentPreferredActivities { get; set; } 
+
+        /// <summary>The network-independent global HTTP proxy. Typically proxies should be configured per-network in
+        /// open_network_configuration. However for unusual configurations like general internal filtering a global HTTP
+        /// proxy may be useful. If the proxy is not accessible, network access may break. The global proxy is only a
+        /// recommendation and some apps may ignore it. Requires the beta version of Android Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedGlobalProxy")]
+        public virtual ProxyInfo RecommendedGlobalProxy { get; set; } 
 
         /// <summary>Whether removing other users is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removeUserDisabled")]
@@ -3084,6 +3213,26 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether screen capture is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenCaptureDisabled")]
         public virtual System.Nullable<bool> ScreenCaptureDisabled { get; set; } 
+
+        /// <summary>Whether changing the user icon is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setUserIconDisabled")]
+        public virtual System.Nullable<bool> SetUserIconDisabled { get; set; } 
+
+        /// <summary>Whether changing the wallpaper is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setWallpaperDisabled")]
+        public virtual System.Nullable<bool> SetWallpaperDisabled { get; set; } 
+
+        /// <summary>A message displayed to the user in the settings screen wherever functionality has been disabled by
+        /// the admin. Requires the beta version of Android Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shortSupportMessage")]
+        public virtual UserFacingMessage ShortSupportMessage { get; set; } 
+
+        /// <summary>Whether sending or receiving SMS messages is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smsDisabled")]
+        public virtual System.Nullable<bool> SmsDisabled { get; set; } 
 
         /// <summary>Whether the status bar is disabled. This disables notifications, quick settings and other screen
         /// overlays that allow escape from full-screen mode.</summary>
@@ -3105,14 +3254,33 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("systemUpdate")]
         public virtual SystemUpdate SystemUpdate { get; set; } 
 
+        /// <summary>Whether configuring tethering and portable hotspots is disabled. Requires the beta version of
+        /// Android Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tetheringConfigDisabled")]
+        public virtual System.Nullable<bool> TetheringConfigDisabled { get; set; } 
+
+        /// <summary>Whether user uninstallation of applications is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uninstallAppsDisabled")]
+        public virtual System.Nullable<bool> UninstallAppsDisabled { get; set; } 
+
         /// <summary>Whether the microphone is muted and adjusting microphone volume is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmuteMicrophoneDisabled")]
         public virtual System.Nullable<bool> UnmuteMicrophoneDisabled { get; set; } 
+
+        /// <summary>Whether transferring files over USB is disabled. Requires the beta version of Android Cloud
+        /// Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usbFileTransferDisabled")]
+        public virtual System.Nullable<bool> UsbFileTransferDisabled { get; set; } 
 
         /// <summary>The version of the policy. This is a read-only field. The version is incremented each time the
         /// policy is updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<long> Version { get; set; } 
+
+        /// <summary>Whether configuring VPN is disabled. Requires the beta version of Android Cloud Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnConfigDisabled")]
+        public virtual System.Nullable<bool> VpnConfigDisabled { get; set; } 
 
         /// <summary>Whether configuring WiFi access points is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigDisabled")]
@@ -3141,6 +3309,31 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Event type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration info for an HTTP proxy. For a direct proxy, set the host, port, and excluded_hosts
+    /// fields. For a PAC script proxy, set the pac_uri field.</summary>
+    public class ProxyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For a direct proxy, the hosts for which the proxy is bypassed. The host names may contain wildcards
+        /// such as *.example.com.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedHosts")]
+        public virtual System.Collections.Generic.IList<string> ExcludedHosts { get; set; } 
+
+        /// <summary>The host of the direct proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; } 
+
+        /// <summary>The URI of the PAC script used to configure the proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pacUri")]
+        public virtual string PacUri { get; set; } 
+
+        /// <summary>The port of the direct proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

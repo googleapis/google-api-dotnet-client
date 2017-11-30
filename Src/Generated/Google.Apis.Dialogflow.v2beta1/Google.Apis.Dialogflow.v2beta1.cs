@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171120 (1054)
+ *      <tr><th>API Rev<td>20171124 (1058)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -434,7 +434,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Creates multiple new entities in the specified entity type (extends the existing
                     /// collection of entries).
                     ///
-                    /// Operation</summary>
+                    /// Operation </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to create entities in. Format:
                     /// `projects//agent/entityTypes/`.</param>
@@ -446,7 +446,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Creates multiple new entities in the specified entity type (extends the existing
                     /// collection of entries).
                     ///
-                    /// Operation</summary>
+                    /// Operation </summary>
                     public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new BatchCreate request.</summary>
@@ -509,7 +509,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Deletes entities in the specified entity type.
                     ///
-                    /// Operation</summary>
+                    /// Operation </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to delete entries for. Format:
                     /// `projects//agent/entityTypes/`.</param>
@@ -520,7 +520,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Deletes entities in the specified entity type.
                     ///
-                    /// Operation</summary>
+                    /// Operation </summary>
                     public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new BatchDelete request.</summary>
@@ -584,7 +584,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Updates entities in the specified entity type (replaces the existing collection of
                     /// entries).
                     ///
-                    /// Operation</summary>
+                    /// Operation </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to update the entities in. Format:
                     /// `projects//agent/entityTypes/`.</param>
@@ -596,7 +596,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Updates entities in the specified entity type (replaces the existing collection of
                     /// entries).
                     ///
-                    /// Operation</summary>
+                    /// Operation </summary>
                     public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
                     {
                         /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -660,7 +660,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Deletes entity types in the specified agent.
                 ///
-                /// Operation</summary>
+                /// Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to delete all entities types for. Format:
                 /// `projects//agent`.</param>
@@ -671,7 +671,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Deletes entity types in the specified agent.
                 ///
-                /// Operation</summary>
+                /// Operation </summary>
                 public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
@@ -734,7 +734,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Updates/Creates multiple entity types in the specified agent.
                 ///
-                /// Operation</summary>
+                /// Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to update or create entity types in. Format:
                 /// `projects//agent`.</param>
@@ -745,7 +745,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Updates/Creates multiple entity types in the specified agent.
                 ///
-                /// Operation</summary>
+                /// Operation </summary>
                 public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -1257,7 +1257,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Deletes intents in the specified agent.
                 ///
-                /// Operation</summary>
+                /// Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to delete all entities types for. Format:
                 /// `projects//agent`.</param>
@@ -1268,7 +1268,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Deletes intents in the specified agent.
                 ///
-                /// Operation</summary>
+                /// Operation </summary>
                 public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
@@ -1331,7 +1331,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Updates/Creates multiple intents in the specified agent.
                 ///
-                /// Operation</summary>
+                /// Operation </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to update or create intents in. Format:
                 /// `projects//agent`.</param>
@@ -1342,7 +1342,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Updates/Creates multiple intents in the specified agent.
                 ///
-                /// Operation</summary>
+                /// Operation </summary>
                 public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
@@ -1593,6 +1593,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Optional. The language to retrieve training phrases, parameters and rich messages for.
+                    /// If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1605,13 +1612,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language to retrieve training phrases, parameters and rich messages for.
-                    /// If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1647,18 +1647,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1691,6 +1691,11 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1714,11 +1719,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
-                    /// most 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1754,6 +1754,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "intentView", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "intentView",
@@ -1775,15 +1784,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2864,7 +2864,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             /// <summary>Exports the specified agent to a ZIP file.
             ///
-            /// Operation</summary>
+            /// Operation </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to export is associated with. Format:
             /// `projects/`.</param>
@@ -2875,7 +2875,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             /// <summary>Exports the specified agent to a ZIP file.
             ///
-            /// Operation</summary>
+            /// Operation </summary>
             public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Export request.</summary>
@@ -2941,7 +2941,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// Uploads new intents and entity types without deleting the existing ones. Intents and entity types with
             /// the same name are replaced with the new versions from ImportAgentRequest.
             ///
-            /// Operation</summary>
+            /// Operation </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to import is associated with. Format:
             /// `projects/`.</param>
@@ -2955,7 +2955,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// Uploads new intents and entity types without deleting the existing ones. Intents and entity types with
             /// the same name are replaced with the new versions from ImportAgentRequest.
             ///
-            /// Operation</summary>
+            /// Operation </summary>
             public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Import request.</summary>
@@ -3021,7 +3021,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// Replaces the current agent version with a new one. All the intents and entity types in the older version
             /// are deleted.
             ///
-            /// Operation</summary>
+            /// Operation </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to restore is associated with. Format:
             /// `projects/`.</param>
@@ -3035,7 +3035,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// Replaces the current agent version with a new one. All the intents and entity types in the older version
             /// are deleted.
             ///
-            /// Operation</summary>
+            /// Operation </summary>
             public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Restore request.</summary>
@@ -3195,7 +3195,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             /// <summary>Trains the specified agent.
             ///
-            /// Operation</summary>
+            /// Operation </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to train is associated with. Format:
             /// `projects/`.</param>
@@ -3206,7 +3206,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             /// <summary>Trains the specified agent.
             ///
-            /// Operation</summary>
+            /// Operation </summary>
             public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.Operation>
             {
                 /// <summary>Constructs a new Train request.</summary>

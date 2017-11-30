@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171110 (1044)
+ *      <tr><th>API Rev<td>20171127 (1061)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -665,6 +665,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Optional. A page token to request the next page of results.
                 ///
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
@@ -678,10 +682,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Specifies the subset of jobs to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -717,6 +717,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -729,15 +738,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1852,12 +1852,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional. The number of models to retrieve per "page" of results. If there are more
                 /// remaining results than this number, the response message will contain a valid value in the
                 /// `next_page_token` field.
@@ -1869,6 +1863,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// <summary>Optional. Specifies the subset of models to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1904,15 +1904,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1925,6 +1916,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2579,9 +2579,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
 
         }
 
-        /// <summary>Performs prediction on the data in the request.
-        ///
-        /// **** REMOVE FROM GENERATED DOCUMENTATION</summary>
+        /// <summary>Performs prediction on the data in the request. Cloud ML Engine implements a custom `predict` verb
+        /// on top of an HTTP POST method. For details of the format, see the **guide to the [predict request format
+        /// ](/ml-engine/docs/v1/predict-request)**.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The resource name of a model or a version.
         ///
@@ -2591,9 +2591,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
             return new PredictRequest(service, body, name);
         }
 
-        /// <summary>Performs prediction on the data in the request.
-        ///
-        /// **** REMOVE FROM GENERATED DOCUMENTATION</summary>
+        /// <summary>Performs prediction on the data in the request. Cloud ML Engine implements a custom `predict` verb
+        /// on top of an HTTP POST method. For details of the format, see the **guide to the [predict request format
+        /// ](/ml-engine/docs/v1/predict-request)**.</summary>
         public class PredictRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleApiHttpBody>
         {
             /// <summary>Constructs a new Predict request.</summary>
@@ -3025,6 +3025,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
+        /// <summary>Contains the project number associated with the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; } 
+
         /// <summary>The time operation processing started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
@@ -3079,84 +3083,7 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request for predictions to be issued against a trained model.
-    ///
-    /// The body of the request is a single JSON object with a single top-level field:
-    ///
-    /// instances A JSON array containing values representing the instances to use for prediction.
-    ///
-    /// The structure of each element of the instances list is determined by your model's input definition. Instances
-    /// can include named inputs or can contain only unlabeled values.
-    ///
-    /// Not all data includes named inputs. Some instances will be simple JSON values (boolean, number, or string).
-    /// However, instances are often lists of simple values, or complex nested lists. Here are some examples of request
-    /// bodies:
-    ///
-    /// CSV data with each row encoded as a string value:
-    ///
-    /// {"instances": ["1.0,true,\\"x\\"", "-2.0,false,\\"y\\""]}
-    ///
-    /// Plain text:
-    ///
-    /// {"instances": ["the quick brown fox", "la bruja le dio"]}
-    ///
-    /// Sentences encoded as lists of words (vectors of strings):
-    ///
-    /// { "instances": [ ["the","quick","brown"], ["la","bruja","le"], ... ] }
-    ///
-    /// Floating point scalar values:
-    ///
-    /// {"instances": [0.0, 1.1, 2.2]}
-    ///
-    /// Vectors of integers:
-    ///
-    /// { "instances": [ [0, 1, 2], [3, 4, 5], ... ] }
-    ///
-    /// Tensors (in this case, two-dimensional tensors):
-    ///
-    /// { "instances": [ [ [0, 1, 2], [3, 4, 5] ], ... ] }
-    ///
-    /// Images can be represented different ways. In this encoding scheme the first two dimensions represent the rows
-    /// and columns of the image, and the third contains lists (vectors) of the R, G, and B values for each pixel.
-    ///
-    /// { "instances": [ [ [ [138, 30, 66], [130, 20, 56], ... ], [ [126, 38, 61], [122, 24, 57], ... ], ... ], ... ] }
-    ///
-    /// JSON strings must be encoded as UTF-8. To send binary data, you must base64-encode the data and mark it as
-    /// binary. To mark a JSON string as binary, replace it with a JSON object with a single attribute named `b64`:
-    /// {"b64": "..."} For example:
-    ///
-    /// Two Serialized tf.Examples (fake data, for illustrative purposes only):
-    ///
-    /// {"instances": [{"b64": "X5ad6u"}, {"b64": "IA9j4nx"}]}
-    ///
-    /// Two JPEG image byte strings (fake data, for illustrative purposes only):
-    ///
-    /// {"instances": [{"b64": "ASa8asdf"}, {"b64": "JLK7ljk3"}]}
-    ///
-    /// If your data includes named references, format each instance as a JSON object with the named references as the
-    /// keys:
-    ///
-    /// JSON input data to be preprocessed:
-    ///
-    /// { "instances": [ { "a": 1.0, "b": true, "c": "x" }, { "a": -2.0, "b": false, "c": "y" } ] }
-    ///
-    /// Some models have an underlying TensorFlow graph that accepts multiple input tensors. In this case, you should
-    /// use the names of JSON name/value pairs to identify the input tensors, as shown in the following exmaples:
-    ///
-    /// For a graph with input tensor aliases "tag" (string) and "image" (base64-encoded string):
-    ///
-    /// { "instances": [ { "tag": "beach", "image": {"b64": "ASa8asdf"} }, { "tag": "car", "image": {"b64": "JLK7ljk3"}
-    /// } ] }
-    ///
-    /// For a graph with input tensor aliases "tag" (string) and "image" (3-dimensional array of 8-bit ints):
-    ///
-    /// { "instances": [ { "tag": "beach", "image": [ [ [138, 30, 66], [130, 20, 56], ... ], [ [126, 38, 61], [122, 24,
-    /// 57], ... ], ... ] }, { "tag": "car", "image": [ [ [255, 0, 102], [255, 0, 97], ... ], [ [254, 1, 101], [254, 2,
-    /// 93], ... ], ... ] }, ... ] }
-    ///
-    /// If the call is successful, the response body will contain one prediction entry per instance in the request body.
-    /// If prediction fails for any instance, the response body will contain no predictions and will contian a single
-    /// error entry instead.</summary>
+    /// <summary>Request for predictions to be issued against a trained model.</summary>
     public class GoogleCloudMlV1PredictRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary> Required. The prediction request body.</summary>
@@ -3211,6 +3138,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// specified by uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
         public virtual string RuntimeVersion { get; set; } 
+
+        /// <summary>Optional. The name of the signature defined in the SavedModel to use for this job. Please refer to
+        /// [SavedModel](https://tensorflow.github.io/serving/serving_basic.html) for information about how to use
+        /// signatures.
+        ///
+        /// Defaults to [DEFAULT_SERVING_SIGNATURE_DEF_KEY](https://www.tensorflow.org/api_docs/python/tf/saved_model/si
+        /// gnature_constants) , which is "serving_default".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatureName")]
+        public virtual string SignatureName { get; set; } 
 
         /// <summary>Use this field if you want to specify a Google Cloud Storage path for the model to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -3353,6 +3289,11 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Required. The Python module name to run after installing the packages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonModule")]
         public virtual string PythonModule { get; set; } 
+
+        /// <summary>Optional. The version of Python used in training. If not set, the default version is
+        /// '2.7'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pythonVersion")]
+        public virtual string PythonVersion { get; set; } 
 
         /// <summary>Required. The Google Compute Engine region to run the training job in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
