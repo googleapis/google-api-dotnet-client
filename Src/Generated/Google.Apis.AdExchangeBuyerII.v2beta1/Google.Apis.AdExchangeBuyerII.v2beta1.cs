@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171115 (1049)
+ *      <tr><th>API Rev<td>20171201 (1065)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>
@@ -6297,13 +6297,13 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual AbsoluteDateRange AbsoluteDateRange { get; set; } 
 
         /// <summary>The ID of the creative on which to filter; optional. This field may be set only for a filter set
-        /// that accesses buyer-level troubleshooting data, i.e. one whose name matches the
+        /// that accesses account-level troubleshooting data, i.e. one whose name matches the
         /// `bidders/accounts/filterSets` pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeId")]
         public virtual string CreativeId { get; set; } 
 
         /// <summary>The ID of the deal on which to filter; optional. This field may be set only for a filter set that
-        /// accesses buyer-level troubleshooting data, i.e. one whose name matches the `bidders/accounts/filterSets`
+        /// accesses account-level troubleshooting data, i.e. one whose name matches the `bidders/accounts/filterSets`
         /// pattern.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dealId")]
         public virtual System.Nullable<long> DealId { get; set; } 
@@ -6320,7 +6320,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// the patterns:
         ///
         /// - `bidders/filterSets` (for accessing bidder-level troubleshooting data) - `bidders/accounts/filterSets`
-        /// (for accessing buyer-level troubleshooting data)
+        /// (for accessing account-level troubleshooting data)
         ///
         /// This field is required in create operations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

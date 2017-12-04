@@ -1,82 +1,45 @@
 {
+  "ownerDomain": "google.com",
+  "name": "acceleratedmobilepageurl",
+  "batchPath": "batch",
+  "revision": "20171025",
+  "documentationLink": "https://developers.google.com/amp/cache/",
+  "id": "acceleratedmobilepageurl:v1",
+  "title": "Accelerated Mobile Pages (AMP) URL API",
+  "discoveryVersion": "v1",
+  "ownerName": "Google",
+  "version_module": true,
   "resources": {
     "ampUrls": {
       "methods": {
         "batchGet": {
-          "response": {
-            "$ref": "BatchGetAmpUrlsResponse"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "parameters": {},
           "flatPath": "v1/ampUrls:batchGet",
-          "path": "v1/ampUrls:batchGet",
           "id": "acceleratedmobilepageurl.ampUrls.batchGet",
+          "path": "v1/ampUrls:batchGet",
           "request": {
             "$ref": "BatchGetAmpUrlsRequest"
           },
-          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format)."
+          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
+          "httpMethod": "POST",
+          "parameterOrder": [],
+          "response": {
+            "$ref": "BatchGetAmpUrlsResponse"
+          },
+          "parameters": {}
         }
       }
     }
   },
   "parameters": {
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "pp": {
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
     "uploadType": {
+      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -91,9 +54,12 @@
       "description": "V1 error format.",
       "type": "string"
     },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
+    },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -105,7 +71,51 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
       "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "pp": {
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "bearer_token": {
+      "location": "query",
+      "description": "OAuth bearer token.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     }
   },
   "schemas": {
@@ -213,24 +223,14 @@
   },
   "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
   "version": "v1",
   "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).\n",
   "servicePath": "",
+  "description": "Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).\n",
+  "kind": "discovery#restDescription",
   "rootUrl": "https://acceleratedmobilepageurl.googleapis.com/",
-  "basePath": "",
-  "ownerDomain": "google.com",
-  "name": "acceleratedmobilepageurl",
-  "batchPath": "batch",
-  "documentationLink": "https://developers.google.com/amp/cache/",
-  "id": "acceleratedmobilepageurl:v1",
-  "revision": "20171025",
-  "title": "Accelerated Mobile Pages (AMP) URL API",
-  "ownerName": "Google",
-  "discoveryVersion": "v1",
-  "version_module": true
+  "basePath": ""
 }
