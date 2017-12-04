@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/remote-config/'>Firebase Remote Config API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171113 (1047)
+ *      <tr><th>API Rev<td>20171129 (1063)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/remote-config/'>
  *              https://firebase.google.com/docs/remote-config/</a>

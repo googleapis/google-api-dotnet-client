@@ -369,6 +369,10 @@ namespace Google.Apis.Kgsearch.v1
             }
 
 
+            /// <summary>The literal query string for search.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
             /// <summary>Restricts returned entities with these types, e.g. Person (as defined in
             /// http://schema.org/Person). If multiple types are specified, returned entities will contain one or more
             /// of these types.</summary>
@@ -396,10 +400,6 @@ namespace Google.Apis.Kgsearch.v1
             [Google.Apis.Util.RequestParameterAttribute("prefix", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> Prefix { get; set; }
 
-            /// <summary>The literal query string for search.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Query { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -424,6 +424,15 @@ namespace Google.Apis.Kgsearch.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "types", new Google.Apis.Discovery.Parameter
                     {
@@ -473,15 +482,6 @@ namespace Google.Apis.Kgsearch.v1
                     "prefix", new Google.Apis.Discovery.Parameter
                     {
                         Name = "prefix",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "query", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "query",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

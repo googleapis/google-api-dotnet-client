@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171108 (1042)
+ *      <tr><th>API Rev<td>20171120 (1054)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -385,6 +385,165 @@ namespace Google.Apis.Pubsub.v1
             }
 
 
+            /// <summary>Creates a snapshot from the requested subscription. If the snapshot already exists, returns
+            /// `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in
+            /// the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then
+            /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
+            ///
+            /// If the name is not provided in the request, the server will assign a random name for this snapshot on
+            /// the same project as the subscription, conforming to the [resource name
+            /// format](https://cloud.google.com/pubsub/docs/overview#names). The generated name is populated in the
+            /// returned Snapshot object. Note that for REST API requests, you must specify a name in the
+            /// request.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Optional user-provided name for this snapshot. If the name is not provided in the request, the
+            /// server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API
+            /// requests, you must specify a name. Format is `projects/{project}/snapshots/{snap}`.</param>
+            public virtual CreateRequest Create(Google.Apis.Pubsub.v1.Data.CreateSnapshotRequest body, string name)
+            {
+                return new CreateRequest(service, body, name);
+            }
+
+            /// <summary>Creates a snapshot from the requested subscription. If the snapshot already exists, returns
+            /// `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in
+            /// the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then
+            /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
+            ///
+            /// If the name is not provided in the request, the server will assign a random name for this snapshot on
+            /// the same project as the subscription, conforming to the [resource name
+            /// format](https://cloud.google.com/pubsub/docs/overview#names). The generated name is populated in the
+            /// returned Snapshot object. Note that for REST API requests, you must specify a name in the
+            /// request.</summary>
+            public class CreateRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.CreateSnapshotRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Optional user-provided name for this snapshot. If the name is not provided in the request,
+                /// the server will assign a random name for this snapshot on the same project as the subscription. Note
+                /// that for REST API requests, you must specify a name. Format is
+                /// `projects/{project}/snapshots/{snap}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.CreateSnapshotRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/snapshots/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Removes an existing snapshot. All messages retained in the snapshot are immediately dropped.
+            /// After a snapshot is deleted, a new one may be created with the same name, but the new one has no
+            /// association with the old snapshot or its subscription, unless the same subscription is
+            /// specified.</summary>
+            /// <param name="snapshot">The name of the snapshot to delete. Format is
+            /// `projects/{project}/snapshots/{snap}`.</param>
+            public virtual DeleteRequest Delete(string snapshot)
+            {
+                return new DeleteRequest(service, snapshot);
+            }
+
+            /// <summary>Removes an existing snapshot. All messages retained in the snapshot are immediately dropped.
+            /// After a snapshot is deleted, a new one may be created with the same name, but the new one has no
+            /// association with the old snapshot or its subscription, unless the same subscription is
+            /// specified.</summary>
+            public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string snapshot)
+                    : base(service)
+                {
+                    Snapshot = snapshot;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the snapshot to delete. Format is
+                /// `projects/{project}/snapshots/{snap}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("snapshot", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Snapshot { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+snapshot}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "snapshot", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "snapshot",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/snapshots/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource exists
             /// and does not have a policy set.</summary>
             /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
@@ -440,6 +599,166 @@ namespace Google.Apis.Pubsub.v1
                         "resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/snapshots/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists the existing snapshots.</summary>
+            /// <param name="project">The name of the cloud project that snapshots belong to. Format is
+            /// `projects/{project}`.</param>
+            public virtual ListRequest List(string project)
+            {
+                return new ListRequest(service, project);
+            }
+
+            /// <summary>Lists the existing snapshots.</summary>
+            public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListSnapshotsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string project)
+                    : base(service)
+                {
+                    Project = project;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the cloud project that snapshots belong to. Format is
+                /// `projects/{project}`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>Maximum number of snapshots to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The value returned by the last `ListSnapshotsResponse`; indicates that this is a
+                /// continuation of a prior `ListSnapshots` call, and that the system should return the next page of
+                /// data.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+project}/snapshots"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates an existing snapshot. Note that certain properties of a snapshot are not
+            /// modifiable.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The name of the snapshot.</param>
+            public virtual PatchRequest Patch(Google.Apis.Pubsub.v1.Data.UpdateSnapshotRequest body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates an existing snapshot. Note that certain properties of a snapshot are not
+            /// modifiable.</summary>
+            public class PatchRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.UpdateSnapshotRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the snapshot.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.UpdateSnapshotRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -1009,15 +1328,15 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
+                /// <summary>Maximum number of subscriptions to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The value returned by the last `ListSubscriptionsResponse`; indicates that this is a
                 /// continuation of a prior `ListSubscriptions` call, and that the system should return the next page of
                 /// data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Maximum number of subscriptions to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1053,18 +1372,18 @@ namespace Google.Apis.Pubsub.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1228,6 +1547,84 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
+            /// <summary>Updates an existing subscription. Note that certain properties of a subscription, such as its
+            /// topic, are not modifiable.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The name of the subscription. It must have the format
+            /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only
+            /// letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or
+            /// percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with
+            /// `"goog"`.</param>
+            public virtual PatchRequest Patch(Google.Apis.Pubsub.v1.Data.UpdateSubscriptionRequest body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates an existing subscription. Note that certain properties of a subscription, such as its
+            /// topic, are not modifiable.</summary>
+            public class PatchRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Subscription>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.UpdateSubscriptionRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the subscription. It must have the format
+                /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and
+                /// contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods
+                /// (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in
+                /// length, and it must not start with `"goog"`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.UpdateSubscriptionRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                        });
+                }
+
+            }
+
             /// <summary>Pulls messages from the server. Returns an empty list if there are no messages available in the
             /// backlog. The server may return `UNAVAILABLE` if there are too many concurrent pull requests pending for
             /// the given subscription.</summary>
@@ -1285,6 +1682,76 @@ namespace Google.Apis.Pubsub.v1
                 }
 
                 /// <summary>Initializes Pull parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "subscription", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "subscription",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/subscriptions/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided
+            /// in the request.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="subscription">The subscription to affect.</param>
+            public virtual SeekRequest Seek(Google.Apis.Pubsub.v1.Data.SeekRequest body, string subscription)
+            {
+                return new SeekRequest(service, body, subscription);
+            }
+
+            /// <summary>Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided
+            /// in the request.</summary>
+            public class SeekRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.SeekResponse>
+            {
+                /// <summary>Constructs a new Seek request.</summary>
+                public SeekRequest(Google.Apis.Services.IClientService service, Google.Apis.Pubsub.v1.Data.SeekRequest body, string subscription)
+                    : base(service)
+                {
+                    Subscription = subscription;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The subscription to affect.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("subscription", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Subscription { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Pubsub.v1.Data.SeekRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "seek"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+subscription}:seek"; }
+                }
+
+                /// <summary>Initializes Seek parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -1472,10 +1939,125 @@ namespace Google.Apis.Pubsub.v1
             public TopicsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                snapshots = new SnapshotsResource(service);
                 subscriptions = new SubscriptionsResource(service);
 
             }
 
+            private readonly SnapshotsResource snapshots;
+
+            /// <summary>Gets the Snapshots resource.</summary>
+            public virtual SnapshotsResource Snapshots
+            {
+                get { return snapshots; }
+            }
+
+            /// <summary>The "snapshots" collection of methods.</summary>
+            public class SnapshotsResource
+            {
+                private const string Resource = "snapshots";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SnapshotsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Lists the names of the snapshots on this topic.</summary>
+                /// <param name="topic">The name of the topic that snapshots are attached to. Format is
+                /// `projects/{project}/topics/{topic}`.</param>
+                public virtual ListRequest List(string topic)
+                {
+                    return new ListRequest(service, topic);
+                }
+
+                /// <summary>Lists the names of the snapshots on this topic.</summary>
+                public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListTopicSnapshotsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string topic)
+                        : base(service)
+                    {
+                        Topic = topic;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The name of the topic that snapshots are attached to. Format is
+                    /// `projects/{project}/topics/{topic}`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("topic", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Topic { get; private set; }
+
+                    /// <summary>Maximum number of snapshot names to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The value returned by the last `ListTopicSnapshotsResponse`; indicates that this is a
+                    /// continuation of a prior `ListTopicSnapshots` call, and that the system should return the next
+                    /// page of data.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1/{+topic}/snapshots"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "topic", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "topic",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/topics/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
             private readonly SubscriptionsResource subscriptions;
 
             /// <summary>Gets the Subscriptions resource.</summary>
@@ -1500,7 +2082,7 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>Lists the name of the subscriptions for this topic.</summary>
+                /// <summary>Lists the names of the subscriptions on this topic.</summary>
                 /// <param name="topic">The name of the topic that subscriptions are attached to. Format is
                 /// `projects/{project}/topics/{topic}`.</param>
                 public virtual ListRequest List(string topic)
@@ -1508,7 +2090,7 @@ namespace Google.Apis.Pubsub.v1
                     return new ListRequest(service, topic);
                 }
 
-                /// <summary>Lists the name of the subscriptions for this topic.</summary>
+                /// <summary>Lists the names of the subscriptions on this topic.</summary>
                 public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListTopicSubscriptionsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -1880,14 +2462,14 @@ namespace Google.Apis.Pubsub.v1
                 [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Project { get; private set; }
 
-                /// <summary>Maximum number of topics to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The value returned by the last `ListTopicsResponse`; indicates that this is a continuation
                 /// of a prior `ListTopics` call, and that the system should return the next page of data.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of topics to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1923,18 +2505,18 @@ namespace Google.Apis.Pubsub.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2222,6 +2804,22 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request for the `CreateSnapshot` method.</summary>
+    public class CreateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The subscription whose backlog the snapshot retains. Specifically, the created snapshot is
+        /// guaranteed to retain: (a) The existing backlog on the subscription. More precisely, this is defined as the
+        /// messages in the subscription's backlog that are unacknowledged upon the successful completion of the
+        /// `CreateSnapshot` request; as well as: (b) Any messages published to the subscription's topic following the
+        /// successful completion of the CreateSnapshot request. Format is
+        /// `projects/{project}/subscriptions/{sub}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual string Subscription { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -2230,6 +2828,22 @@ namespace Google.Apis.Pubsub.v1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for the `ListSnapshots` method.</summary>
+    public class ListSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If not empty, indicates that there may be more snapshot that match the request; this value should
+        /// be passed in a new `ListSnapshotsRequest`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The resulting snapshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshots")]
+        public virtual System.Collections.Generic.IList<Snapshot> Snapshots { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2245,6 +2859,22 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>The subscriptions that match the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
         public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response for the `ListTopicSnapshots` method.</summary>
+    public class ListTopicSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If not empty, indicates that there may be more snapshots that match the request; this value should
+        /// be passed in a new `ListTopicSnapshotsRequest` to get more snapshots.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The names of the snapshots that match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshots")]
+        public virtual System.Collections.Generic.IList<string> Snapshots { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2485,6 +3115,34 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request for the `Seek` method.</summary>
+    public class SeekRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The snapshot to seek to. The snapshot's topic must be the same as that of the provided
+        /// subscription. Format is `projects/{project}/snapshots/{snap}`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual string Snapshot { get; set; } 
+
+        /// <summary>The time to seek to. Messages retained in the subscription that were published before this time are
+        /// marked as acknowledged, and messages retained in the subscription that were published after this time are
+        /// marked as unacknowledged. Note that this operation affects only those messages retained in the subscription
+        /// (configured by the combination of `message_retention_duration` and `retain_acked_messages`). For example, if
+        /// `time` corresponds to a point before the message retention window (or to a point before the system's notion
+        /// of the subscription creation time), only retained messages will be marked as unacknowledged, and already-
+        /// expunged messages will not be restored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual object Time { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class SeekResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2493,6 +3151,31 @@ namespace Google.Apis.Pubsub.v1.Data
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A snapshot resource.</summary>
+    public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later
+        /// than 7 days from the time of its creation. Its exact lifetime is determined at creation by the existing
+        /// backlog in the source subscription. Specifically, the lifetime of the snapshot is `7 days - (age of oldest
+        /// unacked message in the subscription)`. For example, consider a subscription whose oldest unacked message is
+        /// 3 days old. If a snapshot is created from this subscription, the snapshot -- which will always capture this
+        /// 3-day-old backlog as long as the snapshot exists -- will expire in 4 days. The service will refuse to create
+        /// a snapshot that would expire in less than 1 hour after creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
+
+        /// <summary>The name of the snapshot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The name of the topic from which this snapshot is retaining messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2519,6 +3202,13 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ackDeadlineSeconds")]
         public virtual System.Nullable<int> AckDeadlineSeconds { get; set; } 
 
+        /// <summary>How long to retain unacknowledged messages in the subscription's backlog, from the moment a message
+        /// is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged
+        /// messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more
+        /// than 7 days or less than 10 minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageRetentionDuration")]
+        public virtual object MessageRetentionDuration { get; set; } 
+
         /// <summary>The name of the subscription. It must have the format
         /// `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain
         /// only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`),
@@ -2531,6 +3221,12 @@ namespace Google.Apis.Pubsub.v1.Data
         /// `pushConfig` signifies that the subscriber will pull and ack messages using API methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pushConfig")]
         public virtual PushConfig PushConfig { get; set; } 
+
+        /// <summary>Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the
+        /// subscription's backlog, even if they are acknowledged, until they fall out of the
+        /// `message_retention_duration` window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
+        public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
 
         /// <summary>The name of the topic from which this subscription is receiving messages. Format is
         /// `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been
@@ -2575,6 +3271,38 @@ namespace Google.Apis.Pubsub.v1.Data
         /// 255 characters in length, and it must not start with `"goog"`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for the UpdateSnapshot method.</summary>
+    public class UpdateSnapshotRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated snpashot object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual Snapshot Snapshot { get; set; } 
+
+        /// <summary>Indicates which fields in the provided snapshot to update. Must be specified and non-
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for the UpdateSubscription method.</summary>
+    public class UpdateSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated subscription object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual Subscription Subscription { get; set; } 
+
+        /// <summary>Indicates which fields in the provided subscription to update. Must be specified and non-
+        /// empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

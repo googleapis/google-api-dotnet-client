@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171101 (1035)
+ *      <tr><th>API Rev<td>20171129 (1063)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -13101,6 +13101,10 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("closedCaptionsType")]
         public virtual string ClosedCaptionsType { get; set; } 
 
+        /// <summary>This setting indicates whether auto start is enabled for this broadcast.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAutoStart")]
+        public virtual System.Nullable<bool> EnableAutoStart { get; set; } 
+
         /// <summary>This setting indicates whether HTTP POST closed captioning is enabled for this broadcast. The
         /// ingestion URL of the closed captions is returned through the liveStreams API. This is mutually exclusive
         /// with using the closed_captions_type property, and is equivalent to setting closed_captions_type to
@@ -15222,6 +15226,10 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>A video resource represents a YouTube video.</summary>
     public class Video : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The access token to uniquely identify a revocable unlisted video.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; } 
+
         /// <summary>Age restriction details related to a video. This data can only be retrieved by the video
         /// owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageGating")]

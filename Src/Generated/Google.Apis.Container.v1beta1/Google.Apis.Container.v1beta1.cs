@@ -525,6 +525,12 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>The Google Developers Console [project ID or project
+                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field is
+                        /// deprecated, use name instead.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ProjectId { get; set; }
+
                         /// <summary>The name of the Google Compute Engine [zone](/compute/docs/zones#available) in
                         /// which the cluster resides. This field is deprecated, use name instead.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
@@ -538,12 +544,6 @@ namespace Google.Apis.Container.v1beta1
                         /// instead.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string NodePoolId { get; set; }
-
-                        /// <summary>The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field is
-                        /// deprecated, use name instead.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ProjectId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -579,6 +579,15 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
@@ -600,15 +609,6 @@ namespace Google.Apis.Container.v1beta1
                                 "nodePoolId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -6645,6 +6645,18 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Configuration for controlling how IPs are allocated in the cluster.</summary>
     public class IPAllocationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes.
+        /// By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With
+        /// allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR
+        /// range.
+        ///
+        /// If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`,
+        /// but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and
+        /// `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false,
+        /// `cluster.cluster_ipv4_cidr` muse be fully-specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowRouteOverlap")]
+        public virtual System.Nullable<bool> AllowRouteOverlap { get; set; } 
+
         /// <summary>This field is deprecated, use cluster_ipv4_cidr_block.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterIpv4Cidr")]
         public virtual string ClusterIpv4Cidr { get; set; } 
