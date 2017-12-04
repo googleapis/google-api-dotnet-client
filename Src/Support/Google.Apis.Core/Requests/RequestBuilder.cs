@@ -96,7 +96,8 @@ namespace Google.Apis.Requests
         /// <summary>Constructs a Uri as defined by the parts of this request builder.</summary> 
         public Uri BuildUri()
         {
-            var restPath = BuildRestPath();
+            // URL-encode ':', so it doesn't get interpreted as a scheme.
+            var restPath = BuildRestPath().Replace(":", "%3A");
 
             if (QueryParameters.Count > 0)
             {

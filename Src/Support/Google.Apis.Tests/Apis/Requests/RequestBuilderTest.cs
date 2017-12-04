@@ -56,19 +56,31 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>Verifies that the path is correctly appended to the base URI.</summary>
-        [Fact]
-        public void TestBasePlusPathMath()
+        [Theory]
+        [InlineData("http://www.example.com/", "test/path", "http://www.example.com/test/path")]
+        [InlineData("http://www.example.com/", "test/a:path", "http://www.example.com/test/a:path")]
+        [InlineData("http://www.example.com/", "a:test/path", "http://www.example.com/a:test/path")]
+        [InlineData("http://www.example.com/", "a:test", "http://www.example.com/a:test")]
+        [InlineData("http://www.example.com/z/", "test/path", "http://www.example.com/z/test/path")]
+        [InlineData("http://www.example.com/z/", "test/a:path", "http://www.example.com/z/test/a:path")]
+        [InlineData("http://www.example.com/z/", "a:test/path", "http://www.example.com/z/a:test/path")]
+        [InlineData("http://www.example.com/z/", "a:test", "http://www.example.com/z/a:test")]
+        [InlineData("http://www.example.com/z/", "/test/path", "http://www.example.com/test/path")]
+        [InlineData("http://www.example.com/z/", "/test/a:path", "http://www.example.com/test/a:path")]
+        [InlineData("http://www.example.com/z/", "/a:test/path", "http://www.example.com/a:test/path")]
+        [InlineData("http://www.example.com/z/", "/a:test", "http://www.example.com/a:test")]
+        public void TestBasePlusPath(string baseUri, string path, string expectedRequestUri)
         {
             var builder = new RequestBuilder()
                 {
-                    BaseUri = new Uri("http://www.example.com/"),
-                    Path = "test/path",
+                    BaseUri = new Uri(baseUri),
+                    Path = path,
                     Method = "PUT"
                 };
 
             var request = builder.CreateRequest();
             Assert.Equal(HttpMethod.Put, request.Method);
-            Assert.Equal(new Uri("http://www.example.com/test/path"), request.RequestUri);
+            Assert.Equal(new Uri(expectedRequestUri), request.RequestUri);
         }
 
         /// <summary>Verifies that a single query parameter is correctly encoded in the request URI.</summary>
