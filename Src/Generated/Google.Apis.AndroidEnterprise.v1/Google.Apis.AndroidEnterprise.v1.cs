@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171123 (1057)
+ *      <tr><th>API Rev<td>20171130 (1064)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8776,9 +8776,25 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorName")]
         public virtual string AuthorName { get; set; } 
 
+        /// <summary>The countries which this app is available in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableCountries")]
+        public virtual System.Collections.Generic.IList<string> AvailableCountries { get; set; } 
+
         /// <summary>The tracks that are visible to the enterprise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("availableTracks")]
         public virtual System.Collections.Generic.IList<string> AvailableTracks { get; set; } 
+
+        /// <summary>The app category (e.g. RACING, SOCIAL, etc.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; } 
+
+        /// <summary>The content rating for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentRating")]
+        public virtual string ContentRating { get; set; } 
+
+        /// <summary>A localized promotional description, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
 
         /// <summary>A link to the (consumer) Google Play details page for the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detailsUrl")]
@@ -8802,6 +8818,19 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>The time (in milliseconds since epoch) when application was last published. (Timestamp is
+        /// approximate within 7 days of actual publish time.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
+        public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; } 
+
+        /// <summary>The minimum Android SDK necessary to run the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minAndroidSdkVersion")]
+        public virtual System.Nullable<int> MinAndroidSdkVersion { get; set; } 
+
+        /// <summary>The permissions required for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<ProductPermission> Permissions { get; set; } 
+
         /// <summary>A string of the form app:. For example, app:com.google.android.gm represents the Gmail
         /// app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
@@ -8813,9 +8842,17 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("productPricing")]
         public virtual string ProductPricing { get; set; } 
 
+        /// <summary>A description of the recent changes made to the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recentChanges")]
+        public virtual string RecentChanges { get; set; } 
+
         /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requiresContainerApp")]
         public virtual System.Nullable<bool> RequiresContainerApp { get; set; } 
+
+        /// <summary>A list of screenshot links representing the app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenshotUrls")]
+        public virtual System.Collections.Generic.IList<string> ScreenshotUrls { get; set; } 
 
         /// <summary>The certificate used to sign this product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signingCertificate")]

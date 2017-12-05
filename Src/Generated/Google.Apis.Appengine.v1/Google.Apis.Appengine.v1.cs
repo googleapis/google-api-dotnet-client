@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171109 (1043)
+ *      <tr><th>API Rev<td>20171201 (1065)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -897,13 +897,13 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>Continuation token for fetching the next page of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Maximum results to return per page.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Continuation token for fetching the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -939,18 +939,18 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3697,13 +3697,13 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>Continuation token for fetching the next page of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Maximum results to return per page.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Continuation token for fetching the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3739,18 +3739,18 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3794,10 +3794,6 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServicesId { get; private set; }
 
-                /// <summary>Standard field mask for the set of fields to be updated.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
-
                 /// <summary>Set to true to gradually shift traffic to one or more versions that you specify. By
                 /// default, traffic is shifted immediately. For gradual traffic migration, the target versions must be
                 /// located within instances that are configured for both warmup requests
@@ -3811,6 +3807,10 @@ namespace Google.Apis.Appengine.v1
                 /// (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("migrateTraffic", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> MigrateTraffic { get; set; }
+
+                /// <summary>Standard field mask for the set of fields to be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
@@ -3861,18 +3861,18 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
+                        "migrateTraffic", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "updateMask",
+                            Name = "migrateTraffic",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "migrateTraffic", new Google.Apis.Discovery.Parameter
+                        "updateMask", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "migrateTraffic",
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4349,7 +4349,8 @@ namespace Google.Apis.Appengine.v1.Data
     public class AutomaticScaling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Amount of time that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait
-        /// between changes to the number of virtual machines. Only applicable for VM runtimes.</summary>
+        /// between changes to the number of virtual machines. Only applicable in the App Engine flexible
+        /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coolDownPeriod")]
         public virtual object CoolDownPeriod { get; set; } 
 
@@ -4531,7 +4532,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Target scaling by disk usage. Only applicable for VM runtimes.</summary>
+    /// <summary>Target scaling by disk usage. Only applicable in the App Engine flexible environment.</summary>
     public class DiskUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Target bytes read per second.</summary>
@@ -5078,16 +5079,16 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Extra network settings. Only applicable for App Engine flexible environment versions</summary>
+    /// <summary>Extra network settings. Only applicable in the App Engine flexible environment.</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>List of ports, or port pairs, to forward from the virtual machine to the application container.
-        /// Only applicable for App Engine flexible environment versions.</summary>
+        /// Only applicable in the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardedPorts")]
         public virtual System.Collections.Generic.IList<string> ForwardedPorts { get; set; } 
 
-        /// <summary>Tag to apply to the VM instance during creation. Only applicable for for App Engine flexible
-        /// environment versions.</summary>
+        /// <summary>Tag to apply to the VM instance during creation. for Only applicable in the App Engine flexible
+        /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTag")]
         public virtual string InstanceTag { get; set; } 
 
@@ -5112,7 +5113,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Target scaling by network usage. Only applicable for VM runtimes.</summary>
+    /// <summary>Target scaling by network usage. Only applicable in the App Engine flexible environment.</summary>
     public class NetworkUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Target bytes received per second.</summary>
@@ -5389,7 +5390,8 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Target scaling by request utilization. Only applicable for VM runtimes.</summary>
+    /// <summary>Target scaling by request utilization. Only applicable in the App Engine flexible
+    /// environment.</summary>
     public class RequestUtilization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Target number of concurrent requests.</summary>
@@ -5771,7 +5773,8 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual System.Collections.Generic.IList<UrlMap> Handlers { get; set; } 
 
         /// <summary>Configures health checking for VM instances. Unhealthy instances are stopped and replaced with new
-        /// instances. Only applicable for VM runtimes.Only returned in GET requests if view=FULL is set.</summary>
+        /// instances. Only applicable in the App Engine flexible environment.Only returned in GET requests if view=FULL
+        /// is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthCheck")]
         public virtual HealthCheck HealthCheck { get; set; } 
 
@@ -5812,7 +5815,7 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Extra network settings. Only applicable for App Engine flexible environment versions.</summary>
+        /// <summary>Extra network settings. Only applicable in the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual Network Network { get; set; } 
 
@@ -5826,7 +5829,8 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("readinessCheck")]
         public virtual ReadinessCheck ReadinessCheck { get; set; } 
 
-        /// <summary>Machine resources for this version. Only applicable for VM runtimes.</summary>
+        /// <summary>Machine resources for this version. Only applicable in the App Engine flexible
+        /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual Resources Resources { get; set; } 
 
@@ -5861,7 +5865,8 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Volumes mounted within the app container. Only applicable for VM runtimes.</summary>
+    /// <summary>Volumes mounted within the app container. Only applicable in the App Engine flexible
+    /// environment.</summary>
     public class Volume : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Unique name for the volume.</summary>

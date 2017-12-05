@@ -1,17 +1,18 @@
 {
+  "version": "v1",
   "baseUrl": "https://searchconsole.googleapis.com/",
   "canonicalName": "Search Console",
-  "kind": "discovery#restDescription",
-  "description": "Provides tools for running validation tests against single URLs",
   "servicePath": "",
+  "description": "Provides tools for running validation tests against single URLs",
+  "kind": "discovery#restDescription",
   "rootUrl": "https://searchconsole.googleapis.com/",
   "basePath": "",
   "ownerDomain": "google.com",
   "name": "searchconsole",
   "batchPath": "batch",
   "revision": "20171128",
-  "id": "searchconsole:v1",
   "documentationLink": "https://developers.google.com/webmaster-tools/search-console-api/",
+  "id": "searchconsole:v1",
   "title": "Google Search Console URL Testing Tools API",
   "discoveryVersion": "v1",
   "ownerName": "Google",
@@ -22,19 +23,19 @@
         "mobileFriendlyTest": {
           "methods": {
             "run": {
-              "id": "searchconsole.urlTestingTools.mobileFriendlyTest.run",
-              "path": "v1/urlTestingTools/mobileFriendlyTest:run",
-              "request": {
-                "$ref": "RunMobileFriendlyTestRequest"
-              },
-              "description": "Runs Mobile-Friendly Test for a given URL.",
-              "httpMethod": "POST",
-              "parameterOrder": [],
               "response": {
                 "$ref": "RunMobileFriendlyTestResponse"
               },
+              "parameterOrder": [],
+              "httpMethod": "POST",
               "parameters": {},
-              "flatPath": "v1/urlTestingTools/mobileFriendlyTest:run"
+              "flatPath": "v1/urlTestingTools/mobileFriendlyTest:run",
+              "path": "v1/urlTestingTools/mobileFriendlyTest:run",
+              "id": "searchconsole.urlTestingTools.mobileFriendlyTest.run",
+              "description": "Runs Mobile-Friendly Test for a given URL.",
+              "request": {
+                "$ref": "RunMobileFriendlyTestRequest"
+              }
             }
           }
         }
@@ -48,42 +49,40 @@
       "type": "string"
     },
     "prettyPrint": {
-      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
+      "default": "true",
       "location": "query"
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
+    "uploadType": {
+      "location": "query",
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string"
     },
     "$.xgafv": {
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
       "enum": [
         "1",
         "2"
       ],
       "description": "V1 error format.",
-      "type": "string",
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query"
+      "type": "string"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
     },
     "alt": {
-      "description": "Data format for response.",
-      "default": "json",
       "enum": [
         "json",
         "media",
@@ -95,6 +94,13 @@
         "Media download with context-dependent Content-Type",
         "Responses with Content-Type of application/x-protobuf"
       ],
+      "location": "query",
+      "description": "Data format for response.",
+      "default": "json"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
       "location": "query"
     },
     "key": {
@@ -102,15 +108,10 @@
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
-    "access_token": {
-      "description": "OAuth access token.",
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
       "type": "string",
       "location": "query"
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
     },
     "pp": {
       "location": "query",
@@ -118,15 +119,15 @@
       "type": "boolean",
       "default": "true"
     },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
     "oauth_token": {
-      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
+      "type": "string",
+      "location": "query"
+    },
+    "bearer_token": {
+      "description": "OAuth bearer token.",
+      "type": "string",
+      "location": "query"
     }
   },
   "schemas": {
@@ -163,6 +164,17 @@
       "description": "Mobile-friendly test response, including mobile-friendly issues and resource\nissues.",
       "type": "object",
       "properties": {
+        "testStatus": {
+          "$ref": "TestStatus",
+          "description": "Final state of the test, can be either complete or an error."
+        },
+        "resourceIssues": {
+          "description": "Information about embedded resources issues.",
+          "type": "array",
+          "items": {
+            "$ref": "ResourceIssue"
+          }
+        },
         "mobileFriendliness": {
           "enumDescriptions": [
             "Internal error when running this test. Please try running the test again.",
@@ -185,19 +197,8 @@
           }
         },
         "screenshot": {
-          "$ref": "Image",
-          "description": "Screenshot of the requested URL."
-        },
-        "testStatus": {
-          "$ref": "TestStatus",
-          "description": "Final state of the test, can be either complete or an error."
-        },
-        "resourceIssues": {
-          "description": "Information about embedded resources issues.",
-          "type": "array",
-          "items": {
-            "$ref": "ResourceIssue"
-          }
+          "description": "Screenshot of the requested URL.",
+          "$ref": "Image"
         }
       },
       "id": "RunMobileFriendlyTestResponse"
@@ -229,12 +230,6 @@
       "type": "object",
       "properties": {
         "status": {
-          "enumDescriptions": [
-            "Internal error when running this test. Please try running the test again.",
-            "Inspection has completed without errors.",
-            "Inspection terminated in an error state. This indicates a problem in\nGoogle's infrastructure, not a user error. Please try again later.",
-            "Google can not access the URL because of a user error such as a robots.txt\nblockage, a 403 or 500 code etc. Please make sure that the URL provided is\naccessible by Googlebot and is not password protected."
-          ],
           "enum": [
             "TEST_STATUS_UNSPECIFIED",
             "COMPLETE",
@@ -242,7 +237,13 @@
             "PAGE_UNREACHABLE"
           ],
           "description": "Status of the test.",
-          "type": "string"
+          "type": "string",
+          "enumDescriptions": [
+            "Internal error when running this test. Please try running the test again.",
+            "Inspection has completed without errors.",
+            "Inspection terminated in an error state. This indicates a problem in\nGoogle's infrastructure, not a user error. Please try again later.",
+            "Google can not access the URL because of a user error such as a robots.txt\nblockage, a 403 or 500 code etc. Please make sure that the URL provided is\naccessible by Googlebot and is not password protected."
+          ]
         },
         "details": {
           "description": "Error details if applicable.",
@@ -287,6 +288,5 @@
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",
     "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  },
-  "version": "v1"
+  }
 }
