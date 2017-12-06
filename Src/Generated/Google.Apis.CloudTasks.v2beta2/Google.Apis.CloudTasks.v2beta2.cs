@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171130 (1064)
+ *      <tr><th>API Rev<td>20171205 (1069)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -1679,6 +1679,18 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "app_engine_http_target: *".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested_page size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
@@ -1695,18 +1707,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "app_engine_http_target: *".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested_page size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1742,6 +1742,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1754,15 +1763,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1784,11 +1784,12 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
                 ///
-                /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),    hyphens (-), colons (:), or periods (.). *
-                /// `LOCATION_ID` is the canonical ID for the queue's location.    The list of available locations can be obtained by
-                /// calling    google.cloud.location.Locations.ListLocations.    For more information, see
-                /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
-                /// hyphens (-). The maximum length is 100 characters.
+                /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),    hyphens (-), colons (:), or periods (.).    For
+                /// more information, see    [Identifying projects](/resource-manager/docs/creating-managing-
+                /// projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location.    The list of
+                /// available locations can be obtained by calling    google.cloud.location.Locations.ListLocations.    For more
+                /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers
+                /// ([0-9]), or   hyphens (-). The maximum length is 100 characters.
                 ///
                 /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudTasks.v2beta2.Data.Queue body, string name)
@@ -1821,10 +1822,12 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
                     ///
                     /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or
-                    /// periods (.). * `LOCATION_ID` is the canonical ID for the queue's location. The list of available
-                    /// locations can be obtained by calling google.cloud.location.Locations.ListLocations. For more
-                    /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters
-                    /// ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
+                    /// periods (.). For more information, see [Identifying projects](/resource-manager/docs/creating-
+                    /// managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's
+                    /// location. The list of available locations can be obtained by calling
+                    /// google.cloud.location.Locations.ListLocations. For more information, see
+                    /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers
+                    /// ([0-9]), or hyphens (-). The maximum length is 100 characters.
                     ///
                     /// Caller-specified and required in CreateQueueRequest, after which it becomes output
                     /// only.</summary>
@@ -2388,6 +2391,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2395,10 +2402,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2434,6 +2437,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2446,15 +2458,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3183,11 +3186,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
         ///
-        /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). *
-        /// `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained
-        /// by calling google.cloud.location.Locations.ListLocations. For more information, see
-        /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
-        /// hyphens (-). The maximum length is 100 characters.
+        /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For
+        /// more information, see [Identifying projects](/resource-manager/docs/creating-managing-
+        /// projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of
+        /// available locations can be obtained by calling google.cloud.location.Locations.ListLocations. For more
+        /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]),
+        /// numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
         ///
         /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3545,12 +3549,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// The task name must have the following format:
         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
         ///
-        /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). *
-        /// `LOCATION_ID` is the canonical ID for the task's location. The list of available locations can be obtained
-        /// by calling google.cloud.location.Locations.ListLocations. For more information, see
-        /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
-        /// hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers
-        /// ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For
+        /// more information, see [Identifying projects](/resource-manager/docs/creating-managing-
+        /// projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of
+        /// available locations can be obtained by calling google.cloud.location.Locations.ListLocations. For more
+        /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]),
+        /// numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters
+        /// ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         ///
         /// Optionally caller-specified in CreateTaskRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

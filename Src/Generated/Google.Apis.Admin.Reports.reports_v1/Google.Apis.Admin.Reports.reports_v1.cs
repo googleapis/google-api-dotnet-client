@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>Admin Reports API</a>
  *      <tr><th>API Version<td>reports_v1
- *      <tr><th>API Rev<td>20170622 (903)
+ *      <tr><th>API Rev<td>20171204 (1068)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/reports/'>
  *              https://developers.google.com/admin-sdk/reports/</a>
@@ -67,6 +67,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             activities = new ActivitiesResource(this);
             channels = new ChannelsResource(this);
             customerUsageReports = new CustomerUsageReportsResource(this);
+            entityUsageReports = new EntityUsageReportsResource(this);
             userUsageReport = new UserUsageReportResource(this);
         }
 
@@ -143,6 +144,14 @@ namespace Google.Apis.Admin.Reports.reports_v1
         public virtual CustomerUsageReportsResource CustomerUsageReports
         {
             get { return customerUsageReports; }
+        }
+
+        private readonly EntityUsageReportsResource entityUsageReports;
+
+        /// <summary>Gets the EntityUsageReports resource.</summary>
+        public virtual EntityUsageReportsResource EntityUsageReports
+        {
+            get { return entityUsageReports; }
         }
 
         private readonly UserUsageReportResource userUsageReport;
@@ -861,6 +870,182 @@ namespace Google.Apis.Admin.Reports.reports_v1
         }
     }
 
+    /// <summary>The "entityUsageReports" collection of methods.</summary>
+    public class EntityUsageReportsResource
+    {
+        private const string Resource = "entityUsageReports";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public EntityUsageReportsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves a report which is a collection of properties / statistics for a set of objects.</summary>
+        /// <param name="entityType">Type of object. Should be one of - gplus_communities.</param>
+        /// <param
+        /// name="entityKey">Represents the key of object for which the data should be filtered.</param>
+        /// <param
+        /// name="date">Represents the date in yyyy-mm-dd format for which the data is to be fetched.</param>
+        public virtual GetRequest Get(string entityType, string entityKey, string date)
+        {
+            return new GetRequest(service, entityType, entityKey, date);
+        }
+
+        /// <summary>Retrieves a report which is a collection of properties / statistics for a set of objects.</summary>
+        public class GetRequest : ReportsBaseServiceRequest<Google.Apis.Admin.Reports.reports_v1.Data.UsageReports>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string entityType, string entityKey, string date)
+                : base(service)
+            {
+                EntityType = entityType;
+                EntityKey = entityKey;
+                Date = date;
+                InitParameters();
+            }
+
+
+            /// <summary>Type of object. Should be one of - gplus_communities.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("entityType", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EntityType { get; private set; }
+
+            /// <summary>Represents the key of object for which the data should be filtered.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("entityKey", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string EntityKey { get; private set; }
+
+            /// <summary>Represents the date in yyyy-mm-dd format for which the data is to be fetched.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("date", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Date { get; private set; }
+
+            /// <summary>Represents the customer for which the data is to be fetched.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomerId { get; set; }
+
+            /// <summary>Represents the set of filters including parameter operator value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filters", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filters { get; set; }
+
+            /// <summary>Maximum number of results to return. Maximum allowed is 1000</summary>
+            /// [maximum: 1000]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Token to specify next page.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Represents the application name, parameter name pairs to fetch in csv as app_name1:param_name1,
+            /// app_name2:param_name2.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parameters", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parameters { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "usage/{entityType}/{entityKey}/dates/{date}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "entityType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "entityType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(gplus_communities)",
+                    });
+                RequestParameters.Add(
+                    "entityKey", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "entityKey",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "date", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "date",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(\d){4}-(\d){2}-(\d){2}",
+                    });
+                RequestParameters.Add(
+                    "customerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customerId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"C.+",
+                    });
+                RequestParameters.Add(
+                    "filters", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filters",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+,)*(((gplus)):[a-z0-9_]+[<,<=,==,>=,>,!=][^,]+)",
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parameters", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parameters",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = @"(((gplus)):[^,]+,)*(((gplus)):[^,]+)",
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "userUsageReport" collection of methods.</summary>
     public class UserUsageReportResource
     {
@@ -1265,15 +1450,20 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
             public virtual string CustomerId { get; set; } 
 
+            /// <summary>Object key. Only relevant if entity.type = "OBJECT" Note: external-facing name of report is
+            /// "Entities" rather than "Objects".</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+            public virtual string EntityId { get; set; } 
+
             /// <summary>Obfuscated user id for the record.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
             public virtual string ProfileId { get; set; } 
 
-            /// <summary>The type of item, can be a customer or user.</summary>
+            /// <summary>The type of item, can be customer, user, or entity (aka. object).</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; } 
 
-            /// <summary>user's email.</summary>
+            /// <summary>user's email. Only relevant if entity.type = "USER"</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
             public virtual string UserEmail { get; set; } 
 

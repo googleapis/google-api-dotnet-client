@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Google Cloud IoT API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20171122 (1056)
+ *      <tr><th>API Rev<td>20171204 (1068)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -735,85 +735,6 @@ namespace Google.Apis.CloudIot.v1beta1
 
                     }
 
-                    /// <summary>Gets the configuration of a device.</summary>
-                    /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
-                    /// central1/registries/registry0/devices/device0`.</param>
-                    public virtual GetConfigRequest GetConfig(string name)
-                    {
-                        return new GetConfigRequest(service, name);
-                    }
-
-                    /// <summary>Gets the configuration of a device.</summary>
-                    public class GetConfigRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1beta1.Data.HttpDeviceConfig>
-                    {
-                        /// <summary>Constructs a new GetConfig request.</summary>
-                        public GetConfigRequest(Google.Apis.Services.IClientService service, string name)
-                            : base(service)
-                        {
-                            Name = name;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>The name of the device. For example, `projects/p0/locations/us-
-                        /// central1/registries/registry0/devices/device0`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>If zero, returns the current device configuration from Cloud IoT Core. If nonzero,
-                        /// specifies the local version of the configuration on the device. The server returns config
-                        /// data only if a higher (newer) version is available from Cloud IoT Core. If this value is
-                        /// higher than the latest version available in Cloud IoT Core, returns an `OUT_OF_RANGE`
-                        /// error.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("localVersion", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<long> LocalVersion { get; set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "getConfig"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "GET"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+name}/config"; }
-                        }
-
-                        /// <summary>Initializes GetConfig parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
-                                });
-                            RequestParameters.Add(
-                                "localVersion", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "localVersion",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                        }
-
-                    }
-
                     /// <summary>List devices in a device registry.</summary>
                     /// <param name="parent">The device registry path. Required. For example, `projects/my-project/locations/us-
                     /// central1/registries/my-registry`.</param>
@@ -839,17 +760,6 @@ namespace Google.Apis.CloudIot.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>A list of device string identifiers. If empty, it will ignore this field. For
-                        /// example, `['device0', 'device12']`. This field cannot hold more than 10,000
-                        /// entries.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
-
-                        /// <summary>A list of device numerical ids. If empty, it will ignore this field. This field
-                        /// cannot hold more than 10,000 entries.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
-
                         /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
                         /// continuation of a prior `ListDevices` call, and that the system should return the next page
                         /// of data.</summary>
@@ -867,6 +777,17 @@ namespace Google.Apis.CloudIot.v1beta1
                         /// there is a non-empty `page_token`, it indicates that more entries are available.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A list of device string identifiers. If empty, it will ignore this field. For
+                        /// example, `['device0', 'device12']`. This field cannot hold more than 10,000
+                        /// entries.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
+
+                        /// <summary>A list of device numerical ids. If empty, it will ignore this field. This field
+                        /// cannot hold more than 10,000 entries.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -902,24 +823,6 @@ namespace Google.Apis.CloudIot.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "deviceIds", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "deviceIds",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "deviceNumIds", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "deviceNumIds",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -941,6 +844,24 @@ namespace Google.Apis.CloudIot.v1beta1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "deviceIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "deviceNumIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceNumIds",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1108,146 +1029,6 @@ namespace Google.Apis.CloudIot.v1beta1
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Publishes a telemetry event for a device.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
-                    /// central1/registries/registry0/devices/device0`.</param>
-                    public virtual PublishEventRequest PublishEvent(Google.Apis.CloudIot.v1beta1.Data.HttpPublishEventRequest body, string name)
-                    {
-                        return new PublishEventRequest(service, body, name);
-                    }
-
-                    /// <summary>Publishes a telemetry event for a device.</summary>
-                    public class PublishEventRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1beta1.Data.HttpPublishEventResponse>
-                    {
-                        /// <summary>Constructs a new PublishEvent request.</summary>
-                        public PublishEventRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1beta1.Data.HttpPublishEventRequest body, string name)
-                            : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>The name of the device. For example, `projects/p0/locations/us-
-                        /// central1/registries/registry0/devices/device0`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudIot.v1beta1.Data.HttpPublishEventRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "publishEvent"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+name}:publishEvent"; }
-                        }
-
-                        /// <summary>Initializes PublishEvent parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Sets the state of a device.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
-                    /// central1/registries/registry0/devices/device0`.</param>
-                    public virtual SetStateRequest SetState(Google.Apis.CloudIot.v1beta1.Data.HttpSetDeviceStateRequest body, string name)
-                    {
-                        return new SetStateRequest(service, body, name);
-                    }
-
-                    /// <summary>Sets the state of a device.</summary>
-                    public class SetStateRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1beta1.Data.Empty>
-                    {
-                        /// <summary>Constructs a new SetState request.</summary>
-                        public SetStateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1beta1.Data.HttpSetDeviceStateRequest body, string name)
-                            : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>The name of the device. For example, `projects/p0/locations/us-
-                        /// central1/registries/registry0/devices/device0`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudIot.v1beta1.Data.HttpSetDeviceStateRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "setState"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v1beta1/{+name}:setState"; }
-                        }
-
-                        /// <summary>Initializes SetState parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/devices/[^/]+$",
                                 });
                         }
 
@@ -2148,66 +1929,6 @@ namespace Google.Apis.CloudIot.v1beta1.Data
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The device configuration obtained from Cloud IoT Core.</summary>
-    public class HttpDeviceConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Data in binary format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
-        public virtual string BinaryData { get; set; } 
-
-        /// <summary>The version of the configuration in Cloud IoT Core.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<long> Version { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The device state reported to Cloud IoT Core.</summary>
-    public class HttpDeviceState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Data in binary format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
-        public virtual string BinaryData { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request for `PublishEvent`.</summary>
-    public class HttpPublishEventRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Payload data in binary format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
-        public virtual string BinaryData { get; set; } 
-
-        /// <summary>Optional subfolder for the telemetry event. This can be used to classify types of events, and is
-        /// included in the Pub/Sub message attributes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subFolder")]
-        public virtual string SubFolder { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response for `PublishEvent`.</summary>
-    public class HttpPublishEventResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request for `SetDeviceState`.</summary>
-    public class HttpSetDeviceStateRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The device state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual HttpDeviceState State { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

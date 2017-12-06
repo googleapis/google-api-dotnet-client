@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/safe-browsing/'>Google Safe Browsing API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20171128 (1062)
+ *      <tr><th>API Rev<td>20171203 (1067)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/safe-browsing/'>
  *              https://developers.google.com/safe-browsing/</a>
@@ -67,6 +67,7 @@ namespace Google.Apis.Safebrowsing.v4
             encodedFullHashes = new EncodedFullHashesResource(this);
             encodedUpdates = new EncodedUpdatesResource(this);
             fullHashes = new FullHashesResource(this);
+            threatHits = new ThreatHitsResource(this);
             threatListUpdates = new ThreatListUpdatesResource(this);
             threatLists = new ThreatListsResource(this);
             threatMatches = new ThreatMatchesResource(this);
@@ -136,6 +137,14 @@ namespace Google.Apis.Safebrowsing.v4
         public virtual FullHashesResource FullHashes
         {
             get { return fullHashes; }
+        }
+
+        private readonly ThreatHitsResource threatHits;
+
+        /// <summary>Gets the ThreatHits resource.</summary>
+        public virtual ThreatHitsResource ThreatHits
+        {
+            get { return threatHits; }
         }
 
         private readonly ThreatListUpdatesResource threatListUpdates;
@@ -657,6 +666,78 @@ namespace Google.Apis.Safebrowsing.v4
         }
     }
 
+    /// <summary>The "threatHits" collection of methods.</summary>
+    public class ThreatHitsResource
+    {
+        private const string Resource = "threatHits";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ThreatHitsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility
+        /// can use this method.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Safebrowsing.v4.Data.ThreatHit body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility
+        /// can use this method.</summary>
+        public class CreateRequest : SafebrowsingBaseServiceRequest<Google.Apis.Safebrowsing.v4.Data.Empty>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Safebrowsing.v4.Data.ThreatHit body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Safebrowsing.v4.Data.ThreatHit Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v4/threatHits"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+    }
+
     /// <summary>The "threatListUpdates" collection of methods.</summary>
     public class ThreatListUpdatesResource
     {
@@ -915,6 +996,18 @@ namespace Google.Apis.Safebrowsing.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportedCompressions")]
         public virtual System.Collections.Generic.IList<string> SupportedCompressions { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1240,6 +1333,37 @@ namespace Google.Apis.Safebrowsing.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ThreatHit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Client-reported identification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientInfo")]
+        public virtual ClientInfo ClientInfo { get; set; } 
+
+        /// <summary>The threat entry responsible for the hit. Full hash should be reported for hash-based
+        /// hits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entry")]
+        public virtual ThreatEntry Entry { get; set; } 
+
+        /// <summary>The platform type reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformType")]
+        public virtual string PlatformType { get; set; } 
+
+        /// <summary>The resources related to the threat hit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<ThreatSource> Resources { get; set; } 
+
+        /// <summary>The threat type reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
+        public virtual string ThreatType { get; set; } 
+
+        /// <summary>Details about the user that encountered the threat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
+        public virtual UserInfo UserInfo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The information regarding one or more threats that a client submits when checking for matches in threat
     /// lists.</summary>
     public class ThreatInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -1311,6 +1435,44 @@ namespace Google.Apis.Safebrowsing.v4.Data
         /// <summary>The threat type matching this threat.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatType")]
         public virtual string ThreatType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single resource related to a threat hit.</summary>
+    public class ThreatSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Referrer of the resource. Only set if the referrer is available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referrer")]
+        public virtual string Referrer { get; set; } 
+
+        /// <summary>The remote IP of the resource in ASCII format. Either IPv4 or IPv6.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteIp")]
+        public virtual string RemoteIp { get; set; } 
+
+        /// <summary>The type of source reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The URL of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Details about the user that encountered the threat.</summary>
+    public class UserInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The UN M.49 region code associated with the user's location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; } 
+
+        /// <summary>Unique user identifier defined by the client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual string UserId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
