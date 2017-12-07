@@ -61,14 +61,26 @@ namespace Google.Apis.Tests.Apis.Requests
         [InlineData("http://www.example.com/", "test/a:path", "http://www.example.com/test/a:path")]
         [InlineData("http://www.example.com/", "a:test/path", "http://www.example.com/a:test/path")]
         [InlineData("http://www.example.com/", "a:test", "http://www.example.com/a:test")]
+        [InlineData("http://www.example.com/z", "test/path", "http://www.example.com/test/path")]
+        [InlineData("http://www.example.com/z", "test/a:path", "http://www.example.com/test/a:path")]
+        [InlineData("http://www.example.com/z", "a:test/path", "http://www.example.com/a:test/path")]
+        [InlineData("http://www.example.com/z", "a:test", "http://www.example.com/a:test")]
         [InlineData("http://www.example.com/z/", "test/path", "http://www.example.com/z/test/path")]
         [InlineData("http://www.example.com/z/", "test/a:path", "http://www.example.com/z/test/a:path")]
         [InlineData("http://www.example.com/z/", "a:test/path", "http://www.example.com/z/a:test/path")]
         [InlineData("http://www.example.com/z/", "a:test", "http://www.example.com/z/a:test")]
+        [InlineData("http://www.example.com/z", "/test/path", "http://www.example.com/test/path")]
+        [InlineData("http://www.example.com/z", "/test/a:path", "http://www.example.com/test/a:path")]
+        [InlineData("http://www.example.com/z", "/a:test/path", "http://www.example.com/a:test/path")]
+        [InlineData("http://www.example.com/z", "/a:test", "http://www.example.com/a:test")]
         [InlineData("http://www.example.com/z/", "/test/path", "http://www.example.com/test/path")]
         [InlineData("http://www.example.com/z/", "/test/a:path", "http://www.example.com/test/a:path")]
         [InlineData("http://www.example.com/z/", "/a:test/path", "http://www.example.com/a:test/path")]
         [InlineData("http://www.example.com/z/", "/a:test", "http://www.example.com/a:test")]
+        [InlineData("http://www.example.com/z", "?abc", "http://www.example.com/z?abc")]
+        [InlineData("http://www.example.com/z", "#abc", "http://www.example.com/z#abc")]
+        [InlineData("http://www.example.com/z/", "?abc", "http://www.example.com/z/?abc")]
+        [InlineData("http://www.example.com/z/", "#abc", "http://www.example.com/z/#abc")]
         public void TestBasePlusPath(string baseUri, string path, string expectedRequestUri)
         {
             var builder = new RequestBuilder()
@@ -80,7 +92,10 @@ namespace Google.Apis.Tests.Apis.Requests
 
             var request = builder.CreateRequest();
             Assert.Equal(HttpMethod.Put, request.Method);
+            // Verify both the URI and the string representation.
+            // Required because URI equality hides some special character processing.
             Assert.Equal(new Uri(expectedRequestUri), request.RequestUri);
+            Assert.Equal(new Uri(expectedRequestUri).AbsoluteUri, request.RequestUri.AbsoluteUri);
         }
 
         /// <summary>Verifies that a single query parameter is correctly encoded in the request URI.</summary>
