@@ -16,7 +16,7 @@ namespace IntegrationTests
         [Fact]
         public void ColonCorrectness()
         {
-            // Test uses dummy (non-existant) project, which will cause an error.
+            // Test uses dummy (non-existent) project, which will cause an error.
             // This is fine, as the test is checking that the request URI is correctly formed,
             // not that the call itself works.
             // The check on the returned error ensures that the URI is correct.
