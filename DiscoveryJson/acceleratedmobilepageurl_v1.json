@@ -3,13 +3,15 @@
   "documentationLink": "https://developers.google.com/amp/cache/",
   "id": "acceleratedmobilepageurl:v1",
   "title": "Accelerated Mobile Pages (AMP) URL API",
-  "ownerName": "Google",
   "discoveryVersion": "v1",
+  "ownerName": "Google",
   "version_module": true,
   "resources": {
     "ampUrls": {
       "methods": {
         "batchGet": {
+          "id": "acceleratedmobilepageurl.ampUrls.batchGet",
+          "path": "v1/ampUrls:batchGet",
           "request": {
             "$ref": "BatchGetAmpUrlsRequest"
           },
@@ -20,21 +22,19 @@
             "$ref": "BatchGetAmpUrlsResponse"
           },
           "parameters": {},
-          "flatPath": "v1/ampUrls:batchGet",
-          "id": "acceleratedmobilepageurl.ampUrls.batchGet",
-          "path": "v1/ampUrls:batchGet"
+          "flatPath": "v1/ampUrls:batchGet"
         }
       }
     }
   },
   "parameters": {
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
     "access_token": {
       "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "key": {
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
       "location": "query"
     },
@@ -44,10 +44,10 @@
       "type": "string"
     },
     "pp": {
+      "location": "query",
       "description": "Pretty-print response.",
       "type": "boolean",
-      "default": "true",
-      "location": "query"
+      "default": "true"
     },
     "oauth_token": {
       "description": "OAuth 2.0 token for the current user.",
@@ -65,18 +65,18 @@
       "type": "string"
     },
     "prettyPrint": {
-      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
+      "default": "true",
       "location": "query"
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
@@ -99,11 +99,6 @@
       "type": "string"
     },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
       "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
@@ -112,10 +107,34 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ]
     }
   },
   "schemas": {
+    "AmpUrl": {
+      "description": "AMP URL response for a requested URL.",
+      "type": "object",
+      "properties": {
+        "cdnAmpUrl": {
+          "description": "The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to\nthe cached document in the Google AMP Cache.",
+          "type": "string"
+        },
+        "originalUrl": {
+          "description": "The original non-AMP URL.",
+          "type": "string"
+        },
+        "ampUrl": {
+          "description": "The AMP URL pointing to the publisher's web server.",
+          "type": "string"
+        }
+      },
+      "id": "AmpUrl"
+    },
     "AmpUrlError": {
       "description": "AMP URL Error resource for a requested URL that couldn't be found.",
       "type": "object",
@@ -125,8 +144,6 @@
           "type": "string"
         },
         "errorCode": {
-          "description": "The error code of an API call.",
-          "type": "string",
           "enumDescriptions": [
             "Not specified error.",
             "Indicates the requested URL is not found in the index, possibly because\nit's unable to be found, not able to be accessed by Googlebot, or some\nother error.",
@@ -142,7 +159,9 @@
             "APPLICATION_ERROR",
             "URL_IS_VALID_AMP",
             "URL_IS_INVALID_AMP"
-          ]
+          ],
+          "description": "The error code of an API call.",
+          "type": "string"
         },
         "originalUrl": {
           "description": "The original non-AMP URL.",
@@ -156,16 +175,16 @@
       "type": "object",
       "properties": {
         "lookupStrategy": {
+          "enumDescriptions": [
+            "FETCH_LIVE_DOC strategy involves live document fetch of URLs not found in\nthe index. Any request URL not found in the index is crawled in realtime\nto validate if there is a corresponding AMP URL. This strategy has higher\ncoverage but with extra latency introduced by realtime crawling. This is\nthe default strategy. Applications using this strategy should set higher\nHTTP timeouts of the API calls.",
+            "IN_INDEX_DOC strategy skips fetching live documents of URL(s) not found\nin index. For applications which need low latency use of IN_INDEX_DOC\nstrategy is recommended."
+          ],
           "enum": [
             "FETCH_LIVE_DOC",
             "IN_INDEX_DOC"
           ],
           "description": "The lookup_strategy being requested.",
-          "type": "string",
-          "enumDescriptions": [
-            "FETCH_LIVE_DOC strategy involves live document fetch of URLs not found in\nthe index. Any request URL not found in the index is crawled in realtime\nto validate if there is a corresponding AMP URL. This strategy has higher\ncoverage but with extra latency introduced by realtime crawling. This is\nthe default strategy. Applications using this strategy should set higher\nHTTP timeouts of the API calls.",
-            "IN_INDEX_DOC strategy skips fetching live documents of URL(s) not found\nin index. For applications which need low latency use of IN_INDEX_DOC\nstrategy is recommended."
-          ]
+          "type": "string"
         },
         "urls": {
           "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits)).",
@@ -187,42 +206,23 @@
           }
         },
         "urlErrors": {
-          "description": "The errors for requested URLs that have no AMP URL.",
           "type": "array",
           "items": {
             "$ref": "AmpUrlError"
-          }
+          },
+          "description": "The errors for requested URLs that have no AMP URL."
         }
       },
       "id": "BatchGetAmpUrlsResponse",
       "description": "Batch AMP URL response.",
       "type": "object"
-    },
-    "AmpUrl": {
-      "description": "AMP URL response for a requested URL.",
-      "type": "object",
-      "properties": {
-        "cdnAmpUrl": {
-          "description": "The [AMP Cache URL](/amp/cache/overview#amp-cache-url-format) pointing to\nthe cached document in the Google AMP Cache.",
-          "type": "string"
-        },
-        "originalUrl": {
-          "description": "The original non-AMP URL.",
-          "type": "string"
-        },
-        "ampUrl": {
-          "description": "The AMP URL pointing to the publisher's web server.",
-          "type": "string"
-        }
-      },
-      "id": "AmpUrl"
     }
   },
-  "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
+  "protocol": "rest",
   "version": "v1",
   "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/",
   "kind": "discovery#restDescription",
