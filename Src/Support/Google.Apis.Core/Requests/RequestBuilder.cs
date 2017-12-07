@@ -96,8 +96,7 @@ namespace Google.Apis.Requests
         /// <summary>Constructs a Uri as defined by the parts of this request builder.</summary> 
         public Uri BuildUri()
         {
-            // URL-encode ':', so it doesn't get interpreted as a scheme.
-            var restPath = BuildRestPath().Replace(":", "%3A");
+            var restPath = BuildRestPath();
 
             if (QueryParameters.Count > 0)
             {
@@ -112,7 +111,34 @@ namespace Google.Apis.Requests
                     .ToArray()));
             }
 
-            return new Uri(this.BaseUri, restPath.ToString());
+            return UriJoin(this.BaseUri, restPath.ToString());
+        }
+
+        private Uri UriJoin(Uri baseUri, string path)
+        {
+            // This emulates the subset of behaviour we require from Uri(Uri, string).
+            // Except it does not treat ':' as a special, scheme-indicating, character in path.
+            if (path == "")
+            {
+                return baseUri;
+            }
+            var baseUriStr = baseUri.AbsoluteUri;
+            if (path.StartsWith("/"))
+            {
+                // Path is absolute; remove any path on the base URI.
+                baseUriStr = Regex.Replace(baseUriStr, "^([^:]+://[^/]+)/.*$", "$1");
+            }
+            else
+            {
+                if (!path.StartsWith("?") && !path.StartsWith("#"))
+                {
+                    while (!baseUriStr.EndsWith("/"))
+                    {
+                        baseUriStr = baseUriStr.Substring(0, baseUriStr.Length - 1);
+                    }
+                }
+            }
+            return new Uri(baseUriStr + path);
         }
 
         /// <summary>Operator list that can appear in the path argument.</summary>
