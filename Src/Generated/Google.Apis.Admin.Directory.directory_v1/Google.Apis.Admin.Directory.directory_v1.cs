@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20171113 (1047)
+ *      <tr><th>API Rev<td>20171127 (1061)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -9326,12 +9326,31 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for Calendar Resource object in Directory API.</summary>
     public class CalendarResource : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Unique ID for the building a resource is located in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildingId")]
+        public virtual string BuildingId { get; set; } 
+
+        /// <summary>Capacity of a resource, number of seats in a room.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("capacity")]
+        public virtual System.Nullable<int> Capacity { get; set; } 
+
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etags")]
         public virtual string Etags { get; set; } 
 
-        /// <summary>The auto-generated name of the calendar resource which includes metadata about the resource such as
-        /// building name, floor, capacity, etc. For example, NYC-2-Training Room 1A (16)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureInstances")]
+        public virtual object FeatureInstances { get; set; } 
+
+        /// <summary>Name of the floor a resource is located on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floorName")]
+        public virtual string FloorName { get; set; } 
+
+        /// <summary>Name of the section within a floor a resource is located in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floorSection")]
+        public virtual string FloorSection { get; set; } 
+
+        /// <summary>The read-only auto-generated name of the calendar resource which includes metadata about the
+        /// resource such as building name, floor, capacity, etc. For example, "NYC-2-Training Room 1A (16)".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generatedResourceName")]
         public virtual string GeneratedResourceName { get; set; } 
 
@@ -9340,11 +9359,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The brief description of the calendar resource.</summary>
+        /// <summary>The category of the calendar resource. Either CONFERENCE_ROOM or OTHER. Legacy data is set to
+        /// CATEGORY_UNKNOWN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceCategory")]
+        public virtual string ResourceCategory { get; set; } 
+
+        /// <summary>Description of the resource, visible only to admins. The brief description of the calendar
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDescription")]
         public virtual string ResourceDescription { get; set; } 
 
         /// <summary>The read-only email ID for the calendar resource. Generated as part of creating a new calendar
+        /// resource. The read-only email for the calendar resource. Generated as part of creating a new calendar
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceEmail")]
         public virtual string ResourceEmail { get; set; } 
@@ -9353,14 +9379,19 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; } 
 
-        /// <summary>The name of the calendar resource. For example, Training Room 1A</summary>
+        /// <summary>The name of the calendar resource. For example, "Training Room 1A". The name of the calendar
+        /// resource. For example, Training Room 1A</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
-        /// <summary>The type of the calendar resource. Used for grouping resources in the calendar user
-        /// interface.</summary>
+        /// <summary>The type of the calendar resource, intended for non-room resources. The type of the calendar
+        /// resource. Used for grouping resources in the calendar user interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; } 
+
+        /// <summary>Description of the resource, visible to users and admins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userVisibleDescription")]
+        public virtual string UserVisibleDescription { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9462,6 +9493,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>Chromebook boot mode (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootMode")]
         public virtual string BootMode { get; set; } 
+
+        /// <summary>List of device files to download (Read-only)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceFiles")]
+        public virtual System.Collections.Generic.IList<ChromeOsDevice.DeviceFilesData> DeviceFiles { get; set; } 
 
         /// <summary>Unique identifier of Chrome OS Device (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
@@ -9597,6 +9632,40 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             /// <summary>Date of usage</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("date")]
             public virtual string Date { get; set; } 
+
+        }    
+
+        public class DeviceFilesData
+        {
+            /// <summary>Date and time the file was created</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+            public virtual string CreateTimeRaw { get; set; }
+
+            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnore]
+            public virtual System.Nullable<System.DateTime> CreateTime
+            {
+                get
+                {
+                    return Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
+                }
+                set
+                {
+                    CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                }
+            }
+
+            /// <summary>File downlod URL</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
+            public virtual string DownloadUrl { get; set; } 
+
+            /// <summary>File name</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name { get; set; } 
+
+            /// <summary>File type</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type { get; set; } 
 
         }    
 
@@ -9856,6 +9925,35 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+    }    
+
+    /// <summary>JSON template for Feature object in Directory API.</summary>
+    public class Feature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ETag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etags")]
+        public virtual string Etags { get; set; } 
+
+        /// <summary>Kind of resource this is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The name of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for a "feature instance".</summary>
+    public class FeatureInstance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("feature")]
+        public virtual Feature Feature { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>JSON template for Group resource in Directory API.</summary>

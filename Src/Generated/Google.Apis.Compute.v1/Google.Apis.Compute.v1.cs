@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171127 (1061)
+ *      <tr><th>API Rev<td>20171122 (1056)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -5348,7 +5348,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Resizes the specified persistent disk.</summary>
+        /// <summary>Resizes the specified persistent disk. You can only increase the size of the disk.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -5359,7 +5359,7 @@ namespace Google.Apis.Compute.v1
             return new ResizeRequest(service, body, project, zone, disk);
         }
 
-        /// <summary>Resizes the specified persistent disk.</summary>
+        /// <summary>Resizes the specified persistent disk. You can only increase the size of the disk.</summary>
         public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Resize request.</summary>
@@ -19806,7 +19806,8 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Patches the specified network with the data included in the request.</summary>
+        /// <summary>Patches the specified network with the data included in the request. Only the following fields can
+        /// be modified: routingConfig.routingMode.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network to
@@ -19816,7 +19817,8 @@ namespace Google.Apis.Compute.v1
             return new PatchRequest(service, body, project, network);
         }
 
-        /// <summary>Patches the specified network with the data included in the request.</summary>
+        /// <summary>Patches the specified network with the data included in the request. Only the following fields can
+        /// be modified: routingConfig.routingMode.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -36448,7 +36450,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Accelerator Type resource.</summary>
+    /// <summary>An Accelerator Type resource. (== resource_for beta.acceleratorTypes ==) (== resource_for
+    /// v1.acceleratorTypes ==)</summary>
     public class AcceleratorType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -36721,7 +36724,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A reserved address resource.</summary>
+    /// <summary>A reserved address resource. (== resource_for beta.addresses ==) (== resource_for v1.addresses ==) (==
+    /// resource_for beta.globalAddresses ==) (== resource_for v1.globalAddresses ==)</summary>
     public class Address : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The static IP address represented by this resource.</summary>
@@ -36780,10 +36784,9 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>For external addresses, this field should not be used.
-        ///
-        /// The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within
-        /// the subnetwork's IP range.</summary>
+        /// <summary>The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must
+        /// be within the subnetwork's IP range. This field can only be used with INTERNAL type with
+        /// GCE_ENDPOINT/DNS_RESOLVER purposes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
@@ -37174,7 +37177,8 @@ namespace Google.Apis.Compute.v1.Data
 
     /// <summary>Represents an Autoscaler resource. Autoscalers allow you to automatically scale virtual machine
     /// instances in managed instance groups according to an autoscaling policy that you define. For more information,
-    /// read Autoscaling Groups of Instances.</summary>
+    /// read Autoscaling Groups of Instances. (== resource_for beta.autoscalers ==) (== resource_for v1.autoscalers ==)
+    /// (== resource_for beta.regionAutoscalers ==) (== resource_for v1.regionAutoscalers ==)</summary>
     public class Autoscaler : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration parameters for the autoscaling algorithm. You can define one or more of the
@@ -37752,7 +37756,7 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>A BackendService resource. This resource defines a group of backend virtual machines and their serving
-    /// capacity.</summary>
+    /// capacity. (== resource_for v1.backendService ==) (== resource_for beta.backendService ==)</summary>
     public class BackendService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Lifetime of cookies in seconds if session_affinity is GENERATED_COOKIE. If set to 0, the cookie is
@@ -38175,7 +38179,8 @@ namespace Google.Apis.Compute.v1.Data
     ///
     /// Committed use discounts are subject to Google Cloud Platform's Service Specific Terms. By purchasing a committed
     /// use discount, you agree to these terms. Committed use discounts will not renew, so you must purchase a new
-    /// commitment to continue receiving discounts.</summary>
+    /// commitment to continue receiving discounts. (== resource_for beta.commitments ==) (== resource_for
+    /// v1.commitments ==)</summary>
     public class Commitment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -38522,7 +38527,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Disk resource.</summary>
+    /// <summary>A Disk resource. (== resource_for beta.disks ==) (== resource_for v1.disks ==)</summary>
     public class Disk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -38845,7 +38850,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A DiskType resource.</summary>
+    /// <summary>A DiskType resource. (== resource_for beta.diskTypes ==) (== resource_for v1.diskTypes ==)</summary>
     public class DiskType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -39382,7 +39387,10 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>A ForwardingRule resource. A ForwardingRule resource specifies which pool of target virtual machines to
-    /// forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple.</summary>
+    /// forward a packet to if it matches the given [IPAddress, IPProtocol, ports] tuple. (== resource_for
+    /// beta.forwardingRules ==) (== resource_for v1.forwardingRules ==) (== resource_for beta.globalForwardingRules ==)
+    /// (== resource_for v1.globalForwardingRules ==) (== resource_for beta.regionForwardingRules ==) (== resource_for
+    /// v1.regionForwardingRules ==)</summary>
     public class ForwardingRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The IP address that this forwarding rule is serving on behalf of.
@@ -39743,9 +39751,8 @@ namespace Google.Apis.Compute.v1.Data
     /// <summary>Guest OS features.</summary>
     public class GuestOsFeature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The type of supported feature. Currently only VIRTIO_SCSI_MULTIQUEUE is supported. For newer
-        /// Windows images, the server might also populate this property with the value WINDOWS to indicate that this is
-        /// a Windows image.</summary>
+        /// <summary>The ID of a supported feature. Read  Enabling guest operating system features to see a list of
+        /// available options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -40303,7 +40310,7 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>An Image resource.</summary>
+    /// <summary>An Image resource. (== resource_for beta.images ==) (== resource_for v1.images ==)</summary>
     public class Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Size of the image tar.gz archive stored in Google Cloud Storage (in bytes).</summary>
@@ -40333,13 +40340,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("family")]
         public virtual string Family { get; set; } 
 
-        /// <summary>A list of features to enable on the guest OS. Applicable for bootable images only. Currently, only
-        /// one feature can be enabled, VIRTIO_SCSI_MULTIQUEUE, which allows each virtual CPU to have its own queue. For
-        /// Windows images, you can only enable VIRTIO_SCSI_MULTIQUEUE on images with driver version 1.2.0.1621 or
-        /// higher. Linux images with kernel versions 3.17 and higher will support VIRTIO_SCSI_MULTIQUEUE.
-        ///
-        /// For newer Windows images, the server might also populate this property with the value WINDOWS to indicate
-        /// that this is a Windows image.</summary>
+        /// <summary>A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// Read  Enabling guest operating system features to see a list of available options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
         public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
@@ -40540,7 +40542,7 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>An Instance resource.</summary>
+    /// <summary>An Instance resource. (== resource_for beta.instances ==) (== resource_for v1.instances ==)</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Allows this instance to send and receive packets with non-matching destination or source IPs. This
@@ -40755,6 +40757,8 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>InstanceGroups (== resource_for beta.instanceGroups ==) (== resource_for v1.instanceGroups ==) (==
+    /// resource_for beta.regionInstanceGroups ==) (== resource_for v1.regionInstanceGroups ==)</summary>
     public class InstanceGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The creation timestamp for this instance group in RFC3339 text format.</summary>
@@ -40968,7 +40972,9 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>An Instance Group Manager resource.</summary>
+    /// <summary>An Instance Group Manager resource. (== resource_for beta.instanceGroupManagers ==) (== resource_for
+    /// v1.instanceGroupManagers ==) (== resource_for beta.regionInstanceGroupManagers ==) (== resource_for
+    /// v1.regionInstanceGroupManagers ==)</summary>
     public class InstanceGroupManager : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The base instance name to use for instances in this group. The value must be 1-58 characters long.
@@ -41726,7 +41732,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Instance Template resource.</summary>
+    /// <summary>An Instance Template resource. (== resource_for beta.instanceTemplates ==) (== resource_for
+    /// v1.instanceTemplates ==)</summary>
     public class InstanceTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The creation timestamp for this instance template in RFC3339 text format.</summary>
@@ -41988,7 +41995,8 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>Represents an Interconnects resource. The Interconnects resource is a dedicated connection between
-    /// Google's network and your on-premises network. For more information, see the  Dedicated overview page.</summary>
+    /// Google's network and your on-premises network. For more information, see the  Dedicated overview page. (==
+    /// resource_for v1.interconnects ==) (== resource_for beta.interconnects ==)</summary>
     public class Interconnect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Administrative status of the interconnect. When this is set to true, the Interconnect is functional
@@ -42099,7 +42107,8 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>Represents an InterconnectAttachment (VLAN attachment) resource. For more information, see  Creating
-    /// VLAN Attachments.</summary>
+    /// VLAN Attachments. (== resource_for beta.interconnectAttachments ==) (== resource_for v1.interconnectAttachments
+    /// ==)</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] IPv4 address + prefix length to be configured on Cloud Router Interface for this
@@ -42715,7 +42724,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Machine Type resource.</summary>
+    /// <summary>A Machine Type resource. (== resource_for v1.machineTypes ==) (== resource_for beta.machineTypes
+    /// ==)</summary>
     public class MachineType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -43126,7 +43136,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a Network resource. Read Networks and Firewalls for more information.</summary>
+    /// <summary>Represents a Network resource. Read Networks and Firewalls for more information. (== resource_for
+    /// v1.networks ==) (== resource_for beta.networks ==)</summary>
     public class Network : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The range of internal addresses that are legal on this network. This range is a CIDR specification,
@@ -43405,7 +43416,10 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Operation resource, used to manage asynchronous API requests.</summary>
+    /// <summary>An Operation resource, used to manage asynchronous API requests. (== resource_for v1.globalOperations
+    /// ==) (== resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for
+    /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations
+    /// ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Reserved for future use.</summary>
@@ -43834,7 +43848,8 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>A Project resource. Projects can only be created in the Google Cloud Platform Console. Unless marked
-    /// otherwise, values can only be modified in the console.</summary>
+    /// otherwise, values can only be modified in the console. (== resource_for v1.projects ==) (== resource_for
+    /// beta.projects ==)</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata key/value pairs available to all instances contained in this project. See Custom metadata
@@ -43967,7 +43982,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Region resource.</summary>
+    /// <summary>Region resource. (== resource_for beta.regions ==) (== resource_for v1.regions ==)</summary>
     public class Region : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -44516,7 +44531,8 @@ namespace Google.Apis.Compute.v1.Data
     /// packet is then forwarded as specified by the nextHop field of the winning route - either to another instance
     /// destination, an instance gateway, or a Google Compute Engine-operated gateway.
     ///
-    /// Packets that do not match any route in the sending instance's routing table are dropped.</summary>
+    /// Packets that do not match any route in the sending instance's routing table are dropped. (== resource_for
+    /// beta.routes ==) (== resource_for v1.routes ==)</summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -45238,7 +45254,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A persistent disk snapshot resource.</summary>
+    /// <summary>A persistent disk snapshot resource. (== resource_for beta.snapshots ==) (== resource_for v1.snapshots
+    /// ==)</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -45416,7 +45433,8 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>An SslCertificate resource. This resource provides a mechanism to upload an SSL key and certificate to
-    /// the load balancer to serve secure connections from the user.</summary>
+    /// the load balancer to serve secure connections from the user. (== resource_for beta.sslCertificates ==) (==
+    /// resource_for v1.sslCertificates ==)</summary>
     public class SslCertificate : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A local certificate file. The certificate must be in PEM format. The certificate chain must be no
@@ -45534,7 +45552,8 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>A Subnetwork resource.</summary>
+    /// <summary>A Subnetwork resource. (== resource_for beta.subnetworks ==) (== resource_for v1.subnetworks
+    /// ==)</summary>
     public class Subnetwork : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -45892,7 +45911,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A TargetHttpProxy resource. This resource defines an HTTP proxy.</summary>
+    /// <summary>A TargetHttpProxy resource. This resource defines an HTTP proxy. (== resource_for
+    /// beta.targetHttpProxies ==) (== resource_for v1.targetHttpProxies ==)</summary>
     public class TargetHttpProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -46016,7 +46036,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A TargetHttpsProxy resource. This resource defines an HTTPS proxy.</summary>
+    /// <summary>A TargetHttpsProxy resource. This resource defines an HTTPS proxy. (== resource_for
+    /// beta.targetHttpsProxies ==) (== resource_for v1.targetHttpsProxies ==)</summary>
     public class TargetHttpsProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -46138,7 +46159,7 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>A TargetInstance resource. This resource defines an endpoint instance that terminates traffic of
-    /// certain protocols.</summary>
+    /// certain protocols. (== resource_for beta.targetInstances ==) (== resource_for v1.targetInstances ==)</summary>
     public class TargetInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -46389,7 +46410,8 @@ namespace Google.Apis.Compute.v1.Data
     }    
 
     /// <summary>A TargetPool resource. This resource defines a pool of instances, an associated HttpHealthCheck
-    /// resource, and the fallback target pool.</summary>
+    /// resource, and the fallback target pool. (== resource_for beta.targetPools ==) (== resource_for v1.targetPools
+    /// ==)</summary>
     public class TargetPool : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This field is applicable only when the containing target pool is serving a forwarding rule as the
@@ -46774,7 +46796,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A TargetSslProxy resource. This resource defines an SSL proxy.</summary>
+    /// <summary>A TargetSslProxy resource. This resource defines an SSL proxy. (== resource_for beta.targetSslProxies
+    /// ==) (== resource_for v1.targetSslProxies ==)</summary>
     public class TargetSslProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -46918,7 +46941,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A TargetTcpProxy resource. This resource defines a TCP proxy.</summary>
+    /// <summary>A TargetTcpProxy resource. This resource defines a TCP proxy. (== resource_for beta.targetTcpProxies
+    /// ==) (== resource_for v1.targetTcpProxies ==)</summary>
     public class TargetTcpProxy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -47036,7 +47060,8 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
-    /// <summary>Represents a Target VPN gateway resource.</summary>
+    /// <summary>Represents a Target VPN gateway resource. (== resource_for beta.targetVpnGateways ==) (== resource_for
+    /// v1.targetVpnGateways ==)</summary>
     public class TargetVpnGateway : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -47540,6 +47565,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>VPN tunnel resource. (== resource_for beta.vpnTunnels ==) (== resource_for v1.vpnTunnels ==)</summary>
     public class VpnTunnel : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
@@ -47909,7 +47935,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Zone resource.</summary>
+    /// <summary>A Zone resource. (== resource_for beta.zones ==) (== resource_for v1.zones ==)</summary>
     public class Zone : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Available cpu/platform selections for the zone.</summary>

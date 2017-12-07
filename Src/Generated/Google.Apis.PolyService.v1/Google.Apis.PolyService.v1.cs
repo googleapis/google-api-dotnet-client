@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://devsite.googleplex.com/poly/'>Poly API</a>
+ *          <td><a href='https://developers.google.com/poly/'>Poly API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171130 (1064)
+ *      <tr><th>API Rev<td>20171205 (1069)
  *      <tr><th>API Docs
- *          <td><a href='https://devsite.googleplex.com/poly/'>
- *              https://devsite.googleplex.com/poly/</a>
+ *          <td><a href='https://developers.google.com/poly/'>
+ *              https://developers.google.com/poly/</a>
  *      <tr><th>Discovery Name<td>poly
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Poly API can be found at
- * <a href='https://devsite.googleplex.com/poly/'>https://devsite.googleplex.com/poly/</a>.
+ * <a href='https://developers.google.com/poly/'>https://developers.google.com/poly/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>
@@ -440,12 +440,6 @@ namespace Google.Apis.PolyService.v1
             }
 
 
-            /// <summary>Specifies a continuation token from a previous search whose results were split into multiple
-            /// pages. To get the next page, submit the same request specifying the value from
-            /// next_page_token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Returns assets that are of the specified complexity or less. Defaults to COMPLEX. For example,
             /// a request for MEDIUM assets also includes SIMPLE assets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxComplexity", Google.Apis.Util.RequestParameterType.Query)]
@@ -464,6 +458,12 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.StringValueAttribute("SIMPLE")]
                 SIMPLE,
             }
+
+            /// <summary>Specifies a continuation token from a previous search whose results were split into multiple
+            /// pages. To get the next page, submit the same request specifying the value from
+            /// next_page_token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
             /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults
             /// to `20`.</summary>
@@ -519,18 +519,18 @@ namespace Google.Apis.PolyService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "maxComplexity", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "maxComplexity",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "maxComplexity", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "maxComplexity",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -666,6 +666,22 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
+                /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Format { get; set; }
+
+                /// <summary>Specifies a continuation token from a previous search whose results were split into
+                /// multiple pages. To get the next page, submit the same request specifying the value from
+                /// next_page_token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`.
+                /// Defaults to `20`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The visibility of the assets to be returned. Defaults to VISIBILITY_UNSPECIFIED which
                 /// returns all assets.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
@@ -688,22 +704,6 @@ namespace Google.Apis.PolyService.v1
                 /// features.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
-
-                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
-                /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Format { get; set; }
-
-                /// <summary>Specifies a continuation token from a previous search whose results were split into
-                /// multiple pages. To get the next page, submit the same request specifying the value from
-                /// next_page_token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`.
-                /// Defaults to `20`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -739,24 +739,6 @@ namespace Google.Apis.PolyService.v1
                             Pattern = @"^users/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "visibility", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "visibility",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "format", new Google.Apis.Discovery.Parameter
                         {
                             Name = "format",
@@ -778,6 +760,24 @@ namespace Google.Apis.PolyService.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "visibility", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "visibility",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
