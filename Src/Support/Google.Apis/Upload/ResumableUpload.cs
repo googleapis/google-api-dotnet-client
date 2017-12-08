@@ -670,7 +670,7 @@ namespace Google.Apis.Upload
                 // The upload protocol uses 308 to indicate that there is more data expected from the server.
                 // If the server has received no bytes, it indicates this by not including
                 // a Range header in the response..
-                var range = response.Headers.FirstOrDefault(x => x.Key == "Range").Value?.First();
+                var range = response.Headers.FirstOrDefault(x => x.Key.Equals("range", StringComparison.OrdinalIgnoreCase)).Value?.First();
                 BytesServerReceived = GetNextByte(range);
                 Logger.Debug("MediaUpload[{0}] - {1} Bytes were sent successfully", UploadUri, BytesServerReceived);
                 return false;
