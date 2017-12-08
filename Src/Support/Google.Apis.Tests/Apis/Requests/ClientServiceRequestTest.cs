@@ -1207,6 +1207,7 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         [Theory]
+        [InlineData("", "Error response is null")]
         [InlineData("not json", "not json")]
         [InlineData("{error:{message:\"json error\"}}", "Google.Apis.Requests.RequestError\njson error [0]\nNo individual errors\n")]
         public void ResponseError(string content, string expectedExceptionMessage)
