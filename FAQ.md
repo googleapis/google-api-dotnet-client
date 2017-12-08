@@ -57,3 +57,7 @@ which are generally best avoided if possible.
 Sometimes it *is* required to create an instance per request; for example, if different
 credentials are required for each request.
 In this case make sure to Dispose of each instance when finished with it.
+
+### How do I create a nuget package from a discovery doc?
+
+See [HowToGenerateAPackage.md](HowToGenerateAPackage.md).
