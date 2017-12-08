@@ -295,25 +295,32 @@ namespace Google.Apis.Services
         /// <inheritdoc/>
         public virtual async Task<RequestError> DeserializeError(HttpResponseMessage response)
         {
-            StandardResponse<object> errorResponse = null;
+            if (response?.Content == null)
+            {
+                throw new GoogleApiException(Name, "response or response content unexpectedly null.");
+            }
+            // If we can't even read the response, let that exception bubble up.
+            var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            RequestError error;
             try
             {
-                var str = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                errorResponse = Serializer.Deserialize<StandardResponse<object>>(str);
-                if (errorResponse.Error == null)
-                {
-                    throw new GoogleApiException(Name, "error response is null");
-                }
+                error = Serializer.Deserialize<StandardResponse<object>>(responseText)?.Error;
             }
-            catch (Exception ex)
+            catch (JsonException ex)
             {
-                // exception will be thrown in case the response content is empty or it can't be deserialized to 
-                // Standard response (which contains data and error properties)
-                throw new GoogleApiException(Name,
-                    "An Error occurred, but the error response could not be deserialized", ex);
+                throw new GoogleApiException(Name, responseText, ex)
+                {
+                    HttpStatusCode = response.StatusCode
+                };
             }
-
-            return errorResponse.Error;
+            if (error == null)
+            {
+                throw new GoogleApiException(Name, "Error response is null")
+                {
+                    HttpStatusCode = response.StatusCode
+                };
+            }
+            return error;
         }
 
         #endregion

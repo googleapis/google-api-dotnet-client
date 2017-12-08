@@ -1206,6 +1206,27 @@ namespace Google.Apis.Tests.Apis.Requests
                 Task.FromResult(_fn(request));
         }
 
+        [Theory]
+        [InlineData("not json", "not json")]
+        [InlineData("{error:{message:\"json error\"}}", "Google.Apis.Requests.RequestError\njson error [0]\nNo individual errors\n")]
+        public void ResponseError(string content, string expectedExceptionMessage)
+        {
+            var response = new HttpResponseMessage(HttpStatusCode.BadRequest)
+            {
+                Content = new StringContent(content)
+            };
+            using (var service = new MockClientService(new BaseClientService.Initializer
+            {
+                HttpClientFactory = new MockHttpClientFactory(new TestHttpHandler(_ => response))
+            }))
+            {
+                var request = new TestClientServiceRequest(service, "GET", null);
+                var ex = Assert.Throws<GoogleApiException>(() => request.Execute());
+                Assert.Equal(expectedExceptionMessage, ex.Message.Replace("\r\n", "\n"));
+                Assert.Equal(HttpStatusCode.BadRequest, ex.HttpStatusCode);
+            }
+        }
+
         private class TestUnsuccessfulResponseHandler : IHttpUnsuccessfulResponseHandler
         {
             public int Count { get; private set; } = 0;
