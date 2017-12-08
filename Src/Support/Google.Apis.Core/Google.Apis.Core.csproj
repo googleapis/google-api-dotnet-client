@@ -33,4 +33,9 @@ Supported Platforms:
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="../../../third_party/System.Net.Http/GzipDeflateHandler.cs" />
+    <Compile Include="../../../third_party/System.Net.Http/StreamReplacingHttpContent.cs" />
+  </ItemGroup>
+  
 </Project>
