@@ -25,20 +25,11 @@ namespace Google.Apis.Tests
     {
         private class MockLogger : ILogger
         {
-            public bool IsDebugEnabled
-            {
-                get { throw new NotImplementedException(); }
-            }
+            public bool IsDebugEnabled => false;
 
-            public ILogger ForType(Type type)
-            {
-                throw new NotImplementedException();
-            }
+            public ILogger ForType(Type type) => this;
 
-            public ILogger ForType<T>()
-            {
-                throw new NotImplementedException();
-            }
+            public ILogger ForType<T>() => this;
 
             public void Info(string message, params object[] formatArgs)
             {
@@ -79,21 +70,25 @@ namespace Google.Apis.Tests
         /// <summary>
         /// Confirms that the RegisterLogger method will not fail when no logger was previously registered.
         /// </summary>
-        [Fact(Skip = "Global registration of the mock logger causes other test failures.")]
+        [Fact]
         public void RegisterLoggerTest()
         {
             ApplicationContext.Reset();
+            try
+            {
+                // Initialize with a NullLogger: check default logger
+                Assert.IsType<NullLogger>(ApplicationContext.Logger);
 
-            // Initialize with a NullLogger: check default logger
-            Assert.IsType<NullLogger>(ApplicationContext.Logger);
+                // Register a new logger: should not throw
+                ApplicationContext.RegisterLogger(new MockLogger());
 
-            // Register a new logger: should not throw
-            ApplicationContext.RegisterLogger(new MockLogger());
-
-            // Fail test: should now throw, only allowed to register one logger
-            Assert.Throws<InvalidOperationException>(() => ApplicationContext.RegisterLogger(new MockLogger()));
-			
-            ApplicationContext.Reset();
+                // Fail test: should now throw, only allowed to register one logger
+                Assert.Throws<InvalidOperationException>(() => ApplicationContext.RegisterLogger(new MockLogger()));
+            }
+            finally
+            {
+                ApplicationContext.Reset();
+            }
         }
     }
 }
