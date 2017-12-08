@@ -1,0 +1,24 @@
+name: "System.Net.Http"
+description:
+    "System.Net.Http contains HTTP client code. This directory "
+    "contains a derived work of the original decompression handler "
+    "that forms part of System.Net.Http; it is not a complete copy "
+    "of System.Net.Http."
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://www.dotnetfoundation.org/"
+  }
+  url {
+    type: GIT
+    value: "https://github.com/dotnet/corefx"
+  }
+  version: "3c17c2251b4bda98273e57ef153cc9bc267805c8"
+  last_upgrade_date { year: 2017 month: 12 day: 7 }
+  license_type: NOTICE
+  local_modifications:
+      "The original file is DecompressionHandler.cs from "
+      "src/System.Net.Http/src/System/Net/Http/Managed/DecompressionHandler.cs"
+      " relative to the source root. See README.md for more details."
+}
