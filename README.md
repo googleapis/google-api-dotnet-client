@@ -18,6 +18,8 @@ Please see the [FAQ](FAQ.md) for more details on what this means.
 ## Description ##
 The Google API client library for .NET enables access to Google APIs such as Drive, YouTube, Calendar, Storage and Analytics. The library supports OAuth2.0 authentication. Strongly-typed per-API libraries are generated using Google's [Discovery API](https://developers.google.com/discovery/).
 
+Please see the [FAQ](FAQ.md) for answers to common questions.
+
 ## Supported Frameworks
 
 * .NET Framework 4.5+

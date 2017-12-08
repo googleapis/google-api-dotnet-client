@@ -41,3 +41,19 @@ In a word: No.
 OAuth authentication requires the end-user to interact with a web browser, which can only be done client-side.
 
 It is possible to user OAuth authentication in a web application, but not using this `GoogleWebAuthorizationBroker` class.
+
+### Should I create a new client instance for every request?
+
+Generally: No.
+
+Every instantiation of a service client class creates a new instance of
+[HttpClient](https://msdn.microsoft.com/en-us/library/system.net.http.httpclient(v=vs.118).aspx),
+and creating many of these is, in general, a bad idea. See, for example,
+[this post](https://aspnetmonsters.com/2016/08/2016-08-27-httpclientwrong/) for why.
+
+Every instantiation of a client class also uses more CPU time and requires more memory allocation,
+which are generally best avoided if possible.
+
+Sometimes it *is* required to create an instance per request; for example, if different
+credentials are required for each request.
+In this case make sure to Dispose of each instance when finished with it.
