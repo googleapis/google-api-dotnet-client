@@ -25,6 +25,7 @@ using Google.Apis.Media;
 using Google.Apis.Services;
 using Google.Apis.Util;
 using System.Net.Http.Headers;
+using Google.Apis.Http;
 
 namespace Google.Apis.Download
 {
@@ -73,6 +74,13 @@ namespace Google.Apis.Download
         /// of the requested media.
         /// </summary>
         public RangeHeaderValue Range { get; set; }
+
+        /// <summary>
+        /// A provider for response stream interceptors. Each time a response is produced, the provider
+        /// is called, and can return <c>null</c> if interception is not required, or an interceptor for
+        /// that response. The provider itself should not read the response's content stream, but can check headers.
+        /// </summary>
+        public Func<HttpResponseMessage, StreamInterceptor> ResponseStreamInterceptorProvider { get; set; }
 
         #region Progress
 
@@ -258,6 +266,10 @@ namespace Google.Apis.Download
 
             var request = new HttpRequestMessage(HttpMethod.Get, uri.ToString());
             request.Headers.Range = Range;
+            if (ResponseStreamInterceptorProvider != null)
+            {
+                request.Properties[ConfigurableMessageHandler.ResponseStreamInterceptorProviderKey] = ResponseStreamInterceptorProvider;
+            }
             ModifyRequest?.Invoke(request);
 
             // Number of bytes sent to the caller's stream.

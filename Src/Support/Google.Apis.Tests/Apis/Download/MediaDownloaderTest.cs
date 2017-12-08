@@ -32,6 +32,7 @@ using Google.Apis.Requests;
 using Google.Apis.Util;
 using Xunit;
 using Google.Apis.Tests.Mocks;
+using Google.Apis.Http;
 
 namespace Google.Apis.Tests.Apis.Download
 {
@@ -496,6 +497,90 @@ namespace Google.Apis.Tests.Apis.Download
                 Assert.Equal(HttpStatusCode.NotFound, exception.HttpStatusCode);
                 Assert.Equal(NotFoundError, exception.Message);
                 Assert.Null(exception.Error);
+            }
+        }
+
+        [Fact]
+        public void InterceptPlain()
+        {
+            var interceptedData = new MemoryStream();
+            StreamInterceptor interceptor = interceptedData.Write;
+            int interceptorProviderCount = 0;
+
+            using (var service = new MockClientService())
+            {
+                var downloader = new MediaDownloader(service)
+                {
+                    ChunkSize = 10,
+                    ResponseStreamInterceptorProvider = _ =>
+                    {
+                        interceptorProviderCount++;
+                        return interceptor;
+                    }
+                };
+
+                IList<IDownloadProgress> progressList = new List<IDownloadProgress>();
+                downloader.ProgressChanged += (p) =>
+                {
+                    progressList.Add(p);
+                };
+
+                var outputStream = new MemoryStream();
+                downloader.Download(_httpPrefix + "PlainText", outputStream);
+
+                // We only had one HTTP response, even though we read it in multiple chunks.
+                Assert.Equal(1, interceptorProviderCount);
+
+                // The end result is plain text content.
+                Assert.Equal(MediaContent, outputStream.ToArray());
+
+                // We intercepted the plain text content too.
+                Assert.Equal(MediaContent, interceptedData.ToArray());
+            }
+        }
+
+        [Fact]
+        public void InterceptGzip()
+        {
+            var compressedData = new MemoryStream();
+            using (var gzipStream = new GZipStream(compressedData, CompressionMode.Compress, true))
+            {
+                gzipStream.Write(MediaContent, 0, MediaContent.Length);
+            }
+
+            var interceptedData = new MemoryStream();
+            StreamInterceptor interceptor = interceptedData.Write;
+            int interceptorProviderCount = 0;
+
+            using (var service = new MockClientService())
+            {
+                var downloader = new MediaDownloader(service)
+                {
+                    ChunkSize = 10,
+                    ResponseStreamInterceptorProvider = _ =>
+                    {
+                        interceptorProviderCount++;
+                        return interceptor;
+                    }
+                };
+                
+                IList<IDownloadProgress> progressList = new List<IDownloadProgress>();
+                downloader.ProgressChanged += (p) =>
+                {
+                    progressList.Add(p);
+                };
+
+                var outputStream = new MemoryStream();
+                downloader.Download(_httpPrefix + "GzipContent", outputStream);
+
+                // We only had one HTTP response, even though we read it in multiple chunks.
+                Assert.Equal(1, interceptorProviderCount);
+
+                // The end result is decompressed content.
+                Assert.Equal(MediaContent, outputStream.ToArray());
+
+                // We intercepted the compressed content.
+                Assert.Equal(compressedData.ToArray(), interceptedData.ToArray());
             }
         }
     }

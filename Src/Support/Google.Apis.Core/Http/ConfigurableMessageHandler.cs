@@ -60,6 +60,11 @@ namespace Google.Apis.Http
         /// </summary>
         public const string ExecuteInterceptorKey = "__ExecuteInterceptorKey";
 
+        /// <summary>
+        /// Key for a stream response interceptor provider in an <see cref="HttpRequestMessage"/> properties.
+        /// </summary>
+        public const string ResponseStreamInterceptorProviderKey = "__ResponseStreamInterceptorProviderKey";
+
         /// <summary>The current API version of this client library.</summary>
         private static readonly string ApiVersion = Google.Apis.Util.Utilities.GetLibraryVersion();
 
