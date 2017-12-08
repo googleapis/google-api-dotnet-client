@@ -389,10 +389,13 @@ namespace Google.Apis.Tests.Apis.Upload
         /// </summary>
         private class MultiChunkServer : TestServer.Handler
         {
-            public MultiChunkServer(TestServer server) : base(server) { }
+            public MultiChunkServer(TestServer server, bool lowerRange = false) : base(server) => _lowerRange = lowerRange;
 
             public List<byte> Bytes { get; } = new List<byte>();
+
+            public readonly bool _lowerRange;
             private int? _length;
+
 
             protected void HandleHeaders(HttpListenerRequest request, HttpListenerResponse response)
             {
@@ -410,7 +413,7 @@ namespace Google.Apis.Tests.Apis.Upload
                     // If no bytes have been uploaded, no "Range" header is returned.
                     if (Bytes.Count > 0)
                     {
-                        response.AddHeader("Range", $"bytes 0-{Bytes.Count - 1}");
+                        response.AddHeader(_lowerRange ? "range" : "Range", $"bytes 0-{Bytes.Count - 1}");
                     }
                 }
             }
@@ -440,10 +443,11 @@ namespace Google.Apis.Tests.Apis.Upload
         [Theory, CombinatorialData]
         public void TestUploadInMultipleChunks(
             [CombinatorialValues(true, false)] bool knownSize,
-            [CombinatorialValues(100, 400, 1000)] int chunkSize)
+            [CombinatorialValues(100, 400, 1000)] int chunkSize,
+            [CombinatorialValues(false, true)] bool lowerRange)
         {
             var expectedCallCount = 1 + (uploadLength + chunkSize - 1) / chunkSize;
-            using (var server = new MultiChunkServer(_server))
+            using (var server = new MultiChunkServer(_server, lowerRange))
             using (var service = new MockClientService(server.HttpPrefix))
             {
                 var content = knownSize ? new MemoryStream(uploadTestBytes) : new UnknownSizeMemoryStream(uploadTestBytes);
