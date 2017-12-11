@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API V2Beta Methods</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20171102 (1036)
+ *      <tr><th>API Rev<td>20171201 (1065)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>
@@ -4401,7 +4401,10 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Operation resource, used to manage asynchronous API requests.</summary>
+    /// <summary>An Operation resource, used to manage asynchronous API requests. (== resource_for v1.globalOperations
+    /// ==) (== resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for
+    /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations
+    /// ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Reserved for future use.</summary>

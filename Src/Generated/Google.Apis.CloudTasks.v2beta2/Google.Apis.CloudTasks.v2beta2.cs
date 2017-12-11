@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171206 (1070)
+ *      <tr><th>API Rev<td>20171208 (1072)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -1679,6 +1679,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Requested page size.
+                    ///
+                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
+                    /// than requested might be returned, even if more queues exist; use
+                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
                     /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
                     /// syntax is the same as described in [Stackdriver's Advanced Logs
@@ -1699,14 +1707,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// ListQueuesRequest.filter while iterating through pages.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size.
-                    ///
-                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
-                    /// than requested might be returned, even if more queues exist; use
-                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1742,6 +1742,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1754,15 +1763,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2391,6 +2391,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2398,10 +2402,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2437,6 +2437,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2449,15 +2458,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2612,17 +2612,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deprecated. Use AppEngineHttpTarget.</summary>
-    public class AppEngineQueueConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Deprecated. Use AppEngineHttpTarget.app_engine_routing_override.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appEngineRoutingOverride")]
-        public virtual AppEngineRouting AppEngineRoutingOverride { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>App Engine Routing.
     ///
     /// For more information about services, versions, and instances see [An Overview of App
@@ -2718,33 +2707,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// AppEngineRouting.version, and AppEngineRouting.instance are the empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Deprecated. Use AppEngineHttpRequest.</summary>
-    public class AppEngineTaskTarget : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Deprecated. Use AppEngineHttpRequest.app_engine_routing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appEngineRouting")]
-        public virtual AppEngineRouting AppEngineRouting { get; set; } 
-
-        /// <summary>Deprecated. Use AppEngineHttpRequest.headers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("headers")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
-
-        /// <summary>Deprecated. Use AppEngineHttpRequest.http_method.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
-        public virtual string HttpMethod { get; set; } 
-
-        /// <summary>Deprecated. Use AppEngineHttpRequest.payload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
-
-        /// <summary>Deprecated. Use AppEngineHttpRequest.relative_url.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("relativeUrl")]
-        public virtual string RelativeUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3063,31 +3025,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Deprecated. Use PullTarget.</summary>
-    public class PullQueueConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Pull target.</summary>
     public class PullTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Deprecated. Use PullMessage.</summary>
-    public class PullTaskTarget : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Deprecated. Use PullMessage.payload.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual string Payload { get; set; } 
-
-        /// <summary>Deprecated. Use PullMessage.tag.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
-        public virtual string Tag { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3178,10 +3118,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpTarget")]
         public virtual AppEngineHttpTarget AppEngineHttpTarget { get; set; } 
 
-        /// <summary>Deprecated. Use Queue.app_engine_http_target.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appEngineQueueConfig")]
-        public virtual AppEngineQueueConfig AppEngineQueueConfig { get; set; } 
-
         /// <summary>The queue name.
         ///
         /// The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`
@@ -3196,10 +3132,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
-
-        /// <summary>Deprecated. Use Queue.pull_target.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pullQueueConfig")]
-        public virtual PullQueueConfig PullQueueConfig { get; set; } 
 
         /// <summary>Pull target.
         ///
@@ -3534,10 +3466,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpRequest")]
         public virtual AppEngineHttpRequest AppEngineHttpRequest { get; set; } 
 
-        /// <summary>Deprecated. Use Task.app_engine_http_request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appEngineTaskTarget")]
-        public virtual AppEngineTaskTarget AppEngineTaskTarget { get; set; } 
-
         /// <summary>Output only. The time that the task was created.
         ///
         /// `create_time` will be truncated to the nearest second.</summary>
@@ -3567,10 +3495,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// A pull task is a task that has PullMessage set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullMessage")]
         public virtual PullMessage PullMessage { get; set; } 
-
-        /// <summary>Deprecated. Use Task.pull_message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pullTaskTarget")]
-        public virtual PullTaskTarget PullTaskTarget { get; set; } 
 
         /// <summary>The time when the task is scheduled to be attempted.
         ///

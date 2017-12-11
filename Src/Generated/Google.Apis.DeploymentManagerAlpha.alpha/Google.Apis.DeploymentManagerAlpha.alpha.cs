@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20171102 (1036)
+ *      <tr><th>API Rev<td>20171201 (1065)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -4844,7 +4844,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An Operation resource, used to manage asynchronous API requests.</summary>
+    /// <summary>An Operation resource, used to manage asynchronous API requests. (== resource_for v1.globalOperations
+    /// ==) (== resource_for beta.globalOperations ==) (== resource_for v1.regionOperations ==) (== resource_for
+    /// beta.regionOperations ==) (== resource_for v1.zoneOperations ==) (== resource_for beta.zoneOperations
+    /// ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] Reserved for future use.</summary>
@@ -5182,6 +5185,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; } 
 
+        /// <summary>Output only. In case this is an action, it will show the runtimePolicies on which this action will
+        /// run in the deployment</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimePolicies")]
+        public virtual System.Collections.Generic.IList<string> RuntimePolicies { get; set; } 
+
         /// <summary>Output only. The type of the resource, for example compute.v1.instance, or
         /// cloudfunctions.v1beta1.function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -5289,6 +5297,11 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// Returned as serialized YAML.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual string Properties { get; set; } 
+
+        /// <summary>Output only. In case this is an action, it will show the runtimePolicies that this action will have
+        /// after updating the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimePolicies")]
+        public virtual System.Collections.Generic.IList<string> RuntimePolicies { get; set; } 
 
         /// <summary>Output only. The state of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

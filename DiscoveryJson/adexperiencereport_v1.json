@@ -1,4 +1,9 @@
 {
+  "baseUrl": "https://adexperiencereport.googleapis.com/",
+  "servicePath": "",
+  "kind": "discovery#restDescription",
+  "description": "View Ad Experience Report data, and get a list of sites that have a significant number of annoying ads.",
+  "basePath": "",
   "revision": "20171129",
   "documentationLink": "https://developers.google.com/ad-experience-report/",
   "id": "adexperiencereport:v1",
@@ -23,6 +28,10 @@
       "description": "Response message for GetSiteSummary.",
       "type": "object",
       "properties": {
+        "desktopSummary": {
+          "description": "Summary for the desktop review of the site.",
+          "$ref": "PlatformSummary"
+        },
         "mobileSummary": {
           "description": "Summary for the mobile review of the site.",
           "$ref": "PlatformSummary"
@@ -30,10 +39,6 @@
         "reviewedSite": {
           "description": "The name of the site reviewed.",
           "type": "string"
-        },
-        "desktopSummary": {
-          "description": "Summary for the desktop review of the site.",
-          "$ref": "PlatformSummary"
         }
       },
       "id": "SiteSummaryResponse"
@@ -59,9 +64,9 @@
           "type": "string"
         },
         "enforcementTime": {
+          "type": "string",
           "description": "The date on which ad filtering begins.",
-          "format": "google-datetime",
-          "type": "string"
+          "format": "google-datetime"
         },
         "region": {
           "enumDescriptions": [
@@ -115,11 +120,11 @@
       "id": "PlatformSummary"
     }
   },
-  "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
-  },
   "protocol": "rest",
+  "icons": {
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+  },
   "canonicalName": "Ad Experience Report",
   "auth": {
     "oauth2": {
@@ -140,16 +145,16 @@
     "sites": {
       "methods": {
         "get": {
+          "flatPath": "v1/sites/{sitesId}",
+          "id": "adexperiencereport.sites.get",
+          "path": "v1/{+name}",
           "description": "Gets a summary of the ad experience rating of a site.",
+          "httpMethod": "GET",
           "response": {
             "$ref": "SiteSummaryResponse"
           },
           "parameterOrder": [
             "name"
-          ],
-          "httpMethod": "GET",
-          "scopes": [
-            "https://www.googleapis.com/auth/xapi.zoo"
           ],
           "parameters": {
             "name": {
@@ -160,58 +165,34 @@
               "pattern": "^sites/[^/]+$"
             }
           },
-          "flatPath": "v1/sites/{sitesId}",
-          "path": "v1/{+name}",
-          "id": "adexperiencereport.sites.get"
+          "scopes": [
+            "https://www.googleapis.com/auth/xapi.zoo"
+          ]
         }
       }
     },
     "violatingSites": {
       "methods": {
         "list": {
+          "description": "Lists sites with Ad Experience Report statuses of \"Failing\" or \"Warning\".",
           "response": {
             "$ref": "ViolatingSitesResponse"
           },
           "parameterOrder": [],
           "httpMethod": "GET",
-          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/xapi.zoo"
           ],
+          "parameters": {},
           "flatPath": "v1/violatingSites",
           "path": "v1/violatingSites",
-          "id": "adexperiencereport.violatingSites.list",
-          "description": "Lists sites with Ad Experience Report statuses of \"Failing\" or \"Warning\"."
+          "id": "adexperiencereport.violatingSites.list"
         }
       }
     }
   },
   "parameters": {
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
     "alt": {
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
       "description": "Data format for response.",
       "default": "json",
       "enum": [
@@ -219,17 +200,23 @@
         "media",
         "proto"
       ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
     "access_token": {
-      "location": "query",
-      "description": "OAuth access token.",
-      "type": "string"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string",
-      "location": "query"
+      "location": "query",
+      "description": "OAuth access token."
     },
     "quotaUser": {
       "location": "query",
@@ -248,14 +235,14 @@
       "type": "string"
     },
     "bearer_token": {
+      "type": "string",
       "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
+      "description": "OAuth bearer token."
     },
     "upload_protocol": {
-      "location": "query",
       "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
+      "type": "string",
+      "location": "query"
     },
     "prettyPrint": {
       "location": "query",
@@ -264,20 +251,33 @@
       "default": "true"
     },
     "uploadType": {
+      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "$.xgafv": {
       "type": "string",
-      "location": "query"
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query",
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format."
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
     }
   },
-  "version": "v1",
-  "baseUrl": "https://adexperiencereport.googleapis.com/",
-  "kind": "discovery#restDescription",
-  "description": "View Ad Experience Report data, and get a list of sites that have a significant number of annoying ads.",
-  "servicePath": "",
-  "basePath": ""
+  "version": "v1"
 }

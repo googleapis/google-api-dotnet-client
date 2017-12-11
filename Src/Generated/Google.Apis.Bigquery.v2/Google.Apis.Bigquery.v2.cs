@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171110 (1044)
+ *      <tr><th>API Rev<td>20171202 (1066)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2898,6 +2898,10 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class ExplainQueryStage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Number of parallel input segments completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedParallelInputs")]
+        public virtual System.Nullable<long> CompletedParallelInputs { get; set; } 
+
         /// <summary>Milliseconds the average shard spent on CPU-bound tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeMsAvg")]
         public virtual System.Nullable<long> ComputeMsAvg { get; set; } 
@@ -2921,6 +2925,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Human-readable name for stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>Number of parallel input segments to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parallelInputs")]
+        public virtual System.Nullable<long> ParallelInputs { get; set; } 
 
         /// <summary>Milliseconds the average shard spent reading input.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readMsAvg")]
@@ -3747,6 +3755,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ddlTargetTable")]
         public virtual TableReference DdlTargetTable { get; set; } 
 
+        /// <summary>[Output-only] The original estimate of bytes processed for the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedBytesProcessed")]
+        public virtual System.Nullable<long> EstimatedBytesProcessed { get; set; } 
+
         /// <summary>[Output-only] The number of rows affected by a DML statement. Present only for DML statements
         /// INSERT, UPDATE or DELETE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numDmlAffectedRows")]
@@ -3766,7 +3778,14 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual TableSchema Schema { get; set; } 
 
-        /// <summary>[Output-only, Experimental] The type of query statement, if valid.</summary>
+        /// <summary>[Output-only, Experimental] The type of query statement, if valid. Possible values (new values
+        /// might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see
+        /// https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language "UPDATE": UPDATE
+        /// query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language
+        /// "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-
+        /// language "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR
+        /// REPLACE] TABLE ... AS SELECT ... "DROP_TABLE": DROP TABLE query. "CREATE_VIEW": CREATE [OR REPLACE] VIEW ...
+        /// AS SELECT ... "DROP_VIEW": DROP VIEW query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
         public virtual string StatementType { get; set; } 
 
