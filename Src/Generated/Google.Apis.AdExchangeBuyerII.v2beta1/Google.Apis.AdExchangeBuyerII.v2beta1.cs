@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171205 (1069)
+ *      <tr><th>API Rev<td>20171208 (1072)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>
@@ -6312,9 +6312,14 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; } 
 
-        /// <summary>The format on which to filter; optional.</summary>
+        /// <summary>DEPRECATED: use repeated formats field instead. The format on which to filter; optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; } 
+
+        /// <summary>The list of formats on which to filter; may be empty. The filters represented by multiple formats
+        /// are ORed together (i.e. if non-empty, results must match any one of the formats).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formats")]
+        public virtual System.Collections.Generic.IList<string> Formats { get; set; } 
 
         /// <summary>A user-defined name of the filter set. Filter set names must be unique globally and match one of
         /// the patterns:

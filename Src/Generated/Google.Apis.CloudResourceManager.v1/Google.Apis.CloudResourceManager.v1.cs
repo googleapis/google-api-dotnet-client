@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171108 (1042)
+ *      <tr><th>API Rev<td>20171206 (1070)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -2573,20 +2573,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
-            /// than requested. If unspecified, server picks an appropriate default.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
             /// fields eligible for filtering are:
             ///
@@ -2610,6 +2596,20 @@ namespace Google.Apis.CloudResourceManager.v1
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// than requested. If unspecified, server picks an appropriate default.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2636,6 +2636,15 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2648,15 +2657,6 @@ namespace Google.Apis.CloudResourceManager.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3420,10 +3420,6 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// question.</summary>
     public class Constraint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defines this constraint as being a BooleanConstraint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("booleanConstraint")]
-        public virtual BooleanConstraint BooleanConstraint { get; set; } 
-
         /// <summary>The evaluation behavior of this constraint in the absense of 'Policy'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraintDefault")]
         public virtual string ConstraintDefault { get; set; } 
@@ -3879,10 +3875,6 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         /// <summary>List of values either allowed or disallowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("listPolicy")]
         public virtual ListPolicy ListPolicy { get; set; } 
-
-        /// <summary>Restores the default behavior of the constraint; independent of `Constraint` type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restoreDefault")]
-        public virtual RestoreDefault RestoreDefault { get; set; } 
 
         /// <summary>The time stamp the `Policy` was previously updated. This is set by the server, not specified by the
         /// caller, and represents the last time a call to `SetOrgPolicy` was made for that `Policy`. Any value set by

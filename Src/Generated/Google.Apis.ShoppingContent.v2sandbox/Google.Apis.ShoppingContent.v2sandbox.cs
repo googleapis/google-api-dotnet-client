@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20171124 (1058)
+ *      <tr><th>API Rev<td>20171207 (1071)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1329,6 +1329,90 @@ namespace Google.Apis.ShoppingContent.v2sandbox
 
         }
 
+        /// <summary>Sets (overrides) merchant provided annotations on the line item.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
+        public virtual SetlineitemmetadataRequest Setlineitemmetadata(Google.Apis.ShoppingContent.v2sandbox.Data.OrdersSetLineItemMetadataRequest body, ulong merchantId, string orderId)
+        {
+            return new SetlineitemmetadataRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Sets (overrides) merchant provided annotations on the line item.</summary>
+        public class SetlineitemmetadataRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersSetLineItemMetadataResponse>
+        {
+            /// <summary>Constructs a new Setlineitemmetadata request.</summary>
+            public SetlineitemmetadataRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2sandbox.Data.OrdersSetLineItemMetadataRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2sandbox.Data.OrdersSetLineItemMetadataRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setlineitemmetadata"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orders/{orderId}/setLineItemMetadata"; }
+            }
+
+            /// <summary>Initializes Setlineitemmetadata parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Marks line item(s) as shipped.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
@@ -1387,6 +1471,90 @@ namespace Google.Apis.ShoppingContent.v2sandbox
             }
 
             /// <summary>Initializes Shiplineitems parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates ship by and delivery by dates for a line item.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the account that manages the order. This cannot be a multi-client
+        /// account.</param>
+        /// <param name="orderId">The ID of the order.</param>
+        public virtual UpdatelineitemshippingdetailsRequest Updatelineitemshippingdetails(Google.Apis.ShoppingContent.v2sandbox.Data.OrdersUpdateLineItemShippingDetailsRequest body, ulong merchantId, string orderId)
+        {
+            return new UpdatelineitemshippingdetailsRequest(service, body, merchantId, orderId);
+        }
+
+        /// <summary>Updates ship by and delivery by dates for a line item.</summary>
+        public class UpdatelineitemshippingdetailsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2sandbox.Data.OrdersUpdateLineItemShippingDetailsResponse>
+        {
+            /// <summary>Constructs a new Updatelineitemshippingdetails request.</summary>
+            public UpdatelineitemshippingdetailsRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2sandbox.Data.OrdersUpdateLineItemShippingDetailsRequest body, ulong merchantId, string orderId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                OrderId = orderId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the order.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2sandbox.Data.OrdersUpdateLineItemShippingDetailsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updatelineitemshippingdetails"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/orders/{orderId}/updateLineItemShippingDetails"; }
+            }
+
+            /// <summary>Initializes Updatelineitemshippingdetails parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1815,6 +1983,10 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
     public class OrderLineItem : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Annotations that are attached to the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<OrderMerchantProvidedAnnotation> Annotations { get; set; } 
+
         /// <summary>Cancellations of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancellations")]
         public virtual System.Collections.Generic.IList<OrderCancellation> Cancellations { get; set; } 
@@ -2012,6 +2184,21 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>Minimum transit time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minDaysInTransit")]
         public virtual System.Nullable<long> MinDaysInTransit { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderMerchantProvidedAnnotation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key for additional merchant provided (as key-value pairs) annotation about the line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Value for additional merchant provided (as key-value pairs) annotation about the line
+        /// item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2440,9 +2627,17 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         [Newtonsoft.Json.JsonPropertyAttribute("returnLineItem")]
         public virtual OrdersCustomBatchRequestEntryReturnLineItem ReturnLineItem { get; set; } 
 
+        /// <summary>Required for setLineItemMetadata method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setLineItemMetadata")]
+        public virtual OrdersCustomBatchRequestEntrySetLineItemMetadata SetLineItemMetadata { get; set; } 
+
         /// <summary>Required for shipLineItems method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipLineItems")]
         public virtual OrdersCustomBatchRequestEntryShipLineItems ShipLineItems { get; set; } 
+
+        /// <summary>Required for updateLineItemShippingDate method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateLineItemShippingDetails")]
+        public virtual OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails UpdateLineItemShippingDetails { get; set; } 
 
         /// <summary>Required for updateShipment method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateShipment")]
@@ -2563,6 +2758,24 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class OrdersCustomBatchRequestEntrySetLineItemMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<OrderMerchantProvidedAnnotation> Annotations { get; set; } 
+
+        /// <summary>The ID of the line item to set metadata. Either lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; } 
+
+        /// <summary>The ID of the product to set metadata. This is the REST ID used in the products service. Either
+        /// lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class OrdersCustomBatchRequestEntryShipLineItems : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See
@@ -2605,6 +2818,31 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         /// <summary>The tracking id for the shipment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
         public virtual string TrackingId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersCustomBatchRequestEntryUpdateLineItemShippingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Updated delivery by date, in ISO 8601 format. If not specified only ship by date is
+        /// updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliverByDate")]
+        public virtual string DeliverByDate { get; set; } 
+
+        /// <summary>The ID of the line item to set metadata. Either lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; } 
+
+        /// <summary>The ID of the product to set metadata. This is the REST ID used in the products service. Either
+        /// lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>Updated ship by date, in ISO 8601 format. If not specified only deliver by date is
+        /// updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
+        public virtual string ShipByDate { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2816,6 +3054,43 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class OrdersSetLineItemMetadataRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IList<OrderMerchantProvidedAnnotation> Annotations { get; set; } 
+
+        /// <summary>The ID of the line item to set metadata. Either lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; } 
+
+        /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>The ID of the product to set metadata. This is the REST ID used in the products service. Either
+        /// lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersSetLineItemMetadataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#ordersSetLineItemMetadataResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class OrdersShipLineItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Deprecated. Please use shipmentInfo instead. The carrier handling the shipment. See
@@ -2856,6 +3131,50 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#ordersShipLineItemsResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersUpdateLineItemShippingDetailsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Updated delivery by date, in ISO 8601 format. If not specified only ship by date is
+        /// updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliverByDate")]
+        public virtual string DeliverByDate { get; set; } 
+
+        /// <summary>The ID of the line item to set metadata. Either lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemId")]
+        public virtual string LineItemId { get; set; } 
+
+        /// <summary>The ID of the operation. Unique across all operations for a given order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationId")]
+        public virtual string OperationId { get; set; } 
+
+        /// <summary>The ID of the product to set metadata. This is the REST ID used in the products service. Either
+        /// lineItemId or productId is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; } 
+
+        /// <summary>Updated ship by date, in ISO 8601 format. If not specified only deliver by date is
+        /// updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shipByDate")]
+        public virtual string ShipByDate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrdersUpdateLineItemShippingDetailsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionStatus")]
+        public virtual string ExecutionStatus { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#ordersUpdateLineItemShippingDetailsResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

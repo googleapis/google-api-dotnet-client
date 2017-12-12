@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/adsense/management/'>AdSense Management API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20171207 (1071)
+ *      <tr><th>API Rev<td>20171211 (1075)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/adsense/management/'>
  *              https://developers.google.com/adsense/management/</a>

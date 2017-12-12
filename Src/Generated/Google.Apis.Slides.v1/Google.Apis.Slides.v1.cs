@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171130 (1064)
+ *      <tr><th>API Rev<td>20171208 (1072)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -110,6 +110,10 @@ namespace Google.Apis.Slides.v1
         {
             /// <summary>View and manage the files in your Google Drive</summary>
             public static string Drive = "https://www.googleapis.com/auth/drive";
+
+            /// <summary>View and manage Google Drive files and folders that you have opened or created with this
+            /// app</summary>
+            public static string DriveFile = "https://www.googleapis.com/auth/drive.file";
 
             /// <summary>View the files in your Google Drive</summary>
             public static string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
@@ -975,7 +979,13 @@ namespace Google.Apis.Slides.v1.Data
         ///
         /// When the aspect ratio of the provided size does not match the image aspect ratio, the image is scaled and
         /// centered with respect to the size in order to maintain aspect ratio. The provided transform is applied after
-        /// this operation.</summary>
+        /// this operation.
+        ///
+        /// The PageElementProperties.size property is optional. If you don't specify the size, the default size of the
+        /// image is used.
+        ///
+        /// The PageElementProperties.transform property is optional. If you don't specify a transform, the image will
+        /// be placed at the top left corner of the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
@@ -1274,7 +1284,13 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>Creates a video.</summary>
     public class CreateVideoRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The element properties for the video.</summary>
+        /// <summary>The element properties for the video.
+        ///
+        /// The PageElementProperties.size property is optional. If you don't specify a size, a default size is chosen
+        /// by the server.
+        ///
+        /// The PageElementProperties.transform property is optional. The transform must not have shear components. If
+        /// you don't specify a transform, the video will be placed at the top left corner of the page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementProperties")]
         public virtual PageElementProperties ElementProperties { get; set; } 
 
