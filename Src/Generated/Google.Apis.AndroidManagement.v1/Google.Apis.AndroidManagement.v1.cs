@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171127 (1061)
+ *      <tr><th>API Rev<td>20171204 (1068)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -3436,6 +3436,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Settings controlling the behavior of status reports.</summary>
     public class StatusReportingSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether device settings reporting is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceSettingsEnabled")]
+        public virtual System.Nullable<bool> DeviceSettingsEnabled { get; set; } 
+
         /// <summary>Whether displays reporting is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayInfoEnabled")]
         public virtual System.Nullable<bool> DisplayInfoEnabled { get; set; } 

@@ -517,7 +517,8 @@ namespace Google.Apis.StreetViewPublish.v1
         /// This method returns the following error codes:
         ///
         /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. *
-        /// google.rpc.Code.NOT_FOUND if the requested Photo does not exist.</summary>
+        /// google.rpc.Code.NOT_FOUND if the requested Photo does not exist. * google.rpc.Code.UNAVAILABLE if the
+        /// requested Photo is still being indexed.</summary>
         /// <param name="photoId">Required. ID of the Photo.</param>
         public virtual GetRequest Get(string photoId)
         {
@@ -529,7 +530,8 @@ namespace Google.Apis.StreetViewPublish.v1
         /// This method returns the following error codes:
         ///
         /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested Photo. *
-        /// google.rpc.Code.NOT_FOUND if the requested Photo does not exist.</summary>
+        /// google.rpc.Code.NOT_FOUND if the requested Photo does not exist. * google.rpc.Code.UNAVAILABLE if the
+        /// requested Photo is still being indexed.</summary>
         public class GetRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Photo>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -699,7 +701,7 @@ namespace Google.Apis.StreetViewPublish.v1
         ///
         /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
         /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the requested
-        /// photo does not exist.</summary>
+        /// photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="id">Required. A unique identifier for a photo.</param>
         public virtual UpdateRequest Update(Google.Apis.StreetViewPublish.v1.Data.Photo body, string id)
@@ -719,7 +721,7 @@ namespace Google.Apis.StreetViewPublish.v1
         ///
         /// * google.rpc.Code.PERMISSION_DENIED if the requesting user did not create the requested photo. *
         /// google.rpc.Code.INVALID_ARGUMENT if the request is malformed. * google.rpc.Code.NOT_FOUND if the requested
-        /// photo does not exist.</summary>
+        /// photo does not exist. * google.rpc.Code.UNAVAILABLE if the requested Photo is still being indexed.</summary>
         public class UpdateRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.Photo>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -910,6 +912,11 @@ namespace Google.Apis.StreetViewPublish.v1
             }
 
 
+            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
+            /// `photoIds==&...`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
+
             /// <summary>Specifies if a download URL for the photo bytes should be returned in the Photo
             /// response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
@@ -924,11 +931,6 @@ namespace Google.Apis.StreetViewPublish.v1
                 [Google.Apis.Util.StringValueAttribute("INCLUDE_DOWNLOAD_URL")]
                 INCLUDEDOWNLOADURL,
             }
-
-            /// <summary>Required. IDs of the Photos. For HTTP GET requests, the URL query parameter should be
-            /// `photoIds==&...`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("photoIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> PhotoIds { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -955,18 +957,18 @@ namespace Google.Apis.StreetViewPublish.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "photoIds", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "photoIds",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "photoIds", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "photoIds",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1053,13 +1055,17 @@ namespace Google.Apis.StreetViewPublish.v1
 
         }
 
-        /// <summary>Lists all the Photos that belong to the user.</summary>
+        /// <summary>Lists all the Photos that belong to the user.
+        ///
+        /// Note: Recently created photos that are still being indexed are not returned in the response.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists all the Photos that belong to the user.</summary>
+        /// <summary>Lists all the Photos that belong to the user.
+        ///
+        /// Note: Recently created photos that are still being indexed are not returned in the response.</summary>
         public class ListRequest : StreetViewPublishBaseServiceRequest<Google.Apis.StreetViewPublish.v1.Data.ListPhotosResponse>
         {
             /// <summary>Constructs a new List request.</summary>

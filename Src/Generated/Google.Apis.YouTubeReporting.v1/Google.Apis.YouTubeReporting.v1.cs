@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>YouTube Reporting API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171208 (1072)
+ *      <tr><th>API Rev<td>20171211 (1075)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/reporting/v1/reports/'>
  *              https://developers.google.com/youtube/reporting/v1/reports/</a>
@@ -514,11 +514,6 @@ namespace Google.Apis.YouTubeReporting.v1
                 [Google.Apis.Util.RequestParameterAttribute("jobId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string JobId { get; private set; }
 
-                /// <summary>If set, only reports whose start time is smaller than the specified date/time are
-                /// returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTimeBefore", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTimeBefore { get; set; }
-
                 /// <summary>If set, only reports created after the specified date/time are returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("createdAfter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object CreatedAfter { get; set; }
@@ -543,6 +538,11 @@ namespace Google.Apis.YouTubeReporting.v1
                 /// is acting for himself (his own channel).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OnBehalfOfContentOwner { get; set; }
+
+                /// <summary>If set, only reports whose start time is smaller than the specified date/time are
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTimeBefore", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTimeBefore { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -574,15 +574,6 @@ namespace Google.Apis.YouTubeReporting.v1
                             Name = "jobId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "startTimeBefore", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "startTimeBefore",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -626,6 +617,15 @@ namespace Google.Apis.YouTubeReporting.v1
                         "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
                         {
                             Name = "onBehalfOfContentOwner",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "startTimeBefore", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "startTimeBefore",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -980,7 +980,7 @@ namespace Google.Apis.YouTubeReporting.v1
 
         /// <summary>Method for media download. Download is supported on the URI
         /// `/v1/media/{+name}?alt=media`.</summary>
-        public class DownloadRequest : YouTubeReportingBaseServiceRequest<Google.Apis.YouTubeReporting.v1.Data.Media>
+        public class DownloadRequest : YouTubeReportingBaseServiceRequest<Google.Apis.YouTubeReporting.v1.Data.GdataMedia>
         {
             /// <summary>Constructs a new Download request.</summary>
             public DownloadRequest(Google.Apis.Services.IClientService service, string resourceName)
@@ -1119,16 +1119,6 @@ namespace Google.Apis.YouTubeReporting.v1
             }
 
 
-            /// <summary>Requested page size. Server may return fewer report types than requested. If unspecified,
-            /// server will pick an appropriate default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
-            /// acting for himself (his own channel).</summary>
-            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OnBehalfOfContentOwner { get; set; }
-
             /// <summary>A token identifying a page of results the server should return. Typically, this is the value of
             /// ListReportTypesResponse.next_page_token returned in response to the previous call to the
             /// `ListReportTypes` method.</summary>
@@ -1139,6 +1129,16 @@ namespace Google.Apis.YouTubeReporting.v1
             /// types that can be used to create new reporting jobs will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("includeSystemManaged", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeSystemManaged { get; set; }
+
+            /// <summary>Requested page size. Server may return fewer report types than requested. If unspecified,
+            /// server will pick an appropriate default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The content owner's external ID on which behalf the user is acting on. If not set, the user is
+            /// acting for himself (his own channel).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("onBehalfOfContentOwner", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OnBehalfOfContentOwner { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1165,24 +1165,6 @@ namespace Google.Apis.YouTubeReporting.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "onBehalfOfContentOwner",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1195,6 +1177,24 @@ namespace Google.Apis.YouTubeReporting.v1
                     "includeSystemManaged", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeSystemManaged",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "onBehalfOfContentOwner", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "onBehalfOfContentOwner",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1217,6 +1217,359 @@ namespace Google.Apis.YouTubeReporting.v1.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataBlobstore2Info : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobGeneration")]
+        public virtual System.Nullable<long> BlobGeneration { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
+        public virtual string BlobId { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadReadHandle")]
+        public virtual string DownloadReadHandle { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readToken")]
+        public virtual string ReadToken { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadataContainer")]
+        public virtual string UploadMetadataContainer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataCompositeMedia : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobRef")]
+        public virtual string BlobRef { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobstore2Info")]
+        public virtual GdataBlobstore2Info Blobstore2Info { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cosmoBinaryReference")]
+        public virtual string CosmoBinaryReference { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crc32cHash")]
+        public virtual System.Nullable<long> Crc32cHash { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
+        public virtual string Inline { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<long> Length { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
+        public virtual string Md5Hash { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual GdataObjectId ObjectId { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
+        public virtual string ReferenceType { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hash")]
+        public virtual string Sha1Hash { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataContentTypeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestGuess")]
+        public virtual string BestGuess { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromBytes")]
+        public virtual string FromBytes { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromFileName")]
+        public virtual string FromFileName { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromHeader")]
+        public virtual string FromHeader { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromUrlPath")]
+        public virtual string FromUrlPath { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataDiffChecksumsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checksumsLocation")]
+        public virtual GdataCompositeMedia ChecksumsLocation { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chunkSizeBytes")]
+        public virtual System.Nullable<long> ChunkSizeBytes { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectLocation")]
+        public virtual GdataCompositeMedia ObjectLocation { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectSizeBytes")]
+        public virtual System.Nullable<long> ObjectSizeBytes { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
+        public virtual string ObjectVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataDiffDownloadResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectLocation")]
+        public virtual GdataCompositeMedia ObjectLocation { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataDiffUploadRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checksumsInfo")]
+        public virtual GdataCompositeMedia ChecksumsInfo { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectInfo")]
+        public virtual GdataCompositeMedia ObjectInfo { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
+        public virtual string ObjectVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataDiffUploadResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
+        public virtual string ObjectVersion { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalObject")]
+        public virtual GdataCompositeMedia OriginalObject { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataDiffVersionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectSizeBytes")]
+        public virtual System.Nullable<long> ObjectSizeBytes { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectVersion")]
+        public virtual string ObjectVersion { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataDownloadParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowGzipCompression")]
+        public virtual System.Nullable<bool> AllowGzipCompression { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreRange")]
+        public virtual System.Nullable<bool> IgnoreRange { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataMedia : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("algorithm")]
+        public virtual string Algorithm { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigstoreObjectRef")]
+        public virtual string BigstoreObjectRef { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobRef")]
+        public virtual string BlobRef { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blobstore2Info")]
+        public virtual GdataBlobstore2Info Blobstore2Info { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compositeMedia")]
+        public virtual System.Collections.Generic.IList<GdataCompositeMedia> CompositeMedia { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
+        public virtual string ContentType { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentTypeInfo")]
+        public virtual GdataContentTypeInfo ContentTypeInfo { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cosmoBinaryReference")]
+        public virtual string CosmoBinaryReference { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crc32cHash")]
+        public virtual System.Nullable<long> Crc32cHash { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffChecksumsResponse")]
+        public virtual GdataDiffChecksumsResponse DiffChecksumsResponse { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffDownloadResponse")]
+        public virtual GdataDiffDownloadResponse DiffDownloadResponse { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffUploadRequest")]
+        public virtual GdataDiffUploadRequest DiffUploadRequest { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffUploadResponse")]
+        public virtual GdataDiffUploadResponse DiffUploadResponse { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diffVersionResponse")]
+        public virtual GdataDiffVersionResponse DiffVersionResponse { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadParameters")]
+        public virtual GdataDownloadParameters DownloadParameters { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hash")]
+        public virtual string Hash { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashVerified")]
+        public virtual System.Nullable<bool> HashVerified { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inline")]
+        public virtual string Inline { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPotentialRetry")]
+        public virtual System.Nullable<bool> IsPotentialRetry { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<long> Length { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("md5Hash")]
+        public virtual string Md5Hash { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaId")]
+        public virtual string MediaId { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual GdataObjectId ObjectId { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referenceType")]
+        public virtual string ReferenceType { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha1Hash")]
+        public virtual string Sha1Hash { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sha256Hash")]
+        public virtual string Sha256Hash { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual System.Nullable<ulong> Timestamp { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("token")]
+        public virtual string Token { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>gdata</summary>
+    public class GdataObjectId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
+        public virtual string BucketName { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generation")]
+        public virtual System.Nullable<long> Generation { get; set; } 
+
+        /// <summary>gdata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectName")]
+        public virtual string ObjectName { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1296,17 +1649,6 @@ namespace Google.Apis.YouTubeReporting.v1.Data
         /// <summary>The list of report types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reports")]
         public virtual System.Collections.Generic.IList<Report> Reports { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Media resource.</summary>
-    public class Media : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name of the media resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
-        public virtual string ResourceName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

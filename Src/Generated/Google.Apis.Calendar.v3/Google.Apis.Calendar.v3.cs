@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171205 (1069)
+ *      <tr><th>API Rev<td>20171210 (1074)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -2509,6 +2509,15 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("calendarId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CalendarId { get; private set; }
 
+            /// <summary>Version number of conference data supported by the API client. Version 0 assumes no conference
+            /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
+            /// ConferenceData as well as for creating new conferences using the CreateConferenceRequest. The default is
+            /// 0.</summary>
+            /// [minimum: 0]
+            /// [maximum: 1]
+            [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
+
             /// <summary>Whether API client performing operation supports event attachments. Optional. The default is
             /// False.</summary>
             [Google.Apis.Util.RequestParameterAttribute("supportsAttachments", Google.Apis.Util.RequestParameterType.Query)]
@@ -2554,6 +2563,15 @@ namespace Google.Apis.Calendar.v3
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "conferenceDataVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "conferenceDataVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "supportsAttachments", new Google.Apis.Discovery.Parameter
                     {
                         Name = "supportsAttachments",
@@ -2592,6 +2610,15 @@ namespace Google.Apis.Calendar.v3
             /// access the primary calendar of the currently logged in user, use the "primary" keyword.</summary>
             [Google.Apis.Util.RequestParameterAttribute("calendarId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CalendarId { get; private set; }
+
+            /// <summary>Version number of conference data supported by the API client. Version 0 assumes no conference
+            /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
+            /// ConferenceData as well as for creating new conferences using the CreateConferenceRequest. The default is
+            /// 0.</summary>
+            /// [minimum: 0]
+            /// [maximum: 1]
+            [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
 
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
@@ -2645,6 +2672,15 @@ namespace Google.Apis.Calendar.v3
                         Name = "calendarId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "conferenceDataVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "conferenceDataVersion",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3369,6 +3405,15 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
+            /// <summary>Version number of conference data supported by the API client. Version 0 assumes no conference
+            /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
+            /// ConferenceData as well as for creating new conferences using the CreateConferenceRequest. The default is
+            /// 0.</summary>
+            /// [minimum: 0]
+            /// [maximum: 1]
+            [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
+
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
             /// [minimum: 1]
@@ -3437,6 +3482,15 @@ namespace Google.Apis.Calendar.v3
                     "alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
                     {
                         Name = "alwaysIncludeEmail",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "conferenceDataVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "conferenceDataVersion",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3606,6 +3660,15 @@ namespace Google.Apis.Calendar.v3
             [Google.Apis.Util.RequestParameterAttribute("alwaysIncludeEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
+            /// <summary>Version number of conference data supported by the API client. Version 0 assumes no conference
+            /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
+            /// ConferenceData as well as for creating new conferences using the CreateConferenceRequest. The default is
+            /// 0.</summary>
+            /// [minimum: 0]
+            /// [maximum: 1]
+            [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> ConferenceDataVersion { get; set; }
+
             /// <summary>The maximum number of attendees to include in the response. If there are more than the
             /// specified number of attendees, only the participant is returned. Optional.</summary>
             /// [minimum: 1]
@@ -3674,6 +3737,15 @@ namespace Google.Apis.Calendar.v3
                     "alwaysIncludeEmail", new Google.Apis.Discovery.Parameter
                     {
                         Name = "alwaysIncludeEmail",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "conferenceDataVersion", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "conferenceDataVersion",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -4470,6 +4542,11 @@ namespace Google.Apis.Calendar.v3.Data
 
     public class Calendar : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Conferencing properties for this calendar, for example what types of conferences are
+        /// allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceProperties")]
+        public virtual ConferenceProperties ConferenceProperties { get; set; } 
+
         /// <summary>Description of the calendar. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
@@ -4551,6 +4628,11 @@ namespace Google.Apis.Calendar.v3.Data
         /// foregroundColor properties and can be ignored when using these properties. Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorId")]
         public virtual string ColorId { get; set; } 
+
+        /// <summary>Conferencing properties for this calendar, for example what types of conferences are
+        /// allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceProperties")]
+        public virtual ConferenceProperties ConferenceProperties { get; set; } 
 
         /// <summary>The default reminders that the authenticated user has for this calendar.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultReminders")]
@@ -4751,6 +4833,178 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class ConferenceData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the conference. Can be used by developers to keep track of conferences, should not be
+        /// displayed to users. Values for solution types: - "eventHangout": unset - "eventNamedHangout": the name of
+        /// the Hangout. - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".  Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceId")]
+        public virtual string ConferenceId { get; set; } 
+
+        /// <summary>The conference solution, such as Hangouts or Hangouts Meet. Unset for a conference with failed
+        /// create request. Either conferenceSolution and at least one entryPoint, or createRequest is
+        /// required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolution")]
+        public virtual ConferenceSolution ConferenceSolution { get; set; } 
+
+        /// <summary>A request to generate a new conference and attach it to the event. The data is generated
+        /// asynchronously. To see whether the data is present check the status field. Either conferenceSolution and at
+        /// least one entryPoint, or createRequest is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createRequest")]
+        public virtual CreateConferenceRequest CreateRequest { get; set; } 
+
+        /// <summary>Information about individual conference entry points, such as URLs or phone numbers. All of them
+        /// must belong to the same conference. Either conferenceSolution and at least one entryPoint, or createRequest
+        /// is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPoints")]
+        public virtual System.Collections.Generic.IList<EntryPoint> EntryPoints { get; set; } 
+
+        /// <summary>The signature of the conference data. Genereated on server side. Must be preserved while copying
+        /// the conference data between events, otherwise the conference data will not be copied. Unset for a conference
+        /// with failed create request. Optional for a conference with a pending create request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
+        public virtual string Signature { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ConferenceProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The types of conference solutions that are supported for this calendar. The possible values are: -
+        /// "eventHangout" - "eventNamedHangout" - "hangoutsMeet"  Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConferenceSolutionTypes")]
+        public virtual System.Collections.Generic.IList<string> AllowedConferenceSolutionTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ConferenceRequestStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The current status of the conference create request. Read-only. The possible values are: -
+        /// "pending": the conference create request is still being processed. - "success": the conference create
+        /// request succeeded, the entry points are populated. - "failure": the conference create request failed, there
+        /// are no entry points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusCode")]
+        public virtual string StatusCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ConferenceSolution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user-visible icon for this solution. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
+        public virtual string IconUri { get; set; } 
+
+        /// <summary>The key which can uniquely identify the conference solution for this event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual ConferenceSolutionKey Key { get; set; } 
+
+        /// <summary>The user-visible name of this solution. Not localized. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ConferenceSolutionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conference solution type. If a client encounters an unfamiliar or empty type, it should still
+        /// be able to display the entry points. However, it should disallow modifications. The possible values are: -
+        /// "eventHangout" - "eventNamedHangout" - "hangoutsMeet"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class CreateConferenceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The conference solution, such as Hangouts or Hangouts Meet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolutionKey")]
+        public virtual ConferenceSolutionKey ConferenceSolutionKey { get; set; } 
+
+        /// <summary>The client-generated unique ID for this request. Clients should regenerate this ID for every new
+        /// request. If an ID provided is the same as for the previous request, the request is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
+
+        /// <summary>The status of the conference create request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual ConferenceRequestStatus Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class EntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Access Code to access the conference. The maximum length is 128 characters. When creating new
+        /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
+        /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
+        /// Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessCode")]
+        public virtual string AccessCode { get; set; } 
+
+        /// <summary>The type of the conference entry point. Possible values are: - "video" - joining a conference over
+        /// HTTP. A conference can have zero or one video entry point. - "phone" - joining a conference by dialing a
+        /// phone number. A conference can have zero or more phone entry points. - "sip" - joining a conference over
+        /// SIP. A conference can have zero or one sip entry point. - "more" - further conference joining instructions,
+        /// for example additional phone numbers. A conference can have zero or one more entry point. A conference with
+        /// only a more entry point is not a valid conference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPointType")]
+        public virtual string EntryPointType { get; set; } 
+
+        /// <summary>The label for the URI.Visible to end users. Not localized. The maximum length is 512 characters.
+        /// Examples: - for video: meet.google.com/aaa-bbbb-ccc - for phone: +1 123 268 2601 - for sip:
+        /// sip:12345678@myprovider.com - for more: should not be filled Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; } 
+
+        /// <summary>The Meeting Code to access the conference. The maximum length is 128 characters. When creating new
+        /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
+        /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
+        /// Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
+        public virtual string MeetingCode { get; set; } 
+
+        /// <summary>The Passcode to access the conference. The maximum length is 128 characters. When creating new
+        /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
+        /// match the terminology that the conference provider uses. Only the populated fields should be
+        /// displayed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passcode")]
+        public virtual string Passcode { get; set; } 
+
+        /// <summary>The Password to access the conference. The maximum length is 128 characters. When creating new
+        /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
+        /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
+        /// Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; } 
+
+        /// <summary>The PIN to access the conference. The maximum length is 128 characters. When creating new
+        /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
+        /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
+        /// Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pin")]
+        public virtual string Pin { get; set; } 
+
+        /// <summary>The "URI" of the entry point. The maximum length is 1300 characters. Format: - for video, http: or
+        /// https: schema is required. - for phone, tel: schema is required. The URI should include the entire dial
+        /// sequence (e.g., tel:+12345678900,,,123456789;1234). - for sip, sip: schema is required, e.g.,
+        /// sip:12345678@myprovider.com. - for more, http: or https: schema is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class Error : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Domain, or broad category, of the error.</summary>
@@ -4798,6 +5052,11 @@ namespace Google.Apis.Calendar.v3.Data
         /// definition (see the  colors endpoint). Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("colorId")]
         public virtual string ColorId { get; set; } 
+
+        /// <summary>The conference-related information, such as details of a Hangouts Meet conference. To create new
+        /// conference details use the createRequest field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conferenceData")]
+        public virtual ConferenceData ConferenceData { get; set; } 
 
         /// <summary>Creation time of the event (as a RFC3339 timestamp). Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("created")]
