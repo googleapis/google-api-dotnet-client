@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171211 (1075)
+ *      <tr><th>API Rev<td>20171212 (1076)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1428,6 +1428,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1440,13 +1447,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1488,18 +1488,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1593,6 +1593,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Optional. The language to retrieve training phrases, parameters and rich messages for.
+                    /// If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1605,13 +1612,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language to retrieve training phrases, parameters and rich messages for.
-                    /// If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1647,18 +1647,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2181,15 +2181,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Optional. The maximum number of items to return in a single page. By default 100
-                        /// and at most 1000.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>Optional. The next_page_token value returned from a previous list
                         /// request.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. The maximum number of items to return in a single page. By default 100
+                        /// and at most 1000.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2225,18 +2225,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                     Pattern = @"^projects/[^/]+/agent/sessions/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3806,9 +3806,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The request message for Agents.ExportAgent.</summary>
     public class ExportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Warning: Exporting agents to a URI is not implemented yet. This feature is coming soon. Optional.
-        /// The Google Cloud Storage URI to export the agent to. Note: The URI must start with "gs://". If left
-        /// unspecified, the serialized agent is returned inline.</summary>
+        /// <summary>Warning: Exporting agents to a URI is not implemented yet. This feature is coming soon.
+        ///
+        /// Optional. The Google Cloud Storage URI to export the agent to. Note: The URI must start with "gs://". If
+        /// left unspecified, the serialized agent is returned inline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
 
@@ -3835,12 +3836,19 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The request message for Agents.ImportAgent.</summary>
     public class ImportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The agent to import.</summary>
+        /// <summary>The agent to import.
+        ///
+        /// Example for how to import an agent via the command line:
+        ///
+        /// curl -H "Authorization: Bearer "$(gcloud auth print-access-token) \ -H "Content-Type: application/json;
+        /// charset=utf-8" \ --data "{ 'agentContent': '$(cat  | base64 -w 0)' }" \
+        /// "https://dialogflow.googleapis.com/v2beta1/projects//agent:import"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; } 
 
-        /// <summary>Warning: Importing agents from a URI is not implemented yet. This feature is coming soon. The URI
-        /// to a Google Cloud Storage file containing the agent to import. Note: The URI must start with
+        /// <summary>Warning: Importing agents from a URI is not implemented yet. This feature is coming soon.
+        ///
+        /// The URI to a Google Cloud Storage file containing the agent to import. Note: The URI must start with
         /// "gs://".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
@@ -4717,12 +4725,19 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The request message for Agents.RestoreAgent.</summary>
     public class RestoreAgentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The agent to restore.</summary>
+        /// <summary>The agent to restore.
+        ///
+        /// Example for how to restore an agent via the command line:
+        ///
+        /// curl -H "Authorization: Bearer "$(gcloud auth print-access-token) \ -H "Content-Type: application/json;
+        /// charset=utf-8" \ --data "{ 'agentContent': '$(cat  | base64 -w 0)' }" \
+        /// "https://dialogflow.googleapis.com/v2beta1/projects//agent:restore"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; } 
 
-        /// <summary>Warning: Restoring agents from a URI is not implemented yet. This feature is coming soon. The URI
-        /// to a Google Cloud Storage file containing the agent to restore. Note: The URI must start with
+        /// <summary>Warning: Restoring agents from a URI is not implemented yet. This feature is coming soon.
+        ///
+        /// The URI to a Google Cloud Storage file containing the agent to restore. Note: The URI must start with
         /// "gs://".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 

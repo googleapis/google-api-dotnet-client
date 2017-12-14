@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171201 (1065)
+ *      <tr><th>API Rev<td>20171208 (1072)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -2863,7 +2863,7 @@ namespace Google.Apis.Drive.v3
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>A custom message to include in the notification email.</summary>
+            /// <summary>A plain text custom message to include in the notification email.</summary>
             [Google.Apis.Util.RequestParameterAttribute("emailMessage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EmailMessage { get; set; }
 

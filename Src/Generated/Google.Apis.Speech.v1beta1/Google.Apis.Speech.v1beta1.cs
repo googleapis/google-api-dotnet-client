@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20171205 (1069)
+ *      <tr><th>API Rev<td>20171213 (1077)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -111,9 +111,6 @@ namespace Google.Apis.Speech.v1beta1
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
-
-            /// <summary>Convert speech to text using Google speech recognition technology</summary>
-            public static string CloudSpeech = "https://www.googleapis.com/auth/cloud-speech";
 
         }
 

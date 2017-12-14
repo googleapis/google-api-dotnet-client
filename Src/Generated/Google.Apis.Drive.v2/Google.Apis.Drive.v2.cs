@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171201 (1065)
+ *      <tr><th>API Rev<td>20171208 (1072)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -420,9 +420,9 @@ namespace Google.Apis.Drive.v2
             }
 
 
-            /// <summary>When calculating the number of remaining change IDs, whether to include public files the user
-            /// has opened and shared files. When set to false, this counts only change IDs for owned files and any
-            /// shared or public files that the user has explicitly added to a folder they own.</summary>
+            /// <summary>Whether to count changes outside the My Drive hierarchy. When set to false, changes to files
+            /// such as those in the Application Data folder or shared files which have not been added to My Drive will
+            /// be omitted from the maxChangeIdCount.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeSubscribed", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeSubscribed { get; set; }
@@ -675,14 +675,14 @@ namespace Google.Apis.Drive.v2
         }
 
 
-        /// <summary>Gets a specific change.</summary>
+        /// <summary>Deprecated - Use changes.getStartPageToken and changes.list to retrieve recent changes.</summary>
         /// <param name="changeId">The ID of the change.</param>
         public virtual GetRequest Get(string changeId)
         {
             return new GetRequest(service, changeId);
         }
 
-        /// <summary>Gets a specific change.</summary>
+        /// <summary>Deprecated - Use changes.getStartPageToken and changes.list to retrieve recent changes.</summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Change>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -865,9 +865,9 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
-            /// <summary>Whether to include public files the user has opened and shared files. When set to false, the
-            /// list only includes owned files plus any shared or public files the user has explicitly added to a folder
-            /// they own.</summary>
+            /// <summary>Whether to include changes outside the My Drive hierarchy in the result. When set to false,
+            /// changes to files such as those in the Application Data folder or shared files which have not been added
+            /// to My Drive will be omitted from the result.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeSubscribed", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeSubscribed { get; set; }
@@ -894,7 +894,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
-            /// <summary>Change ID to start listing changes from.</summary>
+            /// <summary>Deprecated - use pageToken instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startChangeId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> StartChangeId { get; set; }
 
@@ -1058,9 +1058,9 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("includeDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeDeleted { get; set; }
 
-            /// <summary>Whether to include public files the user has opened and shared files. When set to false, the
-            /// list only includes owned files plus any shared or public files the user has explicitly added to a folder
-            /// they own.</summary>
+            /// <summary>Whether to include changes outside the My Drive hierarchy in the result. When set to false,
+            /// changes to files such as those in the Application Data folder or shared files which have not been added
+            /// to My Drive will be omitted from the result.</summary>
             /// [default: true]
             [Google.Apis.Util.RequestParameterAttribute("includeSubscribed", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> IncludeSubscribed { get; set; }
@@ -1087,7 +1087,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("spaces", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Spaces { get; set; }
 
-            /// <summary>Change ID to start listing changes from.</summary>
+            /// <summary>Deprecated - use pageToken instead.</summary>
             [Google.Apis.Util.RequestParameterAttribute("startChangeId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> StartChangeId { get; set; }
 
@@ -3557,7 +3557,10 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
 
-            /// <summary>Whether to set the modified date with the supplied modified date.</summary>
+            /// <summary>Whether to set the modified date using the value supplied in the request body. Setting this
+            /// field to true is equivalent to modifiedDateBehavior=fromBodyOrNow, and false is equivalent to
+            /// modifiedDateBehavior=now. To prevent any changes to the modified date set
+            /// modifiedDateBehavior=noChange.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("setModifiedDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SetModifiedDate { get; set; }
@@ -4071,7 +4074,10 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
 
-            /// <summary>Whether to set the modified date with the supplied modified date.</summary>
+            /// <summary>Whether to set the modified date using the value supplied in the request body. Setting this
+            /// field to true is equivalent to modifiedDateBehavior=fromBodyOrNow, and false is equivalent to
+            /// modifiedDateBehavior=now. To prevent any changes to the modified date set
+            /// modifiedDateBehavior=noChange.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("setModifiedDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SetModifiedDate { get; set; }
@@ -4397,7 +4403,10 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("removeParents", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RemoveParents { get; set; }
 
-            /// <summary>Whether to set the modified date with the supplied modified date.</summary>
+            /// <summary>Whether to set the modified date using the value supplied in the request body. Setting this
+            /// field to true is equivalent to modifiedDateBehavior=fromBodyOrNow, and false is equivalent to
+            /// modifiedDateBehavior=now. To prevent any changes to the modified date set
+            /// modifiedDateBehavior=noChange.</summary>
             /// [default: false]
             [Google.Apis.Util.RequestParameterAttribute("setModifiedDate", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> SetModifiedDate { get; set; }
@@ -5261,7 +5270,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>A custom message to include in notification emails.</summary>
+            /// <summary>A plain text custom message to include in notification emails.</summary>
             [Google.Apis.Util.RequestParameterAttribute("emailMessage", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string EmailMessage { get; set; }
 

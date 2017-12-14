@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171211 (1075)
+ *      <tr><th>API Rev<td>20171212 (1076)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>
@@ -1394,16 +1394,6 @@ namespace Google.Apis.PeopleService.v1
             }
 
 
-            /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Valid values
-            /// are:
-            ///
-            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
-            /// events * genders * imClients * locales * memberships * metadata * names * nicknames * occupations *
-            /// organizations * phoneNumbers * photos * relations * relationshipInterests * relationshipStatuses *
-            /// residences * skills * taglines * urls</summary>
-            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object PersonFields { get; set; }
-
             /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
             /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
@@ -1419,6 +1409,16 @@ namespace Google.Apis.PeopleService.v1
             /// You can include up to 50 resource names in one request.</summary>
             [Google.Apis.Util.RequestParameterAttribute("resourceNames", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> ResourceNames { get; set; }
+
+            /// <summary>**Required.** A field mask to restrict which fields on each person are returned. Valid values
+            /// are:
+            ///
+            /// * addresses * ageRanges * biographies * birthdays * braggingRights * coverPhotos * emailAddresses *
+            /// events * genders * imClients * locales * memberships * metadata * names * nicknames * occupations *
+            /// organizations * phoneNumbers * photos * relations * relationshipInterests * relationshipStatuses *
+            /// residences * skills * taglines * urls</summary>
+            [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object PersonFields { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1445,15 +1445,6 @@ namespace Google.Apis.PeopleService.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "personFields", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "personFields",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMask.includeField",
@@ -1466,6 +1457,15 @@ namespace Google.Apis.PeopleService.v1
                     "resourceNames", new Google.Apis.Discovery.Parameter
                     {
                         Name = "resourceNames",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "personFields", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "personFields",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
