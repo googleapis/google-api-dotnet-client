@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Google Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171201 (1065)
+ *      <tr><th>API Rev<td>20171213 (1077)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1029,6 +1029,12 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("roboDirectives")]
         public virtual System.Collections.Generic.IList<RoboDirective> RoboDirectives { get; set; } 
 
+        /// <summary>The intents used to launch the app for the crawl. If none are provided, then the main launcher
+        /// activity is launched. If some are provided, then only those provided are launched (the main launcher
+        /// activity must be provided explicitly).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startingIntents")]
+        public virtual System.Collections.Generic.IList<RoboStartingIntent> StartingIntents { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1283,6 +1289,13 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Specifies an intent that starts the main launcher activity.</summary>
+    public class LauncherActivityIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A location/region designation for language.</summary>
     public class Locale : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1409,6 +1422,38 @@ namespace Google.Apis.Testing.v1.Data
         /// https://developer.android.com/guide/topics/resources/accessing-resources.html Required</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message for specifying the start activities to crawl</summary>
+    public class RoboStartingIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("launcherActivity")]
+        public virtual LauncherActivityIntent LauncherActivity { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startActivity")]
+        public virtual StartActivityIntent StartActivity { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A starting intent specified by an action, uri, and categories.</summary>
+    public class StartActivityIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Action name. Required for START_ACTIVITY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; } 
+
+        /// <summary>Intent categories to set on the intent. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; } 
+
+        /// <summary>URI for the action. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

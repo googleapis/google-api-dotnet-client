@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171206 (1070)
+ *      <tr><th>API Rev<td>20171213 (1077)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -990,6 +990,10 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
+            /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
             /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -997,10 +1001,6 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>The maximum number of items to return. This is a suggestion for the server.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1027,6 +1027,15 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1039,15 +1048,6 @@ namespace Google.Apis.CloudResourceManager.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2555,14 +2555,18 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Lists Projects that are visible to the user and satisfy the specified filter. This method returns
-        /// Projects in an unspecified order. New Projects do not necessarily appear at the end of the list.</summary>
+        /// Projects in an unspecified order. This method is eventually consistent with project mutations; this means
+        /// that a newly created project may not appear in the results or recent updates to an existing project may not
+        /// be reflected in the results. To retrieve the latest state of a project, use the GetProject method.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
         /// <summary>Lists Projects that are visible to the user and satisfy the specified filter. This method returns
-        /// Projects in an unspecified order. New Projects do not necessarily appear at the end of the list.</summary>
+        /// Projects in an unspecified order. This method is eventually consistent with project mutations; this means
+        /// that a newly created project may not appear in the results or recent updates to an existing project may not
+        /// be reflected in the results. To retrieve the latest state of a project, use the GetProject method.</summary>
         public class ListRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.ListProjectsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2802,7 +2806,7 @@ namespace Google.Apis.CloudResourceManager.v1
 
         }
 
-        /// <summary>Sets the IAM access control policy for the specified Project. Replaces any existing policy.
+        /// <summary>Sets the IAM access control policy for the specified Project. Overwrites any existing policy.
         ///
         /// The following constraints apply when using `setIamPolicy()`:
         ///
@@ -2828,7 +2832,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
         /// rectified.
         ///
-        /// + Calling this method requires enabling the App Engine Admin API.
+        /// + This method will replace the existing policy, and cannot be used to append additional IAM settings.
         ///
         /// Note: Removing service accounts from policies or changing their roles can render services completely
         /// inoperable. It is important to understand how the service account is being used before removing or updating
@@ -2844,7 +2848,7 @@ namespace Google.Apis.CloudResourceManager.v1
             return new SetIamPolicyRequest(service, body, resource);
         }
 
-        /// <summary>Sets the IAM access control policy for the specified Project. Replaces any existing policy.
+        /// <summary>Sets the IAM access control policy for the specified Project. Overwrites any existing policy.
         ///
         /// The following constraints apply when using `setIamPolicy()`:
         ///
@@ -2870,7 +2874,7 @@ namespace Google.Apis.CloudResourceManager.v1
         /// have accepted the ToS. Edits to IAM policies will be rejected until the lack of a ToS-accepting owner is
         /// rectified.
         ///
-        /// + Calling this method requires enabling the App Engine Admin API.
+        /// + This method will replace the existing policy, and cannot be used to append additional IAM settings.
         ///
         /// Note: Removing service accounts from policies or changing their roles can render services completely
         /// inoperable. It is important to understand how the service account is being used before removing or updating
@@ -3420,6 +3424,10 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// question.</summary>
     public class Constraint : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Defines this constraint as being a BooleanConstraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("booleanConstraint")]
+        public virtual BooleanConstraint BooleanConstraint { get; set; } 
+
         /// <summary>The evaluation behavior of this constraint in the absense of 'Policy'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("constraintDefault")]
         public virtual string ConstraintDefault { get; set; } 
@@ -3876,6 +3884,10 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("listPolicy")]
         public virtual ListPolicy ListPolicy { get; set; } 
 
+        /// <summary>Restores the default behavior of the constraint; independent of `Constraint` type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restoreDefault")]
+        public virtual RestoreDefault RestoreDefault { get; set; } 
+
         /// <summary>The time stamp the `Policy` was previously updated. This is set by the server, not specified by the
         /// caller, and represents the last time a call to `SetOrgPolicy` was made for that `Policy`. Any value set by
         /// the client will be ignored.</summary>
@@ -4018,8 +4030,8 @@ namespace Google.Apis.CloudResourceManager.v1.Data
 
         /// <summary>An optional reference to a parent Resource.
         ///
-        /// The only supported parent type is "organization". Once set, the parent cannot be modified. The `parent` can
-        /// be set on creation or using the `UpdateProject` method; the end user must have the
+        /// Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The
+        /// `parent` can be set on creation or using the `UpdateProject` method; the end user must have the
         /// `resourcemanager.projects.create` permission on the parent.
         ///
         /// Read-write.</summary>

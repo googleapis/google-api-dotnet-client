@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171129 (1063)
+ *      <tr><th>API Rev<td>20171215 (1079)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -15226,10 +15226,6 @@ namespace Google.Apis.YouTube.v3.Data
     /// <summary>A video resource represents a YouTube video.</summary>
     public class Video : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The access token to uniquely identify a revocable unlisted video.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
-        public virtual string AccessToken { get; set; } 
-
         /// <summary>Age restriction details related to a video. This data can only be retrieved by the video
         /// owner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageGating")]

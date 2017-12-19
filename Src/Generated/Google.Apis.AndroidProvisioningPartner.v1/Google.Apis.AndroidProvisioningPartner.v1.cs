@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171212 (1076)
+ *      <tr><th>API Rev<td>20171216 (1080)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
         public AndroidProvisioningPartnerService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            customers = new CustomersResource(this);
             operations = new OperationsResource(this);
             partners = new PartnersResource(this);
         }
@@ -109,6 +110,14 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
 
 
 
+
+        private readonly CustomersResource customers;
+
+        /// <summary>Gets the Customers resource.</summary>
+        public virtual CustomersResource Customers
+        {
+            get { return customers; }
+        }
 
         private readonly OperationsResource operations;
 
@@ -340,6 +349,949 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "customers" collection of methods.</summary>
+    public class CustomersResource
+    {
+        private const string Resource = "customers";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public CustomersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            configurations = new ConfigurationsResource(service);
+            devices = new DevicesResource(service);
+            dpcs = new DpcsResource(service);
+
+        }
+
+        private readonly ConfigurationsResource configurations;
+
+        /// <summary>Gets the Configurations resource.</summary>
+        public virtual ConfigurationsResource Configurations
+        {
+            get { return configurations; }
+        }
+
+        /// <summary>The "configurations" collection of methods.</summary>
+        public class ConfigurationsResource
+        {
+            private const string Resource = "configurations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ConfigurationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new configuration. Once created, a customer can apply the configuration to
+            /// devices.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The customer that manages the configuration. An API resource name in the format
+            /// `customers/[CUSTOMER_ID]`.</param>
+            public virtual CreateRequest Create(Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a new configuration. Once created, a customer can apply the configuration to
+            /// devices.</summary>
+            public class CreateRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The customer that manages the configuration. An API resource name in the format
+                /// `customers/[CUSTOMER_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/configurations"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes an unused configuration. The API call fails if the customer has devices with the
+            /// configuration applied.</summary>
+            /// <param name="name">Required. The configuration to delete. An API resource name in the format
+            /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If the configuration is applied to any devices, the API
+            /// call fails.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an unused configuration. The API call fails if the customer has devices with the
+            /// configuration applied.</summary>
+            public class DeleteRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The configuration to delete. An API resource name in the format
+                /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If the configuration is applied to any
+                /// devices, the API call fails.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/configurations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets the details of a configuration.</summary>
+            /// <param name="name">Required. The configuration to get. An API resource name in the format
+            /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the details of a configuration.</summary>
+            public class GetRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The configuration to get. An API resource name in the format
+                /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/configurations/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists a customer's configurations.</summary>
+            /// <param name="parent">Required. The customer that manages the listed configurations. An API resource name in the
+            /// format `customers/[CUSTOMER_ID]`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists a customer's configurations.</summary>
+            public class ListRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerListConfigurationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The customer that manages the listed configurations. An API resource name in the
+                /// format `customers/[CUSTOMER_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/configurations"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a configuration's field values.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Output only. The API resource name in the format
+            /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server.</param>
+            public virtual PatchRequest Patch(Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a configuration's field values.</summary>
+            public class PatchRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Output only. The API resource name in the format
+                /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. The field mask applied to the target `Configuration` before updating the fields.
+                /// To learn more about using field masks, read [FieldMask](/protocol-
+                /// buffers/docs/reference/google.protobuf#fieldmask) in the Protocol Buffers documentation.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidProvisioningPartner.v1.Data.Configuration Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/configurations/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly DevicesResource devices;
+
+        /// <summary>Gets the Devices resource.</summary>
+        public virtual DevicesResource Devices
+        {
+            get { return devices; }
+        }
+
+        /// <summary>The "devices" collection of methods.</summary>
+        public class DevicesResource
+        {
+            private const string Resource = "devices";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DevicesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Applies a Configuration to the device to register the device for zero-touch enrollment. After
+            /// applying a configuration to a device, the device automatically provisions itself on first boot, or next
+            /// factory reset.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The customer managing the device. An API resource name in the format
+            /// `customers/[CUSTOMER_ID]`.</param>
+            public virtual ApplyConfigurationRequest ApplyConfiguration(Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerApplyConfigurationRequest body, string parent)
+            {
+                return new ApplyConfigurationRequest(service, body, parent);
+            }
+
+            /// <summary>Applies a Configuration to the device to register the device for zero-touch enrollment. After
+            /// applying a configuration to a device, the device automatically provisions itself on first boot, or next
+            /// factory reset.</summary>
+            public class ApplyConfigurationRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new ApplyConfiguration request.</summary>
+                public ApplyConfigurationRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerApplyConfigurationRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The customer managing the device. An API resource name in the format
+                /// `customers/[CUSTOMER_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerApplyConfigurationRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "applyConfiguration"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/devices:applyConfiguration"; }
+                }
+
+                /// <summary>Initializes ApplyConfiguration parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets the details of a device.</summary>
+            /// <param name="name">Required. The device to get. An API resource name in the format
+            /// `customers/[CUSTOMER_ID]/devices/[DEVICE_ID]`.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the details of a device.</summary>
+            public class GetRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Device>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The device to get. An API resource name in the format
+                /// `customers/[CUSTOMER_ID]/devices/[DEVICE_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/devices/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists a customer's devices.</summary>
+            /// <param name="parent">Required. The customer managing the devices. An API resource name in the format
+            /// `customers/[CUSTOMER_ID]`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists a customer's devices.</summary>
+            public class ListRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerListDevicesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The customer managing the devices. An API resource name in the format
+                /// `customers/[CUSTOMER_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>A token specifying which result page to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of devices to show in a page of results. The default value returns all
+                /// the devices in a single page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/devices"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Removes a configuration from device.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The customer managing the device in the format
+            /// `customers/[CUSTOMER_ID]`.</param>
+            public virtual RemoveConfigurationRequest RemoveConfiguration(Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerRemoveConfigurationRequest body, string parent)
+            {
+                return new RemoveConfigurationRequest(service, body, parent);
+            }
+
+            /// <summary>Removes a configuration from device.</summary>
+            public class RemoveConfigurationRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new RemoveConfiguration request.</summary>
+                public RemoveConfigurationRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerRemoveConfigurationRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The customer managing the device in the format
+                /// `customers/[CUSTOMER_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerRemoveConfigurationRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "removeConfiguration"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/devices:removeConfiguration"; }
+                }
+
+                /// <summary>Initializes RemoveConfiguration parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Unclaims a device from a customer and removes it from zero-touch enrollment.
+            ///
+            /// After removing a device, a customer must contact their reseller to register the device into zero-touch
+            /// enrollment again.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. The customer managing the device. An API resource name in the format
+            /// `customers/[CUSTOMER_ID]`.</param>
+            public virtual UnclaimRequest Unclaim(Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerUnclaimDeviceRequest body, string parent)
+            {
+                return new UnclaimRequest(service, body, parent);
+            }
+
+            /// <summary>Unclaims a device from a customer and removes it from zero-touch enrollment.
+            ///
+            /// After removing a device, a customer must contact their reseller to register the device into zero-touch
+            /// enrollment again.</summary>
+            public class UnclaimRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Unclaim request.</summary>
+                public UnclaimRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerUnclaimDeviceRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The customer managing the device. An API resource name in the format
+                /// `customers/[CUSTOMER_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerUnclaimDeviceRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "unclaim"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/devices:unclaim"; }
+                }
+
+                /// <summary>Initializes Unclaim parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                }
+
+            }
+        }
+        private readonly DpcsResource dpcs;
+
+        /// <summary>Gets the Dpcs resource.</summary>
+        public virtual DpcsResource Dpcs
+        {
+            get { return dpcs; }
+        }
+
+        /// <summary>The "dpcs" collection of methods.</summary>
+        public class DpcsResource
+        {
+            private const string Resource = "dpcs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DpcsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Lists the DPCs (device policy controllers) that support zero-touch enrollment.</summary>
+            /// <param name="parent">Required. The customer that can use the DPCs in configurations. An API resource name in the
+            /// format `customers/[CUSTOMER_ID]`.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists the DPCs (device policy controllers) that support zero-touch enrollment.</summary>
+            public class ListRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerListDpcsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required. The customer that can use the DPCs in configurations. An API resource name in the
+                /// format `customers/[CUSTOMER_ID]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+parent}/dpcs"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>List the user's customer accounts.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>List the user's customer accounts.</summary>
+        public class ListRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerListCustomersResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of items to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/customers"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
         }
     }
 
@@ -1330,6 +2282,72 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A configuration collects the provisioning options for Android devices. Each configuration combines the
+    /// following:
+    ///
+    /// * The EMM device policy controller (DPC) installed on the devices. * EMM policies enforced on the devices. *
+    /// Metadata displayed on the device to help users during setup.
+    ///
+    /// Customers can add as many configurations as they need. However, zero-touch enrollment works best when a customer
+    /// sets a default configuration that's applied to any new devices the organization purchases.</summary>
+    public class Configuration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The name of the organization. Zero-touch enrollment shows this organization name to
+        /// device users during device provisioning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("companyName")]
+        public virtual string CompanyName { get; set; } 
+
+        /// <summary>Output only. The ID of the configuration. Assigned by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationId")]
+        public virtual System.Nullable<long> ConfigurationId { get; set; } 
+
+        /// <summary>Required. A short name that describes the configuration's purpose. For example, _Sales team_ or
+        /// _Temporary employees_. The zero-touch enrollment portal displays this name to IT admins.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurationName")]
+        public virtual string ConfigurationName { get; set; } 
+
+        /// <summary>Required. The email address that device users can contact to get help. Zero-touch enrollment shows
+        /// this email address to device users before device provisioning. The value is validated on input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
+        public virtual string ContactEmail { get; set; } 
+
+        /// <summary>Required. The telephone number that device users can call, using another device, to get help. Zero-
+        /// touch enrollment shows this number to device users before device provisioning. Accepts numerals, spaces, the
+        /// plus sign, hyphens, and parentheses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactPhone")]
+        public virtual string ContactPhone { get; set; } 
+
+        /// <summary>A message, containing one or two sentences, to help device users get help or give them more details
+        /// about what’s happening to their device. Zero-touch enrollment shows this message before the device is
+        /// provisioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMessage")]
+        public virtual string CustomMessage { get; set; } 
+
+        /// <summary>The JSON-formatted EMM provisioning extras that are passed to the DPC.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dpcExtras")]
+        public virtual string DpcExtras { get; set; } 
+
+        /// <summary>Required. The resource name of the selected DPC (device policy controller) in the format
+        /// `customers/[CUSTOMER_ID]/dpcs`. To list the supported DPCs, call `customers.dpcs.list`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dpcResourcePath")]
+        public virtual string DpcResourcePath { get; set; } 
+
+        /// <summary>Required. Whether this is the default configuration that zero-touch enrollment applies to any new
+        /// devices the organization purchases in the future. Only one customer configuration can be the default.
+        /// Setting this value to `true`, changes the previous default configuration's `isDefault` value to
+        /// `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; } 
+
+        /// <summary>Output only. The API resource name in the format
+        /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message to create a customer.</summary>
     public class CreateCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1338,6 +2356,98 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// must be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual Company Customer { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for customer to assign a configuration to device.</summary>
+    public class CustomerApplyConfigurationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The configuration applied to the device in the format
+        /// `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configuration")]
+        public virtual string Configuration { get; set; } 
+
+        /// <summary>Required. The device the configuration is applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual DeviceReference Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message of customer's listing configuration.</summary>
+    public class CustomerListConfigurationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configurations")]
+        public virtual System.Collections.Generic.IList<Configuration> Configurations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for listing my customers.</summary>
+    public class CustomerListCustomersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Customers the current user can act as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customers")]
+        public virtual System.Collections.Generic.IList<Company> Customers { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message of customer's liting devices.</summary>
+    public class CustomerListDevicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The customer's devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devices")]
+        public virtual System.Collections.Generic.IList<Device> Devices { get; set; } 
+
+        /// <summary>A token used to access the next page of results. Omitted if no further results are
+        /// available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message of customer's listing DPCs.</summary>
+    public class CustomerListDpcsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of DPCs available to the customer that support zero-touch enrollment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dpcs")]
+        public virtual System.Collections.Generic.IList<Dpc> Dpcs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for customer to remove the configuration from device.</summary>
+    public class CustomerRemoveConfigurationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The device to remove the configuration from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual DeviceReference Device { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for customer to unclaim a device.</summary>
+    public class CustomerUnclaimDeviceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The device to unclaim.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("device")]
+        public virtual DeviceReference Device { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1434,6 +2544,28 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A `DeviceReference` is an API abstraction that lets you supply a _device_ argument to a method using
+    /// one of the following identifier types:
+    ///
+    /// * A numeric API resource ID. * Real-world hardware IDs, such as IMEI number, belonging to the manufactured
+    /// device.
+    ///
+    /// Methods that operate on devices take a `DeviceReference` as a parameter type because it's more flexible for the
+    /// caller. To learn more about device identifiers, read [Identifiers](/zero-touch/guides/identifiers).</summary>
+    public class DeviceReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual System.Nullable<long> DeviceId { get; set; } 
+
+        /// <summary>The hardware IDs of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Long running operation metadata.</summary>
     public class DevicesLongRunningOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1464,6 +2596,31 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>Number of succeesfully processed ones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
         public virtual System.Nullable<int> SuccessCount { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An EMM's DPC ([device policy controller](/android/work/dpc/build-dpc)). Zero-touch enrollment installs
+    /// a DPC (listed in the `Configuration`) on a device to maintain the customer's mobile policies. All the DPCs
+    /// listed by the API support zero-touch enrollment and are available in Google Play.</summary>
+    public class Dpc : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The title of the DPC app in Google Play. For example, _Google Apps Device Policy_.
+        /// Useful in an application's user interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dpcName")]
+        public virtual string DpcName { get; set; } 
+
+        /// <summary>Output only. The API resource name in the format `customers/[CUSTOMER_ID]/dpcs/[DPC_ID]`. Assigned
+        /// by the server. To maintain a reference to a DPC across customer accounts, persist and match the last path
+        /// component (`DPC_ID`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Output only. The DPC's Android application ID that looks like a Java package name. Zero-touch
+        /// enrollment installs the DPC app onto a device using this identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

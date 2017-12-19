@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20171208 (1072)
+ *      <tr><th>API Rev<td>20171215 (1079)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -731,6 +731,11 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
+                /// <summary>Determines if the update response should include the values of the cells that were
+                /// appended. By default, responses do not include the updated values.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
+
                 /// <summary>Determines how values in the response should be rendered. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -793,11 +798,6 @@ namespace Google.Apis.Sheets.v4
                     FORMATTEDSTRING,
                 }
 
-                /// <summary>Determines if the update response should include the values of the cells that were
-                /// appended. By default, responses do not include the updated values.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
-
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
@@ -847,6 +847,15 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeValuesInResponse",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
@@ -877,15 +886,6 @@ namespace Google.Apis.Sheets.v4
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1532,29 +1532,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
-
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                public enum MajorDimensionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
-                    DIMENSIONUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("ROWS")]
-                    ROWS,
-                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
-                    COLUMNS,
-                }
-
                 /// <summary>How values should be represented in the output. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -1587,6 +1564,29 @@ namespace Google.Apis.Sheets.v4
                     SERIALNUMBER,
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING,
+                }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                public enum MajorDimensionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
+                    DIMENSIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("ROWS")]
+                    ROWS,
+                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
+                    COLUMNS,
                 }
 
 
@@ -1632,15 +1632,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "valueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueRenderOption",
@@ -1653,6 +1644,15 @@ namespace Google.Apis.Sheets.v4
                         "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "majorDimension", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "majorDimension",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2564,6 +2564,11 @@ namespace Google.Apis.Sheets.v4.Data
     /// may exist, one for the "Open Price", "High Price", "Low Price" and "Close Price".</summary>
     public class BasicChartSeries : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The line style of this series. Valid only if the chartType is AREA, LINE, or SCATTER. COMBO charts
+        /// are also supported if the series chart type is AREA or LINE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineStyle")]
+        public virtual LineStyle LineStyle { get; set; } 
+
         /// <summary>The data being visualized in this chart series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual ChartData Series { get; set; } 
@@ -3392,6 +3397,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The title text position. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleTextPosition")]
         public virtual TextPosition TitleTextPosition { get; set; } 
+
+        /// <summary>A waterfall chart specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waterfallChart")]
+        public virtual WaterfallChartSpec WaterfallChart { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4575,6 +4584,21 @@ namespace Google.Apis.Sheets.v4.Data
         /// perform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxIterations")]
         public virtual System.Nullable<int> MaxIterations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Properties that describe the style of a line.</summary>
+    public class LineStyle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The dash type of the line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The thickness of the line, in px.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("width")]
+        public virtual System.Nullable<int> Width { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6176,6 +6200,96 @@ namespace Google.Apis.Sheets.v4.Data
         /// to an empty value, set the string value to an empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<System.Collections.Generic.IList<object>> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Styles for a waterfall chart column.</summary>
+    public class WaterfallChartColumnStyle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The color of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("color")]
+        public virtual Color Color { get; set; } 
+
+        /// <summary>The label of the column's legend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The domain of a waterfall chart.</summary>
+    public class WaterfallChartDomain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data of the WaterfallChartDomain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual ChartData Data { get; set; } 
+
+        /// <summary>True to reverse the order of the domain values (horizontal axis).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reversed")]
+        public virtual System.Nullable<bool> Reversed { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A single series of data for a waterfall chart.</summary>
+    public class WaterfallChartSeries : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data being visualized in this series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual ChartData Data { get; set; } 
+
+        /// <summary>True to hide the subtotal column from the end of the series. By default, a subtotal column will
+        /// appear at the end of each series. Setting this field to true will hide that subtotal column for this
+        /// series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hideTrailingSubtotal")]
+        public virtual System.Nullable<bool> HideTrailingSubtotal { get; set; } 
+
+        /// <summary>Styles for all columns in this series with negative values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negativeColumnsStyle")]
+        public virtual WaterfallChartColumnStyle NegativeColumnsStyle { get; set; } 
+
+        /// <summary>Styles for all columns in this series with positive values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positiveColumnsStyle")]
+        public virtual WaterfallChartColumnStyle PositiveColumnsStyle { get; set; } 
+
+        /// <summary>Styles for all subtotal columns in this series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtotalColumnsStyle")]
+        public virtual WaterfallChartColumnStyle SubtotalColumnsStyle { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A waterfall chart.</summary>
+    public class WaterfallChartSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The line style for the connector lines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorLineStyle")]
+        public virtual LineStyle ConnectorLineStyle { get; set; } 
+
+        /// <summary>The domain data (horizontal axis) for the waterfall chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual WaterfallChartDomain Domain { get; set; } 
+
+        /// <summary>True to interpret the first value as a total.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstValueIsTotal")]
+        public virtual System.Nullable<bool> FirstValueIsTotal { get; set; } 
+
+        /// <summary>True to hide connector lines between columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hideConnectorLines")]
+        public virtual System.Nullable<bool> HideConnectorLines { get; set; } 
+
+        /// <summary>The data this waterfall chart is visualizing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("series")]
+        public virtual System.Collections.Generic.IList<WaterfallChartSeries> Series { get; set; } 
+
+        /// <summary>The stacked type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackedType")]
+        public virtual string StackedType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

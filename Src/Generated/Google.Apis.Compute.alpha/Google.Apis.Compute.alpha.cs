@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20171122 (1056)
+ *      <tr><th>API Rev<td>20171207 (1071)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -22070,6 +22070,127 @@ namespace Google.Apis.Compute.alpha
             }
 
             /// <summary>Initializes Reset parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Resumes an instance that was suspended using the instances().suspend method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance resource to resume.</param>
+        public virtual ResumeRequest Resume(Google.Apis.Compute.alpha.Data.InstancesResumeRequest body, string project, string zone, string instance)
+        {
+            return new ResumeRequest(service, body, project, zone, instance);
+        }
+
+        /// <summary>Resumes an instance that was suspended using the instances().suspend method.</summary>
+        public class ResumeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
+        {
+            /// <summary>Constructs a new Resume request.</summary>
+            public ResumeRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.InstancesResumeRequest body, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance resource to resume.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.alpha.Data.InstancesResumeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "resume"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/resume"; }
+            }
+
+            /// <summary>Initializes Resume parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -55644,6 +55765,12 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; } 
 
+        /// <summary>For LocalSSD disks on VM Instances in STOPPED or SUSPENDED state, this field is set to PRESERVED
+        /// iff the LocalSSD data has been saved to a persistent location by customer request. (see the
+        /// discard_local_ssd option on Stop/Suspend). Read-only in the api.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savedState")]
+        public virtual string SavedState { get; set; } 
+
         /// <summary>Specifies a valid partial or full URL to an existing Persistent Disk resource. When creating a new
         /// instance, one of initializeParams.sourceImage or disks.source is required except for local SSD.
         ///
@@ -55840,6 +55967,13 @@ namespace Google.Apis.Compute.alpha.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>[Output Only] Target recommended MIG size computed by autoscaler. Autoscaler calculates recommended
+        /// MIG size even when autoscaling policy mode is different from ON. This field is empty when autoscaler is not
+        /// connected to the existing managed instance group or autoscaler did not generate its first
+        /// prediction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommendedSize")]
+        public virtual System.Nullable<int> RecommendedSize { get; set; } 
 
         /// <summary>[Output Only] URL of the region where the instance group resides (for autoscalers living in
         /// regional scope).</summary>
@@ -62235,6 +62369,29 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Maintenance policies to be removed from this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenancePolicies")]
         public virtual System.Collections.Generic.IList<string> MaintenancePolicies { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class InstancesResumeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Array of disks associated with this instance that are protected with a customer-supplied encryption
+        /// key.
+        ///
+        /// In order to resume the instance, the disk url and its corresponding key must be provided.
+        ///
+        /// If the disk is not protected with a customer-supplied encryption key it should not be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<CustomerEncryptionKeyProtectedDisk> Disks { get; set; } 
+
+        /// <summary>Decrypts data associated with an instance that is protected with a customer-supplied encryption
+        /// key.
+        ///
+        /// If the instance you are starting is protected with a customer-supplied encryption key, the correct key must
+        /// be provided otherwise the instance resume will not succeed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceEncryptionKey")]
+        public virtual CustomerEncryptionKey InstanceEncryptionKey { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

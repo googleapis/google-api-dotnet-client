@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171204 (1068)
+ *      <tr><th>API Rev<td>20171211 (1075)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2264,6 +2264,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedState")]
         public virtual string AppliedState { get; set; } 
 
+        /// <summary>Device settings information. This information is only available when deviceSettingsEnabled is true
+        /// in the device's policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceSettings")]
+        public virtual DeviceSettings DeviceSettings { get; set; } 
+
         /// <summary>If the device state is DISABLED, an optional message that is displayed on the device indicating the
         /// reason the device is disabled. This field may be modified by an update request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabledReason")]
@@ -2370,6 +2375,39 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// enterprises/{enterpriseId}/users/{userId}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Information about security related device settings on device.</summary>
+    public class DeviceSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If the ADB is enabled Settings.Global.ADB_ENABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adbEnabled")]
+        public virtual System.Nullable<bool> AdbEnabled { get; set; } 
+
+        /// <summary>If the developer mode is enabled Settings.Global.DEVELOPMENT_SETTINGS_ENABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("developmentSettingsEnabled")]
+        public virtual System.Nullable<bool> DevelopmentSettingsEnabled { get; set; } 
+
+        /// <summary>Encryption status from DevicePolicyManager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionStatus")]
+        public virtual string EncryptionStatus { get; set; } 
+
+        /// <summary>Device secured with PIN/password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDeviceSecure")]
+        public virtual System.Nullable<bool> IsDeviceSecure { get; set; } 
+
+        /// <summary>Whether the storage encryption is enabled DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE or
+        /// DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER in N+ devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isEncrypted")]
+        public virtual System.Nullable<bool> IsEncrypted { get; set; } 
+
+        /// <summary>If installing apps from unknown sources is enabled.
+        /// Settings.Secure.INSTALL_NON_MARKET_APPS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unknownSourcesEnabled")]
+        public virtual System.Nullable<bool> UnknownSourcesEnabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3370,6 +3408,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Build time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidBuildTime")]
         public virtual object AndroidBuildTime { get; set; } 
+
+        /// <summary>The Android Device Policy app version code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidDevicePolicyVersionCode")]
+        public virtual System.Nullable<int> AndroidDevicePolicyVersionCode { get; set; } 
+
+        /// <summary>The Android Device Policy app version as displayed to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidDevicePolicyVersionName")]
+        public virtual string AndroidDevicePolicyVersionName { get; set; } 
 
         /// <summary>The user visible Android version string, e.g. 6.0.1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidVersion")]

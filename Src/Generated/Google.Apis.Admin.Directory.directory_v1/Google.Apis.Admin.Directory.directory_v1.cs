@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20171206 (1070)
+ *      <tr><th>API Rev<td>20171212 (1076)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -5189,10 +5189,496 @@ namespace Google.Apis.Admin.Directory.directory_v1
         public ResourcesResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            buildings = new BuildingsResource(service);
             calendars = new CalendarsResource(service);
+            features = new FeaturesResource(service);
 
         }
 
+        private readonly BuildingsResource buildings;
+
+        /// <summary>Gets the Buildings resource.</summary>
+        public virtual BuildingsResource Buildings
+        {
+            get { return buildings; }
+        }
+
+        /// <summary>The "buildings" collection of methods.</summary>
+        public class BuildingsResource
+        {
+            private const string Resource = "buildings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public BuildingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Deletes a building.</summary>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="buildingId">The ID
+            /// of the building to delete.</param>
+            public virtual DeleteRequest Delete(string customer, string buildingId)
+            {
+                return new DeleteRequest(service, customer, buildingId);
+            }
+
+            /// <summary>Deletes a building.</summary>
+            public class DeleteRequest : DirectoryBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string customer, string buildingId)
+                    : base(service)
+                {
+                    Customer = customer;
+                    BuildingId = buildingId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The ID of the building to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string BuildingId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/buildings/{buildingId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "buildingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "buildingId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves a building.</summary>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="buildingId">The
+            /// unique ID of the building to retrieve.</param>
+            public virtual GetRequest Get(string customer, string buildingId)
+            {
+                return new GetRequest(service, customer, buildingId);
+            }
+
+            /// <summary>Retrieves a building.</summary>
+            public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Building>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string customer, string buildingId)
+                    : base(service)
+                {
+                    Customer = customer;
+                    BuildingId = buildingId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The unique ID of the building to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string BuildingId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/buildings/{buildingId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "buildingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "buildingId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Inserts a building.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer)
+            {
+                return new InsertRequest(service, body, customer);
+            }
+
+            /// <summary>Inserts a building.</summary>
+            public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Building>
+            {
+                /// <summary>Constructs a new Insert request.</summary>
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer)
+                    : base(service)
+                {
+                    Customer = customer;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Admin.Directory.directory_v1.Data.Building Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "insert"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/buildings"; }
+                }
+
+                /// <summary>Initializes Insert parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves a list of buildings for an account.</summary>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            public virtual ListRequest List(string customer)
+            {
+                return new ListRequest(service, customer);
+            }
+
+            /// <summary>Retrieves a list of buildings for an account.</summary>
+            public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Buildings>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string customer)
+                    : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/buildings"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a building. This method supports patch semantics.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="buildingId">The ID
+            /// of the building to update.</param>
+            public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer, string buildingId)
+            {
+                return new PatchRequest(service, body, customer, buildingId);
+            }
+
+            /// <summary>Updates a building. This method supports patch semantics.</summary>
+            public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Building>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer, string buildingId)
+                    : base(service)
+                {
+                    Customer = customer;
+                    BuildingId = buildingId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The ID of the building to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string BuildingId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Admin.Directory.directory_v1.Data.Building Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/buildings/{buildingId}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "buildingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "buildingId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a building.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="buildingId">The ID
+            /// of the building to update.</param>
+            public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer, string buildingId)
+            {
+                return new UpdateRequest(service, body, customer, buildingId);
+            }
+
+            /// <summary>Updates a building.</summary>
+            public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Building>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Building body, string customer, string buildingId)
+                    : base(service)
+                {
+                    Customer = customer;
+                    BuildingId = buildingId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The ID of the building to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("buildingId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string BuildingId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Admin.Directory.directory_v1.Data.Building Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/buildings/{buildingId}"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "buildingId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "buildingId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly CalendarsResource calendars;
 
         /// <summary>Gets the Calendars resource.</summary>
@@ -5474,9 +5960,24 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> MaxResults { get; set; }
 
+                /// <summary>Field(s) to sort results by in either ascending or descending order. Supported fields
+                /// include resourceId, resourceName, capacity, buildingId, and floorName. If no order is specified,
+                /// defaults to ascending. Should be of the form "field [asc|desc], field [asc|desc], ...". For example
+                /// buildingId, capacity desc would return results sorted first by buildingId in ascending order then by
+                /// capacity in descending order.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
                 /// <summary>Token to specify the next page in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>String query used to filter results. Should be of the form "field operator value" where
+                /// field can be any of supported fields and operators can be any of supported operations. Operators
+                /// include '=' for exact match and ':' for prefix match where applicable. For prefix match, the value
+                /// should always be followed by a *.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Query { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5521,9 +6022,27 @@ namespace Google.Apis.Admin.Directory.directory_v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "query", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "query",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5710,6 +6229,589 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         "calendarResourceId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "calendarResourceId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly FeaturesResource features;
+
+        /// <summary>Gets the Features resource.</summary>
+        public virtual FeaturesResource Features
+        {
+            get { return features; }
+        }
+
+        /// <summary>The "features" collection of methods.</summary>
+        public class FeaturesResource
+        {
+            private const string Resource = "features";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public FeaturesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Deletes a feature.</summary>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="featureKey">The
+            /// unique ID of the feature to delete.</param>
+            public virtual DeleteRequest Delete(string customer, string featureKey)
+            {
+                return new DeleteRequest(service, customer, featureKey);
+            }
+
+            /// <summary>Deletes a feature.</summary>
+            public class DeleteRequest : DirectoryBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string customer, string featureKey)
+                    : base(service)
+                {
+                    Customer = customer;
+                    FeatureKey = featureKey;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The unique ID of the feature to delete.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("featureKey", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string FeatureKey { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/features/{featureKey}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "featureKey", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "featureKey",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves a feature.</summary>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="featureKey">The
+            /// unique ID of the feature to retrieve.</param>
+            public virtual GetRequest Get(string customer, string featureKey)
+            {
+                return new GetRequest(service, customer, featureKey);
+            }
+
+            /// <summary>Retrieves a feature.</summary>
+            public class GetRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Feature>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string customer, string featureKey)
+                    : base(service)
+                {
+                    Customer = customer;
+                    FeatureKey = featureKey;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The unique ID of the feature to retrieve.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("featureKey", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string FeatureKey { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/features/{featureKey}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "featureKey", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "featureKey",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Inserts a feature.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer)
+            {
+                return new InsertRequest(service, body, customer);
+            }
+
+            /// <summary>Inserts a feature.</summary>
+            public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Feature>
+            {
+                /// <summary>Constructs a new Insert request.</summary>
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer)
+                    : base(service)
+                {
+                    Customer = customer;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Admin.Directory.directory_v1.Data.Feature Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "insert"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/features"; }
+                }
+
+                /// <summary>Initializes Insert parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Retrieves a list of features for an account.</summary>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            public virtual ListRequest List(string customer)
+            {
+                return new ListRequest(service, customer);
+            }
+
+            /// <summary>Retrieves a list of features for an account.</summary>
+            public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Features>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string customer)
+                    : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>Token to specify the next page in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/features"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a feature. This method supports patch semantics.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="featureKey">The
+            /// unique ID of the feature to update.</param>
+            public virtual PatchRequest Patch(Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer, string featureKey)
+            {
+                return new PatchRequest(service, body, customer, featureKey);
+            }
+
+            /// <summary>Updates a feature. This method supports patch semantics.</summary>
+            public class PatchRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Feature>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer, string featureKey)
+                    : base(service)
+                {
+                    Customer = customer;
+                    FeatureKey = featureKey;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The unique ID of the feature to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("featureKey", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string FeatureKey { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Admin.Directory.directory_v1.Data.Feature Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/features/{featureKey}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "featureKey", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "featureKey",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Renames a feature.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="oldName">The unique
+            /// ID of the feature to rename.</param>
+            public virtual RenameRequest Rename(Google.Apis.Admin.Directory.directory_v1.Data.FeatureRename body, string customer, string oldName)
+            {
+                return new RenameRequest(service, body, customer, oldName);
+            }
+
+            /// <summary>Renames a feature.</summary>
+            public class RenameRequest : DirectoryBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Rename request.</summary>
+                public RenameRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.FeatureRename body, string customer, string oldName)
+                    : base(service)
+                {
+                    Customer = customer;
+                    OldName = oldName;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The unique ID of the feature to rename.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("oldName", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string OldName { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Admin.Directory.directory_v1.Data.FeatureRename Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "rename"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/features/{oldName}/rename"; }
+                }
+
+                /// <summary>Initializes Rename parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "oldName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "oldName",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a feature.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="customer">The unique ID for the customer's G Suite account. As an account administrator, you can also
+            /// use the my_customer alias to represent your account's customer ID.</param>
+            /// <param name="featureKey">The
+            /// unique ID of the feature to update.</param>
+            public virtual UpdateRequest Update(Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer, string featureKey)
+            {
+                return new UpdateRequest(service, body, customer, featureKey);
+            }
+
+            /// <summary>Updates a feature.</summary>
+            public class UpdateRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Feature>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Admin.Directory.directory_v1.Data.Feature body, string customer, string featureKey)
+                    : base(service)
+                {
+                    Customer = customer;
+                    FeatureKey = featureKey;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The unique ID for the customer's G Suite account. As an account administrator, you can also
+                /// use the my_customer alias to represent your account's customer ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>The unique ID of the feature to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("featureKey", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string FeatureKey { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Admin.Directory.directory_v1.Data.Feature Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "customer/{customer}/resources/features/{featureKey}"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "customer", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customer",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "featureKey", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "featureKey",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -9323,6 +10425,82 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
     }    
 
+    /// <summary>JSON template for Building object in Directory API.</summary>
+    public class Building : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier for the building. The maximum length is 100 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildingId")]
+        public virtual string BuildingId { get; set; } 
+
+        /// <summary>The building name as seen by users in Calendar. Must be unique for the customer. For example, "NYC-
+        /// CHEL". The maximum length is 100 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildingName")]
+        public virtual string BuildingName { get; set; } 
+
+        /// <summary>The geographic coordinates of the center of the building, expressed as latitude and longitude in
+        /// decimal degrees.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coordinates")]
+        public virtual BuildingCoordinates Coordinates { get; set; } 
+
+        /// <summary>A brief description of the building. For example, "Chelsea Market".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>ETag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etags")]
+        public virtual string Etags { get; set; } 
+
+        /// <summary>The display names for all floors in this building. The floors are expected to be sorted in
+        /// ascending order, from lowest floor to highest floor. For example, ["B2", "B1", "L", "1", "2", "2M", "3",
+        /// "PH"] Must contain at least one entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floorNames")]
+        public virtual System.Collections.Generic.IList<string> FloorNames { get; set; } 
+
+        /// <summary>Kind of resource this is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for coordinates of a building in Directory API.</summary>
+    public class BuildingCoordinates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Latitude in decimal degrees.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; } 
+
+        /// <summary>Longitude in decimal degrees.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for Building List Response object in Directory API.</summary>
+    public class Buildings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Buildings in this page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildings")]
+        public virtual System.Collections.Generic.IList<Building> BuildingsValue { get; set; } 
+
+        /// <summary>ETag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Kind of resource this is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The continuation token, used to page through large result sets. Provide this value in a subsequent
+        /// request to return the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+    }    
+
     /// <summary>JSON template for Calendar Resource object in Directory API.</summary>
     public class CalendarResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9364,13 +10542,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceCategory")]
         public virtual string ResourceCategory { get; set; } 
 
-        /// <summary>Description of the resource, visible only to admins. The brief description of the calendar
-        /// resource.</summary>
+        /// <summary>Description of the resource, visible only to admins.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDescription")]
         public virtual string ResourceDescription { get; set; } 
 
-        /// <summary>The read-only email ID for the calendar resource. Generated as part of creating a new calendar
-        /// resource. The read-only email for the calendar resource. Generated as part of creating a new calendar
+        /// <summary>The read-only email for the calendar resource. Generated as part of creating a new calendar
         /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceEmail")]
         public virtual string ResourceEmail { get; set; } 
@@ -9379,13 +10555,11 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceId")]
         public virtual string ResourceId { get; set; } 
 
-        /// <summary>The name of the calendar resource. For example, "Training Room 1A". The name of the calendar
-        /// resource. For example, Training Room 1A</summary>
+        /// <summary>The name of the calendar resource. For example, "Training Room 1A".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; } 
 
-        /// <summary>The type of the calendar resource, intended for non-room resources. The type of the calendar
-        /// resource. Used for grouping resources in the calendar user interface.</summary>
+        /// <summary>The type of the calendar resource, intended for non-room resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; } 
 
@@ -9617,6 +10791,9 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("tpmVersionInfo")]
+        public virtual ChromeOsDevice.TpmVersionInfoData TpmVersionInfo { get; set; } 
+
         /// <summary>Will Chromebook auto renew after support end date (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("willAutoRenew")]
         public virtual System.Nullable<bool> WillAutoRenew { get; set; } 
@@ -9678,6 +10855,28 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             /// <summary>The type of the user</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("type")]
             public virtual string Type { get; set; } 
+
+        }    
+
+        public class TpmVersionInfoData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("family")]
+            public virtual string Family { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
+            public virtual string FirmwareVersion { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
+            public virtual string Manufacturer { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("specLevel")]
+            public virtual string SpecLevel { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("tpmModel")]
+            public virtual string TpmModel { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("vendorSpecific")]
+            public virtual string VendorSpecific { get; set; } 
 
         }
     }    
@@ -9954,6 +11153,39 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON request template for renaming a feature.</summary>
+    public class FeatureRename : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>New name of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newName")]
+        public virtual string NewName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for Feature List Response object in Directory API.</summary>
+    public class Features : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ETag of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>The Features in this page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("features")]
+        public virtual System.Collections.Generic.IList<Feature> FeaturesValue { get; set; } 
+
+        /// <summary>Kind of resource this is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The continuation token, used to page through large result sets. Provide this value in a subsequent
+        /// request to return the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
     }    
 
     /// <summary>JSON template for Group resource in Directory API.</summary>

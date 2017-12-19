@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/functions'>Google Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20171206 (1070)
+ *      <tr><th>API Rev<td>20171208 (1072)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -458,6 +458,10 @@ namespace Google.Apis.CloudFunctions.v1beta2
             }
 
 
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -469,10 +473,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -499,6 +499,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -520,15 +529,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -884,10 +884,18 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// <summary>Returns a signed URL for uploading a function source code. For more information about the
                 /// signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls Once the
                 /// function source code upload is complete, the used signed URL should be provided in CreateFunction or
-                /// UpdateFunction request as a reference to the function source code.</summary>
+                /// UpdateFunction request as a reference to the function source code.
+                ///
+                /// When uploading source code to the generated signed URL, please follow these restrictions:
+                ///
+                /// * Source file type should be a zip file. * Source file size should not exceed 100MB limit.
+                ///
+                /// When making a HTTP PUT request, these two headers need to be specified:
+                ///
+                /// * `content-type: application/zip` * `x-google-content-length-range: 0,104857600`</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">The project and location in which the Google Cloud Storage signed URL should be generated,
-                /// specified in the format `projects/locations</param>
+                /// specified in the format `projects/locations`.</param>
                 public virtual GenerateUploadUrlRequest GenerateUploadUrl(Google.Apis.CloudFunctions.v1beta2.Data.GenerateUploadUrlRequest body, string parent)
                 {
                     return new GenerateUploadUrlRequest(service, body, parent);
@@ -896,7 +904,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// <summary>Returns a signed URL for uploading a function source code. For more information about the
                 /// signed URL usage see: https://cloud.google.com/storage/docs/access-control/signed-urls Once the
                 /// function source code upload is complete, the used signed URL should be provided in CreateFunction or
-                /// UpdateFunction request as a reference to the function source code.</summary>
+                /// UpdateFunction request as a reference to the function source code.
+                ///
+                /// When uploading source code to the generated signed URL, please follow these restrictions:
+                ///
+                /// * Source file type should be a zip file. * Source file size should not exceed 100MB limit.
+                ///
+                /// When making a HTTP PUT request, these two headers need to be specified:
+                ///
+                /// * `content-type: application/zip` * `x-google-content-length-range: 0,104857600`</summary>
                 public class GenerateUploadUrlRequest : CloudFunctionsBaseServiceRequest<Google.Apis.CloudFunctions.v1beta2.Data.GenerateUploadUrlResponse>
                 {
                     /// <summary>Constructs a new GenerateUploadUrl request.</summary>
@@ -910,7 +926,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
 
 
                     /// <summary>The project and location in which the Google Cloud Storage signed URL should be
-                    /// generated, specified in the format `projects/locations</summary>
+                    /// generated, specified in the format `projects/locations`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1200,10 +1216,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1211,6 +1223,10 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1246,15 +1262,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1267,6 +1274,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1407,11 +1423,11 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
     {
         /// <summary>`event_type` names contain the service that is sending an event and the kind of event that was
         /// fired. Must be of the form `providers/eventTypes` e.g. Directly handle a Message published to Google Cloud
-        /// Pub/Sub `providers/cloud.pubsub/eventTypes/topic.publish`
+        /// Pub/Sub `providers/cloud.pubsub/eventTypes/topic.publish`.
         ///
-        /// Handle an object changing in Google Cloud Storage `providers/cloud.storage/eventTypes/object.change`
+        /// Handle an object changing in Google Cloud Storage: `providers/cloud.storage/eventTypes/object.change`
         ///
-        /// Handle a write to the Firebase Realtime Database
+        /// Handle a write to the Firebase Realtime Database:
         /// `providers/google.firebase.database/eventTypes/ref.write`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; } 

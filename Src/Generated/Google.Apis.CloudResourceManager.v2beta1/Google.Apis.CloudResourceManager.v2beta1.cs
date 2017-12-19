@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171206 (1070)
+ *      <tr><th>API Rev<td>20171213 (1077)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -364,11 +364,13 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// the created Folder.
         ///
         /// In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout
-        /// constraints. + The Folder's display_name must be distinct from all other Folder's that share its parent. +
-        /// The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 4. Note, the
-        /// full active + deleted Folder hierarchy is allowed to reach a height of 8; this provides additional headroom
-        /// when moving folders that contain deleted folders. + The addition of the Folder must not cause the total
-        /// number of Folders under its parent to exceed 100.
+        /// constraints.
+        ///
+        /// + The Folder's display_name must be distinct from all other Folder's that share its parent. + The addition
+        /// of the Folder must not cause the active Folder hierarchy to exceed a height of 4. Note, the full active +
+        /// deleted Folder hierarchy is allowed to reach a height of 8; this provides additional headroom when moving
+        /// folders that contain deleted folders. + The addition of the Folder must not cause the total number of
+        /// Folders under its parent to exceed 100.
         ///
         /// If the operation fails due to a folder constraint violation, a PreconditionFailure explaining the violation
         /// will be returned. If the failure occurs synchronously then the PreconditionFailure will be returned via the
@@ -387,11 +389,13 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// the created Folder.
         ///
         /// In order to succeed, the addition of this new Folder must not violate the Folder naming, height or fanout
-        /// constraints. + The Folder's display_name must be distinct from all other Folder's that share its parent. +
-        /// The addition of the Folder must not cause the active Folder hierarchy to exceed a height of 4. Note, the
-        /// full active + deleted Folder hierarchy is allowed to reach a height of 8; this provides additional headroom
-        /// when moving folders that contain deleted folders. + The addition of the Folder must not cause the total
-        /// number of Folders under its parent to exceed 100.
+        /// constraints.
+        ///
+        /// + The Folder's display_name must be distinct from all other Folder's that share its parent. + The addition
+        /// of the Folder must not cause the active Folder hierarchy to exceed a height of 4. Note, the full active +
+        /// deleted Folder hierarchy is allowed to reach a height of 8; this provides additional headroom when moving
+        /// folders that contain deleted folders. + The addition of the Folder must not cause the total number of
+        /// Folders under its parent to exceed 100.
         ///
         /// If the operation fails due to a folder constraint violation, a PreconditionFailure explaining the violation
         /// will be returned. If the failure occurs synchronously then the PreconditionFailure will be returned via the
@@ -458,10 +462,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1
 
         }
 
-        /// <summary>Requests deletion of a Folder. The Folder is moved into the [DELETE_REQUESTED] state immediately,
-        /// and is deleted approximately 30 days later. This method may only be called on an empty Folder in the
-        /// [ACTIVE] state, where a Folder is empty if it doesn't contain any Folders or Projects in the [ACTIVE] state.
-        /// The caller must have `resourcemanager.folders.delete` permission on the identified folder.</summary>
+        /// <summary>Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and
+        /// is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE
+        /// state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller
+        /// must have `resourcemanager.folders.delete` permission on the identified folder.</summary>
         /// <param name="name">the resource name of the Folder to be deleted. Must be of the form
         /// `folders/{folder_id}`.</param>
         public virtual DeleteRequest Delete(string name)
@@ -469,10 +473,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1
             return new DeleteRequest(service, name);
         }
 
-        /// <summary>Requests deletion of a Folder. The Folder is moved into the [DELETE_REQUESTED] state immediately,
-        /// and is deleted approximately 30 days later. This method may only be called on an empty Folder in the
-        /// [ACTIVE] state, where a Folder is empty if it doesn't contain any Folders or Projects in the [ACTIVE] state.
-        /// The caller must have `resourcemanager.folders.delete` permission on the identified folder.</summary>
+        /// <summary>Requests deletion of a Folder. The Folder is moved into the DELETE_REQUESTED state immediately, and
+        /// is deleted approximately 30 days later. This method may only be called on an empty Folder in the ACTIVE
+        /// state, where a Folder is empty if it doesn't contain any Folders or Projects in the ACTIVE state. The caller
+        /// must have `resourcemanager.folders.delete` permission on the identified folder.</summary>
         public class DeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.Folder>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -689,7 +693,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
             }
 
 
-            /// <summary>Controls whether Folders in the [DELETE_REQUESTED} state should be returned.</summary>
+            /// <summary>Controls whether Folders in the DELETE_REQUESTED state should be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
@@ -779,8 +783,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// if it occurs asynchronously then the FolderOperation will be returned via the the Operation.error field. In
         /// addition, the Operation.metadata field will be populated with a FolderOperation message as an aid to
         /// stateless clients. Folder moves will be rejected if they violate either the naming, height or fanout
-        /// constraints described in the [CreateFolder] documentation. The caller must have
-        /// `resourcemanager.folders.move` permission on the folder's current and proposed new parent.</summary>
+        /// constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move`
+        /// permission on the folder's current and proposed new parent.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name of the Folder to move. Must be of the form folders/{folder_id}</param>
         public virtual MoveRequest Move(Google.Apis.CloudResourceManager.v2beta1.Data.MoveFolderRequest body, string name)
@@ -795,8 +799,8 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// if it occurs asynchronously then the FolderOperation will be returned via the the Operation.error field. In
         /// addition, the Operation.metadata field will be populated with a FolderOperation message as an aid to
         /// stateless clients. Folder moves will be rejected if they violate either the naming, height or fanout
-        /// constraints described in the [CreateFolder] documentation. The caller must have
-        /// `resourcemanager.folders.move` permission on the folder's current and proposed new parent.</summary>
+        /// constraints described in the CreateFolder documentation. The caller must have `resourcemanager.folders.move`
+        /// permission on the folder's current and proposed new parent.</summary>
         public class MoveRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.Operation>
         {
             /// <summary>Constructs a new Move request.</summary>
@@ -857,11 +861,13 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
         /// <summary>Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if
-        /// they violate either the display_name formatting rules or naming constraints described in the [CreateFolder]
-        /// documentation. + The Folder's display name must start and end with a letter or digit, may contain letters,
-        /// digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the
-        /// regular expression: [\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have
-        /// `resourcemanager.folders.update` permission on the identified folder.
+        /// they violate either the display_name formatting rules or naming constraints described in the CreateFolder
+        /// documentation.
+        ///
+        /// The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces,
+        /// hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression:
+        /// [\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have `resourcemanager.folders.update`
+        /// permission on the identified folder.
         ///
         /// If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation
         /// will be returned in the Status.details field.</summary>
@@ -874,11 +880,13 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
         /// <summary>Updates a Folder, changing its display_name. Changes to the folder display_name will be rejected if
-        /// they violate either the display_name formatting rules or naming constraints described in the [CreateFolder]
-        /// documentation. + The Folder's display name must start and end with a letter or digit, may contain letters,
-        /// digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the
-        /// regular expression: [\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have
-        /// `resourcemanager.folders.update` permission on the identified folder.
+        /// they violate either the display_name formatting rules or naming constraints described in the CreateFolder
+        /// documentation.
+        ///
+        /// The Folder's display name must start and end with a letter or digit, may contain letters, digits, spaces,
+        /// hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression:
+        /// [\p{L}\p{N}]({\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?. The caller must have `resourcemanager.folders.update`
+        /// permission on the identified folder.
         ///
         /// If the update fails due to the unique name constraint then a PreconditionFailure explaining this violation
         /// will be returned in the Status.details field.</summary>
@@ -1167,10 +1175,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
         /// <summary>Cancels the deletion request for a Folder. This method may only be called on a Folder in the
-        /// [DELETE_REQUESTED] state. In order to succeed, the Folder's parent must be in the [ACTIVE] state. In
-        /// addition, reintroducing the folder into the tree must not violate folder naming, height and fanout
-        /// constraints described in the [CreateFolder] documentation. The caller must have
-        /// `resourcemanager.folders.undelete` permission on the identified folder.</summary>
+        /// DELETE_REQUESTED state. In order to succeed, the Folder's parent must be in the ACTIVE state. In addition,
+        /// reintroducing the folder into the tree must not violate folder naming, height and fanout constraints
+        /// described in the CreateFolder documentation. The caller must have `resourcemanager.folders.undelete`
+        /// permission on the identified folder.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name of the Folder to undelete. Must be of the form
         /// `folders/{folder_id}`.</param>
@@ -1180,10 +1188,10 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         }
 
         /// <summary>Cancels the deletion request for a Folder. This method may only be called on a Folder in the
-        /// [DELETE_REQUESTED] state. In order to succeed, the Folder's parent must be in the [ACTIVE] state. In
-        /// addition, reintroducing the folder into the tree must not violate folder naming, height and fanout
-        /// constraints described in the [CreateFolder] documentation. The caller must have
-        /// `resourcemanager.folders.undelete` permission on the identified folder.</summary>
+        /// DELETE_REQUESTED state. In order to succeed, the Folder's parent must be in the ACTIVE state. In addition,
+        /// reintroducing the folder into the tree must not violate folder naming, height and fanout constraints
+        /// described in the CreateFolder documentation. The caller must have `resourcemanager.folders.undelete`
+        /// permission on the identified folder.</summary>
         public class UndeleteRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v2beta1.Data.Folder>
         {
             /// <summary>Constructs a new Undelete request.</summary>
@@ -1356,7 +1364,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual string DisplayName { get; set; } 
 
         /// <summary>Output only.  The lifecycle state of the folder. Updates to the lifecycle_state must be performed
-        /// via [DeleteFolder] and [UndeleteFolder].</summary>
+        /// via DeleteFolder and UndeleteFolder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
         public virtual string LifecycleState { get; set; } 
 
@@ -1366,7 +1374,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>The Folder’s parent's resource name. Updates to the folder's parent must be performed via
-        /// [MoveFolders].</summary>
+        /// MoveFolder.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
@@ -1564,10 +1572,12 @@ namespace Google.Apis.CloudResourceManager.v2beta1.Data
         /// Query expressions can be used to restrict results based upon displayName, lifecycleState and parent, where
         /// the operators `=`, `NOT`, `AND` and `OR` can be used along with the suffix wildcard symbol `*`.
         ///
-        /// Some example queries are: |Query|Description| |------|-----------| |displayName=Test*|Folders whose display
-        /// name starts with "Test".| |lifecycleState=ACTIVE|Folders whose lifecycleState is ACTIVE.|
-        /// |parent=folders/123|Folders whose parent is "folders/123".| |parent=folders/123 AND
-        /// lifecycleState=ACTIVE|Active folders whose parent is "folders/123".|</summary>
+        /// Some example queries are:
+        ///
+        /// |Query | Description| |----- | -----------| |displayName=Test*|Folders whose display name starts with
+        /// "Test".| |lifecycleState=ACTIVE|Folders whose lifecycleState is ACTIVE.| |parent=folders/123|Folders whose
+        /// parent is "folders/123".| |parent=folders/123 AND lifecycleState=ACTIVE|Active folders whose parent is
+        /// "folders/123".|</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; } 
 

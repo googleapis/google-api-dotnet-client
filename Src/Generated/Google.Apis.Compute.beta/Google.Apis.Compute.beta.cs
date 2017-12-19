@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20171122 (1056)
+ *      <tr><th>API Rev<td>20171207 (1071)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -2985,6 +2985,113 @@ namespace Google.Apis.Compute.beta
         }
 
 
+        /// <summary>Adds the given Signed URL Key to the backend bucket.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendBucket">Name of the
+        /// BackendBucket resource to which the Signed URL Key should be added. The name should conform to RFC1035.</param>
+        public virtual AddSignedUrlKeyRequest AddSignedUrlKey(Google.Apis.Compute.beta.Data.SignedUrlKey body, string project, string backendBucket)
+        {
+            return new AddSignedUrlKeyRequest(service, body, project, backendBucket);
+        }
+
+        /// <summary>Adds the given Signed URL Key to the backend bucket.</summary>
+        public class AddSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new AddSignedUrlKey request.</summary>
+            public AddSignedUrlKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.SignedUrlKey body, string project, string backendBucket)
+                : base(service)
+            {
+                Project = project;
+                BackendBucket = backendBucket;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendBucket resource to which the Signed URL Key should be added. The name should
+            /// conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendBucket { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.SignedUrlKey Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addSignedUrlKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendBuckets/{backendBucket}/addSignedUrlKey"; }
+            }
+
+            /// <summary>Initializes AddSignedUrlKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendBucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendBucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Deletes the specified BackendBucket resource.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -3069,6 +3176,121 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the given Signed URL Key from the backend bucket.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendBucket">Name of the
+        /// BackendBucket resource to which the Signed URL Key should be added. The name should conform to
+        /// RFC1035.</param>
+        /// <param name="keyName">The name of the Signed URL Key to delete.</param>
+        public virtual DeleteSignedUrlKeyRequest DeleteSignedUrlKey(string project, string backendBucket, string keyName)
+        {
+            return new DeleteSignedUrlKeyRequest(service, project, backendBucket, keyName);
+        }
+
+        /// <summary>Deletes the given Signed URL Key from the backend bucket.</summary>
+        public class DeleteSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new DeleteSignedUrlKey request.</summary>
+            public DeleteSignedUrlKeyRequest(Google.Apis.Services.IClientService service, string project, string backendBucket, string keyName)
+                : base(service)
+            {
+                Project = project;
+                BackendBucket = backendBucket;
+                KeyName = keyName;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendBucket resource to which the Signed URL Key should be added. The name should
+            /// conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendBucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendBucket { get; private set; }
+
+            /// <summary>The name of the Signed URL Key to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("keyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string KeyName { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteSignedUrlKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendBuckets/{backendBucket}/deleteSignedUrlKey"; }
+            }
+
+            /// <summary>Initializes DeleteSignedUrlKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendBucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendBucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "keyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "keyName",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -3628,6 +3850,114 @@ namespace Google.Apis.Compute.beta
         }
 
 
+        /// <summary>Adds the given Signed URL Key to the specified backend service.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendService">Name of the
+        /// BackendService resource to which the Signed URL Key should be added. The name should conform to
+        /// RFC1035.</param>
+        public virtual AddSignedUrlKeyRequest AddSignedUrlKey(Google.Apis.Compute.beta.Data.SignedUrlKey body, string project, string backendService)
+        {
+            return new AddSignedUrlKeyRequest(service, body, project, backendService);
+        }
+
+        /// <summary>Adds the given Signed URL Key to the specified backend service.</summary>
+        public class AddSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new AddSignedUrlKey request.</summary>
+            public AddSignedUrlKeyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.SignedUrlKey body, string project, string backendService)
+                : base(service)
+            {
+                Project = project;
+                BackendService = backendService;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendService resource to which the Signed URL Key should be added. The name
+            /// should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.SignedUrlKey Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addSignedUrlKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendServices/{backendService}/addSignedUrlKey"; }
+            }
+
+            /// <summary>Initializes AddSignedUrlKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Retrieves the list of all BackendService resources, regional and global, available to the specified
         /// project.</summary>
         /// <param name="project">Name of the project scoping this request.</param>
@@ -3858,6 +4188,121 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the given Signed URL Key from the specified backend service.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="backendService">Name of the
+        /// BackendService resource to which the Signed URL Key should be added. The name should conform to
+        /// RFC1035.</param>
+        /// <param name="keyName">The name of the Signed URL Key to delete.</param>
+        public virtual DeleteSignedUrlKeyRequest DeleteSignedUrlKey(string project, string backendService, string keyName)
+        {
+            return new DeleteSignedUrlKeyRequest(service, project, backendService, keyName);
+        }
+
+        /// <summary>Deletes the given Signed URL Key from the specified backend service.</summary>
+        public class DeleteSignedUrlKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new DeleteSignedUrlKey request.</summary>
+            public DeleteSignedUrlKeyRequest(Google.Apis.Services.IClientService service, string project, string backendService, string keyName)
+                : base(service)
+            {
+                Project = project;
+                BackendService = backendService;
+                KeyName = keyName;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the BackendService resource to which the Signed URL Key should be added. The name
+            /// should conform to RFC1035.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("backendService", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string BackendService { get; private set; }
+
+            /// <summary>The name of the Signed URL Key to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("keyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string KeyName { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "deleteSignedUrlKey"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/backendServices/{backendService}/deleteSignedUrlKey"; }
+            }
+
+            /// <summary>Initializes DeleteSignedUrlKey parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "backendService", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "backendService",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "keyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "keyName",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -46070,6 +46515,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucketName")]
         public virtual string BucketName { get; set; } 
 
+        /// <summary>Cloud CDN Coniguration for this BackendBucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cdnPolicy")]
+        public virtual BackendBucketCdnPolicy CdnPolicy { get; set; } 
+
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
@@ -46102,6 +46551,26 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message containing Cloud CDN configuration for a backend bucket.</summary>
+    public class BackendBucketCdnPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of seconds up to which the response to a signed URL request will be cached in the CDN. After
+        /// this time period, the Signed URL will be revalidated before being served. Defaults to 1hr (3600s). If this
+        /// field is set, Cloud CDN will internally act as though all responses from this bucket had a ?Cache-Control:
+        /// public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The actual headers served in
+        /// responses will not be altered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUrlCacheMaxAgeSec")]
+        public virtual System.Nullable<long> SignedUrlCacheMaxAgeSec { get; set; } 
+
+        /// <summary>[Output Only] Names of the keys currently configured for Cloud CDN Signed URL on this backend
+        /// bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUrlKeyNames")]
+        public virtual System.Collections.Generic.IList<string> SignedUrlKeyNames { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -46391,6 +46860,19 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The CacheKeyPolicy for this CdnPolicy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cacheKeyPolicy")]
         public virtual CacheKeyPolicy CacheKeyPolicy { get; set; } 
+
+        /// <summary>Number of seconds up to which the response to a signed URL request will be cached in the CDN. After
+        /// this time period, the Signed URL will be revalidated before being served. Defaults to 1hr (3600s). If this
+        /// field is set, Cloud CDN will internally act as though all responses from this backend had a ?Cache-Control:
+        /// public, max-age=[TTL]? header, regardless of any existing Cache-Control header. The actual headers served in
+        /// responses will not be altered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUrlCacheMaxAgeSec")]
+        public virtual System.Nullable<long> SignedUrlCacheMaxAgeSec { get; set; } 
+
+        /// <summary>[Output Only] Names of the keys currently configured for Cloud CDN Signed URL on this backend
+        /// service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signedUrlKeyNames")]
+        public virtual System.Collections.Generic.IList<string> SignedUrlKeyNames { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -54858,6 +55340,25 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>The list of scopes to be made available for this service account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a customer-supplied Signing Key used by Cloud CDN Signed URLs</summary>
+    public class SignedUrlKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the key. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the
+        /// name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means
+        /// the first character must be a lowercase letter, and all following characters must be a dash, lowercase
+        /// letter, or digit, except the last character, which cannot be a dash.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
+        public virtual string KeyName { get; set; } 
+
+        /// <summary>128-bit key value used for signing the URL. The key value must be a valid RFC 4648 Section 5
+        /// base64url encoded string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
+        public virtual string KeyValue { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

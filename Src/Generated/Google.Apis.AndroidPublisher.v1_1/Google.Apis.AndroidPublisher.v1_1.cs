@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v1.1
- *      <tr><th>API Rev<td>20171030 (1033)
+ *      <tr><th>API Rev<td>20171207 (1071)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -603,6 +603,12 @@ namespace Google.Apis.AndroidPublisher.v1_1.Data
         /// <summary>The time the product was purchased, in milliseconds since the epoch (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTime")]
         public virtual System.Nullable<long> PurchaseTime { get; set; } 
+
+        /// <summary>The type of purchase of the inapp product. This field is only set if this purchase was not made
+        /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing
+        /// account)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
+        public virtual System.Nullable<int> PurchaseType { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

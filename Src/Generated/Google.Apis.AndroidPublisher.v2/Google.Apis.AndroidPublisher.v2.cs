@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171030 (1033)
+ *      <tr><th>API Rev<td>20171207 (1071)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7354,6 +7354,12 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseTimeMillis")]
         public virtual System.Nullable<long> PurchaseTimeMillis { get; set; } 
 
+        /// <summary>The type of purchase of the inapp product. This field is only set if this purchase was not made
+        /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing
+        /// account)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
+        public virtual System.Nullable<int> PurchaseType { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -7489,7 +7495,8 @@ namespace Google.Apis.AndroidPublisher.v2.Data
 
         /// <summary>The reason why a subscription was cancelled or is not auto-renewing. Possible values are: - User
         /// cancelled the subscription - Subscription was cancelled by the system, for example because of a billing
-        /// problem - Subscription was replaced with a new subscription</summary>
+        /// problem - Subscription was replaced with a new subscription - Subscription was cancelled by the
+        /// developer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelReason")]
         public virtual System.Nullable<int> CancelReason { get; set; } 
 
@@ -7509,6 +7516,16 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// <summary>This kind represents a subscriptionPurchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The purchase token of the originating purchase if this subscription is one of the following: - Re-
+        /// signup of a cancelled but non-lapsed subscription - Upgrade/downgrade from a previous subscription  For
+        /// example, suppose a user originally signs up and you receive purchase token X, then the user cancels and goes
+        /// through the resignup flow and you receive purchase token Y. If you call this API with purchase token Y, this
+        /// field will be set to X. If you call this API with purchase token X, this field will not be set. If user
+        /// upgrade his subscription after the first resignup. You receive purchase token Z. If you call this API with
+        /// purchase token Z, this field will be set to Y.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedPurchaseToken")]
+        public virtual string LinkedPurchaseToken { get; set; } 
 
         /// <summary>The order id of the latest recurring order associated with the purchase of the
         /// subscription.</summary>
@@ -7530,6 +7547,12 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// British pounds sterling, price_currency_code is "GBP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceCurrencyCode")]
         public virtual string PriceCurrencyCode { get; set; } 
+
+        /// <summary>The type of purchase of the subscription. This field is only set if this purchase was not made
+        /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing
+        /// account)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
+        public virtual System.Nullable<int> PurchaseType { get; set; } 
 
         /// <summary>Time at which the subscription was granted, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimeMillis")]

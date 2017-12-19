@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171213 (1077)
+ *      <tr><th>API Rev<td>20171215 (1079)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -876,6 +876,105 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     }
 
+                    /// <summary> Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
+                    ///
+                    /// This method is invoked by the pull worker to obtain a lease. The pull worker must acknowledge
+                    /// the task via CloudTasks.AcknowledgeTask after they have performed the work associated with the
+                    /// task.
+                    ///
+                    /// The payload is intended to store data that the pull worker needs to perform the work associated
+                    /// with the task. To return the payloads in the LeaseTasksResponse, set
+                    /// LeaseTasksRequest.response_view to Task.View.FULL.
+                    ///
+                    /// A maximum of 10 qps of CloudTasks.LeaseTasks requests are allowed per queue.
+                    /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
+                    /// google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
+                    /// RateLimits.max_tasks_dispatched_per_second is exceeded.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required.
+                    ///
+                    /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
+                    public virtual LeaseRequest Lease(Google.Apis.CloudTasks.v2beta2.Data.LeaseTasksRequest body, string parent)
+                    {
+                        return new LeaseRequest(service, body, parent);
+                    }
+
+                    /// <summary> Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
+                    ///
+                    /// This method is invoked by the pull worker to obtain a lease. The pull worker must acknowledge
+                    /// the task via CloudTasks.AcknowledgeTask after they have performed the work associated with the
+                    /// task.
+                    ///
+                    /// The payload is intended to store data that the pull worker needs to perform the work associated
+                    /// with the task. To return the payloads in the LeaseTasksResponse, set
+                    /// LeaseTasksRequest.response_view to Task.View.FULL.
+                    ///
+                    /// A maximum of 10 qps of CloudTasks.LeaseTasks requests are allowed per queue.
+                    /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
+                    /// google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
+                    /// RateLimits.max_tasks_dispatched_per_second is exceeded.</summary>
+                    public class LeaseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.LeaseTasksResponse>
+                    {
+                        /// <summary>Constructs a new Lease request.</summary>
+                        public LeaseRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.LeaseTasksRequest body, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required.
+                        ///
+                        /// The queue name. For example:
+                        /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudTasks.v2beta2.Data.LeaseTasksRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "lease"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v2beta2/{+parent}/tasks:lease"; }
+                        }
+
+                        /// <summary>Initializes Lease parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                                });
+                        }
+
+                    }
+
                     /// <summary>Lists the tasks in a queue.
                     ///
                     /// By default response_view is Task.View.BASIC; not all information is retrieved by default due to
@@ -1336,6 +1435,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Creates a queue.
                 ///
+                /// Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31
+                /// days old, the task will be deleted regardless of whether it was dispatched or not.
+                ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
                 /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
@@ -1352,6 +1454,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                 }
 
                 /// <summary>Creates a queue.
+                ///
+                /// Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31
+                /// days old, the task will be deleted regardless of whether it was dispatched or not.
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
@@ -1679,6 +1784,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Requested page size.
+                    ///
+                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
+                    /// than requested might be returned, even if more queues exist; use
+                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
                     /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
                     /// syntax is the same as described in [Stackdriver's Advanced Logs
@@ -1699,14 +1812,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// ListQueuesRequest.filter while iterating through pages.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size.
-                    ///
-                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
-                    /// than requested might be returned, even if more queues exist; use
-                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1742,6 +1847,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1759,15 +1873,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
                 }
@@ -1775,6 +1880,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>Updates a queue.
                 ///
                 /// This method creates the queue if it does not exist and updates the queue if it does exist.
+                ///
+                /// Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31
+                /// days old, the task will be deleted regardless of whether it was dispatched or not.
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
@@ -1800,6 +1908,9 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>Updates a queue.
                 ///
                 /// This method creates the queue if it does not exist and updates the queue if it does exist.
+                ///
+                /// Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31
+                /// days old, the task will be deleted regardless of whether it was dispatched or not.
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
@@ -2867,6 +2978,75 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for pulling tasks using CloudTasks.LeaseTasks.</summary>
+    public class LeaseTasksRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>`filter` can be used to specify a subset of tasks to lease.
+        ///
+        /// When `filter` is set to `tag=` then the LeaseTasksResponse will contain only tasks whose LeaseMessage.tag is
+        /// equal to ``. `` must be less than 500 bytes.
+        ///
+        /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have the same tag as the task with the
+        /// oldest schedule_time will be returned.
+        ///
+        /// Grammar Syntax:
+        ///
+        /// * `filter = "tag=" tag | "tag_function=" function`
+        ///
+        /// * `tag = string | bytes`
+        ///
+        /// * `function = "oldest_tag()"`
+        ///
+        /// The `oldest_tag()` function returns tasks which have the same tag as the oldest task (ordered by schedule
+        /// time).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>The duration of the lease.
+        ///
+        /// Each task returned in the LeaseTasksResponse will have its Task.schedule_time set to the current time plus
+        /// the `lease_duration`. A task that has been returned in a LeaseTasksResponse is leased -- that task will not
+        /// be returned in a different LeaseTasksResponse before the Task.schedule_time.
+        ///
+        /// After the pull worker has successfully finished the work associated with the task, the pull worker must call
+        /// CloudTasks.AcknowledgeTask. If the task is not acknowledged via CloudTasks.AcknowledgeTask before the
+        /// Task.schedule_time then it will be returned in a later LeaseTasksResponse so that another pull worker can
+        /// process it.
+        ///
+        /// The maximum lease duration is 1 week. `lease_duration` will be truncated to the nearest second.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("leaseDuration")]
+        public virtual object LeaseDuration { get; set; } 
+
+        /// <summary>The maximum number of tasks to lease. The maximum that can be requested is 1000.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxTasks")]
+        public virtual System.Nullable<int> MaxTasks { get; set; } 
+
+        /// <summary>The response_view specifies which subset of the Task will be returned.
+        ///
+        /// By default response_view is Task.View.BASIC; not all information is retrieved by default because some data,
+        /// such as payloads, might be desirable to return only when needed because of its large size or because of the
+        /// sensitivity of data that it contains.
+        ///
+        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
+        /// Task.name resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
+        public virtual string ResponseView { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for leasing tasks using CloudTasks.LeaseTasks.</summary>
+    public class LeaseTasksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The leased tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
+        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

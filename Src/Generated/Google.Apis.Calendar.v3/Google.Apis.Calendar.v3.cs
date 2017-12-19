@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171210 (1074)
+ *      <tr><th>API Rev<td>20171212 (1076)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -2511,8 +2511,8 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Version number of conference data supported by the API client. Version 0 assumes no conference
             /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
-            /// ConferenceData as well as for creating new conferences using the CreateConferenceRequest. The default is
-            /// 0.</summary>
+            /// ConferenceData as well as for creating new conferences using the createRequest field of conferenceData.
+            /// The default is 0.</summary>
             /// [minimum: 0]
             /// [maximum: 1]
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -2613,8 +2613,8 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Version number of conference data supported by the API client. Version 0 assumes no conference
             /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
-            /// ConferenceData as well as for creating new conferences using the CreateConferenceRequest. The default is
-            /// 0.</summary>
+            /// ConferenceData as well as for creating new conferences using the createRequest field of conferenceData.
+            /// The default is 0.</summary>
             /// [minimum: 0]
             /// [maximum: 1]
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -3407,8 +3407,8 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Version number of conference data supported by the API client. Version 0 assumes no conference
             /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
-            /// ConferenceData as well as for creating new conferences using the CreateConferenceRequest. The default is
-            /// 0.</summary>
+            /// ConferenceData as well as for creating new conferences using the createRequest field of conferenceData.
+            /// The default is 0.</summary>
             /// [minimum: 0]
             /// [maximum: 1]
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -3662,8 +3662,8 @@ namespace Google.Apis.Calendar.v3
 
             /// <summary>Version number of conference data supported by the API client. Version 0 assumes no conference
             /// data support and ignores conference data in the event's body. Version 1 enables support for copying of
-            /// ConferenceData as well as for creating new conferences using the CreateConferenceRequest. The default is
-            /// 0.</summary>
+            /// ConferenceData as well as for creating new conferences using the createRequest field of conferenceData.
+            /// The default is 0.</summary>
             /// [minimum: 0]
             /// [maximum: 1]
             [Google.Apis.Util.RequestParameterAttribute("conferenceDataVersion", Google.Apis.Util.RequestParameterType.Query)]
@@ -4915,7 +4915,9 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The conference solution type. If a client encounters an unfamiliar or empty type, it should still
         /// be able to display the entry points. However, it should disallow modifications. The possible values are: -
-        /// "eventHangout" - "eventNamedHangout" - "hangoutsMeet"</summary>
+        /// "eventHangout" for Hangouts for consumers (http://hangouts.google.com) - "eventNamedHangout" for Classic
+        /// Hangouts for GSuite users (http://hangouts.google.com) - "hangoutsMeet" for Hangouts Meet
+        /// (http://meet.google.com)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -5054,7 +5056,8 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string ColorId { get; set; } 
 
         /// <summary>The conference-related information, such as details of a Hangouts Meet conference. To create new
-        /// conference details use the createRequest field.</summary>
+        /// conference details use the createRequest field. To persist your changes, remember to set the
+        /// conferenceDataVersion request parameter to 1 for all event modification requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceData")]
         public virtual ConferenceData ConferenceData { get; set; } 
 

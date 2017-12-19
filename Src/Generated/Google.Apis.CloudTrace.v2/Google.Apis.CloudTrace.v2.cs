@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/trace'>Stackdriver Trace API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171202 (1066)
+ *      <tr><th>API Rev<td>20171214 (1078)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/trace'>
  *              https://cloud.google.com/trace</a>
@@ -416,16 +416,16 @@ namespace Google.Apis.CloudTrace.v2
                 ///
                 /// [SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte
                 /// array.</param>
-                public virtual CreateRequest Create(Google.Apis.CloudTrace.v2.Data.Span body, string name)
+                public virtual CreateSpanRequest CreateSpan(Google.Apis.CloudTrace.v2.Data.Span body, string name)
                 {
-                    return new CreateRequest(service, body, name);
+                    return new CreateSpanRequest(service, body, name);
                 }
 
                 /// <summary>Creates a new span.</summary>
-                public class CreateRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Span>
+                public class CreateSpanRequest : CloudTraceBaseServiceRequest<Google.Apis.CloudTrace.v2.Data.Span>
                 {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTrace.v2.Data.Span body, string name)
+                    /// <summary>Constructs a new CreateSpan request.</summary>
+                    public CreateSpanRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTrace.v2.Data.Span body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -454,7 +454,7 @@ namespace Google.Apis.CloudTrace.v2
                     ///<summary>Gets the method name.</summary>
                     public override string MethodName
                     {
-                        get { return "create"; }
+                        get { return "createSpan"; }
                     }
 
                     ///<summary>Gets the HTTP method.</summary>
@@ -466,10 +466,10 @@ namespace Google.Apis.CloudTrace.v2
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2/{+name}/spans"; }
+                        get { return "v2/{+name}"; }
                     }
 
-                    /// <summary>Initializes Create parameter list.</summary>
+                    /// <summary>Initializes CreateSpan parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -481,7 +481,7 @@ namespace Google.Apis.CloudTrace.v2
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/traces/[^/]+$",
+                                Pattern = @"^projects/[^/]+/traces/[^/]+/spans/[^/]+$",
                             });
                     }
 
