@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171215 (1079)
+ *      <tr><th>API Rev<td>20171219 (1083)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -1784,6 +1784,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>A token identifying the page of results to return.
+                    ///
+                    /// To request the first page results, page_token must be empty. To request the next page of
+                    /// results, page_token must be the value of ListQueuesResponse.next_page_token returned from the
+                    /// previous call to CloudTasks.ListQueues method. It is an error to switch the value of
+                    /// ListQueuesRequest.filter while iterating through pages.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Requested page size.
                     ///
                     /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
@@ -1803,15 +1812,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// returned.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>A token identifying the page of results to return.
-                    ///
-                    /// To request the first page results, page_token must be empty. To request the next page of
-                    /// results, page_token must be the value of ListQueuesResponse.next_page_token returned from the
-                    /// previous call to CloudTasks.ListQueues method. It is an error to switch the value of
-                    /// ListQueuesRequest.filter while iterating through pages.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1847,6 +1847,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1859,15 +1868,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2502,10 +2502,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2513,6 +2509,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2548,15 +2548,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2569,6 +2560,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2624,12 +2624,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     ///
     /// * `url =` AppEngineRouting.host `+` AppEngineHttpRequest.relative_url
     ///
-    /// The task will be sent to a task handler by an HTTP request using the specified AppEngineHttpRequest.http_method
-    /// (for example POST, HTTP GET, etc). The task attempt has succeeded if the task handler returns an HTTP response
-    /// code in the range [200 - 299]. Error 503 is considered an App Engine system error instead of an application
-    /// error. Requests returning error 503 will be retried regardless of retry configuration and not counted against
-    /// retry counts. Any other response code or a failure to receive a response before the deadline is a failed
-    /// attempt.</summary>
+    /// The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` -
+    /// `299`]. `503` is considered an App Engine system error instead of an application error. Requests returning error
+    /// `503` will be retried regardless of retry configuration and not counted against retry counts. Any other response
+    /// code or a failure to receive a response before the deadline is a failed attempt.</summary>
     public class AppEngineHttpRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Task-level setting for App Engine routing.
@@ -2663,9 +2661,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// * `Host` * `X-Google-*` * `X-AppEngine-*`
         ///
-        /// In addition, some App Engine headers, which contain task-specific information, are also be sent to the task
-        /// handler; see [request headers](/appengine/docs/python/taskqueue/push/creating-
-        /// handlers#reading_request_headers).</summary>
+        /// In addition, Cloud Tasks sets some headers when the task is dispatched, such as headers containing
+        /// information about the task; see [request headers](/appengine/docs/python/taskqueue/push/creating-
+        /// handlers#reading_request_headers). These headers are set only when the task is dispatched, so they are not
+        /// visible when the task is returned in a Cloud Tasks response.
+        ///
+        /// Although there is no specific limit for the maximum number of headers or the size, there is a limit on the
+        /// maximum size of the Task. For more information, see the CloudTasks.CreateTask documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
 
@@ -2675,8 +2677,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// http_method, otherwise the task attempt will fail with error code 405 (Method Not Allowed). See [Writing a
         /// push task request handler](/appengine/docs/java/taskqueue/push/creating-
         /// handlers#writing_a_push_task_request_handler) and the documentation for the request handlers in the language
-        /// your app is written in e.g. [python
-        /// RequestHandler](/appengine/docs/python/tools/webapp/requesthandlerclass).</summary>
+        /// your app is written in e.g. [Python Request
+        /// Handler](/appengine/docs/python/tools/webapp/requesthandlerclass).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; } 
 
@@ -2987,7 +2989,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>`filter` can be used to specify a subset of tasks to lease.
         ///
-        /// When `filter` is set to `tag=` then the LeaseTasksResponse will contain only tasks whose LeaseMessage.tag is
+        /// When `filter` is set to `tag=` then the LeaseTasksResponse will contain only tasks whose PullMessage.tag is
         /// equal to ``. `` must be less than 500 bytes.
         ///
         /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have the same tag as the task with the
@@ -3709,13 +3711,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// This count includes tasks which have been dispatched but haven't received a response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptDispatchCount")]
-        public virtual System.Nullable<long> AttemptDispatchCount { get; set; } 
+        public virtual System.Nullable<int> AttemptDispatchCount { get; set; } 
 
         /// <summary>Output only. The number of attempts which have received a response.
         ///
         /// This field is not calculated for [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attemptResponseCount")]
-        public virtual System.Nullable<long> AttemptResponseCount { get; set; } 
+        public virtual System.Nullable<int> AttemptResponseCount { get; set; } 
 
         /// <summary>Output only. The status of the task's first attempt.
         ///

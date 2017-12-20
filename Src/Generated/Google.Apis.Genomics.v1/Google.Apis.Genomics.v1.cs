@@ -3412,11 +3412,6 @@ namespace Google.Apis.Genomics.v1
                 [Google.Apis.Util.RequestParameterAttribute("referenceId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ReferenceId { get; private set; }
 
-                /// <summary>The maximum number of bases to return in a single page. If unspecified, defaults to 200Kbp
-                /// (kilo base pairs). The maximum value is 10Mbp (mega base pairs).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The start position (0-based) of this query. Defaults to 0.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> Start { get; set; }
@@ -3431,6 +3426,11 @@ namespace Google.Apis.Genomics.v1
                 /// response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of bases to return in a single page. If unspecified, defaults to 200Kbp
+                /// (kilo base pairs). The maximum value is 10Mbp (mega base pairs).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3466,15 +3466,6 @@ namespace Google.Apis.Genomics.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "start", new Google.Apis.Discovery.Parameter
                         {
                             Name = "start",
@@ -3496,6 +3487,15 @@ namespace Google.Apis.Genomics.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

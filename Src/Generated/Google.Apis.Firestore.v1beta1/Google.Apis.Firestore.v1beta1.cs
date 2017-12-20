@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/firestore'>Google Cloud Firestore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20171205 (1069)
+ *      <tr><th>API Rev<td>20171212 (1076)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/firestore'>
  *              https://cloud.google.com/firestore</a>
@@ -972,6 +972,10 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("collectionId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CollectionId { get; private set; }
 
+                    /// <summary>Reads documents in a transaction.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Transaction { get; set; }
+
                     /// <summary>The order to sort results by. For example: `priority desc, name`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
@@ -1001,10 +1005,6 @@ namespace Google.Apis.Firestore.v1beta1
                     /// <summary>The maximum number of documents to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Reads documents in a transaction.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("transaction", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Transaction { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1045,6 +1045,15 @@ namespace Google.Apis.Firestore.v1beta1
                                 Name = "collectionId",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "transaction", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "transaction",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1097,15 +1106,6 @@ namespace Google.Apis.Firestore.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "transaction", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "transaction",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1857,6 +1857,10 @@ namespace Google.Apis.Firestore.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>The standard List page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1864,10 +1868,6 @@ namespace Google.Apis.Firestore.v1beta1
                     /// <summary>The standard List page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1903,6 +1903,15 @@ namespace Google.Apis.Firestore.v1beta1
                                 Pattern = @"^projects/[^/]+/databases/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1915,15 +1924,6 @@ namespace Google.Apis.Firestore.v1beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
