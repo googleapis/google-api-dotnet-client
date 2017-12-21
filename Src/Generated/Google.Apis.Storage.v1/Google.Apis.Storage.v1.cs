@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171101 (1035)
+ *      <tr><th>API Rev<td>20171212 (1076)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -1485,6 +1485,96 @@ namespace Google.Apis.Storage.v1
                     {
                         Name = "projection",
                         IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProject", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProject",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Locks retention policy on a bucket.</summary>
+        /// <param name="bucket">Name of a bucket.</param>
+        /// <param name="ifMetagenerationMatch">Makes the operation
+        /// conditional on whether bucket's current metageneration matches the given value.</param>
+        public virtual LockRetentionPolicyRequest LockRetentionPolicy(string bucket, long ifMetagenerationMatch)
+        {
+            return new LockRetentionPolicyRequest(service, bucket, ifMetagenerationMatch);
+        }
+
+        /// <summary>Locks retention policy on a bucket.</summary>
+        public class LockRetentionPolicyRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Bucket>
+        {
+            /// <summary>Constructs a new LockRetentionPolicy request.</summary>
+            public LockRetentionPolicyRequest(Google.Apis.Services.IClientService service, string bucket, long ifMetagenerationMatch)
+                : base(service)
+            {
+                Bucket = bucket;
+                IfMetagenerationMatch = ifMetagenerationMatch;
+                InitParameters();
+            }
+
+
+            /// <summary>Name of a bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Makes the operation conditional on whether bucket's current metageneration matches the given
+            /// value.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual long IfMetagenerationMatch { get; private set; }
+
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "lockRetentionPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "b/{bucket}/lockRetentionPolicy"; }
+            }
+
+            /// <summary>Initializes LockRetentionPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "bucket", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "bucket",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "ifMetagenerationMatch",
+                        IsRequired = true,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -4916,7 +5006,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
             /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
-            /// kms_key_name value, if any.</summary>
+            /// kms_key_name value, if any. Limited availability; usable only by enabled projects.</summary>
             [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KmsKeyName { get; set; }
 
@@ -5202,7 +5292,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings
             /// /my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's
-            /// kms_key_name value, if any.</summary>
+            /// kms_key_name value, if any. Limited availability; usable only by enabled projects.</summary>
             [Google.Apis.Util.RequestParameterAttribute("kmsKeyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string KmsKeyName { get; set; }
 
@@ -6830,6 +6920,17 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cors")]
         public virtual System.Collections.Generic.IList<Bucket.CorsData> Cors { get; set; } 
 
+        /// <summary>Defines the default value for Event-Based hold on newly created objects in this bucket. Event-Based
+        /// hold is a way to retain objects indefinitely until an event occurs, signified by the hold's release. After
+        /// being released, such objects will be subject to bucket-level retention (if any). One sample use case of this
+        /// flag is for banks to hold loan documents for at least 3 years after loan is paid in full. Here bucket-level
+        /// retention is 3 years and the event is loan being paid in full. In this example these objects will be held
+        /// intact for any number of years until the event has occurred (hold is released) and then 3 more years after
+        /// that. Objects under Event-Based hold cannot be deleted, overwritten or archived until the hold is
+        /// removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultEventBasedHold")]
+        public virtual System.Nullable<bool> DefaultEventBasedHold { get; set; } 
+
         /// <summary>Default access controls to apply to new objects when no ACL is provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultObjectAcl")]
         public virtual System.Collections.Generic.IList<ObjectAccessControl> DefaultObjectAcl { get; set; } 
@@ -6843,7 +6944,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>The ID of the bucket. For buckets, the id and name properities are the same.</summary>
+        /// <summary>The ID of the bucket. For buckets, the id and name properties are the same.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; } 
 
@@ -6884,6 +6985,15 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The project number of the project the bucket belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<ulong> ProjectNumber { get; set; } 
+
+        /// <summary>Defines the retention policy for a bucket. The Retention policy enforces a minimum retention time
+        /// for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete
+        /// objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention
+        /// policy can be modified or removed from the bucket via the UpdateBucketMetadata RPC. A locked retention
+        /// policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or
+        /// decrease period of a locked retention policy will result in a PERMISSION_DENIED error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicy")]
+        public virtual Bucket.RetentionPolicyData RetentionPolicy { get; set; } 
 
         /// <summary>The URI of this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -6947,7 +7057,7 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The bucket's billing configuration.</summary>
         public class BillingData
         {
-            /// <summary>When set to true, bucket is requester pays.</summary>
+            /// <summary>When set to true, Requester Pays is enabled for this bucket.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("requesterPays")]
             public virtual System.Nullable<bool> RequesterPays { get; set; } 
 
@@ -6981,6 +7091,8 @@ namespace Google.Apis.Storage.v1.Data
         /// specified.</summary>
         public class EncryptionData
         {
+            /// <summary>A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no
+            /// encryption method is specified. Limited availability; usable only by enabled projects.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
             public virtual string DefaultKmsKeyName { get; set; } 
 
@@ -7080,6 +7192,44 @@ namespace Google.Apis.Storage.v1.Data
             /// <summary>The ID for the entity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
             public virtual string EntityId { get; set; } 
+
+        }    
+
+        /// <summary>Defines the retention policy for a bucket. The Retention policy enforces a minimum retention time
+        /// for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete
+        /// objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention
+        /// policy can be modified or removed from the bucket via the UpdateBucketMetadata RPC. A locked retention
+        /// policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or
+        /// decrease period of a locked retention policy will result in a PERMISSION_DENIED error.</summary>
+        public class RetentionPolicyData
+        {
+            /// <summary>The time from which policy was enforced and effective. RFC 3339 format.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
+            public virtual string EffectiveTimeRaw { get; set; }
+
+            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EffectiveTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnore]
+            public virtual System.Nullable<System.DateTime> EffectiveTime
+            {
+                get
+                {
+                    return Google.Apis.Util.Utilities.GetDateTimeFromString(EffectiveTimeRaw);
+                }
+                set
+                {
+                    EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+                }
+            }
+
+            /// <summary>Once locked, an object retention policy cannot be modified.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("isLocked")]
+            public virtual System.Nullable<bool> IsLocked { get; set; } 
+
+            /// <summary>Specifies the duration that objects need to be retained. Retention duration must be greater
+            /// than zero and less than 100 years. Note that enforcement of retention periods less than a day is not
+            /// guaranteed. Such periods should only be used for testing purposes.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("retentionPeriod")]
+            public virtual System.Nullable<long> RetentionPeriod { get; set; } 
 
         }    
 
@@ -7427,6 +7577,15 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
+        /// <summary>Defines the Event-Based hold for an object. Event-Based hold is a way to retain objects
+        /// indefinitely until an event occurs, signified by the hold's release. After being released, such objects will
+        /// be subject to bucket-level retention (if any). One sample use case of this flag is for banks to hold loan
+        /// documents for at least 3 years after loan is paid in full. Here bucket-level retention is 3 years and the
+        /// event is loan being paid in full. In this example these objects will be held intact for any number of years
+        /// until the event has occurred (hold is released) and then 3 more years after that.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventBasedHold")]
+        public virtual System.Nullable<bool> EventBasedHold { get; set; } 
+
         /// <summary>The content generation of this object. Used for object versioning.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; } 
@@ -7439,7 +7598,8 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key.</summary>
+        /// <summary>Cloud KMS Key used to encrypt this object, if the object is encrypted by such a key. Limited
+        /// availability; usable only by enabled projects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; } 
 
@@ -7470,6 +7630,28 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
         public virtual Object.OwnerData Owner { get; set; } 
 
+        /// <summary>Specifies the earliest time that the object's retention period expires. This value is server-
+        /// determined and is in RFC 3339 format. Note 1: This field is not provided for objects with an active Event-
+        /// Based hold, since retention expiration is unknown until the hold is removed. Note 2: This value can be
+        /// provided even when TemporaryHold is set (so that the user can reason about policy without having to first
+        /// unset the TemporaryHold).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionExpirationTime")]
+        public virtual string RetentionExpirationTimeRaw { get; set; }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RetentionExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnore]
+        public virtual System.Nullable<System.DateTime> RetentionExpirationTime
+        {
+            get
+            {
+                return Google.Apis.Util.Utilities.GetDateTimeFromString(RetentionExpirationTimeRaw);
+            }
+            set
+            {
+                RetentionExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+        }
+
         /// <summary>The link to this object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -7481,6 +7663,13 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>Storage class of the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
         public virtual string StorageClass { get; set; } 
+
+        /// <summary>Defines the temporary hold for an object. This flag is used to enforce a temporary hold on an
+        /// object. While it is set to true, the object is protected against deletion and overwrites. A common use case
+        /// of this flag is regulatory investigations where objects need to be retained while the investigation is
+        /// ongoing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("temporaryHold")]
+        public virtual System.Nullable<bool> TemporaryHold { get; set; } 
 
         /// <summary>The creation time of the object in RFC 3339 format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeCreated")]

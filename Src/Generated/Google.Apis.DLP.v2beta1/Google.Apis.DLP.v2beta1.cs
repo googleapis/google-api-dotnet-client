@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171212 (1076)
+ *      <tr><th>API Rev<td>20171219 (1083)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -939,6 +939,10 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -946,10 +950,6 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -985,6 +985,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -997,15 +1006,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1088,15 +1088,6 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood.
-                    ///
-                    /// Examples:
-                    ///
-                    /// - info_type=EMAIL_ADDRESS - info_type=PHONE_NUMBER,EMAIL_ADDRESS - likelihood=VERY_LIKELY -
-                    /// likelihood=VERY_LIKELY,LIKELY - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The value returned by the last `ListInspectFindingsResponse`; indicates that this is a
                     /// continuation of a prior `ListInspectFindings` call, and that the system should return the next
                     /// page of data.</summary>
@@ -1107,6 +1098,15 @@ namespace Google.Apis.DLP.v2beta1
                     /// value.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood.
+                    ///
+                    /// Examples:
+                    ///
+                    /// - info_type=EMAIL_ADDRESS - info_type=PHONE_NUMBER,EMAIL_ADDRESS - likelihood=VERY_LIKELY -
+                    /// likelihood=VERY_LIKELY,LIKELY - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1142,15 +1142,6 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1163,6 +1154,15 @@ namespace Google.Apis.DLP.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3557,8 +3557,8 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>Message for detecting output from deidentification transformations such as
     /// [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2beta1/content/deidentify#CryptoReplaceFfxFpeConfig).
     /// These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as
-    /// output. This should be used in conjunction with a field on the transformation such as
-    /// `surrogate_info_type`.</summary>
+    /// output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`.
+    /// This custom info type does not support the use of `detection_rules`.</summary>
     public class GooglePrivacyDlpV2beta1SurrogateType : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3626,15 +3626,16 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Summary of a single tranformation.</summary>
+    /// <summary>Summary of a single tranformation. Only one of 'transformation', 'field_transformation', or
+    /// 'record_suppress' will be set.</summary>
     public class GooglePrivacyDlpV2beta1TransformationSummary : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Set if the transformation was limited to a specific FieldId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual GooglePrivacyDlpV2beta1FieldId Field { get; set; } 
 
-        /// <summary>The field transformation that was applied. This list will contain multiple only in the case of
-        /// errors.</summary>
+        /// <summary>The field transformation that was applied. If multiple field transformations are requested for a
+        /// single field, this list will contain all of them; otherwise, only one is supplied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldTransformations")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1FieldTransformation> FieldTransformations { get; set; } 
 
@@ -3652,6 +3653,10 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>The specific transformation these stats apply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transformation")]
         public virtual GooglePrivacyDlpV2beta1PrimitiveTransformation Transformation { get; set; } 
+
+        /// <summary>Total size in bytes that were transformed in some way.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformedBytes")]
+        public virtual System.Nullable<long> TransformedBytes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3684,7 +3689,10 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Set of primitive values supported by the system.</summary>
+    /// <summary>Set of primitive values supported by the system. Note that for the purposes of inspection or
+    /// transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8
+    /// encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9,
+    /// even though an int64 only holds up to 8 bytes of data.</summary>
     public class GooglePrivacyDlpV2beta1Value : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]

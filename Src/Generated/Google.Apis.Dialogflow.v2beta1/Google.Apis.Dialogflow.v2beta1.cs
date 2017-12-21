@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171212 (1076)
+ *      <tr><th>API Rev<td>20171218 (1082)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1428,6 +1428,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1440,13 +1447,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1488,18 +1488,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3820,7 +3820,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The response message for Agents.ExportAgent.</summary>
     public class ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The exported agent.</summary>
+        /// <summary>The exported agent.
+        ///
+        /// Example for how to export an agent to a zip file via a command line:
+        ///
+        /// curl \ 'https://dialogflow.googleapis.com/v2beta1/projects//agent:export'\ -X POST \ -H 'Authorization:
+        /// Bearer '$(gcloud auth print-access-token) \ -H 'Accept: application/json' \ -H 'Content-Type:
+        /// application/json' \ --compressed \ --data-binary '{}' \ | grep agentContent | sed -e 's/.*"agentContent":
+        /// "\([^"]*\)".\1/' \ | base64 --decode > </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; } 
 
@@ -3840,9 +3847,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         ///
         /// Example for how to import an agent via the command line:
         ///
-        /// curl -H "Authorization: Bearer "$(gcloud auth print-access-token) \ -H "Content-Type: application/json;
-        /// charset=utf-8" \ --data "{ 'agentContent': '$(cat  | base64 -w 0)' }" \
-        /// "https://dialogflow.googleapis.com/v2beta1/projects//agent:import"</summary>
+        /// curl \ 'https://dialogflow.googleapis.com/v2beta1/projects//agent:import\ -X POST \ -H 'Authorization:
+        /// Bearer '$(gcloud auth print-access-token) \ -H 'Accept: application/json' \ -H 'Content-Type:
+        /// application/json' \ --compressed \ --data-binary "{ 'agentContent': '$(cat  | base64 -w 0)' }"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; } 
 
@@ -4729,9 +4736,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         ///
         /// Example for how to restore an agent via the command line:
         ///
-        /// curl -H "Authorization: Bearer "$(gcloud auth print-access-token) \ -H "Content-Type: application/json;
-        /// charset=utf-8" \ --data "{ 'agentContent': '$(cat  | base64 -w 0)' }" \
-        /// "https://dialogflow.googleapis.com/v2beta1/projects//agent:restore"</summary>
+        /// curl \ 'https://dialogflow.googleapis.com/v2beta1/projects//agent:restore\ -X POST \ -H 'Authorization:
+        /// Bearer '$(gcloud auth print-access-token) \ -H 'Accept: application/json' \ -H 'Content-Type:
+        /// application/json' \ --compressed \ --data-binary "{ 'agentContent': '$(cat  | base64 -w 0)' }" \</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; } 
 

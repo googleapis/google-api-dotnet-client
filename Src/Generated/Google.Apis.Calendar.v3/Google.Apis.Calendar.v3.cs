@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171212 (1076)
+ *      <tr><th>API Rev<td>20171217 (1081)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -4858,6 +4858,11 @@ namespace Google.Apis.Calendar.v3.Data
         /// is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entryPoints")]
         public virtual System.Collections.Generic.IList<EntryPoint> EntryPoints { get; set; } 
+
+        /// <summary>Additional notes (such as instructions from the domain administrator, legal notices) to display to
+        /// the user. Can contain HTML. The maximum length is 2048 characters. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notes")]
+        public virtual string Notes { get; set; } 
 
         /// <summary>The signature of the conference data. Genereated on server side. Must be preserved while copying
         /// the conference data between events, otherwise the conference data will not be copied. Unset for a conference

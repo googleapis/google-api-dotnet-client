@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager Alpha API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20171201 (1065)
+ *      <tr><th>API Rev<td>20171214 (1078)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -4273,6 +4273,10 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collection")]
         public virtual string Collection { get; set; } 
 
+        /// <summary>Custom verb method mappings to support unordered list API mappings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodMap")]
+        public virtual MethodMap MethodMap { get; set; } 
+
         /// <summary>The options to apply to this resource-level override</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual Options Options { get; set; } 
@@ -4839,6 +4843,34 @@ namespace Google.Apis.DeploymentManagerAlpha.alpha.Data
         /// <summary>Output only. A token used to continue a truncated list request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Deployment Manager will call these methods during the events of
+    /// creation/deletion/update/get/setIamPolicy</summary>
+    public class MethodMap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The action identifier for the create method to be used for this collection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("create")]
+        public virtual string Create { get; set; } 
+
+        /// <summary>The action identifier for the delete method to be used for this collection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delete")]
+        public virtual string Delete { get; set; } 
+
+        /// <summary>The action identifier for the get method to be used for this collection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("get")]
+        public virtual string Get { get; set; } 
+
+        /// <summary>The action identifier for the setIamPolicy method to be used for this collection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setIamPolicy")]
+        public virtual string SetIamPolicy { get; set; } 
+
+        /// <summary>The action identifier for the update method to be used for this collection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("update")]
+        public virtual string Update { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

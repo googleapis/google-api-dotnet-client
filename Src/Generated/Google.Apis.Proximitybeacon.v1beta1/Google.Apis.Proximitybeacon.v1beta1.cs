@@ -1577,6 +1577,11 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             }
 
 
+            /// <summary>The project id to list beacons under. If not present then the project credential that made the
+            /// request is used as the project. Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
             /// <summary>A pagination token obtained from a previous request to list beacons.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1628,11 +1633,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
-            /// <summary>The project id to list beacons under. If not present then the project credential that made the
-            /// request is used as the project. Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1658,6 +1658,15 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1679,15 +1688,6 @@ namespace Google.Apis.Proximitybeacon.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
