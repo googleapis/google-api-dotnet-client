@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171211 (1075)
+ *      <tr><th>API Rev<td>20171218 (1082)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -1109,6 +1109,11 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// <summary>Free-form text providing details on the error cause of the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
+
+        /// <summary>Subject to whom this error applies. See the specific code enum for more details on this field. For
+        /// example: - “project:” - “folder:” - “organization:”</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual string Subject { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

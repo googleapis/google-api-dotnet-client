@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171202 (1066)
+ *      <tr><th>API Rev<td>20171217 (1081)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3789,6 +3789,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
         public virtual string StatementType { get; set; } 
 
+        /// <summary>[Output-only] Describes a timeline of job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeline")]
+        public virtual System.Collections.Generic.IList<QueryTimelineSample> Timeline { get; set; } 
+
         /// <summary>[Output-only] Total bytes billed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesBilled")]
         public virtual System.Nullable<long> TotalBytesBilled { get; set; } 
@@ -4127,6 +4131,37 @@ namespace Google.Apis.Bigquery.v2.Data
         /// rows in this single page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalRows")]
         public virtual System.Nullable<ulong> TotalRows { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class QueryTimelineSample : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Total number of active workers. This does not correspond directly to slot usage. This is the
+        /// largest value observed since the last sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeInputs")]
+        public virtual System.Nullable<int> ActiveInputs { get; set; } 
+
+        /// <summary>Total parallel units of work completed by this query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedInputs")]
+        public virtual System.Nullable<int> CompletedInputs { get; set; } 
+
+        /// <summary>Total parallel units of work completed by the currently active stages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedInputsForActiveStages")]
+        public virtual System.Nullable<int> CompletedInputsForActiveStages { get; set; } 
+
+        /// <summary>Milliseconds elapsed since the start of query execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elapsedMs")]
+        public virtual System.Nullable<long> ElapsedMs { get; set; } 
+
+        /// <summary>Total parallel units of work remaining for the active stages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingInputs")]
+        public virtual System.Nullable<long> PendingInputs { get; set; } 
+
+        /// <summary>Cumulative slot-ms consumed by the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]
+        public virtual System.Nullable<long> TotalSlotMs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1927,15 +1927,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous
-                /// list request to get the next page of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Specifies the number of results to return per page. If there are fewer elements than the
                 /// specified number, returns all elements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a previous
+                /// list request to get the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1971,18 +1971,18 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2448,9 +2448,9 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         ///
         /// projects/[PROJECT_ID]/configs/[CONFIG_NAME]
         ///
-        /// The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches [0-9A-
-        /// Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])? regular expression. The length of `[CONFIG_NAME]` must be less
-        /// than 64 characters.
+        /// The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0
+        /// -9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be
+        /// less than 64 characters.
         ///
         /// You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format.
         /// After you create the resource, you cannot change the resource's name.</summary>

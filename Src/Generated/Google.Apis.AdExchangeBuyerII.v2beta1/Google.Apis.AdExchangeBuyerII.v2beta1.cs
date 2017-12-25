@@ -1537,17 +1537,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CreativeId { get; private set; }
 
-                    /// <summary>An optional query string to filter deal associations. If no filter is specified, all
-                    /// associations will be returned. Supported queries are:
-                    ///
-                    /// accountId=account_id_string creativeId=creative_id_string dealsId=deals_id_string
-                    /// dealsStatus:{approved, conditionally_approved, disapproved, not_checked}
-                    /// openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked}
-                    ///
-                    /// Example: 'dealsId=12345 AND dealsStatus:disapproved'</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Query { get; set; }
-
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListDealAssociationsResponse.next_page_token returned from the previous call to
                     /// 'ListDealAssociations' method.</summary>
@@ -1558,6 +1547,17 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     /// unspecified, server will pick an appropriate default.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>An optional query string to filter deal associations. If no filter is specified, all
+                    /// associations will be returned. Supported queries are:
+                    ///
+                    /// accountId=account_id_string creativeId=creative_id_string dealsId=deals_id_string
+                    /// dealsStatus:{approved, conditionally_approved, disapproved, not_checked}
+                    /// openAuctionStatus:{approved, conditionally_approved, disapproved, not_checked}
+                    ///
+                    /// Example: 'dealsId=12345 AND dealsStatus:disapproved'</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Query { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1602,15 +1602,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "query", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "query",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1623,6 +1614,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "query", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "query",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
