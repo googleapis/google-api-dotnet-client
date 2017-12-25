@@ -123,9 +123,7 @@ namespace Google.Apis.Customsearch.v1
     {
         ///<summary>Constructs a new CustomsearchBaseServiceRequest instance.</summary>
         protected CustomsearchBaseServiceRequest(Google.Apis.Services.IClientService service)
-            : base(service)
-        {
-        }
+            : base(service) {}
 
         /// <summary>Data format for the response.</summary>
         /// [default: json]
@@ -254,7 +252,6 @@ namespace Google.Apis.Customsearch.v1
         public CseResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-
         }
 
 
