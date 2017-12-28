@@ -1011,15 +1011,15 @@ namespace Google.Apis.PeopleService.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
-                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object RequestMaskIncludeField { get; set; }
-
                 /// <summary>The number of connections to include in the response. Valid values are between 1 and 2000,
                 /// inclusive. Defaults to 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each
+                /// path should start with `person.`: for example, `person.names` or `person.photos`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object RequestMaskIncludeField { get; set; }
 
                 /// <summary>A sync token, returned by a previous call to `people.connections.list`. Only resources
                 /// changed since the sync token was created will be returned.</summary>
@@ -1097,18 +1097,18 @@ namespace Google.Apis.PeopleService.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMask.includeField",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "requestMask.includeField", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "requestMask.includeField",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1301,11 +1301,6 @@ namespace Google.Apis.PeopleService.v1
             [Google.Apis.Util.RequestParameterAttribute("resourceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ResourceName { get; private set; }
 
-            /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
-            /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual object RequestMaskIncludeField { get; set; }
-
             /// <summary>**Required.** A field mask to restrict which fields on the person are returned. Valid values
             /// are:
             ///
@@ -1315,6 +1310,11 @@ namespace Google.Apis.PeopleService.v1
             /// residences * skills * taglines * urls</summary>
             [Google.Apis.Util.RequestParameterAttribute("personFields", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object PersonFields { get; set; }
+
+            /// <summary>**Required.** Comma-separated list of person fields to be included in the response. Each path
+            /// should start with `person.`: for example, `person.names` or `person.photos`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMask.includeField", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object RequestMaskIncludeField { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1350,18 +1350,18 @@ namespace Google.Apis.PeopleService.v1
                         Pattern = @"^people/[^/]+$",
                     });
                 RequestParameters.Add(
-                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
+                    "personFields", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMask.includeField",
+                        Name = "personFields",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "personFields", new Google.Apis.Discovery.Parameter
+                    "requestMask.includeField", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "personFields",
+                        Name = "requestMask.includeField",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
