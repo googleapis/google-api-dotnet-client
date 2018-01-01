@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171217 (1081)
+ *      <tr><th>API Rev<td>20171224 (1088)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -4207,7 +4207,9 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; } 
 
         /// <summary>[Optional] The time when this table expires, in milliseconds since the epoch. If not present, the
-        /// table will persist indefinitely. Expired tables will be deleted and their storage reclaimed.</summary>
+        /// table will persist indefinitely. Expired tables will be deleted and their storage reclaimed. The
+        /// defaultTableExpirationMs property of the encapsulating dataset can be used to set a default expirationTime
+        /// on newly created tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual System.Nullable<long> ExpirationTime { get; set; } 
 
