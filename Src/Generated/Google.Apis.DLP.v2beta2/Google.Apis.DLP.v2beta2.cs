@@ -710,15 +710,15 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListDeidentifyTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -754,18 +754,18 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1891,15 +1891,15 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListDeidentifyTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1935,18 +1935,18 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2265,27 +2265,6 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY *
-                /// Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator
-                /// must be `=` or `!=`.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled)
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2308,6 +2287,27 @@ namespace Google.Apis.DLP.v2beta2
                     [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
                     RISKANALYSISJOB,
                 }
+
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
+                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY *
+                /// Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator
+                /// must be `=` or `!=`.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+                /// canceled)
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2343,15 +2343,6 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2373,6 +2364,15 @@ namespace Google.Apis.DLP.v2beta2
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2721,15 +2721,15 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListInspectTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2765,18 +2765,18 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

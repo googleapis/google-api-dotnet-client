@@ -1,26 +1,4 @@
 {
-  "canonicalName": "Cloud Source Repositories",
-  "auth": {
-    "oauth2": {
-      "scopes": {
-        "https://www.googleapis.com/auth/cloud-platform": {
-          "description": "View and manage your data across Google Cloud Platform services"
-        },
-        "https://www.googleapis.com/auth/source.full_control": {
-          "description": "Manage your source code repositories"
-        },
-        "https://www.googleapis.com/auth/source.read_only": {
-          "description": "View the contents of your source code repositories"
-        },
-        "https://www.googleapis.com/auth/source.read_write": {
-          "description": "Manage the contents of your source code repositories"
-        }
-      }
-    }
-  },
-  "rootUrl": "https://sourcerepo.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "sourcerepo",
   "batchPath": "batch",
   "title": "Cloud Source Repositories API",
   "ownerName": "Google",
@@ -30,7 +8,6 @@
         "repos": {
           "methods": {
             "list": {
-              "description": "Returns all repos belonging to a project. The sizes of the repos are\nnot set by ListRepos.  To get the size of a repo, use GetRepo.",
               "response": {
                 "$ref": "ListReposResponse"
               },
@@ -66,13 +43,10 @@
               },
               "flatPath": "v1/projects/{projectsId}/repos",
               "path": "v1/{+name}/repos",
-              "id": "sourcerepo.projects.repos.list"
+              "id": "sourcerepo.projects.repos.list",
+              "description": "Returns all repos belonging to a project. The sizes of the repos are\nnot set by ListRepos.  To get the size of a repo, use GetRepo."
             },
             "create": {
-              "request": {
-                "$ref": "Repo"
-              },
-              "description": "Creates a repo in the given project with the given name.\n\nIf the named repository already exists, `CreateRepo` returns\n`ALREADY_EXISTS`.",
               "response": {
                 "$ref": "Repo"
               },
@@ -82,11 +56,11 @@
               "httpMethod": "POST",
               "parameters": {
                 "parent": {
+                  "location": "path",
+                  "description": "The project in which to create the repo. Values are of the form\n`projects/\u003cproject\u003e`.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "The project in which to create the repo. Values are of the form\n`projects/\u003cproject\u003e`."
+                  "pattern": "^projects/[^/]+$"
                 }
               },
               "scopes": [
@@ -97,7 +71,11 @@
               ],
               "flatPath": "v1/projects/{projectsId}/repos",
               "path": "v1/{+parent}/repos",
-              "id": "sourcerepo.projects.repos.create"
+              "id": "sourcerepo.projects.repos.create",
+              "request": {
+                "$ref": "Repo"
+              },
+              "description": "Creates a repo in the given project with the given name.\n\nIf the named repository already exists, `CreateRepo` returns\n`ALREADY_EXISTS`."
             },
             "setIamPolicy": {
               "httpMethod": "POST",
@@ -131,6 +109,7 @@
               }
             },
             "getIamPolicy": {
+              "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
               "httpMethod": "GET",
               "response": {
                 "$ref": "Policy"
@@ -155,8 +134,7 @@
               ],
               "flatPath": "v1/projects/{projectsId}/repos/{reposId}:getIamPolicy",
               "id": "sourcerepo.projects.repos.getIamPolicy",
-              "path": "v1/{+resource}:getIamPolicy",
-              "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset."
+              "path": "v1/{+resource}:getIamPolicy"
             },
             "get": {
               "response": {
@@ -168,11 +146,11 @@
               "httpMethod": "GET",
               "parameters": {
                 "name": {
+                  "location": "path",
+                  "description": "The name of the requested repository. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/repos/.+$",
-                  "location": "path",
-                  "description": "The name of the requested repository. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`."
+                  "pattern": "^projects/[^/]+/repos/.+$"
                 }
               },
               "scopes": [
@@ -187,13 +165,6 @@
               "description": "Returns information about a repo."
             },
             "testIamPermissions": {
-              "flatPath": "v1/projects/{projectsId}/repos/{reposId}:testIamPermissions",
-              "path": "v1/{+resource}:testIamPermissions",
-              "id": "sourcerepo.projects.repos.testIamPermissions",
-              "request": {
-                "$ref": "TestIamPermissionsRequest"
-              },
-              "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.",
               "response": {
                 "$ref": "TestIamPermissionsResponse"
               },
@@ -215,7 +186,14 @@
                 "https://www.googleapis.com/auth/source.full_control",
                 "https://www.googleapis.com/auth/source.read_only",
                 "https://www.googleapis.com/auth/source.read_write"
-              ]
+              ],
+              "flatPath": "v1/projects/{projectsId}/repos/{reposId}:testIamPermissions",
+              "path": "v1/{+resource}:testIamPermissions",
+              "id": "sourcerepo.projects.repos.testIamPermissions",
+              "request": {
+                "$ref": "TestIamPermissionsRequest"
+              },
+              "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error."
             },
             "delete": {
               "flatPath": "v1/projects/{projectsId}/repos/{reposId}",
@@ -237,11 +215,11 @@
               ],
               "parameters": {
                 "name": {
+                  "location": "path",
+                  "description": "The name of the repo to delete. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+/repos/.+$",
-                  "location": "path",
-                  "description": "The name of the repo to delete. Values are of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`."
+                  "pattern": "^projects/[^/]+/repos/.+$"
                 }
               }
             }
@@ -251,47 +229,16 @@
     }
   },
   "parameters": {
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth access token."
-    },
-    "quotaUser": {
-      "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string"
-    },
-    "pp": {
-      "location": "query",
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "bearer_token": {
-      "type": "string",
-      "location": "query",
-      "description": "OAuth bearer token."
-    },
     "upload_protocol": {
-      "type": "string",
       "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
     },
     "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true"
+      "default": "true",
+      "location": "query",
+      "description": "Returns response with indentations and line breaks."
     },
     "uploadType": {
       "location": "query",
@@ -317,9 +264,9 @@
       ]
     },
     "callback": {
-      "type": "string",
       "location": "query",
-      "description": "JSONP"
+      "description": "JSONP",
+      "type": "string"
     },
     "alt": {
       "default": "json",
@@ -336,6 +283,37 @@
       ],
       "location": "query",
       "description": "Data format for response."
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "quotaUser": {
+      "type": "string",
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters."
+    },
+    "pp": {
+      "location": "query",
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "oauth_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user."
+    },
+    "bearer_token": {
+      "type": "string",
+      "location": "query",
+      "description": "OAuth bearer token."
     }
   },
   "version": "v1",
@@ -351,28 +329,28 @@
   "version_module": true,
   "schemas": {
     "AuditConfig": {
-      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging.",
       "type": "object",
       "properties": {
-        "service": {
-          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services.",
-          "type": "string"
-        },
-        "auditLogConfigs": {
-          "type": "array",
-          "items": {
-            "$ref": "AuditLogConfig"
-          },
-          "description": "The configuration for logging of each type of permission.\nNext ID: 4"
-        },
         "exemptedMembers": {
           "type": "array",
           "items": {
             "type": "string"
           }
+        },
+        "service": {
+          "type": "string",
+          "description": "Specifies a service that will be enabled for audit logging.\nFor example, `storage.googleapis.com`, `cloudsql.googleapis.com`.\n`allServices` is a special value that covers all services."
+        },
+        "auditLogConfigs": {
+          "description": "The configuration for logging of each type of permission.\nNext ID: 4",
+          "type": "array",
+          "items": {
+            "$ref": "AuditLogConfig"
+          }
         }
       },
-      "id": "AuditConfig"
+      "id": "AuditConfig",
+      "description": "Specifies the audit configuration for a service.\nThe configuration determines which permission types are logged, and what\nidentities, if any, are exempted from logging.\nAn AuditConfig must have one or more AuditLogConfigs.\n\nIf there are AuditConfigs for both `allServices` and a specific service,\nthe union of the two AuditConfigs is used for that service: the log_types\nspecified in each AuditConfig are enabled, and the exempted_members in each\nAuditConfig are exempted.\n\nExample Policy with multiple AuditConfigs:\n\n    {\n      \"audit_configs\": [\n        {\n          \"service\": \"allServices\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n              \"exempted_members\": [\n                \"user:foo@gmail.com\"\n              ]\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n            },\n            {\n              \"log_type\": \"ADMIN_READ\",\n            }\n          ]\n        },\n        {\n          \"service\": \"fooservice.googleapis.com\"\n          \"audit_log_configs\": [\n            {\n              \"log_type\": \"DATA_READ\",\n            },\n            {\n              \"log_type\": \"DATA_WRITE\",\n              \"exempted_members\": [\n                \"user:bar@gmail.com\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n\nFor fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ\nlogging. It also exempts foo@gmail.com from DATA_READ logging, and\nbar@gmail.com from DATA_WRITE logging."
     },
     "SetIamPolicyRequest": {
       "description": "Request message for `SetIamPolicy` method.",
@@ -391,6 +369,7 @@
       "id": "SetIamPolicyRequest"
     },
     "Binding": {
+      "description": "Associates `members` with a `role`.",
       "type": "object",
       "properties": {
         "role": {
@@ -402,35 +381,34 @@
           "description": "The condition that is associated with this binding.\nNOTE: an unsatisfied condition will not allow user access via current\nbinding. Different bindings, including their conditions, are examined\nindependently.\nThis field is GOOGLE_INTERNAL."
         },
         "members": {
+          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` or `joe@example.com`.\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` or `joe@example.com`.\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n"
+          }
         }
       },
-      "id": "Binding",
-      "description": "Associates `members` with a `role`."
+      "id": "Binding"
     },
     "Expr": {
       "description": "Represents an expression text. Example:\n\n    title: \"User account presence\"\n    description: \"Determines whether the request has a user account\"\n    expression: \"size(request.user) \u003e 0\"",
       "type": "object",
       "properties": {
         "expression": {
-          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported.",
-          "type": "string"
+          "type": "string",
+          "description": "Textual representation of an expression in\nCommon Expression Language syntax.\n\nThe application context of the containing message determines which\nwell-known feature set of CEL is supported."
         },
         "title": {
-          "type": "string",
-          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression."
+          "description": "An optional title for the expression, i.e. a short string describing\nits purpose. This can be used e.g. in UIs which allow to enter the\nexpression.",
+          "type": "string"
         },
         "location": {
-          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file.",
-          "type": "string"
+          "type": "string",
+          "description": "An optional string indicating the location of the expression for error\nreporting, e.g. a file name and a position in the file."
         },
         "description": {
-          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI.",
-          "type": "string"
+          "type": "string",
+          "description": "An optional description of the expression. This is a longer text which\ndescribes the expression, e.g. when hovered over it in a UI."
         }
       },
       "id": "Expr"
@@ -439,12 +417,12 @@
       "type": "object",
       "properties": {
         "url": {
-          "type": "string",
-          "description": "URL of the main repository at the other hosting service."
+          "description": "URL of the main repository at the other hosting service.",
+          "type": "string"
         },
         "webhookId": {
-          "description": "ID of the webhook listening to updates to trigger mirroring.\nRemoving this webhook from the other hosting service will stop\nGoogle Cloud Source Repositories from receiving notifications,\nand thereby disabling mirroring.",
-          "type": "string"
+          "type": "string",
+          "description": "ID of the webhook listening to updates to trigger mirroring.\nRemoving this webhook from the other hosting service will stop\nGoogle Cloud Source Repositories from receiving notifications,\nand thereby disabling mirroring."
         },
         "deployKeyId": {
           "type": "string",
@@ -455,19 +433,14 @@
       "description": "Configuration to automatically mirror a repository from another\nhosting service, for example GitHub or BitBucket."
     },
     "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
       "properties": {},
-      "id": "Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`."
+      "id": "Empty"
     },
     "Repo": {
-      "description": "A repository (or repo) is a Git repository storing versioned source content.",
       "type": "object",
       "properties": {
-        "name": {
-          "type": "string",
-          "description": "Resource name of the repository, of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.  The repo name may contain slashes.\neg, `projects/myproject/repos/name/with/slash`"
-        },
         "mirrorConfig": {
           "$ref": "MirrorConfig",
           "description": "How this repository mirrors a repository managed by another service.\nRead-only field."
@@ -477,12 +450,17 @@
           "type": "string"
         },
         "size": {
+          "type": "string",
           "description": "The disk usage of the repo, in bytes. Read-only field. Size is only\nreturned by GetRepo.",
-          "format": "int64",
-          "type": "string"
+          "format": "int64"
+        },
+        "name": {
+          "type": "string",
+          "description": "Resource name of the repository, of the form\n`projects/\u003cproject\u003e/repos/\u003crepo\u003e`.  The repo name may contain slashes.\neg, `projects/myproject/repos/name/with/slash`"
         }
       },
-      "id": "Repo"
+      "id": "Repo",
+      "description": "A repository (or repo) is a Git repository storing versioned source content."
     },
     "TestIamPermissionsResponse": {
       "description": "Response message for `TestIamPermissions` method.",
@@ -499,7 +477,6 @@
       "id": "TestIamPermissionsResponse"
     },
     "ListReposResponse": {
-      "description": "Response for ListRepos.  The size is not set in the returned repositories.",
       "type": "object",
       "properties": {
         "nextPageToken": {
@@ -507,76 +484,67 @@
           "description": "If non-empty, additional repositories exist within the project. These\ncan be retrieved by including this value in the next ListReposRequest's\npage_token field."
         },
         "repos": {
-          "description": "The listed repos.",
           "type": "array",
           "items": {
             "$ref": "Repo"
-          }
+          },
+          "description": "The listed repos."
         }
       },
-      "id": "ListReposResponse"
+      "id": "ListReposResponse",
+      "description": "Response for ListRepos.  The size is not set in the returned repositories."
     },
     "AuditLogConfig": {
+      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging.",
       "type": "object",
       "properties": {
-        "exemptedMembers": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          },
-          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members."
-        },
         "logType": {
-          "type": "string",
-          "enumDescriptions": [
-            "Default case. Should never be this.",
-            "Admin reads. Example: CloudIAM getIamPolicy",
-            "Data writes. Example: CloudSQL Users create",
-            "Data reads. Example: CloudSQL Users list"
-          ],
           "enum": [
             "LOG_TYPE_UNSPECIFIED",
             "ADMIN_READ",
             "DATA_WRITE",
             "DATA_READ"
           ],
-          "description": "The log type that this config enables."
-        }
-      },
-      "id": "AuditLogConfig",
-      "description": "Provides the configuration for logging a type of permissions.\nExample:\n\n    {\n      \"audit_log_configs\": [\n        {\n          \"log_type\": \"DATA_READ\",\n          \"exempted_members\": [\n            \"user:foo@gmail.com\"\n          ]\n        },\n        {\n          \"log_type\": \"DATA_WRITE\",\n        }\n      ]\n    }\n\nThis enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting\nfoo@gmail.com from DATA_READ logging."
-    },
-    "TestIamPermissionsRequest": {
-      "type": "object",
-      "properties": {
-        "permissions": {
+          "description": "The log type that this config enables.",
+          "type": "string",
+          "enumDescriptions": [
+            "Default case. Should never be this.",
+            "Admin reads. Example: CloudIAM getIamPolicy",
+            "Data writes. Example: CloudSQL Users create",
+            "Data reads. Example: CloudSQL Users list"
+          ]
+        },
+        "exemptedMembers": {
+          "description": "Specifies the identities that do not cause logging for this type of\npermission.\nFollows the same format of Binding.members.",
           "type": "array",
           "items": {
             "type": "string"
-          },
-          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions)."
+          }
         }
       },
-      "id": "TestIamPermissionsRequest",
-      "description": "Request message for `TestIamPermissions` method."
+      "id": "AuditLogConfig"
+    },
+    "TestIamPermissionsRequest": {
+      "description": "Request message for `TestIamPermissions` method.",
+      "type": "object",
+      "properties": {
+        "permissions": {
+          "description": "The set of permissions to check for the `resource`. Permissions with\nwildcards (such as '*' or 'storage.*') are not allowed. For more\ninformation see\n[IAM Overview](https://cloud.google.com/iam/docs/overview#permissions).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "id": "TestIamPermissionsRequest"
     },
     "Policy": {
       "type": "object",
       "properties": {
-        "bindings": {
-          "type": "array",
-          "items": {
-            "$ref": "Binding"
-          },
-          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."
-        },
-        "iamOwned": {
-          "type": "boolean"
-        },
         "etag": {
-          "type": "string",
           "description": "`etag` is used for optimistic concurrency control as a way to help\nprevent simultaneous updates of a policy from overwriting each other.\nIt is strongly suggested that systems make use of the `etag` in the\nread-modify-write cycle to perform policy updates in order to avoid race\nconditions: An `etag` is returned in the response to `getIamPolicy`, and\nsystems are expected to put that etag in the request to `setIamPolicy` to\nensure that their change will be applied to the same version of the policy.\n\nIf no `etag` is provided in the call to `setIamPolicy`, then the existing\npolicy is overwritten blindly.",
-          "format": "byte"
+          "format": "byte",
+          "type": "string"
         },
         "version": {
           "type": "integer",
@@ -589,6 +557,16 @@
           "items": {
             "$ref": "AuditConfig"
           }
+        },
+        "bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "Binding"
+          },
+          "description": "Associates a list of `members` to a `role`.\n`bindings` with no members will result in an error."
+        },
+        "iamOwned": {
+          "type": "boolean"
         }
       },
       "id": "Policy",
@@ -596,8 +574,30 @@
     }
   },
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
   },
-  "protocol": "rest"
+  "protocol": "rest",
+  "canonicalName": "Cloud Source Repositories",
+  "auth": {
+    "oauth2": {
+      "scopes": {
+        "https://www.googleapis.com/auth/cloud-platform": {
+          "description": "View and manage your data across Google Cloud Platform services"
+        },
+        "https://www.googleapis.com/auth/source.full_control": {
+          "description": "Manage your source code repositories"
+        },
+        "https://www.googleapis.com/auth/source.read_only": {
+          "description": "View the contents of your source code repositories"
+        },
+        "https://www.googleapis.com/auth/source.read_write": {
+          "description": "Manage the contents of your source code repositories"
+        }
+      }
+    }
+  },
+  "rootUrl": "https://sourcerepo.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "sourcerepo"
 }

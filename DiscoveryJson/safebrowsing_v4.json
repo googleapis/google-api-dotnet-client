@@ -1,37 +1,48 @@
 {
+  "ownerName": "Google",
+  "discoveryVersion": "v1",
   "resources": {
     "threatListUpdates": {
       "methods": {
         "fetch": {
+          "path": "v4/threatListUpdates:fetch",
+          "id": "safebrowsing.threatListUpdates.fetch",
+          "description": "Fetches the most recent threat list updates. A client can request updates\nfor multiple lists at once.",
+          "request": {
+            "$ref": "FetchThreatListUpdatesRequest"
+          },
           "response": {
             "$ref": "FetchThreatListUpdatesResponse"
           },
           "parameterOrder": [],
           "httpMethod": "POST",
           "parameters": {},
-          "flatPath": "v4/threatListUpdates:fetch",
-          "path": "v4/threatListUpdates:fetch",
-          "id": "safebrowsing.threatListUpdates.fetch",
-          "description": "Fetches the most recent threat list updates. A client can request updates\nfor multiple lists at once.",
+          "flatPath": "v4/threatListUpdates:fetch"
+        }
+      }
+    },
+    "threatHits": {
+      "methods": {
+        "create": {
           "request": {
-            "$ref": "FetchThreatListUpdatesRequest"
-          }
+            "$ref": "ThreatHit"
+          },
+          "description": "Reports a Safe Browsing threat list hit to Google. Only projects with\nTRUSTED_REPORTER visibility can use this method.",
+          "response": {
+            "$ref": "Empty"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {},
+          "flatPath": "v4/threatHits",
+          "path": "v4/threatHits",
+          "id": "safebrowsing.threatHits.create"
         }
       }
     },
     "encodedFullHashes": {
       "methods": {
         "get": {
-          "path": "v4/encodedFullHashes/{encodedRequest}",
-          "id": "safebrowsing.encodedFullHashes.get",
-          "description": "",
-          "response": {
-            "$ref": "FindFullHashesResponse"
-          },
-          "parameterOrder": [
-            "encodedRequest"
-          ],
-          "httpMethod": "GET",
           "parameters": {
             "clientId": {
               "description": "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API.",
@@ -44,93 +55,87 @@
               "type": "string"
             },
             "encodedRequest": {
-              "location": "path",
               "description": "A serialized FindFullHashesRequest proto.",
               "format": "byte",
               "required": true,
-              "type": "string"
+              "type": "string",
+              "location": "path"
             }
           },
-          "flatPath": "v4/encodedFullHashes/{encodedRequest}"
-        }
-      }
-    },
-    "threatHits": {
-      "methods": {
-        "create": {
-          "path": "v4/threatHits",
-          "id": "safebrowsing.threatHits.create",
-          "description": "Reports a Safe Browsing threat list hit to Google. Only projects with\nTRUSTED_REPORTER visibility can use this method.",
-          "request": {
-            "$ref": "ThreatHit"
-          },
+          "flatPath": "v4/encodedFullHashes/{encodedRequest}",
+          "id": "safebrowsing.encodedFullHashes.get",
+          "path": "v4/encodedFullHashes/{encodedRequest}",
+          "description": "",
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "encodedRequest"
+          ],
           "response": {
-            "$ref": "Empty"
-          },
-          "parameterOrder": [],
-          "httpMethod": "POST",
-          "parameters": {},
-          "flatPath": "v4/threatHits"
+            "$ref": "FindFullHashesResponse"
+          }
         }
       }
     },
     "threatLists": {
       "methods": {
         "list": {
-          "path": "v4/threatLists",
-          "id": "safebrowsing.threatLists.list",
-          "description": "Lists the Safe Browsing threat lists available for download.",
           "response": {
             "$ref": "ListThreatListsResponse"
           },
           "parameterOrder": [],
           "httpMethod": "GET",
           "parameters": {},
-          "flatPath": "v4/threatLists"
+          "flatPath": "v4/threatLists",
+          "path": "v4/threatLists",
+          "id": "safebrowsing.threatLists.list",
+          "description": "Lists the Safe Browsing threat lists available for download."
         }
       }
     },
     "threatMatches": {
       "methods": {
         "find": {
-          "httpMethod": "POST",
-          "parameterOrder": [],
-          "response": {
-            "$ref": "FindThreatMatchesResponse"
-          },
-          "parameters": {},
-          "flatPath": "v4/threatMatches:find",
-          "id": "safebrowsing.threatMatches.find",
           "path": "v4/threatMatches:find",
+          "id": "safebrowsing.threatMatches.find",
           "request": {
             "$ref": "FindThreatMatchesRequest"
           },
-          "description": "Finds the threat entries that match the Safe Browsing lists."
+          "description": "Finds the threat entries that match the Safe Browsing lists.",
+          "response": {
+            "$ref": "FindThreatMatchesResponse"
+          },
+          "parameterOrder": [],
+          "httpMethod": "POST",
+          "parameters": {},
+          "flatPath": "v4/threatMatches:find"
         }
       }
     },
     "fullHashes": {
       "methods": {
         "find": {
-          "id": "safebrowsing.fullHashes.find",
-          "path": "v4/fullHashes:find",
-          "request": {
-            "$ref": "FindFullHashesRequest"
-          },
-          "description": "Finds the full hashes that match the requested hash prefixes.",
-          "httpMethod": "POST",
-          "parameterOrder": [],
           "response": {
             "$ref": "FindFullHashesResponse"
           },
+          "parameterOrder": [],
+          "httpMethod": "POST",
           "parameters": {},
-          "flatPath": "v4/fullHashes:find"
+          "flatPath": "v4/fullHashes:find",
+          "path": "v4/fullHashes:find",
+          "id": "safebrowsing.fullHashes.find",
+          "description": "Finds the full hashes that match the requested hash prefixes.",
+          "request": {
+            "$ref": "FindFullHashesRequest"
+          }
         }
       }
     },
     "encodedUpdates": {
       "methods": {
         "get": {
+          "path": "v4/encodedUpdates/{encodedRequest}",
+          "id": "safebrowsing.encodedUpdates.get",
+          "description": "",
           "response": {
             "$ref": "FetchThreatListUpdatesResponse"
           },
@@ -145,9 +150,9 @@
               "location": "query"
             },
             "clientVersion": {
+              "location": "query",
               "description": "The version of the client implementation.",
-              "type": "string",
-              "location": "query"
+              "type": "string"
             },
             "encodedRequest": {
               "location": "path",
@@ -157,31 +162,67 @@
               "type": "string"
             }
           },
-          "flatPath": "v4/encodedUpdates/{encodedRequest}",
-          "path": "v4/encodedUpdates/{encodedRequest}",
-          "id": "safebrowsing.encodedUpdates.get",
-          "description": ""
+          "flatPath": "v4/encodedUpdates/{encodedRequest}"
         }
       }
     }
   },
   "parameters": {
-    "uploadType": {
+    "key": {
       "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
+    },
+    "access_token": {
+      "location": "query",
+      "description": "OAuth access token.",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "pp": {
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true",
+      "location": "query"
+    },
+    "oauth_token": {
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string",
+      "location": "query"
+    },
+    "bearer_token": {
+      "description": "OAuth bearer token.",
+      "type": "string",
+      "location": "query"
+    },
+    "upload_protocol": {
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
     },
     "fields": {
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string",
       "location": "query"
     },
-    "callback": {
-      "location": "query",
-      "description": "JSONP",
-      "type": "string"
-    },
     "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -190,9 +231,12 @@
       "enum": [
         "1",
         "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
+      ]
+    },
+    "callback": {
+      "description": "JSONP",
+      "type": "string",
+      "location": "query"
     },
     "alt": {
       "enumDescriptions": [
@@ -209,70 +253,12 @@
         "proto"
       ],
       "type": "string"
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "pp": {
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "bearer_token": {
-      "description": "OAuth bearer token.",
-      "type": "string",
-      "location": "query"
-    },
-    "oauth_token": {
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
-    },
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
     }
   },
   "schemas": {
-    "FetchThreatListUpdatesResponse": {
-      "properties": {
-        "listUpdateResponses": {
-          "description": "The list updates requested by the clients.",
-          "type": "array",
-          "items": {
-            "$ref": "ListUpdateResponse"
-          }
-        },
-        "minimumWaitDuration": {
-          "description": "The minimum duration the client must wait before issuing any update\nrequest. If this field is not set clients may update as soon as they want.",
-          "format": "google-duration",
-          "type": "string"
-        }
-      },
-      "id": "FetchThreatListUpdatesResponse",
-      "type": "object"
-    },
     "Checksum": {
+      "description": "The expected state of a client's local database.",
+      "type": "object",
       "properties": {
         "sha256": {
           "description": "The SHA256 hash of the client state; that is, of the sorted list of all\nhashes present in the database.",
@@ -280,12 +266,16 @@
           "type": "string"
         }
       },
-      "id": "Checksum",
-      "description": "The expected state of a client's local database.",
-      "type": "object"
+      "id": "Checksum"
     },
     "FindFullHashesResponse": {
+      "type": "object",
       "properties": {
+        "negativeCacheDuration": {
+          "description": "For requested entities that did not match the threat list, how long to\ncache the response.",
+          "format": "google-duration",
+          "type": "string"
+        },
         "minimumWaitDuration": {
           "description": "The minimum duration the client must wait before issuing any find hashes\nrequest. If this field is not set, clients can issue a request as soon as\nthey want.",
           "format": "google-duration",
@@ -297,15 +287,9 @@
           "items": {
             "$ref": "ThreatMatch"
           }
-        },
-        "negativeCacheDuration": {
-          "description": "For requested entities that did not match the threat list, how long to\ncache the response.",
-          "format": "google-duration",
-          "type": "string"
         }
       },
-      "id": "FindFullHashesResponse",
-      "type": "object"
+      "id": "FindFullHashesResponse"
     },
     "ThreatEntrySet": {
       "description": "A set of threats that should be added or removed from a client's local\ndatabase.",
@@ -330,8 +314,8 @@
           "$ref": "RiceDeltaEncoding"
         },
         "rawIndices": {
-          "description": "The raw removal indices for a local list.",
-          "$ref": "RawIndices"
+          "$ref": "RawIndices",
+          "description": "The raw removal indices for a local list."
         },
         "rawHashes": {
           "$ref": "RawHashes",
@@ -345,25 +329,10 @@
       "id": "ThreatEntrySet"
     },
     "ThreatHit": {
+      "id": "ThreatHit",
       "type": "object",
       "properties": {
         "threatType": {
-          "enum": [
-            "THREAT_TYPE_UNSPECIFIED",
-            "MALWARE",
-            "SOCIAL_ENGINEERING",
-            "UNWANTED_SOFTWARE",
-            "POTENTIALLY_HARMFUL_APPLICATION",
-            "SOCIAL_ENGINEERING_INTERNAL",
-            "API_ABUSE",
-            "MALICIOUS_BINARY",
-            "CSD_WHITELIST",
-            "CSD_DOWNLOAD_WHITELIST",
-            "CLIENT_INCIDENT",
-            "CLIENT_INCIDENT_WHITELIST",
-            "APK_MALWARE_OFFLINE",
-            "SUBRESOURCE_FILTER"
-          ],
           "description": "The threat type reported.",
           "type": "string",
           "enumDescriptions": [
@@ -381,6 +350,22 @@
             "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list.",
             "List used for offline APK checks in PAM.",
             "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."
+          ],
+          "enum": [
+            "THREAT_TYPE_UNSPECIFIED",
+            "MALWARE",
+            "SOCIAL_ENGINEERING",
+            "UNWANTED_SOFTWARE",
+            "POTENTIALLY_HARMFUL_APPLICATION",
+            "SOCIAL_ENGINEERING_INTERNAL",
+            "API_ABUSE",
+            "MALICIOUS_BINARY",
+            "CSD_WHITELIST",
+            "CSD_DOWNLOAD_WHITELIST",
+            "CLIENT_INCIDENT",
+            "CLIENT_INCIDENT_WHITELIST",
+            "APK_MALWARE_OFFLINE",
+            "SUBRESOURCE_FILTER"
           ]
         },
         "resources": {
@@ -391,21 +376,10 @@
           }
         },
         "entry": {
-          "description": "The threat entry responsible for the hit. Full hash should be reported for\nhash-based hits.",
-          "$ref": "ThreatEntry"
+          "$ref": "ThreatEntry",
+          "description": "The threat entry responsible for the hit. Full hash should be reported for\nhash-based hits."
         },
         "platformType": {
-          "enum": [
-            "PLATFORM_TYPE_UNSPECIFIED",
-            "WINDOWS",
-            "LINUX",
-            "ANDROID",
-            "OSX",
-            "IOS",
-            "ANY_PLATFORM",
-            "ALL_PLATFORMS",
-            "CHROME"
-          ],
           "description": "The platform type reported.",
           "type": "string",
           "enumDescriptions": [
@@ -418,49 +392,7 @@
             "Threat posed to at least one of the defined platforms.",
             "Threat posed to all defined platforms.",
             "Threat posed to Chrome."
-          ]
-        },
-        "userInfo": {
-          "$ref": "UserInfo",
-          "description": "Details about the user that encountered the threat."
-        },
-        "clientInfo": {
-          "description": "Client-reported identification.",
-          "$ref": "ClientInfo"
-        }
-      },
-      "id": "ThreatHit"
-    },
-    "ListUpdateRequest": {
-      "properties": {
-        "threatEntryType": {
-          "enum": [
-            "THREAT_ENTRY_TYPE_UNSPECIFIED",
-            "URL",
-            "EXECUTABLE",
-            "IP_RANGE",
-            "CHROME_EXTENSION",
-            "FILENAME",
-            "CERT"
           ],
-          "description": "The types of entries present in the list.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified.",
-            "A URL.",
-            "An executable program.",
-            "An IP range.",
-            "Chrome extension.",
-            "Filename.",
-            "CERT"
-          ]
-        },
-        "state": {
-          "description": "The current state of the client for the requested list (the encrypted\nclient state that was received from the last successful list update).",
-          "format": "byte",
-          "type": "string"
-        },
-        "platformType": {
           "enum": [
             "PLATFORM_TYPE_UNSPECIFIED",
             "WINDOWS",
@@ -471,7 +403,23 @@
             "ANY_PLATFORM",
             "ALL_PLATFORMS",
             "CHROME"
-          ],
+          ]
+        },
+        "userInfo": {
+          "$ref": "UserInfo",
+          "description": "Details about the user that encountered the threat."
+        },
+        "clientInfo": {
+          "description": "Client-reported identification.",
+          "$ref": "ClientInfo"
+        }
+      }
+    },
+    "ListUpdateRequest": {
+      "description": "A single list update request.",
+      "type": "object",
+      "properties": {
+        "platformType": {
           "description": "The type of platform at risk by entries present in the list.",
           "type": "string",
           "enumDescriptions": [
@@ -484,9 +432,22 @@
             "Threat posed to at least one of the defined platforms.",
             "Threat posed to all defined platforms.",
             "Threat posed to Chrome."
+          ],
+          "enum": [
+            "PLATFORM_TYPE_UNSPECIFIED",
+            "WINDOWS",
+            "LINUX",
+            "ANDROID",
+            "OSX",
+            "IOS",
+            "ANY_PLATFORM",
+            "ALL_PLATFORMS",
+            "CHROME"
           ]
         },
         "threatType": {
+          "description": "The type of threat posed by entries present in the list.",
+          "type": "string",
           "enumDescriptions": [
             "Unknown.",
             "Malware threat type.",
@@ -518,31 +479,65 @@
             "CLIENT_INCIDENT_WHITELIST",
             "APK_MALWARE_OFFLINE",
             "SUBRESOURCE_FILTER"
-          ],
-          "description": "The type of threat posed by entries present in the list.",
-          "type": "string"
+          ]
         },
         "constraints": {
-          "description": "The constraints associated with this request.",
-          "$ref": "Constraints"
+          "$ref": "Constraints",
+          "description": "The constraints associated with this request."
+        },
+        "threatEntryType": {
+          "description": "The types of entries present in the list.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified.",
+            "A URL.",
+            "An executable program.",
+            "An IP range.",
+            "Chrome extension.",
+            "Filename.",
+            "CERT"
+          ],
+          "enum": [
+            "THREAT_ENTRY_TYPE_UNSPECIFIED",
+            "URL",
+            "EXECUTABLE",
+            "IP_RANGE",
+            "CHROME_EXTENSION",
+            "FILENAME",
+            "CERT"
+          ]
+        },
+        "state": {
+          "description": "The current state of the client for the requested list (the encrypted\nclient state that was received from the last successful list update).",
+          "format": "byte",
+          "type": "string"
         }
       },
-      "id": "ListUpdateRequest",
-      "description": "A single list update request.",
-      "type": "object"
+      "id": "ListUpdateRequest"
     },
     "Constraints": {
+      "description": "The constraints for this update.",
+      "type": "object",
       "properties": {
+        "maxDatabaseEntries": {
+          "description": "Sets the maximum number of entries that the client is willing to have\nin the local database. This should be a power of 2 between 2**10 and\n2**20. If zero, no database size limit is set.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "region": {
+          "description": "Requests the list for a specific geographic location. If not set the\nserver may pick that value based on the user's IP address. Expects ISO\n3166-1 alpha-2 format.",
+          "type": "string"
+        },
         "supportedCompressions": {
           "description": "The compression types supported by the client.",
           "type": "array",
           "items": {
+            "type": "string",
             "enum": [
               "COMPRESSION_TYPE_UNSPECIFIED",
               "RAW",
               "RICE"
-            ],
-            "type": "string"
+            ]
           },
           "enumDescriptions": [
             "Unknown.",
@@ -554,20 +549,9 @@
           "description": "The maximum size in number of entries. The update will not contain more\nentries than this value.  This should be a power of 2 between 2**10 and\n2**20.  If zero, no update size limit is set.",
           "format": "int32",
           "type": "integer"
-        },
-        "maxDatabaseEntries": {
-          "description": "Sets the maximum number of entries that the client is willing to have\nin the local database. This should be a power of 2 between 2**10 and\n2**20. If zero, no database size limit is set.",
-          "format": "int32",
-          "type": "integer"
-        },
-        "region": {
-          "description": "Requests the list for a specific geographic location. If not set the\nserver may pick that value based on the user's IP address. Expects ISO\n3166-1 alpha-2 format.",
-          "type": "string"
         }
       },
-      "id": "Constraints",
-      "description": "The constraints for this update.",
-      "type": "object"
+      "id": "Constraints"
     },
     "RiceDeltaEncoding": {
       "description": "The Rice-Golomb encoded data. Used for sending compressed 4-byte hashes or\ncompressed removal indices.",
@@ -597,6 +581,8 @@
       "id": "RiceDeltaEncoding"
     },
     "ListThreatListsResponse": {
+      "id": "ListThreatListsResponse",
+      "type": "object",
       "properties": {
         "threatLists": {
           "description": "The lists available for download by the client.",
@@ -605,11 +591,11 @@
             "$ref": "ThreatListDescriptor"
           }
         }
-      },
-      "id": "ListThreatListsResponse",
-      "type": "object"
+      }
     },
     "FindThreatMatchesResponse": {
+      "id": "FindThreatMatchesResponse",
+      "type": "object",
       "properties": {
         "matches": {
           "description": "The threat list matches.",
@@ -618,37 +604,16 @@
             "$ref": "ThreatMatch"
           }
         }
-      },
-      "id": "FindThreatMatchesResponse",
-      "type": "object"
+      }
     },
     "ThreatListDescriptor": {
+      "id": "ThreatListDescriptor",
       "description": "Describes an individual threat list. A list is defined by three parameters:\nthe type of threat posed, the type of platform targeted by the threat, and\nthe type of entries in the list.",
       "type": "object",
       "properties": {
-        "threatEntryType": {
-          "enumDescriptions": [
-            "Unspecified.",
-            "A URL.",
-            "An executable program.",
-            "An IP range.",
-            "Chrome extension.",
-            "Filename.",
-            "CERT"
-          ],
-          "enum": [
-            "THREAT_ENTRY_TYPE_UNSPECIFIED",
-            "URL",
-            "EXECUTABLE",
-            "IP_RANGE",
-            "CHROME_EXTENSION",
-            "FILENAME",
-            "CERT"
-          ],
-          "description": "The entry types contained in the list.",
-          "type": "string"
-        },
         "platformType": {
+          "description": "The platform type targeted by the list's entries.",
+          "type": "string",
           "enumDescriptions": [
             "Unknown platform.",
             "Threat posed to Windows.",
@@ -670,9 +635,7 @@
             "ANY_PLATFORM",
             "ALL_PLATFORMS",
             "CHROME"
-          ],
-          "description": "The platform type targeted by the list's entries.",
-          "type": "string"
+          ]
         },
         "threatType": {
           "enumDescriptions": [
@@ -709,28 +672,8 @@
           ],
           "description": "The threat type posed by the list's entries.",
           "type": "string"
-        }
-      },
-      "id": "ThreatListDescriptor"
-    },
-    "ClientInfo": {
-      "properties": {
-        "clientId": {
-          "description": "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API.",
-          "type": "string"
         },
-        "clientVersion": {
-          "description": "The version of the client implementation.",
-          "type": "string"
-        }
-      },
-      "id": "ClientInfo",
-      "description": "The client metadata associated with Safe Browsing API requests.",
-      "type": "object"
-    },
-    "ThreatInfo": {
-      "properties": {
-        "threatEntryTypes": {
+        "threatEntryType": {
           "enumDescriptions": [
             "Unspecified.",
             "A URL.",
@@ -740,6 +683,41 @@
             "Filename.",
             "CERT"
           ],
+          "enum": [
+            "THREAT_ENTRY_TYPE_UNSPECIFIED",
+            "URL",
+            "EXECUTABLE",
+            "IP_RANGE",
+            "CHROME_EXTENSION",
+            "FILENAME",
+            "CERT"
+          ],
+          "description": "The entry types contained in the list.",
+          "type": "string"
+        }
+      }
+    },
+    "ClientInfo": {
+      "id": "ClientInfo",
+      "description": "The client metadata associated with Safe Browsing API requests.",
+      "type": "object",
+      "properties": {
+        "clientId": {
+          "description": "A client ID that (hopefully) uniquely identifies the client implementation\nof the Safe Browsing API.",
+          "type": "string"
+        },
+        "clientVersion": {
+          "description": "The version of the client implementation.",
+          "type": "string"
+        }
+      }
+    },
+    "ThreatInfo": {
+      "id": "ThreatInfo",
+      "description": "The information regarding one or more threats that a client submits when\nchecking for matches in threat lists.",
+      "type": "object",
+      "properties": {
+        "threatEntryTypes": {
           "description": "The entry types to be checked.",
           "type": "array",
           "items": {
@@ -753,30 +731,18 @@
               "CERT"
             ],
             "type": "string"
-          }
+          },
+          "enumDescriptions": [
+            "Unspecified.",
+            "A URL.",
+            "An executable program.",
+            "An IP range.",
+            "Chrome extension.",
+            "Filename.",
+            "CERT"
+          ]
         },
         "threatTypes": {
-          "description": "The threat types to be checked.",
-          "type": "array",
-          "items": {
-            "enum": [
-              "THREAT_TYPE_UNSPECIFIED",
-              "MALWARE",
-              "SOCIAL_ENGINEERING",
-              "UNWANTED_SOFTWARE",
-              "POTENTIALLY_HARMFUL_APPLICATION",
-              "SOCIAL_ENGINEERING_INTERNAL",
-              "API_ABUSE",
-              "MALICIOUS_BINARY",
-              "CSD_WHITELIST",
-              "CSD_DOWNLOAD_WHITELIST",
-              "CLIENT_INCIDENT",
-              "CLIENT_INCIDENT_WHITELIST",
-              "APK_MALWARE_OFFLINE",
-              "SUBRESOURCE_FILTER"
-            ],
-            "type": "string"
-          },
           "enumDescriptions": [
             "Unknown.",
             "Malware threat type.",
@@ -792,7 +758,28 @@
             "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list.",
             "List used for offline APK checks in PAM.",
             "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."
-          ]
+          ],
+          "description": "The threat types to be checked.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "THREAT_TYPE_UNSPECIFIED",
+              "MALWARE",
+              "SOCIAL_ENGINEERING",
+              "UNWANTED_SOFTWARE",
+              "POTENTIALLY_HARMFUL_APPLICATION",
+              "SOCIAL_ENGINEERING_INTERNAL",
+              "API_ABUSE",
+              "MALICIOUS_BINARY",
+              "CSD_WHITELIST",
+              "CSD_DOWNLOAD_WHITELIST",
+              "CLIENT_INCIDENT",
+              "CLIENT_INCIDENT_WHITELIST",
+              "APK_MALWARE_OFFLINE",
+              "SUBRESOURCE_FILTER"
+            ]
+          }
         },
         "platformTypes": {
           "description": "The platform types to be checked.",
@@ -830,12 +817,10 @@
             "$ref": "ThreatEntry"
           }
         }
-      },
-      "id": "ThreatInfo",
-      "description": "The information regarding one or more threats that a client submits when\nchecking for matches in threat lists.",
-      "type": "object"
+      }
     },
     "ThreatEntryMetadata": {
+      "id": "ThreatEntryMetadata",
       "description": "The metadata associated with a specific threat entry. The client is expected\nto know the metadata key/value pairs associated with each threat type.",
       "type": "object",
       "properties": {
@@ -846,8 +831,7 @@
             "$ref": "MetadataEntry"
           }
         }
-      },
-      "id": "ThreatEntryMetadata"
+      }
     },
     "RawHashes": {
       "description": "The uncompressed threat entries in hash format of a particular prefix length.\nHashes can be anywhere from 4 to 32 bytes in size. A large majority are 4\nbytes, but some hashes are lengthened if they collide with the hash of a\npopular URL.\n\nUsed for sending ThreatEntrySet to clients that do not support compression,\nor when sending non-4-byte hashes to clients that do support compression.",
@@ -867,10 +851,10 @@
       "id": "RawHashes"
     },
     "Empty": {
+      "id": "Empty",
       "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
-      "properties": {},
-      "id": "Empty"
+      "properties": {}
     },
     "FindFullHashesRequest": {
       "description": "Request to return full hashes matched by the provided hash prefixes.",
@@ -885,21 +869,24 @@
           }
         },
         "client": {
-          "$ref": "ClientInfo",
-          "description": "The client metadata."
+          "description": "The client metadata.",
+          "$ref": "ClientInfo"
         },
         "threatInfo": {
           "$ref": "ThreatInfo",
           "description": "The lists and hashes to be checked."
         },
         "apiClient": {
-          "description": "Client metadata associated with callers of higher-level APIs built on top\nof the client's implementation.",
-          "$ref": "ClientInfo"
+          "$ref": "ClientInfo",
+          "description": "Client metadata associated with callers of higher-level APIs built on top\nof the client's implementation."
         }
       },
       "id": "FindFullHashesRequest"
     },
     "FetchThreatListUpdatesRequest": {
+      "id": "FetchThreatListUpdatesRequest",
+      "description": "Describes a Safe Browsing API update request. Clients can request updates for\nmultiple lists in a single request.\nNOTE: Field index 2 is unused.\nNEXT: 5",
+      "type": "object",
       "properties": {
         "listUpdateRequests": {
           "description": "The requested threat list updates.",
@@ -912,18 +899,66 @@
           "$ref": "ClientInfo",
           "description": "The client metadata."
         }
-      },
-      "id": "FetchThreatListUpdatesRequest",
-      "description": "Describes a Safe Browsing API update request. Clients can request updates for\nmultiple lists in a single request.\nNOTE: Field index 2 is unused.\nNEXT: 5",
-      "type": "object"
+      }
     },
     "ListUpdateResponse": {
       "description": "An update to an individual list.",
       "type": "object",
       "properties": {
-        "checksum": {
-          "$ref": "Checksum",
-          "description": "The expected SHA256 hash of the client state; that is, of the sorted list\nof all hashes present in the database after applying the provided update.\nIf the client state doesn't match the expected state, the client must\ndisregard this update and retry later."
+        "platformType": {
+          "enumDescriptions": [
+            "Unknown platform.",
+            "Threat posed to Windows.",
+            "Threat posed to Linux.",
+            "Threat posed to Android.",
+            "Threat posed to OS X.",
+            "Threat posed to iOS.",
+            "Threat posed to at least one of the defined platforms.",
+            "Threat posed to all defined platforms.",
+            "Threat posed to Chrome."
+          ],
+          "enum": [
+            "PLATFORM_TYPE_UNSPECIFIED",
+            "WINDOWS",
+            "LINUX",
+            "ANDROID",
+            "OSX",
+            "IOS",
+            "ANY_PLATFORM",
+            "ALL_PLATFORMS",
+            "CHROME"
+          ],
+          "description": "The platform type for which data is returned.",
+          "type": "string"
+        },
+        "threatEntryType": {
+          "enumDescriptions": [
+            "Unspecified.",
+            "A URL.",
+            "An executable program.",
+            "An IP range.",
+            "Chrome extension.",
+            "Filename.",
+            "CERT"
+          ],
+          "enum": [
+            "THREAT_ENTRY_TYPE_UNSPECIFIED",
+            "URL",
+            "EXECUTABLE",
+            "IP_RANGE",
+            "CHROME_EXTENSION",
+            "FILENAME",
+            "CERT"
+          ],
+          "description": "The format of the threats.",
+          "type": "string"
+        },
+        "additions": {
+          "description": "A set of entries to add to a local threat type's list. Repeated to allow\nfor a combination of compressed and raw data to be sent in a single\nresponse.",
+          "type": "array",
+          "items": {
+            "$ref": "ThreatEntrySet"
+          }
         },
         "responseType": {
           "enumDescriptions": [
@@ -939,7 +974,27 @@
           "description": "The type of response. This may indicate that an action is required by the\nclient when the response is received.",
           "type": "string"
         },
+        "checksum": {
+          "description": "The expected SHA256 hash of the client state; that is, of the sorted list\nof all hashes present in the database after applying the provided update.\nIf the client state doesn't match the expected state, the client must\ndisregard this update and retry later.",
+          "$ref": "Checksum"
+        },
         "threatType": {
+          "enumDescriptions": [
+            "Unknown.",
+            "Malware threat type.",
+            "Social engineering threat type.",
+            "Unwanted software threat type.",
+            "Potentially harmful application threat type.",
+            "Social engineering threat type for internal use.",
+            "API abuse threat type.",
+            "Malicious binary threat type.",
+            "Client side detection whitelist threat type.",
+            "Client side download detection whitelist threat type.",
+            "Client incident threat type.",
+            "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list.",
+            "List used for offline APK checks in PAM.",
+            "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."
+          ],
           "enum": [
             "THREAT_TYPE_UNSPECIFIED",
             "MALWARE",
@@ -957,23 +1012,7 @@
             "SUBRESOURCE_FILTER"
           ],
           "description": "The threat type for which data is returned.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown.",
-            "Malware threat type.",
-            "Social engineering threat type.",
-            "Unwanted software threat type.",
-            "Potentially harmful application threat type.",
-            "Social engineering threat type for internal use.",
-            "API abuse threat type.",
-            "Malicious binary threat type.",
-            "Client side detection whitelist threat type.",
-            "Client side download detection whitelist threat type.",
-            "Client incident threat type.",
-            "Whitelist used when detecting client incident threats.\nThis enum was never launched and should be re-used for the next list.",
-            "List used for offline APK checks in PAM.",
-            "Patterns to be used for activating the subresource filter. Interstitial\nwill not be shown for patterns from this list."
-          ]
+          "type": "string"
         },
         "newClientState": {
           "description": "The new client state, in encrypted format. Opaque to clients.",
@@ -986,103 +1025,15 @@
           "items": {
             "$ref": "ThreatEntrySet"
           }
-        },
-        "platformType": {
-          "enum": [
-            "PLATFORM_TYPE_UNSPECIFIED",
-            "WINDOWS",
-            "LINUX",
-            "ANDROID",
-            "OSX",
-            "IOS",
-            "ANY_PLATFORM",
-            "ALL_PLATFORMS",
-            "CHROME"
-          ],
-          "description": "The platform type for which data is returned.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown platform.",
-            "Threat posed to Windows.",
-            "Threat posed to Linux.",
-            "Threat posed to Android.",
-            "Threat posed to OS X.",
-            "Threat posed to iOS.",
-            "Threat posed to at least one of the defined platforms.",
-            "Threat posed to all defined platforms.",
-            "Threat posed to Chrome."
-          ]
-        },
-        "threatEntryType": {
-          "enum": [
-            "THREAT_ENTRY_TYPE_UNSPECIFIED",
-            "URL",
-            "EXECUTABLE",
-            "IP_RANGE",
-            "CHROME_EXTENSION",
-            "FILENAME",
-            "CERT"
-          ],
-          "description": "The format of the threats.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unspecified.",
-            "A URL.",
-            "An executable program.",
-            "An IP range.",
-            "Chrome extension.",
-            "Filename.",
-            "CERT"
-          ]
-        },
-        "additions": {
-          "description": "A set of entries to add to a local threat type's list. Repeated to allow\nfor a combination of compressed and raw data to be sent in a single\nresponse.",
-          "type": "array",
-          "items": {
-            "$ref": "ThreatEntrySet"
-          }
         }
       },
       "id": "ListUpdateResponse"
     },
     "ThreatMatch": {
+      "description": "A match when checking a threat entry in the Safe Browsing threat lists.",
+      "type": "object",
       "properties": {
-        "platformType": {
-          "enum": [
-            "PLATFORM_TYPE_UNSPECIFIED",
-            "WINDOWS",
-            "LINUX",
-            "ANDROID",
-            "OSX",
-            "IOS",
-            "ANY_PLATFORM",
-            "ALL_PLATFORMS",
-            "CHROME"
-          ],
-          "description": "The platform type matching this threat.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown platform.",
-            "Threat posed to Windows.",
-            "Threat posed to Linux.",
-            "Threat posed to Android.",
-            "Threat posed to OS X.",
-            "Threat posed to iOS.",
-            "Threat posed to at least one of the defined platforms.",
-            "Threat posed to all defined platforms.",
-            "Threat posed to Chrome."
-          ]
-        },
         "threatEntryType": {
-          "enum": [
-            "THREAT_ENTRY_TYPE_UNSPECIFIED",
-            "URL",
-            "EXECUTABLE",
-            "IP_RANGE",
-            "CHROME_EXTENSION",
-            "FILENAME",
-            "CERT"
-          ],
           "description": "The threat entry type matching this threat.",
           "type": "string",
           "enumDescriptions": [
@@ -1092,6 +1043,15 @@
             "An IP range.",
             "Chrome extension.",
             "Filename.",
+            "CERT"
+          ],
+          "enum": [
+            "THREAT_ENTRY_TYPE_UNSPECIFIED",
+            "URL",
+            "EXECUTABLE",
+            "IP_RANGE",
+            "CHROME_EXTENSION",
+            "FILENAME",
             "CERT"
           ]
         },
@@ -1137,26 +1097,46 @@
           "type": "string"
         },
         "threatEntryMetadata": {
-          "$ref": "ThreatEntryMetadata",
-          "description": "Optional metadata associated with this threat."
+          "description": "Optional metadata associated with this threat.",
+          "$ref": "ThreatEntryMetadata"
         },
         "threat": {
-          "description": "The threat matching this threat.",
-          "$ref": "ThreatEntry"
+          "$ref": "ThreatEntry",
+          "description": "The threat matching this threat."
+        },
+        "platformType": {
+          "enumDescriptions": [
+            "Unknown platform.",
+            "Threat posed to Windows.",
+            "Threat posed to Linux.",
+            "Threat posed to Android.",
+            "Threat posed to OS X.",
+            "Threat posed to iOS.",
+            "Threat posed to at least one of the defined platforms.",
+            "Threat posed to all defined platforms.",
+            "Threat posed to Chrome."
+          ],
+          "enum": [
+            "PLATFORM_TYPE_UNSPECIFIED",
+            "WINDOWS",
+            "LINUX",
+            "ANDROID",
+            "OSX",
+            "IOS",
+            "ANY_PLATFORM",
+            "ALL_PLATFORMS",
+            "CHROME"
+          ],
+          "description": "The platform type matching this threat.",
+          "type": "string"
         }
       },
-      "id": "ThreatMatch",
-      "description": "A match when checking a threat entry in the Safe Browsing threat lists.",
-      "type": "object"
+      "id": "ThreatMatch"
     },
     "ThreatEntry": {
       "description": "An individual threat; for example, a malicious URL or its hash\nrepresentation. Only one of these fields should be set.",
       "type": "object",
       "properties": {
-        "url": {
-          "description": "A URL.",
-          "type": "string"
-        },
         "digest": {
           "description": "The digest of an executable in SHA256 format. The API supports both\nbinary and hex digests. For JSON requests, digests are base64-encoded.",
           "format": "byte",
@@ -1165,6 +1145,10 @@
         "hash": {
           "description": "A hash prefix, consisting of the most significant 4-32 bytes of a SHA256\nhash. This field is in binary format. For JSON requests, hashes are\nbase64-encoded.",
           "format": "byte",
+          "type": "string"
+        },
+        "url": {
+          "description": "A URL.",
           "type": "string"
         }
       },
@@ -1188,21 +1172,23 @@
       "id": "MetadataEntry"
     },
     "FindThreatMatchesRequest": {
+      "description": "Request to check entries against lists.",
+      "type": "object",
       "properties": {
         "client": {
           "description": "The client metadata.",
           "$ref": "ClientInfo"
         },
         "threatInfo": {
-          "description": "The lists and entries to be checked for matches.",
-          "$ref": "ThreatInfo"
+          "$ref": "ThreatInfo",
+          "description": "The lists and entries to be checked for matches."
         }
       },
-      "id": "FindThreatMatchesRequest",
-      "description": "Request to check entries against lists.",
-      "type": "object"
+      "id": "FindThreatMatchesRequest"
     },
     "RawIndices": {
+      "description": "A set of raw indices to remove from a local list.",
+      "type": "object",
       "properties": {
         "indices": {
           "description": "The indices to remove from a lexicographically-sorted local list.",
@@ -1213,23 +1199,25 @@
           }
         }
       },
-      "id": "RawIndices",
-      "description": "A set of raw indices to remove from a local list.",
-      "type": "object"
+      "id": "RawIndices"
     },
     "ThreatSource": {
+      "id": "ThreatSource",
       "description": "A single resource related to a threat hit.",
       "type": "object",
       "properties": {
-        "remoteIp": {
-          "description": "The remote IP of the resource in ASCII format. Either IPv4 or IPv6.",
-          "type": "string"
-        },
         "referrer": {
           "description": "Referrer of the resource. Only set if the referrer is available.",
           "type": "string"
         },
         "type": {
+          "enumDescriptions": [
+            "Unknown.",
+            "The URL that matched the threat list (for which GetFullHash returned a\nvalid hash).",
+            "The final top-level URL of the tab that the client was browsing when the\nmatch occurred.",
+            "A redirect URL that was fetched before hitting the final TAB_URL.",
+            "A resource loaded within the final TAB_URL."
+          ],
           "enum": [
             "THREAT_SOURCE_TYPE_UNSPECIFIED",
             "MATCHING_URL",
@@ -1238,37 +1226,51 @@
             "TAB_RESOURCE"
           ],
           "description": "The type of source reported.",
-          "type": "string",
-          "enumDescriptions": [
-            "Unknown.",
-            "The URL that matched the threat list (for which GetFullHash returned a\nvalid hash).",
-            "The final top-level URL of the tab that the client was browsing when the\nmatch occurred.",
-            "A redirect URL that was fetched before hitting the final TAB_URL.",
-            "A resource loaded within the final TAB_URL."
-          ]
+          "type": "string"
         },
         "url": {
           "description": "The URL of the resource.",
           "type": "string"
+        },
+        "remoteIp": {
+          "description": "The remote IP of the resource in ASCII format. Either IPv4 or IPv6.",
+          "type": "string"
         }
-      },
-      "id": "ThreatSource"
+      }
     },
     "UserInfo": {
+      "id": "UserInfo",
       "description": "Details about the user that encountered the threat.",
       "type": "object",
       "properties": {
-        "regionCode": {
-          "description": "The UN M.49 region code associated with the user's location.",
-          "type": "string"
-        },
         "userId": {
           "description": "Unique user identifier defined by the client.",
           "format": "byte",
           "type": "string"
+        },
+        "regionCode": {
+          "description": "The UN M.49 region code associated with the user's location.",
+          "type": "string"
         }
-      },
-      "id": "UserInfo"
+      }
+    },
+    "FetchThreatListUpdatesResponse": {
+      "id": "FetchThreatListUpdatesResponse",
+      "type": "object",
+      "properties": {
+        "listUpdateResponses": {
+          "description": "The list updates requested by the clients.",
+          "type": "array",
+          "items": {
+            "$ref": "ListUpdateResponse"
+          }
+        },
+        "minimumWaitDuration": {
+          "description": "The minimum duration the client must wait before issuing any update\nrequest. If this field is not set clients may update as soon as they want.",
+          "format": "google-duration",
+          "type": "string"
+        }
+      }
     }
   },
   "protocol": "rest",
@@ -1286,10 +1288,8 @@
   "ownerDomain": "google.com",
   "name": "safebrowsing",
   "batchPath": "batch",
-  "id": "safebrowsing:v4",
-  "documentationLink": "https://developers.google.com/safe-browsing/",
   "revision": "20171212",
-  "title": "Google Safe Browsing API",
-  "discoveryVersion": "v1",
-  "ownerName": "Google"
+  "documentationLink": "https://developers.google.com/safe-browsing/",
+  "id": "safebrowsing:v4",
+  "title": "Google Safe Browsing API"
 }
