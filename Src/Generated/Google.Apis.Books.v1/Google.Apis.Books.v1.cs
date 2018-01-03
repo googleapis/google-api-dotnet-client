@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>Books API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170313 (802)
+ *      <tr><th>API Rev<td>20171127 (1061)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/books/docs/v1/getting_started'>
  *              https://developers.google.com/books/docs/v1/getting_started</a>
@@ -67,6 +67,7 @@ namespace Google.Apis.Books.v1
             bookshelves = new BookshelvesResource(this);
             cloudloading = new CloudloadingResource(this);
             dictionary = new DictionaryResource(this);
+            familysharing = new FamilysharingResource(this);
             layers = new LayersResource(this);
             myconfig = new MyconfigResource(this);
             mylibrary = new MylibraryResource(this);
@@ -148,6 +149,14 @@ namespace Google.Apis.Books.v1
         public virtual DictionaryResource Dictionary
         {
             get { return dictionary; }
+        }
+
+        private readonly FamilysharingResource familysharing;
+
+        /// <summary>Gets the Familysharing resource.</summary>
+        public virtual FamilysharingResource Familysharing
+        {
+            get { return familysharing; }
         }
 
         private readonly LayersResource layers;
@@ -973,6 +982,253 @@ namespace Google.Apis.Books.v1
                     {
                         Name = "cpksver",
                         IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "familysharing" collection of methods.</summary>
+    public class FamilysharingResource
+    {
+        private const string Resource = "familysharing";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public FamilysharingResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Gets information regarding the family that the user is part of.</summary>
+        public virtual GetFamilyInfoRequest GetFamilyInfo()
+        {
+            return new GetFamilyInfoRequest(service);
+        }
+
+        /// <summary>Gets information regarding the family that the user is part of.</summary>
+        public class GetFamilyInfoRequest : BooksBaseServiceRequest<Google.Apis.Books.v1.Data.FamilyInfo>
+        {
+            /// <summary>Constructs a new GetFamilyInfo request.</summary>
+            public GetFamilyInfoRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>String to identify the originator of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Source { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getFamilyInfo"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "familysharing/getFamilyInfo"; }
+            }
+
+            /// <summary>Initializes GetFamilyInfo parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Initiates sharing of the content with the user's family. Empty response indicates
+        /// success.</summary>
+        public virtual ShareRequest Share()
+        {
+            return new ShareRequest(service);
+        }
+
+        /// <summary>Initiates sharing of the content with the user's family. Empty response indicates
+        /// success.</summary>
+        public class ShareRequest : BooksBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Share request.</summary>
+            public ShareRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The docid to share.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("docId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DocId { get; set; }
+
+            /// <summary>String to identify the originator of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Source { get; set; }
+
+            /// <summary>The volume to share.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string VolumeId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "share"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "familysharing/share"; }
+            }
+
+            /// <summary>Initializes Share parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "docId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "docId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Initiates revoking content that has already been shared with the user's family. Empty response
+        /// indicates success.</summary>
+        public virtual UnshareRequest Unshare()
+        {
+            return new UnshareRequest(service);
+        }
+
+        /// <summary>Initiates revoking content that has already been shared with the user's family. Empty response
+        /// indicates success.</summary>
+        public class UnshareRequest : BooksBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Unshare request.</summary>
+            public UnshareRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>The docid to unshare.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("docId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string DocId { get; set; }
+
+            /// <summary>String to identify the originator of this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Source { get; set; }
+
+            /// <summary>The volume to unshare.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("volumeId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string VolumeId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "unshare"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "familysharing/unshare"; }
+            }
+
+            /// <summary>Initializes Unshare parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "docId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "docId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "source", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "source",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "volumeId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "volumeId",
+                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -7377,6 +7633,45 @@ namespace Google.Apis.Books.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class FamilyInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>Family membership info of the user that made the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual FamilyInfo.MembershipData Membership { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>Family membership info of the user that made the request.</summary>
+        public class MembershipData
+        {
+            /// <summary>Restrictions on user buying and acquiring content.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("acquirePermission")]
+            public virtual string AcquirePermission { get; set; } 
+
+            /// <summary>The age group of the user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("ageGroup")]
+            public virtual string AgeGroup { get; set; } 
+
+            /// <summary>The maximum allowed maturity rating for the user.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("allowedMaturityRating")]
+            public virtual string AllowedMaturityRating { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("isInFamily")]
+            public virtual System.Nullable<bool> IsInFamily { get; set; } 
+
+            /// <summary>The role of the user in the family.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("role")]
+            public virtual string Role { get; set; } 
+
+        }
+    }    
+
     public class Geolayerdata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("common")]
@@ -7954,16 +8249,29 @@ namespace Google.Apis.Books.v1.Data
 
         public class NotificationData
         {
+            [Newtonsoft.Json.JsonPropertyAttribute("matchMyInterests")]
+            public virtual NotificationData.MatchMyInterestsData MatchMyInterests { get; set; } 
+
             [Newtonsoft.Json.JsonPropertyAttribute("moreFromAuthors")]
             public virtual NotificationData.MoreFromAuthorsData MoreFromAuthors { get; set; } 
 
             [Newtonsoft.Json.JsonPropertyAttribute("moreFromSeries")]
             public virtual NotificationData.MoreFromSeriesData MoreFromSeries { get; set; } 
 
+            [Newtonsoft.Json.JsonPropertyAttribute("priceDrop")]
+            public virtual NotificationData.PriceDropData PriceDrop { get; set; } 
+
             [Newtonsoft.Json.JsonPropertyAttribute("rewardExpirations")]
             public virtual NotificationData.RewardExpirationsData RewardExpirations { get; set; } 
 
             
+
+            public class MatchMyInterestsData
+            {
+                [Newtonsoft.Json.JsonPropertyAttribute("opted_state")]
+                public virtual string OptedState { get; set; } 
+
+            }    
 
             public class MoreFromAuthorsData
             {
@@ -7973,6 +8281,13 @@ namespace Google.Apis.Books.v1.Data
             }    
 
             public class MoreFromSeriesData
+            {
+                [Newtonsoft.Json.JsonPropertyAttribute("opted_state")]
+                public virtual string OptedState { get; set; } 
+
+            }    
+
+            public class PriceDropData
             {
                 [Newtonsoft.Json.JsonPropertyAttribute("opted_state")]
                 public virtual string OptedState { get; set; } 

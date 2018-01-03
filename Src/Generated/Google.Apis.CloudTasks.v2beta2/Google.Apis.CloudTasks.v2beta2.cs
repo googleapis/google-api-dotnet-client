@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171219 (1083)
+ *      <tr><th>API Rev<td>20180102 (1097)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -430,12 +430,12 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Acknowledges a pull task.
                     ///
-                    /// The pull worker, that is, the entity that received this task in a PullTasksResponse, must call
-                    /// this method to indicate that the work associated with the task has finished.
+                    /// The worker, that is, the entity that received this task in a LeaseTasksResponse, must call this
+                    /// method to indicate that the work associated with the task has finished.
                     ///
-                    /// The pull worker must acknowledge a task within the PullTasksRequest.lease_duration or the lease
-                    /// will expire and the task will become ready to be returned in a different PullTasksResponse.
-                    /// After the task is acknowledged, it will not be returned by a later CloudTasks.PullTasks,
+                    /// The worker must acknowledge a task within the LeaseTasksRequest.lease_duration or the lease will
+                    /// expire and the task will become ready to be returned in a different LeaseTasksResponse. After
+                    /// the task is acknowledged, it will not be returned by a later CloudTasks.LeaseTasks,
                     /// CloudTasks.GetTask, or CloudTasks.ListTasks.
                     ///
                     /// To acknowledge multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1
@@ -452,12 +452,12 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Acknowledges a pull task.
                     ///
-                    /// The pull worker, that is, the entity that received this task in a PullTasksResponse, must call
-                    /// this method to indicate that the work associated with the task has finished.
+                    /// The worker, that is, the entity that received this task in a LeaseTasksResponse, must call this
+                    /// method to indicate that the work associated with the task has finished.
                     ///
-                    /// The pull worker must acknowledge a task within the PullTasksRequest.lease_duration or the lease
-                    /// will expire and the task will become ready to be returned in a different PullTasksResponse.
-                    /// After the task is acknowledged, it will not be returned by a later CloudTasks.PullTasks,
+                    /// The worker must acknowledge a task within the LeaseTasksRequest.lease_duration or the lease will
+                    /// expire and the task will become ready to be returned in a different LeaseTasksResponse. After
+                    /// the task is acknowledged, it will not be returned by a later CloudTasks.LeaseTasks,
                     /// CloudTasks.GetTask, or CloudTasks.ListTasks.
                     ///
                     /// To acknowledge multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1
@@ -527,9 +527,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Cancel a pull task's lease.
                     ///
-                    /// The pull worker can use this method to cancel a task's lease by setting Task.schedule_time to
-                    /// now. This will make the task available to be leased to the next caller of
-                    /// CloudTasks.PullTasks.</summary>
+                    /// The worker can use this method to cancel a task's lease by setting Task.schedule_time to now.
+                    /// This will make the task available to be leased to the next caller of
+                    /// CloudTasks.LeaseTasks.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -541,9 +541,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Cancel a pull task's lease.
                     ///
-                    /// The pull worker can use this method to cancel a task's lease by setting Task.schedule_time to
-                    /// now. This will make the task available to be leased to the next caller of
-                    /// CloudTasks.PullTasks.</summary>
+                    /// The worker can use this method to cancel a task's lease by setting Task.schedule_time to now.
+                    /// This will make the task available to be leased to the next caller of
+                    /// CloudTasks.LeaseTasks.</summary>
                     public class CancelLeaseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Task>
                     {
                         /// <summary>Constructs a new CancelLease request.</summary>
@@ -878,13 +878,12 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary> Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
                     ///
-                    /// This method is invoked by the pull worker to obtain a lease. The pull worker must acknowledge
-                    /// the task via CloudTasks.AcknowledgeTask after they have performed the work associated with the
-                    /// task.
+                    /// This method is invoked by the worker to obtain a lease. The worker must acknowledge the task via
+                    /// CloudTasks.AcknowledgeTask after they have performed the work associated with the task.
                     ///
-                    /// The payload is intended to store data that the pull worker needs to perform the work associated
-                    /// with the task. To return the payloads in the LeaseTasksResponse, set
-                    /// LeaseTasksRequest.response_view to Task.View.FULL.
+                    /// The payload is intended to store data that the worker needs to perform the work associated with
+                    /// the task. To return the payloads in the LeaseTasksResponse, set LeaseTasksRequest.response_view
+                    /// to Task.View.FULL.
                     ///
                     /// A maximum of 10 qps of CloudTasks.LeaseTasks requests are allowed per queue.
                     /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
@@ -901,13 +900,12 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary> Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
                     ///
-                    /// This method is invoked by the pull worker to obtain a lease. The pull worker must acknowledge
-                    /// the task via CloudTasks.AcknowledgeTask after they have performed the work associated with the
-                    /// task.
+                    /// This method is invoked by the worker to obtain a lease. The worker must acknowledge the task via
+                    /// CloudTasks.AcknowledgeTask after they have performed the work associated with the task.
                     ///
-                    /// The payload is intended to store data that the pull worker needs to perform the work associated
-                    /// with the task. To return the payloads in the LeaseTasksResponse, set
-                    /// LeaseTasksRequest.response_view to Task.View.FULL.
+                    /// The payload is intended to store data that the worker needs to perform the work associated with
+                    /// the task. To return the payloads in the LeaseTasksResponse, set LeaseTasksRequest.response_view
+                    /// to Task.View.FULL.
                     ///
                     /// A maximum of 10 qps of CloudTasks.LeaseTasks requests are allowed per queue.
                     /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
@@ -1011,14 +1009,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
-                        ///
-                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
-                        /// tasks than requested might be returned, even if more tasks exist; use
-                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
                         /// By default response_view is Task.View.BASIC; not all information is retrieved by default
@@ -1064,6 +1054,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
+                        ///
+                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
+                        /// tasks than requested might be returned, even if more tasks exist; use
+                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -1098,15 +1096,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "responseView", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "responseView",
@@ -1133,106 +1122,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
-                        }
-
-                    }
-
-                    /// <summary> Pulls tasks from a pull queue and acquires a lease on them for a specified
-                    /// PullTasksRequest.lease_duration.
-                    ///
-                    /// This method is invoked by the pull worker to obtain the lease. The pull worker must acknowledge
-                    /// the task via CloudTasks.AcknowledgeTask after they have performed the work associated with the
-                    /// task.
-                    ///
-                    /// The payload is intended to store data that the pull worker needs to perform the work associated
-                    /// with the task. To return the payloads in the PullTasksResponse, set
-                    /// PullTasksRequest.response_view to Task.View.FULL.
-                    ///
-                    /// A maximum of 10 qps of CloudTasks.PullTasks requests are allowed per queue.
-                    /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
-                    /// google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
-                    /// RateLimits.max_tasks_dispatched_per_second is exceeded.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required.
-                    ///
-                    /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
-                    public virtual PullRequest Pull(Google.Apis.CloudTasks.v2beta2.Data.PullTasksRequest body, string name)
-                    {
-                        return new PullRequest(service, body, name);
-                    }
-
-                    /// <summary> Pulls tasks from a pull queue and acquires a lease on them for a specified
-                    /// PullTasksRequest.lease_duration.
-                    ///
-                    /// This method is invoked by the pull worker to obtain the lease. The pull worker must acknowledge
-                    /// the task via CloudTasks.AcknowledgeTask after they have performed the work associated with the
-                    /// task.
-                    ///
-                    /// The payload is intended to store data that the pull worker needs to perform the work associated
-                    /// with the task. To return the payloads in the PullTasksResponse, set
-                    /// PullTasksRequest.response_view to Task.View.FULL.
-                    ///
-                    /// A maximum of 10 qps of CloudTasks.PullTasks requests are allowed per queue.
-                    /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
-                    /// google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
-                    /// RateLimits.max_tasks_dispatched_per_second is exceeded.</summary>
-                    public class PullRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.PullTasksResponse>
-                    {
-                        /// <summary>Constructs a new Pull request.</summary>
-                        public PullRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.PullTasksRequest body, string name)
-                            : base(service)
-                        {
-                            Name = name;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required.
-                        ///
-                        /// The queue name. For example:
-                        /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.CloudTasks.v2beta2.Data.PullTasksRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "pull"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v2beta2/{+name}/tasks:pull"; }
-                        }
-
-                        /// <summary>Initializes Pull parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
                             RequestParameters.Add(
-                                "name", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "name",
-                                    IsRequired = true,
-                                    ParameterType = "path",
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
                                     DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
+                                    Pattern = null,
                                 });
                         }
 
@@ -1240,8 +1137,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Renew the current lease of a pull task.
                     ///
-                    /// The pull worker can use this method to extend the lease by a new duration, starting from now.
-                    /// The new task lease will be returned in Task.schedule_time.</summary>
+                    /// The worker can use this method to extend the lease by a new duration, starting from now. The new
+                    /// task lease will be returned in Task.schedule_time.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -1253,8 +1150,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Renew the current lease of a pull task.
                     ///
-                    /// The pull worker can use this method to extend the lease by a new duration, starting from now.
-                    /// The new task lease will be returned in Task.schedule_time.</summary>
+                    /// The worker can use this method to extend the lease by a new duration, starting from now. The new
+                    /// task lease will be returned in Task.schedule_time.</summary>
                     public class RenewLeaseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Task>
                     {
                         /// <summary>Constructs a new RenewLease request.</summary>
@@ -1784,14 +1681,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Requested page size.
-                    ///
-                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
-                    /// than requested might be returned, even if more queues exist; use
-                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
                     /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
                     /// syntax is the same as described in [Stackdriver's Advanced Logs
@@ -1812,6 +1701,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// ListQueuesRequest.filter while iterating through pages.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Requested page size.
+                    ///
+                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
+                    /// than requested might be returned, even if more queues exist; use
+                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1847,15 +1744,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1868,6 +1756,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2502,10 +2399,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2513,6 +2406,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2548,15 +2445,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2569,6 +2457,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2589,8 +2486,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>Required.
         ///
-        /// The task's current schedule time, available in the Task.schedule_time returned in PullTasksResponse.tasks or
-        /// CloudTasks.RenewLease. This restriction is to ensure that your task worker currently holds the
+        /// The task's current schedule time, available in the Task.schedule_time returned in LeaseTasksResponse.tasks
+        /// or CloudTasks.RenewLease. This restriction is to ensure that your worker currently holds the
         /// lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
@@ -2909,8 +2806,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>Required.
         ///
-        /// The task's current schedule time, available in the Task.schedule_time returned in PullTasksResponse.tasks or
-        /// CloudTasks.RenewLease. This restriction is to ensure that your task worker currently holds the
+        /// The task's current schedule time, available in the Task.schedule_time returned in LeaseTasksResponse.tasks
+        /// or CloudTasks.RenewLease. This restriction is to ensure that your worker currently holds the
         /// lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
@@ -3014,10 +2911,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// the `lease_duration`. A task that has been returned in a LeaseTasksResponse is leased -- that task will not
         /// be returned in a different LeaseTasksResponse before the Task.schedule_time.
         ///
-        /// After the pull worker has successfully finished the work associated with the task, the pull worker must call
+        /// After the worker has successfully finished the work associated with the task, the worker must call
         /// CloudTasks.AcknowledgeTask. If the task is not acknowledged via CloudTasks.AcknowledgeTask before the
-        /// Task.schedule_time then it will be returned in a later LeaseTasksResponse so that another pull worker can
-        /// process it.
+        /// Task.schedule_time then it will be returned in a later LeaseTasksResponse so that another worker can process
+        /// it.
         ///
         /// The maximum lease duration is 1 week. `lease_duration` will be truncated to the nearest second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaseDuration")]
@@ -3157,7 +3054,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// "members": ["user:sean@example.com"] } ] }
     ///
     /// For a description of IAM and its features, see the [IAM developer's
-    /// guide](https://cloud.google.com/iam).</summary>
+    /// guide](https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
@@ -3176,26 +3073,26 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Version of the `Policy`. The default version is 0.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
     }    
 
-    /// <summary>The pull message contains data that can be used by the caller of CloudTasks.PullTasks to process the
+    /// <summary>The pull message contains data that can be used by the caller of CloudTasks.LeaseTasks to process the
     /// task.
     ///
     /// This proto can only be used for tasks in a queue which has Queue.pull_target set.</summary>
     public class PullMessage : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A data payload consumed by the task worker to execute the task.</summary>
+        /// <summary>A data payload consumed by the worker to execute the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual string Payload { get; set; } 
 
         /// <summary>The task's tag.
         ///
-        /// Tags allow similar tasks to be processed in a batch. If you label tasks with a tag, your task worker can
-        /// pull tasks with the same tag using PullTasksRequest.filter. For example, if you want to aggregate the events
+        /// Tags allow similar tasks to be processed in a batch. If you label tasks with a tag, your worker can lease
+        /// tasks with the same tag using LeaseTasksRequest.filter. For example, if you want to aggregate the events
         /// associated with a specific user once a day, you could tag tasks with the user ID.
         ///
         /// The task's tag can only be set when the task is created.
@@ -3211,75 +3108,6 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>Pull target.</summary>
     public class PullTarget : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request message for pulling tasks using CloudTasks.PullTasks.</summary>
-    public class PullTasksRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>`filter` can be used to specify a subset of tasks to lease.
-        ///
-        /// When `filter` is set to `tag=` then the PullTasksResponse will contain only tasks whose PullMessage.tag is
-        /// equal to ``. `` must be less than 500 bytes.
-        ///
-        /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have the same tag as the task with the
-        /// oldest schedule_time will be returned.
-        ///
-        /// Grammar Syntax:
-        ///
-        /// * `filter = "tag=" tag | "tag_function=" function`
-        ///
-        /// * `tag = string | bytes`
-        ///
-        /// * `function = "oldest_tag()"`
-        ///
-        /// The `oldest_tag()` function returns tasks which have the same tag as the oldest task (ordered by schedule
-        /// time).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
-        public virtual string Filter { get; set; } 
-
-        /// <summary>The duration of the lease.
-        ///
-        /// Each task returned in the PullTasksResponse will have its Task.schedule_time set to the current time plus
-        /// the `lease_duration`. A task that has been returned in a PullTasksResponse is leased -- that task will not
-        /// be returned in a different PullTasksResponse before the Task.schedule_time.
-        ///
-        /// After the pull worker has successfully finished the work associated with the task, the pull worker must call
-        /// CloudTasks.AcknowledgeTask. If the task is not acknowledged via CloudTasks.AcknowledgeTask before the
-        /// Task.schedule_time then it will be returned in a later PullTasksResponse so that another pull worker can
-        /// process it.
-        ///
-        /// The maximum lease duration is 1 week. `lease_duration` will be truncated to the nearest second.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("leaseDuration")]
-        public virtual object LeaseDuration { get; set; } 
-
-        /// <summary>The maximum number of tasks to lease. The maximum that can be requested is 1000.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxTasks")]
-        public virtual System.Nullable<int> MaxTasks { get; set; } 
-
-        /// <summary>The response_view specifies which subset of the Task will be returned.
-        ///
-        /// By default response_view is Task.View.BASIC; not all information is retrieved by default because some data,
-        /// such as payloads, might be desirable to return only when needed because of its large size or because of the
-        /// sensitivity of data that it contains.
-        ///
-        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        /// Task.name resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
-        public virtual string ResponseView { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Response message for pulling tasks using CloudTasks.PullTasks.</summary>
-    public class PullTasksResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The leased tasks.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
-        public virtual System.Collections.Generic.IList<Task> Tasks { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3414,7 +3242,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// * For App Engine queues, this field is 1 by default. * For pull queues, this field is output only and always
         /// 10,000. In addition to the `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of
-        /// CloudTasks.PullTasks requests are allowed per queue.
+        /// CloudTasks.LeaseTasks requests are allowed per queue.
         ///
         /// This field has the same meaning as [rate in
         /// queue.yaml](/appengine/docs/standard/python/config/queueref#rate).</summary>
@@ -3449,8 +3277,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>Required.
         ///
-        /// The task's current schedule time, available in the Task.schedule_time returned in PullTasksResponse.tasks or
-        /// CloudTasks.RenewLease. This restriction is to ensure that your task worker currently holds the
+        /// The task's current schedule time, available in the Task.schedule_time returned in LeaseTasksResponse.tasks
+        /// or CloudTasks.RenewLease. This restriction is to ensure that your worker currently holds the
         /// lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
@@ -3673,8 +3501,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Pull message contains data that should be used by the caller of CloudTasks.PullTasks to process the
-        /// task. Can be set only if Queue.pull_target is set.
+        /// <summary>Pull message contains data that should be used by the caller of CloudTasks.LeaseTasks to process
+        /// the task. Can be set only if Queue.pull_target is set.
         ///
         /// A pull task is a task that has PullMessage set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullMessage")]
@@ -3686,7 +3514,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// For pull queues, this is the time when the task is available to be leased; if a task is currently leased,
         /// this is the time when the current lease expires, that is, the time that the task was leased plus the
-        /// PullTasksRequest.lease_duration.
+        /// LeaseTasksRequest.lease_duration.
         ///
         /// `schedule_time` will be truncated to the nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]

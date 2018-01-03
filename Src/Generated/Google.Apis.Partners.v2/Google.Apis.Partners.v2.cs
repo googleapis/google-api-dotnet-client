@@ -450,6 +450,15 @@ namespace Google.Apis.Partners.v2
             }
 
 
+            /// <summary>Experiment IDs the current request belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
+
+            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
+            /// letters created by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
+
             /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesUserId { get; set; }
@@ -485,15 +494,6 @@ namespace Google.Apis.Partners.v2
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
 
-            /// <summary>Experiment IDs the current request belongs to.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
-
-            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
-            /// letters created by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -518,6 +518,24 @@ namespace Google.Apis.Partners.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.experimentIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.trafficSource.trafficSubId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
                     {
@@ -576,24 +594,6 @@ namespace Google.Apis.Partners.v2
                     "requestMetadata.userOverrides.ipAddress", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.userOverrides.ipAddress",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.experimentIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.trafficSource.trafficSubId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -808,6 +808,30 @@ namespace Google.Apis.Partners.v2
             [Google.Apis.Util.RequestParameterAttribute("companyId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string CompanyId { get; private set; }
 
+            /// <summary>The view of `Company` resource to be returned. This must not be
+            /// `COMPANY_VIEW_UNSPECIFIED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ViewEnum> View { get; set; }
+
+            /// <summary>The view of `Company` resource to be returned. This must not be
+            /// `COMPANY_VIEW_UNSPECIFIED`.</summary>
+            public enum ViewEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPANY_VIEW_UNSPECIFIED")]
+                COMPANYVIEWUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("CV_GOOGLE_PARTNER_SEARCH")]
+                CVGOOGLEPARTNERSEARCH,
+            }
+
+            /// <summary>Locale to use for the current request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.locale", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataLocale { get; set; }
+
+            /// <summary>The address to use for sorting the company's addresses by proximity. If not given, the geo-
+            /// located address of the request is used. Used when order_by is set.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Address { get; set; }
+
             /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
             /// by a team which redirected the traffic to us.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSourceId", Google.Apis.Util.RequestParameterType.Query)]
@@ -845,30 +869,6 @@ namespace Google.Apis.Partners.v2
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesUserId { get; set; }
 
-            /// <summary>The view of `Company` resource to be returned. This must not be
-            /// `COMPANY_VIEW_UNSPECIFIED`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<ViewEnum> View { get; set; }
-
-            /// <summary>The view of `Company` resource to be returned. This must not be
-            /// `COMPANY_VIEW_UNSPECIFIED`.</summary>
-            public enum ViewEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPANY_VIEW_UNSPECIFIED")]
-                COMPANYVIEWUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("CV_GOOGLE_PARTNER_SEARCH")]
-                CVGOOGLEPARTNERSEARCH,
-            }
-
-            /// <summary>The address to use for sorting the company's addresses by proximity. If not given, the geo-
-            /// located address of the request is used. Used when order_by is set.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("address", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Address { get; set; }
-
-            /// <summary>Locale to use for the current request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.locale", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataLocale { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -899,6 +899,33 @@ namespace Google.Apis.Partners.v2
                         Name = "companyId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "view", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "address", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "address",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -974,33 +1001,6 @@ namespace Google.Apis.Partners.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "address", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "address",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -1021,6 +1021,83 @@ namespace Google.Apis.Partners.v2
                 InitParameters();
             }
 
+
+            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
+            /// letters created by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
+
+            /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and
+            /// +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero,
+            /// `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero.
+            /// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("minMonthlyBudget.nanos", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> MinMonthlyBudgetNanos { get; set; }
+
+            /// <summary>Google Partners session ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataPartnersSessionId { get; set; }
+
+            /// <summary>Company name to search for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CompanyName { get; set; }
+
+            /// <summary>A token identifying a page of results that the server returns. Typically, this is the value of
+            /// `ListCompaniesResponse.next_page_token` returned from the previous call to ListCompanies.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>List of industries the company can help with.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("industries", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<IndustriesEnum> Industries { get; set; }
+
+            /// <summary>List of industries the company can help with.</summary>
+            public enum IndustriesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("INDUSTRY_UNSPECIFIED")]
+                INDUSTRYUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("I_AUTOMOTIVE")]
+                IAUTOMOTIVE,
+                [Google.Apis.Util.StringValueAttribute("I_BUSINESS_TO_BUSINESS")]
+                IBUSINESSTOBUSINESS,
+                [Google.Apis.Util.StringValueAttribute("I_CONSUMER_PACKAGED_GOODS")]
+                ICONSUMERPACKAGEDGOODS,
+                [Google.Apis.Util.StringValueAttribute("I_EDUCATION")]
+                IEDUCATION,
+                [Google.Apis.Util.StringValueAttribute("I_FINANCE")]
+                IFINANCE,
+                [Google.Apis.Util.StringValueAttribute("I_HEALTHCARE")]
+                IHEALTHCARE,
+                [Google.Apis.Util.StringValueAttribute("I_MEDIA_AND_ENTERTAINMENT")]
+                IMEDIAANDENTERTAINMENT,
+                [Google.Apis.Util.StringValueAttribute("I_RETAIL")]
+                IRETAIL,
+                [Google.Apis.Util.StringValueAttribute("I_TECHNOLOGY")]
+                ITECHNOLOGY,
+                [Google.Apis.Util.StringValueAttribute("I_TRAVEL")]
+                ITRAVEL,
+            }
+
+            /// <summary>Website URL that will help to find a better matched company. .</summary>
+            [Google.Apis.Util.RequestParameterAttribute("websiteUrl", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string WebsiteUrl { get; set; }
+
+            /// <summary>List of reasons for using Google Partner Search to get companies.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("gpsMotivations", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<GpsMotivationsEnum> GpsMotivations { get; set; }
+
+            /// <summary>List of reasons for using Google Partner Search to get companies.</summary>
+            public enum GpsMotivationsEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("GPS_MOTIVATION_UNSPECIFIED")]
+                GPSMOTIVATIONUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("GPSM_HELP_WITH_ADVERTISING")]
+                GPSMHELPWITHADVERTISING,
+                [Google.Apis.Util.StringValueAttribute("GPSM_HELP_WITH_WEBSITE")]
+                GPSMHELPWITHWEBSITE,
+                [Google.Apis.Util.StringValueAttribute("GPSM_NO_WEBSITE")]
+                GPSMNOWEBSITE,
+            }
 
             /// <summary>List of language codes that company can support. Only primary language subtags are accepted as
             /// defined by BCP 47 (IETF BCP 47, "Tags for Identifying Languages").</summary>
@@ -1156,83 +1233,6 @@ namespace Google.Apis.Partners.v2
             [Google.Apis.Util.RequestParameterAttribute("maxMonthlyBudget.units", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxMonthlyBudgetUnits { get; set; }
 
-            /// <summary>Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and
-            /// +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero,
-            /// `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero.
-            /// For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("minMonthlyBudget.nanos", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MinMonthlyBudgetNanos { get; set; }
-
-            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
-            /// letters created by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
-
-            /// <summary>Google Partners session ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataPartnersSessionId { get; set; }
-
-            /// <summary>A token identifying a page of results that the server returns. Typically, this is the value of
-            /// `ListCompaniesResponse.next_page_token` returned from the previous call to ListCompanies.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Company name to search for.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string CompanyName { get; set; }
-
-            /// <summary>List of industries the company can help with.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("industries", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<IndustriesEnum> Industries { get; set; }
-
-            /// <summary>List of industries the company can help with.</summary>
-            public enum IndustriesEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("INDUSTRY_UNSPECIFIED")]
-                INDUSTRYUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("I_AUTOMOTIVE")]
-                IAUTOMOTIVE,
-                [Google.Apis.Util.StringValueAttribute("I_BUSINESS_TO_BUSINESS")]
-                IBUSINESSTOBUSINESS,
-                [Google.Apis.Util.StringValueAttribute("I_CONSUMER_PACKAGED_GOODS")]
-                ICONSUMERPACKAGEDGOODS,
-                [Google.Apis.Util.StringValueAttribute("I_EDUCATION")]
-                IEDUCATION,
-                [Google.Apis.Util.StringValueAttribute("I_FINANCE")]
-                IFINANCE,
-                [Google.Apis.Util.StringValueAttribute("I_HEALTHCARE")]
-                IHEALTHCARE,
-                [Google.Apis.Util.StringValueAttribute("I_MEDIA_AND_ENTERTAINMENT")]
-                IMEDIAANDENTERTAINMENT,
-                [Google.Apis.Util.StringValueAttribute("I_RETAIL")]
-                IRETAIL,
-                [Google.Apis.Util.StringValueAttribute("I_TECHNOLOGY")]
-                ITECHNOLOGY,
-                [Google.Apis.Util.StringValueAttribute("I_TRAVEL")]
-                ITRAVEL,
-            }
-
-            /// <summary>Website URL that will help to find a better matched company. .</summary>
-            [Google.Apis.Util.RequestParameterAttribute("websiteUrl", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string WebsiteUrl { get; set; }
-
-            /// <summary>List of reasons for using Google Partner Search to get companies.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("gpsMotivations", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<GpsMotivationsEnum> GpsMotivations { get; set; }
-
-            /// <summary>List of reasons for using Google Partner Search to get companies.</summary>
-            public enum GpsMotivationsEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("GPS_MOTIVATION_UNSPECIFIED")]
-                GPSMOTIVATIONUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("GPSM_HELP_WITH_ADVERTISING")]
-                GPSMHELPWITHADVERTISING,
-                [Google.Apis.Util.StringValueAttribute("GPSM_HELP_WITH_WEBSITE")]
-                GPSMHELPWITHWEBSITE,
-                [Google.Apis.Util.StringValueAttribute("GPSM_NO_WEBSITE")]
-                GPSMNOWEBSITE,
-            }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1257,6 +1257,78 @@ namespace Google.Apis.Partners.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.trafficSource.trafficSubId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "minMonthlyBudget.nanos", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "minMonthlyBudget.nanos",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.partnersSessionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "companyName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "companyName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "industries", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "industries",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "websiteUrl", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "websiteUrl",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "gpsMotivations", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "gpsMotivations",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "languageCodes", new Google.Apis.Discovery.Parameter
                     {
@@ -1410,78 +1482,6 @@ namespace Google.Apis.Partners.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "minMonthlyBudget.nanos", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "minMonthlyBudget.nanos",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.trafficSource.trafficSubId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.partnersSessionId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "companyName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "companyName",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "industries", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "industries",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "websiteUrl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "websiteUrl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "gpsMotivations", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "gpsMotivations",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -1553,13 +1553,22 @@ namespace Google.Apis.Partners.v2
                 CETMOBILESITES,
             }
 
-            /// <summary>Google Partners session ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataPartnersSessionId { get; set; }
+            /// <summary>Experiment IDs the current request belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
+
+            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
+            /// letters created by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
 
             /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesUserId { get; set; }
+
+            /// <summary>Google Partners session ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataPartnersSessionId { get; set; }
 
             /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
             /// by a team which redirected the traffic to us.</summary>
@@ -1573,15 +1582,6 @@ namespace Google.Apis.Partners.v2
             /// <summary>IP address to use instead of the user's geo-located IP address.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
-
-            /// <summary>Experiment IDs the current request belongs to.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
-
-            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
-            /// letters created by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1617,9 +1617,18 @@ namespace Google.Apis.Partners.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMetadata.partnersSessionId",
+                        Name = "requestMetadata.experimentIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.trafficSource.trafficSubId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1629,6 +1638,15 @@ namespace Google.Apis.Partners.v2
                     "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.userOverrides.userId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.partnersSessionId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1656,24 +1674,6 @@ namespace Google.Apis.Partners.v2
                     "requestMetadata.userOverrides.ipAddress", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.userOverrides.ipAddress",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.experimentIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.trafficSource.trafficSubId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1719,13 +1719,13 @@ namespace Google.Apis.Partners.v2
             }
 
 
-            /// <summary>Google Partners session ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataPartnersSessionId { get; set; }
-
             /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesUserId { get; set; }
+
+            /// <summary>Google Partners session ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataPartnersSessionId { get; set; }
 
             /// <summary>A token identifying a page of results that the server returns. Typically, this is the value of
             /// `ListLeadsResponse.next_page_token` returned from the previous call to ListLeads.</summary>
@@ -1754,15 +1754,15 @@ namespace Google.Apis.Partners.v2
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
 
-            /// <summary>How to order Leads. Currently, only `create_time` and `create_time desc` are
-            /// supported</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string OrderBy { get; set; }
-
             /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
             /// letters created by a team which redirected the traffic to us.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
+
+            /// <summary>How to order Leads. Currently, only `create_time` and `create_time desc` are
+            /// supported</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1789,18 +1789,18 @@ namespace Google.Apis.Partners.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMetadata.partnersSessionId",
+                        Name = "requestMetadata.userOverrides.userId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
+                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMetadata.userOverrides.userId",
+                        Name = "requestMetadata.partnersSessionId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1861,18 +1861,18 @@ namespace Google.Apis.Partners.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "orderBy", new Google.Apis.Discovery.Parameter
+                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "orderBy",
+                        Name = "requestMetadata.trafficSource.trafficSubId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
+                    "orderBy", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMetadata.trafficSource.trafficSubId",
+                        Name = "orderBy",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1940,13 +1940,13 @@ namespace Google.Apis.Partners.v2
                 }
 
 
-                /// <summary>Google Partners session ID.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string RequestMetadataPartnersSessionId { get; set; }
-
                 /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestMetadataUserOverridesUserId { get; set; }
+
+                /// <summary>Google Partners session ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string RequestMetadataPartnersSessionId { get; set; }
 
                 /// <summary>Token to retrieve a specific page.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1969,13 +1969,13 @@ namespace Google.Apis.Partners.v2
                 [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
 
-                /// <summary>if true, show history for the entire company.  Requires user to be admin.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("entireCompany", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> EntireCompany { get; set; }
-
                 /// <summary>Experiment IDs the current request belongs to.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
+
+                /// <summary>if true, show history for the entire company.  Requires user to be admin.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("entireCompany", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> EntireCompany { get; set; }
 
                 /// <summary>Comma-separated list of fields to order by, e.g.: "foo,bar,baz". Use "foo desc" to sort
                 /// descending. List of valid field names is: name, offer_code, expiration_time, status,
@@ -2013,18 +2013,18 @@ namespace Google.Apis.Partners.v2
                     base.InitParameters();
 
                     RequestParameters.Add(
-                        "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                        "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMetadata.partnersSessionId",
+                            Name = "requestMetadata.userOverrides.userId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
+                        "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMetadata.userOverrides.userId",
+                            Name = "requestMetadata.partnersSessionId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2076,18 +2076,18 @@ namespace Google.Apis.Partners.v2
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "entireCompany", new Google.Apis.Discovery.Parameter
+                        "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "entireCompany",
+                            Name = "requestMetadata.experimentIds",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
+                        "entireCompany", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "requestMetadata.experimentIds",
+                            Name = "entireCompany",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2133,15 +2133,6 @@ namespace Google.Apis.Partners.v2
             }
 
 
-            /// <summary>Experiment IDs the current request belongs to.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
-
-            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
-            /// letters created by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
-
             /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesUserId { get; set; }
@@ -2162,6 +2153,15 @@ namespace Google.Apis.Partners.v2
             /// <summary>IP address to use instead of the user's geo-located IP address.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
+
+            /// <summary>Experiment IDs the current request belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
+
+            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
+            /// letters created by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2187,24 +2187,6 @@ namespace Google.Apis.Partners.v2
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.experimentIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.trafficSource.trafficSubId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
                     {
@@ -2245,6 +2227,24 @@ namespace Google.Apis.Partners.v2
                     "requestMetadata.userOverrides.ipAddress", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.userOverrides.ipAddress",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.experimentIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.trafficSource.trafficSubId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2521,14 +2521,6 @@ namespace Google.Apis.Partners.v2
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
-            /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataUserOverridesUserId { get; set; }
-
-            /// <summary>Google Partners session ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataPartnersSessionId { get; set; }
-
             /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
             /// by a team which redirected the traffic to us.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSourceId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2550,6 +2542,14 @@ namespace Google.Apis.Partners.v2
             /// letters created by a team which redirected the traffic to us.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
+
+            /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataUserOverridesUserId { get; set; }
+
+            /// <summary>Google Partners session ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataPartnersSessionId { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -2591,24 +2591,6 @@ namespace Google.Apis.Partners.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.userOverrides.userId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.partnersSessionId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "requestMetadata.trafficSource.trafficSourceId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.trafficSource.trafficSourceId",
@@ -2653,6 +2635,24 @@ namespace Google.Apis.Partners.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.userOverrides.userId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.partnersSessionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2680,15 +2680,6 @@ namespace Google.Apis.Partners.v2
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
-            /// <summary>Experiment IDs the current request belongs to.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
-
-            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
-            /// letters created by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
-
             /// <summary>Google Partners session ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataPartnersSessionId { get; set; }
@@ -2709,6 +2700,15 @@ namespace Google.Apis.Partners.v2
             /// <summary>IP address to use instead of the user's geo-located IP address.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
+
+            /// <summary>Experiment IDs the current request belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
+
+            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
+            /// letters created by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2744,24 +2744,6 @@ namespace Google.Apis.Partners.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.experimentIds",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.trafficSource.trafficSubId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.partnersSessionId",
@@ -2806,6 +2788,24 @@ namespace Google.Apis.Partners.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestMetadata.experimentIds", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.experimentIds",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.trafficSource.trafficSubId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -2833,6 +2833,28 @@ namespace Google.Apis.Partners.v2
             [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UserId { get; private set; }
 
+            /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
+            /// by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSourceId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSourceId { get; set; }
+
+            /// <summary>Locale to use for the current request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.locale", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataLocale { get; set; }
+
+            /// <summary>IP address to use instead of the user's geo-located IP address.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
+
+            /// <summary>Experiment IDs the current request belongs to.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
+
+            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
+            /// letters created by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
+
             /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesUserId { get; set; }
@@ -2855,28 +2877,6 @@ namespace Google.Apis.Partners.v2
                 [Google.Apis.Util.StringValueAttribute("PUBLIC_PROFILE")]
                 PUBLICPROFILE,
             }
-
-            /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
-            /// by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSourceId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSourceId { get; set; }
-
-            /// <summary>Locale to use for the current request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.locale", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataLocale { get; set; }
-
-            /// <summary>IP address to use instead of the user's geo-located IP address.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
-
-            /// <summary>Experiment IDs the current request belongs to.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.experimentIds", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> RequestMetadataExperimentIds { get; set; }
-
-            /// <summary>Second level identifier to indicate where the traffic comes from. An identifier has multiple
-            /// letters created by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2912,33 +2912,6 @@ namespace Google.Apis.Partners.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.userOverrides.userId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.partnersSessionId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "userView", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "userView",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "requestMetadata.trafficSource.trafficSourceId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.trafficSource.trafficSourceId",
@@ -2983,6 +2956,33 @@ namespace Google.Apis.Partners.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.userOverrides.userId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.partnersSessionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userView", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userView",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -3008,13 +3008,13 @@ namespace Google.Apis.Partners.v2
             }
 
 
-            /// <summary>Google Partners session ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataPartnersSessionId { get; set; }
-
             /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesUserId { get; set; }
+
+            /// <summary>Google Partners session ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataPartnersSessionId { get; set; }
 
             /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
             /// by a team which redirected the traffic to us.</summary>
@@ -3069,18 +3069,18 @@ namespace Google.Apis.Partners.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMetadata.partnersSessionId",
+                        Name = "requestMetadata.userOverrides.userId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
+                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMetadata.userOverrides.userId",
+                        Name = "requestMetadata.partnersSessionId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3171,13 +3171,13 @@ namespace Google.Apis.Partners.v2
             }
 
 
-            /// <summary>Google Partners session ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataPartnersSessionId { get; set; }
-
             /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesUserId { get; set; }
+
+            /// <summary>Google Partners session ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataPartnersSessionId { get; set; }
 
             /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
             /// by a team which redirected the traffic to us.</summary>
@@ -3226,18 +3226,18 @@ namespace Google.Apis.Partners.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMetadata.partnersSessionId",
+                        Name = "requestMetadata.userOverrides.userId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
+                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "requestMetadata.userOverrides.userId",
+                        Name = "requestMetadata.partnersSessionId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3311,6 +3311,19 @@ namespace Google.Apis.Partners.v2
             }
 
 
+            /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
+            /// by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSourceId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSourceId { get; set; }
+
+            /// <summary>Locale to use for the current request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.locale", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataLocale { get; set; }
+
+            /// <summary>IP address to use instead of the user's geo-located IP address.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
+
             /// <summary>Standard field mask for the set of fields to be updated. Required with at least 1 value in
             /// FieldMask's paths.</summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
@@ -3332,19 +3345,6 @@ namespace Google.Apis.Partners.v2
             /// <summary>Google Partners session ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataPartnersSessionId { get; set; }
-
-            /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
-            /// by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSourceId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSourceId { get; set; }
-
-            /// <summary>Locale to use for the current request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.locale", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataLocale { get; set; }
-
-            /// <summary>IP address to use instead of the user's geo-located IP address.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3377,6 +3377,33 @@ namespace Google.Apis.Partners.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "requestMetadata.trafficSource.trafficSourceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.trafficSource.trafficSourceId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.locale",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.userOverrides.ipAddress", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.userOverrides.ipAddress",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "updateMask", new Google.Apis.Discovery.Parameter
                     {
                         Name = "updateMask",
@@ -3421,33 +3448,6 @@ namespace Google.Apis.Partners.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
-                RequestParameters.Add(
-                    "requestMetadata.trafficSource.trafficSourceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.trafficSource.trafficSourceId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.userOverrides.ipAddress", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.userOverrides.ipAddress",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
             }
 
         }
@@ -3471,23 +3471,6 @@ namespace Google.Apis.Partners.v2
             }
 
 
-            /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataUserOverridesUserId { get; set; }
-
-            /// <summary>Google Partners session ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataPartnersSessionId { get; set; }
-
-            /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
-            /// by a team which redirected the traffic to us.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSourceId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataTrafficSourceTrafficSourceId { get; set; }
-
-            /// <summary>Locale to use for the current request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.locale", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string RequestMetadataLocale { get; set; }
-
             /// <summary>IP address to use instead of the user's geo-located IP address.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.ipAddress", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataUserOverridesIpAddress { get; set; }
@@ -3505,6 +3488,23 @@ namespace Google.Apis.Partners.v2
             /// letters created by a team which redirected the traffic to us.</summary>
             [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSubId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestMetadataTrafficSourceTrafficSubId { get; set; }
+
+            /// <summary>Logged-in user ID to impersonate instead of the user's ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.userOverrides.userId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataUserOverridesUserId { get; set; }
+
+            /// <summary>Google Partners session ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.partnersSessionId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataPartnersSessionId { get; set; }
+
+            /// <summary>Identifier to indicate where the traffic comes from. An identifier has multiple letters created
+            /// by a team which redirected the traffic to us.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.trafficSource.trafficSourceId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataTrafficSourceTrafficSourceId { get; set; }
+
+            /// <summary>Locale to use for the current request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestMetadata.locale", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestMetadataLocale { get; set; }
 
 
             /// <summary>Gets or sets the body of this request.</summary>
@@ -3537,42 +3537,6 @@ namespace Google.Apis.Partners.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.userOverrides.userId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.partnersSessionId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.trafficSource.trafficSourceId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.trafficSource.trafficSourceId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "requestMetadata.locale", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "requestMetadata.locale",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "requestMetadata.userOverrides.ipAddress", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.userOverrides.ipAddress",
@@ -3603,6 +3567,42 @@ namespace Google.Apis.Partners.v2
                     "requestMetadata.trafficSource.trafficSubId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "requestMetadata.trafficSource.trafficSubId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.userOverrides.userId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.userOverrides.userId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.partnersSessionId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.partnersSessionId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.trafficSource.trafficSourceId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.trafficSource.trafficSourceId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestMetadata.locale", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestMetadata.locale",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
