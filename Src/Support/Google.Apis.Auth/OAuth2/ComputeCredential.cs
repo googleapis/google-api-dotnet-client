@@ -47,10 +47,12 @@ namespace Google.Apis.Auth.OAuth2
             () => IsRunningOnComputeEngineNoCache());
 
         /// <summary>
-        /// Experimentally, 200ms was found to be 99.9999% reliable. 
-        /// This is a conservative timeout to minimize hanging on some troublesome network. 
+        /// Originally 1000ms was used as a hopefully-conservative timeout, but this still led to
+        /// problems very occasionally. (Measuring the time taken showed occasional requests around 800ms,
+        /// so 1000ms is plausible.) 2000ms should be more reliable, and still unlikely to cause issues -
+        /// we'd expect not-running-on-GCE cases to fail due to the address not being valid much quicker than that.
         /// </summary>
-        private const int MetadataServerPingTimeoutInMilliseconds = 1000;
+        private const int MetadataServerPingTimeoutInMilliseconds = 2000;
 
         /// <summary>The Metadata flavor header name.</summary>
         private const string MetadataFlavor = "Metadata-Flavor";
