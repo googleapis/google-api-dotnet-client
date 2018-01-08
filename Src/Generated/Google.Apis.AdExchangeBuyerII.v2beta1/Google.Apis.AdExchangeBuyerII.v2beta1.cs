@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171219 (1083)
+ *      <tr><th>API Rev<td>20180104 (1099)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>
@@ -1744,6 +1744,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AccountId { get; private set; }
 
+                /// <summary>The account the creative belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId1", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccountId1 { get; set; }
+
                 /// <summary>Indicates if multiple creatives can share an ID or not. Default is NO_DUPLICATES (one ID
                 /// per creative).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("duplicateIdMode", Google.Apis.Util.RequestParameterType.Query)]
@@ -1795,6 +1799,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Name = "accountId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "accountId1", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId1",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -2124,6 +2137,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("creativeId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CreativeId { get; private set; }
 
+                /// <summary>The account the creative belongs to.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("accountId1", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string AccountId1 { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.AdExchangeBuyerII.v2beta1.Data.Creative Body { get; set; }
@@ -2169,6 +2186,15 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Name = "creativeId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "accountId1", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "accountId1",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20171219 (1083)
+ *      <tr><th>API Rev<td>20180103 (1098)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -2265,27 +2265,6 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY *
-                /// Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator
-                /// must be `=` or `!=`.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled)
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2308,6 +2287,27 @@ namespace Google.Apis.DLP.v2beta2
                     [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
                     RISKANALYSISJOB,
                 }
+
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
+                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY *
+                /// Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator
+                /// must be `=` or `!=`.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+                /// canceled)
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2343,15 +2343,6 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2373,6 +2364,15 @@ namespace Google.Apis.DLP.v2beta2
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4547,26 +4547,28 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Container structure describing a single finding within a string or image.</summary>
+    /// <summary>Represents a piece of potentially sensitive content.</summary>
     public class GooglePrivacyDlpV2beta2Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Timestamp when finding was detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>The specific type of info the string might be.</summary>
+        /// <summary>The type of content that might have been found. Provided if requested by the
+        /// `InspectConfig`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2beta2InfoType InfoType { get; set; } 
 
-        /// <summary>Estimate of how likely it is that the info_type is correct.</summary>
+        /// <summary>Estimate of how likely it is that the `info_type` is correct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
         public virtual string Likelihood { get; set; } 
 
-        /// <summary>Location of the info found.</summary>
+        /// <summary>Where the content was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual GooglePrivacyDlpV2beta2Location Location { get; set; } 
 
-        /// <summary>The specific string that may be potentially sensitive info.</summary>
+        /// <summary>The content that was found. Even if the content is not textual, it may be converted to a textual
+        /// representation here. Provided if requested by the `InspectConfig`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; } 
 
@@ -5275,31 +5277,37 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies the location of a finding within its source item.</summary>
+    /// <summary>Specifies the location of the finding.</summary>
     public class GooglePrivacyDlpV2beta2Location : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Zero-based byte offsets within a content item.</summary>
+        /// <summary>Zero-based byte offsets delimiting the finding. These are relative to the finding's containing
+        /// element. Note that when the content is not textual, this references the UTF-8 encoded textual representation
+        /// of the content. Omitted if content is an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byteRange")]
         public virtual GooglePrivacyDlpV2beta2Range ByteRange { get; set; } 
 
-        /// <summary>Character offsets within a content item, included when content type is a text. Default charset
-        /// assumed to be UTF-8.</summary>
+        /// <summary>Unicode character offsets delimiting the finding. These are relative to the finding's containing
+        /// element. Provided when the content is text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codepointRange")]
         public virtual GooglePrivacyDlpV2beta2Range CodepointRange { get; set; } 
 
-        /// <summary>Field id of the field containing the finding.</summary>
+        /// <summary>The pointer to the property or cell that contained the finding. Provided when the finding's
+        /// containing element is a cell in a table or a property of storage object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual GooglePrivacyDlpV2beta2FieldId FieldId { get; set; } 
 
-        /// <summary>Location within an image's pixels.</summary>
+        /// <summary>The area within the image that contained the finding. Provided when the content is an
+        /// image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageBoxes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta2ImageLocation> ImageBoxes { get; set; } 
 
-        /// <summary>Key of the finding.</summary>
+        /// <summary>The pointer to the record in storage that contained the field the finding was found in. Provided
+        /// when the finding's containing element is a property of a storage object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordKey")]
         public virtual GooglePrivacyDlpV2beta2RecordKey RecordKey { get; set; } 
 
-        /// <summary>Location within a `ContentItem.Table`.</summary>
+        /// <summary>The pointer to the row of the table that contained the finding. Provided when the finding's
+        /// containing element is a cell of a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableLocation")]
         public virtual GooglePrivacyDlpV2beta2TableLocation TableLocation { get; set; } 
 
@@ -5765,7 +5773,7 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Location of a finding within a `ContentItem.Table`.</summary>
+    /// <summary>Location of a finding within a table.</summary>
     public class GooglePrivacyDlpV2beta2TableLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The zero-based index of the row where the finding is located.</summary>

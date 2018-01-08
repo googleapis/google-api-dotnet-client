@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171211 (1075)
+ *      <tr><th>API Rev<td>20180104 (1099)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -3163,6 +3163,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// Policy app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyguardDisabledFeatures")]
         public virtual System.Collections.Generic.IList<string> KeyguardDisabledFeatures { get; set; } 
+
+        /// <summary>Flag to specify if kiosk custom launcher is enabled. If it is enabled the value for
+        /// receiver_activity in PersistentPreferredActivity related to home intent will be ignored. When custom
+        /// launcher is enabled, the kiosk will start in launcher mode and not locked to a specific
+        /// application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kioskCustomLauncherEnabled")]
+        public virtual System.Nullable<bool> KioskCustomLauncherEnabled { get; set; } 
 
         /// <summary>A message displayed to the user in the device administators settings screen. Requires the beta
         /// version of the Android Device Policy app.</summary>

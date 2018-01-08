@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20171219 (1083)
+ *      <tr><th>API Rev<td>20180103 (1098)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1088,15 +1088,6 @@ namespace Google.Apis.DLP.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood.
-                    ///
-                    /// Examples:
-                    ///
-                    /// - info_type=EMAIL_ADDRESS - info_type=PHONE_NUMBER,EMAIL_ADDRESS - likelihood=VERY_LIKELY -
-                    /// likelihood=VERY_LIKELY,LIKELY - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The value returned by the last `ListInspectFindingsResponse`; indicates that this is a
                     /// continuation of a prior `ListInspectFindings` call, and that the system should return the next
                     /// page of data.</summary>
@@ -1107,6 +1098,15 @@ namespace Google.Apis.DLP.v2beta1
                     /// value.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Restricts findings to items that match. Supports info_type and likelihood.
+                    ///
+                    /// Examples:
+                    ///
+                    /// - info_type=EMAIL_ADDRESS - info_type=PHONE_NUMBER,EMAIL_ADDRESS - likelihood=VERY_LIKELY -
+                    /// likelihood=VERY_LIKELY,LIKELY - info_type=EMAIL_ADDRESS,likelihood=VERY_LIKELY,LIKELY</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1142,15 +1142,6 @@ namespace Google.Apis.DLP.v2beta1
                                 Pattern = @"^inspect/results/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1163,6 +1154,15 @@ namespace Google.Apis.DLP.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1430,10 +1430,6 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1441,6 +1437,10 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1476,15 +1476,6 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^riskAnalysis/operations$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1497,6 +1488,15 @@ namespace Google.Apis.DLP.v2beta1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2431,26 +2431,28 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Container structure describing a single finding within a string or image.</summary>
+    /// <summary>Represents a piece of potentially sensitive content.</summary>
     public class GooglePrivacyDlpV2beta1Finding : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Timestamp when finding was detected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>The specific type of info the string might be.</summary>
+        /// <summary>The type of content that might have been found. Provided if requested by the
+        /// `InspectConfig`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
 
-        /// <summary>Estimate of how likely it is that the info_type is correct.</summary>
+        /// <summary>Estimate of how likely it is that the `info_type` is correct.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
         public virtual string Likelihood { get; set; } 
 
-        /// <summary>Location of the info found.</summary>
+        /// <summary>Where the content was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual GooglePrivacyDlpV2beta1Location Location { get; set; } 
 
-        /// <summary>The specific string that may be potentially sensitive info.</summary>
+        /// <summary>The content that was found. Even if the content is not textual, it may be converted to a textual
+        /// representation here. Provided if requested by the `InspectConfig`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; } 
 
@@ -3079,31 +3081,37 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies the location of a finding within its source item.</summary>
+    /// <summary>Specifies the location of the finding.</summary>
     public class GooglePrivacyDlpV2beta1Location : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Zero-based byte offsets within a content item.</summary>
+        /// <summary>Zero-based byte offsets delimiting the finding. These are relative to the finding's containing
+        /// element. Note that when the content is not textual, this references the UTF-8 encoded textual representation
+        /// of the content. Omitted if content is an image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("byteRange")]
         public virtual GooglePrivacyDlpV2beta1Range ByteRange { get; set; } 
 
-        /// <summary>Character offsets within a content item, included when content type is a text. Default charset
-        /// assumed to be UTF-8.</summary>
+        /// <summary>Unicode character offsets delimiting the finding. These are relative to the finding's containing
+        /// element. Provided when the content is text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("codepointRange")]
         public virtual GooglePrivacyDlpV2beta1Range CodepointRange { get; set; } 
 
-        /// <summary>Field id of the field containing the finding.</summary>
+        /// <summary>The pointer to the property or cell that contained the finding. Provided when the finding's
+        /// containing element is a cell in a table or a property of storage object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]
         public virtual GooglePrivacyDlpV2beta1FieldId FieldId { get; set; } 
 
-        /// <summary>Location within an image's pixels.</summary>
+        /// <summary>The area within the image that contained the finding. Provided when the content is an
+        /// image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageBoxes")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ImageLocation> ImageBoxes { get; set; } 
 
-        /// <summary>Key of the finding.</summary>
+        /// <summary>The pointer to the record in storage that contained the field the finding was found in. Provided
+        /// when the finding's containing element is a property of a storage object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recordKey")]
         public virtual GooglePrivacyDlpV2beta1RecordKey RecordKey { get; set; } 
 
-        /// <summary>Location within a `ContentItem.Table`.</summary>
+        /// <summary>The pointer to the row of the table that contained the finding. Provided when the finding's
+        /// containing element is a cell of a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableLocation")]
         public virtual GooglePrivacyDlpV2beta1TableLocation TableLocation { get; set; } 
 
@@ -3578,7 +3586,7 @@ namespace Google.Apis.DLP.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Location of a finding within a `ContentItem.Table`.</summary>
+    /// <summary>Location of a finding within a table.</summary>
     public class GooglePrivacyDlpV2beta1TableLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The zero-based index of the row where the finding is located.</summary>

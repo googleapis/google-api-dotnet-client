@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171216 (1080)
+ *      <tr><th>API Rev<td>20171229 (1093)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -4345,7 +4345,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// "members": ["user:sean@example.com"] } ] }
     ///
     /// For a description of IAM and its features, see the [IAM developer's
-    /// guide](https://cloud.google.com/iam).</summary>
+    /// guide](https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
@@ -4371,7 +4371,7 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iamOwned")]
         public virtual System.Nullable<bool> IamOwned { get; set; } 
 
-        /// <summary>Version of the `Policy`. The default version is 0.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

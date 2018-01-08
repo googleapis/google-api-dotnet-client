@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171127 (1061)
+ *      <tr><th>API Rev<td>20171208 (1072)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171218 (1082)
+ *      <tr><th>API Rev<td>20180103 (1098)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -2403,8 +2403,10 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
         /// or the resource does not exist.
         ///
-        /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the
-        /// project</summary>
+        /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project.
+        ///
+        /// For additional information about resource structure and identification, see [Resource
+        /// Names](/apis/design/resource_names).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
         /// documentation for the appropriate value for this field.</param>
@@ -2416,8 +2418,10 @@ namespace Google.Apis.CloudResourceManager.v1
         /// <summary>Returns the IAM access control policy for the specified Project. Permission is denied if the policy
         /// or the resource does not exist.
         ///
-        /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the
-        /// project</summary>
+        /// Authorization requires the Google IAM permission `resourcemanager.projects.getIamPolicy` on the project.
+        ///
+        /// For additional information about resource structure and identification, see [Resource
+        /// Names](/apis/design/resource_names).</summary>
         public class GetIamPolicyRequest : CloudResourceManagerBaseServiceRequest<Google.Apis.CloudResourceManager.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -3958,7 +3962,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
     /// "members": ["user:sean@example.com"] } ] }
     ///
     /// For a description of IAM and its features, see the [IAM developer's
-    /// guide](https://cloud.google.com/iam).</summary>
+    /// guide](https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
@@ -3981,7 +3985,7 @@ namespace Google.Apis.CloudResourceManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Version of the `Policy`. The default version is 0.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

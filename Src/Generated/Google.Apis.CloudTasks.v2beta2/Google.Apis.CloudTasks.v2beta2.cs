@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180102 (1097)
+ *      <tr><th>API Rev<td>20180106 (1101)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -876,7 +876,7 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     }
 
-                    /// <summary> Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
+                    /// <summary>Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
                     ///
                     /// This method is invoked by the worker to obtain a lease. The worker must acknowledge the task via
                     /// CloudTasks.AcknowledgeTask after they have performed the work associated with the task.
@@ -898,7 +898,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                         return new LeaseRequest(service, body, parent);
                     }
 
-                    /// <summary> Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
+                    /// <summary>Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
                     ///
                     /// This method is invoked by the worker to obtain a lease. The worker must acknowledge the task via
                     /// CloudTasks.AcknowledgeTask after they have performed the work associated with the task.
@@ -2886,7 +2886,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>`filter` can be used to specify a subset of tasks to lease.
         ///
-        /// When `filter` is set to `tag=` then the LeaseTasksResponse will contain only tasks whose PullMessage.tag is
+        /// When `filter` is set to `tag=` then the LeaseTasksResponse will contain only tasks whose LeaseMessage.tag is
         /// equal to ``. `` must be less than 500 bytes.
         ///
         /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have the same tag as the task with the
