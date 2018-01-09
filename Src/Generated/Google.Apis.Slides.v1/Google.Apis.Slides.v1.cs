@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171220 (1084)
+ *      <tr><th>API Rev<td>20180108 (1103)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2676,6 +2676,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateLineProperties")]
         public virtual UpdateLinePropertiesRequest UpdateLineProperties { get; set; } 
 
+        /// <summary>Updates the alt text title and/or description of a page element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updatePageElementAltText")]
+        public virtual UpdatePageElementAltTextRequest UpdatePageElementAltText { get; set; } 
+
         /// <summary>Updates the transform of a page element.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updatePageElementTransform")]
         public virtual UpdatePageElementTransformRequest UpdatePageElementTransform { get; set; } 
@@ -3631,6 +3635,29 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The object ID of the line the update is applied to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
         public virtual string ObjectId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the alt text title and/or description of a page element.</summary>
+    public class UpdatePageElementAltTextRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated alt text description of the page element. If unset the existing value will be
+        /// maintained. The description is exposed to screen readers and other accessibility interfaces. Only use human
+        /// readable values related to the content of the page element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The object ID of the page element the updates are applied to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
+        public virtual string ObjectId { get; set; } 
+
+        /// <summary>The updated alt text title of the page element. If unset the existing value will be maintained. The
+        /// title is exposed to screen readers and other accessibility interfaces. Only use human readable values
+        /// related to the content of the page element.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

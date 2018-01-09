@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Google Cloud IoT API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20171227 (1091)
+ *      <tr><th>API Rev<td>20180103 (1098)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>

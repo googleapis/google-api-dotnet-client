@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20171107 (1041)
+ *      <tr><th>API Rev<td>20180103 (1098)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -604,9 +604,17 @@ namespace Google.Apis.Vision.v1p1beta1.Data
 
         /// <summary>The bounding box for the block. The vertices are in the order of top-left, top-right, bottom-right,
         /// bottom-left. When a rotation of the bounding box is detected the rotation is represented as around the top-
-        /// left corner as defined when the text is read in the 'natural' orientation. For example: * when the text is
-        /// horizontal it might look like: 0----1 |    | 3----2 * when it's rotated 180 degrees around the top-left
-        /// corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
+        /// left corner as defined when the text is read in the 'natural' orientation. For example:
+        ///
+        /// * when the text is horizontal it might look like:
+        ///
+        /// 0----1 |    | 3----2
+        ///
+        /// * when it's rotated 180 degrees around the top-left corner it becomes:
+        ///
+        /// 2----3 |    | 1----0
+        ///
+        /// and the vertice order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingBox { get; set; } 
 
@@ -720,9 +728,9 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingPoly")]
         public virtual GoogleCloudVisionV1p1beta1BoundingPoly BoundingPoly { get; set; } 
 
-        /// <summary>The accuracy of the entity detection in an image. For example, for an image in which the "Eiffel
-        /// Tower" entity is detected, this field represents the confidence that there is a tower in the query image.
-        /// Range [0, 1].</summary>
+        /// <summary>**Deprecated. Use `score` instead.** The accuracy of the entity detection in an image. For example,
+        /// for an image in which the "Eiffel Tower" entity is detected, this field represents the confidence that there
+        /// is a tower in the query image. Range [0, 1].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
@@ -858,12 +866,12 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Users describe the type of Google Cloud Vision API tasks to perform over images by using *Feature*s.
-    /// Each Feature indicates a type of image detection task to perform. Features encode the Cloud Vision API vertical
-    /// to operate on and the number of top-scoring results to return.</summary>
+    /// <summary>The type of Google Cloud Vision API detection to perform, and the maximum number of results to return
+    /// for that type. Multiple `Feature` objects can be specified in the `features` list.</summary>
     public class GoogleCloudVisionV1p1beta1Feature : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Maximum number of results of this type.</summary>
+        /// <summary>Maximum number of results of this type. Does not apply to `TEXT_DETECTION`,
+        /// `DOCUMENT_TEXT_DETECTION`, or `CROP_HINTS`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<int> MaxResults { get; set; } 
 
@@ -883,13 +891,14 @@ namespace Google.Apis.Vision.v1p1beta1.Data
     /// <summary>Client image to perform Google Cloud Vision API tasks over.</summary>
     public class GoogleCloudVisionV1p1beta1Image : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Image content, represented as a stream of bytes. Note: as with all `bytes` fields, protobuffers use
+        /// <summary>Image content, represented as a stream of bytes. Note: As with all `bytes` fields, protobuffers use
         /// a pure binary representation, whereas JSON representations use base64.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 
-        /// <summary>Google Cloud Storage image location. If both `content` and `source` are provided for an image,
-        /// `content` takes precedence and is used to perform the image annotation request.</summary>
+        /// <summary>Google Cloud Storage image location, or publicly-accessible image URL. If both `content` and
+        /// `source` are provided for an image, `content` takes precedence and is used to perform the image annotation
+        /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual GoogleCloudVisionV1p1beta1ImageSource Source { get; set; } 
 
@@ -936,21 +945,29 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>External image source (Google Cloud Storage image location).</summary>
+    /// <summary>External image source (Google Cloud Storage or web URL image location).</summary>
     public class GoogleCloudVisionV1p1beta1ImageSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>NOTE: For new code `image_uri` below is preferred. Google Cloud Storage image URI, which must be in
-        /// the following form: `gs://bucket_name/object_name` (for details, see [Google Cloud Storage Request
-        /// URIs](https://cloud.google.com/storage/docs/reference-uris)). NOTE: Cloud Storage object versioning is not
-        /// supported.</summary>
+        /// <summary>**Use `image_uri` instead.**
+        ///
+        /// The Google Cloud Storage  URI of the form `gs://bucket_name/object_name`. Object versioning is not
+        /// supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for
+        /// more info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsImageUri")]
         public virtual string GcsImageUri { get; set; } 
 
-        /// <summary>Image URI which supports: 1) Google Cloud Storage image URI, which must be in the following form:
-        /// `gs://bucket_name/object_name` (for details, see [Google Cloud Storage Request
-        /// URIs](https://cloud.google.com/storage/docs/reference-uris)). NOTE: Cloud Storage object versioning is not
-        /// supported. 2) Publicly accessible image HTTP/HTTPS URL. This is preferred over the legacy `gcs_image_uri`
-        /// above. When both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes precedence.</summary>
+        /// <summary>The URI of the source image. Can be either:
+        ///
+        /// 1. A Google Cloud Storage URI of the form `gs://bucket_name/object_name`. Object versioning is not
+        /// supported. See [Google Cloud Storage Request URIs](https://cloud.google.com/storage/docs/reference-uris) for
+        /// more info.
+        ///
+        /// 2. A publicly-accessible image HTTP/HTTPS URL. When fetching images from HTTP/HTTPS URLs, Google cannot
+        /// guarantee that the request will be completed. Your request may fail if the specified host denies the request
+        /// (e.g. due to request throttling or DOS prevention), or if Google throttles requests to the site for abuse
+        /// prevention. You should not depend on externally-hosted images for production applications.
+        ///
+        /// When both `gcs_image_uri` and `image_uri` are specified, `image_uri` takes precedence.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Google Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170813 (955)
+ *      <tr><th>API Rev<td>20180108 (1103)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -398,8 +398,9 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>Lists the projects associated with a billing account. The current authenticated user must be an
-            /// [owner of the billing account](https://support.google.com/cloud/answer/4430947).</summary>
+            /// <summary>Lists the projects associated with a billing account. The current authenticated user must have
+            /// the "billing.resourceAssociations.list" IAM permission, which is often given to billing account
+            /// [viewers](https://support.google.com/cloud/answer/4430947).</summary>
             /// <param name="name">The resource name of the billing account associated with the projects that you want to list. For
             /// example, `billingAccounts/012345-567890-ABCDEF`.</param>
             public virtual ListRequest List(string name)
@@ -407,8 +408,9 @@ namespace Google.Apis.Cloudbilling.v1
                 return new ListRequest(service, name);
             }
 
-            /// <summary>Lists the projects associated with a billing account. The current authenticated user must be an
-            /// [owner of the billing account](https://support.google.com/cloud/answer/4430947).</summary>
+            /// <summary>Lists the projects associated with a billing account. The current authenticated user must have
+            /// the "billing.resourceAssociations.list" IAM permission, which is often given to billing account
+            /// [viewers](https://support.google.com/cloud/answer/4430947).</summary>
             public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.ListProjectBillingInfoResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -895,9 +897,9 @@ namespace Google.Apis.Cloudbilling.v1
                 public virtual string CurrencyCode { get; set; }
 
                 /// <summary>Optional exclusive end time of the time range for which the pricing versions will be
-                /// returned. Timestamps in the future are not allowed. Maximum allowable time range is 1 month (31
-                /// days). Time range as a whole is optional. If not specified, the latest pricing will be returned (up
-                /// to 12 hours old at most).</summary>
+                /// returned. Timestamps in the future are not allowed. The time range has to be within a single
+                /// calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified,
+                /// the latest pricing will be returned (up to 12 hours old at most).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
 
@@ -906,9 +908,9 @@ namespace Google.Apis.Cloudbilling.v1
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Optional inclusive start time of the time range for which the pricing versions will be
-                /// returned. Timestamps in the future are not allowed. Maximum allowable time range is 1 month (31
-                /// days). Time range as a whole is optional. If not specified, the latest pricing will be returned (up
-                /// to 12 hours old at most).</summary>
+                /// returned. Timestamps in the future are not allowed. The time range has to be within a single
+                /// calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified,
+                /// the latest pricing will be returned (up to 12 hours old at most).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
 

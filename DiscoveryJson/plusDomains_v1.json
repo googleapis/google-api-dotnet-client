@@ -20,7 +20,7 @@
  "basePath": "/plusDomains/v1/",
  "rootUrl": "https://www.googleapis.com/",
  "servicePath": "plusDomains/v1/",
- "batchPath": "batch",
+ "batchPath": "batch/plusDomains/v1",
  "parameters": {
   "alt": {
    "type": "string",
