@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>Google Apps Script API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180106 (1101)
+ *      <tr><th>API Rev<td>20180109 (1104)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/apps-script/execution/rest/v1/scripts/run'>
  *              https://developers.google.com/apps-script/execution/rest/v1/scripts/run</a>
@@ -64,6 +64,8 @@ namespace Google.Apis.Script.v1
         public ScriptService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            processes = new ProcessesResource(this);
+            projects = new ProjectsResource(this);
             scripts = new ScriptsResource(this);
         }
 
@@ -144,6 +146,22 @@ namespace Google.Apis.Script.v1
         }
 
 
+
+        private readonly ProcessesResource processes;
+
+        /// <summary>Gets the Processes resource.</summary>
+        public virtual ProcessesResource Processes
+        {
+            get { return processes; }
+        }
+
+        private readonly ProjectsResource projects;
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects
+        {
+            get { return projects; }
+        }
 
         private readonly ScriptsResource scripts;
 
@@ -370,6 +388,1567 @@ namespace Google.Apis.Script.v1
         }
     }
 
+    /// <summary>The "processes" collection of methods.</summary>
+    public class ProcessesResource
+    {
+        private const string Resource = "processes";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProcessesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>List information about processes made by or on behalf of a user, such as process type and current
+        /// status.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>List information about processes made by or on behalf of a user, such as process type and current
+        /// status.</summary>
+        public class ListRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.ListUserProcessesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Optional field used to limit returned processes to those originating from projects with a
+            /// specific project name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.projectName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProcessFilterProjectName { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified user
+            /// access levels.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<UserProcessFilterUserAccessLevelsEnum> UserProcessFilterUserAccessLevels { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified user
+            /// access levels.</summary>
+            public enum UserProcessFilterUserAccessLevelsEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("USER_ACCESS_LEVEL_UNSPECIFIED")]
+                USERACCESSLEVELUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("NONE")]
+                NONE,
+                [Google.Apis.Util.StringValueAttribute("READ")]
+                READ,
+                [Google.Apis.Util.StringValueAttribute("WRITE")]
+                WRITE,
+                [Google.Apis.Util.StringValueAttribute("OWNER")]
+                OWNER,
+            }
+
+            /// <summary>Optional field used to limit returned processes to those originating from a script function
+            /// with the given function name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.functionName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProcessFilterFunctionName { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those originating from projects with a
+            /// specific script ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.scriptId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProcessFilterScriptId { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified process
+            /// types.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<UserProcessFilterTypesEnum> UserProcessFilterTypes { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified process
+            /// types.</summary>
+            public enum UserProcessFilterTypesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("PROCESS_TYPE_UNSPECIFIED")]
+                PROCESSTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("ADD_ON")]
+                ADDON,
+                [Google.Apis.Util.StringValueAttribute("EXECUTION_API")]
+                EXECUTIONAPI,
+                [Google.Apis.Util.StringValueAttribute("TIME_DRIVEN")]
+                TIMEDRIVEN,
+                [Google.Apis.Util.StringValueAttribute("TRIGGER")]
+                TRIGGER,
+                [Google.Apis.Util.StringValueAttribute("WEBAPP")]
+                WEBAPP,
+                [Google.Apis.Util.StringValueAttribute("EDITOR")]
+                EDITOR,
+            }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified process
+            /// statuses.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<UserProcessFilterStatusesEnum> UserProcessFilterStatuses { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified process
+            /// statuses.</summary>
+            public enum UserProcessFilterStatusesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("PROCESS_STATUS_UNSPECIFIED")]
+                PROCESSSTATUSUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("RUNNING")]
+                RUNNING,
+                [Google.Apis.Util.StringValueAttribute("PAUSED")]
+                PAUSED,
+                [Google.Apis.Util.StringValueAttribute("COMPLETED")]
+                COMPLETED,
+                [Google.Apis.Util.StringValueAttribute("CANCELED")]
+                CANCELED,
+                [Google.Apis.Util.StringValueAttribute("FAILED")]
+                FAILED,
+                [Google.Apis.Util.StringValueAttribute("TIMED_OUT")]
+                TIMEDOUT,
+            }
+
+            /// <summary>Optional field used to limit returned processes to those originating from projects with a
+            /// specific deployment ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.deploymentId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProcessFilterDeploymentId { get; set; }
+
+            /// <summary>The token for continuing a previous list request on the next page. This should be set to the
+            /// value of `nextPageToken` from a previous response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those that completed on or before the given
+            /// timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.endTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UserProcessFilterEndTime { get; set; }
+
+            /// <summary>The maximum number of returned processes per page of results. Defaults to 50.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those that were started on or after the
+            /// given timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProcessFilter.startTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UserProcessFilterStartTime { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/processes"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "userProcessFilter.projectName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.projectName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProcessFilter.userAccessLevels", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.userAccessLevels",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProcessFilter.functionName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.functionName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProcessFilter.scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.scriptId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProcessFilter.types", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.types",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProcessFilter.statuses", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.statuses",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProcessFilter.deploymentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.deploymentId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProcessFilter.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "userProcessFilter.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "userProcessFilter.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>List information about a script's executed processes, such as process type and current
+        /// status.</summary>
+        public virtual ListScriptProcessesRequest ListScriptProcesses()
+        {
+            return new ListScriptProcessesRequest(service);
+        }
+
+        /// <summary>List information about a script's executed processes, such as process type and current
+        /// status.</summary>
+        public class ListScriptProcessesRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.ListScriptProcessesResponse>
+        {
+            /// <summary>Constructs a new ListScriptProcesses request.</summary>
+            public ListScriptProcessesRequest(Google.Apis.Services.IClientService service)
+                : base(service)
+            {
+                InitParameters();
+            }
+
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified user
+            /// access levels.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.userAccessLevels", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ScriptProcessFilterUserAccessLevelsEnum> ScriptProcessFilterUserAccessLevels { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified user
+            /// access levels.</summary>
+            public enum ScriptProcessFilterUserAccessLevelsEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("USER_ACCESS_LEVEL_UNSPECIFIED")]
+                USERACCESSLEVELUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("NONE")]
+                NONE,
+                [Google.Apis.Util.StringValueAttribute("READ")]
+                READ,
+                [Google.Apis.Util.StringValueAttribute("WRITE")]
+                WRITE,
+                [Google.Apis.Util.StringValueAttribute("OWNER")]
+                OWNER,
+            }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified process
+            /// statuses.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.statuses", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ScriptProcessFilterStatusesEnum> ScriptProcessFilterStatuses { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified process
+            /// statuses.</summary>
+            public enum ScriptProcessFilterStatusesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("PROCESS_STATUS_UNSPECIFIED")]
+                PROCESSSTATUSUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("RUNNING")]
+                RUNNING,
+                [Google.Apis.Util.StringValueAttribute("PAUSED")]
+                PAUSED,
+                [Google.Apis.Util.StringValueAttribute("COMPLETED")]
+                COMPLETED,
+                [Google.Apis.Util.StringValueAttribute("CANCELED")]
+                CANCELED,
+                [Google.Apis.Util.StringValueAttribute("FAILED")]
+                FAILED,
+                [Google.Apis.Util.StringValueAttribute("TIMED_OUT")]
+                TIMEDOUT,
+            }
+
+            /// <summary>Optional field used to limit returned processes to those originating from a script function
+            /// with the given function name.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.functionName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ScriptProcessFilterFunctionName { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those that were started on or after the
+            /// given timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.startTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ScriptProcessFilterStartTime { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those originating from projects with a
+            /// specific deployment ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.deploymentId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ScriptProcessFilterDeploymentId { get; set; }
+
+            /// <summary>The script ID of the project whose processes are listed.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ScriptId { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified process
+            /// types.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.types", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ScriptProcessFilterTypesEnum> ScriptProcessFilterTypes { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those having one of the specified process
+            /// types.</summary>
+            public enum ScriptProcessFilterTypesEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("PROCESS_TYPE_UNSPECIFIED")]
+                PROCESSTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("ADD_ON")]
+                ADDON,
+                [Google.Apis.Util.StringValueAttribute("EXECUTION_API")]
+                EXECUTIONAPI,
+                [Google.Apis.Util.StringValueAttribute("TIME_DRIVEN")]
+                TIMEDRIVEN,
+                [Google.Apis.Util.StringValueAttribute("TRIGGER")]
+                TRIGGER,
+                [Google.Apis.Util.StringValueAttribute("WEBAPP")]
+                WEBAPP,
+                [Google.Apis.Util.StringValueAttribute("EDITOR")]
+                EDITOR,
+            }
+
+            /// <summary>The token for continuing a previous list request on the next page. This should be set to the
+            /// value of `nextPageToken` from a previous response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of returned processes per page of results. Defaults to 50.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Optional field used to limit returned processes to those that completed on or before the given
+            /// timestamp.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptProcessFilter.endTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object ScriptProcessFilterEndTime { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listScriptProcesses"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/processes:listScriptProcesses"; }
+            }
+
+            /// <summary>Initializes ListScriptProcesses parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "scriptProcessFilter.userAccessLevels", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.userAccessLevels",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.statuses", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.statuses",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.functionName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.functionName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.startTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.startTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.deploymentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.deploymentId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.types", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.types",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "scriptProcessFilter.endTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptProcessFilter.endTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            deployments = new DeploymentsResource(service);
+            versions = new VersionsResource(service);
+
+        }
+
+        private readonly DeploymentsResource deployments;
+
+        /// <summary>Gets the Deployments resource.</summary>
+        public virtual DeploymentsResource Deployments
+        {
+            get { return deployments; }
+        }
+
+        /// <summary>The "deployments" collection of methods.</summary>
+        public class DeploymentsResource
+        {
+            private const string Resource = "deployments";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DeploymentsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a deployment of an Apps Script project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="scriptId">The script project's Drive ID.</param>
+            public virtual CreateRequest Create(Google.Apis.Script.v1.Data.DeploymentConfig body, string scriptId)
+            {
+                return new CreateRequest(service, body, scriptId);
+            }
+
+            /// <summary>Creates a deployment of an Apps Script project.</summary>
+            public class CreateRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Deployment>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.DeploymentConfig body, string scriptId)
+                    : base(service)
+                {
+                    ScriptId = scriptId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The script project's Drive ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ScriptId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Script.v1.Data.DeploymentConfig Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{scriptId}/deployments"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "scriptId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scriptId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a deployment of an Apps Script project.</summary>
+            /// <param name="scriptId">The script project's Drive ID.</param>
+            /// <param name="deploymentId">The deployment ID
+            /// to be undeployed.</param>
+            public virtual DeleteRequest Delete(string scriptId, string deploymentId)
+            {
+                return new DeleteRequest(service, scriptId, deploymentId);
+            }
+
+            /// <summary>Deletes a deployment of an Apps Script project.</summary>
+            public class DeleteRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string scriptId, string deploymentId)
+                    : base(service)
+                {
+                    ScriptId = scriptId;
+                    DeploymentId = deploymentId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The script project's Drive ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ScriptId { get; private set; }
+
+                /// <summary>The deployment ID to be undeployed.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("deploymentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string DeploymentId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{scriptId}/deployments/{deploymentId}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "scriptId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scriptId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "deploymentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deploymentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a deployment of an Apps Script project.</summary>
+            /// <param name="scriptId">The script project's Drive ID.</param>
+            /// <param name="deploymentId">The deployment
+            /// ID.</param>
+            public virtual GetRequest Get(string scriptId, string deploymentId)
+            {
+                return new GetRequest(service, scriptId, deploymentId);
+            }
+
+            /// <summary>Gets a deployment of an Apps Script project.</summary>
+            public class GetRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Deployment>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string scriptId, string deploymentId)
+                    : base(service)
+                {
+                    ScriptId = scriptId;
+                    DeploymentId = deploymentId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The script project's Drive ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ScriptId { get; private set; }
+
+                /// <summary>The deployment ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("deploymentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string DeploymentId { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{scriptId}/deployments/{deploymentId}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "scriptId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scriptId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "deploymentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deploymentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Lists the deployments of an Apps Script project.</summary>
+            /// <param name="scriptId">The script project's Drive ID.</param>
+            public virtual ListRequest List(string scriptId)
+            {
+                return new ListRequest(service, scriptId);
+            }
+
+            /// <summary>Lists the deployments of an Apps Script project.</summary>
+            public class ListRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.ListDeploymentsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string scriptId)
+                    : base(service)
+                {
+                    ScriptId = scriptId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The script project's Drive ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ScriptId { get; private set; }
+
+                /// <summary>The maximum number of deployments on each returned page. Defaults to 50.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The token for continuing a previous list request on the next page. This should be set to
+                /// the value of `nextPageToken` from a previous response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{scriptId}/deployments"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "scriptId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scriptId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a deployment of an Apps Script project.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="scriptId">The script project's Drive ID.</param>
+            /// <param name="deploymentId">The deployment ID
+            /// for this deployment.</param>
+            public virtual UpdateRequest Update(Google.Apis.Script.v1.Data.UpdateDeploymentRequest body, string scriptId, string deploymentId)
+            {
+                return new UpdateRequest(service, body, scriptId, deploymentId);
+            }
+
+            /// <summary>Updates a deployment of an Apps Script project.</summary>
+            public class UpdateRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Deployment>
+            {
+                /// <summary>Constructs a new Update request.</summary>
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.UpdateDeploymentRequest body, string scriptId, string deploymentId)
+                    : base(service)
+                {
+                    ScriptId = scriptId;
+                    DeploymentId = deploymentId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The script project's Drive ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ScriptId { get; private set; }
+
+                /// <summary>The deployment ID for this deployment.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("deploymentId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string DeploymentId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Script.v1.Data.UpdateDeploymentRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "update"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PUT"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{scriptId}/deployments/{deploymentId}"; }
+                }
+
+                /// <summary>Initializes Update parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "scriptId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scriptId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "deploymentId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "deploymentId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly VersionsResource versions;
+
+        /// <summary>Gets the Versions resource.</summary>
+        public virtual VersionsResource Versions
+        {
+            get { return versions; }
+        }
+
+        /// <summary>The "versions" collection of methods.</summary>
+        public class VersionsResource
+        {
+            private const string Resource = "versions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public VersionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new immutable version using the current code, with a unique version number.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="scriptId">The script project's Drive ID.</param>
+            public virtual CreateRequest Create(Google.Apis.Script.v1.Data.Version body, string scriptId)
+            {
+                return new CreateRequest(service, body, scriptId);
+            }
+
+            /// <summary>Creates a new immutable version using the current code, with a unique version number.</summary>
+            public class CreateRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Version>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.Version body, string scriptId)
+                    : base(service)
+                {
+                    ScriptId = scriptId;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The script project's Drive ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ScriptId { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Script.v1.Data.Version Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{scriptId}/versions"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "scriptId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scriptId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a version of a script project.</summary>
+            /// <param name="scriptId">The script project's Drive ID.</param>
+            /// <param name="versionNumber">The version
+            /// number.</param>
+            public virtual GetRequest Get(string scriptId, int versionNumber)
+            {
+                return new GetRequest(service, scriptId, versionNumber);
+            }
+
+            /// <summary>Gets a version of a script project.</summary>
+            public class GetRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Version>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string scriptId, int versionNumber)
+                    : base(service)
+                {
+                    ScriptId = scriptId;
+                    VersionNumber = versionNumber;
+                    InitParameters();
+                }
+
+
+                /// <summary>The script project's Drive ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ScriptId { get; private set; }
+
+                /// <summary>The version number.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("versionNumber", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual int VersionNumber { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{scriptId}/versions/{versionNumber}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "scriptId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scriptId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "versionNumber", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "versionNumber",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>List the versions of a script project.</summary>
+            /// <param name="scriptId">The script project's Drive ID.</param>
+            public virtual ListRequest List(string scriptId)
+            {
+                return new ListRequest(service, scriptId);
+            }
+
+            /// <summary>List the versions of a script project.</summary>
+            public class ListRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.ListVersionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string scriptId)
+                    : base(service)
+                {
+                    ScriptId = scriptId;
+                    InitParameters();
+                }
+
+
+                /// <summary>The script project's Drive ID.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ScriptId { get; private set; }
+
+                /// <summary>The token for continuing a previous list request on the next page. This should be set to
+                /// the value of `nextPageToken` from a previous response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of versions on each returned page. Defaults to 50.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/projects/{scriptId}/versions"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "scriptId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "scriptId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+
+        /// <summary>Creates a new, empty script project with no script files and a base manifest file.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Script.v1.Data.CreateProjectRequest body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a new, empty script project with no script files and a base manifest file.</summary>
+        public class CreateRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Project>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.CreateProjectRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Script.v1.Data.CreateProjectRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/projects"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Gets a script project's metadata.</summary>
+        /// <param name="scriptId">The script project's Drive ID.</param>
+        public virtual GetRequest Get(string scriptId)
+        {
+            return new GetRequest(service, scriptId);
+        }
+
+        /// <summary>Gets a script project's metadata.</summary>
+        public class GetRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Project>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string scriptId)
+                : base(service)
+            {
+                ScriptId = scriptId;
+                InitParameters();
+            }
+
+
+            /// <summary>The script project's Drive ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ScriptId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/projects/{scriptId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Gets the content of the script project, including the code source and metadata for each script
+        /// file.</summary>
+        /// <param name="scriptId">The script project's Drive ID.</param>
+        public virtual GetContentRequest GetContent(string scriptId)
+        {
+            return new GetContentRequest(service, scriptId);
+        }
+
+        /// <summary>Gets the content of the script project, including the code source and metadata for each script
+        /// file.</summary>
+        public class GetContentRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Content>
+        {
+            /// <summary>Constructs a new GetContent request.</summary>
+            public GetContentRequest(Google.Apis.Services.IClientService service, string scriptId)
+                : base(service)
+            {
+                ScriptId = scriptId;
+                InitParameters();
+            }
+
+
+            /// <summary>The script project's Drive ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ScriptId { get; private set; }
+
+            /// <summary>The version number of the project to retrieve. If not provided, the project's HEAD version is
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("versionNumber", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> VersionNumber { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getContent"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/projects/{scriptId}/content"; }
+            }
+
+            /// <summary>Initializes GetContent parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "versionNumber", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "versionNumber",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Get metrics data for scripts, such as number of executions and active users.</summary>
+        /// <param name="scriptId">Required field indicating the script to get metrics for.</param>
+        public virtual GetMetricsRequest GetMetrics(string scriptId)
+        {
+            return new GetMetricsRequest(service, scriptId);
+        }
+
+        /// <summary>Get metrics data for scripts, such as number of executions and active users.</summary>
+        public class GetMetricsRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Metrics>
+        {
+            /// <summary>Constructs a new GetMetrics request.</summary>
+            public GetMetricsRequest(Google.Apis.Services.IClientService service, string scriptId)
+                : base(service)
+            {
+                ScriptId = scriptId;
+                InitParameters();
+            }
+
+
+            /// <summary>Required field indicating the script to get metrics for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ScriptId { get; private set; }
+
+            /// <summary>Required field indicating what granularity of metrics are returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("metricsGranularity", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<MetricsGranularityEnum> MetricsGranularity { get; set; }
+
+            /// <summary>Required field indicating what granularity of metrics are returned.</summary>
+            public enum MetricsGranularityEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("UNSPECIFIED_GRANULARITY")]
+                UNSPECIFIEDGRANULARITY,
+                [Google.Apis.Util.StringValueAttribute("WEEKLY")]
+                WEEKLY,
+                [Google.Apis.Util.StringValueAttribute("DAILY")]
+                DAILY,
+            }
+
+            /// <summary>Optional field indicating a specific deployment to retrieve metrics from.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("metricsFilter.deploymentId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string MetricsFilterDeploymentId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getMetrics"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/projects/{scriptId}/metrics"; }
+            }
+
+            /// <summary>Initializes GetMetrics parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "metricsGranularity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metricsGranularity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "metricsFilter.deploymentId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "metricsFilter.deploymentId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the content of the specified script project. This content is stored as the HEAD version,
+        /// and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a
+        /// web app or Apps Script API in development mode. This clears all the existing files in the project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="scriptId">The script project's Drive ID.</param>
+        public virtual UpdateContentRequest UpdateContent(Google.Apis.Script.v1.Data.Content body, string scriptId)
+        {
+            return new UpdateContentRequest(service, body, scriptId);
+        }
+
+        /// <summary>Updates the content of the specified script project. This content is stored as the HEAD version,
+        /// and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a
+        /// web app or Apps Script API in development mode. This clears all the existing files in the project.</summary>
+        public class UpdateContentRequest : ScriptBaseServiceRequest<Google.Apis.Script.v1.Data.Content>
+        {
+            /// <summary>Constructs a new UpdateContent request.</summary>
+            public UpdateContentRequest(Google.Apis.Services.IClientService service, Google.Apis.Script.v1.Data.Content body, string scriptId)
+                : base(service)
+            {
+                ScriptId = scriptId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The script project's Drive ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("scriptId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ScriptId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Script.v1.Data.Content Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateContent"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/projects/{scriptId}/content"; }
+            }
+
+            /// <summary>Initializes UpdateContent parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "scriptId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scriptId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "scripts" collection of methods.</summary>
     public class ScriptsResource
     {
@@ -475,6 +2054,128 @@ namespace Google.Apis.Script.v1
 namespace Google.Apis.Script.v1.Data
 {    
 
+    /// <summary>The Content resource.</summary>
+    public class Content : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of script project files. One of the files is a script manifest; it must be named
+        /// "appsscript", must have type of JSON, and include the manifest configurations for the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("files")]
+        public virtual System.Collections.Generic.IList<File> Files { get; set; } 
+
+        /// <summary>The script project's Drive ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
+        public virtual string ScriptId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request to create a script project.</summary>
+    public class CreateProjectRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Drive ID of a parent file that the created script project is bound to. This is usually the ID
+        /// of a Google Doc, Google Sheet, Google Form, or Google Slides file. If not set, a standalone script project
+        /// is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
+        public virtual string ParentId { get; set; } 
+
+        /// <summary>The title for the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Representation of a single script deployment.</summary>
+    public class Deployment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The deployment configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfig")]
+        public virtual DeploymentConfig DeploymentConfig { get; set; } 
+
+        /// <summary>The deployment ID for this deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentId")]
+        public virtual string DeploymentId { get; set; } 
+
+        /// <summary>The deployment's entry points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPoints")]
+        public virtual System.Collections.Generic.IList<EntryPoint> EntryPoints { get; set; } 
+
+        /// <summary>Script's defined set of functions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionSet")]
+        public virtual GoogleAppsScriptTypeFunctionSet FunctionSet { get; set; } 
+
+        /// <summary>Set of scopes required by the deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopeSet")]
+        public virtual GoogleAppsScriptTypeScopeSet ScopeSet { get; set; } 
+
+        /// <summary>Last modified date time stamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata the defines how a deployment is configured.</summary>
+    public class DeploymentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description for this deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The manifest file name for this deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifestFileName")]
+        public virtual string ManifestFileName { get; set; } 
+
+        /// <summary>The script project's Drive ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
+        public virtual string ScriptId { get; set; } 
+
+        /// <summary>The version number on which this deployment is based.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionNumber")]
+        public virtual System.Nullable<int> VersionNumber { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
+    /// typical example is to use it as the request or the response type of an API method. For instance:
+    ///
+    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    ///
+    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A configuration that defines how a deployment is accessed externally.</summary>
+    public class EntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Add-on properties.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addOn")]
+        public virtual GoogleAppsScriptTypeAddOnEntryPoint AddOn { get; set; } 
+
+        /// <summary>The type of the entry point.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPointType")]
+        public virtual string EntryPointType { get; set; } 
+
+        /// <summary>An entry point specification for Apps Script API execution calls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionApi")]
+        public virtual GoogleAppsScriptTypeExecutionApiEntryPoint ExecutionApi { get; set; } 
+
+        /// <summary>An entry point specification for web apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webApp")]
+        public virtual GoogleAppsScriptTypeWebAppEntryPoint WebApp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>An object that provides information about the nature of an error resulting from an attempted execution
     /// of a script function using the Apps Script API. If a run call succeeds but the script function (or Apps Script
     /// itself) throws an exception, the response body's error field contains a Status object. The `Status` object's
@@ -551,6 +2252,342 @@ namespace Google.Apis.Script.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An individual file within a script project. A file is a third-party source code created by one or more
+    /// developers. It can be a server-side JS code, HTML, or a configuration file. Each script project can contain
+    /// multiple files.</summary>
+    public class File : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Creation date timestamp. This read-only field is only visible to users who have WRITER permission
+        /// for the script project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The defined set of functions in the script file, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionSet")]
+        public virtual GoogleAppsScriptTypeFunctionSet FunctionSet { get; set; } 
+
+        /// <summary>The user who modified the file most recently. This read-only field is only visible to users who
+        /// have WRITER permission for the script project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifyUser")]
+        public virtual GoogleAppsScriptTypeUser LastModifyUser { get; set; } 
+
+        /// <summary>The name of the file. The file extension is not part of the file name, which can be identified from
+        /// the type field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The file content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; } 
+
+        /// <summary>The type of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>Last modified date timestamp. This read-only field is only visible to users who have WRITER
+        /// permission for the script project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An add-on entry point.</summary>
+    public class GoogleAppsScriptTypeAddOnEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The add-on's required list of supported container types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addOnType")]
+        public virtual string AddOnType { get; set; } 
+
+        /// <summary>The add-on's optional description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The add-on's optional help URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helpUrl")]
+        public virtual string HelpUrl { get; set; } 
+
+        /// <summary>The add-on's required post install tip URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postInstallTipUrl")]
+        public virtual string PostInstallTipUrl { get; set; } 
+
+        /// <summary>The add-on's optional report issue URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportIssueUrl")]
+        public virtual string ReportIssueUrl { get; set; } 
+
+        /// <summary>The add-on's required title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>API executable entry point configuration.</summary>
+    public class GoogleAppsScriptTypeExecutionApiConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Who has permission to run the API executable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access")]
+        public virtual string Access { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An API executable entry point.</summary>
+    public class GoogleAppsScriptTypeExecutionApiEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entry point's configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPointConfig")]
+        public virtual GoogleAppsScriptTypeExecutionApiConfig EntryPointConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a function in a script project.</summary>
+    public class GoogleAppsScriptTypeFunction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The function name in the script project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of functions. No duplicates are permitted.</summary>
+    public class GoogleAppsScriptTypeFunctionSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of functions composing the set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeFunction> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Representation of a single script process execution that was started from the script editor, a trigger,
+    /// an application, or using the Apps Script API. This is distinct from the `Operation` resource, which only
+    /// represents exeuctions started via the Apps Script API.</summary>
+    public class GoogleAppsScriptTypeProcess : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration the execution spent executing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; } 
+
+        /// <summary>User-facing name for the user executing the script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executingUser")]
+        public virtual string ExecutingUser { get; set; } 
+
+        /// <summary>Name of the function the started the execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("functionName")]
+        public virtual string FunctionName { get; set; } 
+
+        /// <summary>The executions status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processStatus")]
+        public virtual string ProcessStatus { get; set; } 
+
+        /// <summary>The executions type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processType")]
+        public virtual string ProcessType { get; set; } 
+
+        /// <summary>Name of the script being executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectName")]
+        public virtual string ProjectName { get; set; } 
+
+        /// <summary>Time the execution started.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The executing users access level to the script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAccessLevel")]
+        public virtual string UserAccessLevel { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents an authorization scope.</summary>
+    public class GoogleAppsScriptTypeScope : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Who authorized the scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authorizer")]
+        public virtual string Authorizer { get; set; } 
+
+        /// <summary>The scope's identifying string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A set of scopes. No duplicates are permitted.</summary>
+    public class GoogleAppsScriptTypeScopeSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of scope values in the set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeScope> Values { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A simple user profile resource.</summary>
+    public class GoogleAppsScriptTypeUser : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The user's domain.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; } 
+
+        /// <summary>The user's identifying email address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>The user's display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The user's photo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
+        public virtual string PhotoUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Web app entry point configuration.</summary>
+    public class GoogleAppsScriptTypeWebAppConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Who has permission to run the web app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("access")]
+        public virtual string Access { get; set; } 
+
+        /// <summary>Who to execute the web app as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executeAs")]
+        public virtual string ExecuteAs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A web application entry point.</summary>
+    public class GoogleAppsScriptTypeWebAppEntryPoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The entry point's configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entryPointConfig")]
+        public virtual GoogleAppsScriptTypeWebAppConfig EntryPointConfig { get; set; } 
+
+        /// <summary>The URL for the web application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response with the list of deployments for the specified Apps Script project.</summary>
+    public class ListDeploymentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of deployments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployments")]
+        public virtual System.Collections.Generic.IList<Deployment> Deployments { get; set; } 
+
+        /// <summary>The token that can be used in the next call to get the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response with the list of Process resources.</summary>
+    public class ListScriptProcessesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token for the next page of results. If empty, there are no more pages remaining.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>List of processes matching request parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processes")]
+        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeProcess> Processes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response with the list of Process resources.</summary>
+    public class ListUserProcessesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token for the next page of results. If empty, there are no more pages remaining.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>List of processes matching request parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processes")]
+        public virtual System.Collections.Generic.IList<GoogleAppsScriptTypeProcess> Processes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response with the list of the versions for the specified script project.</summary>
+    public class ListVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The token use to fetch the next page of records. if not exist in the response, that means no more
+        /// versions to list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versions")]
+        public virtual System.Collections.Generic.IList<Version> Versions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Resource containing usage stats for a given script, based on the supplied filter and mask present in
+    /// the request.</summary>
+    public class Metrics : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of active users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeUsers")]
+        public virtual System.Collections.Generic.IList<MetricsValue> ActiveUsers { get; set; } 
+
+        /// <summary>Number of failed executions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedExecutions")]
+        public virtual System.Collections.Generic.IList<MetricsValue> FailedExecutions { get; set; } 
+
+        /// <summary>Number of total executions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalExecutions")]
+        public virtual System.Collections.Generic.IList<MetricsValue> TotalExecutions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metrics value that holds number of executions counted.</summary>
+    public class MetricsValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required field indicating the end time of the interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Required field indicating the start time of the interval.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>Indicates the number of executions counted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<ulong> Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A representation of a execution of an Apps Script function that is started using run. The execution
     /// response does not arrive until the function finishes executing. The maximum execution runtime is listed in the
     /// [Apps Script quotas guide](/apps-script/guides/services/quotas#current_limitations). After the execution is
@@ -580,6 +2617,43 @@ namespace Google.Apis.Script.v1.Data
         /// the function's return value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
         public virtual System.Collections.Generic.IDictionary<string,object> Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The script project resource.</summary>
+    public class Project : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When the script was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>User who originally created the script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual GoogleAppsScriptTypeUser Creator { get; set; } 
+
+        /// <summary>User who last modified the script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifyUser")]
+        public virtual GoogleAppsScriptTypeUser LastModifyUser { get; set; } 
+
+        /// <summary>The parent's Drive ID that the script will be attached to. This is usually the ID of a Google
+        /// Document or Google Sheet. This filed is optional, and if not set, a stand-alone script will be
+        /// created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
+        public virtual string ParentId { get; set; } 
+
+        /// <summary>The script project's Drive ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
+        public virtual string ScriptId { get; set; } 
+
+        /// <summary>The title for the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>When the script was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -619,6 +2693,43 @@ namespace Google.Apis.Script.v1.Data
         /// client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request with deployment information to update an existing deployment.</summary>
+    public class UpdateDeploymentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The deployment configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfig")]
+        public virtual DeploymentConfig DeploymentConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A resource representing a script project version. A version is a "snapshot" of a script project and is
+    /// similar to a read-only branched release. When creating deployments, the version to use must be
+    /// specified.</summary>
+    public class Version : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When the version was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>The description for this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The script project's Drive ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scriptId")]
+        public virtual string ScriptId { get; set; } 
+
+        /// <summary>The incremental ID that is created by Apps Script when a version is created. This is system
+        /// assigned number and is immutable once created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionNumber")]
+        public virtual System.Nullable<int> VersionNumber { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

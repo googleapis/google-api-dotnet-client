@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/speed/docs/insights/v2/getting-started'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20161204 (703)
+ *      <tr><th>API Rev<td>20180108 (1103)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/speed/docs/insights/v2/getting-started'>
  *              https://developers.google.com/speed/docs/insights/v2/getting-started</a>
@@ -542,6 +542,10 @@ namespace Google.Apis.Pagespeedonline.v2.Data
 
     public class Result : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The captcha verify result</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("captchaResult")]
+        public virtual string CaptchaResult { get; set; } 
+
         /// <summary>Localized PageSpeed results. Contains a ruleResults entry for each PageSpeed rule instantiated and
         /// run by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formattedResults")]
