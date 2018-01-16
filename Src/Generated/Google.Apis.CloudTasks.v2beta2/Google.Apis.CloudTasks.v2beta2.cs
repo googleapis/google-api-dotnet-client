@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180106 (1101)
+ *      <tr><th>API Rev<td>20180113 (1108)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -1681,6 +1681,18 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "app_engine_http_target: *".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested_page size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
@@ -1697,18 +1709,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "app_engine_http_target: *".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested_page size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1744,6 +1744,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1756,15 +1765,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2399,6 +2399,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2406,10 +2410,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2445,6 +2445,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2457,15 +2466,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2881,7 +2881,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for pulling tasks using CloudTasks.LeaseTasks.</summary>
+    /// <summary>Request message for leasing tasks using CloudTasks.LeaseTasks.</summary>
     public class LeaseTasksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>`filter` can be used to specify a subset of tasks to lease.
@@ -3158,8 +3158,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// Console](/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-
         /// queues#purging_all_tasks_from_a_queue).
         ///
-        /// Purge time will be truncated to the nearest microsecond. Purge time will be zero if the queue has never been
-        /// purged.</summary>
+        /// Purge time will be truncated to the nearest microsecond. Purge time will be unset if the queue has never
+        /// been purged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
         public virtual object PurgeTime { get; set; } 
 
@@ -3188,7 +3188,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Output only. The state of the queue.
         ///
         /// `state` can only be changed by called CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
-        /// [queue.yaml](/appengine/docs/python/config/queueref). CloudTasks.UpdateQueue cannot be used to change
+        /// [queue.yaml/xml](/appengine/docs/python/config/queueref). CloudTasks.UpdateQueue cannot be used to change
         /// `state`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
@@ -3205,20 +3205,19 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>Output only. The max burst size.
         ///
-        /// Max burst size limits how fast the queue is processed when many tasks are in the queue and the rate is high.
-        /// This field allows the queue to have a high rate so processing starts shortly after a task is enqueued, but
-        /// still limits resource usage when many tasks are enqueued in a short period of time.
+        /// Max burst size limits how fast tasks in queue are processed when many tasks are in the queue and the rate is
+        /// high. This field allows the queue to have a high rate so processing starts shortly after a task is enqueued,
+        /// but still limits resource usage when many tasks are enqueued in a short period of time.
         ///
-        /// * For App Engine queues, if RateLimits.max_tasks_dispatched_per_second is 1, this field is 10; otherwise
-        /// this field is RateLimits.max_tasks_dispatched_per_second / 5. * For pull queues, this field is output only
-        /// and always 10,000.
+        /// The [token bucket](https://wikipedia.org/wiki/Token_Bucket) algorithm is used to control the rate of task
+        /// dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by
+        /// `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be
+        /// dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new
+        /// tokens based on RateLimits.max_tasks_dispatched_per_second.
         ///
-        /// Note: For App Engine queues that were created through `queue.yaml/xml`, `max_burst_size` might not have the
-        /// same settings as specified above; CloudTasks.UpdateQueue can be used to set `max_burst_size` only to the
-        /// values specified above.
-        ///
-        /// This field has the same meaning as [bucket_size in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#bucket_size).</summary>
+        /// Cloud Tasks will pick the value of `max_burst_size` when the queue is created. For App Engine queues that
+        /// were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to
+        /// [bucket_size](/appengine/docs/standard/python/config/queueref#bucket_size). </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
         public virtual System.Nullable<int> MaxBurstSize { get; set; } 
 
@@ -3228,11 +3227,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// The maximum allowed value is 5,000.
         ///
-        /// * For App Engine queues, this field is 10 by default. * For pull queues, this field is output only and
-        /// always -1, which indicates no limit.
+        /// If unspecified when the queue is created, Cloud Tasks will pick the default.
+        ///
+        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         ///
         /// This field has the same meaning as [max_concurrent_requests in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#max_concurrent_requests).</summary>
+        /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#max_concurrent_requests).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxConcurrentTasks")]
         public virtual System.Nullable<int> MaxConcurrentTasks { get; set; } 
 
@@ -3240,12 +3240,14 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// The maximum allowed value is 500.
         ///
-        /// * For App Engine queues, this field is 1 by default. * For pull queues, this field is output only and always
-        /// 10,000. In addition to the `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of
-        /// CloudTasks.LeaseTasks requests are allowed per queue.
+        /// If unspecified when the queue is created, Cloud Tasks will pick the default.
+        ///
+        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget). In addition to the
+        /// `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of CloudTasks.LeaseTasks requests are allowed
+        /// per pull queue.
         ///
         /// This field has the same meaning as [rate in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#rate).</summary>
+        /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#rate).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTasksDispatchedPerSecond")]
         public virtual System.Nullable<double> MaxTasksDispatchedPerSecond { get; set; } 
 
@@ -3306,15 +3308,17 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxAttempts")]
         public virtual System.Nullable<int> MaxAttempts { get; set; } 
 
-        /// <summary>The maximum amount of time to wait before retrying a task after it fails. The default is 1 hour.
+        /// <summary>A task will be scheduled for retry between RetryConfig.min_backoff and RetryConfig.max_backoff
+        /// duration after it fails, if the queue's RetryConfig specifies that the task should be retried.
         ///
-        /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 1 hour by default.
-        /// * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.
+        /// If unspecified when the queue is created, Cloud Tasks will pick the default.
+        ///
+        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         ///
         /// `max_backoff` will be truncated to the nearest second.
         ///
         /// This field has the same meaning as [max_backoff_seconds in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
+        /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBackoff")]
         public virtual object MaxBackoff { get; set; } 
 
@@ -3330,11 +3334,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// has been attempted `max_attempts` times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s,
         /// 300s, 300s, ....
         ///
-        /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 16 by default. *
-        /// For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.
+        /// If unspecified when the queue is created, Cloud Tasks will pick the default.
+        ///
+        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         ///
         /// This field has the same meaning as [max_doublings in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
+        /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxDoublings")]
         public virtual System.Nullable<int> MaxDoublings { get; set; } 
 
@@ -3344,25 +3349,28 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// If zero, then the task age is unlimited.
         ///
-        /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 0 seconds by
-        /// default. * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.
+        /// If unspecified when the queue is created, Cloud Tasks will pick the default.
+        ///
+        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         ///
         /// `max_retry_duration` will be truncated to the nearest second.
         ///
         /// This field has the same meaning as [task_age_limit in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
+        /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetryDuration")]
         public virtual object MaxRetryDuration { get; set; } 
 
-        /// <summary>The minimum amount of time to wait before retrying a task after it fails.
+        /// <summary>A task will be scheduled for retry between RetryConfig.min_backoff and RetryConfig.max_backoff
+        /// duration after it fails, if the queue's RetryConfig specifies that the task should be retried.
         ///
-        /// * For [App Engine queues](google.cloud.tasks.v2beta2.AppEngineHttpTarget), this field is 0.1 seconds by
-        /// default. * For [pull queues](google.cloud.tasks.v2beta2.PullTarget), this field is output only and always 0.
+        /// If unspecified when the queue is created, Cloud Tasks will pick the default.
+        ///
+        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         ///
         /// `min_backoff` will be truncated to the nearest second.
         ///
         /// This field has the same meaning as [min_backoff_seconds in
-        /// queue.yaml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
+        /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#retry_parameters).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minBackoff")]
         public virtual object MinBackoff { get; set; } 
 

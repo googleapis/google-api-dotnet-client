@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171229 (1093)
+ *      <tr><th>API Rev<td>20180105 (1100)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -5308,8 +5308,9 @@ namespace Google.Apis.Drive.v3.Data
         public virtual System.Collections.Generic.IList<User> Owners { get; set; } 
 
         /// <summary>The IDs of the parent folders which contain the file. If not specified as part of a create request,
-        /// the file will be placed directly in the My Drive folder. Update requests must use the addParents and
-        /// removeParents parameters to modify the values.</summary>
+        /// the file will be placed directly in the user's My Drive folder. If not specified as part of a copy request,
+        /// the file will inherit any discoverable parents of the source file. Update requests must use the addParents
+        /// and removeParents parameters to modify the parents list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parents")]
         public virtual System.Collections.Generic.IList<string> Parents { get; set; } 
 

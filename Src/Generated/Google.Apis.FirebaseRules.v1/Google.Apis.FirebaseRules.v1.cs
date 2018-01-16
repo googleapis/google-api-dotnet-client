@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/storage/security'>Firebase Rules API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171108 (1042)
+ *      <tr><th>API Rev<td>20180111 (1106)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/storage/security'>
  *              https://firebase.google.com/docs/storage/security</a>
@@ -738,6 +738,10 @@ namespace Google.Apis.FirebaseRules.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Next page token for the next batch of `Release` instances.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
                 /// service may choose to load fewer than `page_size` results due to the size of the output. To traverse
                 /// all of the releases, the caller should iterate until the `page_token` on the response is
@@ -767,10 +771,6 @@ namespace Google.Apis.FirebaseRules.v1
                 /// `test_suite_name=projects/foo/testsuites/uuid1`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>Next page token for the next batch of `Release` instances.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -806,6 +806,15 @@ namespace Google.Apis.FirebaseRules.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -818,15 +827,6 @@ namespace Google.Apis.FirebaseRules.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -897,116 +897,6 @@ namespace Google.Apis.FirebaseRules.v1
                 }
 
                 /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/releases/.+$",
-                        });
-                }
-
-            }
-
-            /// <summary>Update a `Release`.
-            ///
-            /// Only updates to the `ruleset_name` and `test_suite_name` fields will be honored. `Release` rename is not
-            /// supported. To create a `Release` use the CreateRelease method.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">Resource name for the `Release`.
-            ///
-            /// `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2` which affords developers a great deal of
-            /// flexibility in mapping the name to the style that best fits their existing development practices. For example, a
-            /// name could refer to an environment, an app, a version, or some combination of three.
-            ///
-            /// In the table below, for the project name `projects/foo`, the following relative release paths show how flat and
-            /// structured names might be chosen to match a desired development / deployment strategy.
-            ///
-            /// Use Case     | Flat Name           | Structured Name -------------|---------------------|----------------
-            /// Environments | releases/qa         | releases/qa Apps         | releases/app1_qa    | releases/app1/qa Versions
-            /// | releases/app1_v2_qa | releases/app1/v2/qa
-            ///
-            /// The delimiter between the release name path elements can be almost anything and it should work equally well with the
-            /// release name list filter, but in many ways the structured paths provide a clearer picture of the relationship
-            /// between `Release` instances.
-            ///
-            /// Format: `projects/{project_id}/releases/{release_id}`</param>
-            public virtual UpdateRequest Update(Google.Apis.FirebaseRules.v1.Data.Release body, string name)
-            {
-                return new UpdateRequest(service, body, name);
-            }
-
-            /// <summary>Update a `Release`.
-            ///
-            /// Only updates to the `ruleset_name` and `test_suite_name` fields will be honored. `Release` rename is not
-            /// supported. To create a `Release` use the CreateRelease method.</summary>
-            public class UpdateRequest : FirebaseRulesBaseServiceRequest<Google.Apis.FirebaseRules.v1.Data.Release>
-            {
-                /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseRules.v1.Data.Release body, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>Resource name for the `Release`.
-                ///
-                /// `Release` names may be structured `app1/prod/v2` or flat `app1_prod_v2` which affords developers a
-                /// great deal of flexibility in mapping the name to the style that best fits their existing development
-                /// practices. For example, a name could refer to an environment, an app, a version, or some combination
-                /// of three.
-                ///
-                /// In the table below, for the project name `projects/foo`, the following relative release paths show
-                /// how flat and structured names might be chosen to match a desired development / deployment strategy.
-                ///
-                /// Use Case     | Flat Name           | Structured Name
-                /// -------------|---------------------|---------------- Environments | releases/qa         |
-                /// releases/qa Apps         | releases/app1_qa    | releases/app1/qa Versions     | releases/app1_v2_qa
-                /// | releases/app1/v2/qa
-                ///
-                /// The delimiter between the release name path elements can be almost anything and it should work
-                /// equally well with the release name list filter, but in many ways the structured paths provide a
-                /// clearer picture of the relationship between `Release` instances.
-                ///
-                /// Format: `projects/{project_id}/releases/{release_id}`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.FirebaseRules.v1.Data.Release Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "update"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "PUT"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1/{+name}"; }
-                }
-
-                /// <summary>Initializes Update parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -1291,12 +1181,6 @@ namespace Google.Apis.FirebaseRules.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
-                /// service may choose to load less than `page_size` due to the size of the output. To traverse all of
-                /// the releases, caller should iterate until the `page_token` is empty.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>`Ruleset` filter. The list method supports filters with restrictions on `Ruleset.name`.
                 ///
                 /// Filters on `Ruleset.create_time` should use the `date` function which parses strings that conform to
@@ -1309,6 +1193,12 @@ namespace Google.Apis.FirebaseRules.v1
                 /// <summary>Next page token for loading the next batch of `Ruleset` instances.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Page size to load. Maximum of 100. Defaults to 10. Note: `page_size` is just a hint and the
+                /// service may choose to load less than `page_size` due to the size of the output. To traverse all of
+                /// the releases, caller should iterate until the `page_token` is empty.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1344,15 +1234,6 @@ namespace Google.Apis.FirebaseRules.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1365,6 +1246,15 @@ namespace Google.Apis.FirebaseRules.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

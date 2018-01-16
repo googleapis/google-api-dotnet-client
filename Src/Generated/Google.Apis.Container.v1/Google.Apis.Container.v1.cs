@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Container Engine API Version v1
+ *   Google Kubernetes Engine API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/container-engine/'>Google Container Engine API</a>
+ *          <td><a href='https://cloud.google.com/container-engine/'>Google Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171208 (1072)
+ *      <tr><th>API Rev<td>20171227 (1091)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Container Engine API can be found at
+ * The complete API documentation for using Google Kubernetes Engine API can be found at
  * <a href='https://cloud.google.com/container-engine/'>https://cloud.google.com/container-engine/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.Container.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Container Engine API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Kubernetes Engine API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

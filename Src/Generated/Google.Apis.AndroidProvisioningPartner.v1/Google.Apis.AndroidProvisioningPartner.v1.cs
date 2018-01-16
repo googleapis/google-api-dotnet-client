@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180106 (1101)
+ *      <tr><th>API Rev<td>20180114 (1109)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -930,8 +930,8 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
-                /// <summary>The maximum number of devices to show in a page of results. The default value returns all
-                /// the devices in a single page.</summary>
+                /// <summary>The maximum number of devices to show in a page of results. Must be between 1 and 100
+                /// inclusive.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> PageSize { get; set; }
 

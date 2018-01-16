@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180103 (1098)
+ *      <tr><th>API Rev<td>20180109 (1104)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -2265,6 +2265,21 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
+                public enum TypeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
+                    DLPJOBTYPEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
+                    INSPECTJOB,
+                    [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
+                    RISKANALYSISJOB,
+                }
+
                 /// <summary>Optional. Allows filtering.
                 ///
                 /// Supported syntax:
@@ -2293,21 +2308,6 @@ namespace Google.Apis.DLP.v2beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
-                public enum TypeEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
-                    DLPJOBTYPEUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
-                    INSPECTJOB,
-                    [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
-                    RISKANALYSISJOB,
-                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2343,6 +2343,15 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "type", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2364,15 +2373,6 @@ namespace Google.Apis.DLP.v2beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "type", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "type",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5349,7 +5349,9 @@ namespace Google.Apis.DLP.v2beta2.Data
     /// <summary>Cloud repository for storing output.</summary>
     public class GooglePrivacyDlpV2beta2OutputStorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Store findings in a new table in an existing dataset.</summary>
+        /// <summary>Store findings in a new table in an existing dataset. If table_id is not set a new one will be
+        /// generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will
+        /// be used for generating the date details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2beta2BigQueryTable Table { get; set; } 
 

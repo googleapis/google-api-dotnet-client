@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20171212 (1076)
+ *      <tr><th>API Rev<td>20180109 (1104)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -718,6 +718,111 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
+                /// <summary>Instantiates a template and begins execution.This method is equivalent to executing the
+                /// sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned
+                /// Operation can be used to track execution of workflow by polling
+                /// google.cloud.dataproc.v1beta2.OperationService.GetOperation. The Operation will complete when entire
+                /// workflow is finished.The running workflow can be aborted via
+                /// google.cloud.dataproc.v1beta2.OperationService.CancelOperation.The
+                /// google.cloud.dataproc.v1beta2.Operation.metadata will always be
+                /// google.cloud.dataproc.v1beta2.WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result
+                /// will always be google.protobuf.Empty.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The "resource name" of the workflow template region, as described in
+                /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
+                public virtual InstantiateInlineRequest InstantiateInline(Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate body, string parent)
+                {
+                    return new InstantiateInlineRequest(service, body, parent);
+                }
+
+                /// <summary>Instantiates a template and begins execution.This method is equivalent to executing the
+                /// sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned
+                /// Operation can be used to track execution of workflow by polling
+                /// google.cloud.dataproc.v1beta2.OperationService.GetOperation. The Operation will complete when entire
+                /// workflow is finished.The running workflow can be aborted via
+                /// google.cloud.dataproc.v1beta2.OperationService.CancelOperation.The
+                /// google.cloud.dataproc.v1beta2.Operation.metadata will always be
+                /// google.cloud.dataproc.v1beta2.WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result
+                /// will always be google.protobuf.Empty.</summary>
+                public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new InstantiateInline request.</summary>
+                    public InstantiateInlineRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the workflow template region, as described in
+                    /// https://cloud.google.com/apis/design/resource_names of the form
+                    /// projects/{project_id}/regions/{region}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. A tag that prevents multiple concurrent workflow instances with the same tag
+                    /// from running. This mitigates risk of concurrent instances started due to retries.It is
+                    /// recommended to always set this value to a UUID
+                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only letters
+                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+                    /// characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "instantiateInline"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+parent}/workflowTemplates:instantiateInline"; }
+                    }
+
+                    /// <summary>Initializes InstantiateInline parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "instanceId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "instanceId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
                 /// <param name="parent">Required. The "resource name" of the region, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
@@ -744,14 +849,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -787,18 +892,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1419,6 +1524,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The standard List page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
                     /// have the following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
@@ -1430,14 +1543,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The standard List page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1482,15 +1587,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1503,6 +1599,15 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1551,14 +1656,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
-                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
-                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
-                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
-                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
-                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object GracefulDecommissionTimeout { get; set; }
-
                     /// <summary>Required. Specifies the path, relative to Cluster, of the field to update. For example,
                     /// to change the number of workers in a cluster to 5, the update_mask parameter would be specified
                     /// as config.worker_config.num_instances, and the PATCH request body would specify the new value,
@@ -1571,6 +1668,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// |config.secondary_worker_config.num_instances|Resize secondary worker group|</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
+                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
+                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
+                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
+                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object GracefulDecommissionTimeout { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1630,18 +1735,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
+                            "updateMask", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "gracefulDecommissionTimeout",
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
+                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "updateMask",
+                                Name = "gracefulDecommissionTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2146,15 +2251,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
-                    /// results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
                     /// named cluster.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
@@ -2185,6 +2281,15 @@ namespace Google.Apis.Dataproc.v1beta2
                         [Google.Apis.Util.StringValueAttribute("NON_ACTIVE")]
                         NONACTIVE,
                     }
+
+                    /// <summary>Optional. The page token, returned by a previous call, to request the next page of
+                    /// results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2229,24 +2334,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "clusterName", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterName",
@@ -2268,6 +2355,24 @@ namespace Google.Apis.Dataproc.v1beta2
                             "jobStateMatcher", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "jobStateMatcher",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2737,6 +2842,10 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -2744,10 +2853,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2783,6 +2888,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/regions/[^/]+/operations$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -2795,15 +2909,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3150,6 +3255,111 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
+                /// <summary>Instantiates a template and begins execution.This method is equivalent to executing the
+                /// sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned
+                /// Operation can be used to track execution of workflow by polling
+                /// google.cloud.dataproc.v1beta2.OperationService.GetOperation. The Operation will complete when entire
+                /// workflow is finished.The running workflow can be aborted via
+                /// google.cloud.dataproc.v1beta2.OperationService.CancelOperation.The
+                /// google.cloud.dataproc.v1beta2.Operation.metadata will always be
+                /// google.cloud.dataproc.v1beta2.WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result
+                /// will always be google.protobuf.Empty.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. The "resource name" of the workflow template region, as described in
+                /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
+                public virtual InstantiateInlineRequest InstantiateInline(Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate body, string parent)
+                {
+                    return new InstantiateInlineRequest(service, body, parent);
+                }
+
+                /// <summary>Instantiates a template and begins execution.This method is equivalent to executing the
+                /// sequence CreateWorkflowTemplate, InstantiateWorkflowTemplate, DeleteWorkflowTemplate.The returned
+                /// Operation can be used to track execution of workflow by polling
+                /// google.cloud.dataproc.v1beta2.OperationService.GetOperation. The Operation will complete when entire
+                /// workflow is finished.The running workflow can be aborted via
+                /// google.cloud.dataproc.v1beta2.OperationService.CancelOperation.The
+                /// google.cloud.dataproc.v1beta2.Operation.metadata will always be
+                /// google.cloud.dataproc.v1beta2.WorkflowMetadata.The google.cloud.dataproc.v1beta2.Operation.result
+                /// will always be google.protobuf.Empty.</summary>
+                public class InstantiateInlineRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new InstantiateInline request.</summary>
+                    public InstantiateInlineRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate body, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>Required. The "resource name" of the workflow template region, as described in
+                    /// https://cloud.google.com/apis/design/resource_names of the form
+                    /// projects/{project_id}/regions/{region}</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. A tag that prevents multiple concurrent workflow instances with the same tag
+                    /// from running. This mitigates risk of concurrent instances started due to retries.It is
+                    /// recommended to always set this value to a UUID
+                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only letters
+                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+                    /// characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.WorkflowTemplate Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "instantiateInline"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+parent}/workflowTemplates:instantiateInline"; }
+                    }
+
+                    /// <summary>Initializes InstantiateInline parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "instanceId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "instanceId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+
                 /// <summary>Lists workflows that match the specified filter in the request.</summary>
                 /// <param name="parent">Required. The "resource name" of the region, as described in
                 /// https://cloud.google.com/apis/design/resource_names of the form projects/{project_id}/regions/{region}</param>
@@ -3176,14 +3386,14 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The page token, returned by a previous call, to request the next page of
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3219,18 +3429,18 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = @"^projects/[^/]+/regions/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3381,7 +3591,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when
+        /// <summary>Output only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when
         /// it creates the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
@@ -3407,11 +3617,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Output-only. Cluster status.</summary>
+        /// <summary>Output only. Cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ClusterStatus Status { get; set; } 
 
-        /// <summary>Output-only. The previous cluster status.</summary>
+        /// <summary>Output only. The previous cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<ClusterStatus> StatusHistory { get; set; } 
 
@@ -3484,6 +3694,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The cluster operation triggered by a workflow.</summary>
     public class ClusterOperation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Indicates the operation is done.</summary>
@@ -3505,35 +3716,35 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Metadata describing the operation.</summary>
     public class ClusterOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. Name of the cluster for the operation.</summary>
+        /// <summary>Output only. Name of the cluster for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only. Cluster UUID for the operation.</summary>
+        /// <summary>Output only. Cluster UUID for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
 
-        /// <summary>Output-only. Short description of operation.</summary>
+        /// <summary>Output only. Short description of operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Output-only. Labels associated with the operation</summary>
+        /// <summary>Output only. Labels associated with the operation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Output-only. The operation type.</summary>
+        /// <summary>Output only. The operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
-        /// <summary>Output-only. Current operation status.</summary>
+        /// <summary>Output only. Current operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ClusterOperationStatus Status { get; set; } 
 
-        /// <summary>Output-only. The previous operation status.</summary>
+        /// <summary>Output only. The previous operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<ClusterOperationStatus> StatusHistory { get; set; } 
 
-        /// <summary>Output-only. Errors encountered during operation execution.</summary>
+        /// <summary>Output only. Errors encountered during operation execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<string> Warnings { get; set; } 
 
@@ -3544,19 +3755,19 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>The status of the operation.</summary>
     public class ClusterOperationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only.A message containing any operation metadata details.</summary>
+        /// <summary>Output only. A message containing any operation metadata details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
 
-        /// <summary>Output-only. A message containing the detailed operation state.</summary>
+        /// <summary>Output only. A message containing the detailed operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
         public virtual string InnerState { get; set; } 
 
-        /// <summary>Output-only. A message containing the operation state.</summary>
+        /// <summary>Output only. A message containing the operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only. The time this state was entered.</summary>
+        /// <summary>Output only. The time this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
@@ -3583,19 +3794,19 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>The status of a cluster and its instances.</summary>
     public class ClusterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. Optional details of cluster's state.</summary>
+        /// <summary>Output only. Optional details of cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
 
-        /// <summary>Output-only. The cluster's state.</summary>
+        /// <summary>Output only. The cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only. Time when this state was entered.</summary>
+        /// <summary>Output only. Time when this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
-        /// <summary>Output-only. Additional state information that includes status reported by the agent.</summary>
+        /// <summary>Output only. Additional state information that includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
         public virtual string Substate { get; set; } 
 
@@ -3613,7 +3824,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>The location of diagnostic output.</summary>
     public class DiagnoseClusterResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. The Google Cloud Storage URI of the diagnostic output. The output report is a plain
+        /// <summary>Output only. The Google Cloud Storage URI of the diagnostic output. The output report is a plain
         /// text file with a summary of collected diagnostics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; } 
@@ -3821,7 +4032,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
         public virtual DiskConfig DiskConfig { get; set; } 
 
-        /// <summary>Output-only. The Google Compute Engine image resource used for cluster instances. Inferred from
+        /// <summary>Output only. The Google Compute Engine image resource used for cluster instances. Inferred from
         /// SoftwareConfig.image_version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
@@ -3843,13 +4054,13 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeUri")]
         public virtual string MachineTypeUri { get; set; } 
 
-        /// <summary>Output-only. The config for Google Compute Engine Instance Group Manager that manages this group.
+        /// <summary>Output only. The config for Google Compute Engine Instance Group Manager that manages this group.
         /// This is only used for preemptible instance groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
         public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
 
-        /// <summary>Optional. Specifies the minimum cpu platform for the Instance Group. Examples: *
-        /// https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform</summary>
+        /// <summary>Optional. Specifies the minimum cpu platform for the Instance Group. See Cloud DataprocMinimum CPU
+        /// Platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; } 
 
@@ -3886,13 +4097,13 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A Cloud Dataproc job resource.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. If present, the location of miscellaneous control files which may be used as part of
+        /// <summary>Output only. If present, the location of miscellaneous control files which may be used as part of
         /// job setup and handling. If not present, control files may be placed in the same location as
         /// driver_output_uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverControlFilesUri")]
         public virtual string DriverControlFilesUri { get; set; } 
 
-        /// <summary>Output-only. A URI pointing to the location of the stdout of the job's driver program.</summary>
+        /// <summary>Output only. A URI pointing to the location of the stdout of the job's driver program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverOutputResourceUri")]
         public virtual string DriverOutputResourceUri { get; set; } 
 
@@ -3941,16 +4152,16 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
-        /// <summary>Output-only. The job status. Additional application-specific status information may be contained in
+        /// <summary>Output only. The job status. Additional application-specific status information may be contained in
         /// the type_job and yarn_applications fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual JobStatus Status { get; set; } 
 
-        /// <summary>Output-only. The previous job status.</summary>
+        /// <summary>Output only. The previous job status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<JobStatus> StatusHistory { get; set; } 
 
-        /// <summary>Output-only. The collection of YARN applications spun up by this job.Beta Feature: This report is
+        /// <summary>Output only. The collection of YARN applications spun up by this job.Beta Feature: This report is
         /// available for testing purposes only. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnApplications")]
         public virtual System.Collections.Generic.IList<YarnApplication> YarnApplications { get; set; } 
@@ -3966,7 +4177,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is
+        /// <summary>Output only. A cluster UUID generated by the Cloud Dataproc service when the job is
         /// submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
@@ -4009,20 +4220,20 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Cloud Dataproc job status.</summary>
     public class JobStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. Optional job state details, such as an error description if the state is
+        /// <summary>Output only. Optional job state details, such as an error description if the state is
         /// ERROR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
 
-        /// <summary>Output-only. A state message specifying the overall job state.</summary>
+        /// <summary>Output only. A state message specifying the overall job state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only. The time when this state was entered.</summary>
+        /// <summary>Output only. The time when this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
-        /// <summary>Output-only. Additional state information, which includes status reported by the agent.</summary>
+        /// <summary>Output only. Additional state information, which includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
         public virtual string Substate { get; set; } 
 
@@ -4054,11 +4265,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>The list of all clusters in a project.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. The clusters in the project.</summary>
+        /// <summary>Output only. The clusters in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
         public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; } 
 
-        /// <summary>Output-only. This token is included in the response if there are more results to fetch. To fetch
+        /// <summary>Output only. This token is included in the response if there are more results to fetch. To fetch
         /// additional results, provide this value as the page_token in a subsequent ListClustersRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -4070,7 +4281,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>A list of jobs in a project.</summary>
     public class ListJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. Jobs list.</summary>
+        /// <summary>Output only. Jobs list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
         public virtual System.Collections.Generic.IList<Job> Jobs { get; set; } 
 
@@ -4153,11 +4364,11 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// <summary>Specifies the resources used to actively manage an instance group.</summary>
     public class ManagedGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. The name of the Instance Group Manager for this group.</summary>
+        /// <summary>Output only. The name of the Instance Group Manager for this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupManagerName")]
         public virtual string InstanceGroupManagerName { get; set; } 
 
-        /// <summary>Output-only. The name of the Instance Template used for the Managed Instance Group.</summary>
+        /// <summary>Output only. The name of the Instance Template used for the Managed Instance Group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplateName")]
         public virtual string InstanceTemplateName { get; set; } 
 
@@ -4219,6 +4430,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A job executed by the workflow.</summary>
     public class OrderedJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Job is a Hadoop job.</summary>
@@ -4317,7 +4529,8 @@ namespace Google.Apis.Dataproc.v1beta2.Data
     /// named list of permissions defined by IAM.Example { "bindings": [ { "role": "roles/owner", "members": [
     /// "user:mike@example.com", "group:admins@example.com", "domain:google.com", "serviceAccount:my-other-
     /// app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer", "members": ["user:sean@example.com"] } ] } For
-    /// a description of IAM and its features, see the IAM developer's guide (https://cloud.google.com/iam).</summary>
+    /// a description of IAM and its features, see the IAM developer's guide
+    /// (https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Associates a list of members to a role. bindings with no members will result in an error.</summary>
@@ -4333,7 +4546,7 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
 
-        /// <summary>Version of the Policy. The default version is 0.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

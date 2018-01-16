@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171220 (1084)
+ *      <tr><th>API Rev<td>20180111 (1106)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8586,6 +8586,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; } 
 
+        /// <summary>Policy app on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dpcPackageName")]
+        public virtual string DpcPackageName { get; set; } 
+
         /// <summary>Identifies the extent to which the device is controlled by an Android EMM in various deployment
         /// configurations.
         ///
@@ -8792,7 +8796,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentRating")]
         public virtual string ContentRating { get; set; } 
 
-        /// <summary>A localized promotional description, if available.</summary>
+        /// <summary>The localized promotional description, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
@@ -8818,8 +8822,8 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The time (in milliseconds since epoch) when application was last published. (Timestamp is
-        /// approximate within 7 days of actual publish time.)</summary>
+        /// <summary>The approximate time (within 7 days) the app was last published, expressed in milliseconds since
+        /// epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestampMillis")]
         public virtual System.Nullable<long> LastUpdatedTimestampMillis { get; set; } 
 
@@ -8827,7 +8831,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minAndroidSdkVersion")]
         public virtual System.Nullable<int> MinAndroidSdkVersion { get; set; } 
 
-        /// <summary>The permissions required for this app.</summary>
+        /// <summary>A list of permissions required by the app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<ProductPermission> Permissions { get; set; } 
 

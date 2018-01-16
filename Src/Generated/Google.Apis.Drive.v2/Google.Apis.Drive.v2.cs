@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171229 (1093)
+ *      <tr><th>API Rev<td>20180105 (1100)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -9134,9 +9134,10 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("owners")]
         public virtual System.Collections.Generic.IList<User> Owners { get; set; } 
 
-        /// <summary>Collection of parent folders which contain this file. Setting this field will put the file in all
-        /// of the provided folders. On insert, if no folders are provided, the file will be placed in the default root
-        /// folder.</summary>
+        /// <summary>Collection of parent folders which contain this file. If not specified as part of an insert
+        /// request, the file will be placed directly in the user's My Drive folder. If not specified as part of a copy
+        /// request, the file will inherit any discoverable parents of the source file. Update requests can also use the
+        /// addParents and removeParents parameters to modify the parents list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parents")]
         public virtual System.Collections.Generic.IList<ParentReference> Parents { get; set; } 
 

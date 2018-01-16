@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171231 (1095)
+ *      <tr><th>API Rev<td>20180109 (1104)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -4836,12 +4836,12 @@ namespace Google.Apis.Calendar.v3.Data
     public class ConferenceData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the conference. Can be used by developers to keep track of conferences, should not be
-        /// displayed to users. Values for solution types: - "eventHangout": unset - "eventNamedHangout": the name of
+        /// displayed to users. Values for solution types: - "eventHangout": unset. - "eventNamedHangout": the name of
         /// the Hangout. - "hangoutsMeet": the 10-letter meeting code, for example "aaa-bbbb-ccc".  Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceId")]
         public virtual string ConferenceId { get; set; } 
 
-        /// <summary>The conference solution, such as Hangouts or Hangouts Meet. Unset for a conference with failed
+        /// <summary>The conference solution, such as Hangouts or Hangouts Meet. Unset for a conference with a failed
         /// create request. Either conferenceSolution and at least one entryPoint, or createRequest is
         /// required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolution")]
@@ -4866,7 +4866,7 @@ namespace Google.Apis.Calendar.v3.Data
 
         /// <summary>The signature of the conference data. Genereated on server side. Must be preserved while copying
         /// the conference data between events, otherwise the conference data will not be copied. Unset for a conference
-        /// with failed create request. Optional for a conference with a pending create request.</summary>
+        /// with a failed create request. Optional for a conference with a pending create request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual string Signature { get; set; } 
 
@@ -4900,7 +4900,7 @@ namespace Google.Apis.Calendar.v3.Data
 
     public class ConferenceSolution : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The user-visible icon for this solution. Read-only.</summary>
+        /// <summary>The user-visible icon for this solution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
         public virtual string IconUri { get; set; } 
 
@@ -4908,7 +4908,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual ConferenceSolutionKey Key { get; set; } 
 
-        /// <summary>The user-visible name of this solution. Not localized. Read-only.</summary>
+        /// <summary>The user-visible name of this solution. Not localized.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4920,8 +4920,8 @@ namespace Google.Apis.Calendar.v3.Data
     {
         /// <summary>The conference solution type. If a client encounters an unfamiliar or empty type, it should still
         /// be able to display the entry points. However, it should disallow modifications. The possible values are: -
-        /// "eventHangout" for Hangouts for consumers (http://hangouts.google.com) - "eventNamedHangout" for Classic
-        /// Hangouts for GSuite users (http://hangouts.google.com) - "hangoutsMeet" for Hangouts Meet
+        /// "eventHangout" for Hangouts for consumers (http://hangouts.google.com) - "eventNamedHangout" for classic
+        /// Hangouts for G Suite users (http://hangouts.google.com) - "hangoutsMeet" for Hangouts Meet
         /// (http://meet.google.com)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -4951,7 +4951,7 @@ namespace Google.Apis.Calendar.v3.Data
 
     public class EntryPoint : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Access Code to access the conference. The maximum length is 128 characters. When creating new
+        /// <summary>The access code to access the conference. The maximum length is 128 characters. When creating new
         /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
         /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
         /// Optional.</summary>
@@ -4967,27 +4967,27 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entryPointType")]
         public virtual string EntryPointType { get; set; } 
 
-        /// <summary>The label for the URI.Visible to end users. Not localized. The maximum length is 512 characters.
+        /// <summary>The label for the URI. Visible to end users. Not localized. The maximum length is 512 characters.
         /// Examples: - for video: meet.google.com/aaa-bbbb-ccc - for phone: +1 123 268 2601 - for sip:
-        /// sip:12345678@myprovider.com - for more: should not be filled Optional.</summary>
+        /// 12345678@altostrat.com - for more: should not be filled Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; } 
 
-        /// <summary>The Meeting Code to access the conference. The maximum length is 128 characters. When creating new
+        /// <summary>The meeting code to access the conference. The maximum length is 128 characters. When creating new
         /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
         /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
         /// Optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
         public virtual string MeetingCode { get; set; } 
 
-        /// <summary>The Passcode to access the conference. The maximum length is 128 characters. When creating new
+        /// <summary>The passcode to access the conference. The maximum length is 128 characters. When creating new
         /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
         /// match the terminology that the conference provider uses. Only the populated fields should be
         /// displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passcode")]
         public virtual string Passcode { get; set; } 
 
-        /// <summary>The Password to access the conference. The maximum length is 128 characters. When creating new
+        /// <summary>The password to access the conference. The maximum length is 128 characters. When creating new
         /// conference data, populate only the subset of {meetingCode, accessCode, passcode, password, pin} fields that
         /// match the terminology that the conference provider uses. Only the populated fields should be displayed.
         /// Optional.</summary>
@@ -5001,7 +5001,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pin")]
         public virtual string Pin { get; set; } 
 
-        /// <summary>The "URI" of the entry point. The maximum length is 1300 characters. Format: - for video, http: or
+        /// <summary>The URI of the entry point. The maximum length is 1300 characters. Format: - for video, http: or
         /// https: schema is required. - for phone, tel: schema is required. The URI should include the entire dial
         /// sequence (e.g., tel:+12345678900,,,123456789;1234). - for sip, sip: schema is required, e.g.,
         /// sip:12345678@myprovider.com. - for more, http: or https: schema is required.</summary>

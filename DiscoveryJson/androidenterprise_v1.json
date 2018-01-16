@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/7MP34NP7709RXU-kCyjVjS4nW7k\"",
+ "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/fAl5BHlYqwU8XIUMb6QGOitbCcM\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20171220",
+ "revision": "20180111",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -859,6 +859,10 @@
      "type": "string",
      "description": "The Android ID of the device. This field will always be present."
     },
+    "dpcPackageName": {
+     "type": "string",
+     "description": "Policy app on the device."
+    },
     "managementType": {
      "type": "string",
      "description": "Identifies the extent to which the device is controlled by an Android EMM in various deployment configurations.\n\nPossible values include: \n- \"managedDevice\", a device where the DPC is set as device owner, \n- \"managedProfile\", a device where the DPC is set as profile owner."
@@ -1065,7 +1069,7 @@
     },
     "description": {
      "type": "string",
-     "description": "A localized promotional description, if available."
+     "description": "The localized promotional description, if available."
     },
     "detailsUrl": {
      "type": "string",
@@ -1086,7 +1090,7 @@
     },
     "lastUpdatedTimestampMillis": {
      "type": "string",
-     "description": "The time (in milliseconds since epoch) when application was last published. (Timestamp is approximate within 7 days of actual publish time.)",
+     "description": "The approximate time (within 7 days) the app was last published, expressed in milliseconds since epoch.",
      "format": "int64"
     },
     "minAndroidSdkVersion": {
@@ -1096,7 +1100,7 @@
     },
     "permissions": {
      "type": "array",
-     "description": "The permissions required for this app.",
+     "description": "A list of permissions required by the app.",
      "items": {
       "$ref": "ProductPermission"
      }

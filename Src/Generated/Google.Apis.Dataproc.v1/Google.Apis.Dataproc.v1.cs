@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171212 (1076)
+ *      <tr><th>API Rev<td>20180109 (1104)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -813,6 +813,14 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. The standard List page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The standard List page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
                     /// have the following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
@@ -824,14 +832,6 @@ namespace Google.Apis.Dataproc.v1
                     /// labels.env = staging AND labels.starred = *</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. The standard List page token.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The standard List page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -876,15 +876,6 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -897,6 +888,15 @@ namespace Google.Apis.Dataproc.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2102,7 +2102,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when
+        /// <summary>Output only. A cluster UUID (Unique Universal Identifier). Cloud Dataproc generates this value when
         /// it creates the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
@@ -2128,11 +2128,11 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
-        /// <summary>Output-only. Cluster status.</summary>
+        /// <summary>Output only. Cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ClusterStatus Status { get; set; } 
 
-        /// <summary>Output-only. The previous cluster status.</summary>
+        /// <summary>Output only. The previous cluster status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<ClusterStatus> StatusHistory { get; set; } 
 
@@ -2204,35 +2204,35 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Metadata describing the operation.</summary>
     public class ClusterOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. Name of the cluster for the operation.</summary>
+        /// <summary>Output only. Name of the cluster for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only. Cluster UUID for the operation.</summary>
+        /// <summary>Output only. Cluster UUID for the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
 
-        /// <summary>Output-only. Short description of operation.</summary>
+        /// <summary>Output only. Short description of operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>Output-only. Labels associated with the operation</summary>
+        /// <summary>Output only. Labels associated with the operation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
-        /// <summary>Output-only. The operation type.</summary>
+        /// <summary>Output only. The operation type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
         public virtual string OperationType { get; set; } 
 
-        /// <summary>Output-only. Current operation status.</summary>
+        /// <summary>Output only. Current operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ClusterOperationStatus Status { get; set; } 
 
-        /// <summary>Output-only. The previous operation status.</summary>
+        /// <summary>Output only. The previous operation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<ClusterOperationStatus> StatusHistory { get; set; } 
 
-        /// <summary>Output-only. Errors encountered during operation execution.</summary>
+        /// <summary>Output only. Errors encountered during operation execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
         public virtual System.Collections.Generic.IList<string> Warnings { get; set; } 
 
@@ -2243,19 +2243,19 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The status of the operation.</summary>
     public class ClusterOperationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only.A message containing any operation metadata details.</summary>
+        /// <summary>Output only. A message containing any operation metadata details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
 
-        /// <summary>Output-only. A message containing the detailed operation state.</summary>
+        /// <summary>Output only. A message containing the detailed operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("innerState")]
         public virtual string InnerState { get; set; } 
 
-        /// <summary>Output-only. A message containing the operation state.</summary>
+        /// <summary>Output only. A message containing the operation state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only. The time this state was entered.</summary>
+        /// <summary>Output only. The time this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
@@ -2266,19 +2266,19 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The status of a cluster and its instances.</summary>
     public class ClusterStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. Optional details of cluster's state.</summary>
+        /// <summary>Output only. Optional details of cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
 
-        /// <summary>Output-only. The cluster's state.</summary>
+        /// <summary>Output only. The cluster's state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only. Time when this state was entered.</summary>
+        /// <summary>Output only. Time when this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
-        /// <summary>Output-only. Additional state information that includes status reported by the agent.</summary>
+        /// <summary>Output only. Additional state information that includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
         public virtual string Substate { get; set; } 
 
@@ -2296,7 +2296,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The location of diagnostic output.</summary>
     public class DiagnoseClusterResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. The Google Cloud Storage URI of the diagnostic output. The output report is a plain
+        /// <summary>Output only. The Google Cloud Storage URI of the diagnostic output. The output report is a plain
         /// text file with a summary of collected diagnostics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; } 
@@ -2499,7 +2499,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
         public virtual DiskConfig DiskConfig { get; set; } 
 
-        /// <summary>Output-only. The Google Compute Engine image resource used for cluster instances. Inferred from
+        /// <summary>Output only. The Google Compute Engine image resource used for cluster instances. Inferred from
         /// SoftwareConfig.image_version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
@@ -2521,7 +2521,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeUri")]
         public virtual string MachineTypeUri { get; set; } 
 
-        /// <summary>Output-only. The config for Google Compute Engine Instance Group Manager that manages this group.
+        /// <summary>Output only. The config for Google Compute Engine Instance Group Manager that manages this group.
         /// This is only used for preemptible instance groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
         public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
@@ -2538,13 +2538,13 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A Cloud Dataproc job resource.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. If present, the location of miscellaneous control files which may be used as part of
+        /// <summary>Output only. If present, the location of miscellaneous control files which may be used as part of
         /// job setup and handling. If not present, control files may be placed in the same location as
         /// driver_output_uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverControlFilesUri")]
         public virtual string DriverControlFilesUri { get; set; } 
 
-        /// <summary>Output-only. A URI pointing to the location of the stdout of the job's driver program.</summary>
+        /// <summary>Output only. A URI pointing to the location of the stdout of the job's driver program.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverOutputResourceUri")]
         public virtual string DriverOutputResourceUri { get; set; } 
 
@@ -2593,16 +2593,16 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sparkSqlJob")]
         public virtual SparkSqlJob SparkSqlJob { get; set; } 
 
-        /// <summary>Output-only. The job status. Additional application-specific status information may be contained in
+        /// <summary>Output only. The job status. Additional application-specific status information may be contained in
         /// the type_job and yarn_applications fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual JobStatus Status { get; set; } 
 
-        /// <summary>Output-only. The previous job status.</summary>
+        /// <summary>Output only. The previous job status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusHistory")]
         public virtual System.Collections.Generic.IList<JobStatus> StatusHistory { get; set; } 
 
-        /// <summary>Output-only. The collection of YARN applications spun up by this job.Beta Feature: This report is
+        /// <summary>Output only. The collection of YARN applications spun up by this job.Beta Feature: This report is
         /// available for testing purposes only. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnApplications")]
         public virtual System.Collections.Generic.IList<YarnApplication> YarnApplications { get; set; } 
@@ -2618,7 +2618,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; } 
 
-        /// <summary>Output-only. A cluster UUID generated by the Cloud Dataproc service when the job is
+        /// <summary>Output only. A cluster UUID generated by the Cloud Dataproc service when the job is
         /// submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterUuid")]
         public virtual string ClusterUuid { get; set; } 
@@ -2661,20 +2661,20 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Cloud Dataproc job status.</summary>
     public class JobStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. Optional job state details, such as an error description if the state is
+        /// <summary>Output only. Optional job state details, such as an error description if the state is
         /// ERROR.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; } 
 
-        /// <summary>Output-only. A state message specifying the overall job state.</summary>
+        /// <summary>Output only. A state message specifying the overall job state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
-        /// <summary>Output-only. The time when this state was entered.</summary>
+        /// <summary>Output only. The time when this state was entered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateStartTime")]
         public virtual object StateStartTime { get; set; } 
 
-        /// <summary>Output-only. Additional state information, which includes status reported by the agent.</summary>
+        /// <summary>Output only. Additional state information, which includes status reported by the agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substate")]
         public virtual string Substate { get; set; } 
 
@@ -2685,11 +2685,11 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The list of all clusters in a project.</summary>
     public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. The clusters in the project.</summary>
+        /// <summary>Output only. The clusters in the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
         public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; } 
 
-        /// <summary>Output-only. This token is included in the response if there are more results to fetch. To fetch
+        /// <summary>Output only. This token is included in the response if there are more results to fetch. To fetch
         /// additional results, provide this value as the page_token in a subsequent ListClustersRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -2701,7 +2701,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A list of jobs in a project.</summary>
     public class ListJobsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. Jobs list.</summary>
+        /// <summary>Output only. Jobs list.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobs")]
         public virtual System.Collections.Generic.IList<Job> Jobs { get; set; } 
 
@@ -2744,11 +2744,11 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Specifies the resources used to actively manage an instance group.</summary>
     public class ManagedGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output-only. The name of the Instance Group Manager for this group.</summary>
+        /// <summary>Output only. The name of the Instance Group Manager for this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupManagerName")]
         public virtual string InstanceGroupManagerName { get; set; } 
 
-        /// <summary>Output-only. The name of the Instance Template used for the Managed Instance Group.</summary>
+        /// <summary>Output only. The name of the Instance Template used for the Managed Instance Group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplateName")]
         public virtual string InstanceTemplateName { get; set; } 
 

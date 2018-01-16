@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage/transfer'>Google Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180104 (1099)
+ *      <tr><th>API Rev<td>20180111 (1106)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage/transfer'>
  *              https://cloud.google.com/storage/transfer</a>
@@ -1654,7 +1654,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bytesFoundOnlyFromSink")]
         public virtual System.Nullable<long> BytesFoundOnlyFromSink { get; set; } 
 
-        /// <summary>Bytes in the data source that failed during the transfer.</summary>
+        /// <summary>Bytes in the data source that failed to be transferred or that failed to be deleted after being
+        /// transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bytesFromSourceFailed")]
         public virtual System.Nullable<long> BytesFromSourceFailed { get; set; } 
 
@@ -1688,7 +1689,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFoundOnlyFromSink")]
         public virtual System.Nullable<long> ObjectsFoundOnlyFromSink { get; set; } 
 
-        /// <summary>Objects in the data source that failed during the transfer.</summary>
+        /// <summary>Objects in the data source that failed to be transferred or that failed to be deleted after being
+        /// transferred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectsFromSourceFailed")]
         public virtual System.Nullable<long> ObjectsFromSourceFailed { get; set; } 
 
