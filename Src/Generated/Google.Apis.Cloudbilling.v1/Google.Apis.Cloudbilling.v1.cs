@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/billing/'>Google Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180108 (1103)
+ *      <tr><th>API Rev<td>20180116 (1111)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -427,15 +427,15 @@ namespace Google.Apis.Cloudbilling.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A token identifying a page of results to be returned. This should be a `next_page_token`
                 /// value returned from a previous `ListProjectBillingInfo` call. If unspecified, the first page of
                 /// results is returned.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -471,18 +471,18 @@ namespace Google.Apis.Cloudbilling.v1
                             Pattern = @"^billingAccounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -576,15 +576,15 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
             /// returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is
             /// returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -611,18 +611,18 @@ namespace Google.Apis.Cloudbilling.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -891,6 +891,23 @@ namespace Google.Apis.Cloudbilling.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
+                /// returned from a previous `ListSkus` call. If unspecified, the first page of results is
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional inclusive start time of the time range for which the pricing versions will be
+                /// returned. Timestamps in the future are not allowed. The time range has to be within a single
+                /// calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified,
+                /// the latest pricing will be returned (up to 12 hours old at most).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTime { get; set; }
+
+                /// <summary>Requested page size. Defaults to 5000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The ISO 4217 currency code for the pricing info in the response proto. Will use the
                 /// conversion rate as of start_time. Optional. If not specified USD will be used.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
@@ -902,23 +919,6 @@ namespace Google.Apis.Cloudbilling.v1
                 /// the latest pricing will be returned (up to 12 hours old at most).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("endTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object EndTime { get; set; }
-
-                /// <summary>Requested page size. Defaults to 5000.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional inclusive start time of the time range for which the pricing versions will be
-                /// returned. Timestamps in the future are not allowed. The time range has to be within a single
-                /// calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified,
-                /// the latest pricing will be returned (up to 12 hours old at most).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTime { get; set; }
-
-                /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
-                /// returned from a previous `ListSkus` call. If unspecified, the first page of results is
-                /// returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -954,27 +954,9 @@ namespace Google.Apis.Cloudbilling.v1
                             Pattern = @"^services/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "currencyCode", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "currencyCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "endTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "endTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -990,9 +972,27 @@ namespace Google.Apis.Cloudbilling.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "currencyCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currencyCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "endTime",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1020,15 +1020,15 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>Requested page size. Defaults to 5000.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
             /// returned from a previous `ListServices` call. If unspecified, the first page of results is
             /// returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Requested page size. Defaults to 5000.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1055,18 +1055,18 @@ namespace Google.Apis.Cloudbilling.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1299,12 +1299,16 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aggregationInfo")]
         public virtual AggregationInfo AggregationInfo { get; set; } 
 
-        /// <summary>Conversion rate for currency conversion, from USD to the currency specified in the request. If the
-        /// currency is not specified this defaults to 1.0. Example: USD * currency_conversion_rate = JPY</summary>
+        /// <summary>Conversion rate used for currency conversion, from USD to the currency specified in the request.
+        /// This includes any surcharge collected for billing in non USD currency. If a currency is not specified in the
+        /// request this defaults to 1.0. Example: USD * currency_conversion_rate = JPY</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyConversionRate")]
         public virtual System.Nullable<double> CurrencyConversionRate { get; set; } 
 
-        /// <summary>The timestamp from which this pricing was effective.</summary>
+        /// <summary>The timestamp from which this pricing was effective within the requested time range. This is
+        /// guaranteed to be greater than or equal to the start_time field in the request and less than the end_time
+        /// field in the request. If a time range was not specified in the request this field will be equivalent to a
+        /// time within the last 12 hours, indicating the latest pricing info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
         public virtual object EffectiveTime { get; set; } 
 

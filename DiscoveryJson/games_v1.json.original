@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"YWOzh2SDasdU84ArJnpYek-OMdg/fYq6ls0EFuwSXRNudcPldto6wcc\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/fYq6ls0EFuwSXRNudcPldto6wcc\"",
  "discoveryVersion": "v1",
  "id": "games:v1",
  "name": "games",

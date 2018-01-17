@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180113 (1108)
+ *      <tr><th>API Rev<td>20180117 (1112)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -2734,7 +2734,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>Output only. The response from the target for this attempt.
         ///
         /// If the task has not been attempted or the task is currently running then the response status is
-        /// google.rpc.Code.UNKNOWN.</summary>
+        /// unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseStatus")]
         public virtual Status ResponseStatus { get; set; } 
 

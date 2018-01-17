@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20170807 (949)
+ *      <tr><th>API Rev<td>20171211 (1075)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -9608,6 +9608,59 @@ namespace Google.Apis.Analytics.v3
             }
 
         }
+
+        /// <summary>Provision account.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateAccountTreeRequest CreateAccountTree(Google.Apis.Analytics.v3.Data.AccountTreeRequest body)
+        {
+            return new CreateAccountTreeRequest(service, body);
+        }
+
+        /// <summary>Provision account.</summary>
+        public class CreateAccountTreeRequest : AnalyticsBaseServiceRequest<Google.Apis.Analytics.v3.Data.AccountTreeResponse>
+        {
+            /// <summary>Constructs a new CreateAccountTree request.</summary>
+            public CreateAccountTreeRequest(Google.Apis.Services.IClientService service, Google.Apis.Analytics.v3.Data.AccountTreeRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Analytics.v3.Data.AccountTreeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createAccountTree"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "provisioning/createAccount"; }
+            }
+
+            /// <summary>Initializes CreateAccountTree parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
     }
 }
 
@@ -9835,6 +9888,110 @@ namespace Google.Apis.Analytics.v3.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>JSON template for an Analytics account tree requests. The account tree request is used in the
+    /// provisioning api to create an account, property, and view (profile). It contains the basic information required
+    /// to make these fields.</summary>
+    public class AccountTreeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("accountName")]
+        public virtual string AccountName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("accountSettings")]
+        public virtual AccountTreeRequest.AccountSettingsData AccountSettings { get; set; } 
+
+        /// <summary>Resource type for account ticket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
+        public virtual string ProfileName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timezone")]
+        public virtual string Timezone { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("webpropertyName")]
+        public virtual string WebpropertyName { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteUrl")]
+        public virtual string WebsiteUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        public class AccountSettingsData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("admobReporting")]
+            public virtual System.Nullable<bool> AdmobReporting { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleAnySales")]
+            public virtual System.Nullable<bool> SharingWithGoogleAnySales { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleProducts")]
+            public virtual System.Nullable<bool> SharingWithGoogleProducts { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSales")]
+            public virtual System.Nullable<bool> SharingWithGoogleSales { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSupport")]
+            public virtual System.Nullable<bool> SharingWithGoogleSupport { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithOthers")]
+            public virtual System.Nullable<bool> SharingWithOthers { get; set; } 
+
+        }
+    }    
+
+    /// <summary>JSON template for an Analytics account tree response. The account tree response is used in the
+    /// provisioning api to return the result of creating an account, property, and view (profile).</summary>
+    public class AccountTreeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The account created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("account")]
+        public virtual Account Account { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("accountSettings")]
+        public virtual AccountTreeResponse.AccountSettingsData AccountSettings { get; set; } 
+
+        /// <summary>Resource type for account ticket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>View (Profile) for the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profile")]
+        public virtual Profile Profile { get; set; } 
+
+        /// <summary>Web property for the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webproperty")]
+        public virtual Webproperty Webproperty { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        public class AccountSettingsData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("admobReporting")]
+            public virtual System.Nullable<bool> AdmobReporting { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleAnySales")]
+            public virtual System.Nullable<bool> SharingWithGoogleAnySales { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleProducts")]
+            public virtual System.Nullable<bool> SharingWithGoogleProducts { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSales")]
+            public virtual System.Nullable<bool> SharingWithGoogleSales { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSupport")]
+            public virtual System.Nullable<bool> SharingWithGoogleSupport { get; set; } 
+
+            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithOthers")]
+            public virtual System.Nullable<bool> SharingWithOthers { get; set; } 
+
+        }
     }    
 
     /// <summary>An account collection provides a list of Analytics accounts to which a user has access. The account
