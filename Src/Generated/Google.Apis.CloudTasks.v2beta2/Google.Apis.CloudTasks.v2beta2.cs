@@ -1681,6 +1681,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Requested page size.
+                    ///
+                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
+                    /// than requested might be returned, even if more queues exist; use
+                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
                     /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
                     /// syntax is the same as described in [Stackdriver's Advanced Logs
@@ -1701,14 +1709,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// ListQueuesRequest.filter while iterating through pages.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Requested page size.
-                    ///
-                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
-                    /// than requested might be returned, even if more queues exist; use
-                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1744,6 +1744,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1756,15 +1765,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2399,6 +2399,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2406,10 +2410,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2445,6 +2445,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -2457,15 +2466,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2886,8 +2886,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>`filter` can be used to specify a subset of tasks to lease.
         ///
-        /// When `filter` is set to `tag=` then the LeaseTasksResponse will contain only tasks whose LeaseMessage.tag is
-        /// equal to ``. `` must be less than 500 bytes.
+        /// When `filter` is set to `tag=` then the LeaseTasksResponse will contain only tasks whose PullMessage.tag is
+        /// equal to ``. `` must be less than 500 characters.
         ///
         /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have the same tag as the task with the
         /// oldest schedule_time will be returned.
@@ -2896,12 +2896,17 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// * `filter = "tag=" tag | "tag_function=" function`
         ///
-        /// * `tag = string | bytes`
+        /// * `tag = string`
         ///
         /// * `function = "oldest_tag()"`
         ///
         /// The `oldest_tag()` function returns tasks which have the same tag as the oldest task (ordered by schedule
-        /// time).</summary>
+        /// time).
+        ///
+        /// SDK compatibility: Although the SDK allows tags to be either string or
+        /// [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-
+        /// byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. Tag which aren't UTF-8 encoded can't be used
+        /// in LeaseTasksRequest.filter and won't display in PullMessage.tag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
@@ -3097,7 +3102,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// The task's tag can only be set when the task is created.
         ///
-        /// The tag must be less than 500 bytes.</summary>
+        /// The tag must be less than 500 characters.
+        ///
+        /// SDK compatibility: Although the SDK allows tags to be either string or
+        /// [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-
+        /// byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. If a tag isn't UTF-8 encoded, the tag will be
+        /// empty when the task is returned by Cloud Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
         public virtual string Tag { get; set; } 
 
