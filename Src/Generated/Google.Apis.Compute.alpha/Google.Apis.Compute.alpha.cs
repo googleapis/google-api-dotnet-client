@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20171207 (1071)
+ *      <tr><th>API Rev<td>20171228 (1092)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -19550,9 +19550,8 @@ namespace Google.Apis.Compute.alpha
         }
 
 
-        /// <summary>Deletes the specified instance template. If you delete an instance template that is being
-        /// referenced from another instance group, the instance group will not be able to create or recreate virtual
-        /// machine instances. Deleting an instance template is permanent and cannot be undone.</summary>
+        /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
+        /// undone. It's not possible to delete templates which are in use by an instance group.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
         /// instance template to delete.</param>
@@ -19561,9 +19560,8 @@ namespace Google.Apis.Compute.alpha
             return new DeleteRequest(service, project, instanceTemplate);
         }
 
-        /// <summary>Deletes the specified instance template. If you delete an instance template that is being
-        /// referenced from another instance group, the instance group will not be able to create or recreate virtual
-        /// machine instances. Deleting an instance template is permanent and cannot be undone.</summary>
+        /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
+        /// undone. It's not possible to delete templates which are in use by an instance group.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -55057,7 +55055,8 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
         public virtual System.Nullable<int> AcceleratorCount { get; set; } 
 
-        /// <summary>Full or partial URL of the accelerator type resource to expose to this instance.</summary>
+        /// <summary>Full or partial URL of the accelerator type resource to attach to this instance. If you are
+        /// creating an instance template, specify only the accelerator name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; } 
 
@@ -55822,6 +55821,11 @@ namespace Google.Apis.Compute.alpha.Data
         /// InstanceTemplate, this is the name of the disk type, not URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
+
+        /// <summary>Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field
+        /// is only applicable for persistent disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The source image to create this disk. When creating a new instance, one of
         /// initializeParams.sourceImage or disks.source is required except for local SSD.
@@ -57916,6 +57920,11 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
         public virtual System.Nullable<bool> AutoDelete { get; set; } 
 
+        /// <summary>The custom source image to be used to restore this disk when instantiating this instance
+        /// template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customImage")]
+        public virtual string CustomImage { get; set; } 
+
         /// <summary>Specifies the device name of the disk to which the configurations apply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
         public virtual string DeviceName { get; set; } 
@@ -57923,11 +57932,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>Specifies whether to include the disk and what image to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instantiateFrom")]
         public virtual string InstantiateFrom { get; set; } 
-
-        /// <summary>The custom source image to be used to restore this disk when instantiating this instance
-        /// template.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
-        public virtual string SourceImage { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -60685,6 +60689,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// supported per instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; } 
+
+        /// <summary>Total amount of preserved state for SUSPENDED instances. Read-only in the api.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preservedStateSizeGb")]
+        public virtual System.Nullable<long> PreservedStateSizeGb { get; set; } 
 
         /// <summary>Sets the scheduling options for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduling")]
@@ -64320,9 +64328,16 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>Overrides of stateful properties for a given instance</summary>
     public class ManagedInstanceOverride : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Disk overrides defined for this instance</summary>
+        /// <summary>Disk overrides defined for this instance. According to documentation the maximum number of disks
+        /// attached to an instance is 128: https://cloud.google.com/compute/docs/disks/ However, compute API defines
+        /// the limit at 140, so this is what we check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<ManagedInstanceOverrideDiskOverride> Disks { get; set; } 
+
+        /// <summary>Metadata overrides defined for this instance. TODO(b/69785416) validate the total length is <9
+        /// KB</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IList<ManagedInstanceOverride.MetadataData> Metadata { get; set; } 
 
         /// <summary>[Output Only] Indicates where does the override come from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("origin")]
@@ -64330,6 +64345,23 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+        
+
+        public class MetadataData
+        {
+            /// <summary>Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be
+            /// less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally,
+            /// to avoid ambiguity, keys must not conflict with any other metadata keys for the project.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("key")]
+            public virtual string Key { get; set; } 
+
+            /// <summary>Value for the metadata entry. These are free-form strings, and only have meaning as interpreted
+            /// by the image running in the instance. The only restriction placed on values is that their size must be
+            /// less than or equal to 262144 bytes (256 KiB).</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("value")]
+            public virtual string Value { get; set; } 
+
+        }
     }    
 
     public class ManagedInstanceOverrideDiskOverride : Google.Apis.Requests.IDirectResponseSchema
@@ -65633,9 +65665,8 @@ namespace Google.Apis.Compute.alpha.Data
 
     }    
 
-    /// <summary>A Project resource. Projects can only be created in the Google Cloud Platform Console. Unless marked
-    /// otherwise, values can only be modified in the console. (== resource_for v1.projects ==) (== resource_for
-    /// beta.projects ==)</summary>
+    /// <summary>A Project resource. For an overview of projects, see  Cloud Platform Resource Hierarchy. (==
+    /// resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata key/value pairs available to all instances contained in this project. See Custom metadata
@@ -67994,6 +68025,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>[Output Only] Expiry time of the certificate. RFC3339</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
+        public virtual string ExpiryTime { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -68002,6 +68037,10 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Type of the resource. Always compute#sslCertificate for SSL certificates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>Configuration and status of a managed SSL certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managed")]
+        public virtual SslCertificateManagedSslCertificate Managed { get; set; } 
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -68018,6 +68057,19 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>Configuration and status of a self-managed SSL certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfManaged")]
+        public virtual SslCertificateSelfManagedSslCertificate SelfManaged { get; set; } 
+
+        /// <summary>[Output Only] Domains associated with the certificate via Subject Alternative Name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjectAlternativeNames")]
+        public virtual System.Collections.Generic.IList<string> SubjectAlternativeNames { get; set; } 
+
+        /// <summary>(Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not
+        /// specified, the certificate is self-managed and the fields certificate and private_key are used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68093,6 +68145,43 @@ namespace Google.Apis.Compute.alpha.Data
 
             }
         }
+    }    
+
+    /// <summary>Configuration and status of a managed SSL certificate.</summary>
+    public class SslCertificateManagedSslCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output only] Detailed statuses of the domains specified for managed certificate
+        /// resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainStatus")]
+        public virtual System.Collections.Generic.IDictionary<string,string> DomainStatus { get; set; } 
+
+        /// <summary>The domains for which a managed SSL certificate will be generated. Currently only single-domain
+        /// certs are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domains")]
+        public virtual System.Collections.Generic.IList<string> Domains { get; set; } 
+
+        /// <summary>[Output only] Status of the managed certificate resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration and status of a self-managed SSL certificate..</summary>
+    public class SslCertificateSelfManagedSslCertificate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A local certificate file. The certificate must be in PEM format. The certificate chain must be no
+        /// greater than 5 certs long. The chain must include at least one intermediate cert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
+        public virtual string Certificate { get; set; } 
+
+        /// <summary>A write-only private key in PEM format. Only insert requests will include this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
+        public virtual string PrivateKey { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class SslPoliciesList : Google.Apis.Requests.IDirectResponseSchema

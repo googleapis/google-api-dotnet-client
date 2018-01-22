@@ -1,4 +1,8 @@
 {
+  "rootUrl": "https://dialogflow.googleapis.com/",
+  "ownerDomain": "google.com",
+  "name": "dialogflow",
+  "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
   "title": "Dialogflow API",
   "ownerName": "Google",
@@ -32,101 +36,8 @@
         }
       },
       "resources": {
-        "operations": {
-          "methods": {
-            "get": {
-              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice.",
-              "response": {
-                "$ref": "Operation"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The name of the operation resource.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/operations/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v2beta1/projects/{projectsId}/operations/{operationsId}",
-              "path": "v2beta1/{+name}",
-              "id": "dialogflow.projects.operations.get"
-            }
-          }
-        },
         "agent": {
           "methods": {
-            "search": {
-              "flatPath": "v2beta1/projects/{projectsId}/agent:search",
-              "path": "v2beta1/{+parent}/agent:search",
-              "id": "dialogflow.projects.agent.search",
-              "description": "Returns the list of agents.\n\nSince there is at most one conversational agent per project, this method is\nuseful primarily for listing all agents across projects the caller has\naccess to. One can achieve that with a wildcard project collection id \"-\".\nRefer to [List\nSub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).",
-              "response": {
-                "$ref": "SearchAgentsResponse"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
-                "pageSize": {
-                  "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
-                  "format": "int32",
-                  "type": "integer",
-                  "location": "query"
-                },
-                "parent": {
-                  "location": "path",
-                  "description": "Required. The project to list agents from.\nFormat: `projects/\u003cProject ID or '-'\u003e`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                },
-                "pageToken": {
-                  "description": "Optional. The next_page_token value returned from a previous list request.",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ]
-            },
-            "train": {
-              "description": "Trains the specified agent.\n\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
-              "request": {
-                "$ref": "TrainAgentRequest"
-              },
-              "response": {
-                "$ref": "Operation"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "parent": {
-                  "location": "path",
-                  "description": "Required. The project that the agent to train is associated with.\nFormat: `projects/\u003cProject ID\u003e`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$"
-                }
-              },
-              "flatPath": "v2beta1/projects/{projectsId}/agent:train",
-              "path": "v2beta1/{+parent}/agent:train",
-              "id": "dialogflow.projects.agent.train"
-            },
             "export": {
               "httpMethod": "POST",
               "parameterOrder": [
@@ -135,9 +46,6 @@
               "response": {
                 "$ref": "Operation"
               },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
               "parameters": {
                 "parent": {
                   "description": "Required. The project that the agent to export is associated with.\nFormat: `projects/\u003cProject ID\u003e`.",
@@ -147,19 +55,18 @@
                   "location": "path"
                 }
               },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "flatPath": "v2beta1/projects/{projectsId}/agent:export",
               "id": "dialogflow.projects.agent.export",
               "path": "v2beta1/{+parent}/agent:export",
-              "description": "Exports the specified agent to a ZIP file.\n\n\nOperation \u003cresponse: ExportAgentResponse,\n           metadata: google.protobuf.Struct\u003e",
               "request": {
                 "$ref": "ExportAgentRequest"
-              }
+              },
+              "description": "Exports the specified agent to a ZIP file.\n\n\nOperation \u003cresponse: ExportAgentResponse,\n           metadata: google.protobuf.Struct\u003e"
             },
             "restore": {
-              "request": {
-                "$ref": "RestoreAgentRequest"
-              },
-              "description": "Restores the specified agent from a ZIP file.\n\nReplaces the current agent version with a new one. All the intents and\nentity types in the older version are deleted.\n\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
               "response": {
                 "$ref": "Operation"
               },
@@ -169,11 +76,11 @@
               "httpMethod": "POST",
               "parameters": {
                 "parent": {
-                  "location": "path",
                   "description": "Required. The project that the agent to restore is associated with.\nFormat: `projects/\u003cProject ID\u003e`.",
                   "required": true,
                   "type": "string",
-                  "pattern": "^projects/[^/]+$"
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
                 }
               },
               "scopes": [
@@ -181,12 +88,13 @@
               ],
               "flatPath": "v2beta1/projects/{projectsId}/agent:restore",
               "path": "v2beta1/{+parent}/agent:restore",
-              "id": "dialogflow.projects.agent.restore"
+              "id": "dialogflow.projects.agent.restore",
+              "request": {
+                "$ref": "RestoreAgentRequest"
+              },
+              "description": "Restores the specified agent from a ZIP file.\n\nReplaces the current agent version with a new one. All the intents and\nentity types in the older version are deleted.\n\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e"
             },
             "import": {
-              "flatPath": "v2beta1/projects/{projectsId}/agent:import",
-              "path": "v2beta1/{+parent}/agent:import",
-              "id": "dialogflow.projects.agent.import",
               "description": "Imports the specified agent from a ZIP file.\n\nUploads new intents and entity types without deleting the existing ones.\nIntents and entity types with the same name are replaced with the new\nversions from ImportAgentRequest.\n\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
               "request": {
                 "$ref": "ImportAgentRequest"
@@ -203,381 +111,115 @@
               ],
               "parameters": {
                 "parent": {
-                  "location": "path",
                   "description": "Required. The project that the agent to import is associated with.\nFormat: `projects/\u003cProject ID\u003e`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v2beta1/projects/{projectsId}/agent:import",
+              "path": "v2beta1/{+parent}/agent:import",
+              "id": "dialogflow.projects.agent.import"
+            },
+            "search": {
+              "id": "dialogflow.projects.agent.search",
+              "path": "v2beta1/{+parent}/agent:search",
+              "description": "Returns the list of agents.\n\nSince there is at most one conversational agent per project, this method is\nuseful primarily for listing all agents across projects the caller has\naccess to. One can achieve that with a wildcard project collection id \"-\".\nRefer to [List\nSub-Collections](https://cloud.google.com/apis/design/design_patterns#list_sub-collections).",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "SearchAgentsResponse"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "parameters": {
+                "pageToken": {
+                  "location": "query",
+                  "description": "Optional. The next_page_token value returned from a previous list request.",
+                  "type": "string"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "parent": {
+                  "location": "path",
+                  "description": "Required. The project to list agents from.\nFormat: `projects/\u003cProject ID or '-'\u003e`.",
                   "required": true,
                   "type": "string",
                   "pattern": "^projects/[^/]+$"
                 }
-              }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v2beta1/projects/{projectsId}/agent:search"
+            },
+            "train": {
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "description": "Required. The project that the agent to train is associated with.\nFormat: `projects/\u003cProject ID\u003e`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v2beta1/projects/{projectsId}/agent:train",
+              "path": "v2beta1/{+parent}/agent:train",
+              "id": "dialogflow.projects.agent.train",
+              "description": "Trains the specified agent.\n\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
+              "request": {
+                "$ref": "TrainAgentRequest"
+              },
+              "response": {
+                "$ref": "Operation"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST"
             }
           },
           "resources": {
-            "sessions": {
-              "methods": {
-                "deleteContexts": {
-                  "description": "Deletes all active contexts in the specified session.",
-                  "httpMethod": "DELETE",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "location": "path",
-                      "description": "Required. The name of the session to delete all contexts from. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent/sessions/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
-                  "id": "dialogflow.projects.agent.sessions.deleteContexts",
-                  "path": "v2beta1/{+parent}/contexts"
-                },
-                "detectIntent": {
-                  "response": {
-                    "$ref": "DetectIntentResponse"
-                  },
-                  "parameterOrder": [
-                    "session"
-                  ],
-                  "httpMethod": "POST",
-                  "parameters": {
-                    "session": {
-                      "location": "path",
-                      "description": "Required. The name of the session this query is sent to. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.\nIt's up to the API caller to choose an appropriate session ID. It can be\na random number or some type of user identifier (preferably hashed).\nThe length of the session ID must not exceed 36 bytes.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent/sessions/[^/]+$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}:detectIntent",
-                  "path": "v2beta1/{+session}:detectIntent",
-                  "id": "dialogflow.projects.agent.sessions.detectIntent",
-                  "request": {
-                    "$ref": "DetectIntentRequest"
-                  },
-                  "description": "Processes a natural language query and returns structured, actionable data\nas a result. This method is not idempotent, because it may cause contexts\nand session entity types to be updated, which in turn might affect\nresults of future queries."
-                }
-              },
-              "resources": {
-                "entityTypes": {
-                  "methods": {
-                    "delete": {
-                      "description": "Deletes the specified session entity type.",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "DELETE",
-                      "parameters": {
-                        "name": {
-                          "description": "Required. The name of the entity type to delete. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/entityTypes/\u003cEntity Type\nDisplay Name\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-                      "path": "v2beta1/{+name}",
-                      "id": "dialogflow.projects.agent.sessions.entityTypes.delete"
-                    },
-                    "list": {
-                      "description": "Returns the list of all session entity types in the specified session.",
-                      "httpMethod": "GET",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "response": {
-                        "$ref": "ListSessionEntityTypesResponse"
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "pageToken": {
-                          "description": "Optional. The next_page_token value returned from a previous list request.",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
-                          "format": "int32",
-                          "type": "integer"
-                        },
-                        "parent": {
-                          "location": "path",
-                          "description": "Required. The session to list all session entity types from.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+$"
-                        }
-                      },
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
-                      "id": "dialogflow.projects.agent.sessions.entityTypes.list",
-                      "path": "v2beta1/{+parent}/entityTypes"
-                    },
-                    "get": {
-                      "response": {
-                        "$ref": "SessionEntityType"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "GET",
-                      "parameters": {
-                        "name": {
-                          "location": "path",
-                          "description": "Required. The name of the session entity type. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/entityTypes/\u003cEntity Type\nDisplay Name\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-                      "path": "v2beta1/{+name}",
-                      "id": "dialogflow.projects.agent.sessions.entityTypes.get",
-                      "description": "Retrieves the specified session entity type."
-                    },
-                    "patch": {
-                      "description": "Updates the specified session entity type.",
-                      "request": {
-                        "$ref": "SessionEntityType"
-                      },
-                      "response": {
-                        "$ref": "SessionEntityType"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "PATCH",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "updateMask": {
-                          "description": "Optional. The mask to control which fields get updated.",
-                          "format": "google-fieldmask",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "name": {
-                          "location": "path",
-                          "description": "Required. The unique identifier of this session entity type. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/entityTypes/\u003cEntity Type\nDisplay Name\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$"
-                        }
-                      },
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
-                      "path": "v2beta1/{+name}",
-                      "id": "dialogflow.projects.agent.sessions.entityTypes.patch"
-                    },
-                    "create": {
-                      "response": {
-                        "$ref": "SessionEntityType"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "POST",
-                      "parameters": {
-                        "parent": {
-                          "location": "path",
-                          "description": "Required. The session to create a session entity type for.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+$"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
-                      "path": "v2beta1/{+parent}/entityTypes",
-                      "id": "dialogflow.projects.agent.sessions.entityTypes.create",
-                      "request": {
-                        "$ref": "SessionEntityType"
-                      },
-                      "description": "Creates a session entity type."
-                    }
-                  }
-                },
-                "contexts": {
-                  "methods": {
-                    "delete": {
-                      "description": "Deletes the specified context.",
-                      "response": {
-                        "$ref": "Empty"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "DELETE",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "location": "path",
-                          "description": "Required. The name of the context to delete. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/contexts/\u003cContext ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$"
-                        }
-                      },
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-                      "path": "v2beta1/{+name}",
-                      "id": "dialogflow.projects.agent.sessions.contexts.delete"
-                    },
-                    "list": {
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
-                      "id": "dialogflow.projects.agent.sessions.contexts.list",
-                      "path": "v2beta1/{+parent}/contexts",
-                      "description": "Returns the list of all contexts in the specified session.",
-                      "httpMethod": "GET",
-                      "response": {
-                        "$ref": "ListContextsResponse"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "parameters": {
-                        "pageSize": {
-                          "location": "query",
-                          "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
-                          "format": "int32",
-                          "type": "integer"
-                        },
-                        "parent": {
-                          "description": "Required. The session to list all contexts from.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+$",
-                          "location": "path"
-                        },
-                        "pageToken": {
-                          "description": "Optional. The next_page_token value returned from a previous list request.",
-                          "type": "string",
-                          "location": "query"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ]
-                    },
-                    "get": {
-                      "description": "Retrieves the specified context.",
-                      "response": {
-                        "$ref": "Context"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "GET",
-                      "parameters": {
-                        "name": {
-                          "description": "Required. The name of the context. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/contexts/\u003cContext ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-                      "path": "v2beta1/{+name}",
-                      "id": "dialogflow.projects.agent.sessions.contexts.get"
-                    },
-                    "patch": {
-                      "request": {
-                        "$ref": "Context"
-                      },
-                      "description": "Updates the specified context.",
-                      "httpMethod": "PATCH",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "Context"
-                      },
-                      "parameters": {
-                        "updateMask": {
-                          "location": "query",
-                          "description": "Optional. The mask to control which fields get updated.",
-                          "format": "google-fieldmask",
-                          "type": "string"
-                        },
-                        "name": {
-                          "location": "path",
-                          "description": "Required. The unique identifier of the context. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/contexts/\u003cContext ID\u003e`.\nNote: The Context ID is always converted to lowercase.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}",
-                      "id": "dialogflow.projects.agent.sessions.contexts.patch",
-                      "path": "v2beta1/{+name}"
-                    },
-                    "create": {
-                      "request": {
-                        "$ref": "Context"
-                      },
-                      "description": "Creates a context.",
-                      "httpMethod": "POST",
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "response": {
-                        "$ref": "Context"
-                      },
-                      "parameters": {
-                        "parent": {
-                          "description": "Required. The session to create a context for.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
-                      "id": "dialogflow.projects.agent.sessions.contexts.create",
-                      "path": "v2beta1/{+parent}/contexts"
-                    }
-                  }
-                }
-              }
-            },
             "entityTypes": {
               "methods": {
+                "get": {
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "description": "Required. The name of the entity type.\nFormat: `projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntityType ID\u003e`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
+                      "location": "path"
+                    },
+                    "languageCode": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Optional. The language to retrieve entity synonyms for. If not specified,\nthe agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used."
+                    }
+                  },
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
+                  "path": "v2beta1/{+name}",
+                  "id": "dialogflow.projects.agent.entityTypes.get",
+                  "description": "Retrieves the specified entity type.",
+                  "response": {
+                    "$ref": "EntityType"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET"
+                },
                 "patch": {
                   "response": {
                     "$ref": "EntityType"
@@ -599,11 +241,11 @@
                       "location": "query"
                     },
                     "name": {
+                      "location": "path",
                       "description": "Required for all methods except `create` (`create` populates the name\nautomatically.\nThe unique identifier of the entity type. Format:\n`projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntity Type ID\u003e`.",
                       "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
-                      "location": "path"
+                      "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$"
                     }
                   },
                   "scopes": [
@@ -617,41 +259,7 @@
                   },
                   "description": "Updates the specified entity type."
                 },
-                "get": {
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
-                  "path": "v2beta1/{+name}",
-                  "id": "dialogflow.projects.agent.entityTypes.get",
-                  "description": "Retrieves the specified entity type.",
-                  "response": {
-                    "$ref": "EntityType"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "languageCode": {
-                      "location": "query",
-                      "description": "Optional. The language to retrieve entity synonyms for. If not specified,\nthe agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
-                      "type": "string"
-                    },
-                    "name": {
-                      "description": "Required. The name of the entity type.\nFormat: `projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntityType ID\u003e`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
-                      "location": "path"
-                    }
-                  }
-                },
                 "batchUpdate": {
-                  "request": {
-                    "$ref": "BatchUpdateEntityTypesRequest"
-                  },
-                  "description": "Updates/Creates multiple entity types in the specified agent.\n\nOperation \u003cresponse: BatchUpdateEntityTypesResponse,\n           metadata: google.protobuf.Struct\u003e",
                   "response": {
                     "$ref": "Operation"
                   },
@@ -659,6 +267,9 @@
                     "parent"
                   ],
                   "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
                     "parent": {
                       "description": "Required. The name of the agent to update or create entity types in.\nFormat: `projects/\u003cProject ID\u003e/agent`.",
@@ -668,14 +279,30 @@
                       "location": "path"
                     }
                   },
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes:batchUpdate",
+                  "path": "v2beta1/{+parent}/entityTypes:batchUpdate",
+                  "id": "dialogflow.projects.agent.entityTypes.batchUpdate",
+                  "description": "Updates/Creates multiple entity types in the specified agent.\n\nOperation \u003cresponse: BatchUpdateEntityTypesResponse,\n           metadata: google.protobuf.Struct\u003e",
+                  "request": {
+                    "$ref": "BatchUpdateEntityTypesRequest"
+                  }
+                },
+                "delete": {
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes:batchUpdate",
-                  "path": "v2beta1/{+parent}/entityTypes:batchUpdate",
-                  "id": "dialogflow.projects.agent.entityTypes.batchUpdate"
-                },
-                "delete": {
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The name of the entity type to delete.\nFormat: `projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntityType ID\u003e`."
+                    }
+                  },
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
+                  "path": "v2beta1/{+name}",
+                  "id": "dialogflow.projects.agent.entityTypes.delete",
                   "description": "Deletes the specified entity type.",
                   "response": {
                     "$ref": "Empty"
@@ -683,68 +310,283 @@
                   "parameterOrder": [
                     "name"
                   ],
-                  "httpMethod": "DELETE",
-                  "parameters": {
-                    "name": {
-                      "description": "Required. The name of the entity type to delete.\nFormat: `projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntityType ID\u003e`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}",
-                  "path": "v2beta1/{+name}",
-                  "id": "dialogflow.projects.agent.entityTypes.delete"
+                  "httpMethod": "DELETE"
                 },
                 "list": {
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes",
-                  "id": "dialogflow.projects.agent.entityTypes.list",
-                  "path": "v2beta1/{+parent}/entityTypes",
-                  "description": "Returns the list of all entity types in the specified agent.",
-                  "httpMethod": "GET",
                   "response": {
                     "$ref": "ListEntityTypesResponse"
                   },
                   "parameterOrder": [
                     "parent"
                   ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
                   "parameters": {
-                    "languageCode": {
+                    "pageToken": {
                       "location": "query",
-                      "description": "Optional. The language to list entity synonyms for. If not specified,\nthe agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
+                      "description": "Optional. The next_page_token value returned from a previous list request.",
                       "type": "string"
                     },
-                    "pageToken": {
-                      "description": "Optional. The next_page_token value returned from a previous list request.",
-                      "type": "string",
-                      "location": "query"
-                    },
                     "pageSize": {
+                      "location": "query",
                       "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
                       "format": "int32",
-                      "type": "integer",
-                      "location": "query"
+                      "type": "integer"
                     },
                     "parent": {
+                      "location": "path",
                       "description": "Required. The agent to list all entity types from.\nFormat: `projects/\u003cProject ID\u003e/agent`.",
                       "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/agent$",
-                      "location": "path"
+                      "pattern": "^projects/[^/]+/agent$"
+                    },
+                    "languageCode": {
+                      "description": "Optional. The language to list entity synonyms for. If not specified,\nthe agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
+                      "type": "string",
+                      "location": "query"
                     }
                   },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ]
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes",
+                  "path": "v2beta1/{+parent}/entityTypes",
+                  "id": "dialogflow.projects.agent.entityTypes.list",
+                  "description": "Returns the list of all entity types in the specified agent."
                 },
                 "batchDelete": {
                   "description": "Deletes entity types in the specified agent.\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
                   "request": {
                     "$ref": "BatchDeleteEntityTypesRequest"
+                  },
+                  "response": {
+                    "$ref": "Operation"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "pattern": "^projects/[^/]+/agent$",
+                      "location": "path",
+                      "description": "Required. The name of the agent to delete all entities types for. Format:\n`projects/\u003cProject ID\u003e/agent`.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes:batchDelete",
+                  "path": "v2beta1/{+parent}/entityTypes:batchDelete",
+                  "id": "dialogflow.projects.agent.entityTypes.batchDelete"
+                },
+                "create": {
+                  "path": "v2beta1/{+parent}/entityTypes",
+                  "id": "dialogflow.projects.agent.entityTypes.create",
+                  "description": "Creates an entity type in the specified agent.",
+                  "request": {
+                    "$ref": "EntityType"
+                  },
+                  "response": {
+                    "$ref": "EntityType"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "parent": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/agent$",
+                      "location": "path",
+                      "description": "Required. The agent to create a entity type for.\nFormat: `projects/\u003cProject ID\u003e/agent`."
+                    },
+                    "languageCode": {
+                      "location": "query",
+                      "description": "Optional. The language of entity synonyms defined in `entity_type`. If not\nspecified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes"
+                }
+              },
+              "resources": {
+                "entities": {
+                  "methods": {
+                    "batchUpdate": {
+                      "response": {
+                        "$ref": "Operation"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "POST",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "parent": {
+                          "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The name of the entity type to update the entities in. Format:\n`projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntity Type ID\u003e`.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchUpdate",
+                      "path": "v2beta1/{+parent}/entities:batchUpdate",
+                      "id": "dialogflow.projects.agent.entityTypes.entities.batchUpdate",
+                      "description": "Updates entities in the specified entity type (replaces the existing\ncollection of entries).\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
+                      "request": {
+                        "$ref": "BatchUpdateEntitiesRequest"
+                      }
+                    },
+                    "batchDelete": {
+                      "request": {
+                        "$ref": "BatchDeleteEntitiesRequest"
+                      },
+                      "description": "Deletes entities in the specified entity type.\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
+                      "httpMethod": "POST",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "response": {
+                        "$ref": "Operation"
+                      },
+                      "parameters": {
+                        "parent": {
+                          "description": "Required. The name of the entity type to delete entries for. Format:\n`projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntity Type ID\u003e`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchDelete",
+                      "id": "dialogflow.projects.agent.entityTypes.entities.batchDelete",
+                      "path": "v2beta1/{+parent}/entities:batchDelete"
+                    },
+                    "batchCreate": {
+                      "parameters": {
+                        "parent": {
+                          "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The name of the entity type to create entities in. Format:\n`projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntity Type ID\u003e`.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchCreate",
+                      "path": "v2beta1/{+parent}/entities:batchCreate",
+                      "id": "dialogflow.projects.agent.entityTypes.entities.batchCreate",
+                      "request": {
+                        "$ref": "BatchCreateEntitiesRequest"
+                      },
+                      "description": "Creates multiple new entities in the specified entity type (extends the\nexisting collection of entries).\n\nOperation \u003cresponse: google.protobuf.Empty\u003e",
+                      "response": {
+                        "$ref": "Operation"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "POST"
+                    }
+                  }
+                }
+              }
+            },
+            "intents": {
+              "methods": {
+                "delete": {
+                  "description": "Deletes the specified intent.",
+                  "httpMethod": "DELETE",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameters": {
+                    "name": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/agent/intents/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The name of the intent to delete.\nFormat: `projects/\u003cProject ID\u003e/agent/intents/\u003cIntent ID\u003e`."
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
+                  "id": "dialogflow.projects.agent.intents.delete",
+                  "path": "v2beta1/{+name}"
+                },
+                "list": {
+                  "response": {
+                    "$ref": "ListIntentsResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "parent": {
+                      "location": "path",
+                      "description": "Required. The agent to list all intents from.\nFormat: `projects/\u003cProject ID\u003e/agent`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/agent$"
+                    },
+                    "languageCode": {
+                      "description": "Optional. The language to list training phrases, parameters and rich\nmessages for. If not specified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent before they can be used.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageToken": {
+                      "type": "string",
+                      "location": "query",
+                      "description": "Optional. The next_page_token value returned from a previous list request."
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "location": "query",
+                      "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
+                      "format": "int32"
+                    },
+                    "intentView": {
+                      "location": "query",
+                      "enum": [
+                        "INTENT_VIEW_UNSPECIFIED",
+                        "INTENT_VIEW_FULL"
+                      ],
+                      "description": "Optional. The resource view to apply to the returned intent.",
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents",
+                  "path": "v2beta1/{+parent}/intents",
+                  "id": "dialogflow.projects.agent.intents.list",
+                  "description": "Returns the list of all intents in the specified agent."
+                },
+                "batchDelete": {
+                  "description": "Deletes intents in the specified agent.\n\nOperation \u003cresponse: google.protobuf.Empty\u003e",
+                  "request": {
+                    "$ref": "BatchDeleteIntentsRequest"
                   },
                   "response": {
                     "$ref": "Operation"
@@ -765,216 +607,11 @@
                       "location": "path"
                     }
                   },
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes:batchDelete",
-                  "path": "v2beta1/{+parent}/entityTypes:batchDelete",
-                  "id": "dialogflow.projects.agent.entityTypes.batchDelete"
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents:batchDelete",
+                  "path": "v2beta1/{+parent}/intents:batchDelete",
+                  "id": "dialogflow.projects.agent.intents.batchDelete"
                 },
                 "create": {
-                  "description": "Creates an entity type in the specified agent.",
-                  "request": {
-                    "$ref": "EntityType"
-                  },
-                  "response": {
-                    "$ref": "EntityType"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "languageCode": {
-                      "description": "Optional. The language of entity synonyms defined in `entity_type`. If not\nspecified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "parent": {
-                      "location": "path",
-                      "description": "Required. The agent to create a entity type for.\nFormat: `projects/\u003cProject ID\u003e/agent`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent$"
-                    }
-                  },
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes",
-                  "path": "v2beta1/{+parent}/entityTypes",
-                  "id": "dialogflow.projects.agent.entityTypes.create"
-                }
-              },
-              "resources": {
-                "entities": {
-                  "methods": {
-                    "batchCreate": {
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchCreate",
-                      "path": "v2beta1/{+parent}/entities:batchCreate",
-                      "id": "dialogflow.projects.agent.entityTypes.entities.batchCreate",
-                      "description": "Creates multiple new entities in the specified entity type (extends the\nexisting collection of entries).\n\nOperation \u003cresponse: google.protobuf.Empty\u003e",
-                      "request": {
-                        "$ref": "BatchCreateEntitiesRequest"
-                      },
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "POST",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "parent": {
-                          "location": "path",
-                          "description": "Required. The name of the entity type to create entities in. Format:\n`projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntity Type ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$"
-                        }
-                      }
-                    },
-                    "batchUpdate": {
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchUpdate",
-                      "path": "v2beta1/{+parent}/entities:batchUpdate",
-                      "id": "dialogflow.projects.agent.entityTypes.entities.batchUpdate",
-                      "description": "Updates entities in the specified entity type (replaces the existing\ncollection of entries).\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
-                      "request": {
-                        "$ref": "BatchUpdateEntitiesRequest"
-                      },
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "POST",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "parent": {
-                          "description": "Required. The name of the entity type to update the entities in. Format:\n`projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntity Type ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$",
-                          "location": "path"
-                        }
-                      }
-                    },
-                    "batchDelete": {
-                      "flatPath": "v2beta1/projects/{projectsId}/agent/entityTypes/{entityTypesId}/entities:batchDelete",
-                      "path": "v2beta1/{+parent}/entities:batchDelete",
-                      "id": "dialogflow.projects.agent.entityTypes.entities.batchDelete",
-                      "description": "Deletes entities in the specified entity type.\n\nOperation \u003cresponse: google.protobuf.Empty,\n           metadata: google.protobuf.Struct\u003e",
-                      "request": {
-                        "$ref": "BatchDeleteEntitiesRequest"
-                      },
-                      "response": {
-                        "$ref": "Operation"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "POST",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "parent": {
-                          "location": "path",
-                          "description": "Required. The name of the entity type to delete entries for. Format:\n`projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntity Type ID\u003e`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/agent/entityTypes/[^/]+$"
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            },
-            "intents": {
-              "methods": {
-                "delete": {
-                  "httpMethod": "DELETE",
-                  "response": {
-                    "$ref": "Empty"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "description": "Required. The name of the intent to delete.\nFormat: `projects/\u003cProject ID\u003e/agent/intents/\u003cIntent ID\u003e`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent/intents/[^/]+$",
-                      "location": "path"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
-                  "id": "dialogflow.projects.agent.intents.delete",
-                  "path": "v2beta1/{+name}",
-                  "description": "Deletes the specified intent."
-                },
-                "list": {
-                  "description": "Returns the list of all intents in the specified agent.",
-                  "httpMethod": "GET",
-                  "response": {
-                    "$ref": "ListIntentsResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "parameters": {
-                    "languageCode": {
-                      "location": "query",
-                      "description": "Optional. The language to list training phrases, parameters and rich\nmessages for. If not specified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent before they can be used.",
-                      "type": "string"
-                    },
-                    "pageToken": {
-                      "description": "Optional. The next_page_token value returned from a previous list request.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
-                      "format": "int32",
-                      "type": "integer"
-                    },
-                    "intentView": {
-                      "description": "Optional. The resource view to apply to the returned intent.",
-                      "type": "string",
-                      "location": "query",
-                      "enum": [
-                        "INTENT_VIEW_UNSPECIFIED",
-                        "INTENT_VIEW_FULL"
-                      ]
-                    },
-                    "parent": {
-                      "location": "path",
-                      "description": "Required. The agent to list all intents from.\nFormat: `projects/\u003cProject ID\u003e/agent`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent$"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents",
-                  "id": "dialogflow.projects.agent.intents.list",
-                  "path": "v2beta1/{+parent}/intents"
-                },
-                "create": {
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents",
-                  "path": "v2beta1/{+parent}/intents",
-                  "id": "dialogflow.projects.agent.intents.create",
                   "request": {
                     "$ref": "Intent"
                   },
@@ -997,11 +634,11 @@
                       "type": "string"
                     },
                     "parent": {
-                      "location": "path",
                       "description": "Required. The agent to create a intent for.\nFormat: `projects/\u003cProject ID\u003e/agent`.",
                       "required": true,
                       "type": "string",
-                      "pattern": "^projects/[^/]+/agent$"
+                      "pattern": "^projects/[^/]+/agent$",
+                      "location": "path"
                     },
                     "languageCode": {
                       "location": "query",
@@ -1011,48 +648,19 @@
                   },
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
-                  ]
-                },
-                "batchDelete": {
-                  "description": "Deletes intents in the specified agent.\n\nOperation \u003cresponse: google.protobuf.Empty\u003e",
-                  "request": {
-                    "$ref": "BatchDeleteIntentsRequest"
-                  },
-                  "httpMethod": "POST",
-                  "parameterOrder": [
-                    "parent"
                   ],
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "parent": {
-                      "location": "path",
-                      "description": "Required. The name of the agent to delete all entities types for. Format:\n`projects/\u003cProject ID\u003e/agent`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent$"
-                    }
-                  },
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents:batchDelete",
-                  "id": "dialogflow.projects.agent.intents.batchDelete",
-                  "path": "v2beta1/{+parent}/intents:batchDelete"
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents",
+                  "path": "v2beta1/{+parent}/intents",
+                  "id": "dialogflow.projects.agent.intents.create"
                 },
-                "get": {
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
-                  "path": "v2beta1/{+name}",
-                  "id": "dialogflow.projects.agent.intents.get",
-                  "description": "Retrieves the specified intent.",
+                "patch": {
                   "response": {
                     "$ref": "Intent"
                   },
                   "parameterOrder": [
                     "name"
                   ],
-                  "httpMethod": "GET",
+                  "httpMethod": "PATCH",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
@@ -1067,39 +675,9 @@
                       ]
                     },
                     "languageCode": {
-                      "description": "Optional. The language to retrieve training phrases, parameters and rich\nmessages for. If not specified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
+                      "description": "Optional. The language of training phrases, parameters and rich messages\ndefined in `intent`. If not specified, the agent's default language is\nused. [More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
                       "type": "string",
                       "location": "query"
-                    },
-                    "name": {
-                      "description": "Required. The name of the intent.\nFormat: `projects/\u003cProject ID\u003e/agent/intents/\u003cIntent ID\u003e`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/agent/intents/[^/]+$",
-                      "location": "path"
-                    }
-                  }
-                },
-                "patch": {
-                  "description": "Updates the specified intent.",
-                  "request": {
-                    "$ref": "Intent"
-                  },
-                  "httpMethod": "PATCH",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "Intent"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "languageCode": {
-                      "location": "query",
-                      "description": "Optional. The language of training phrases, parameters and rich messages\ndefined in `intent`. If not specified, the agent's default language is\nused. [More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
-                      "type": "string"
                     },
                     "updateMask": {
                       "location": "query",
@@ -1113,39 +691,63 @@
                       "required": true,
                       "type": "string",
                       "pattern": "^projects/[^/]+/agent/intents/[^/]+$"
+                    }
+                  },
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
+                  "path": "v2beta1/{+name}",
+                  "id": "dialogflow.projects.agent.intents.patch",
+                  "description": "Updates the specified intent.",
+                  "request": {
+                    "$ref": "Intent"
+                  }
+                },
+                "get": {
+                  "response": {
+                    "$ref": "Intent"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "languageCode": {
+                      "location": "query",
+                      "description": "Optional. The language to retrieve training phrases, parameters and rich\nmessages for. If not specified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
+                      "type": "string"
+                    },
+                    "name": {
+                      "location": "path",
+                      "description": "Required. The name of the intent.\nFormat: `projects/\u003cProject ID\u003e/agent/intents/\u003cIntent ID\u003e`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/agent/intents/[^/]+$"
                     },
                     "intentView": {
+                      "description": "Optional. The resource view to apply to the returned intent.",
+                      "type": "string",
                       "location": "query",
                       "enum": [
                         "INTENT_VIEW_UNSPECIFIED",
                         "INTENT_VIEW_FULL"
-                      ],
-                      "description": "Optional. The resource view to apply to the returned intent.",
-                      "type": "string"
+                      ]
                     }
                   },
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
-                  "id": "dialogflow.projects.agent.intents.patch",
-                  "path": "v2beta1/{+name}"
-                },
-                "batchUpdate": {
-                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents:batchUpdate",
-                  "path": "v2beta1/{+parent}/intents:batchUpdate",
-                  "id": "dialogflow.projects.agent.intents.batchUpdate",
-                  "description": "Updates/Creates multiple intents in the specified agent.\n\nOperation \u003cresponse: BatchUpdateIntentsResponse\u003e",
-                  "request": {
-                    "$ref": "BatchUpdateIntentsRequest"
-                  },
-                  "response": {
-                    "$ref": "Operation"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "POST",
                   "scopes": [
                     "https://www.googleapis.com/auth/cloud-platform"
                   ],
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents/{intentsId}",
+                  "path": "v2beta1/{+name}",
+                  "id": "dialogflow.projects.agent.intents.get",
+                  "description": "Retrieves the specified intent."
+                },
+                "batchUpdate": {
+                  "httpMethod": "POST",
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "response": {
+                    "$ref": "Operation"
+                  },
                   "parameters": {
                     "parent": {
                       "description": "Required. The name of the agent to update or create intents in.\nFormat: `projects/\u003cProject ID\u003e/agent`.",
@@ -1154,9 +756,411 @@
                       "pattern": "^projects/[^/]+/agent$",
                       "location": "path"
                     }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/intents:batchUpdate",
+                  "id": "dialogflow.projects.agent.intents.batchUpdate",
+                  "path": "v2beta1/{+parent}/intents:batchUpdate",
+                  "request": {
+                    "$ref": "BatchUpdateIntentsRequest"
+                  },
+                  "description": "Updates/Creates multiple intents in the specified agent.\n\nOperation \u003cresponse: BatchUpdateIntentsResponse\u003e"
+                }
+              }
+            },
+            "sessions": {
+              "methods": {
+                "deleteContexts": {
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
+                  "path": "v2beta1/{+parent}/contexts",
+                  "id": "dialogflow.projects.agent.sessions.deleteContexts",
+                  "description": "Deletes all active contexts in the specified session.",
+                  "response": {
+                    "$ref": "Empty"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "DELETE",
+                  "parameters": {
+                    "parent": {
+                      "location": "path",
+                      "description": "Required. The name of the session to delete all contexts from. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/agent/sessions/[^/]+$"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ]
+                },
+                "detectIntent": {
+                  "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}:detectIntent",
+                  "path": "v2beta1/{+session}:detectIntent",
+                  "id": "dialogflow.projects.agent.sessions.detectIntent",
+                  "description": "Processes a natural language query and returns structured, actionable data\nas a result. This method is not idempotent, because it may cause contexts\nand session entity types to be updated, which in turn might affect\nresults of future queries.",
+                  "request": {
+                    "$ref": "DetectIntentRequest"
+                  },
+                  "response": {
+                    "$ref": "DetectIntentResponse"
+                  },
+                  "parameterOrder": [
+                    "session"
+                  ],
+                  "httpMethod": "POST",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "session": {
+                      "required": true,
+                      "type": "string",
+                      "pattern": "^projects/[^/]+/agent/sessions/[^/]+$",
+                      "location": "path",
+                      "description": "Required. The name of the session this query is sent to. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.\nIt's up to the API caller to choose an appropriate session ID. It can be\na random number or some type of user identifier (preferably hashed).\nThe length of the session ID must not exceed 36 bytes."
+                    }
+                  }
+                }
+              },
+              "resources": {
+                "contexts": {
+                  "methods": {
+                    "create": {
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
+                      "id": "dialogflow.projects.agent.sessions.contexts.create",
+                      "path": "v2beta1/{+parent}/contexts",
+                      "request": {
+                        "$ref": "Context"
+                      },
+                      "description": "Creates a context.",
+                      "httpMethod": "POST",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "response": {
+                        "$ref": "Context"
+                      },
+                      "parameters": {
+                        "parent": {
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The session to create a context for.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ]
+                    },
+                    "delete": {
+                      "path": "v2beta1/{+name}",
+                      "id": "dialogflow.projects.agent.sessions.contexts.delete",
+                      "description": "Deletes the specified context.",
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "DELETE",
+                      "parameters": {
+                        "name": {
+                          "location": "path",
+                          "description": "Required. The name of the context to delete. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/contexts/\u003cContext ID\u003e`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}"
+                    },
+                    "list": {
+                      "description": "Returns the list of all contexts in the specified session.",
+                      "response": {
+                        "$ref": "ListContextsResponse"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "pageToken": {
+                          "location": "query",
+                          "description": "Optional. The next_page_token value returned from a previous list request.",
+                          "type": "string"
+                        },
+                        "pageSize": {
+                          "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
+                          "format": "int32",
+                          "type": "integer",
+                          "location": "query"
+                        },
+                        "parent": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The session to list all contexts from.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`."
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts",
+                      "path": "v2beta1/{+parent}/contexts",
+                      "id": "dialogflow.projects.agent.sessions.contexts.list"
+                    },
+                    "get": {
+                      "path": "v2beta1/{+name}",
+                      "id": "dialogflow.projects.agent.sessions.contexts.get",
+                      "description": "Retrieves the specified context.",
+                      "response": {
+                        "$ref": "Context"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The name of the context. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/contexts/\u003cContext ID\u003e`."
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}"
+                    },
+                    "patch": {
+                      "id": "dialogflow.projects.agent.sessions.contexts.patch",
+                      "path": "v2beta1/{+name}",
+                      "request": {
+                        "$ref": "Context"
+                      },
+                      "description": "Updates the specified context.",
+                      "httpMethod": "PATCH",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "response": {
+                        "$ref": "Context"
+                      },
+                      "parameters": {
+                        "updateMask": {
+                          "description": "Optional. The mask to control which fields get updated.",
+                          "format": "google-fieldmask",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "name": {
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/contexts/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The unique identifier of the context. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/contexts/\u003cContext ID\u003e`.\nNote: The Context ID is always converted to lowercase.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/contexts/{contextsId}"
+                    }
+                  }
+                },
+                "entityTypes": {
+                  "methods": {
+                    "list": {
+                      "description": "Returns the list of all session entity types in the specified session.",
+                      "httpMethod": "GET",
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "response": {
+                        "$ref": "ListSessionEntityTypesResponse"
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "pageSize": {
+                          "location": "query",
+                          "description": "Optional. The maximum number of items to return in a single page. By\ndefault 100 and at most 1000.",
+                          "format": "int32",
+                          "type": "integer"
+                        },
+                        "parent": {
+                          "description": "Required. The session to list all session entity types from.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+$",
+                          "location": "path"
+                        },
+                        "pageToken": {
+                          "location": "query",
+                          "description": "Optional. The next_page_token value returned from a previous list request.",
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
+                      "id": "dialogflow.projects.agent.sessions.entityTypes.list",
+                      "path": "v2beta1/{+parent}/entityTypes"
+                    },
+                    "get": {
+                      "path": "v2beta1/{+name}",
+                      "id": "dialogflow.projects.agent.sessions.entityTypes.get",
+                      "description": "Retrieves the specified session entity type.",
+                      "response": {
+                        "$ref": "SessionEntityType"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The name of the session entity type. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/entityTypes/\u003cEntity Type\nDisplay Name\u003e`.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}"
+                    },
+                    "patch": {
+                      "id": "dialogflow.projects.agent.sessions.entityTypes.patch",
+                      "path": "v2beta1/{+name}",
+                      "request": {
+                        "$ref": "SessionEntityType"
+                      },
+                      "description": "Updates the specified session entity type.",
+                      "httpMethod": "PATCH",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "response": {
+                        "$ref": "SessionEntityType"
+                      },
+                      "parameters": {
+                        "updateMask": {
+                          "description": "Optional. The mask to control which fields get updated.",
+                          "format": "google-fieldmask",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "name": {
+                          "location": "path",
+                          "description": "Required. The unique identifier of this session entity type. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/entityTypes/\u003cEntity Type\nDisplay Name\u003e`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}"
+                    },
+                    "create": {
+                      "request": {
+                        "$ref": "SessionEntityType"
+                      },
+                      "description": "Creates a session entity type.",
+                      "response": {
+                        "$ref": "SessionEntityType"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "POST",
+                      "parameters": {
+                        "parent": {
+                          "description": "Required. The session to create a session entity type for.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes",
+                      "path": "v2beta1/{+parent}/entityTypes",
+                      "id": "dialogflow.projects.agent.sessions.entityTypes.create"
+                    },
+                    "delete": {
+                      "description": "Deletes the specified session entity type.",
+                      "response": {
+                        "$ref": "Empty"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "DELETE",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/agent/sessions/[^/]+/entityTypes/[^/]+$",
+                          "location": "path",
+                          "description": "Required. The name of the entity type to delete. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/entityTypes/\u003cEntity Type\nDisplay Name\u003e`."
+                        }
+                      },
+                      "flatPath": "v2beta1/projects/{projectsId}/agent/sessions/{sessionsId}/entityTypes/{entityTypesId}",
+                      "path": "v2beta1/{+name}",
+                      "id": "dialogflow.projects.agent.sessions.entityTypes.delete"
+                    }
                   }
                 }
               }
+            }
+          }
+        },
+        "operations": {
+          "methods": {
+            "get": {
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "Operation"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The name of the operation resource.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/operations/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v2beta1/projects/{projectsId}/operations/{operationsId}",
+              "id": "dialogflow.projects.operations.get",
+              "path": "v2beta1/{+name}",
+              "description": "Gets the latest state of a long-running operation.  Clients can use this\nmethod to poll the operation result at intervals as recommended by the API\nservice."
             }
           }
         }
@@ -1164,28 +1168,19 @@
     }
   },
   "parameters": {
-    "upload_protocol": {
-      "location": "query",
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
     },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
     "$.xgafv": {
+      "description": "V1 error format.",
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -1194,9 +1189,7 @@
       "enum": [
         "1",
         "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
+      ]
     },
     "callback": {
       "location": "query",
@@ -1219,26 +1212,26 @@
       ],
       "type": "string"
     },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
     "key": {
       "location": "query",
       "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
       "type": "string"
     },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+    "access_token": {
+      "description": "OAuth access token.",
       "type": "string",
       "location": "query"
     },
-    "pp": {
+    "quotaUser": {
       "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "pp": {
       "description": "Pretty-print response.",
       "type": "boolean",
-      "default": "true"
+      "default": "true",
+      "location": "query"
     },
     "oauth_token": {
       "location": "query",
@@ -1246,9 +1239,20 @@
       "type": "string"
     },
     "bearer_token": {
+      "type": "string",
       "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
+      "description": "OAuth bearer token."
+    },
+    "upload_protocol": {
+      "type": "string",
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\")."
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
     }
   },
   "version": "v2beta1",
@@ -1257,118 +1261,13 @@
   "description": "An end-to-end development suite for conversational interfaces (e.g., chatbots, voice-powered apps and devices).",
   "servicePath": "",
   "basePath": "",
-  "revision": "20180116",
+  "revision": "20180119",
   "documentationLink": "https://cloud.google.com/dialogflow-enterprise/",
   "id": "dialogflow:v2beta1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
-    "BatchUpdateIntentsRequest": {
-      "description": "The request message for Intents.BatchUpdateIntents.",
-      "type": "object",
-      "properties": {
-        "intentBatchUri": {
-          "description": "Warning: Importing intents from a URI is not implemented yet.\nThis feature is coming soon.\nThe URI to a Google Cloud Storage file containing intents to update or\ncreate. The file format can either be a serialized proto (of IntentBatch\ntype) or JSON object. Note: The URI must start with \"gs://\".",
-          "type": "string"
-        },
-        "intentView": {
-          "description": "Optional. The resource view to apply to the returned intent.",
-          "type": "string",
-          "enumDescriptions": [
-            "Training phrases field is not populated in the response.",
-            "All fields are populated."
-          ],
-          "enum": [
-            "INTENT_VIEW_UNSPECIFIED",
-            "INTENT_VIEW_FULL"
-          ]
-        },
-        "intentBatchInline": {
-          "description": "The collection of intents to update or create.",
-          "$ref": "IntentBatch"
-        },
-        "languageCode": {
-          "description": "Optional. The language of training phrases, parameters and rich messages\ndefined in `intents`. If not specified, the agent's default language is\nused. [More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
-          "type": "string"
-        },
-        "updateMask": {
-          "description": "Optional. The mask to control which fields get updated.",
-          "format": "google-fieldmask",
-          "type": "string"
-        }
-      },
-      "id": "BatchUpdateIntentsRequest"
-    },
-    "TrainAgentRequest": {
-      "description": "The request message for Agents.TrainAgent.",
-      "type": "object",
-      "properties": {},
-      "id": "TrainAgentRequest"
-    },
-    "SessionEntityType": {
-      "description": "Represents a session entity type.\n\nExtends or replaces a developer entity type at the user session level (we\nrefer to the entity types defined at the agent level as \"developer entity\ntypes\").\n\nNote: session entity types apply to all queries, regardless of the language.",
-      "type": "object",
-      "properties": {
-        "entityOverrideMode": {
-          "enumDescriptions": [
-            "Not specified. This value should be never used.",
-            "The collection of session entities overrides the collection of entities\nin the corresponding developer entity type.",
-            "The collection of session entities extends the collection of entities in\nthe corresponding developer entity type.\nCalls to `ListSessionEntityTypes`, `GetSessionEntityType`,\n`CreateSessionEntityType` and `UpdateSessionEntityType` return the full\ncollection of entities from the developer entity type in the agent's\ndefault language and the session entity type."
-          ],
-          "enum": [
-            "ENTITY_OVERRIDE_MODE_UNSPECIFIED",
-            "ENTITY_OVERRIDE_MODE_OVERRIDE",
-            "ENTITY_OVERRIDE_MODE_SUPPLEMENT"
-          ],
-          "description": "Required. Indicates whether the additional data should override or\nsupplement the developer entity type definition.",
-          "type": "string"
-        },
-        "entities": {
-          "description": "Required. The collection of entities associated with this session entity\ntype.",
-          "type": "array",
-          "items": {
-            "$ref": "EntityTypeEntity"
-          }
-        },
-        "name": {
-          "description": "Required. The unique identifier of this session entity type. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/entityTypes/\u003cEntity Type\nDisplay Name\u003e`.",
-          "type": "string"
-        }
-      },
-      "id": "SessionEntityType"
-    },
-    "Empty": {
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
-      "type": "object",
-      "properties": {},
-      "id": "Empty"
-    },
-    "BatchUpdateEntitiesRequest": {
-      "description": "The response message for EntityTypes.BatchCreateEntities.",
-      "type": "object",
-      "properties": {
-        "languageCode": {
-          "description": "Optional. The language of entity synonyms defined in `entities`. If not\nspecified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
-          "type": "string"
-        },
-        "updateMask": {
-          "description": "Optional. The mask to control which fields get updated.",
-          "format": "google-fieldmask",
-          "type": "string"
-        },
-        "entities": {
-          "description": "Required. The collection of new entities to replace the existing entities.",
-          "type": "array",
-          "items": {
-            "$ref": "EntityTypeEntity"
-          }
-        }
-      },
-      "id": "BatchUpdateEntitiesRequest"
-    },
     "IntentMessageText": {
-      "description": "The text response message.",
-      "type": "object",
       "properties": {
         "text": {
           "description": "Optional. The collection of the agent's responses.",
@@ -1378,16 +1277,37 @@
           }
         }
       },
-      "id": "IntentMessageText"
+      "id": "IntentMessageText",
+      "description": "The text response message.",
+      "type": "object"
+    },
+    "BatchUpdateEntitiesRequest": {
+      "properties": {
+        "entities": {
+          "description": "Required. The collection of new entities to replace the existing entities.",
+          "type": "array",
+          "items": {
+            "$ref": "EntityTypeEntity"
+          }
+        },
+        "languageCode": {
+          "description": "Optional. The language of entity synonyms defined in `entities`. If not\nspecified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
+          "type": "string"
+        },
+        "updateMask": {
+          "description": "Optional. The mask to control which fields get updated.",
+          "format": "google-fieldmask",
+          "type": "string"
+        }
+      },
+      "id": "BatchUpdateEntitiesRequest",
+      "description": "The response message for EntityTypes.BatchCreateEntities.",
+      "type": "object"
     },
     "WebhookResponse": {
       "description": "The response message for a webhook call.",
       "type": "object",
       "properties": {
-        "source": {
-          "description": "Optional. This value is passed directly to `QueryResult.webhook_source`.",
-          "type": "string"
-        },
         "followupEventInput": {
           "description": "Optional. Makes the platform immediately invoke another `DetectIntent` call\ninternally with the specified event as input.",
           "$ref": "EventInput"
@@ -1411,12 +1331,16 @@
           }
         },
         "payload": {
+          "description": "Optional. This value is passed directly to `QueryResult.webhook_payload`.",
+          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object.",
             "type": "any"
-          },
-          "description": "Optional. This value is passed directly to `QueryResult.webhook_payload`.",
-          "type": "object"
+          }
+        },
+        "source": {
+          "description": "Optional. This value is passed directly to `QueryResult.webhook_source`.",
+          "type": "string"
         }
       },
       "id": "WebhookResponse"
@@ -1444,8 +1368,8 @@
           "$ref": "EventInput"
         },
         "text": {
-          "$ref": "TextInput",
-          "description": "The natural language text to be processed."
+          "description": "The natural language text to be processed.",
+          "$ref": "TextInput"
         },
         "audioConfig": {
           "$ref": "InputAudioConfig",
@@ -1453,6 +1377,25 @@
         }
       },
       "id": "QueryInput"
+    },
+    "DetectIntentResponse": {
+      "description": "The message returned from the DetectIntent method.",
+      "type": "object",
+      "properties": {
+        "queryResult": {
+          "$ref": "QueryResult",
+          "description": "The results of the conversational query or event processing."
+        },
+        "webhookStatus": {
+          "$ref": "Status",
+          "description": "Specifies the status of the webhook request. `webhook_status`\nis never populated in webhook requests."
+        },
+        "responseId": {
+          "description": "The unique identifier of the response. It can be used to\nlocate a response in the training example set or for reporting issues.",
+          "type": "string"
+        }
+      },
+      "id": "DetectIntentResponse"
     },
     "IntentFollowupIntentInfo": {
       "description": "Represents a single followup intent in the chain.",
@@ -1469,27 +1412,18 @@
       },
       "id": "IntentFollowupIntentInfo"
     },
-    "DetectIntentResponse": {
-      "description": "The message returned from the DetectIntent method.",
+    "ExportAgentRequest": {
+      "id": "ExportAgentRequest",
+      "description": "The request message for Agents.ExportAgent.",
       "type": "object",
       "properties": {
-        "queryResult": {
-          "$ref": "QueryResult",
-          "description": "The results of the conversational query or event processing."
-        },
-        "webhookStatus": {
-          "description": "Specifies the status of the webhook request. `webhook_status`\nis never populated in webhook requests.",
-          "$ref": "Status"
-        },
-        "responseId": {
-          "description": "The unique identifier of the response. It can be used to\nlocate a response in the training example set or for reporting issues.",
+        "agentUri": {
+          "description": "Warning: Exporting agents to a URI is not implemented yet.\nThis feature is coming soon.\n\nOptional. The Google Cloud Storage URI to export the agent to.\nNote: The URI must start with\n\"gs://\". If left unspecified, the serialized agent is returned inline.",
           "type": "string"
         }
-      },
-      "id": "DetectIntentResponse"
+      }
     },
     "IntentMessageLinkOutSuggestion": {
-      "description": "The suggestion chip message that allows the user to jump out to the app\nor website associated with this agent.",
       "type": "object",
       "properties": {
         "destinationName": {
@@ -1501,29 +1435,19 @@
           "type": "string"
         }
       },
-      "id": "IntentMessageLinkOutSuggestion"
-    },
-    "ExportAgentRequest": {
-      "description": "The request message for Agents.ExportAgent.",
-      "type": "object",
-      "properties": {
-        "agentUri": {
-          "description": "Warning: Exporting agents to a URI is not implemented yet.\nThis feature is coming soon.\n\nOptional. The Google Cloud Storage URI to export the agent to.\nNote: The URI must start with\n\"gs://\". If left unspecified, the serialized agent is returned inline.",
-          "type": "string"
-        }
-      },
-      "id": "ExportAgentRequest"
+      "id": "IntentMessageLinkOutSuggestion",
+      "description": "The suggestion chip message that allows the user to jump out to the app\nor website associated with this agent."
     },
     "IntentMessageSelectItemInfo": {
       "description": "Additional info about the select item for when it is triggered in a\ndialog.",
       "type": "object",
       "properties": {
         "synonyms": {
-          "description": "Optional. A list of synonyms that can also be used to trigger this\nitem in dialog.",
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "Optional. A list of synonyms that can also be used to trigger this\nitem in dialog."
         },
         "key": {
           "description": "Required. A unique key that will be sent back to the agent if this\nresponse is given.",
@@ -1533,9 +1457,23 @@
       "id": "IntentMessageSelectItemInfo"
     },
     "Operation": {
-      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
-      "type": "object",
       "properties": {
+        "name": {
+          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
+          "type": "string"
+        },
+        "error": {
+          "description": "The error result of the operation in case of failure or cancellation.",
+          "$ref": "Status"
+        },
+        "metadata": {
+          "additionalProperties": {
+            "description": "Properties of the object. Contains field @type with type URL.",
+            "type": "any"
+          },
+          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
+          "type": "object"
+        },
         "done": {
           "description": "If the value is `false`, it means the operation is still in progress.\nIf `true`, the operation is completed, and either `error` or `response` is\navailable.",
           "type": "boolean"
@@ -1547,97 +1485,53 @@
             "description": "Properties of the object. Contains field @type with type URL.",
             "type": "any"
           }
-        },
-        "name": {
-          "description": "The server-assigned name, which is only unique within the same service that\noriginally returns it. If you use the default HTTP mapping, the\n`name` should have the format of `operations/some/unique/name`.",
-          "type": "string"
-        },
-        "error": {
-          "$ref": "Status",
-          "description": "The error result of the operation in case of failure or cancellation."
-        },
-        "metadata": {
-          "additionalProperties": {
-            "description": "Properties of the object. Contains field @type with type URL.",
-            "type": "any"
-          },
-          "description": "Service-specific metadata associated with the operation.  It typically\ncontains progress information and common metadata such as create time.\nSome services might not provide such metadata.  Any method that returns a\nlong-running operation should document the metadata type, if any.",
-          "type": "object"
         }
       },
-      "id": "Operation"
+      "id": "Operation",
+      "description": "This resource represents a long-running operation that is the result of a\nnetwork API call.",
+      "type": "object"
+    },
+    "EventInput": {
+      "description": "Events allow for matching intents by event name instead of the natural\nlanguage input. For instance, input `\u003cevent: { name: “welcome_event”,\nparameters: { name: “Sam” } }\u003e` can trigger a personalized welcome response.\nThe parameter `name` may be used by the agent in the response:\n`“Hello #welcome_event.name! What can I do for you today?”`.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Required. The unique identifier of the event.",
+          "type": "string"
+        },
+        "parameters": {
+          "description": "Optional. The collection of parameters associated with the event.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "any",
+            "description": "Properties of the object."
+          }
+        },
+        "languageCode": {
+          "description": "Required. The language of this query. See [Language\nSupport](https://dialogflow.com/docs/languages) for a list of the\ncurrently supported language codes. Note that queries in the same session\ndo not necessarily need to specify the same language.",
+          "type": "string"
+        }
+      },
+      "id": "EventInput"
     },
     "IntentMessageSuggestions": {
       "description": "The collection of suggestions.",
       "type": "object",
       "properties": {
         "suggestions": {
-          "description": "Required. The list of suggested replies.",
           "type": "array",
           "items": {
             "$ref": "IntentMessageSuggestion"
-          }
+          },
+          "description": "Required. The list of suggested replies."
         }
       },
       "id": "IntentMessageSuggestions"
-    },
-    "EventInput": {
-      "description": "Events allow for matching intents by event name instead of the natural\nlanguage input. For instance, input `\u003cevent: { name: “welcome_event”,\nparameters: { name: “Sam” } }\u003e` can trigger a personalized welcome response.\nThe parameter `name` may be used by the agent in the response:\n`“Hello #welcome_event.name! What can I do for you today?”`.",
-      "type": "object",
-      "properties": {
-        "languageCode": {
-          "description": "Required. The language of this query. See [Language\nSupport](https://dialogflow.com/docs/languages) for a list of the\ncurrently supported language codes. Note that queries in the same session\ndo not necessarily need to specify the same language.",
-          "type": "string"
-        },
-        "name": {
-          "description": "Required. The unique identifier of the event.",
-          "type": "string"
-        },
-        "parameters": {
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          },
-          "description": "Optional. The collection of parameters associated with the event.",
-          "type": "object"
-        }
-      },
-      "id": "EventInput"
     },
     "EntityType": {
       "description": "Represents an entity type.\nEntity types serve as a tool for extracting parameter values from natural\nlanguage queries.",
       "type": "object",
       "properties": {
-        "displayName": {
-          "description": "Required. The name of the entity.",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Required. Indicates the kind of entity type.",
-          "type": "string",
-          "enumDescriptions": [
-            "Not specified. This value should be never used.",
-            "Map entity types allow mapping of a group of synonyms to a canonical\nvalue.",
-            "List entity types contain a set of entries that do not map to canonical\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases)."
-          ],
-          "enum": [
-            "KIND_UNSPECIFIED",
-            "KIND_MAP",
-            "KIND_LIST"
-          ]
-        },
-        "autoExpansionMode": {
-          "enumDescriptions": [
-            "Auto expansion disabled for the entity.",
-            "Allows an agent to recognize values that have not been explicitly\nlisted in the entity."
-          ],
-          "enum": [
-            "AUTO_EXPANSION_MODE_UNSPECIFIED",
-            "AUTO_EXPANSION_MODE_DEFAULT"
-          ],
-          "description": "Optional. Indicates whether the entity type can be automatically\nexpanded.",
-          "type": "string"
-        },
         "entities": {
           "description": "Optional. The collection of entities associated with the entity type.",
           "type": "array",
@@ -1648,6 +1542,36 @@
         "name": {
           "description": "Required for all methods except `create` (`create` populates the name\nautomatically.\nThe unique identifier of the entity type. Format:\n`projects/\u003cProject ID\u003e/agent/entityTypes/\u003cEntity Type ID\u003e`.",
           "type": "string"
+        },
+        "displayName": {
+          "description": "Required. The name of the entity.",
+          "type": "string"
+        },
+        "kind": {
+          "type": "string",
+          "enumDescriptions": [
+            "Not specified. This value should be never used.",
+            "Map entity types allow mapping of a group of synonyms to a canonical\nvalue.",
+            "List entity types contain a set of entries that do not map to canonical\nvalues. However, list entity types can contain references to other entity\ntypes (with or without aliases)."
+          ],
+          "enum": [
+            "KIND_UNSPECIFIED",
+            "KIND_MAP",
+            "KIND_LIST"
+          ],
+          "description": "Required. Indicates the kind of entity type."
+        },
+        "autoExpansionMode": {
+          "type": "string",
+          "enumDescriptions": [
+            "Auto expansion disabled for the entity.",
+            "Allows an agent to recognize values that have not been explicitly\nlisted in the entity."
+          ],
+          "enum": [
+            "AUTO_EXPANSION_MODE_UNSPECIFIED",
+            "AUTO_EXPANSION_MODE_DEFAULT"
+          ],
+          "description": "Optional. Indicates whether the entity type can be automatically\nexpanded."
         }
       },
       "id": "EntityType"
@@ -1656,17 +1580,6 @@
       "description": "The `Status` type defines a logical error model that is suitable for different\nprogramming environments, including REST APIs and RPC APIs. It is used by\n[gRPC](https://github.com/grpc). The error model is designed to be:\n\n- Simple to use and understand for most users\n- Flexible enough to meet unexpected needs\n\n# Overview\n\nThe `Status` message contains three pieces of data: error code, error message,\nand error details. The error code should be an enum value of\ngoogle.rpc.Code, but it may accept additional error codes if needed.  The\nerror message should be a developer-facing English message that helps\ndevelopers *understand* and *resolve* the error. If a localized user-facing\nerror message is needed, put the localized message in the error details or\nlocalize it in the client. The optional error details may contain arbitrary\ninformation about the error. There is a predefined set of error detail types\nin the package `google.rpc` that can be used for common error conditions.\n\n# Language mapping\n\nThe `Status` message is the logical representation of the error model, but it\nis not necessarily the actual wire format. When the `Status` message is\nexposed in different client libraries and different wire protocols, it can be\nmapped differently. For example, it will likely be mapped to some exceptions\nin Java, but more likely mapped to some error codes in C.\n\n# Other uses\n\nThe error model and the `Status` message can be used in a variety of\nenvironments, either with or without APIs, to provide a\nconsistent developer experience across different environments.\n\nExample uses of this error model include:\n\n- Partial errors. If a service needs to return partial errors to the client,\n    it may embed the `Status` in the normal response to indicate the partial\n    errors.\n\n- Workflow errors. A typical workflow has multiple steps. Each step may\n    have a `Status` message for error reporting.\n\n- Batch operations. If a client uses batch request and batch response, the\n    `Status` message should be used directly inside batch response, one for\n    each error sub-response.\n\n- Asynchronous operations. If an API call embeds asynchronous operation\n    results in its response, the status of those operations should be\n    represented directly using the `Status` message.\n\n- Logging. If some API errors are stored in logs, the message `Status` could\n    be used directly after any stripping needed for security/privacy reasons.",
       "type": "object",
       "properties": {
-        "details": {
-          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
-          "type": "array",
-          "items": {
-            "additionalProperties": {
-              "description": "Properties of the object. Contains field @type with type URL.",
-              "type": "any"
-            },
-            "type": "object"
-          }
-        },
         "code": {
           "description": "The status code, which should be an enum value of google.rpc.Code.",
           "format": "int32",
@@ -1675,6 +1588,17 @@
         "message": {
           "description": "A developer-facing error message, which should be in English. Any\nuser-facing error message should be localized and sent in the\ngoogle.rpc.Status.details field, or localized by the client.",
           "type": "string"
+        },
+        "details": {
+          "description": "A list of messages that carry the error details.  There is a common set of\nmessage types for APIs to use.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": {
+              "description": "Properties of the object. Contains field @type with type URL.",
+              "type": "any"
+            }
+          }
         }
       },
       "id": "Status"
@@ -1683,47 +1607,34 @@
       "description": "Corresponds to the `Response` field in API.AI console.",
       "type": "object",
       "properties": {
-        "quickReplies": {
-          "description": "The quick replies response.",
-          "$ref": "IntentMessageQuickReplies"
-        },
-        "card": {
-          "description": "The card response.",
-          "$ref": "IntentMessageCard"
-        },
-        "basicCard": {
-          "$ref": "IntentMessageBasicCard",
-          "description": "The basic card response for Actions on Google."
-        },
-        "carouselSelect": {
-          "$ref": "IntentMessageCarouselSelect",
-          "description": "The carousel card response for Actions on Google."
-        },
-        "linkOutSuggestion": {
-          "$ref": "IntentMessageLinkOutSuggestion",
-          "description": "The link out suggestion chip for Actions on Google."
-        },
-        "simpleResponses": {
-          "description": "The voice and text-only responses for Actions on Google.",
-          "$ref": "IntentMessageSimpleResponses"
-        },
         "image": {
-          "description": "The image response.",
-          "$ref": "IntentMessageImage"
+          "$ref": "IntentMessageImage",
+          "description": "The image response."
         },
         "payload": {
-          "description": "The response containing a custom payload.",
-          "type": "object",
           "additionalProperties": {
             "description": "Properties of the object.",
             "type": "any"
-          }
+          },
+          "description": "The response containing a custom payload.",
+          "type": "object"
         },
         "text": {
-          "description": "The text response.",
-          "$ref": "IntentMessageText"
+          "$ref": "IntentMessageText",
+          "description": "The text response."
         },
         "platform": {
+          "enum": [
+            "PLATFORM_UNSPECIFIED",
+            "FACEBOOK",
+            "SLACK",
+            "TELEGRAM",
+            "KIK",
+            "SKYPE",
+            "LINE",
+            "VIBER",
+            "ACTIONS_ON_GOOGLE"
+          ],
           "description": "Optional. The platform that this message is intended for.",
           "type": "string",
           "enumDescriptions": [
@@ -1736,17 +1647,6 @@
             "Line.",
             "Viber.",
             "Actions on Google."
-          ],
-          "enum": [
-            "PLATFORM_UNSPECIFIED",
-            "FACEBOOK",
-            "SLACK",
-            "TELEGRAM",
-            "KIK",
-            "SKYPE",
-            "LINE",
-            "VIBER",
-            "ACTIONS_ON_GOOGLE"
           ]
         },
         "suggestions": {
@@ -1756,6 +1656,30 @@
         "listSelect": {
           "description": "The list card response for Actions on Google.",
           "$ref": "IntentMessageListSelect"
+        },
+        "quickReplies": {
+          "$ref": "IntentMessageQuickReplies",
+          "description": "The quick replies response."
+        },
+        "card": {
+          "$ref": "IntentMessageCard",
+          "description": "The card response."
+        },
+        "basicCard": {
+          "$ref": "IntentMessageBasicCard",
+          "description": "The basic card response for Actions on Google."
+        },
+        "carouselSelect": {
+          "$ref": "IntentMessageCarouselSelect",
+          "description": "The carousel card response for Actions on Google."
+        },
+        "linkOutSuggestion": {
+          "description": "The link out suggestion chip for Actions on Google.",
+          "$ref": "IntentMessageLinkOutSuggestion"
+        },
+        "simpleResponses": {
+          "$ref": "IntentMessageSimpleResponses",
+          "description": "The voice and text-only responses for Actions on Google."
         }
       },
       "id": "IntentMessage"
@@ -1764,97 +1688,21 @@
       "description": "The response message for Contexts.ListContexts.",
       "type": "object",
       "properties": {
-        "contexts": {
-          "description": "The list of contexts. There will be a maximum number of items\nreturned based on the page_size field in the request.",
-          "type": "array",
-          "items": {
-            "$ref": "Context"
-          }
-        },
         "nextPageToken": {
           "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list.",
           "type": "string"
+        },
+        "contexts": {
+          "type": "array",
+          "items": {
+            "$ref": "Context"
+          },
+          "description": "The list of contexts. There will be a maximum number of items\nreturned based on the page_size field in the request."
         }
       },
       "id": "ListContextsResponse"
     },
-    "Agent": {
-      "description": "Represents a conversational agent.",
-      "type": "object",
-      "properties": {
-        "timeZone": {
-          "description": "Required. The time zone of this agent from the\n[time zone database](https://www.iana.org/time-zones), e.g.,\nAmerica/New_York, Europe/Paris.",
-          "type": "string"
-        },
-        "defaultLanguageCode": {
-          "description": "Required. The default language of the agent as a language tag. See\n[Language Support](https://dialogflow.com/docs/reference/language) for a\nlist of the currently supported language codes.\nThis field cannot be set by the `Update` method.",
-          "type": "string"
-        },
-        "description": {
-          "description": "Optional. The description of this agent.\nThe maximum length is 500 characters. If exceeded, the request is rejected.",
-          "type": "string"
-        },
-        "displayName": {
-          "description": "Required. The name of this agent.",
-          "type": "string"
-        },
-        "parent": {
-          "description": "Required. The project of this agent.\nFormat: `projects/\u003cProject ID\u003e`.",
-          "type": "string"
-        },
-        "matchMode": {
-          "enumDescriptions": [
-            "Not specified.",
-            "Best for agents with a small number of examples in intents and/or wide\nuse of templates syntax and composite entities.",
-            "Can be used for agents with a large number of examples in intents,\nespecially the ones using @sys.any or very large developer entities."
-          ],
-          "enum": [
-            "MATCH_MODE_UNSPECIFIED",
-            "MATCH_MODE_HYBRID",
-            "MATCH_MODE_ML_ONLY"
-          ],
-          "description": "Optional. Determines how intents are detected from user queries.",
-          "type": "string"
-        },
-        "supportedLanguageCodes": {
-          "description": "Optional. The list of all languages supported by this agent (except for the\n`default_language_code`).",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "enableLogging": {
-          "description": "Optional. Determines whether this agent should log conversation queries.",
-          "type": "boolean"
-        },
-        "avatarUri": {
-          "description": "Optional. The URI of the agent's avatar.\nAvatars are used throughout API.AI console and in the self-hosted\n[Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.",
-          "type": "string"
-        },
-        "classificationThreshold": {
-          "description": "Optional. To filter out false positive results and still get variety in\nmatched natural language inputs for your agent, you can tune the machine\nlearning classification threshold. If the returned score value is less than\nthe threshold value, then a fallback intent is be triggered or, if there\nare no fallback intents defined, no intent will be triggered. The score\nvalues range from 0.0 (completely uncertain) to 1.0 (completely certain).\nIf set to 0.0, the default of 0.3 is used.",
-          "format": "float",
-          "type": "number"
-        }
-      },
-      "id": "Agent"
-    },
-    "EntityTypeBatch": {
-      "description": "This message is a wrapper around a collection of entity types.",
-      "type": "object",
-      "properties": {
-        "entityTypes": {
-          "description": "A collection of entity types.",
-          "type": "array",
-          "items": {
-            "$ref": "EntityType"
-          }
-        }
-      },
-      "id": "EntityTypeBatch"
-    },
     "OriginalDetectIntentRequest": {
-      "description": "Represents the contents of the original request that was passed to\nthe `[Streaming]DetectIntent` call.",
       "type": "object",
       "properties": {
         "payload": {
@@ -1870,37 +1718,113 @@
           "type": "string"
         }
       },
-      "id": "OriginalDetectIntentRequest"
+      "id": "OriginalDetectIntentRequest",
+      "description": "Represents the contents of the original request that was passed to\nthe `[Streaming]DetectIntent` call."
     },
-    "IntentMessageBasicCardButton": {
-      "description": "The button object that appears at the bottom of a card.",
+    "EntityTypeBatch": {
+      "description": "This message is a wrapper around a collection of entity types.",
       "type": "object",
       "properties": {
+        "entityTypes": {
+          "description": "A collection of entity types.",
+          "type": "array",
+          "items": {
+            "$ref": "EntityType"
+          }
+        }
+      },
+      "id": "EntityTypeBatch"
+    },
+    "Agent": {
+      "id": "Agent",
+      "description": "Represents a conversational agent.",
+      "type": "object",
+      "properties": {
+        "timeZone": {
+          "description": "Required. The time zone of this agent from the\n[time zone database](https://www.iana.org/time-zones), e.g.,\nAmerica/New_York, Europe/Paris.",
+          "type": "string"
+        },
+        "defaultLanguageCode": {
+          "description": "Required. The default language of the agent as a language tag. See\n[Language Support](https://dialogflow.com/docs/reference/language) for a\nlist of the currently supported language codes.\nThis field cannot be set by the `Update` method.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Required. The name of this agent.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Optional. The description of this agent.\nThe maximum length is 500 characters. If exceeded, the request is rejected.",
+          "type": "string"
+        },
+        "parent": {
+          "type": "string",
+          "description": "Required. The project of this agent.\nFormat: `projects/\u003cProject ID\u003e`."
+        },
+        "matchMode": {
+          "enumDescriptions": [
+            "Not specified.",
+            "Best for agents with a small number of examples in intents and/or wide\nuse of templates syntax and composite entities.",
+            "Can be used for agents with a large number of examples in intents,\nespecially the ones using @sys.any or very large developer entities."
+          ],
+          "enum": [
+            "MATCH_MODE_UNSPECIFIED",
+            "MATCH_MODE_HYBRID",
+            "MATCH_MODE_ML_ONLY"
+          ],
+          "description": "Optional. Determines how intents are detected from user queries.",
+          "type": "string"
+        },
+        "enableLogging": {
+          "description": "Optional. Determines whether this agent should log conversation queries.",
+          "type": "boolean"
+        },
+        "supportedLanguageCodes": {
+          "description": "Optional. The list of all languages supported by this agent (except for the\n`default_language_code`).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "avatarUri": {
+          "description": "Optional. The URI of the agent's avatar.\nAvatars are used throughout API.AI console and in the self-hosted\n[Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.",
+          "type": "string"
+        },
+        "classificationThreshold": {
+          "description": "Optional. To filter out false positive results and still get variety in\nmatched natural language inputs for your agent, you can tune the machine\nlearning classification threshold. If the returned score value is less than\nthe threshold value, then a fallback intent is be triggered or, if there\nare no fallback intents defined, no intent will be triggered. The score\nvalues range from 0.0 (completely uncertain) to 1.0 (completely certain).\nIf set to 0.0, the default of 0.3 is used.",
+          "format": "float",
+          "type": "number"
+        }
+      }
+    },
+    "IntentMessageBasicCardButton": {
+      "properties": {
+        "openUriAction": {
+          "$ref": "IntentMessageBasicCardButtonOpenUriAction",
+          "description": "Required. Action to take when a user taps on the button."
+        },
         "title": {
           "description": "Required. The title of the button.",
           "type": "string"
-        },
-        "openUriAction": {
-          "description": "Required. Action to take when a user taps on the button.",
-          "$ref": "IntentMessageBasicCardButtonOpenUriAction"
         }
       },
-      "id": "IntentMessageBasicCardButton"
+      "id": "IntentMessageBasicCardButton",
+      "description": "The button object that appears at the bottom of a card.",
+      "type": "object"
     },
     "IntentMessageSimpleResponse": {
       "description": "The simple response message containing speech or text.",
       "type": "object",
       "properties": {
-        "displayText": {
-          "description": "Optional. The text to display.",
-          "type": "string"
-        },
         "textToSpeech": {
           "description": "One of text_to_speech or ssml must be provided. The plain text of the\nspeech output. Mutually exclusive with ssml.",
           "type": "string"
         },
         "ssml": {
           "description": "One of text_to_speech or ssml must be provided. Structured spoken\nresponse to the user in the SSML format. Mutually exclusive with\ntext_to_speech.",
+          "type": "string"
+        },
+        "displayText": {
+          "description": "Optional. The text to display.",
           "type": "string"
         }
       },
@@ -1910,21 +1834,21 @@
       "description": "An item in the list.",
       "type": "object",
       "properties": {
-        "description": {
-          "description": "Optional. The main text describing the item.",
-          "type": "string"
-        },
-        "info": {
-          "description": "Required. Additional information about this option.",
-          "$ref": "IntentMessageSelectItemInfo"
-        },
         "title": {
           "description": "Required. The title of the list item.",
           "type": "string"
         },
         "image": {
-          "$ref": "IntentMessageImage",
-          "description": "Optional. The image to display."
+          "description": "Optional. The image to display.",
+          "$ref": "IntentMessageImage"
+        },
+        "description": {
+          "description": "Optional. The main text describing the item.",
+          "type": "string"
+        },
+        "info": {
+          "$ref": "IntentMessageSelectItemInfo",
+          "description": "Required. Additional information about this option."
         }
       },
       "id": "IntentMessageListSelectItem"
@@ -1942,8 +1866,8 @@
           "description": "Optional. The image for the card."
         },
         "formattedText": {
-          "description": "Required, unless image is present. The body text of the card.",
-          "type": "string"
+          "type": "string",
+          "description": "Required, unless image is present. The body text of the card."
         },
         "buttons": {
           "description": "Optional. The collection of card buttons.",
@@ -1963,17 +1887,6 @@
       "description": "Instructs the speech recognizer how to process the audio content.",
       "type": "object",
       "properties": {
-        "languageCode": {
-          "description": "Required. The language of the supplied audio. Dialogflow does not do\ntranslations. See [Language\nSupport](https://dialogflow.com/docs/languages) for a list of the\ncurrently supported language codes. Note that queries in the same session\ndo not necessarily need to specify the same language.",
-          "type": "string"
-        },
-        "phraseHints": {
-          "description": "Optional. The collection of phrase hints which are used to boost accuracy\nof speech recognition.\nRefer to [Cloud Speech API documentation](/speech/docs/basics#phrase-hints)\nfor more details.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
         "audioEncoding": {
           "description": "Required. Audio encoding of the audio content to process.",
           "type": "string",
@@ -2002,6 +1915,17 @@
           "description": "Required. Sample rate (in Hertz) of the audio content sent in the query.\nRefer to [Cloud Speech API documentation](/speech/docs/basics) for more\ndetails.",
           "format": "int32",
           "type": "integer"
+        },
+        "languageCode": {
+          "description": "Required. The language of the supplied audio. Dialogflow does not do\ntranslations. See [Language\nSupport](https://dialogflow.com/docs/languages) for a list of the\ncurrently supported language codes. Note that queries in the same session\ndo not necessarily need to specify the same language.",
+          "type": "string"
+        },
+        "phraseHints": {
+          "description": "Optional. The collection of phrase hints which are used to boost accuracy\nof speech recognition.\nRefer to [Cloud Speech API documentation](/speech/docs/basics#phrase-hints)\nfor more details.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
       "id": "InputAudioConfig"
@@ -2010,16 +1934,16 @@
       "description": "Optional. Represents an entity.",
       "type": "object",
       "properties": {
+        "value": {
+          "type": "string",
+          "description": "Required.\nFor `KIND_MAP` entity types:\n  A canonical name to be used in place of synonyms.\nFor `KIND_LIST` entity types:\n  A string that can contain references to other entity types (with or\n  without aliases)."
+        },
         "synonyms": {
           "description": "Required. A collection of synonyms. For `KIND_LIST` entity types this\nmust contain exactly one synonym equal to `value`.",
           "type": "array",
           "items": {
             "type": "string"
           }
-        },
-        "value": {
-          "description": "Required.\nFor `KIND_MAP` entity types:\n  A canonical name to be used in place of synonyms.\nFor `KIND_LIST` entity types:\n  A string that can contain references to other entity types (with or\n  without aliases).",
-          "type": "string"
         }
       },
       "id": "EntityTypeEntity"
@@ -2074,24 +1998,6 @@
       },
       "id": "IntentMessageCarouselSelect"
     },
-    "BatchCreateEntitiesRequest": {
-      "description": "The request message for EntityTypes.BatchCreateEntities.",
-      "type": "object",
-      "properties": {
-        "entities": {
-          "description": "Required. The collection of entities to create.",
-          "type": "array",
-          "items": {
-            "$ref": "EntityTypeEntity"
-          }
-        },
-        "languageCode": {
-          "description": "Optional. The language of entity synonyms defined in `entities`. If not\nspecified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
-          "type": "string"
-        }
-      },
-      "id": "BatchCreateEntitiesRequest"
-    },
     "IntentMessageSimpleResponses": {
       "description": "The collection of simple response candidates.\nThis message in `QueryResult.fulfillment_messages` and\n`WebhookResponse.fulfillment_messages` should contain only one\n`SimpleResponse`.",
       "type": "object",
@@ -2105,6 +2011,24 @@
         }
       },
       "id": "IntentMessageSimpleResponses"
+    },
+    "BatchCreateEntitiesRequest": {
+      "description": "The request message for EntityTypes.BatchCreateEntities.",
+      "type": "object",
+      "properties": {
+        "entities": {
+          "description": "Required. The collection of entities to create.",
+          "type": "array",
+          "items": {
+            "$ref": "EntityTypeEntity"
+          }
+        },
+        "languageCode": {
+          "type": "string",
+          "description": "Optional. The language of entity synonyms defined in `entities`. If not\nspecified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used."
+        }
+      },
+      "id": "BatchCreateEntitiesRequest"
     },
     "DetectIntentRequest": {
       "description": "The request to detect user's intent.",
@@ -2120,26 +2044,26 @@
           "description": "Required. The input specification. It can be set to:\n\n1.  an audio config\n    which instructs the speech recognizer how to process the speech audio,\n\n2.  a conversational query in the form of text, or\n\n3.  an event that specifies which intent to trigger."
         },
         "queryParams": {
-          "$ref": "QueryParameters",
-          "description": "Optional. The parameters of this query."
+          "description": "Optional. The parameters of this query.",
+          "$ref": "QueryParameters"
         }
       },
       "id": "DetectIntentRequest"
     },
     "TextInput": {
-      "description": "Represents the natural language text to be processed.",
       "type": "object",
       "properties": {
-        "text": {
-          "description": "Required. The UTF-8 encoded natural language text to be processed.\nText length must not exceed 256 bytes.",
-          "type": "string"
-        },
         "languageCode": {
           "description": "Required. The language of this conversational query. See [Language\nSupport](https://dialogflow.com/docs/languages) for a list of the\ncurrently supported language codes. Note that queries in the same session\ndo not necessarily need to specify the same language.",
           "type": "string"
+        },
+        "text": {
+          "description": "Required. The UTF-8 encoded natural language text to be processed.\nText length must not exceed 256 bytes.",
+          "type": "string"
         }
       },
-      "id": "TextInput"
+      "id": "TextInput",
+      "description": "Represents the natural language text to be processed."
     },
     "IntentMessageCardButton": {
       "description": "Optional. Contains information about a button.",
@@ -2157,6 +2081,7 @@
       "id": "IntentMessageCardButton"
     },
     "ListEntityTypesResponse": {
+      "id": "ListEntityTypesResponse",
       "description": "The response message for EntityTypes.ListEntityTypes.",
       "type": "object",
       "properties": {
@@ -2171,10 +2096,10 @@
           "description": "Token to retrieve the next page of results, or empty if there are no\nmore results in the list.",
           "type": "string"
         }
-      },
-      "id": "ListEntityTypesResponse"
+      }
     },
     "QueryResult": {
+      "id": "QueryResult",
       "description": "Represents the result of conversational query or event processing.",
       "type": "object",
       "properties": {
@@ -2204,8 +2129,8 @@
           "type": "boolean"
         },
         "queryText": {
-          "description": "The original conversational query text:\n- If natural language text was provided as input, `query_text` contains\n  a copy of the input.\n- If natural language speech audio was provided as input, `query_text`\n  contains the speech recognition result. If speech recognizer produced\n  multiple alternatives, a particular one is picked.\n- If an event was provided as input, `query_text` is not set.",
-          "type": "string"
+          "type": "string",
+          "description": "The original conversational query text:\n- If natural language text was provided as input, `query_text` contains\n  a copy of the input.\n- If natural language speech audio was provided as input, `query_text`\n  contains the speech recognition result. If speech recognizer produced\n  multiple alternatives, a particular one is picked.\n- If an event was provided as input, `query_text` is not set."
         },
         "speechRecognitionConfidence": {
           "description": "The Speech recognition confidence between 0.0 and 1.0. A higher number\nindicates an estimated greater likelihood that the recognized words are\ncorrect. The default of 0.0 is a sentinel value indicating that confidence\nwas not set.\n\nYou should not rely on this field as it isn't guaranteed to be accurate, or\neven set. In particular this field isn't set in Webhook calls and for\nStreamingDetectIntent since the streaming endpoint has separate confidence\nestimates per portion of the audio in StreamingRecognitionResult.",
@@ -2220,20 +2145,20 @@
           "description": "The free-form diagnostic info. For example, this field\ncould contain webhook call latency.",
           "type": "object"
         },
+        "intent": {
+          "$ref": "Intent",
+          "description": "The intent that matched the conversational query. Some, not\nall fields are filled in this message, including but not limited to:\n`name`, `display_name` and `webhook_state`."
+        },
+        "languageCode": {
+          "type": "string",
+          "description": "The language that was triggered during intent detection.\nSee [Language Support](https://dialogflow.com/docs/reference/language)\nfor a list of the currently supported language codes."
+        },
         "outputContexts": {
           "description": "The collection of output contexts. If applicable,\n`output_contexts.parameters` contains entries with name\n`\u003cparameter name\u003e.original` containing the original parameter values\nbefore the query.",
           "type": "array",
           "items": {
             "$ref": "Context"
           }
-        },
-        "languageCode": {
-          "description": "The language that was triggered during intent detection.\nSee [Language Support](https://dialogflow.com/docs/reference/language)\nfor a list of the currently supported language codes.",
-          "type": "string"
-        },
-        "intent": {
-          "description": "The intent that matched the conversational query. Some, not\nall fields are filled in this message, including but not limited to:\n`name`, `display_name` and `webhook_state`.",
-          "$ref": "Intent"
         },
         "fulfillmentMessages": {
           "description": "The collection of rich messages to present to the user.",
@@ -2254,8 +2179,7 @@
           "description": "The action name from the matched intent.",
           "type": "string"
         }
-      },
-      "id": "QueryResult"
+      }
     },
     "BatchDeleteEntityTypesRequest": {
       "description": "The request message for EntityTypes.BatchDeleteEntityTypes.",
@@ -2290,8 +2214,8 @@
       "type": "object",
       "properties": {
         "imageUri": {
-          "description": "Optional. The public URI to an image file for the card.",
-          "type": "string"
+          "type": "string",
+          "description": "Optional. The public URI to an image file for the card."
         },
         "title": {
           "description": "Optional. The title of the card.",
@@ -2312,7 +2236,6 @@
       "id": "IntentMessageCard"
     },
     "QueryParameters": {
-      "description": "Represents the parameters of the conversational query.",
       "type": "object",
       "properties": {
         "contexts": {
@@ -2350,20 +2273,11 @@
           "type": "boolean"
         }
       },
-      "id": "QueryParameters"
+      "id": "QueryParameters",
+      "description": "Represents the parameters of the conversational query."
     },
     "BatchUpdateEntityTypesRequest": {
-      "description": "The request message for EntityTypes.BatchUpdateEntityTypes.",
-      "type": "object",
       "properties": {
-        "entityTypeBatchUri": {
-          "description": "Warning: Importing entity types from a URI is not implemented yet.\nThis feature is coming soon.\nThe URI to a Google Cloud Storage file containing entity types to update\nor create. The file format can either be a serialized proto (of\nEntityBatch type) or a JSON object. Note: The URI must start with\n\"gs://\".",
-          "type": "string"
-        },
-        "entityTypeBatchInline": {
-          "description": "The collection of entity type to update or create.",
-          "$ref": "EntityTypeBatch"
-        },
         "languageCode": {
           "description": "Optional. The language of entity synonyms defined in `entity_types`. If not\nspecified, the agent's default language is used.\n[More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
           "type": "string"
@@ -2372,14 +2286,103 @@
           "description": "Optional. The mask to control which fields get updated.",
           "format": "google-fieldmask",
           "type": "string"
+        },
+        "entityTypeBatchUri": {
+          "description": "Warning: Importing entity types from a URI is not implemented yet.\nThis feature is coming soon.\nThe URI to a Google Cloud Storage file containing entity types to update\nor create. The file format can either be a serialized proto (of\nEntityBatch type) or a JSON object. Note: The URI must start with\n\"gs://\".",
+          "type": "string"
+        },
+        "entityTypeBatchInline": {
+          "$ref": "EntityTypeBatch",
+          "description": "The collection of entity type to update or create."
         }
       },
-      "id": "BatchUpdateEntityTypesRequest"
+      "id": "BatchUpdateEntityTypesRequest",
+      "description": "The request message for EntityTypes.BatchUpdateEntityTypes.",
+      "type": "object"
     },
     "Intent": {
       "description": "Represents an intent.\nIntents convert a number of user expressions or patterns into an action. An\naction is an extraction of a user command or sentence semantics.",
       "type": "object",
       "properties": {
+        "outputContexts": {
+          "description": "Optional. The collection of contexts that are activated when the intent\nis matched. Context messages in this collection should not set the\nparameters field. Setting the `lifespan_count` to 0 will reset the context\nwhen the intent is matched.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/-/contexts/\u003cContext ID\u003e`.",
+          "type": "array",
+          "items": {
+            "$ref": "Context"
+          }
+        },
+        "defaultResponsePlatforms": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "PLATFORM_UNSPECIFIED",
+              "FACEBOOK",
+              "SLACK",
+              "TELEGRAM",
+              "KIK",
+              "SKYPE",
+              "LINE",
+              "VIBER",
+              "ACTIONS_ON_GOOGLE"
+            ],
+            "type": "string"
+          },
+          "enumDescriptions": [
+            "Not specified.",
+            "Facebook.",
+            "Slack.",
+            "Telegram.",
+            "Kik.",
+            "Skype.",
+            "Line.",
+            "Viber.",
+            "Actions on Google."
+          ],
+          "description": "Optional. The list of platforms for which the first response will be\ntaken from among the messages assigned to the DEFAULT_PLATFORM."
+        },
+        "action": {
+          "description": "Optional. The name of the action associated with the intent.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Required for all methods except `create` (`create` populates the name\nautomatically.\nThe unique identifier of this intent.\nFormat: `projects/\u003cProject ID\u003e/agent/intents/\u003cIntent ID\u003e`.",
+          "type": "string"
+        },
+        "messages": {
+          "description": "Optional. The collection of rich messages corresponding to the\n`Response` field in API.AI console.",
+          "type": "array",
+          "items": {
+            "$ref": "IntentMessage"
+          }
+        },
+        "webhookState": {
+          "enumDescriptions": [
+            "Webhook is disabled in the agent and in the intent.",
+            "Webhook is enabled in the agent and in the intent.",
+            "Webhook is enabled in the agent and in the intent. Also, each slot\nfilling prompt is forwarded to the webhook."
+          ],
+          "enum": [
+            "WEBHOOK_STATE_UNSPECIFIED",
+            "WEBHOOK_STATE_ENABLED",
+            "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING"
+          ],
+          "description": "Required. Indicates whether webhooks are enabled for the intent.",
+          "type": "string"
+        },
+        "inputContextNames": {
+          "description": "Optional. The list of context names required for this intent to be\ntriggered.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/-/contexts/\u003cContext ID\u003e`.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "followupIntentInfo": {
+          "description": "Optional. Collection of information about all followup intents that have\nname of this intent as a root_name.",
+          "type": "array",
+          "items": {
+            "$ref": "IntentFollowupIntentInfo"
+          }
+        },
         "rootFollowupIntentName": {
           "description": "The unique identifier of the root intent in the chain of followup intents.\nIt identifies the correct followup intents chain for this intent.\nFormat: `projects/\u003cProject ID\u003e/agent/intents/\u003cIntent ID\u003e`.",
           "type": "string"
@@ -2429,91 +2432,25 @@
           "description": "Optional. The priority of this intent. Higher numbers represent higher\npriorities. Zero or negative numbers mean that the intent is disabled.",
           "format": "int32",
           "type": "integer"
-        },
-        "outputContexts": {
-          "description": "Optional. The collection of contexts that are activated when the intent\nis matched. Context messages in this collection should not set the\nparameters field. Setting the `lifespan_count` to 0 will reset the context\nwhen the intent is matched.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/-/contexts/\u003cContext ID\u003e`.",
-          "type": "array",
-          "items": {
-            "$ref": "Context"
-          }
-        },
-        "defaultResponsePlatforms": {
-          "enumDescriptions": [
-            "Not specified.",
-            "Facebook.",
-            "Slack.",
-            "Telegram.",
-            "Kik.",
-            "Skype.",
-            "Line.",
-            "Viber.",
-            "Actions on Google."
-          ],
-          "description": "Optional. The list of platforms for which the first response will be\ntaken from among the messages assigned to the DEFAULT_PLATFORM.",
-          "type": "array",
-          "items": {
-            "enum": [
-              "PLATFORM_UNSPECIFIED",
-              "FACEBOOK",
-              "SLACK",
-              "TELEGRAM",
-              "KIK",
-              "SKYPE",
-              "LINE",
-              "VIBER",
-              "ACTIONS_ON_GOOGLE"
-            ],
-            "type": "string"
-          }
-        },
-        "action": {
-          "description": "Optional. The name of the action associated with the intent.",
-          "type": "string"
-        },
-        "name": {
-          "description": "Required for all methods except `create` (`create` populates the name\nautomatically.\nThe unique identifier of this intent.\nFormat: `projects/\u003cProject ID\u003e/agent/intents/\u003cIntent ID\u003e`.",
-          "type": "string"
-        },
-        "messages": {
-          "description": "Optional. The collection of rich messages corresponding to the\n`Response` field in API.AI console.",
-          "type": "array",
-          "items": {
-            "$ref": "IntentMessage"
-          }
-        },
-        "webhookState": {
-          "description": "Required. Indicates whether webhooks are enabled for the intent.",
-          "type": "string",
-          "enumDescriptions": [
-            "Webhook is disabled in the agent and in the intent.",
-            "Webhook is enabled in the agent and in the intent.",
-            "Webhook is enabled in the agent and in the intent. Also, each slot\nfilling prompt is forwarded to the webhook."
-          ],
-          "enum": [
-            "WEBHOOK_STATE_UNSPECIFIED",
-            "WEBHOOK_STATE_ENABLED",
-            "WEBHOOK_STATE_ENABLED_FOR_SLOT_FILLING"
-          ]
-        },
-        "inputContextNames": {
-          "description": "Optional. The list of context names required for this intent to be\ntriggered.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/-/contexts/\u003cContext ID\u003e`.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "followupIntentInfo": {
-          "description": "Optional. Collection of information about all followup intents that have\nname of this intent as a root_name.",
-          "type": "array",
-          "items": {
-            "$ref": "IntentFollowupIntentInfo"
-          }
         }
       },
       "id": "Intent"
     },
+    "IntentBatch": {
+      "description": "This message is a wrapper around a collection of intents.",
+      "type": "object",
+      "properties": {
+        "intents": {
+          "description": "A collection of intents.",
+          "type": "array",
+          "items": {
+            "$ref": "Intent"
+          }
+        }
+      },
+      "id": "IntentBatch"
+    },
     "IntentTrainingPhrasePart": {
-      "description": "Represents a part of a training phrase.",
       "type": "object",
       "properties": {
         "alias": {
@@ -2533,21 +2470,8 @@
           "type": "string"
         }
       },
-      "id": "IntentTrainingPhrasePart"
-    },
-    "IntentBatch": {
-      "description": "This message is a wrapper around a collection of intents.",
-      "type": "object",
-      "properties": {
-        "intents": {
-          "description": "A collection of intents.",
-          "type": "array",
-          "items": {
-            "$ref": "Intent"
-          }
-        }
-      },
-      "id": "IntentBatch"
+      "id": "IntentTrainingPhrasePart",
+      "description": "Represents a part of a training phrase."
     },
     "BatchDeleteEntitiesRequest": {
       "description": "The request message for EntityTypes.BatchDeleteEntities.",
@@ -2590,31 +2514,14 @@
       "type": "object",
       "properties": {
         "title": {
-          "description": "Required. The text shown the in the suggestion chip.",
-          "type": "string"
+          "type": "string",
+          "description": "Required. The text shown the in the suggestion chip."
         }
       },
       "id": "IntentMessageSuggestion"
     },
-    "IntentMessageQuickReplies": {
-      "description": "The quick replies response message.",
-      "type": "object",
-      "properties": {
-        "quickReplies": {
-          "description": "Optional. The collection of quick replies.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "title": {
-          "description": "Optional. The title of the collection of quick replies.",
-          "type": "string"
-        }
-      },
-      "id": "IntentMessageQuickReplies"
-    },
     "IntentMessageCarouselSelectItem": {
+      "id": "IntentMessageCarouselSelectItem",
       "description": "An item in the carousel.",
       "type": "object",
       "properties": {
@@ -2634,21 +2541,30 @@
           "$ref": "IntentMessageImage",
           "description": "Optional. The image to display."
         }
+      }
+    },
+    "IntentMessageQuickReplies": {
+      "description": "The quick replies response message.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "description": "Optional. The title of the collection of quick replies.",
+          "type": "string"
+        },
+        "quickReplies": {
+          "description": "Optional. The collection of quick replies.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
-      "id": "IntentMessageCarouselSelectItem"
+      "id": "IntentMessageQuickReplies"
     },
     "WebhookRequest": {
       "description": "The request message for a webhook call.",
       "type": "object",
       "properties": {
-        "queryResult": {
-          "$ref": "QueryResult",
-          "description": "The result of the conversational query or event processing. Contains the\nsame value as `[Streaming]DetectIntentResponse.query_result`."
-        },
-        "originalDetectIntentRequest": {
-          "$ref": "OriginalDetectIntentRequest",
-          "description": "Optional. The contents of the original request that was passed to\n`[Streaming]DetectIntent` call."
-        },
         "responseId": {
           "description": "The unique identifier of the response. Contains the same value as\n`[Streaming]DetectIntentResponse.response_id`.",
           "type": "string"
@@ -2656,21 +2572,36 @@
         "session": {
           "description": "The unique identifier of detectIntent request session.\nCan be used to identify end-user inside webhook implementation.\nFormat: `projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e`.",
           "type": "string"
+        },
+        "queryResult": {
+          "description": "The result of the conversational query or event processing. Contains the\nsame value as `[Streaming]DetectIntentResponse.query_result`.",
+          "$ref": "QueryResult"
+        },
+        "originalDetectIntentRequest": {
+          "$ref": "OriginalDetectIntentRequest",
+          "description": "Optional. The contents of the original request that was passed to\n`[Streaming]DetectIntent` call."
         }
       },
       "id": "WebhookRequest"
     },
-    "IntentTrainingPhrase": {
-      "description": "Represents an example or template that the agent is trained on.",
+    "RestoreAgentRequest": {
+      "id": "RestoreAgentRequest",
+      "description": "The request message for Agents.RestoreAgent.",
       "type": "object",
       "properties": {
-        "parts": {
-          "description": "Required. The collection of training phrase parts (can be annotated).\nFields: `entity_type`, `alias` and `user_defined` should be populated\nonly for the annotated parts of the training phrase.",
-          "type": "array",
-          "items": {
-            "$ref": "IntentTrainingPhrasePart"
-          }
+        "agentContent": {
+          "description": "The agent to restore.\n\nExample for how to restore an agent via the command line:\n\ncurl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/\u003cproject_name\u003e/agent:restore\\\n   -X POST \\\n   -H 'Authorization: Bearer '$(gcloud auth print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --compressed \\\n   --data-binary \"{\n       'agentContent': '$(cat \u003cagent zip file\u003e | base64 -w 0)'\n   }\" \\",
+          "format": "byte",
+          "type": "string"
         },
+        "agentUri": {
+          "description": "Warning: Restoring agents from a URI is not implemented yet.\nThis feature is coming soon.\n\nThe URI to a Google Cloud Storage file containing the agent to restore.\nNote: The URI must start with \"gs://\".",
+          "type": "string"
+        }
+      }
+    },
+    "IntentTrainingPhrase": {
+      "properties": {
         "name": {
           "description": "Required. The unique identifier of this training phrase.",
           "type": "string"
@@ -2693,42 +2624,35 @@
           ],
           "description": "Required. The type of the training phrase.",
           "type": "string"
-        }
-      },
-      "id": "IntentTrainingPhrase"
-    },
-    "RestoreAgentRequest": {
-      "description": "The request message for Agents.RestoreAgent.",
-      "type": "object",
-      "properties": {
-        "agentUri": {
-          "description": "Warning: Restoring agents from a URI is not implemented yet.\nThis feature is coming soon.\n\nThe URI to a Google Cloud Storage file containing the agent to restore.\nNote: The URI must start with \"gs://\".",
-          "type": "string"
         },
-        "agentContent": {
-          "description": "The agent to restore.\n\nExample for how to restore an agent via the command line:\n\ncurl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/\u003cproject_name\u003e/agent:restore\\\n   -X POST \\\n   -H 'Authorization: Bearer '$(gcloud auth print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --compressed \\\n   --data-binary \"{\n       'agentContent': '$(cat \u003cagent zip file\u003e | base64 -w 0)'\n   }\" \\",
-          "format": "byte",
-          "type": "string"
+        "parts": {
+          "type": "array",
+          "items": {
+            "$ref": "IntentTrainingPhrasePart"
+          },
+          "description": "Required. The collection of training phrase parts (can be annotated).\nFields: `entity_type`, `alias` and `user_defined` should be populated\nonly for the annotated parts of the training phrase."
         }
       },
-      "id": "RestoreAgentRequest"
+      "id": "IntentTrainingPhrase",
+      "description": "Represents an example or template that the agent is trained on.",
+      "type": "object"
     },
     "LatLng": {
-      "description": "An object representing a latitude/longitude pair. This is expressed as a pair\nof doubles representing degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n\u003ca href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\"\u003eWGS84\nstandard\u003c/a\u003e. Values must be within normalized ranges.",
-      "type": "object",
       "properties": {
-        "latitude": {
-          "description": "The latitude in degrees. It must be in the range [-90.0, +90.0].",
-          "format": "double",
-          "type": "number"
-        },
         "longitude": {
           "description": "The longitude in degrees. It must be in the range [-180.0, +180.0].",
           "format": "double",
           "type": "number"
+        },
+        "latitude": {
+          "description": "The latitude in degrees. It must be in the range [-90.0, +90.0].",
+          "format": "double",
+          "type": "number"
         }
       },
-      "id": "LatLng"
+      "id": "LatLng",
+      "description": "An object representing a latitude/longitude pair. This is expressed as a pair\nof doubles representing degrees latitude and degrees longitude. Unless\nspecified otherwise, this must conform to the\n\u003ca href=\"http://www.unoosa.org/pdf/icg/2012/template/WGS_84.pdf\"\u003eWGS84\nstandard\u003c/a\u003e. Values must be within normalized ranges.",
+      "type": "object"
     },
     "ListIntentsResponse": {
       "description": "The response message for Intents.ListIntents.",
@@ -2749,6 +2673,7 @@
       "id": "ListIntentsResponse"
     },
     "Context": {
+      "id": "Context",
       "description": "Represents a context.",
       "type": "object",
       "properties": {
@@ -2758,8 +2683,8 @@
           "type": "integer"
         },
         "name": {
-          "description": "Required. The unique identifier of the context. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/contexts/\u003cContext ID\u003e`.\nNote: The Context ID is always converted to lowercase.",
-          "type": "string"
+          "type": "string",
+          "description": "Required. The unique identifier of the context. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/contexts/\u003cContext ID\u003e`.\nNote: The Context ID is always converted to lowercase."
         },
         "parameters": {
           "description": "Optional. The collection of parameters associated with this context.\nRefer to [this doc](https://dialogflow.com/docs/actions-and-parameters) for\nsyntax.",
@@ -2769,21 +2694,20 @@
             "type": "any"
           }
         }
-      },
-      "id": "Context"
+      }
     },
     "ImportAgentRequest": {
       "description": "The request message for Agents.ImportAgent.",
       "type": "object",
       "properties": {
         "agentContent": {
+          "type": "string",
           "description": "The agent to import.\n\nExample for how to import an agent via the command line:\n\ncurl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/\u003cproject_name\u003e/agent:import\\\n   -X POST \\\n   -H 'Authorization: Bearer '$(gcloud auth print-access-token) \\\n   -H 'Accept: application/json' \\\n   -H 'Content-Type: application/json' \\\n   --compressed \\\n   --data-binary \"{\n      'agentContent': '$(cat \u003cagent zip file\u003e | base64 -w 0)'\n   }\"",
-          "format": "byte",
-          "type": "string"
+          "format": "byte"
         },
         "agentUri": {
-          "description": "Warning: Importing agents from a URI is not implemented yet.\nThis feature is coming soon.\n\nThe URI to a Google Cloud Storage file containing the agent to import.\nNote: The URI must start with \"gs://\".",
-          "type": "string"
+          "type": "string",
+          "description": "Warning: Importing agents from a URI is not implemented yet.\nThis feature is coming soon.\n\nThe URI to a Google Cloud Storage file containing the agent to import.\nNote: The URI must start with \"gs://\"."
         }
       },
       "id": "ImportAgentRequest"
@@ -2793,19 +2717,41 @@
       "type": "object",
       "properties": {
         "intents": {
-          "description": "The collection of updated or created intents.",
           "type": "array",
           "items": {
             "$ref": "Intent"
-          }
+          },
+          "description": "The collection of updated or created intents."
         }
       },
       "id": "BatchUpdateIntentsResponse"
     },
     "IntentParameter": {
-      "description": "Represents intent parameters.",
       "type": "object",
       "properties": {
+        "prompts": {
+          "description": "Optional. The collection of prompts that the agent can present to the\nuser in order to collect value for the parameter.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "defaultValue": {
+          "type": "string",
+          "description": "Optional. The default value to use when the `value` yields an empty\nresult.\nDefault values can be extracted from contexts by using the following\nsyntax: `#context_name.parameter_name`."
+        },
+        "mandatory": {
+          "description": "Optional. Indicates whether the parameter is required. That is,\nwhether the intent cannot be completed without collecting the parameter\nvalue.",
+          "type": "boolean"
+        },
+        "isList": {
+          "type": "boolean",
+          "description": "Optional. Indicates whether the parameter represents a list of values."
+        },
+        "name": {
+          "description": "The unique identifier of this parameter.",
+          "type": "string"
+        },
         "value": {
           "description": "Optional. The definition of the parameter value. It can be:\n- a constant string,\n- a parameter value defined as `$parameter_name`,\n- an original parameter value defined as `$parameter_name.original`,\n- a parameter value from some context defined as\n  `#context_name.parameter_name`.",
           "type": "string"
@@ -2815,58 +2761,36 @@
           "type": "string"
         },
         "entityTypeDisplayName": {
-          "description": "Optional. The name of the entity type, prefixed with `@`, that\ndescribes values of the parameter. If the parameter is\nrequired, this must be provided.",
-          "type": "string"
-        },
-        "prompts": {
-          "description": "Optional. The collection of prompts that the agent can present to the\nuser in order to collect value for the parameter.",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "defaultValue": {
-          "description": "Optional. The default value to use when the `value` yields an empty\nresult.\nDefault values can be extracted from contexts by using the following\nsyntax: `#context_name.parameter_name`.",
-          "type": "string"
-        },
-        "mandatory": {
-          "description": "Optional. Indicates whether the parameter is required. That is,\nwhether the intent cannot be completed without collecting the parameter\nvalue.",
-          "type": "boolean"
-        },
-        "name": {
-          "description": "The unique identifier of this parameter.",
-          "type": "string"
-        },
-        "isList": {
-          "description": "Optional. Indicates whether the parameter represents a list of values.",
-          "type": "boolean"
+          "type": "string",
+          "description": "Optional. The name of the entity type, prefixed with `@`, that\ndescribes values of the parameter. If the parameter is\nrequired, this must be provided."
         }
       },
-      "id": "IntentParameter"
+      "id": "IntentParameter",
+      "description": "Represents intent parameters."
     },
     "ExportAgentResponse": {
-      "description": "The response message for Agents.ExportAgent.",
-      "type": "object",
       "properties": {
-        "agentContent": {
-          "description": "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n\ncurl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/\u003cproject_name\u003e/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer '$(gcloud auth print-access-token) \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  --compressed \\\n  --data-binary '{}' \\\n| grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n| base64 --decode \u003e \u003cagent zip file\u003e",
-          "format": "byte",
-          "type": "string"
-        },
         "agentUri": {
           "description": "The URI to a file containing the exported agent. This field is populated\nonly if `agent_uri` is specified in `ExportAgentRequest`.",
           "type": "string"
+        },
+        "agentContent": {
+          "type": "string",
+          "description": "The exported agent.\n\nExample for how to export an agent to a zip file via a command line:\n\ncurl \\\n  'https://dialogflow.googleapis.com/v2beta1/projects/\u003cproject_name\u003e/agent:export'\\\n  -X POST \\\n  -H 'Authorization: Bearer '$(gcloud auth print-access-token) \\\n  -H 'Accept: application/json' \\\n  -H 'Content-Type: application/json' \\\n  --compressed \\\n  --data-binary '{}' \\\n| grep agentContent | sed -e 's/.*\"agentContent\": \"\\([^\"]*\\)\".*/\\1/' \\\n| base64 --decode \u003e \u003cagent zip file\u003e",
+          "format": "byte"
         }
       },
-      "id": "ExportAgentResponse"
+      "id": "ExportAgentResponse",
+      "description": "The response message for Agents.ExportAgent.",
+      "type": "object"
     },
     "IntentMessageBasicCardButtonOpenUriAction": {
       "description": "Opens the given URI.",
       "type": "object",
       "properties": {
         "uri": {
-          "description": "Required. The HTTP or HTTPS scheme URI.",
-          "type": "string"
+          "type": "string",
+          "description": "Required. The HTTP or HTTPS scheme URI."
         }
       },
       "id": "IntentMessageBasicCardButtonOpenUriAction"
@@ -2885,6 +2809,86 @@
         }
       },
       "id": "IntentMessageImage"
+    },
+    "BatchUpdateIntentsRequest": {
+      "type": "object",
+      "properties": {
+        "intentBatchUri": {
+          "description": "Warning: Importing intents from a URI is not implemented yet.\nThis feature is coming soon.\nThe URI to a Google Cloud Storage file containing intents to update or\ncreate. The file format can either be a serialized proto (of IntentBatch\ntype) or JSON object. Note: The URI must start with \"gs://\".",
+          "type": "string"
+        },
+        "intentView": {
+          "type": "string",
+          "enumDescriptions": [
+            "Training phrases field is not populated in the response.",
+            "All fields are populated."
+          ],
+          "enum": [
+            "INTENT_VIEW_UNSPECIFIED",
+            "INTENT_VIEW_FULL"
+          ],
+          "description": "Optional. The resource view to apply to the returned intent."
+        },
+        "intentBatchInline": {
+          "$ref": "IntentBatch",
+          "description": "The collection of intents to update or create."
+        },
+        "languageCode": {
+          "description": "Optional. The language of training phrases, parameters and rich messages\ndefined in `intents`. If not specified, the agent's default language is\nused. [More than a dozen\nlanguages](https://dialogflow.com/docs/reference/language) are supported.\nNote: languages must be enabled in the agent, before they can be used.",
+          "type": "string"
+        },
+        "updateMask": {
+          "description": "Optional. The mask to control which fields get updated.",
+          "format": "google-fieldmask",
+          "type": "string"
+        }
+      },
+      "id": "BatchUpdateIntentsRequest",
+      "description": "The request message for Intents.BatchUpdateIntents."
+    },
+    "TrainAgentRequest": {
+      "description": "The request message for Agents.TrainAgent.",
+      "type": "object",
+      "properties": {},
+      "id": "TrainAgentRequest"
+    },
+    "Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "type": "object",
+      "properties": {},
+      "id": "Empty"
+    },
+    "SessionEntityType": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Required. The unique identifier of this session entity type. Format:\n`projects/\u003cProject ID\u003e/agent/sessions/\u003cSession ID\u003e/entityTypes/\u003cEntity Type\nDisplay Name\u003e`.",
+          "type": "string"
+        },
+        "entityOverrideMode": {
+          "enum": [
+            "ENTITY_OVERRIDE_MODE_UNSPECIFIED",
+            "ENTITY_OVERRIDE_MODE_OVERRIDE",
+            "ENTITY_OVERRIDE_MODE_SUPPLEMENT"
+          ],
+          "description": "Required. Indicates whether the additional data should override or\nsupplement the developer entity type definition.",
+          "type": "string",
+          "enumDescriptions": [
+            "Not specified. This value should be never used.",
+            "The collection of session entities overrides the collection of entities\nin the corresponding developer entity type.",
+            "The collection of session entities extends the collection of entities in\nthe corresponding developer entity type.\nCalls to `ListSessionEntityTypes`, `GetSessionEntityType`,\n`CreateSessionEntityType` and `UpdateSessionEntityType` return the full\ncollection of entities from the developer entity type in the agent's\ndefault language and the session entity type."
+          ]
+        },
+        "entities": {
+          "description": "Required. The collection of entities associated with this session entity\ntype.",
+          "type": "array",
+          "items": {
+            "$ref": "EntityTypeEntity"
+          }
+        }
+      },
+      "id": "SessionEntityType",
+      "description": "Represents a session entity type.\n\nExtends or replaces a developer entity type at the user session level (we\nrefer to the entity types defined at the agent level as \"developer entity\ntypes\").\n\nNote: session entity types apply to all queries, regardless of the language."
     }
   },
   "protocol": "rest",
@@ -2901,9 +2905,5 @@
         }
       }
     }
-  },
-  "rootUrl": "https://dialogflow.googleapis.com/",
-  "ownerDomain": "google.com",
-  "name": "dialogflow",
-  "batchPath": "batch"
+  }
 }

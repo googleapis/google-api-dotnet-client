@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171207 (1071)
+ *      <tr><th>API Rev<td>20171228 (1092)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -13921,9 +13921,8 @@ namespace Google.Apis.Compute.v1
         }
 
 
-        /// <summary>Deletes the specified instance template. If you delete an instance template that is being
-        /// referenced from another instance group, the instance group will not be able to create or recreate virtual
-        /// machine instances. Deleting an instance template is permanent and cannot be undone.</summary>
+        /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
+        /// undone. It's not possible to delete templates which are in use by an instance group.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
         /// instance template to delete.</param>
@@ -13932,9 +13931,8 @@ namespace Google.Apis.Compute.v1
             return new DeleteRequest(service, project, instanceTemplate);
         }
 
-        /// <summary>Deletes the specified instance template. If you delete an instance template that is being
-        /// referenced from another instance group, the instance group will not be able to create or recreate virtual
-        /// machine instances. Deleting an instance template is permanent and cannot be undone.</summary>
+        /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
+        /// undone. It's not possible to delete templates which are in use by an instance group.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -36442,7 +36440,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
         public virtual System.Nullable<int> AcceleratorCount { get; set; } 
 
-        /// <summary>Full or partial URL of the accelerator type resource to expose to this instance.</summary>
+        /// <summary>Full or partial URL of the accelerator type resource to attach to this instance. If you are
+        /// creating an instance template, specify only the accelerator name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; } 
 
@@ -37137,6 +37136,11 @@ namespace Google.Apis.Compute.v1.Data
         /// InstanceTemplate, this is the name of the disk type, not URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
+
+        /// <summary>Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field
+        /// is only applicable for persistent disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The source image to create this disk. When creating a new instance, one of
         /// initializeParams.sourceImage or disks.source is required except for local SSD.
@@ -43847,9 +43851,8 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Project resource. Projects can only be created in the Google Cloud Platform Console. Unless marked
-    /// otherwise, values can only be modified in the console. (== resource_for v1.projects ==) (== resource_for
-    /// beta.projects ==)</summary>
+    /// <summary>A Project resource. For an overview of projects, see  Cloud Platform Resource Hierarchy. (==
+    /// resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata key/value pairs available to all instances contained in this project. See Custom metadata

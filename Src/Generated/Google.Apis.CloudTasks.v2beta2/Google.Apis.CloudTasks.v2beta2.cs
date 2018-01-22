@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180117 (1112)
+ *      <tr><th>API Rev<td>20180120 (1115)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -1009,6 +1009,14 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
+                        ///
+                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
+                        /// tasks than requested might be returned, even if more tasks exist; use
+                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
                         /// By default response_view is Task.View.BASIC; not all information is retrieved by default
@@ -1054,14 +1062,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
-                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
-                        ///
-                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
-                        /// tasks than requested might be returned, even if more tasks exist; use
-                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -1096,6 +1096,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "responseView", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "responseView",
@@ -1117,15 +1126,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3225,9 +3225,14 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new
         /// tokens based on RateLimits.max_tasks_dispatched_per_second.
         ///
-        /// Cloud Tasks will pick the value of `max_burst_size` when the queue is created. For App Engine queues that
-        /// were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to
-        /// [bucket_size](/appengine/docs/standard/python/config/queueref#bucket_size). </summary>
+        /// Cloud Tasks will pick the value of `max_burst_size` based on the value of
+        /// RateLimits.max_tasks_dispatched_per_second.
+        ///
+        /// For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to
+        /// [bucket_size](/appengine/docs/standard/python/config/queueref#bucket_size). Since `max_burst_size` is output
+        /// only, if CloudTasks.UpdateQueue is called on a queue created by `queue.yaml/xml`, `max_burst_size` will be
+        /// reset based on the value of RateLimits.max_tasks_dispatched_per_second, regardless of whether
+        /// RateLimits.max_tasks_dispatched_per_second is updated. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
         public virtual System.Nullable<int> MaxBurstSize { get; set; } 
 
@@ -3235,9 +3240,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent
         /// requests decreases.
         ///
-        /// The maximum allowed value is 5,000.
-        ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
+        ///
+        /// The maximum allowed value is 5,000. -1 indicates no limit.
         ///
         /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget).
         ///
@@ -3248,13 +3253,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>The maximum rate at which tasks are dispatched from this queue.
         ///
-        /// The maximum allowed value is 500.
-        ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
         ///
-        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget). In addition to the
-        /// `max_tasks_dispatched_per_second` limit, a maximum of 10 QPS of CloudTasks.LeaseTasks requests are allowed
-        /// per pull queue.
+        /// * For App Engine queues, the maximum allowed value is 500. * This field is output only   for [pull
+        /// queues](google.cloud.tasks.v2beta2.PullTarget). In addition to the `max_tasks_dispatched_per_second` limit,
+        /// a maximum of 10 QPS of CloudTasks.LeaseTasks requests are allowed per pull queue.
         ///
         /// This field has the same meaning as [rate in
         /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#rate).</summary>
@@ -3318,8 +3321,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxAttempts")]
         public virtual System.Nullable<int> MaxAttempts { get; set; } 
 
-        /// <summary>A task will be scheduled for retry between RetryConfig.min_backoff and RetryConfig.max_backoff
-        /// duration after it fails, if the queue's RetryConfig specifies that the task should be retried.
+        /// <summary>A task will be [scheduled](Task.schedule_time) for retry between RetryConfig.min_backoff and
+        /// RetryConfig.max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should
+        /// be retried.
         ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
         ///
@@ -3370,8 +3374,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetryDuration")]
         public virtual object MaxRetryDuration { get; set; } 
 
-        /// <summary>A task will be scheduled for retry between RetryConfig.min_backoff and RetryConfig.max_backoff
-        /// duration after it fails, if the queue's RetryConfig specifies that the task should be retried.
+        /// <summary>A task will be [scheduled](Task.schedule_time) for retry between RetryConfig.min_backoff and
+        /// RetryConfig.max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should
+        /// be retried.
         ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
         ///

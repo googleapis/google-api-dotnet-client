@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Google Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20180105 (1100)
+ *      <tr><th>API Rev<td>20180119 (1114)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
@@ -867,21 +867,17 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
     /// Engine.</summary>
     public class LoginProfile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A unique user ID for identifying the user.</summary>
+        /// <summary>A unique user ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The list of POSIX accounts associated with the Directory API user.</summary>
+        /// <summary>The list of POSIX accounts associated with the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posixAccounts")]
         public virtual System.Collections.Generic.IList<PosixAccount> PosixAccounts { get; set; } 
 
         /// <summary>A map from SSH public key fingerprint to the associated key object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshPublicKeys")]
         public virtual System.Collections.Generic.IDictionary<string,SshPublicKey> SshPublicKeys { get; set; } 
-
-        /// <summary>Indicates if the user is suspended.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
-        public virtual System.Nullable<bool> Suspended { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

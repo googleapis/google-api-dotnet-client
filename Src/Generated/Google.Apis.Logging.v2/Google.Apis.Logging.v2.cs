@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20171229 (1093)
+ *      <tr><th>API Rev<td>20180116 (1111)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -7905,6 +7905,12 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>The parameters to WriteLogEntries.</summary>
     public class WriteLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. If true, the request should expect normal response, but the entries won't be persisted
+        /// nor exported. Useful for checking whether the logging API endpoints are working properly before sending
+        /// valuable data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual System.Nullable<bool> DryRun { get; set; } 
+
         /// <summary>Required. The log entries to send to Stackdriver Logging. The order of log entries in this list
         /// does not matter. Values supplied in this method's log_name, resource, and labels fields are copied into
         /// those log entries in this list that do not include values for their corresponding fields. For more

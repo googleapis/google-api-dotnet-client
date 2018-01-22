@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20171207 (1071)
+ *      <tr><th>API Rev<td>20171228 (1092)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -16706,9 +16706,8 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Deletes the specified instance template. If you delete an instance template that is being
-        /// referenced from another instance group, the instance group will not be able to create or recreate virtual
-        /// machine instances. Deleting an instance template is permanent and cannot be undone.</summary>
+        /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
+        /// undone. It's not possible to delete templates which are in use by an instance group.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
         /// instance template to delete.</param>
@@ -16717,9 +16716,8 @@ namespace Google.Apis.Compute.beta
             return new DeleteRequest(service, project, instanceTemplate);
         }
 
-        /// <summary>Deletes the specified instance template. If you delete an instance template that is being
-        /// referenced from another instance group, the instance group will not be able to create or recreate virtual
-        /// machine instances. Deleting an instance template is permanent and cannot be undone.</summary>
+        /// <summary>Deletes the specified instance template. Deleting an instance template is permanent and cannot be
+        /// undone. It's not possible to delete templates which are in use by an instance group.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -21434,6 +21432,129 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Sets the labels on an InterconnectAttachment. To learn more about labels, read the Labeling
+        /// Resources documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The region for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.beta.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the labels on an InterconnectAttachment. To learn more about labels, read the Labeling
+        /// Resources documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.RegionSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/interconnectAttachments/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Returns permissions that a caller has on the specified resource.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -22302,6 +22423,92 @@ namespace Google.Apis.Compute.beta
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on an Interconnect. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="resource">Name of the resource for
+        /// this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest body, string project, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, resource);
+        }
+
+        /// <summary>Sets the labels on an Interconnect. To learn more about labels, read the Labeling Resources
+        /// documentation.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest body, string project, string resource)
+                : base(service)
+            {
+                Project = project;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.GlobalSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/global/interconnects/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9_]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -45177,7 +45384,8 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorCount")]
         public virtual System.Nullable<int> AcceleratorCount { get; set; } 
 
-        /// <summary>Full or partial URL of the accelerator type resource to expose to this instance.</summary>
+        /// <summary>Full or partial URL of the accelerator type resource to attach to this instance. If you are
+        /// creating an instance template, specify only the accelerator name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; } 
 
@@ -45816,6 +46024,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
+        /// <summary>A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// Read  Enabling guest operating system features to see a list of available options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
+
         /// <summary>[Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have
         /// many disks attached to an instance, each disk would have a unique index number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
@@ -45900,6 +46113,11 @@ namespace Google.Apis.Compute.beta.Data
         /// InstanceTemplate, this is the name of the disk type, not URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; } 
+
+        /// <summary>Labels to apply to this disk. These can be later modified by the disks.setLabels method. This field
+        /// is only applicable for persistent disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The source image to create this disk. When creating a new instance, one of
         /// initializeParams.sourceImage or disks.source is required except for local SSD.
@@ -47544,6 +47762,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
+        /// <summary>A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// Read  Enabling guest operating system features to see a list of available options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -47769,6 +47992,11 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoDelete")]
         public virtual System.Nullable<bool> AutoDelete { get; set; } 
 
+        /// <summary>The custom source image to be used to restore this disk when instantiating this instance
+        /// template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customImage")]
+        public virtual string CustomImage { get; set; } 
+
         /// <summary>Specifies the device name of the disk to which the configurations apply to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
         public virtual string DeviceName { get; set; } 
@@ -47776,11 +48004,6 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Specifies whether to include the disk and what image to use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instantiateFrom")]
         public virtual string InstantiateFrom { get; set; } 
-
-        /// <summary>The custom source image to be used to restore this disk when instantiating this instance
-        /// template.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
-        public virtual string SourceImage { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -49586,6 +49809,23 @@ namespace Google.Apis.Compute.beta.Data
         /// name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImageId")]
         public virtual string SourceImageId { get; set; } 
+
+        /// <summary>URL of the source snapshot used to create this image. This can be a full or valid partial URL. You
+        /// must provide exactly one of: - this property, or - the sourceImage property, or - the rawDisk.source
+        /// property, or - the sourceDisk property   in order to create an image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source snapshot. Required if the source snapshot is
+        /// protected by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceSnapshotEncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] The ID value of the snapshot used to create this image. This value may be used to
+        /// determine whether the snapshot was taken from the current or a previous instance of a given snapshot
+        /// name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotId")]
+        public virtual string SourceSnapshotId { get; set; } 
 
         /// <summary>The type of the image used to create this disk. The default and only value is RAW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
@@ -51496,6 +51736,20 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
+        /// <summary>A fingerprint for the labels being applied to this Interconnect, which is essentially a hash of the
+        /// labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes
+        /// after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in
+        /// order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve an Interconnect.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this Interconnect resource. These can be later modified by the setLabels method.
+        /// Each label key/value must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
         /// <summary>Type of link requested. This field indicates speed of each of the links in the bundle, not the
         /// entire bundle. Only 10G per link is allowed for a dedicated interconnect. Options: Ethernet_10G_LR</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
@@ -51588,6 +51842,20 @@ namespace Google.Apis.Compute.beta.Data
         /// attachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>A fingerprint for the labels being applied to this InterconnectAttachment, which is essentially a
+        /// hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine
+        /// and changes after every request to modify or update labels. You must always provide an up-to-date
+        /// fingerprint hash in order to update or change labels.
+        ///
+        /// To see the latest fingerprint, make a get() request to retrieve an InterconnectAttachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>Labels to apply to this InterconnectAttachment resource. These can be later modified by the
+        /// setLabels method. Each label key/value must comply with RFC1035. Label values may be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
@@ -53592,9 +53860,8 @@ namespace Google.Apis.Compute.beta.Data
 
     }    
 
-    /// <summary>A Project resource. Projects can only be created in the Google Cloud Platform Console. Unless marked
-    /// otherwise, values can only be modified in the console. (== resource_for v1.projects ==) (== resource_for
-    /// beta.projects ==)</summary>
+    /// <summary>A Project resource. For an overview of projects, see  Cloud Platform Resource Hierarchy. (==
+    /// resource_for v1.projects ==) (== resource_for beta.projects ==)</summary>
     public class Project : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Metadata key/value pairs available to all instances contained in this project. See Custom metadata
