@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180120 (1115)
+ *      <tr><th>API Rev<td>20180123 (1118)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -430,13 +430,12 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Acknowledges a pull task.
                     ///
-                    /// The worker, that is, the entity that received this task in a LeaseTasksResponse, must call this
-                    /// method to indicate that the work associated with the task has finished.
+                    /// The worker, that is, the entity that leased this task must call this method to indicate that the
+                    /// work associated with the task has finished.
                     ///
-                    /// The worker must acknowledge a task within the LeaseTasksRequest.lease_duration or the lease will
-                    /// expire and the task will become ready to be returned in a different LeaseTasksResponse. After
-                    /// the task is acknowledged, it will not be returned by a later CloudTasks.LeaseTasks,
-                    /// CloudTasks.GetTask, or CloudTasks.ListTasks.
+                    /// The worker must acknowledge a task within the lease_duration or the lease will expire and the
+                    /// task will become available to be leased again. After the task is acknowledged, it will not be
+                    /// returned by a later LeaseTasks, GetTask, or ListTasks.
                     ///
                     /// To acknowledge multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1
                     /// /how-tos/batch) or the batching documentation for your client library, for example
@@ -452,13 +451,12 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Acknowledges a pull task.
                     ///
-                    /// The worker, that is, the entity that received this task in a LeaseTasksResponse, must call this
-                    /// method to indicate that the work associated with the task has finished.
+                    /// The worker, that is, the entity that leased this task must call this method to indicate that the
+                    /// work associated with the task has finished.
                     ///
-                    /// The worker must acknowledge a task within the LeaseTasksRequest.lease_duration or the lease will
-                    /// expire and the task will become ready to be returned in a different LeaseTasksResponse. After
-                    /// the task is acknowledged, it will not be returned by a later CloudTasks.LeaseTasks,
-                    /// CloudTasks.GetTask, or CloudTasks.ListTasks.
+                    /// The worker must acknowledge a task within the lease_duration or the lease will expire and the
+                    /// task will become available to be leased again. After the task is acknowledged, it will not be
+                    /// returned by a later LeaseTasks, GetTask, or ListTasks.
                     ///
                     /// To acknowledge multiple tasks at the same time, use [HTTP batching](/storage/docs/json_api/v1
                     /// /how-tos/batch) or the batching documentation for your client library, for example
@@ -527,9 +525,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Cancel a pull task's lease.
                     ///
-                    /// The worker can use this method to cancel a task's lease by setting Task.schedule_time to now.
-                    /// This will make the task available to be leased to the next caller of
-                    /// CloudTasks.LeaseTasks.</summary>
+                    /// The worker can use this method to cancel a task's lease by setting its schedule_time to now.
+                    /// This will make the task available to be leased to the next caller of LeaseTasks.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -541,9 +538,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Cancel a pull task's lease.
                     ///
-                    /// The worker can use this method to cancel a task's lease by setting Task.schedule_time to now.
-                    /// This will make the task available to be leased to the next caller of
-                    /// CloudTasks.LeaseTasks.</summary>
+                    /// The worker can use this method to cancel a task's lease by setting its schedule_time to now.
+                    /// This will make the task available to be leased to the next caller of LeaseTasks.</summary>
                     public class CancelLeaseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Task>
                     {
                         /// <summary>Constructs a new CancelLease request.</summary>
@@ -803,23 +799,23 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
-                        /// By default response_view is Task.View.BASIC; not all information is retrieved by default
-                        /// because some data, such as payloads, might be desirable to return only when needed because
-                        /// of its large size or because of the sensitivity of data that it contains.
+                        /// By default response_view is BASIC; not all information is retrieved by default because some
+                        /// data, such as payloads, might be desirable to return only when needed because of its large
+                        /// size or because of the sensitivity of data that it contains.
                         ///
-                        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/)
-                        /// permission on the Task.name resource.</summary>
+                        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission
+                        /// on the Task resource.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("responseView", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ResponseViewEnum> ResponseView { get; set; }
 
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
-                        /// By default response_view is Task.View.BASIC; not all information is retrieved by default
-                        /// because some data, such as payloads, might be desirable to return only when needed because
-                        /// of its large size or because of the sensitivity of data that it contains.
+                        /// By default response_view is BASIC; not all information is retrieved by default because some
+                        /// data, such as payloads, might be desirable to return only when needed because of its large
+                        /// size or because of the sensitivity of data that it contains.
                         ///
-                        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/)
-                        /// permission on the Task.name resource.</summary>
+                        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission
+                        /// on the Task resource.</summary>
                         public enum ResponseViewEnum
                         {
                             [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
@@ -876,19 +872,17 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     }
 
-                    /// <summary>Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
+                    /// <summary>Leases tasks from a pull queue for lease_duration.
                     ///
                     /// This method is invoked by the worker to obtain a lease. The worker must acknowledge the task via
-                    /// CloudTasks.AcknowledgeTask after they have performed the work associated with the task.
+                    /// AcknowledgeTask after they have performed the work associated with the task.
                     ///
                     /// The payload is intended to store data that the worker needs to perform the work associated with
-                    /// the task. To return the payloads in the LeaseTasksResponse, set LeaseTasksRequest.response_view
-                    /// to Task.View.FULL.
+                    /// the task. To return the payloads in the response, set response_view to FULL.
                     ///
-                    /// A maximum of 10 qps of CloudTasks.LeaseTasks requests are allowed per queue.
-                    /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
-                    /// google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
-                    /// RateLimits.max_tasks_dispatched_per_second is exceeded.</summary>
+                    /// A maximum of 10 qps of LeaseTasks requests are allowed per queue. RESOURCE_EXHAUSTED is returned
+                    /// when this limit is exceeded. RESOURCE_EXHAUSTED is also returned when
+                    /// max_tasks_dispatched_per_second is exceeded.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required.
                     ///
@@ -898,19 +892,17 @@ namespace Google.Apis.CloudTasks.v2beta2
                         return new LeaseRequest(service, body, parent);
                     }
 
-                    /// <summary>Leases tasks from a pull queue for LeaseTasksRequest.lease_duration.
+                    /// <summary>Leases tasks from a pull queue for lease_duration.
                     ///
                     /// This method is invoked by the worker to obtain a lease. The worker must acknowledge the task via
-                    /// CloudTasks.AcknowledgeTask after they have performed the work associated with the task.
+                    /// AcknowledgeTask after they have performed the work associated with the task.
                     ///
                     /// The payload is intended to store data that the worker needs to perform the work associated with
-                    /// the task. To return the payloads in the LeaseTasksResponse, set LeaseTasksRequest.response_view
-                    /// to Task.View.FULL.
+                    /// the task. To return the payloads in the response, set response_view to FULL.
                     ///
-                    /// A maximum of 10 qps of CloudTasks.LeaseTasks requests are allowed per queue.
-                    /// google.rpc.Code.RESOURCE_EXHAUSTED is returned when this limit is exceeded.
-                    /// google.rpc.Code.RESOURCE_EXHAUSTED is also returned when
-                    /// RateLimits.max_tasks_dispatched_per_second is exceeded.</summary>
+                    /// A maximum of 10 qps of LeaseTasks requests are allowed per queue. RESOURCE_EXHAUSTED is returned
+                    /// when this limit is exceeded. RESOURCE_EXHAUSTED is also returned when
+                    /// max_tasks_dispatched_per_second is exceeded.</summary>
                     public class LeaseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.LeaseTasksResponse>
                     {
                         /// <summary>Constructs a new Lease request.</summary>
@@ -975,9 +967,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Lists the tasks in a queue.
                     ///
-                    /// By default response_view is Task.View.BASIC; not all information is retrieved by default due to
-                    /// performance considerations; ListTasksRequest.response_view controls the subset of information
-                    /// which is returned.</summary>
+                    /// By default, only the BASIC view is retrieved due to performance considerations; response_view
+                    /// controls the subset of information which is returned.</summary>
                     /// <param name="parent">Required.
                     ///
                     /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
@@ -988,9 +979,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Lists the tasks in a queue.
                     ///
-                    /// By default response_view is Task.View.BASIC; not all information is retrieved by default due to
-                    /// performance considerations; ListTasksRequest.response_view controls the subset of information
-                    /// which is returned.</summary>
+                    /// By default, only the BASIC view is retrieved due to performance considerations; response_view
+                    /// controls the subset of information which is returned.</summary>
                     public class ListRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.ListTasksResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -1009,33 +999,25 @@ namespace Google.Apis.CloudTasks.v2beta2
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
-                        ///
-                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
-                        /// tasks than requested might be returned, even if more tasks exist; use
-                        /// ListTasksResponse.next_page_token to determine if more tasks exist.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
-                        /// By default response_view is Task.View.BASIC; not all information is retrieved by default
-                        /// because some data, such as payloads, might be desirable to return only when needed because
-                        /// of its large size or because of the sensitivity of data that it contains.
+                        /// By default response_view is BASIC; not all information is retrieved by default because some
+                        /// data, such as payloads, might be desirable to return only when needed because of its large
+                        /// size or because of the sensitivity of data that it contains.
                         ///
-                        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/)
-                        /// permission on the Task.name resource.</summary>
+                        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission
+                        /// on the Task resource.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("responseView", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ResponseViewEnum> ResponseView { get; set; }
 
                         /// <summary>The response_view specifies which subset of the Task will be returned.
                         ///
-                        /// By default response_view is Task.View.BASIC; not all information is retrieved by default
-                        /// because some data, such as payloads, might be desirable to return only when needed because
-                        /// of its large size or because of the sensitivity of data that it contains.
+                        /// By default response_view is BASIC; not all information is retrieved by default because some
+                        /// data, such as payloads, might be desirable to return only when needed because of its large
+                        /// size or because of the sensitivity of data that it contains.
                         ///
-                        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/)
-                        /// permission on the Task.name resource.</summary>
+                        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission
+                        /// on the Task resource.</summary>
                         public enum ResponseViewEnum
                         {
                             [Google.Apis.Util.StringValueAttribute("VIEW_UNSPECIFIED")]
@@ -1055,12 +1037,20 @@ namespace Google.Apis.CloudTasks.v2beta2
                         /// <summary>A token identifying the page of results to return.
                         ///
                         /// To request the first page results, page_token must be empty. To request the next page of
-                        /// results, page_token must be the value of ListTasksResponse.next_page_token returned from the
-                        /// previous call to CloudTasks.ListTasks method.
+                        /// results, page_token must be the value of next_page_token returned from the previous call to
+                        /// ListTasks method.
                         ///
                         /// The page token is valid for only 2 hours.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Requested page size. Fewer tasks than requested might be returned.
+                        ///
+                        /// The maximum page size is 1000. If unspecified, the page size will be the maximum. Fewer
+                        /// tasks than requested might be returned, even if more tasks exist; use next_page_token in the
+                        /// response to determine if more tasks exist.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1096,15 +1086,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/queues/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "responseView", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "responseView",
@@ -1131,6 +1112,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
                         }
 
                     }
@@ -1138,7 +1128,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// <summary>Renew the current lease of a pull task.
                     ///
                     /// The worker can use this method to extend the lease by a new duration, starting from now. The new
-                    /// task lease will be returned in Task.schedule_time.</summary>
+                    /// task lease will be returned in the task's schedule_time.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -1151,7 +1141,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// <summary>Renew the current lease of a pull task.
                     ///
                     /// The worker can use this method to extend the lease by a new duration, starting from now. The new
-                    /// task lease will be returned in Task.schedule_time.</summary>
+                    /// task lease will be returned in the task's schedule_time.</summary>
                     public class RenewLeaseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Task>
                     {
                         /// <summary>Constructs a new RenewLease request.</summary>
@@ -1216,26 +1206,24 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Forces a task to run now.
                     ///
-                    /// This command is meant to be used for manual debugging. For example, CloudTasks.RunTask can be
-                    /// used to retry a failed task after a fix has been made or to manually force a task to be
-                    /// dispatched now.
+                    /// This command is meant to be used for manual debugging. For example, RunTask can be used to retry
+                    /// a failed task after a fix has been made or to manually force a task to be dispatched now.
                     ///
                     /// When this method is called, Cloud Tasks will dispatch the task to its target, even if the queue
-                    /// is Queue.State.PAUSED.
+                    /// is PAUSED.
                     ///
-                    /// The dispatched task is returned. That is, the task that is returned contains the Task.status
-                    /// after the task is dispatched but before the task is received by its target.
+                    /// The dispatched task is returned. That is, the task that is returned contains the status after
+                    /// the task is dispatched but before the task is received by its target.
                     ///
                     /// If Cloud Tasks receives a successful response from the task's handler, then the task will be
-                    /// deleted; otherwise the task's Task.schedule_time will be reset to the time that
-                    /// CloudTasks.RunTask was called plus the retry delay specified in the queue and task's
-                    /// RetryConfig.
+                    /// deleted; otherwise the task's schedule_time will be reset to the time that RunTask was called
+                    /// plus the retry delay specified in the queue and task's RetryConfig.
                     ///
-                    /// CloudTasks.RunTask returns google.rpc.Code.NOT_FOUND when it is called on a task that has
-                    /// already succeeded or permanently failed. google.rpc.Code.FAILED_PRECONDITION is returned when
-                    /// CloudTasks.RunTask is called on task that is dispatched or already running.
+                    /// RunTask returns NOT_FOUND when it is called on a task that has already succeeded or permanently
+                    /// failed. FAILED_PRECONDITION is returned when RunTask is called on task that is dispatched or
+                    /// already running.
                     ///
-                    /// CloudTasks.RunTask cannot be called on pull tasks.</summary>
+                    /// RunTask cannot be called on pull tasks.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -1247,26 +1235,24 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Forces a task to run now.
                     ///
-                    /// This command is meant to be used for manual debugging. For example, CloudTasks.RunTask can be
-                    /// used to retry a failed task after a fix has been made or to manually force a task to be
-                    /// dispatched now.
+                    /// This command is meant to be used for manual debugging. For example, RunTask can be used to retry
+                    /// a failed task after a fix has been made or to manually force a task to be dispatched now.
                     ///
                     /// When this method is called, Cloud Tasks will dispatch the task to its target, even if the queue
-                    /// is Queue.State.PAUSED.
+                    /// is PAUSED.
                     ///
-                    /// The dispatched task is returned. That is, the task that is returned contains the Task.status
-                    /// after the task is dispatched but before the task is received by its target.
+                    /// The dispatched task is returned. That is, the task that is returned contains the status after
+                    /// the task is dispatched but before the task is received by its target.
                     ///
                     /// If Cloud Tasks receives a successful response from the task's handler, then the task will be
-                    /// deleted; otherwise the task's Task.schedule_time will be reset to the time that
-                    /// CloudTasks.RunTask was called plus the retry delay specified in the queue and task's
-                    /// RetryConfig.
+                    /// deleted; otherwise the task's schedule_time will be reset to the time that RunTask was called
+                    /// plus the retry delay specified in the queue and task's RetryConfig.
                     ///
-                    /// CloudTasks.RunTask returns google.rpc.Code.NOT_FOUND when it is called on a task that has
-                    /// already succeeded or permanently failed. google.rpc.Code.FAILED_PRECONDITION is returned when
-                    /// CloudTasks.RunTask is called on task that is dispatched or already running.
+                    /// RunTask returns NOT_FOUND when it is called on a task that has already succeeded or permanently
+                    /// failed. FAILED_PRECONDITION is returned when RunTask is called on task that is dispatched or
+                    /// already running.
                     ///
-                    /// CloudTasks.RunTask cannot be called on pull tasks.</summary>
+                    /// RunTask cannot be called on pull tasks.</summary>
                     public class RunRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Task>
                     {
                         /// <summary>Constructs a new Run request.</summary>
@@ -1337,14 +1323,13 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
-                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) before using this method.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required.
                 ///
                 /// The location name in which the queue will be created. For example: `projects/PROJECT_ID/locations/LOCATION_ID`
                 ///
-                /// The list of allowed locations can be obtained by calling Cloud Tasks' implementation of
-                /// google.cloud.location.Locations.ListLocations.</param>
+                /// The list of allowed locations can be obtained by calling Cloud Tasks' implementation of ListLocations.</param>
                 public virtual CreateRequest Create(Google.Apis.CloudTasks.v2beta2.Data.Queue body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -1357,7 +1342,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
-                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) before using this method.</summary>
                 public class CreateRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Queue>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1376,7 +1361,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// `projects/PROJECT_ID/locations/LOCATION_ID`
                     ///
                     /// The list of allowed locations can be obtained by calling Cloud Tasks' implementation of
-                    /// google.cloud.location.Locations.ListLocations.</summary>
+                    /// ListLocations.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1431,7 +1416,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
-                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) before using this method.</summary>
                 /// <param name="name">Required.
                 ///
                 /// The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID`</param>
@@ -1448,7 +1433,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
-                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) before using this method.</summary>
                 public class DeleteRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1681,14 +1666,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Requested page size.
-                    ///
-                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
-                    /// than requested might be returned, even if more queues exist; use
-                    /// ListQueuesResponse.next_page_token to determine if more queues exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
                     /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
                     /// syntax is the same as described in [Stackdriver's Advanced Logs
@@ -1704,11 +1681,19 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
-                    /// results, page_token must be the value of ListQueuesResponse.next_page_token returned from the
-                    /// previous call to CloudTasks.ListQueues method. It is an error to switch the value of
-                    /// ListQueuesRequest.filter while iterating through pages.</summary>
+                    /// results, page_token must be the value of next_page_token returned from the previous call to
+                    /// ListQueues method. It is an error to switch the value of the filter while iterating through
+                    /// pages.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Requested page size.
+                    ///
+                    /// The maximum page size is 9800. If unspecified, the page size will be the maximum. Fewer queues
+                    /// than requested might be returned, even if more queues exist; use the next_page_token in the
+                    /// response to determine if more queues exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1744,15 +1729,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1765,6 +1741,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1783,7 +1768,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
-                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) before using this method.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The queue name.
                 ///
@@ -1792,11 +1777,11 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]),    hyphens (-), colons (:), or periods (.).    For
                 /// more information, see    [Identifying projects](/resource-manager/docs/creating-managing-
                 /// projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location.    The list of
-                /// available locations can be obtained by calling    google.cloud.location.Locations.ListLocations.    For more
-                /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers
-                /// ([0-9]), or   hyphens (-). The maximum length is 100 characters.
+                /// available locations can be obtained by calling    ListLocations.    For more information, see
+                /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+                /// hyphens (-). The maximum length is 100 characters.
                 ///
-                /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</param>
+                /// Caller-specified and required in CreateQueue, after which it becomes output only.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudTasks.v2beta2.Data.Queue body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -1811,7 +1796,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 ///
                 /// WARNING: Using this method may have unintended side effects if you are using an App Engine
                 /// `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and
-                /// queue.yaml](/cloud-tasks/docs/queue-yaml) carefully before using this method.</summary>
+                /// queue.yaml](/cloud-tasks/docs/queue-yaml) before using this method.</summary>
                 public class PatchRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Queue>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1832,13 +1817,11 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or
                     /// periods (.). For more information, see [Identifying projects](/resource-manager/docs/creating-
                     /// managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's
-                    /// location. The list of available locations can be obtained by calling
-                    /// google.cloud.location.Locations.ListLocations. For more information, see
-                    /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers
-                    /// ([0-9]), or hyphens (-). The maximum length is 100 characters.
+                    /// location. The list of available locations can be obtained by calling ListLocations. For more
+                    /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters
+                    /// ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
                     ///
-                    /// Caller-specified and required in CreateQueueRequest, after which it becomes output
-                    /// only.</summary>
+                    /// Caller-specified and required in CreateQueue, after which it becomes output only.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1902,9 +1885,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Pauses the queue.
                 ///
-                /// If a queue is paused then the system will stop executing the tasks in the queue until it is resumed
-                /// via CloudTasks.ResumeQueue. Tasks can still be added when the queue is paused. The state of the
-                /// queue is stored in Queue.state; if paused it will be set to Queue.State.PAUSED.</summary>
+                /// If a queue is paused then the system will stop dispatching tasks until the queue is resumed via
+                /// ResumeQueue. Tasks can still be added when the queue is paused. A queue is paused if its state is
+                /// PAUSED.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required.
                 ///
@@ -1916,9 +1899,9 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Pauses the queue.
                 ///
-                /// If a queue is paused then the system will stop executing the tasks in the queue until it is resumed
-                /// via CloudTasks.ResumeQueue. Tasks can still be added when the queue is paused. The state of the
-                /// queue is stored in Queue.state; if paused it will be set to Queue.State.PAUSED.</summary>
+                /// If a queue is paused then the system will stop dispatching tasks until the queue is resumed via
+                /// ResumeQueue. Tasks can still be added when the queue is paused. A queue is paused if its state is
+                /// PAUSED.</summary>
                 public class PauseRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Queue>
                 {
                     /// <summary>Constructs a new Pause request.</summary>
@@ -2066,9 +2049,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Resume a queue.
                 ///
-                /// This method resumes a queue after it has been Queue.State.PAUSED or Queue.State.DISABLED. The state
-                /// of a queue is stored in Queue.state; after calling this method it will be set to
-                /// Queue.State.RUNNING.
+                /// This method resumes a queue after it has been PAUSED or DISABLED. The state of a queue is stored in
+                /// the queue's state; after calling this method it will be set to RUNNING.
                 ///
                 /// WARNING: Resuming many high-QPS queues at the same time can lead to target overloading. If you are
                 /// resuming high-QPS queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling
@@ -2084,9 +2066,8 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>Resume a queue.
                 ///
-                /// This method resumes a queue after it has been Queue.State.PAUSED or Queue.State.DISABLED. The state
-                /// of a queue is stored in Queue.state; after calling this method it will be set to
-                /// Queue.State.RUNNING.
+                /// This method resumes a queue after it has been PAUSED or DISABLED. The state of a queue is stored in
+                /// the queue's state; after calling this method it will be set to RUNNING.
                 ///
                 /// WARNING: Resuming many high-QPS queues at the same time can lead to target overloading. If you are
                 /// resuming high-QPS queues, follow the 500/50/5 pattern described in [Managing Cloud Tasks Scaling
@@ -2238,7 +2219,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 }
 
                 /// <summary>Returns permissions that a caller has on a Queue. If the resource does not exist, this will
-                /// return an empty set of permissions, not a google.rpc.Code.NOT_FOUND error.
+                /// return an empty set of permissions, not a NOT_FOUND error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                 /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -2251,7 +2232,7 @@ namespace Google.Apis.CloudTasks.v2beta2
                 }
 
                 /// <summary>Returns permissions that a caller has on a Queue. If the resource does not exist, this will
-                /// return an empty set of permissions, not a google.rpc.Code.NOT_FOUND error.
+                /// return an empty set of permissions, not a NOT_FOUND error.
                 ///
                 /// Note: This operation is designed to be used for building permission-aware UIs and command-line
                 /// tools, not for authorization checking. This operation may "fail open" without warning.</summary>
@@ -2481,14 +2462,13 @@ namespace Google.Apis.CloudTasks.v2beta2
 namespace Google.Apis.CloudTasks.v2beta2.Data
 {    
 
-    /// <summary>Request message for acknowledging a task using CloudTasks.AcknowledgeTask.</summary>
+    /// <summary>Request message for acknowledging a task using AcknowledgeTask.</summary>
     public class AcknowledgeTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required.
         ///
-        /// The task's current schedule time, available in the Task.schedule_time returned in LeaseTasksResponse.tasks
-        /// or CloudTasks.RenewLease. This restriction is to ensure that your worker currently holds the
-        /// lease.</summary>
+        /// The task's current schedule time, available in the schedule_time returned by LeaseTasks response or
+        /// RenewLease response. This restriction is to ensure that your worker currently holds the lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
 
@@ -2500,7 +2480,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     ///
     /// The message defines the HTTP request that is sent to an App Engine app when the task is dispatched.
     ///
-    /// This proto can only be used for tasks in a queue which has Queue.app_engine_http_target set.
+    /// This proto can only be used for tasks in a queue which has app_engine_http_target set.
     ///
     /// Using AppEngineHttpRequest requires [`appengine.applications.get`](/appengine/docs/admin-api/access-control)
     /// Google IAM permission for the project and the following scope:
@@ -2514,12 +2494,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// The AppEngineRouting used to construct the URL that the task is delivered to can be set at the queue-level or
     /// task-level:
     ///
-    /// *  If set, AppEngineHttpTarget.app_engine_routing_override is used for all tasks in the queue, no matter what
-    /// the setting is for the task-level app_engine_routing.
+    /// * If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for the
+    /// task-level app_engine_routing.
     ///
     /// The `url` that the task will be sent to is:
     ///
-    /// * `url =` AppEngineRouting.host `+` AppEngineHttpRequest.relative_url
+    /// * `url =` host `+` relative_url
     ///
     /// The task attempt has succeeded if the app's request handler returns an HTTP response code in the range [`200` -
     /// `299`]. `503` is considered an App Engine system error instead of an application error. Requests returning error
@@ -2529,8 +2509,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>Task-level setting for App Engine routing.
         ///
-        /// If set, AppEngineHttpTarget.app_engine_routing_override is used for all tasks in the queue, no matter what
-        /// the setting is for the task-level app_engine_routing.</summary>
+        /// If set, app_engine_routing_override is used for all tasks in the queue, no matter what the setting is for
+        /// the task-level app_engine_routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRouting")]
         public virtual AppEngineRouting AppEngineRouting { get; set; } 
 
@@ -2546,12 +2526,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// header can be modified, but Cloud Tasks will append `"AppEngine-Google;
         /// (+http://code.google.com/appengine)"` to the modified `User-Agent`.
         ///
-        /// If the task has an AppEngineHttpRequest.payload, Cloud Tasks sets the following headers:
+        /// If the task has a payload, Cloud Tasks sets the following headers:
         ///
         /// * `Content-Type`: By default, the `Content-Type` header is set to `"application/octet-stream"`. The default
-        /// can be overridden by explictly setting `Content-Type` to a particular media type when the [task is
+        /// can be overridden by explicitly setting `Content-Type` to a particular media type when the [task is
         /// created](google.cloud.tasks.v2beta2.CloudTasks.CreateTask). For example, `Content-Type` can be set to
-        /// `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only. It
+        /// `"application/json"`. * `Content-Length`: This is computed by Cloud Tasks. This value is output only.   It
         /// cannot be changed.
         ///
         /// The headers below cannot be set or overridden:
@@ -2564,7 +2544,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// visible when the task is returned in a Cloud Tasks response.
         ///
         /// Although there is no specific limit for the maximum number of headers or the size, there is a limit on the
-        /// maximum size of the Task. For more information, see the CloudTasks.CreateTask documentation.</summary>
+        /// maximum size of the Task. For more information, see the CreateTask documentation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headers")]
         public virtual System.Collections.Generic.IDictionary<string,string> Headers { get; set; } 
 
@@ -2613,8 +2593,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     {
         /// <summary>Overrides for the task-level app_engine_routing.
         ///
-        /// If set, AppEngineHttpTarget.app_engine_routing_override is used for all tasks in the queue, no matter what
-        /// the setting is for the task-level app_engine_routing.</summary>
+        /// If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for
+        /// the task-level app_engine_routing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineRoutingOverride")]
         public virtual AppEngineRouting AppEngineRoutingOverride { get; set; } 
 
@@ -2647,36 +2627,34 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// * `application_domain_name` = The domain name of the app, for example .appspot.com, which is associated with
         /// the queue's project ID. Some tasks which were created using the App Engine SDK use a custom domain name.
         ///
-        /// * `service =` AppEngineRouting.service
+        /// * `service =` service
         ///
-        /// * `version =` AppEngineRouting.version
+        /// * `version =` version
         ///
-        /// * `version_dot_service =` AppEngineRouting.version `+ '.' +` AppEngineRouting.service
+        /// * `version_dot_service =` version `+ '.' +` service
         ///
-        /// * `instance =` AppEngineRouting.instance
+        /// * `instance =` instance
         ///
-        /// * `instance_dot_service =` AppEngineRouting.instance `+ '.' +` AppEngineRouting.service
+        /// * `instance_dot_service =` instance `+ '.' +` service
         ///
-        /// * `instance_dot_version =` AppEngineRouting.instance `+ '.' +` AppEngineRouting.version
+        /// * `instance_dot_version =` instance `+ '.' +` version
         ///
-        /// * `instance_dot_version_dot_service =` AppEngineRouting.instance `+ '.' +` AppEngineRouting.version `+ '.'
-        /// +` AppEngineRouting.service
+        /// * `instance_dot_version_dot_service =` instance `+ '.' +` version `+ '.' +` service
         ///
-        /// If AppEngineRouting.service is empty, then the task will be sent to the service which is the default service
-        /// when the task is attempted.
+        /// If service is empty, then the task will be sent to the service which is the default service when the task is
+        /// attempted.
         ///
-        /// If AppEngineRouting.version is empty, then the task will be sent to the version which is the default version
-        /// when the task is attempted.
+        /// If version is empty, then the task will be sent to the version which is the default version when the task is
+        /// attempted.
         ///
-        /// If AppEngineRouting.instance is empty, then the task will be sent to an instance which is available when the
-        /// task is attempted.
+        /// If instance is empty, then the task will be sent to an instance which is available when the task is
+        /// attempted.
         ///
-        /// When AppEngineRouting.service is "default", AppEngineRouting.version is "default", and
-        /// AppEngineRouting.instance is empty, AppEngineRouting.host is shortened to just the
+        /// When service is "default", version is "default", and instance is empty, host is shortened to just the
         /// `application_domain_name`.
         ///
-        /// If AppEngineRouting.service, AppEngineRouting.version, or AppEngineRouting.instance is invalid, then the
-        /// task will be sent to the default version of the default service when the task is attempted.</summary>
+        /// If service, version, or instance is invalid, then the task will be sent to the default version of the
+        /// default service when the task is attempted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; } 
 
@@ -2697,11 +2675,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// By default, the task is sent to the service which is the default service when the task is attempted
         /// ("default").
         ///
-        /// For some queues or tasks which were created using the App Engine Task Queue API, AppEngineRouting.host is
-        /// not parsable into AppEngineRouting.service, AppEngineRouting.version, and AppEngineRouting.instance. For
-        /// example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are
-        /// not parsed by Cloud Tasks. If AppEngineRouting.host is not parsable, then AppEngineRouting.service,
-        /// AppEngineRouting.version, and AppEngineRouting.instance are the empty string.</summary>
+        /// For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into
+        /// service, version, and instance. For example, some tasks which were created using the App Engine SDK use a
+        /// custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service,
+        /// version, and instance are the empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; } 
 
@@ -2710,11 +2687,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// By default, the task is sent to the version which is the default version when the task is attempted
         /// ("default").
         ///
-        /// For some queues or tasks which were created using the App Engine Task Queue API, AppEngineRouting.host is
-        /// not parsable into AppEngineRouting.service, AppEngineRouting.version, and AppEngineRouting.instance. For
-        /// example, some tasks which were created using the App Engine SDK use a custom domain name; custom domains are
-        /// not parsed by Cloud Tasks. If AppEngineRouting.host is not parsable, then AppEngineRouting.service,
-        /// AppEngineRouting.version, and AppEngineRouting.instance are the empty string.</summary>
+        /// For some queues or tasks which were created using the App Engine Task Queue API, host is not parsable into
+        /// service, version, and instance. For example, some tasks which were created using the App Engine SDK use a
+        /// custom domain name; custom domains are not parsed by Cloud Tasks. If host is not parsable, then service,
+        /// version, and instance are the empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
 
@@ -2790,25 +2766,24 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for canceling a lease using CloudTasks.CancelLease.</summary>
+    /// <summary>Request message for canceling a lease using CancelLease.</summary>
     public class CancelLeaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The response_view specifies which subset of the Task will be returned.
         ///
-        /// By default response_view is Task.View.BASIC; not all information is retrieved by default because some data,
-        /// such as payloads, might be desirable to return only when needed because of its large size or because of the
+        /// By default response_view is BASIC; not all information is retrieved by default because some data, such as
+        /// payloads, might be desirable to return only when needed because of its large size or because of the
         /// sensitivity of data that it contains.
         ///
-        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        /// Task.name resource.</summary>
+        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the Task
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; } 
 
         /// <summary>Required.
         ///
-        /// The task's current schedule time, available in the Task.schedule_time returned in LeaseTasksResponse.tasks
-        /// or CloudTasks.RenewLease. This restriction is to ensure that your worker currently holds the
-        /// lease.</summary>
+        /// The task's current schedule time, available in the schedule_time returned by LeaseTasks response or
+        /// RenewLease response. This restriction is to ensure that your worker currently holds the lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
 
@@ -2816,17 +2791,17 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for CloudTasks.CreateTask.</summary>
+    /// <summary>Request message for CreateTask.</summary>
     public class CreateTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The response_view specifies which subset of the Task will be returned.
         ///
-        /// By default response_view is Task.View.BASIC; not all information is retrieved by default because some data,
-        /// such as payloads, might be desirable to return only when needed because of its large size or because of the
+        /// By default response_view is BASIC; not all information is retrieved by default because some data, such as
+        /// payloads, might be desirable to return only when needed because of its large size or because of the
         /// sensitivity of data that it contains.
         ///
-        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        /// Task.name resource.</summary>
+        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the Task
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; } 
 
@@ -2836,23 +2811,23 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// Task names have the following format:
         /// `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`. The user can optionally specify a
-        /// name for the task in Task.name. If a name is not specified then the system will generate a random unique
-        /// task id, which will be returned in the response's Task.name.
+        /// task name. If a name is not specified then the system will generate a random unique task id, which will be
+        /// set in the task returned in the response.
         ///
-        /// If Task.schedule_time is not set or is in the past then Cloud Tasks will set it to the current time.
+        /// If schedule_time is not set or is in the past then Cloud Tasks will set it to the current time.
         ///
         /// Task De-duplication:
         ///
         /// Explicitly specifying a task ID enables task de-duplication.  If a task's ID is identical to that of an
-        /// existing task or a task that was deleted or completed recently then the call will fail with
-        /// google.rpc.Code.ALREADY_EXISTS. If the task's queue was created using Cloud Tasks, then another task with
-        /// the same name can't be created for ~1hour after the original task was deleted or completed. If the task's
-        /// queue was created using queue.yaml or queue.xml, then another task with the same name can't be created for
-        /// ~9days after the original task was deleted or completed.
+        /// existing task or a task that was deleted or completed recently then the call will fail with ALREADY_EXISTS.
+        /// If the task's queue was created using Cloud Tasks, then another task with the same name can't be created for
+        /// ~1hour after the original task was deleted or completed. If the task's queue was created using queue.yaml or
+        /// queue.xml, then another task with the same name can't be created for ~9days after the original task was
+        /// deleted or completed.
         ///
-        /// Because there is an extra lookup cost to identify duplicate task names, these CloudTasks.CreateTask calls
-        /// have significantly increased latency. Using hashed strings for the task id or for the prefix of the task id
-        /// is recommended. Choosing task ids that are sequential or have sequential prefixes, for example using a
+        /// Because there is an extra lookup cost to identify duplicate task names, these CreateTask calls have
+        /// significantly increased latency. Using hashed strings for the task id or for the prefix of the task id is
+        /// recommended. Choosing task ids that are sequential or have sequential prefixes, for example using a
         /// timestamp, causes an increase in latency and error rates in all task commands. The infrastructure relies on
         /// an approximately uniform distribution of task ids to store and serve tasks efficiently.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("task")]
@@ -2881,13 +2856,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for leasing tasks using CloudTasks.LeaseTasks.</summary>
+    /// <summary>Request message for leasing tasks using LeaseTasks.</summary>
     public class LeaseTasksRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>`filter` can be used to specify a subset of tasks to lease.
         ///
-        /// When `filter` is set to `tag=` then the LeaseTasksResponse will contain only tasks whose PullMessage.tag is
-        /// equal to ``. `` must be less than 500 characters.
+        /// When `filter` is set to `tag=` then the response will contain only tasks whose tag is equal to ``. `` must
+        /// be less than 500 characters.
         ///
         /// When `filter` is set to `tag_function=oldest_tag()`, only tasks which have the same tag as the task with the
         /// oldest schedule_time will be returned.
@@ -2906,20 +2881,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// SDK compatibility: Although the SDK allows tags to be either string or
         /// [bytes](/appengine/docs/standard/java/javadoc/com/google/appengine/api/taskqueue/TaskOptions.html#tag-
         /// byte:A-), only UTF-8 encoded tags can be used in Cloud Tasks. Tag which aren't UTF-8 encoded can't be used
-        /// in LeaseTasksRequest.filter and won't display in PullMessage.tag.</summary>
+        /// in the filter and the task's tag will be displayed as empty in Cloud Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; } 
 
-        /// <summary>The duration of the lease.
-        ///
-        /// Each task returned in the LeaseTasksResponse will have its Task.schedule_time set to the current time plus
-        /// the `lease_duration`. A task that has been returned in a LeaseTasksResponse is leased -- that task will not
-        /// be returned in a different LeaseTasksResponse before the Task.schedule_time.
-        ///
-        /// After the worker has successfully finished the work associated with the task, the worker must call
-        /// CloudTasks.AcknowledgeTask. If the task is not acknowledged via CloudTasks.AcknowledgeTask before the
-        /// Task.schedule_time then it will be returned in a later LeaseTasksResponse so that another worker can process
-        /// it.
+        /// <summary> After the worker has successfully finished the work associated with the task, the worker must call
+        /// via AcknowledgeTask before the schedule_time. Otherwise the task will be returned to a later LeaseTasks call
+        /// so that another worker can retry it.
         ///
         /// The maximum lease duration is 1 week. `lease_duration` will be truncated to the nearest second.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaseDuration")]
@@ -2931,12 +2899,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>The response_view specifies which subset of the Task will be returned.
         ///
-        /// By default response_view is Task.View.BASIC; not all information is retrieved by default because some data,
-        /// such as payloads, might be desirable to return only when needed because of its large size or because of the
+        /// By default response_view is BASIC; not all information is retrieved by default because some data, such as
+        /// payloads, might be desirable to return only when needed because of its large size or because of the
         /// sensitivity of data that it contains.
         ///
-        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        /// Task.name resource.</summary>
+        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the Task
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; } 
 
@@ -2944,7 +2912,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for leasing tasks using CloudTasks.LeaseTasks.</summary>
+    /// <summary>Response message for leasing tasks using LeaseTasks.</summary>
     public class LeaseTasksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The leased tasks.</summary>
@@ -2970,13 +2938,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for CloudTasks.ListQueues.</summary>
+    /// <summary>Response message for ListQueues.</summary>
     public class ListQueuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token to retrieve next page of results.
         ///
-        /// To return the next page of results, call CloudTasks.ListQueues with this value as the
-        /// ListQueuesRequest.page_token.
+        /// To return the next page of results, call ListQueues with this value as the page_token.
         ///
         /// If the next_page_token is empty, there are no more results.
         ///
@@ -2992,13 +2959,12 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for listing tasks using CloudTasks.ListTasks.</summary>
+    /// <summary>Response message for listing tasks using ListTasks.</summary>
     public class ListTasksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A token to retrieve next page of results.
         ///
-        /// To return the next page of results, call CloudTasks.ListTasks with this value as the
-        /// ListTasksRequest.page_token.
+        /// To return the next page of results, call ListTasks with this value as the page_token.
         ///
         /// If the next_page_token is empty, there are no more results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -3038,7 +3004,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for CloudTasks.PauseQueue.</summary>
+    /// <summary>Request message for PauseQueue.</summary>
     public class PauseQueueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3084,10 +3050,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
     }    
 
-    /// <summary>The pull message contains data that can be used by the caller of CloudTasks.LeaseTasks to process the
-    /// task.
+    /// <summary>The pull message contains data that can be used by the caller of LeaseTasks to process the task.
     ///
-    /// This proto can only be used for tasks in a queue which has Queue.pull_target set.</summary>
+    /// This proto can only be used for tasks in a queue which has pull_target set.</summary>
     public class PullMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A data payload consumed by the worker to execute the task.</summary>
@@ -3097,8 +3062,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// <summary>The task's tag.
         ///
         /// Tags allow similar tasks to be processed in a batch. If you label tasks with a tag, your worker can lease
-        /// tasks with the same tag using LeaseTasksRequest.filter. For example, if you want to aggregate the events
-        /// associated with a specific user once a day, you could tag tasks with the user ID.
+        /// tasks with the same tag using filter. For example, if you want to aggregate the events associated with a
+        /// specific user once a day, you could tag tasks with the user ID.
         ///
         /// The task's tag can only be set when the task is created.
         ///
@@ -3122,7 +3087,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for CloudTasks.PurgeQueue.</summary>
+    /// <summary>Request message for PurgeQueue.</summary>
     public class PurgeQueueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3146,11 +3111,11 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For
         /// more information, see [Identifying projects](/resource-manager/docs/creating-managing-
         /// projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of
-        /// available locations can be obtained by calling google.cloud.location.Locations.ListLocations. For more
-        /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]),
-        /// numbers ([0-9]), or hyphens (-). The maximum length is 100 characters.
+        /// available locations can be obtained by calling ListLocations. For more information, see
+        /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        /// hyphens (-). The maximum length is 100 characters.
         ///
-        /// Caller-specified and required in CreateQueueRequest, after which it becomes output only.</summary>
+        /// Caller-specified and required in CreateQueue, after which it becomes output only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -3164,7 +3129,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// All tasks that were created before this time were purged.
         ///
-        /// A queue can be purged using CloudTasks.PurgeQueue, the [App Engine Task Queue SDK, or the Cloud
+        /// A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud
         /// Console](/appengine/docs/standard/python/taskqueue/push/deleting-tasks-and-
         /// queues#purging_all_tasks_from_a_queue).
         ///
@@ -3175,13 +3140,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>Rate limits for task dispatches.
         ///
-        /// Queue.rate_limits and Queue.retry_config are related because they both control task attempts however they
-        /// control how tasks are attempted in different ways:
+        /// rate_limits and retry_config are related because they both control task attempts however they control how
+        /// tasks are attempted in different ways:
         ///
-        /// * Queue.rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the
-        /// queue, regardless of whether the dispatch is from a first attempt or a retry). * Queue.retry_config controls
-        /// what happens to particular a task after its first attempt fails. That is, Queue.retry_config controls task
-        /// retries (the second attempt, third attempt, etc).</summary>
+        /// * rate_limits controls the total rate of dispatches from a queue (i.e. all traffic dispatched from the
+        /// queue, regardless of whether the dispatch is from a first attempt or a retry). * retry_config controls what
+        /// happens to particular a task after its first attempt fails. That is, retry_config controls task retries (the
+        /// second attempt, third attempt, etc).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateLimits")]
         public virtual RateLimits RateLimits { get; set; } 
 
@@ -3197,8 +3162,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>Output only. The state of the queue.
         ///
-        /// `state` can only be changed by called CloudTasks.PauseQueue, CloudTasks.ResumeQueue, or uploading
-        /// [queue.yaml/xml](/appengine/docs/python/config/queueref). CloudTasks.UpdateQueue cannot be used to change
+        /// `state` can only be changed by called PauseQueue, ResumeQueue, or uploading
+        /// [queue.yaml/xml](/appengine/docs/python/config/queueref). UpdateQueue cannot be used to change
         /// `state`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
@@ -3223,16 +3188,15 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// dispatches. Each queue has a token bucket that holds tokens, up to the maximum specified by
         /// `max_burst_size`. Each time a task is dispatched, a token is removed from the bucket. Tasks will be
         /// dispatched until the queue's bucket runs out of tokens. The bucket will be continuously refilled with new
-        /// tokens based on RateLimits.max_tasks_dispatched_per_second.
+        /// tokens based on max_tasks_dispatched_per_second.
         ///
-        /// Cloud Tasks will pick the value of `max_burst_size` based on the value of
-        /// RateLimits.max_tasks_dispatched_per_second.
+        /// Cloud Tasks will pick the value of `max_burst_size` based on the value of max_tasks_dispatched_per_second.
         ///
         /// For App Engine queues that were created or updated using `queue.yaml/xml`, `max_burst_size` is equal to
         /// [bucket_size](/appengine/docs/standard/python/config/queueref#bucket_size). Since `max_burst_size` is output
-        /// only, if CloudTasks.UpdateQueue is called on a queue created by `queue.yaml/xml`, `max_burst_size` will be
-        /// reset based on the value of RateLimits.max_tasks_dispatched_per_second, regardless of whether
-        /// RateLimits.max_tasks_dispatched_per_second is updated. </summary>
+        /// only, if UpdateQueue is called on a queue created by `queue.yaml/xml`, `max_burst_size` will be reset based
+        /// on the value of max_tasks_dispatched_per_second, regardless of whether max_tasks_dispatched_per_second is
+        /// updated. </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBurstSize")]
         public virtual System.Nullable<int> MaxBurstSize { get; set; } 
 
@@ -3257,7 +3221,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// * For App Engine queues, the maximum allowed value is 500. * This field is output only   for [pull
         /// queues](google.cloud.tasks.v2beta2.PullTarget). In addition to the `max_tasks_dispatched_per_second` limit,
-        /// a maximum of 10 QPS of CloudTasks.LeaseTasks requests are allowed per pull queue.
+        /// a maximum of 10 QPS of LeaseTasks requests are allowed per pull queue.
         ///
         /// This field has the same meaning as [rate in
         /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#rate).</summary>
@@ -3268,7 +3232,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for renewing a lease using CloudTasks.RenewLease.</summary>
+    /// <summary>Request message for renewing a lease using RenewLease.</summary>
     public class RenewLeaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required.
@@ -3281,20 +3245,19 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>The response_view specifies which subset of the Task will be returned.
         ///
-        /// By default response_view is Task.View.BASIC; not all information is retrieved by default because some data,
-        /// such as payloads, might be desirable to return only when needed because of its large size or because of the
+        /// By default response_view is BASIC; not all information is retrieved by default because some data, such as
+        /// payloads, might be desirable to return only when needed because of its large size or because of the
         /// sensitivity of data that it contains.
         ///
-        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        /// Task.name resource.</summary>
+        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the Task
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; } 
 
         /// <summary>Required.
         ///
-        /// The task's current schedule time, available in the Task.schedule_time returned in LeaseTasksResponse.tasks
-        /// or CloudTasks.RenewLease. This restriction is to ensure that your worker currently holds the
-        /// lease.</summary>
+        /// The task's current schedule time, available in the schedule_time returned by LeaseTasks response or
+        /// RenewLease response. This restriction is to ensure that your worker currently holds the lease.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
         public virtual object ScheduleTime { get; set; } 
 
@@ -3302,7 +3265,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for CloudTasks.ResumeQueue.</summary>
+    /// <summary>Request message for ResumeQueue.</summary>
     public class ResumeQueueRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3321,9 +3284,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxAttempts")]
         public virtual System.Nullable<int> MaxAttempts { get; set; } 
 
-        /// <summary>A task will be [scheduled](Task.schedule_time) for retry between RetryConfig.min_backoff and
-        /// RetryConfig.max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should
-        /// be retried.
+        /// <summary>A task will be [scheduled](Task.schedule_time) for retry between min_backoff and max_backoff
+        /// duration after it fails, if the queue's RetryConfig specifies that the task should be retried.
         ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
         ///
@@ -3338,15 +3300,13 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>The time between retries will double `max_doublings` times.
         ///
-        /// A task's retry interval starts at RetryConfig.min_backoff, then doubles `max_doublings` times, then
-        /// increases linearly, and finally retries retries at intervals of RetryConfig.max_backoff up to max_attempts
-        /// times.
+        /// A task's retry interval starts at min_backoff, then doubles `max_doublings` times, then increases linearly,
+        /// and finally retries retries at intervals of max_backoff up to max_attempts times.
         ///
-        /// For example, if RetryConfig.min_backoff is 10s, RetryConfig.max_backoff is 300s, and `max_doublings` is 3,
-        /// then the a task will first be retried in 10s. The retry interval will double three times, and then increase
-        /// linearly by 2^3 * 10s. Finally, the task will retry at intervals of RetryConfig.max_backoff until the task
-        /// has been attempted `max_attempts` times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s,
-        /// 300s, 300s, ....
+        /// For example, if min_backoff is 10s, max_backoff is 300s, and `max_doublings` is 3, then the a task will
+        /// first be retried in 10s. The retry interval will double three times, and then increase linearly by 2^3 *
+        /// 10s.  Finally, the task will retry at intervals of max_backoff until the task has been attempted
+        /// max_attempts times. Thus, the requests will retry at 10s, 20s, 40s, 80s, 160s, 240s, 300s, 300s, ....
         ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
         ///
@@ -3359,7 +3319,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured
         /// from when the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been
-        /// attempted RetryConfig.max_attempts times, no further attempts will be made and the task will be deleted.
+        /// attempted max_attempts times, no further attempts will be made and the task will be deleted.
         ///
         /// If zero, then the task age is unlimited.
         ///
@@ -3374,9 +3334,8 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetryDuration")]
         public virtual object MaxRetryDuration { get; set; } 
 
-        /// <summary>A task will be [scheduled](Task.schedule_time) for retry between RetryConfig.min_backoff and
-        /// RetryConfig.max_backoff duration after it fails, if the queue's RetryConfig specifies that the task should
-        /// be retried.
+        /// <summary>A task will be [scheduled](Task.schedule_time) for retry between min_backoff and max_backoff
+        /// duration after it fails, if the queue's RetryConfig specifies that the task should be retried.
         ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
         ///
@@ -3397,17 +3356,17 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for forcing a task to run now using CloudTasks.RunTask.</summary>
+    /// <summary>Request message for forcing a task to run now using RunTask.</summary>
     public class RunTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The response_view specifies which subset of the Task will be returned.
         ///
-        /// By default response_view is Task.View.BASIC; not all information is retrieved by default because some data,
-        /// such as payloads, might be desirable to return only when needed because of its large size or because of the
+        /// By default response_view is BASIC; not all information is retrieved by default because some data, such as
+        /// payloads, might be desirable to return only when needed because of its large size or because of the
         /// sensitivity of data that it contains.
         ///
-        /// Authorization for Task.View.FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the
-        /// Task.name resource.</summary>
+        /// Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](/iam/) permission on the Task
+        /// resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseView")]
         public virtual string ResponseView { get; set; } 
 
@@ -3495,7 +3454,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     public class Task : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>App Engine HTTP request that is sent to the task's target. Can be set only if
-        /// Queue.app_engine_http_target is set.
+        /// app_engine_http_target is set on the queue.
         ///
         /// An App Engine task is a task that has AppEngineHttpRequest set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpRequest")]
@@ -3515,17 +3474,16 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         /// * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For
         /// more information, see [Identifying projects](/resource-manager/docs/creating-managing-
         /// projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the task's location. The list of
-        /// available locations can be obtained by calling google.cloud.location.Locations.ListLocations. For more
-        /// information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]),
-        /// numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters
-        /// ([A-Za-z]), numbers ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
+        /// available locations can be obtained by calling ListLocations. For more information, see
+        /// https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or
+        /// hyphens (-). The maximum length is 100 characters. * `TASK_ID` can contain only letters ([A-Za-z]), numbers
+        /// ([0-9]), hyphens (-), or underscores (_). The maximum length is 500 characters.
         ///
-        /// Optionally caller-specified in CreateTaskRequest.</summary>
+        /// Optionally caller-specified in CreateTask.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Pull message contains data that should be used by the caller of CloudTasks.LeaseTasks to process
-        /// the task. Can be set only if Queue.pull_target is set.
+        /// <summary>LeaseTasks to process the task. Can be set only if pull_target is set on the queue.
         ///
         /// A pull task is a task that has PullMessage set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pullMessage")]
@@ -3537,7 +3495,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// For pull queues, this is the time when the task is available to be leased; if a task is currently leased,
         /// this is the time when the current lease expires, that is, the time that the task was leased plus the
-        /// LeaseTasksRequest.lease_duration.
+        /// lease_duration.
         ///
         /// `schedule_time` will be truncated to the nearest microsecond.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
@@ -3572,8 +3530,7 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
 
         /// <summary>Output only. The status of the task's first attempt.
         ///
-        /// Only AttemptStatus.dispatch_time will be set. The other AttemptStatus information is not retained by Cloud
-        /// Tasks.
+        /// Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud Tasks.
         ///
         /// This field is not calculated for [pull tasks](google.cloud.tasks.v2beta2.PullTaskTarget).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstAttemptStatus")]

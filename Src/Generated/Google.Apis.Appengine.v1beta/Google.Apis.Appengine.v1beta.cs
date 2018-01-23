@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>Google App Engine Admin API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20180112 (1107)
+ *      <tr><th>API Rev<td>20180118 (1113)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -1804,6 +1804,10 @@ namespace Google.Apis.Appengine.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AppsId { get; private set; }
 
+                    /// <summary>Continuation token for fetching the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Maximum results to return per page.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1812,10 +1816,6 @@ namespace Google.Apis.Appengine.v1beta
                     /// first returned rule will be the rule that fires on requests from this IP.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("matchingAddress", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string MatchingAddress { get; set; }
-
-                    /// <summary>Continuation token for fetching the next page of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1851,6 +1851,15 @@ namespace Google.Apis.Appengine.v1beta
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1863,15 +1872,6 @@ namespace Google.Apis.Appengine.v1beta
                             "matchingAddress", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "matchingAddress",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3259,10 +3259,6 @@ namespace Google.Apis.Appengine.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ServicesId { get; private set; }
 
-                    /// <summary>Continuation token for fetching the next page of results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Maximum results to return per page.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -3279,6 +3275,10 @@ namespace Google.Apis.Appengine.v1beta
                         [Google.Apis.Util.StringValueAttribute("FULL")]
                         FULL,
                     }
+
+                    /// <summary>Continuation token for fetching the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -3323,15 +3323,6 @@ namespace Google.Apis.Appengine.v1beta
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -3344,6 +3335,15 @@ namespace Google.Apis.Appengine.v1beta
                             "view", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4364,6 +4364,10 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilization")]
         public virtual CpuUtilization CpuUtilization { get; set; } 
 
+        /// <summary>Target scaling by user-provided metrics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customMetrics")]
+        public virtual System.Collections.Generic.IList<CustomMetric> CustomMetrics { get; set; } 
+
         /// <summary>Target scaling by disk usage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskUtilization")]
         public virtual DiskUtilization DiskUtilization { get; set; } 
@@ -4553,6 +4557,37 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// <summary>The Cloud Build ID if one was created as part of the version create. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildId")]
         public virtual string CloudBuildId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Allows autoscaling based on Stackdriver metrics.</summary>
+    public class CustomMetric : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allows filtering on the metric's fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>The name of the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricName")]
+        public virtual string MetricName { get; set; } 
+
+        /// <summary>May be used instead of target_utilization when an instance can handle a specific amount of
+        /// work/resources and the metric value is equal to the current amount of work remaining. The autoscaler will
+        /// try to keep the number of instances equal to the metric value divided by
+        /// single_instance_assignment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleInstanceAssignment")]
+        public virtual System.Nullable<double> SingleInstanceAssignment { get; set; } 
+
+        /// <summary>The type of the metric. Must be a string representing a Stackdriver metric type e.g. GAGUE,
+        /// DELTA_PER_SECOND, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
+        public virtual string TargetType { get; set; } 
+
+        /// <summary>The target value for the metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetUtilization")]
+        public virtual System.Nullable<double> TargetUtilization { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

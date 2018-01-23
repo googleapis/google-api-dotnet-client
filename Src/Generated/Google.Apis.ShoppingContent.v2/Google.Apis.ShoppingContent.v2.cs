@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180111 (1106)
+ *      <tr><th>API Rev<td>20180122 (1117)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -5579,6 +5579,66 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
+        /// <summary>Retrieves supported holidays for an account.</summary>
+        /// <param name="merchantId">The ID of the account for which to retrieve the supported holidays.</param>
+        public virtual GetsupportedholidaysRequest Getsupportedholidays(ulong merchantId)
+        {
+            return new GetsupportedholidaysRequest(service, merchantId);
+        }
+
+        /// <summary>Retrieves supported holidays for an account.</summary>
+        public class GetsupportedholidaysRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.ShippingsettingsGetSupportedHolidaysResponse>
+        {
+            /// <summary>Constructs a new Getsupportedholidays request.</summary>
+            public GetsupportedholidaysRequest(Google.Apis.Services.IClientService service, ulong merchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account for which to retrieve the supported holidays.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getsupportedholidays"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/supportedHolidays"; }
+            }
+
+            /// <summary>Initializes Getsupportedholidays parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Lists the shipping settings of the sub-accounts in your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
@@ -6985,6 +7045,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class DeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Holiday cutoff definitions. If configured, they specify order cutoff times for holiday-specific
+        /// shipping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("holidayCutoffs")]
+        public virtual System.Collections.Generic.IList<HolidayCutoff> HolidayCutoffs { get; set; } 
+
         /// <summary>Maximum number of business days that is spent in transit. 0 means same day delivery, 1 means next
         /// day delivery. Must be greater than or equal to minTransitTimeInDays. Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTransitTimeInDays")]
@@ -7071,6 +7136,73 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// non-empty. Can only be set if all other fields are not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weights")]
         public virtual System.Collections.Generic.IList<Weight> Weights { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class HolidayCutoff : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Date of the order deadline, in ISO 8601 format. E.g. "2016-11-29" for 29th November 2016.
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadlineDate")]
+        public virtual string DeadlineDate { get; set; } 
+
+        /// <summary>Hour of the day on the deadline date until which the order has to be placed to qualify for the
+        /// delivery guarantee. Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadlineHour")]
+        public virtual System.Nullable<long> DeadlineHour { get; set; } 
+
+        /// <summary>Timezone identifier for the deadline hour. A list of identifiers can be found in  the AdWords API
+        /// documentation. E.g. "Europe/Zurich". Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deadlineTimezone")]
+        public virtual string DeadlineTimezone { get; set; } 
+
+        /// <summary>Unique identifier for the holiday. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("holidayId")]
+        public virtual string HolidayId { get; set; } 
+
+        /// <summary>Date on which the deadline will become visible to consumers in ISO 8601 format. E.g. "2016-10-31"
+        /// for 31st October 2016. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibleFromDate")]
+        public virtual string VisibleFromDate { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class HolidaysHoliday : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CLDR territory code of the country in which the holiday is available. E.g. "US", "DE", "GB". A
+        /// holiday cutoff can only be configured in a shipping settings service with matching delivery country. Always
+        /// present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; } 
+
+        /// <summary>Date of the holiday, in ISO 8601 format. E.g. "2016-12-25" for Christmas 2016. Always
+        /// present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual string Date { get; set; } 
+
+        /// <summary>Date on which the order has to arrive at the customer's, in ISO 8601 format. E.g. "2016-12-24" for
+        /// 24th December 2016. Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryGuaranteeDate")]
+        public virtual string DeliveryGuaranteeDate { get; set; } 
+
+        /// <summary>Hour of the day in the delivery location's timezone on the guaranteed delivery date by which the
+        /// order has to arrive at the customer's. Possible values are: 0 (midnight), 1, ..., 12 (noon), 13, ..., 23.
+        /// Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryGuaranteeHour")]
+        public virtual System.Nullable<ulong> DeliveryGuaranteeHour { get; set; } 
+
+        /// <summary>Unique identifier for the holiday to be used when configuring holiday cutoffs. Always
+        /// present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>The holiday type. Always present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9568,6 +9700,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("googleExpirationDate")]
         public virtual string GoogleExpirationDate { get; set; } 
 
+        /// <summary>A list of all issues associated with the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemLevelIssues")]
+        public virtual System.Collections.Generic.IList<ProductStatusItemLevelIssue> ItemLevelIssues { get; set; } 
+
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#productStatus".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -9637,6 +9773,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class ProductStatusDestinationStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the approval status might change due to further processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approvalPending")]
+        public virtual System.Nullable<bool> ApprovalPending { get; set; } 
+
         /// <summary>The destination's approval status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approvalStatus")]
         public virtual string ApprovalStatus { get; set; } 
@@ -9645,10 +9785,35 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
 
-        /// <summary>Whether the destination is required, excluded, selected by default or should be
-        /// validated.</summary>
+        /// <summary>Provided for backward compatibility only. Always set to "required".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intention")]
         public virtual string Intention { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProductStatusItemLevelIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The attribute's name, if the issue is caused by a single attribute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
+        public virtual string AttributeName { get; set; } 
+
+        /// <summary>The error code of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>The destination the issue applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; } 
+
+        /// <summary>Whether the issue can be resolved by the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
+        public virtual string Resolution { get; set; } 
+
+        /// <summary>How this issue affects serving of the offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servability")]
+        public virtual string Servability { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10082,6 +10247,21 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#shippingsettingsGetSupportedCarriersResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ShippingsettingsGetSupportedHolidaysResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of holidays applicable for delivery guarantees. May be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("holidays")]
+        public virtual System.Collections.Generic.IList<HolidaysHoliday> Holidays { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#shippingsettingsGetSupportedHolidaysResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

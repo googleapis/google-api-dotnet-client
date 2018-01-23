@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20171227 (1091)
+ *      <tr><th>API Rev<td>20180108 (1103)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -4307,8 +4307,9 @@ namespace Google.Apis.Container.v1.Data
         ///
         /// Keys must conform to the regexp [a-zA-Z0-9-_]+ and be less than 128 bytes in length. These are reflected as
         /// part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any
-        /// other metadata keys for the project or be one of the four reserved keys: "instance-template", "kube-env",
-        /// "startup-script", and "user-data"
+        /// other metadata keys for the project or be one of the reserved keys: "cluster-name" "cluster-uid" "configure-
+        /// sh" "gci-update-strategy" "gci-ensure-gke-docker" "instance-template" "kube-env" "startup-script" "user-
+        /// data"
         ///
         /// Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The
         /// only restriction placed on them is that each value's size must be less than or equal to 32 KB.
