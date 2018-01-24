@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iam/'>Google Identity and Access Management (IAM) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180113 (1108)
+ *      <tr><th>API Rev<td>20180118 (1113)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iam/'>
  *              https://cloud.google.com/iam/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.Iam.v1
         public IamService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            iamPolicies = new IamPoliciesResource(this);
             organizations = new OrganizationsResource(this);
             permissions = new PermissionsResource(this);
             projects = new ProjectsResource(this);
@@ -117,6 +118,14 @@ namespace Google.Apis.Iam.v1
         }
 
 
+
+        private readonly IamPoliciesResource iamPolicies;
+
+        /// <summary>Gets the IamPolicies resource.</summary>
+        public virtual IamPoliciesResource IamPolicies
+        {
+            get { return iamPolicies; }
+        }
 
         private readonly OrganizationsResource organizations;
 
@@ -364,6 +373,78 @@ namespace Google.Apis.Iam.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "iamPolicies" collection of methods.</summary>
+    public class IamPoliciesResource
+    {
+        private const string Resource = "iamPolicies";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public IamPoliciesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns a list of services that support service level audit logging configuration for the given
+        /// resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual QueryAuditableServicesRequest QueryAuditableServices(Google.Apis.Iam.v1.Data.QueryAuditableServicesRequest body)
+        {
+            return new QueryAuditableServicesRequest(service, body);
+        }
+
+        /// <summary>Returns a list of services that support service level audit logging configuration for the given
+        /// resource.</summary>
+        public class QueryAuditableServicesRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.QueryAuditableServicesResponse>
+        {
+            /// <summary>Constructs a new QueryAuditableServices request.</summary>
+            public QueryAuditableServicesRequest(Google.Apis.Services.IClientService service, Google.Apis.Iam.v1.Data.QueryAuditableServicesRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Iam.v1.Data.QueryAuditableServicesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "queryAuditableServices"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/iamPolicies:queryAuditableServices"; }
+            }
+
+            /// <summary>Initializes QueryAuditableServices parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
         }
     }
 
@@ -649,10 +730,6 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Include Roles that have been deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
                 /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -673,6 +750,10 @@ namespace Google.Apis.Iam.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
+
+                /// <summary>Include Roles that have been deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -708,15 +789,6 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -738,6 +810,15 @@ namespace Google.Apis.Iam.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1259,10 +1340,6 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Include Roles that have been deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
                 /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1283,6 +1360,10 @@ namespace Google.Apis.Iam.v1
                     [Google.Apis.Util.StringValueAttribute("FULL")]
                     FULL,
                 }
+
+                /// <summary>Include Roles that have been deleted.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1318,15 +1399,6 @@ namespace Google.Apis.Iam.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "showDeleted", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "showDeleted",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1348,6 +1420,15 @@ namespace Google.Apis.Iam.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "showDeleted", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "showDeleted",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2723,15 +2804,6 @@ namespace Google.Apis.Iam.v1
             }
 
 
-            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
-            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
-            /// <summary>Include Roles that have been deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
             /// <summary>Optional pagination token returned in an earlier ListRolesResponse.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -2752,6 +2824,15 @@ namespace Google.Apis.Iam.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
+
+            /// <summary>The resource name of the parent resource in one of the following formats: `` (empty string) --
+            /// this refers to curated roles. `organizations/{ORGANIZATION_ID}` `projects/{PROJECT_ID}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Parent { get; set; }
+
+            /// <summary>Include Roles that have been deleted.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2778,24 +2859,6 @@ namespace Google.Apis.Iam.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2817,6 +2880,24 @@ namespace Google.Apis.Iam.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2893,6 +2974,18 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>Policy delta between the original policy and the newly set policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDelta")]
         public virtual PolicyDelta PolicyDelta { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains information about an auditable service.</summary>
+    public class AuditableService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Public name of the service. For example, the service name for Cloud IAM is
+        /// 'iam.googleapis.com'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3063,6 +3156,10 @@ namespace Google.Apis.Iam.v1.Data
     /// <summary>A permission which can be included by a role.</summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The service API associated with the permission is not enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiDisabled")]
+        public virtual System.Nullable<bool> ApiDisabled { get; set; } 
+
         /// <summary>The current custom role support level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customRolesSupportLevel")]
         public virtual string CustomRolesSupportLevel { get; set; } 
@@ -3136,6 +3233,31 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>The delta for Bindings between two policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindingDeltas")]
         public virtual System.Collections.Generic.IList<BindingDelta> BindingDeltas { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A request to get the list of auditable services for a resource.</summary>
+    public class QueryAuditableServicesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The full resource name to query from the list of auditable services.
+        ///
+        /// The name follows the Google Cloud Platform resource format. For example, a Cloud Platform project with id
+        /// `my-project` will be named `//cloudresourcemanager.googleapis.com/projects/my-project`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
+        public virtual string FullResourceName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A response containing a list of auditable services for a resource.</summary>
+    public class QueryAuditableServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The auditable services for a resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<AuditableService> Services { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
