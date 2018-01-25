@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API V2Beta Methods</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20171214 (1078)
+ *      <tr><th>API Rev<td>20180119 (1114)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>
@@ -3746,7 +3746,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditConfig are exempted.
+    /// AuditLogConfig are exempted.
     ///
     /// Example Policy with multiple AuditConfigs:
     ///
@@ -3849,7 +3849,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     {
         /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
         /// user access via current binding. Different bindings, including their conditions, are examined independently.
-        /// This field is GOOGLE_INTERNAL.</summary>
+        /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual Expr Condition { get; set; } 
 
@@ -4469,7 +4469,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         public virtual System.Nullable<int> Progress { get; set; } 
 
         /// <summary>[Output Only] The URL of the region where the operation resides. Only available when performing
-        /// regional operations.</summary>
+        /// regional operations. You must specify this field as part of the HTTP request URL. It is not settable as a
+        /// field in the request body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -4511,7 +4512,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         public virtual System.Collections.Generic.IList<Operation.WarningsData> Warnings { get; set; } 
 
         /// <summary>[Output Only] The URL of the zone where the operation resides. Only available when performing per-
-        /// zone operations.</summary>
+        /// zone operations. You must specify this field as part of the HTTP request URL. It is not settable as a field
+        /// in the request body.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
 
@@ -4637,7 +4639,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     /// "members": ["user:sean@example.com"] } ] }
     ///
     /// For a description of IAM and its features, see the [IAM developer's
-    /// guide](https://cloud.google.com/iam).</summary>
+    /// guide](https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
@@ -4671,7 +4673,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<Rule> Rules { get; set; } 
 
-        /// <summary>Version of the `Policy`. The default version is 0.</summary>
+        /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180110 (1105)
+ *      <tr><th>API Rev<td>20180122 (1117)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -1262,20 +1262,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
-            /// than requested. If unspecified, server picks an appropriate default.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>An expression for filtering the results of the request.  Filter rules are case insensitive. The
             /// fields eligible for filtering are:
             ///
@@ -1299,6 +1285,20 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// Optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
+            /// than requested. If unspecified, server picks an appropriate default.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1325,6 +1325,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1337,15 +1346,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1735,7 +1735,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditConfig are exempted.
+    /// AuditLogConfig are exempted.
     ///
     /// Example Policy with multiple AuditConfigs:
     ///

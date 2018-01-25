@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180118 (1113)
+ *      <tr><th>API Rev<td>20180123 (1118)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -563,7 +563,8 @@ namespace Google.Apis.DLP.v2beta2
 
             /// <summary>Deletes inspect templates.</summary>
             /// <param name="name">Resource name of the organization and deidentify template to be deleted, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342`.</param>
+            /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+            /// id/deidentifyTemplates/432452342.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -582,7 +583,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of the organization and deidentify template to be deleted, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342`.</summary>
+                /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+                /// id/deidentifyTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -625,7 +627,8 @@ namespace Google.Apis.DLP.v2beta2
 
             /// <summary>Gets an inspect template.</summary>
             /// <param name="name">Resource name of the organization and deidentify template to be read, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342`.</param>
+            /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+            /// id/deidentifyTemplates/432452342.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -644,7 +647,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of the organization and deidentify template to be read, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342`.</summary>
+                /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+                /// id/deidentifyTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -778,7 +782,8 @@ namespace Google.Apis.DLP.v2beta2
             /// <summary>Updates the inspect template.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Resource name of organization and deidentify template to be updated, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342`.</param>
+            /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+            /// id/deidentifyTemplates/432452342.</param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2UpdateDeidentifyTemplateRequest body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -798,7 +803,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of organization and deidentify template to be updated, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342`.</summary>
+                /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+                /// id/deidentifyTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -943,7 +949,7 @@ namespace Google.Apis.DLP.v2beta2
 
             /// <summary>Deletes inspect templates.</summary>
             /// <param name="name">Resource name of the organization and inspectTemplate to be deleted, for example
-            /// `organizations/433245324/inspectTemplates/432452342`.</param>
+            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -962,7 +968,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of the organization and inspectTemplate to be deleted, for example
-                /// `organizations/433245324/inspectTemplates/432452342`.</summary>
+                /// `organizations/433245324/inspectTemplates/432452342` or projects/project-
+                /// id/inspectTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1005,7 +1012,7 @@ namespace Google.Apis.DLP.v2beta2
 
             /// <summary>Gets an inspect template.</summary>
             /// <param name="name">Resource name of the organization and inspectTemplate to be read, for example
-            /// `organizations/433245324/inspectTemplates/432452342`.</param>
+            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1024,7 +1031,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of the organization and inspectTemplate to be read, for example
-                /// `organizations/433245324/inspectTemplates/432452342`.</summary>
+                /// `organizations/433245324/inspectTemplates/432452342` or projects/project-
+                /// id/inspectTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1158,7 +1166,7 @@ namespace Google.Apis.DLP.v2beta2
             /// <summary>Updates the inspect template.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Resource name of organization and inspectTemplate to be updated, for example
-            /// `organizations/433245324/inspectTemplates/432452342`.</param>
+            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2UpdateInspectTemplateRequest body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1178,7 +1186,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of organization and inspectTemplate to be updated, for example
-                /// `organizations/433245324/inspectTemplates/432452342`.</summary>
+                /// `organizations/433245324/inspectTemplates/432452342` or projects/project-
+                /// id/inspectTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1507,7 +1516,7 @@ namespace Google.Apis.DLP.v2beta2
 
 
             /// <summary>Schedules a job to compute risk analysis metrics over content in a Google Cloud Platform
-            /// repository. [How-to guide}(/dlp/docs/compute-risk-analysis)</summary>
+            /// repository. [How-to guide](/dlp/docs/compute-risk-analysis)</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
             public virtual AnalyzeRequest Analyze(Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskRequest body, string parent)
@@ -1516,7 +1525,7 @@ namespace Google.Apis.DLP.v2beta2
             }
 
             /// <summary>Schedules a job to compute risk analysis metrics over content in a Google Cloud Platform
-            /// repository. [How-to guide}(/dlp/docs/compute-risk-analysis)</summary>
+            /// repository. [How-to guide](/dlp/docs/compute-risk-analysis)</summary>
             public class AnalyzeRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2DlpJob>
             {
                 /// <summary>Constructs a new Analyze request.</summary>
@@ -1744,7 +1753,8 @@ namespace Google.Apis.DLP.v2beta2
 
             /// <summary>Deletes inspect templates.</summary>
             /// <param name="name">Resource name of the organization and deidentify template to be deleted, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342`.</param>
+            /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+            /// id/deidentifyTemplates/432452342.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -1763,7 +1773,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of the organization and deidentify template to be deleted, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342`.</summary>
+                /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+                /// id/deidentifyTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1806,7 +1817,8 @@ namespace Google.Apis.DLP.v2beta2
 
             /// <summary>Gets an inspect template.</summary>
             /// <param name="name">Resource name of the organization and deidentify template to be read, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342`.</param>
+            /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+            /// id/deidentifyTemplates/432452342.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1825,7 +1837,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of the organization and deidentify template to be read, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342`.</summary>
+                /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+                /// id/deidentifyTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1959,7 +1972,8 @@ namespace Google.Apis.DLP.v2beta2
             /// <summary>Updates the inspect template.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Resource name of organization and deidentify template to be updated, for example
-            /// `organizations/433245324/deidentifyTemplates/432452342`.</param>
+            /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+            /// id/deidentifyTemplates/432452342.</param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2UpdateDeidentifyTemplateRequest body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -1979,7 +1993,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of organization and deidentify template to be updated, for example
-                /// `organizations/433245324/deidentifyTemplates/432452342`.</summary>
+                /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
+                /// id/deidentifyTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2265,6 +2280,27 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
+                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY *
+                /// Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator
+                /// must be `=` or `!=`.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+                /// canceled)
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2287,27 +2323,6 @@ namespace Google.Apis.DLP.v2beta2
                     [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
                     RISKANALYSISJOB,
                 }
-
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY *
-                /// Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator
-                /// must be `=` or `!=`.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled)
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2343,6 +2358,15 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2364,15 +2388,6 @@ namespace Google.Apis.DLP.v2beta2
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2574,7 +2589,7 @@ namespace Google.Apis.DLP.v2beta2
 
             /// <summary>Deletes inspect templates.</summary>
             /// <param name="name">Resource name of the organization and inspectTemplate to be deleted, for example
-            /// `organizations/433245324/inspectTemplates/432452342`.</param>
+            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
@@ -2593,7 +2608,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of the organization and inspectTemplate to be deleted, for example
-                /// `organizations/433245324/inspectTemplates/432452342`.</summary>
+                /// `organizations/433245324/inspectTemplates/432452342` or projects/project-
+                /// id/inspectTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2636,7 +2652,7 @@ namespace Google.Apis.DLP.v2beta2
 
             /// <summary>Gets an inspect template.</summary>
             /// <param name="name">Resource name of the organization and inspectTemplate to be read, for example
-            /// `organizations/433245324/inspectTemplates/432452342`.</param>
+            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -2655,7 +2671,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of the organization and inspectTemplate to be read, for example
-                /// `organizations/433245324/inspectTemplates/432452342`.</summary>
+                /// `organizations/433245324/inspectTemplates/432452342` or projects/project-
+                /// id/inspectTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2789,7 +2806,7 @@ namespace Google.Apis.DLP.v2beta2
             /// <summary>Updates the inspect template.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Resource name of organization and inspectTemplate to be updated, for example
-            /// `organizations/433245324/inspectTemplates/432452342`.</param>
+            /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual PatchRequest Patch(Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2UpdateInspectTemplateRequest body, string name)
             {
                 return new PatchRequest(service, body, name);
@@ -2809,7 +2826,8 @@ namespace Google.Apis.DLP.v2beta2
 
 
                 /// <summary>Resource name of organization and inspectTemplate to be updated, for example
-                /// `organizations/433245324/inspectTemplates/432452342`.</summary>
+                /// `organizations/433245324/inspectTemplates/432452342` or projects/project-
+                /// id/inspectTemplates/432452342.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 

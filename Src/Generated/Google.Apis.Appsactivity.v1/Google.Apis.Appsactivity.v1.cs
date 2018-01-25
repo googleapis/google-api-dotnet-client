@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/activity/'>G Suite Activity API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180118 (1113)
+ *      <tr><th>API Rev<td>20180123 (1118)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/activity/'>
  *              https://developers.google.com/google-apps/activity/</a>
@@ -110,18 +110,6 @@ namespace Google.Apis.Appsactivity.v1
         {
             /// <summary>View the activity history of your Google apps</summary>
             public static string Activity = "https://www.googleapis.com/auth/activity";
-
-            /// <summary>View and manage the files in your Google Drive</summary>
-            public static string Drive = "https://www.googleapis.com/auth/drive";
-
-            /// <summary>View and manage metadata of files in your Google Drive</summary>
-            public static string DriveMetadata = "https://www.googleapis.com/auth/drive.metadata";
-
-            /// <summary>View metadata for files in your Google Drive</summary>
-            public static string DriveMetadataReadonly = "https://www.googleapis.com/auth/drive.metadata.readonly";
-
-            /// <summary>View the files in your Google Drive</summary>
-            public static string DriveReadonly = "https://www.googleapis.com/auth/drive.readonly";
 
         }
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180114 (1109)
+ *      <tr><th>API Rev<td>20180120 (1115)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -1223,13 +1223,13 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             }
         }
 
-        /// <summary>List the user's customer accounts.</summary>
+        /// <summary>Lists the user's customer accounts.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>List the user's customer accounts.</summary>
+        /// <summary>Lists the user's customer accounts.</summary>
         public class ListRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.CustomerListCustomersResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1240,11 +1240,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
             }
 
 
-            /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+            /// <summary>A token specifying which result page to return.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>The maximum number of items to return.</summary>
+            /// <summary>The maximum number of customers to show in a page of results. A number between 1 and 1000
+            /// (inclusive).</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
@@ -2391,12 +2392,12 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
     /// <summary>Response message for listing my customers.</summary>
     public class CustomerListCustomersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Customers the current user can act as.</summary>
+        /// <summary>The customer accounts the calling user is a member of.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customers")]
         public virtual System.Collections.Generic.IList<Company> Customers { get; set; } 
 
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
+        /// <summary>A token used to access the next page of results. Omitted if no further results are
+        /// available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 

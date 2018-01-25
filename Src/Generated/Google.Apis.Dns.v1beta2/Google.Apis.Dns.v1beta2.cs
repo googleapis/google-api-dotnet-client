@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180115 (1110)
+ *      <tr><th>API Rev<td>20180124 (1119)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2229,6 +2229,10 @@ namespace Google.Apis.Dns.v1beta2.Data
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "dns#managedZone".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>User labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>User assigned name for this resource. Must be unique within the project. The name must be 1-63
         /// characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters,

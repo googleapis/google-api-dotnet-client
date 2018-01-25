@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/people/'>Google People API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180122 (1117)
+ *      <tr><th>API Rev<td>20180123 (1118)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/people/'>
  *              https://developers.google.com/people/</a>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/tpu/'>Cloud TPU API</a>
  *      <tr><th>API Version<td>v1alpha1
- *      <tr><th>API Rev<td>20171218 (1082)
+ *      <tr><th>API Rev<td>20180123 (1118)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/tpu/'>
  *              https://cloud.google.com/tpu/</a>
@@ -378,6 +378,7 @@ namespace Google.Apis.TPU.v1alpha1
                 this.service = service;
                 nodes = new NodesResource(service);
                 operations = new OperationsResource(service);
+                tensorflowVersions = new TensorflowVersionsResource(service);
 
             }
 
@@ -827,6 +828,142 @@ namespace Google.Apis.TPU.v1alpha1
                     }
 
                 }
+
+                /// <summary>Start a node.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name.</param>
+                public virtual StartRequest Start(Google.Apis.TPU.v1alpha1.Data.StartNodeRequest body, string name)
+                {
+                    return new StartRequest(service, body, name);
+                }
+
+                /// <summary>Start a node.</summary>
+                public class StartRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Start request.</summary>
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.StartNodeRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v1alpha1.Data.StartNodeRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "start"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/{+name}:start"; }
+                    }
+
+                    /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Stops a node.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The resource name.</param>
+                public virtual StopRequest Stop(Google.Apis.TPU.v1alpha1.Data.StopNodeRequest body, string name)
+                {
+                    return new StopRequest(service, body, name);
+                }
+
+                /// <summary>Stops a node.</summary>
+                public class StopRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v1alpha1.Data.StopNodeRequest body, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v1alpha1.Data.StopNodeRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "stop"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/{+name}:stop"; }
+                    }
+
+                    /// <summary>Initializes Stop parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/nodes/[^/]+$",
+                            });
+                    }
+
+                }
             }
             private readonly OperationsResource operations;
 
@@ -1163,6 +1300,202 @@ namespace Google.Apis.TPU.v1alpha1
 
                 }
             }
+            private readonly TensorflowVersionsResource tensorflowVersions;
+
+            /// <summary>Gets the TensorflowVersions resource.</summary>
+            public virtual TensorflowVersionsResource TensorflowVersions
+            {
+                get { return tensorflowVersions; }
+            }
+
+            /// <summary>The "tensorflowVersions" collection of methods.</summary>
+            public class TensorflowVersionsResource
+            {
+                private const string Resource = "tensorflowVersions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public TensorflowVersionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Gets TensorFlow Version.</summary>
+                /// <param name="name">The resource name.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets TensorFlow Version.</summary>
+                public class GetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.TensorFlowVersion>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name)
+                        : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "get"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/{+name}"; }
+                    }
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/tensorflowVersions/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>List TensorFlow versions.</summary>
+                /// <param name="parent">The parent resource name.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List TensorFlow versions.</summary>
+                public class ListRequest : TPUBaseServiceRequest<Google.Apis.TPU.v1alpha1.Data.ListTensorFlowVersionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent resource name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The next_page_token value returned from a previous List request, if any.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Sort results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>The maximum number of items to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>List filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1alpha1/{+parent}/tensorflowVersions"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
 
             /// <summary>Get information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
@@ -1386,6 +1719,21 @@ namespace Google.Apis.TPU.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response for ListTensorFlowVersions.</summary>
+    public class ListTensorFlowVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The next page token or empty if none.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The listed nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tensorflowVersions")]
+        public virtual System.Collections.Generic.IList<TensorFlowVersion> TensorflowVersions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A resource that represents Google Cloud Platform location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1434,11 +1782,12 @@ namespace Google.Apis.TPU.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; } 
 
-        /// <summary>The CIDR block that the TPU node will use when selecting //an IP address. This CIDR block must be a
-        /// /29 block; the GCE networks API forbids a smaller block, and using a larger block would be wasteful (a node
-        /// can only consume one IP address). Errors will occur if the CIDR block has already been used for a currently
-        /// existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided network, or the
-        /// provided network is peered with another network that is using that CIDR block. Required.</summary>
+        /// <summary>The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a
+        /// /29 block; the Compute Engine networks API forbids a smaller block, and using a larger block would be
+        /// wasteful (a node can only consume one IP address). Errors will occur if the CIDR block has already been used
+        /// for a currently existing TPU node, the CIDR block conflicts with any subnetworks in the user's provided
+        /// network, or the provided network is peered with another network that is using that CIDR block.
+        /// Required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cidrBlock")]
         public virtual string CidrBlock { get; set; } 
 
@@ -1460,16 +1809,20 @@ namespace Google.Apis.TPU.v1alpha1.Data
         public virtual string HealthDescription { get; set; } 
 
         /// <summary>Output only. DEPRECATED! Use network_endpoints instead. The network address for the TPU Node as
-        /// visible to GCE instances.</summary>
+        /// visible to Compute Engine instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; } 
+
+        /// <summary>Resource labels to represent user-provided metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Output only. The immutable name of the TPU</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The name of a network they wish to peer the TPU node to. It must be a preexisting GCE network
-        /// inside of the project on which this API has been activated. If none is provided, "default" will be
+        /// <summary>The name of a network they wish to peer the TPU node to. It must be a preexisting Compute Engine
+        /// network inside of the project on which this API has been activated. If none is provided, "default" will be
         /// used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
@@ -1480,7 +1833,7 @@ namespace Google.Apis.TPU.v1alpha1.Data
         public virtual System.Collections.Generic.IList<NetworkEndpoint> NetworkEndpoints { get; set; } 
 
         /// <summary>Output only. DEPRECATED! Use network_endpoints instead. The network port for the TPU Node as
-        /// visible to GCE instances.</summary>
+        /// visible to Compute Engine instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual string Port { get; set; } 
 
@@ -1593,6 +1946,13 @@ namespace Google.Apis.TPU.v1alpha1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request for StartNode.</summary>
+    public class StartNodeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The `Status` type defines a logical error model that is suitable for different programming
     /// environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). The error model
     /// is designed to be:
@@ -1651,6 +2011,28 @@ namespace Google.Apis.TPU.v1alpha1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for StopNode.</summary>
+    public class StopNodeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A tensorflow version that a Node can be configured with.</summary>
+    public class TensorFlowVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>the tensorflow version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

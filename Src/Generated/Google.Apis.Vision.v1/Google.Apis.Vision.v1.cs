@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180116 (1111)
+ *      <tr><th>API Rev<td>20180122 (1117)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -535,6 +535,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 
+        /// <summary>Confidence of the OCR results on the block. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
         /// <summary>List of paragraphs in this block (if this blocks is of type text).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paragraphs")]
         public virtual System.Collections.Generic.IList<Paragraph> Paragraphs { get; set; } 
@@ -887,6 +891,11 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxResults")]
         public virtual System.Nullable<int> MaxResults { get; set; } 
 
+        /// <summary>Model to use for the feature. Supported values: "builtin/stable" (the default if unset) and
+        /// "builtin/latest".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; } 
+
         /// <summary>The feature type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -932,6 +941,10 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>lat/long rectangle that specifies the location of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latLongRect")]
         public virtual LatLongRect LatLongRect { get; set; } 
+
+        /// <summary>Parameters for web detection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webDetectionParams")]
+        public virtual WebDetectionParams WebDetectionParams { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1043,6 +1056,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("blocks")]
         public virtual System.Collections.Generic.IList<Block> Blocks { get; set; } 
 
+        /// <summary>Confidence of the OCR results on the page. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
         /// <summary>Page height in pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; } 
@@ -1069,6 +1086,10 @@ namespace Google.Apis.Vision.v1.Data
         /// left corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
+
+        /// <summary>Confidence of the OCR results for the paragraph. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
 
         /// <summary>Additional information detected for the paragraph.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
@@ -1133,6 +1154,12 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>Likelihood that this is a medical image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medical")]
         public virtual string Medical { get; set; } 
+
+        /// <summary>Likelihood that the request image contains racy content. Racy content may include (but is not
+        /// limited to) skimpy or sheer clothing, strategically covered nudity, lewd or provocative poses, or close-ups
+        /// of sensitive body areas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("racy")]
+        public virtual string Racy { get; set; } 
 
         /// <summary>Spoof likelihood. The likelihood that an modification was made to the image's canonical version to
         /// make it appear funny or offensive.</summary>
@@ -1221,6 +1248,10 @@ namespace Google.Apis.Vision.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
 
+        /// <summary>Confidence of the OCR results for the symbol. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
+
         /// <summary>Additional information detected for the symbol.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual TextProperty Property { get; set; } 
@@ -1286,6 +1317,10 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Relevant information for the image from the Internet.</summary>
     public class WebDetection : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Best guess text labels for the request image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestGuessLabels")]
+        public virtual System.Collections.Generic.IList<WebLabel> BestGuessLabels { get; set; } 
+
         /// <summary>Fully matching images from the Internet. Can include resized copies of the query image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullMatchingImages")]
         public virtual System.Collections.Generic.IList<WebImage> FullMatchingImages { get; set; } 
@@ -1306,6 +1341,17 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>Deduced entities from similar images on the Internet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webEntities")]
         public virtual System.Collections.Generic.IList<WebEntity> WebEntities { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Parameters for web detection request.</summary>
+    public class WebDetectionParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to include results derived from the geo information in the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeGeoResults")]
+        public virtual System.Nullable<bool> IncludeGeoResults { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1346,9 +1392,38 @@ namespace Google.Apis.Vision.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Label to provide extra metadata for the web detection.</summary>
+    public class WebLabel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Label for extra metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; } 
+
+        /// <summary>The BCP-47 language code for `label`, such as "en-US" or "sr-Latn". For more information, see
+        /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Metadata for web pages.</summary>
     public class WebPage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Fully matching images on the page. Can include resized copies of the query image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullMatchingImages")]
+        public virtual System.Collections.Generic.IList<WebImage> FullMatchingImages { get; set; } 
+
+        /// <summary>Title for the web page, may contain HTML markups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageTitle")]
+        public virtual string PageTitle { get; set; } 
+
+        /// <summary>Partial matching images on the page. Those images are similar enough to share some key-point
+        /// features. For example an original image will likely have partial matching for its crops.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partialMatchingImages")]
+        public virtual System.Collections.Generic.IList<WebImage> PartialMatchingImages { get; set; } 
+
         /// <summary>(Deprecated) Overall relevancy score for the web page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual System.Nullable<float> Score { get; set; } 
@@ -1371,6 +1446,10 @@ namespace Google.Apis.Vision.v1.Data
         /// corner it becomes: 2----3 |    | 1----0 and the vertice order will still be (0, 1, 2, 3).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boundingBox")]
         public virtual BoundingPoly BoundingBox { get; set; } 
+
+        /// <summary>Confidence of the OCR results for the word. Range [0, 1].</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; } 
 
         /// <summary>Additional information detected for the word.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("property")]

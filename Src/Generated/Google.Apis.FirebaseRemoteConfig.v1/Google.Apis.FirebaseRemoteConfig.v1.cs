@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/remote-config/'>Firebase Remote Config API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180110 (1105)
+ *      <tr><th>API Rev<td>20180122 (1117)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/remote-config/'>
  *              https://firebase.google.com/docs/remote-config/</a>
@@ -560,10 +560,10 @@ namespace Google.Apis.FirebaseRemoteConfig.v1.Data
     /// RemoteConfig template.</summary>
     public class RemoteConfigCondition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A description for this Condition. Length must be less than or equal to 100 characters (or
-        /// more precisely, unicode code points, which is defined in
-        /// java/com/google/wireless/android/config/ConstsExporter.java). A description may contain any Unicode
-        /// characters</summary>
+        /// <summary>DO NOT USE. Implementation removed and will not be added unless requested. A description for this
+        /// Condition. Length must be less than or equal to 100 characters (or more precisely, unicode code points,
+        /// which is defined in java/com/google/wireless/android/config/ConstsExporter.java). A description may contain
+        /// any Unicode characters</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 

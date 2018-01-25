@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180116 (1111)
+ *      <tr><th>API Rev<td>20180123 (1118)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -637,6 +637,11 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>Provides information to the recognizer that specifies how to process the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>*Optional* If `true`, the top result includes a list of words and the confidence for those words.
+        /// If `false`, no word-level confidence information is returned. The default is `false`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableWordConfidence")]
+        public virtual System.Nullable<bool> EnableWordConfidence { get; set; } 
+
         /// <summary>*Optional* If `true`, the top result includes a list of words and the start and end time offsets
         /// (timestamps) for those words. If `false`, no word-level time offset information is returned. The default is
         /// `false`.</summary>
@@ -730,9 +735,9 @@ namespace Google.Apis.Speech.v1.Data
     public class SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>*Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
-        /// greater likelihood that the recognized words are correct. This field is typically provided only for the top
-        /// hypothesis, and only for `is_final=true` results. Clients should not rely on the `confidence` field as it is
-        /// not guaranteed to be accurate, or even set, in any of the results. The default of 0.0 is a sentinel value
+        /// greater likelihood that the recognized words are correct. This field is set only for the top alternative of
+        /// a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
+        /// accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value
         /// indicating `confidence` was not set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
@@ -825,8 +830,7 @@ namespace Google.Apis.Speech.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Word-specific information for recognized words. Word information is only included in the response when
-    /// certain request parameters are set, such as `enable_word_time_offsets`.</summary>
+    /// <summary>Word-specific information for recognized words.</summary>
     public class WordInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>*Output-only* Time offset relative to the beginning of the audio, and corresponding to the end of
