@@ -40,7 +40,7 @@ namespace Google.Apis.Auth.OAuth2
     public class ComputeCredential : ServiceCredential
     {
         /// <summary>The metadata server url.</summary>
-        public const string MetadataServerUrl = "http://metadata.google.internal";
+        public const string MetadataServerUrl = "http://169.254.169.254"; // IP address instead of name to avoid DNS resolution
 
         /// <summary>Caches result from first call to <c>IsRunningOnComputeEngine</c> </summary>
         private readonly static Lazy<Task<bool>> isRunningOnComputeEngineCached = new Lazy<Task<bool>>(
