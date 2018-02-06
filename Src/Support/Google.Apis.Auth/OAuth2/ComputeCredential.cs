@@ -14,16 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.OAuth2.Responses;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Http;
-using Google.Apis.Json;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -47,21 +44,20 @@ namespace Google.Apis.Auth.OAuth2
             () => IsRunningOnComputeEngineNoCache());
 
         /// <summary>
-        /// Originally 1000ms was used as a hopefully-conservative timeout, but this still led to
-        /// problems very occasionally. (Measuring the time taken showed occasional requests around 800ms,
-        /// so 1000ms is plausible.) 2000ms should be more reliable, and still unlikely to cause issues -
-        /// we'd expect not-running-on-GCE cases to fail due to the address not being valid much quicker than that.
+        /// Originally 1000ms was used without a retry. This proved inadequate; even 2000ms without
+        /// a retry occasionally failed. We have observed that after a timeout, the next attempt
+        /// succeeds very quickly (sub-50ms) which suggests that this should be fine.
         /// </summary>
-        private const int MetadataServerPingTimeoutInMilliseconds = 2000;
+        private const int MetadataServerPingTimeoutInMilliseconds = 500;
+
+        private const int MetadataServerPingAttempts = 3;
 
         /// <summary>The Metadata flavor header name.</summary>
         private const string MetadataFlavor = "Metadata-Flavor";
 
         /// <summary>The Metadata header response indicating Google.</summary>
         private const string GoogleMetadataHeader = "Google";
-
-        private const string NotOnGceMessage = "Could not reach the Google Compute Engine metadata service. That is alright if this application is not running on GCE.";
-
+        
         /// <summary>
         /// An initializer class for the Compute credential. It uses <see cref="GoogleAuthConsts.ComputeTokenUrl"/>
         /// as the token server URL.
@@ -110,47 +106,41 @@ namespace Google.Apis.Auth.OAuth2
 
         private static async Task<bool> IsRunningOnComputeEngineNoCache()
         {
-            try
+            Logger.Info("Checking connectivity to ComputeEngine metadata server.");
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
+
+            // Using the built-in HttpClient, as we want bare bones functionality - we'll control retries.
+            // Use the same one across all attempts, which may contribute to speedier retries.
+            var httpClient = new HttpClient();
+
+            for (int i = 0; i < MetadataServerPingAttempts; i++)
             {
-                Logger.Info("Checking connectivity to ComputeEngine metadata server.");
-                var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
                 var cts = new CancellationTokenSource();
                 cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
-                
-                // Using the built-in HttpClient, as we want bare bones functionality without any retries.
-                var httpClient = new HttpClient();
-                var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
-
-                IEnumerable<string> headerValues = null;
-                if (response.Headers.TryGetValues(MetadataFlavor, out headerValues))
+                try
                 {
-                    foreach (var value in headerValues)
+                    var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
+                    if (response.Headers.TryGetValues(MetadataFlavor, out var headerValues)
+                        && headerValues.Contains(GoogleMetadataHeader))
                     {
-                        if (value == GoogleMetadataHeader)
-                            return true;
+                        return true;
                     }
-                }
 
-                // Response came from another source, possibly a proxy server in the caller's network.
-                Logger.Info("Response came from a source other than the Google Compute Engine metadata server.");
-                return false;
+                    // Response came from another source, possibly a proxy server in the caller's network.
+                    Logger.Info("Response came from a source other than the Google Compute Engine metadata server.");
+                    return false;
+                }
+                catch (Exception e) when (e is HttpRequestException || e is WebException || e is OperationCanceledException)
+                {
+                    // No-op; we'll retry.
+                    // We may eventually want to handle the different exception types in different ways,
+                    // e.g. returning false rather than retrying for some exception types. However,
+                    // for now it's safe just to retry.
+                }
             }
-            catch (HttpRequestException)
-            {
-                Logger.Debug(NotOnGceMessage);
-                return false;
-            }
-            catch (WebException)
-            {
-                // On Mono, NameResolutionFailure is of System.Net.WebException.
-                Logger.Debug(NotOnGceMessage);
-                return false;
-            }
-            catch (OperationCanceledException)
-            {
-                Logger.Warning("Could not reach the Google Compute Engine metadata service. Operation timed out.");
-                return false;
-            }
+            // Only log after all attempts have failed.
+            Logger.Debug("Could not reach the Google Compute Engine metadata service. That is expected if this application is not running on GCE.");
+            return false;
         }
     }
 }
