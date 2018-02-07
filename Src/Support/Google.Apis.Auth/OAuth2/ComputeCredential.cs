@@ -107,35 +107,36 @@ namespace Google.Apis.Auth.OAuth2
         private static async Task<bool> IsRunningOnComputeEngineNoCache()
         {
             Logger.Info("Checking connectivity to ComputeEngine metadata server.");
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
 
             // Using the built-in HttpClient, as we want bare bones functionality - we'll control retries.
             // Use the same one across all attempts, which may contribute to speedier retries.
-            var httpClient = new HttpClient();
-
-            for (int i = 0; i < MetadataServerPingAttempts; i++)
+            using (var httpClient = new HttpClient())
             {
-                var cts = new CancellationTokenSource();
-                cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
-                try
+                for (int i = 0; i < MetadataServerPingAttempts; i++)
                 {
-                    var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
-                    if (response.Headers.TryGetValues(MetadataFlavor, out var headerValues)
-                        && headerValues.Contains(GoogleMetadataHeader))
+                    var cts = new CancellationTokenSource();
+                    cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
+                    try
                     {
-                        return true;
-                    }
+                        var httpRequest = new HttpRequestMessage(HttpMethod.Get, MetadataServerUrl);
+                        var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
+                        if (response.Headers.TryGetValues(MetadataFlavor, out var headerValues)
+                            && headerValues.Contains(GoogleMetadataHeader))
+                        {
+                            return true;
+                        }
 
-                    // Response came from another source, possibly a proxy server in the caller's network.
-                    Logger.Info("Response came from a source other than the Google Compute Engine metadata server.");
-                    return false;
-                }
-                catch (Exception e) when (e is HttpRequestException || e is WebException || e is OperationCanceledException)
-                {
-                    // No-op; we'll retry.
-                    // We may eventually want to handle the different exception types in different ways,
-                    // e.g. returning false rather than retrying for some exception types. However,
-                    // for now it's safe just to retry.
+                        // Response came from another source, possibly a proxy server in the caller's network.
+                        Logger.Info("Response came from a source other than the Google Compute Engine metadata server.");
+                        return false;
+                    }
+                    catch (Exception e) when (e is HttpRequestException || e is WebException || e is OperationCanceledException)
+                    {
+                        // No-op; we'll retry.
+                        // We may eventually want to handle the different exception types in different ways,
+                        // e.g. returning false rather than retrying for some exception types. However,
+                        // for now it's safe just to retry.
+                    }
                 }
             }
             // Only log after all attempts have failed.
