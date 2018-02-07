@@ -100,7 +100,7 @@ namespace Google.Apis.Auth.OAuth2
                             + "\nPlease check the value of the Environment Variable {2}",
                             credentialPath,
                             e.Message,
-                            CredentialEnvironmentVariable));
+                            CredentialEnvironmentVariable), e);
                 }
             }
             
@@ -128,7 +128,7 @@ namespace Google.Apis.Auth.OAuth2
                         String.Format("Error reading credential file from location {0}: {1}"
                             + "\nPlease rerun 'gcloud auth login' to regenerate credentials file.",
                             credentialPath,
-                            e.Message));
+                            e.Message), e);
                 }
             }
 
