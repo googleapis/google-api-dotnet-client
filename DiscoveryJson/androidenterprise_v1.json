@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/kseaht2jVCZHibJLk4Q6fz-32jE\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/xGQpa0ZFJyFLexGdkhzOgaWpUDQ\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20180118",
+ "revision": "20180131",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -757,6 +757,11 @@
      "type": "string",
      "description": "Identifies what kind of resource this is. Value: the fixed string \"androidenterprise#managedConfigurationsSettings\".",
      "default": "androidenterprise#managedConfigurationsSettings"
+    },
+    "lastUpdatedTimestampMillis": {
+     "type": "string",
+     "description": "The last updated time of the managed configuration settings in milliseconds since 1970-01-01T00:00:00Z.",
+     "format": "int64"
     },
     "managedProperty": {
      "type": "array",

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/FoVh6eGZkMB0Z1f3X5375o8tLXY\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/dq4KEhuC6KulQLePEMDDM0mB6ZA\"",
  "discoveryVersion": "v1",
  "id": "webmasters:v3",
  "name": "webmasters",
  "version": "v3",
- "revision": "20170528",
+ "revision": "20180125",
  "title": "Search Console API",
  "description": "View Google Search Console data for your verified sites.",
  "ownerDomain": "google.com",
@@ -614,7 +614,7 @@
      "parameters": {
       "siteUrl": {
        "type": "string",
-       "description": "The URI of the property as defined in Search Console. Examples: http://www.example.com/ or android-app://com.example/",
+       "description": "The URI of the property as defined in Search Console. Examples: http://www.example.com/ or android-app://com.example/ Note: for property-sets, use the URI that starts with sc-set: which is used in Search Console URLs.",
        "required": true,
        "location": "path"
       }
@@ -634,7 +634,7 @@
      "parameters": {
       "siteUrl": {
        "type": "string",
-       "description": "The URI of the property as defined in Search Console. Examples: http://www.example.com/ or android-app://com.example/",
+       "description": "The URI of the property as defined in Search Console. Examples: http://www.example.com/ or android-app://com.example/ Note: for property-sets, use the URI that starts with sc-set: which is used in Search Console URLs.",
        "required": true,
        "location": "path"
       }
