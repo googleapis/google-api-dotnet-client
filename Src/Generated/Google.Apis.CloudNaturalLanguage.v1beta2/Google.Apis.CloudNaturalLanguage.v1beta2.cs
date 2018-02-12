@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180207 (1133)
+ *      <tr><th>API Rev<td>20180208 (1134)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>

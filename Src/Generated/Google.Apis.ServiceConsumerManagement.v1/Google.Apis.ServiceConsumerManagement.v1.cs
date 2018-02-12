@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180206 (1132)
+ *      <tr><th>API Rev<td>20180208 (1134)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -970,6 +970,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The continuation token, which is used to page through large result sets. To get the next
                 /// page of results, set this parameter to the value of `nextPageToken` from the previous
                 /// response.</summary>
@@ -979,10 +983,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// <summary>The maximum number of results returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1018,6 +1018,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                             Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1030,15 +1039,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1614,7 +1614,18 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and
     /// `google.rpc.context.OriginContext`.
     ///
-    /// Available context types are defined in package `google.rpc.context`.</summary>
+    /// Available context types are defined in package `google.rpc.context`.
+    ///
+    /// This also provides mechanism to whitelist any protobuf message extension that can be sent in grpc metadata using
+    /// “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can
+    /// appear in grpc metadata as follows in your yaml file:
+    ///
+    /// Example:
+    ///
+    /// context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: -
+    /// google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension
+    ///
+    /// You can also specify extension ID instead of fully qualified extension name here.</summary>
     public class Context : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of RPC context rules that apply to individual API methods.
@@ -1630,6 +1641,16 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>A context rule provides information about the context for an individual API element.</summary>
     public class ContextRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of full type names or extension IDs of extensions allowed in grpc side channel from client
+        /// to backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedRequestExtensions")]
+        public virtual System.Collections.Generic.IList<string> AllowedRequestExtensions { get; set; } 
+
+        /// <summary>A list of full type names or extension IDs of extensions allowed in grpc side channel from backend
+        /// to client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedResponseExtensions")]
+        public virtual System.Collections.Generic.IList<string> AllowedResponseExtensions { get; set; } 
+
         /// <summary>A list of full type names of provided contexts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provided")]
         public virtual System.Collections.Generic.IList<string> Provided { get; set; } 
@@ -3415,9 +3436,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>Describes policy settings that need to be applied to a newly created Tenant Project.</summary>
     public class TenantProjectPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Additional policy bindings to be applied on the tenant project. At least one owner must be set in
-        /// the bindings. Among the list of members as owners, at least one of them must be either `user` or `group`
-        /// based.</summary>
+        /// <summary>Policy bindings to be applied to the tenant project, in addition to the 'roles/owner' role granted
+        /// to the Service Consumer Management service account. At least one binding must have the role `roles/owner`.
+        /// Among the list of members for `roles/owner`, at least one of them must be either `user` or `group`
+        /// type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBindings")]
         public virtual System.Collections.Generic.IList<PolicyBinding> PolicyBindings { get; set; } 
 

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/3jmtu98JWbdkF_ra2Tpllsx4T2M\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/7pl1sDmdBC-mu1KF-9O2eOURI9U\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180127",
+ "revision": "20180205",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -442,10 +442,23 @@
      "description": "Relative amount of time the slowest shard spent on CPU-bound tasks.",
      "format": "double"
     },
+    "endMs": {
+     "type": "string",
+     "description": "Stage end time in milliseconds.",
+     "format": "int64"
+    },
     "id": {
      "type": "string",
      "description": "Unique ID for stage within plan.",
      "format": "int64"
+    },
+    "inputStages": {
+     "type": "array",
+     "description": "IDs for stages that are inputs to this stage.",
+     "items": {
+      "type": "string",
+      "format": "int64"
+     }
     },
     "name": {
      "type": "string",
@@ -494,6 +507,11 @@
     "shuffleOutputBytesSpilled": {
      "type": "string",
      "description": "Total number of bytes written to shuffle and spilled to disk.",
+     "format": "int64"
+    },
+    "startMs": {
+     "type": "string",
+     "description": "Stage start time in milliseconds.",
      "format": "int64"
     },
     "status": {
@@ -928,7 +946,7 @@
     },
     "sourceFormat": {
      "type": "string",
-     "description": "[Optional] The format of the data files. For CSV files, specify \"CSV\". For datastore backups, specify \"DATASTORE_BACKUP\". For newline-delimited JSON, specify \"NEWLINE_DELIMITED_JSON\". For Avro, specify \"AVRO\". The default value is CSV."
+     "description": "[Optional] The format of the data files. For CSV files, specify \"CSV\". For datastore backups, specify \"DATASTORE_BACKUP\". For newline-delimited JSON, specify \"NEWLINE_DELIMITED_JSON\". For Avro, specify \"AVRO\". For parquet, specify \"PARQUET\". For orc, specify \"ORC\". The default value is CSV."
     },
     "sourceUris": {
      "type": "array",
@@ -1163,7 +1181,7 @@
      }
     },
     "location": {
-     "$ref": "Location",
+     "type": "string",
      "description": "[Experimental] The geographic location of the job. Required except for US and EU."
     },
     "projectId": {
@@ -1275,7 +1293,7 @@
     },
     "timeline": {
      "type": "array",
-     "description": "[Output-only] Describes a timeline of job execution.",
+     "description": "[Output-only] [Experimental] Describes a timeline of job execution.",
      "items": {
       "$ref": "QueryTimelineSample"
      }
@@ -1381,10 +1399,6 @@
   "JsonValue": {
    "id": "JsonValue",
    "type": "any"
-  },
-  "Location": {
-   "id": "Location",
-   "type": "string"
   },
   "ProjectList": {
    "id": "ProjectList",
@@ -1546,7 +1560,7 @@
      "default": "bigquery#queryRequest"
     },
     "location": {
-     "$ref": "Location",
+     "type": "string",
      "description": "[Experimental] The geographic location where the job should run. Required except for US and EU."
     },
     "maxResults": {
@@ -2108,6 +2122,11 @@
     "field": {
      "type": "string",
      "description": "[Experimental] [Optional] If not set, the table is partitioned by pseudo column '_PARTITIONTIME'; if set, the table is partitioned by this field. The field must be a top-level TIMESTAMP or DATE field. Its mode must be NULLABLE or REQUIRED."
+    },
+    "requirePartitionFilter": {
+     "type": "boolean",
+     "description": "[Experimental] [Optional] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.",
+     "default": "false"
     },
     "type": {
      "type": "string",

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180127 (1122)
+ *      <tr><th>API Rev<td>20180205 (1131)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2962,9 +2962,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("computeRatioMax")]
         public virtual System.Nullable<double> ComputeRatioMax { get; set; } 
 
+        /// <summary>Stage end time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endMs")]
+        public virtual System.Nullable<long> EndMs { get; set; } 
+
         /// <summary>Unique ID for stage within plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual System.Nullable<long> Id { get; set; } 
+
+        /// <summary>IDs for stages that are inputs to this stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputStages")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> InputStages { get; set; } 
 
         /// <summary>Human-readable name for stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -3005,6 +3013,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Total number of bytes written to shuffle and spilled to disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleOutputBytesSpilled")]
         public virtual System.Nullable<long> ShuffleOutputBytesSpilled { get; set; } 
+
+        /// <summary>Stage start time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startMs")]
+        public virtual System.Nullable<long> StartMs { get; set; } 
 
         /// <summary>Current status for the stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -3475,7 +3487,7 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>[Optional] The format of the data files. For CSV files, specify "CSV". For datastore backups,
         /// specify "DATASTORE_BACKUP". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro, specify
-        /// "AVRO". The default value is CSV.</summary>
+        /// "AVRO". For parquet, specify "PARQUET". For orc, specify "ORC". The default value is CSV.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; } 
 
@@ -3846,7 +3858,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statementType")]
         public virtual string StatementType { get; set; } 
 
-        /// <summary>[Output-only] Describes a timeline of job execution.</summary>
+        /// <summary>[Output-only] [Experimental] Describes a timeline of job execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeline")]
         public virtual System.Collections.Generic.IList<QueryTimelineSample> Timeline { get; set; } 
 
@@ -4624,6 +4636,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// mode must be NULLABLE or REQUIRED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; } 
+
+        /// <summary>[Experimental] [Optional] If set to true, queries over this table require a partition filter that
+        /// can be used for partition elimination to be specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requirePartitionFilter")]
+        public virtual System.Nullable<bool> RequirePartitionFilter { get; set; } 
 
         /// <summary>[Required] The only type supported is DAY, which will generate one partition per day.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
