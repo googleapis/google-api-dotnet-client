@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180201 (1127)
+ *      <tr><th>API Rev<td>20180208 (1134)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -918,6 +918,10 @@ namespace Google.Apis.Slides.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replies")]
         public virtual System.Collections.Generic.IList<Response> Replies { get; set; } 
 
+        /// <summary>The updated write control after applying the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeControl")]
+        public virtual WriteControl WriteControl { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1603,6 +1607,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The properties of the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageProperties")]
         public virtual ImageProperties ImageProperties { get; set; } 
+
+        /// <summary>The source URL is the URL used to insert the image. The source URL can be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceUrl")]
+        public virtual string SourceUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

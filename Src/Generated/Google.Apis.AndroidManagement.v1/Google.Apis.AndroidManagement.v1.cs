@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180129 (1124)
+ *      <tr><th>API Rev<td>20180207 (1133)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2163,6 +2163,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPermissionPolicy")]
         public virtual string DefaultPermissionPolicy { get; set; } 
 
+        /// <summary>The scopes delegated to the app from Android Device Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("delegatedScopes")]
+        public virtual System.Collections.Generic.IList<string> DelegatedScopes { get; set; } 
+
         /// <summary>The type of installation to perform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installType")]
         public virtual string InstallType { get; set; } 
@@ -2178,6 +2182,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// HIDDENstring BUNDLE_ARRAYarray of objects </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedConfiguration")]
         public virtual System.Collections.Generic.IDictionary<string,object> ManagedConfiguration { get; set; } 
+
+        /// <summary>The minimum version of the app that runs on the device. If set, the device attempts to update the
+        /// app to at least this version code. If the app is not up-to-date, the device will contain a
+        /// NonComplianceDetail with non_compliance_reason set to APP_NOT_UPDATED. The app must already be published to
+        /// Google Play with a version code greater than or equal to this value. At most 20 apps may specify a minimum
+        /// version code per policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumVersionCode")]
+        public virtual System.Nullable<int> MinimumVersionCode { get; set; } 
 
         /// <summary>The package name of the app. For example, com.google.android.youtube for the YouTube app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
@@ -2387,11 +2399,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Information about security related device settings on device.</summary>
     public class DeviceSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If the ADB is enabled Settings.Global.ADB_ENABLED.</summary>
+        /// <summary>Whether ADB (https://developer.android.com/studio/command-line/adb.html) is enabled on the
+        /// device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adbEnabled")]
         public virtual System.Nullable<bool> AdbEnabled { get; set; } 
 
-        /// <summary>If the developer mode is enabled Settings.Global.DEVELOPMENT_SETTINGS_ENABLED.</summary>
+        /// <summary>Whether developer mode is enabled on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developmentSettingsEnabled")]
         public virtual System.Nullable<bool> DevelopmentSettingsEnabled { get; set; } 
 
@@ -2399,19 +2412,22 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionStatus")]
         public virtual string EncryptionStatus { get; set; } 
 
-        /// <summary>Device secured with PIN/password.</summary>
+        /// <summary>Whether the device is secured with PIN/password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDeviceSecure")]
         public virtual System.Nullable<bool> IsDeviceSecure { get; set; } 
 
-        /// <summary>Whether the storage encryption is enabled DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE or
-        /// DevicePolicyManager.ENCRYPTION_STATUS_ACTIVE_PER_USER in N+ devices.</summary>
+        /// <summary>Whether the storage encryption is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isEncrypted")]
         public virtual System.Nullable<bool> IsEncrypted { get; set; } 
 
-        /// <summary>If installing apps from unknown sources is enabled.
-        /// Settings.Secure.INSTALL_NON_MARKET_APPS.</summary>
+        /// <summary>Whether installing apps from unknown sources is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unknownSourcesEnabled")]
         public virtual System.Nullable<bool> UnknownSourcesEnabled { get; set; } 
+
+        /// <summary>Whether Verify Apps (Google Play Protect (https://support.google.com/googleplay/answer/2812853)) is
+        /// enabled on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyAppsEnabled")]
+        public virtual System.Nullable<bool> VerifyAppsEnabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2818,6 +2834,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual string Meid { get; set; } 
 
+        /// <summary>Alphabetic name of current registered operator. For example, Vodafone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkOperatorName")]
+        public virtual string NetworkOperatorName { get; set; } 
+
         /// <summary>Wi-Fi MAC address of the device. For example, 7c:11:11:11:11:11.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiMacAddress")]
         public virtual string WifiMacAddress { get; set; } 
@@ -3057,6 +3077,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// of this setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alwaysOnVpnPackage")]
         public virtual AlwaysOnVpnPackage AlwaysOnVpnPackage { get; set; } 
+
+        /// <summary>The app tracks for Android Device Policy the device can access. The device receives the latest
+        /// version among all accessible tracks. If no tracks are specified, then the device only uses the production
+        /// track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidDevicePolicyTracks")]
+        public virtual System.Collections.Generic.IList<string> AndroidDevicePolicyTracks { get; set; } 
 
         /// <summary>Policy applied to apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applications")]
@@ -3408,6 +3434,12 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The system bootloader version number, e.g. 0.6.7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootloaderVersion")]
         public virtual string BootloaderVersion { get; set; } 
+
+        /// <summary>SHA-256 hash of android.content.pm.Signature
+        /// (https://developer.android.com/reference/android/content/pm/Signature.html) associated with the system
+        /// package, which can be used to verify that the system build hasn't been modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceBuildSignature")]
+        public virtual string DeviceBuildSignature { get; set; } 
 
         /// <summary>Kernel version, for example, 2.6.32.9-g103d848.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceKernelVersion")]
