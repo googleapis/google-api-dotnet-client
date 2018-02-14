@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/ml/'>Google Cloud Machine Learning Engine</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180130 (1125)
+ *      <tr><th>API Rev<td>20180210 (1136)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/ml/'>
  *              https://cloud.google.com/ml/</a>
@@ -672,14 +672,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The number of jobs to retrieve per "page" of results. If there are more remaining
-                /// results than this number, the response message will contain a valid value in the `next_page_token`
-                /// field.
-                ///
-                /// The default value is 20, and the maximum page size is 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. Specifies the subset of jobs to retrieve. You can filter on the value of one or
                 /// more attributes of the job object. For example, retrieve jobs with a job identifier that starts with
                 /// 'census': gcloud ml-engine jobs list --filter='jobId:census*' List all failed jobs with names that
@@ -693,6 +685,14 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The number of jobs to retrieve per "page" of results. If there are more remaining
+                /// results than this number, the response message will contain a valid value in the `next_page_token`
+                /// field.
+                ///
+                /// The default value is 20, and the maximum page size is 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -728,15 +728,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -754,95 +745,10 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                }
-
-            }
-
-            /// <summary>Updates a specific job resource.
-            ///
-            /// Currently the only supported fields to update are `labels`.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">Required. The job name.</param>
-            public virtual PatchRequest Patch(Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job body, string name)
-            {
-                return new PatchRequest(service, body, name);
-            }
-
-            /// <summary>Updates a specific job resource.
-            ///
-            /// Currently the only supported fields to update are `labels`.</summary>
-            public class PatchRequest : CloudMachineLearningEngineBaseServiceRequest<Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job body, string name)
-                    : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-
-                /// <summary>Required. The job name.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Required. Specifies the path, relative to `Job`, of the field to update. To adopt etag
-                /// mechanism, include `etag` field in the mask, and include the `etag` value in your job resource.
-                ///
-                /// For example, to change the labels of a job, the `update_mask` parameter would be specified as
-                /// `labels`, `etag`, and the `PATCH` request body would specify the new value, as follows: { "labels":
-                /// { "owner": "Google", "color": "Blue" } "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4" } If
-                /// `etag` matches the one on the server, the labels of the job will be replaced with the given ones,
-                /// and the server end `etag` will be recalculated.
-                ///
-                /// Currently the only supported update masks are `labels` and `etag`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object UpdateMask { get; set; }
-
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.CloudMachineLearningEngine.v1.Data.GoogleCloudMlV1Job Body { get; set; }
-
-                ///<summary>Returns the body of the request.</summary>
-                protected override object GetBody() { return Body; }
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "patch"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "PATCH"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v1/{+name}"; }
-                }
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
                     RequestParameters.Add(
-                        "name", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/jobs/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1113,6 +1019,12 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. A page token to request the next page of results.
+                ///
+                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Optional. The number of locations to retrieve per "page" of results. If there are more
                 /// remaining results than this number, the response message will contain a valid value in the
                 /// `next_page_token` field.
@@ -1120,12 +1032,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// The default value is 20, and the maximum page size is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. A page token to request the next page of results.
-                ///
-                /// You get the token from the `next_page_token` field of the response from the previous call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1161,18 +1067,18 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1488,6 +1394,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. A page token to request the next page of results.
+                    ///
+                    /// You get the token from the `next_page_token` field of the response from the previous
+                    /// call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
                     /// <summary>Optional. The number of versions to retrieve per "page" of results. If there are more
                     /// remaining results than this number, the response message will contain a valid value in the
                     /// `next_page_token` field.
@@ -1499,13 +1412,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     /// <summary>Optional. Specifies the subset of versions to retrieve.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. A page token to request the next page of results.
-                    ///
-                    /// You get the token from the `next_page_token` field of the response from the previous
-                    /// call.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1541,6 +1447,15 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                                 Pattern = @"^projects/[^/]+/models/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1553,15 +1468,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1605,14 +1511,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                     ///
                     /// For example, to change the description of a version to "foo", the `update_mask` parameter would
                     /// be specified as `description`, and the `PATCH` request body would specify the new value, as
-                    /// follows: { "description": "foo" } In this example, the version is blindly overwritten since no
-                    /// etag is given.
+                    /// follows: { "description": "foo" }
                     ///
-                    /// To adopt etag mechanism, include `etag` field in the mask, and include the `etag` value in your
-                    /// version resource.
-                    ///
-                    /// Currently the only supported update masks are `description`, `labels`, and `etag`, and
-                    /// `expire_time`.</summary>
+                    /// Currently the only supported update mask is`description`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 
@@ -2172,14 +2073,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1
                 /// For example, to change the description of a model to "foo" and set its default version to
                 /// "version_1", the `update_mask` parameter would be specified as `description`,
                 /// `default_version.name`, and the `PATCH` request body would specify the new value, as follows: {
-                /// "description": "foo", "defaultVersion": { "name":"version_1" } } In this example, the model is
-                /// blindly overwritten since no etag is given.
+                /// "description": "foo", "defaultVersion": { "name":"version_1" } }
                 ///
-                /// To adopt etag mechanism, include `etag` field in the mask, and include the `etag` value in your
-                /// model resource.
-                ///
-                /// Currently the supported update masks are `description`, `default_version.name`, `labels`, and
-                /// `etag`.</summary>
+                /// Currently the supported update masks are `description` and `default_version.name`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
 
@@ -3074,23 +2970,9 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; } 
 
-        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
-        /// a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-
-        /// modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the
-        /// response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that
-        /// their change will be applied to the same version of the job.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
         /// <summary>Required. The user-specified id of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; } 
-
-        /// <summary>Optional. One or more labels that you can add, to organize your jobs. Each label is a key-value
-        /// pair, where both the key and the value are arbitrary strings that you supply. For more information, see the
-        /// documentation on using labels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Input parameters to create a prediction job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predictionInput")]
@@ -3116,6 +2998,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trainingOutput")]
         public virtual GoogleCloudMlV1TrainingOutput TrainingOutput { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Response message for the ListJobs method.</summary>
@@ -3221,20 +3105,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
-        /// a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
-        /// read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in
-        /// the response to `GetModel`, and systems are expected to put that etag in the request to `UpdateModel` to
-        /// ensure that their change will be applied to the model as intended.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>Optional. One or more labels that you can add, to organize your models. Each label is a key-value
-        /// pair, where both the key and the value are arbitrary strings that you supply. For more information, see the
-        /// documentation on using labels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
-
         /// <summary>Required. The name specified for the model when it was created.
         ///
         /// The model name must be unique within the project it is created in.</summary>
@@ -3253,6 +3123,8 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regions")]
         public virtual System.Collections.Generic.IList<string> Regions { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Represents the metadata of the long-running operation.</summary>
@@ -3269,10 +3141,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// <summary>Indicates whether a request to cancel this operation has been made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isCancellationRequested")]
         public virtual System.Nullable<bool> IsCancellationRequested { get; set; } 
-
-        /// <summary>The user labels, inherited from the model or the model version being operated on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Contains the name of the model associated with the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelName")]
@@ -3654,14 +3522,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; } 
 
-        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
-        /// a model from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
-        /// read-modify-write cycle to perform model updates in order to avoid race conditions: An `etag` is returned in
-        /// the response to `GetVersion`, and systems are expected to put that etag in the request to `UpdateVersion` to
-        /// ensure that their change will be applied to the model as intended.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
         /// <summary>Output only. If true, this version will be used to handle prediction requests that do not specify a
         /// version.
         ///
@@ -3669,12 +3529,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// engine/reference/rest/v1/projects.models.versions/setDefault).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
         public virtual System.Nullable<bool> IsDefault { get; set; } 
-
-        /// <summary>Optional. One or more labels that you can add, to organize your model versions. Each label is a
-        /// key-value pair, where both the key and the value are arbitrary strings that you supply. For more
-        /// information, see the documentation on using labels.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>Output only. The time the version was last used for prediction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUseTime")]
@@ -3702,17 +3556,13 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Associates `members` with a `role`.</summary>
     public class GoogleIamV1Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined independently.
-        /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual GoogleTypeExpr Condition { get; set; } 
-
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -3793,12 +3643,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// might reject them.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual GoogleIamV1Policy Policy { get; set; } 
-
-        /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
-        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
-        /// field is only used by Cloud IAM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3949,38 +3793,6 @@ namespace Google.Apis.CloudMachineLearningEngine.v1.Data
         /// be localized and sent in the google.rpc.Status.details field, or localized by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents an expression text. Example:
-    ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
-    public class GoogleTypeExpr : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
-
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
-        /// and a position in the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
-
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
-        /// e.g. in UIs which allow to enter the expression.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

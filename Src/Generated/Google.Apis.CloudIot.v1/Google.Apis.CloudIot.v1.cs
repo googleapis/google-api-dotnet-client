@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Google Cloud IoT API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180131 (1126)
+ *      <tr><th>API Rev<td>20180208 (1134)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -880,22 +880,17 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>A list of device numerical ids. If empty, it will ignore this field. This field
-                        /// cannot hold more than 10,000 entries.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
+                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields
+                        /// `id`, and `num_id` are always returned by default, along with any other fields
+                        /// specified.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object FieldMask { get; set; }
 
                         /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
                         /// continuation of a prior `ListDevices` call, and that the system should return the next page
                         /// of data.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
-                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields
-                        /// `id`, and `num_id` are always returned by default, along with any other fields
-                        /// specified.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object FieldMask { get; set; }
 
                         /// <summary>The maximum number of devices to return in the response. If this value is zero, the
                         /// service will select a default size. A call may return fewer objects than requested, but if
@@ -908,6 +903,11 @@ namespace Google.Apis.CloudIot.v1
                         /// entries.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
+
+                        /// <summary>A list of device numerical ids. If empty, it will ignore this field. This field
+                        /// cannot hold more than 10,000 entries.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -943,9 +943,9 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "deviceNumIds", new Google.Apis.Discovery.Parameter
+                                "fieldMask", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "deviceNumIds",
+                                    Name = "fieldMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -955,15 +955,6 @@ namespace Google.Apis.CloudIot.v1
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "fieldMask", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "fieldMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -982,6 +973,15 @@ namespace Google.Apis.CloudIot.v1
                                 "deviceIds", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "deviceIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "deviceNumIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceNumIds",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1750,15 +1750,63 @@ namespace Google.Apis.CloudIot.v1
 namespace Google.Apis.CloudIot.v1.Data
 {    
 
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
+    /// AuditLogConfigs.
+    ///
+    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
+    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted.
+    ///
+    /// Example Policy with multiple AuditConfigs:
+    ///
+    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
+    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
+    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    ///
+    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
+    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for logging of each type of permission. Next ID: 4</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides the configuration for logging a type of permissions. Example:
+    ///
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// "log_type": "DATA_WRITE", } ] }
+    ///
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// logging.</summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
+        /// format of Binding.members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined independently.
-        /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
-
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -1847,9 +1895,10 @@ namespace Google.Apis.CloudIot.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastEventTime")]
         public virtual object LastEventTime { get; set; } 
 
-        /// <summary>[Output only] The last time a heartbeat was received. Timestamps are periodically collected and
-        /// written to storage; they may be stale by a few minutes. This field is only for devices connecting through
-        /// MQTT.</summary>
+        /// <summary>[Output only] The last time an MQTT `PINGREQ` was received. This field applies only to devices
+        /// connecting through MQTT. MQTT clients usually only send `PINGREQ` messages if the connection is idle, and no
+        /// other messages have been sent. Timestamps are periodically collected and written to storage; they may be
+        /// stale by a few minutes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastHeartbeatTime")]
         public virtual object LastHeartbeatTime { get; set; } 
 
@@ -2037,38 +2086,6 @@ namespace Google.Apis.CloudIot.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents an expression text. Example:
-    ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
-    public class Expr : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
-
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
-        /// and a position in the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
-
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
-        /// e.g. in UIs which allow to enter the expression.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Request message for `GetIamPolicy` method.</summary>
     public class GetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2191,6 +2208,10 @@ namespace Google.Apis.CloudIot.v1.Data
     /// guide](https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+
         /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
         /// error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
