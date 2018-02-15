@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/6dC3d2bXqaEYDQ4ff3_tM64T-kM\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/Xvb720kj6kaUU3p6XJECzzWJnek\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v1.1",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v1.1",
- "revision": "20180121",
+ "revision": "20180211",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -102,7 +102,7 @@
     },
     "purchaseState": {
      "type": "integer",
-     "description": "The purchase state of the order. Possible values are:  \n- Purchased \n- Cancelled",
+     "description": "The purchase state of the order. Possible values are:  \n- Purchased \n- Canceled",
      "format": "int32"
     },
     "purchaseTime": {
@@ -112,7 +112,7 @@
     },
     "purchaseType": {
      "type": "integer",
-     "description": "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account)",
+     "description": "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account) \n- Promo (i.e. purchased using a promo code)",
      "format": "int32"
     }
    }

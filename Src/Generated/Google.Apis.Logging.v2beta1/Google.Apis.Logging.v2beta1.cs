@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180129 (1124)
+ *      <tr><th>API Rev<td>20180213 (1139)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -2756,16 +2756,16 @@ namespace Google.Apis.Logging.v2beta1.Data
         /// d dayPrefixes (PREFIX) k kilo (10**3) M mega (10**6) G giga (10**9) T tera (10**12) P peta (10**15) E exa
         /// (10**18) Z zetta (10**21) Y yotta (10**24) m milli (10**-3) u micro (10**-6) n nano (10**-9) p pico
         /// (10**-12) f femto (10**-15) a atto (10**-18) z zepto (10**-21) y yocto (10**-24) Ki kibi (2**10) Mi mebi
-        /// (2**20) Gi gibi (2**30) Ti tebi (2**40)GrammarThe grammar includes the dimensionless unit 1, such as 1/s.The
-        /// grammar also includes these connectors: / division (as an infix operator, e.g. 1/s). . multiplication (as an
-        /// infix operator, e.g. GBy.d)The grammar for a unit is as follows: Expression = Component { "." Component } {
-        /// "/" Component } ;
+        /// (2**20) Gi gibi (2**30) Ti tebi (2**40)GrammarThe grammar also includes these connectors: / division (as an
+        /// infix operator, e.g. 1/s). . multiplication (as an infix operator, e.g. GBy.d)The grammar for a unit is as
+        /// follows: Expression = Component { "." Component } { "/" Component } ;
         ///
-        /// Component = [ PREFIX ] UNIT [ Annotation ] | Annotation | "1" ;
+        /// Component = ( [ PREFIX ] UNIT | "%" ) [ Annotation ] | Annotation | "1" ;
         ///
         /// Annotation = "{" NAME "}" ; Notes: Annotation is just a comment if it follows a UNIT and is  equivalent to 1
         /// if it is used alone. For examples,  {requests}/s == 1/s, By{transmitted}/s == By/s. NAME is a sequence of
-        /// non-blank printable ASCII characters not  containing '{' or '}'.</summary>
+        /// non-blank printable ASCII characters not  containing '{' or '}'. 1 represents dimensionless value 1, such as
+        /// in 1/s. % represents dimensionless value 1/100, and annotates values giving  a percentage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; } 
 

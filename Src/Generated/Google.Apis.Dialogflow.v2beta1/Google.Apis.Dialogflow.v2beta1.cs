@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180206 (1132)
+ *      <tr><th>API Rev<td>20180212 (1138)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -1691,15 +1691,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
-                    /// most 1000.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1719,6 +1710,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// be enabled in the agent before they can be used.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
+                    /// most 1000.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1754,24 +1754,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "intentView", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "intentView",
@@ -1784,6 +1766,24 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4418,9 +4418,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypeBatchInline")]
         public virtual GoogleCloudDialogflowV2beta1EntityTypeBatch EntityTypeBatchInline { get; set; } 
 
-        /// <summary>Warning: Importing entity types from a URI is not implemented yet. This feature is coming soon. The
-        /// URI to a Google Cloud Storage file containing entity types to update or create. The file format can either
-        /// be a serialized proto (of EntityBatch type) or a JSON object. Note: The URI must start with
+        /// <summary>The URI to a Google Cloud Storage file containing entity types to update or create. The file format
+        /// can either be a serialized proto (of EntityBatch type) or a JSON object. Note: The URI must start with
         /// "gs://".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypeBatchUri")]
         public virtual string EntityTypeBatchUri { get; set; } 
@@ -4457,9 +4456,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("intentBatchInline")]
         public virtual GoogleCloudDialogflowV2beta1IntentBatch IntentBatchInline { get; set; } 
 
-        /// <summary>Warning: Importing intents from a URI is not implemented yet. This feature is coming soon. The URI
-        /// to a Google Cloud Storage file containing intents to update or create. The file format can either be a
-        /// serialized proto (of IntentBatch type) or JSON object. Note: The URI must start with "gs://".</summary>
+        /// <summary>The URI to a Google Cloud Storage file containing intents to update or create. The file format can
+        /// either be a serialized proto (of IntentBatch type) or JSON object. Note: The URI must start with
+        /// "gs://".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intentBatchUri")]
         public virtual string IntentBatchUri { get; set; } 
 
@@ -4648,10 +4647,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The request message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowV2beta1ExportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Warning: Exporting agents to a URI is not implemented yet. This feature is coming soon.
-        ///
-        /// Optional. The Google Cloud Storage URI to export the agent to. Note: The URI must start with "gs://". If
-        /// left unspecified, the serialized agent is returned inline.</summary>
+        /// <summary>Optional. The Google Cloud Storage URI to export the agent to. Note: The URI must start with
+        /// "gs://". If left unspecified, the serialized agent is returned inline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
 
@@ -4695,10 +4692,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; } 
 
-        /// <summary>Warning: Importing agents from a URI is not implemented yet. This feature is coming soon.
-        ///
-        /// The URI to a Google Cloud Storage file containing the agent to import. Note: The URI must start with
-        /// "gs://".</summary>
+        /// <summary>The URI to a Google Cloud Storage file containing the agent to import. Note: The URI must start
+        /// with "gs://".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
 
@@ -5540,10 +5535,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; } 
 
-        /// <summary>Warning: Restoring agents from a URI is not implemented yet. This feature is coming soon.
-        ///
-        /// The URI to a Google Cloud Storage file containing the agent to restore. Note: The URI must start with
-        /// "gs://".</summary>
+        /// <summary>The URI to a Google Cloud Storage file containing the agent to restore. Note: The URI must start
+        /// with "gs://".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
 

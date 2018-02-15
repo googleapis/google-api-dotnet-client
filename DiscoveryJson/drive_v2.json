@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/zLt1uMycKqFn5QapqjjCA9vBNlQ\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/3sZY5SudRICrZaNsZzXj7Gt8kVY\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20180202",
+ "revision": "20180209",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -2071,7 +2071,12 @@
     },
     "name": {
      "type": "string",
-     "description": "The name of this Team Drive."
+     "description": "The name of this Team Drive.",
+     "annotations": {
+      "required": [
+       "drive.teamdrives.insert"
+      ]
+     }
     },
     "themeId": {
      "type": "string",

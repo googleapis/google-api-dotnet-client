@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180112 (1107)
+ *      <tr><th>API Rev<td>20180123 (1118)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -25460,6 +25460,98 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Sets the default network tier of the project. The default network tier is used when an
+        /// address/forwardingRule/instance is created without specifying the network tier field.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        public virtual SetDefaultNetworkTierRequest SetDefaultNetworkTier(Google.Apis.Compute.beta.Data.ProjectsSetDefaultNetworkTierRequest body, string project)
+        {
+            return new SetDefaultNetworkTierRequest(service, body, project);
+        }
+
+        /// <summary>Sets the default network tier of the project. The default network tier is used when an
+        /// address/forwardingRule/instance is created without specifying the network tier field.</summary>
+        public class SetDefaultNetworkTierRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SetDefaultNetworkTier request.</summary>
+            public SetDefaultNetworkTierRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.ProjectsSetDefaultNetworkTierRequest body, string project)
+                : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.beta.Data.ProjectsSetDefaultNetworkTierRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setDefaultNetworkTier"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/setDefaultNetworkTier"; }
+            }
+
+            /// <summary>Initializes SetDefaultNetworkTier parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Enables the usage export feature and sets the usage export bucket where reports are stored. If you
         /// provide an empty request body using this method, the usage export feature will be disabled.</summary>
         /// <param name="body">The body of the request.</param>
@@ -45660,6 +45752,17 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("natIP")]
         public virtual string NatIP { get; set; } 
 
+        /// <summary>This signifies the networking tier used for configuring this access configuration and can only take
+        /// the following values: PREMIUM, STANDARD.
+        ///
+        /// If an AccessConfig is specified without a valid external IP address, an ephemeral IP will be created with
+        /// this networkTier.
+        ///
+        /// If an AccessConfig with a valid external IP address is specified, it must match that of the networkTier
+        /// associated with the Address resource owning that IP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; } 
+
         /// <summary>The DNS domain name for the public PTR record. This field can only be set when the set_public_ptr
         /// field is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicPtrDomainName")]
@@ -45735,6 +45838,13 @@ namespace Google.Apis.Compute.beta.Data
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>This signifies the networking tier used for configuring this Address and can only take the
+        /// following values: PREMIUM , STANDARD.
+        ///
+        /// If this field is not specified, it is assumed to be PREMIUM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; } 
 
         /// <summary>[Output Only] URL of the region where the regional address resides. This field is not applicable to
         /// global addresses. You must specify this field as part of the HTTP request URL. You cannot set this field in
@@ -46158,7 +46268,7 @@ namespace Google.Apis.Compute.beta.Data
     ///
     /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
     /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
-    /// AuditConfig are exempted.
+    /// AuditLogConfig are exempted.
     ///
     /// Example Policy with multiple AuditConfigs:
     ///
@@ -46168,8 +46278,7 @@ namespace Google.Apis.Compute.beta.Data
     /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
     ///
     /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
-    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging. This message is only visible as
-    /// GOOGLE_INTERNAL or IAM_AUDIT_CONFIG.</summary>
+    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The configuration for logging of each type of permission.</summary>
@@ -47887,7 +47996,7 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string StorageType { get; set; } 
 
         /// <summary>URL of the disk type resource describing which disk type to use to create the disk. Provide this
-        /// when creating the disk.</summary>
+        /// when creating the disk. For example: project/zones/zone/diskTypes/pd-standard or pd-ssd</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -48811,6 +48920,17 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
+        /// <summary>This signifies the networking tier used for configuring this load balancer and can only take the
+        /// following values: PREMIUM , STANDARD.
+        ///
+        /// For regional ForwardingRule, the valid values are PREMIUM and STANDARD. For GlobalForwardingRule, the valid
+        /// value is PREMIUM.
+        ///
+        /// If this field is not specified, it is assumed to be PREMIUM. If IPAddress is specified, this value must be
+        /// equal to the networkTier of the Address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; } 
+
         /// <summary>This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy,
         /// TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.
         ///
@@ -48819,9 +48939,9 @@ namespace Google.Apis.Compute.beta.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 -
-        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 - TargetVpnGateway: 500,
-        /// 4500</summary>
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883,
+        /// 5222 - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883, 5222 -
+        /// TargetVpnGateway: 500, 4500</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 
@@ -53821,8 +53941,7 @@ namespace Google.Apis.Compute.beta.Data
     /// guide](https://cloud.google.com/iam/docs).</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies cloud audit logging configuration for this policy. This field is only visible as
-        /// GOOGLE_INTERNAL or IAM_AUDIT_CONFIG.</summary>
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
         public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
 
@@ -53871,6 +53990,11 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>This signifies the default network tier used for configuring resources of the project and can only
+        /// take the following values: PREMIUM, STANDARD. Initially the default network tier is PREMIUM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultNetworkTier")]
+        public virtual string DefaultNetworkTier { get; set; } 
 
         /// <summary>[Output Only] Default service account used by VMs running in this project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultServiceAccount")]
@@ -53969,6 +54093,16 @@ namespace Google.Apis.Compute.beta.Data
         /// projects. If not specified, the organization will be inferred from the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organization")]
         public virtual string Organization { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class ProjectsSetDefaultNetworkTierRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Default network tier to be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
+        public virtual string NetworkTier { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

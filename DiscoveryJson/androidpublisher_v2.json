@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/yZuI9Zc3vP87m6b_jbqnCJdkFDI\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/JHo8f1I6kYzk10q6NwBbUC9DMxw\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20180121",
+ "revision": "20180211",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -740,7 +740,7 @@
     },
     "purchaseState": {
      "type": "integer",
-     "description": "The purchase state of the order. Possible values are:  \n- Purchased \n- Cancelled",
+     "description": "The purchase state of the order. Possible values are:  \n- Purchased \n- Canceled",
      "format": "int32"
     },
     "purchaseTimeMillis": {
@@ -750,7 +750,7 @@
     },
     "purchaseType": {
      "type": "integer",
-     "description": "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account)",
+     "description": "The type of purchase of the inapp product. This field is only set if this purchase was not made using the standard in-app billing flow. Possible values are:  \n- Test (i.e. purchased from a license testing account) \n- Promo (i.e. purchased using a promo code)",
      "format": "int32"
     }
    }
@@ -890,7 +890,7 @@
     },
     "cancelReason": {
      "type": "integer",
-     "description": "The reason why a subscription was cancelled or is not auto-renewing. Possible values are:  \n- User cancelled the subscription \n- Subscription was cancelled by the system, for example because of a billing problem \n- Subscription was replaced with a new subscription \n- Subscription was cancelled by the developer",
+     "description": "The reason why a subscription was canceled or is not auto-renewing. Possible values are:  \n- User canceled the subscription \n- Subscription was canceled by the system, for example because of a billing problem \n- Subscription was replaced with a new subscription \n- Subscription was canceled by the developer",
      "format": "int32"
     },
     "countryCode": {
@@ -1115,7 +1115,7 @@
   "VoidedPurchase": {
    "id": "VoidedPurchase",
    "type": "object",
-   "description": "A VoidedPurchase resource indicates a purchase that was either cancelled/refunded/charged-back.",
+   "description": "A VoidedPurchase resource indicates a purchase that was either canceled/refunded/charged-back.",
    "properties": {
     "kind": {
      "type": "string",
@@ -1133,7 +1133,7 @@
     },
     "voidedTimeMillis": {
      "type": "string",
-     "description": "The time at which the purchase was cancelled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970).",
+     "description": "The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch (Jan 1, 1970).",
      "format": "int64"
     }
    }
@@ -3337,7 +3337,7 @@
        "id": "androidpublisher.purchases.voidedpurchases.list",
        "path": "{packageName}/purchases/voidedpurchases",
        "httpMethod": "GET",
-       "description": "Lists the purchases that were cancelled, refunded or charged-back.",
+       "description": "Lists the purchases that were canceled, refunded or charged-back.",
        "parameters": {
         "endTime": {
          "type": "string",

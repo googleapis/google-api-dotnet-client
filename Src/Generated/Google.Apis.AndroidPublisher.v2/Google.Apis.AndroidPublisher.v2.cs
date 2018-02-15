@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180121 (1116)
+ *      <tr><th>API Rev<td>20180211 (1137)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -6217,7 +6217,7 @@ namespace Google.Apis.AndroidPublisher.v2
             }
 
 
-            /// <summary>Lists the purchases that were cancelled, refunded or charged-back.</summary>
+            /// <summary>Lists the purchases that were canceled, refunded or charged-back.</summary>
             /// <param name="packageName">The package name of the application for which voided purchases need to be returned (for
             /// example, 'com.some.thing').</param>
             public virtual ListRequest List(string packageName)
@@ -6225,7 +6225,7 @@ namespace Google.Apis.AndroidPublisher.v2
                 return new ListRequest(service, packageName);
             }
 
-            /// <summary>Lists the purchases that were cancelled, refunded or charged-back.</summary>
+            /// <summary>Lists the purchases that were canceled, refunded or charged-back.</summary>
             public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.VoidedPurchasesListResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -7280,7 +7280,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; } 
 
-        /// <summary>The purchase state of the order. Possible values are: - Purchased - Cancelled</summary>
+        /// <summary>The purchase state of the order. Possible values are: - Purchased - Canceled</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseState")]
         public virtual System.Nullable<int> PurchaseState { get; set; } 
 
@@ -7290,7 +7290,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
 
         /// <summary>The type of purchase of the inapp product. This field is only set if this purchase was not made
         /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing
-        /// account)</summary>
+        /// account) - Promo (i.e. purchased using a promo code)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; } 
 
@@ -7427,9 +7427,9 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewing")]
         public virtual System.Nullable<bool> AutoRenewing { get; set; } 
 
-        /// <summary>The reason why a subscription was cancelled or is not auto-renewing. Possible values are: - User
-        /// cancelled the subscription - Subscription was cancelled by the system, for example because of a billing
-        /// problem - Subscription was replaced with a new subscription - Subscription was cancelled by the
+        /// <summary>The reason why a subscription was canceled or is not auto-renewing. Possible values are: - User
+        /// canceled the subscription - Subscription was canceled by the system, for example because of a billing
+        /// problem - Subscription was replaced with a new subscription - Subscription was canceled by the
         /// developer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelReason")]
         public virtual System.Nullable<int> CancelReason { get; set; } 
@@ -7648,7 +7648,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A VoidedPurchase resource indicates a purchase that was either cancelled/refunded/charged-
+    /// <summary>A VoidedPurchase resource indicates a purchase that was either canceled/refunded/charged-
     /// back.</summary>
     public class VoidedPurchase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7665,7 +7665,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseToken")]
         public virtual string PurchaseToken { get; set; } 
 
-        /// <summary>The time at which the purchase was cancelled/refunded/charged-back, in milliseconds since the epoch
+        /// <summary>The time at which the purchase was canceled/refunded/charged-back, in milliseconds since the epoch
         /// (Jan 1, 1970).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voidedTimeMillis")]
         public virtual System.Nullable<long> VoidedTimeMillis { get; set; } 

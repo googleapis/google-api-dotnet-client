@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v1.1
- *      <tr><th>API Rev<td>20180121 (1116)
+ *      <tr><th>API Rev<td>20180211 (1137)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -596,7 +596,7 @@ namespace Google.Apis.AndroidPublisher.v1_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
         public virtual string OrderId { get; set; } 
 
-        /// <summary>The purchase state of the order. Possible values are: - Purchased - Cancelled</summary>
+        /// <summary>The purchase state of the order. Possible values are: - Purchased - Canceled</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseState")]
         public virtual System.Nullable<int> PurchaseState { get; set; } 
 
@@ -606,7 +606,7 @@ namespace Google.Apis.AndroidPublisher.v1_1.Data
 
         /// <summary>The type of purchase of the inapp product. This field is only set if this purchase was not made
         /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing
-        /// account)</summary>
+        /// account) - Promo (i.e. purchased using a promo code)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purchaseType")]
         public virtual System.Nullable<int> PurchaseType { get; set; } 
 

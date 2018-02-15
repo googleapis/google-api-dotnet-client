@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180208 (1134)
+ *      <tr><th>API Rev<td>20180213 (1139)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1254,6 +1254,7 @@ namespace Google.Apis.DLP.v2beta2
             dlpJobs = new DlpJobsResource(service);
             image = new ImageResource(service);
             inspectTemplates = new InspectTemplatesResource(service);
+            jobTriggers = new JobTriggersResource(service);
 
         }
 
@@ -2287,9 +2288,9 @@ namespace Google.Apis.DLP.v2beta2
                 /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
                 /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
                 /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY *
-                /// Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator
-                /// must be `=` or `!=`.
+                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
+                /// `trigger_name` - The resource name of the trigger that created job. * Supported fields for risk
+                /// analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or `!=`.
                 ///
                 /// Examples:
                 ///
@@ -2869,6 +2870,404 @@ namespace Google.Apis.DLP.v2beta2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/inspectTemplates/[^/]+$",
+                        });
+                }
+
+            }
+        }
+        private readonly JobTriggersResource jobTriggers;
+
+        /// <summary>Gets the JobTriggers resource.</summary>
+        public virtual JobTriggersResource JobTriggers
+        {
+            get { return jobTriggers; }
+        }
+
+        /// <summary>The "jobTriggers" collection of methods.</summary>
+        public class JobTriggersResource
+        {
+            private const string Resource = "jobTriggers";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public JobTriggersResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a job to run DLP actions such as scanning storage for sensitive information on a set
+            /// schedule.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+            public virtual CreateRequest Create(Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2CreateJobTriggerRequest body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates a job to run DLP actions such as scanning storage for sensitive information on a set
+            /// schedule.</summary>
+            public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2JobTrigger>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2CreateJobTriggerRequest body, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2CreateJobTriggerRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta2/{+parent}/jobTriggers"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a job trigger.</summary>
+            /// <param name="name">Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+            /// project/jobTriggers/53234423`.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a job trigger.</summary>
+            public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta2.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+                /// project/jobTriggers/53234423`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta2/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/jobTriggers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a job trigger.</summary>
+            /// <param name="name">Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+            /// project/jobTriggers/53234423`.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a job trigger.</summary>
+            public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2JobTrigger>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+                /// project/jobTriggers/53234423`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta2/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/jobTriggers/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists job triggers.</summary>
+            /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists job triggers.</summary>
+            public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2ListJobTriggersResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                    : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+
+                /// <summary>The parent resource name, for example projects/my-project-id.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
+                /// `order_by` and `filter` should not change for subsequent calls, but can be omitted if token is
+                /// specified.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Optional comma separated list of triggeredJob fields to order by, followed by 'asc/desc'
+                /// postfix, i.e. `"create_time asc,name desc,schedule_mode asc"`. This list is case-insensitive.
+                ///
+                /// Example: `"name asc,schedule_mode desc, status desc"`
+                ///
+                /// Supported filters keys and values are:
+                ///
+                /// - `create_time`: corresponds to time the triggeredJob was created. - `update_time`: corresponds to
+                /// time the triggeredJob was last updated. - `name`: corresponds to JobTrigger's display name. -
+                /// `status`: corresponds to the triggeredJob status.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by a server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta2/{+parent}/jobTriggers"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a job trigger.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+            /// project/jobTriggers/53234423`.</param>
+            public virtual PatchRequest Patch(Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2UpdateJobTriggerRequest body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a job trigger.</summary>
+            public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2JobTrigger>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2UpdateJobTriggerRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Resource name of the project and the triggeredJob, for example `projects/dlp-test-
+                /// project/jobTriggers/53234423`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.DLP.v2beta2.Data.GooglePrivacyDlpV2beta2UpdateJobTriggerRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v2beta2/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/jobTriggers/[^/]+$",
                         });
                 }
 
@@ -3784,6 +4183,21 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A task to execute on the completion of a job.</summary>
+    public class GooglePrivacyDlpV2beta2Action : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Publish a notification to a pubsub topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubSub")]
+        public virtual GooglePrivacyDlpV2beta2PublishToPubSub PubSub { get; set; } 
+
+        /// <summary>Save resulting findings in a provided location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saveFindings")]
+        public virtual GooglePrivacyDlpV2beta2SaveFindings SaveFindings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Result of a risk analysis operation request.</summary>
     public class GooglePrivacyDlpV2beta2AnalyzeDataSourceRiskDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3820,6 +4234,13 @@ namespace Google.Apis.DLP.v2beta2.Data
         /// <summary>Configuration for this risk analysis job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobConfig")]
         public virtual GooglePrivacyDlpV2beta2RiskAnalysisJobConfig JobConfig { get; set; } 
+
+        /// <summary>Optional job ID to use for the created job. If not provided, a job ID will automatically be
+        /// generated. Must be unique within the project. The job ID can contain uppercase and lowercase letters,
+        /// numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is
+        /// 100 characters. Can be empty to allow the system to generate one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4042,6 +4463,11 @@ namespace Google.Apis.DLP.v2beta2.Data
     /// bucket.</summary>
     public class GooglePrivacyDlpV2beta2CloudStorageOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then
+        /// the rest of the bytes are omitted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesLimitPerFile")]
+        public virtual System.Nullable<long> BytesLimitPerFile { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("fileSet")]
         public virtual GooglePrivacyDlpV2beta2FileSet FileSet { get; set; } 
 
@@ -4167,6 +4593,23 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for CreateJobTrigger.</summary>
+    public class GooglePrivacyDlpV2beta2CreateJobTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JobTrigger to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobTrigger")]
+        public virtual GooglePrivacyDlpV2beta2JobTrigger JobTrigger { get; set; } 
+
+        /// <summary>The trigger id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must
+        /// match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is 100 characters. Can be empty to allow
+        /// the system to generate one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
+        public virtual string TriggerId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size
     /// must be either 32 or 64 bytes. Outputs a 32 byte digest as an uppercase hex string (for example,
     /// 41D1567F7F99F1DC2A5FAB886DEE5BEE). Currently, only string and integer values can be hashed.</summary>
@@ -4273,6 +4716,11 @@ namespace Google.Apis.DLP.v2beta2.Data
     /// configurable to the data in question.</summary>
     public class GooglePrivacyDlpV2beta2CustomInfoType : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Set of detection rules to apply to all findings of this custom info type. Rules are applied in
+        /// order that they are specified. Not supported for the `surrogate_type` custom info type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectionRules")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta2DetectionRule> DetectionRules { get; set; } 
+
         /// <summary>Dictionary-based custom info type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
         public virtual GooglePrivacyDlpV2beta2Dictionary Dictionary { get; set; } 
@@ -4281,6 +4729,16 @@ namespace Google.Apis.DLP.v2beta2.Data
         /// built-in info types or other custom info types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2beta2InfoType InfoType { get; set; } 
+
+        /// <summary>Likelihood to return for this custom info type. This base value can be altered by a detection rule
+        /// if the finding meets the criteria specified by the rule. Defaults to `VERY_LIKELY` if not
+        /// specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("likelihood")]
+        public virtual string Likelihood { get; set; } 
+
+        /// <summary>Regex-based custom info type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regex")]
+        public virtual GooglePrivacyDlpV2beta2Regex Regex { get; set; } 
 
         /// <summary>Surrogate info type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("surrogateType")]
@@ -4418,6 +4876,18 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Rule for modifying a custom info type to alter behavior under certain circumstances, depending on the
+    /// specific details of the rule. Not supported for the `surrogate_type` custom info type.</summary>
+    public class GooglePrivacyDlpV2beta2DetectionRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hotword-based detection rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotwordRule")]
+        public virtual GooglePrivacyDlpV2beta2HotwordRule HotwordRule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Custom information type based on a dictionary of words or phrases. This can be used to match sensitive
     /// information specific to the data, such as a list of employee IDs or job titles.
     ///
@@ -4460,6 +4930,10 @@ namespace Google.Apis.DLP.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inspectDetails")]
         public virtual GooglePrivacyDlpV2beta2InspectDataSourceDetails InspectDetails { get; set; } 
 
+        /// <summary>If created by a job trigger, the resource name of the trigger that instantiated the job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobTriggerName")]
+        public virtual string JobTriggerName { get; set; } 
+
         /// <summary>The server-assigned name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
@@ -4493,6 +4967,20 @@ namespace Google.Apis.DLP.v2beta2.Data
         /// <summary>Composite key indicating which field contains the entity identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual GooglePrivacyDlpV2beta2FieldId Field { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The results of an unsuccessful activation of the JobTrigger.</summary>
+    public class GooglePrivacyDlpV2beta2Error : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual GoogleRpcStatus Details { get; set; } 
+
+        /// <summary>The times the error occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamps")]
+        public virtual System.Collections.Generic.IList<object> Timestamps { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4643,6 +5131,27 @@ namespace Google.Apis.DLP.v2beta2.Data
         /// value “89+”. [Required].</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
         public virtual GooglePrivacyDlpV2beta2Value UpperBound { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Detection rule that adjusts the likelihood of findings within a certain proximity of
+    /// hotwords.</summary>
+    public class GooglePrivacyDlpV2beta2HotwordRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Regex pattern defining what qualifies as a hotword.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hotwordRegex")]
+        public virtual GooglePrivacyDlpV2beta2Regex HotwordRegex { get; set; } 
+
+        /// <summary>Likelihood adjustment to apply to all matching findings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("likelihoodAdjustment")]
+        public virtual GooglePrivacyDlpV2beta2LikelihoodAdjustment LikelihoodAdjustment { get; set; } 
+
+        /// <summary>Proximity of the finding within which the entire hotword must reside. The total length of the
+        /// window cannot exceed 1000 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proximity")]
+        public virtual GooglePrivacyDlpV2beta2Proximity Proximity { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4875,12 +5384,23 @@ namespace Google.Apis.DLP.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobConfig")]
         public virtual GooglePrivacyDlpV2beta2InspectJobConfig JobConfig { get; set; } 
 
+        /// <summary>Optional job ID to use for the created job. If not provided, a job ID will automatically be
+        /// generated. Must be unique within the project. The job ID can contain uppercase and lowercase letters,
+        /// numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-]+`. The maximum length is
+        /// 100 characters. Can be empty to allow the system to generate one.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
 
     public class GooglePrivacyDlpV2beta2InspectJobConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Actions to execute at the completion of the job. Are executed in the order provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta2Action> Actions { get; set; } 
+
         /// <summary>How and what to scan for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectConfig")]
         public virtual GooglePrivacyDlpV2beta2InspectConfig InspectConfig { get; set; } 
@@ -4948,6 +5468,56 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string Name { get; set; } 
 
         /// <summary>The last update timestamp of a inspectTemplate, output only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains a configuration to make dlp api calls on a repeating basis.</summary>
+    public class GooglePrivacyDlpV2beta2JobTrigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The creation timestamp of a triggeredJob, output only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>User provided description (max 256 chars)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Display name (max 100 chars)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>A stream of errors encountered when the trigger was activated. Repeated errors may result in the
+        /// JobTrigger automaticaly being paused. Will return the last 100 errors. Whenever the JobTrigger is modified
+        /// this list will be cleared. Output only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta2Error> Errors { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("inspectJob")]
+        public virtual GooglePrivacyDlpV2beta2InspectJobConfig InspectJob { get; set; } 
+
+        /// <summary>The timestamp of the last time this trigger executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRunTime")]
+        public virtual object LastRunTime { get; set; } 
+
+        /// <summary>Unique resource name for the triggeredJob, assigned by the service when the triggeredJob is
+        /// created, for example `projects/dlp-test-project/triggeredJobs/53234423`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>A status for this trigger. [required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>A list of triggers which will be OR'ed together. Only one in the list needs to trigger for a job to
+        /// be started. The list may contain only a single Schedule trigger and must have at least one object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggers")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta2Trigger> Triggers { get; set; } 
+
+        /// <summary>The last update timestamp of a triggeredJob, output only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -5238,6 +5808,26 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message for specifying an adjustment to the likelihood of a finding as part of a detection
+    /// rule.</summary>
+    public class GooglePrivacyDlpV2beta2LikelihoodAdjustment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set the likelihood of a finding to a fixed value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fixedLikelihood")]
+        public virtual string FixedLikelihood { get; set; } 
+
+        /// <summary>Increase or decrease the likelihood by the specified number of levels. For example, if a finding
+        /// would be `POSSIBLE` without the detection rule and `relative_likelihood` is 1, then it is upgraded to
+        /// `LIKELY`, while a value of -1 would downgrade it to `UNLIKELY`. Likelihood may never drop below
+        /// `VERY_UNLIKELY` or exceed `VERY_LIKELY`, so applying an adjustment of 1 followed by an adjustment of -1 when
+        /// base likelihood is `VERY_LIKELY` will result in a final likelihood of `LIKELY`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeLikelihood")]
+        public virtual System.Nullable<int> RelativeLikelihood { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Response message for ListDeidentifyTemplates.</summary>
     public class GooglePrivacyDlpV2beta2ListDeidentifyTemplatesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5288,6 +5878,22 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta2InspectTemplate> InspectTemplates { get; set; } 
 
         /// <summary>If the next page is available then the next page token to be used in following ListInspectTemplates
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for ListJobTriggers.</summary>
+    public class GooglePrivacyDlpV2beta2ListJobTriggersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of triggeredJobs, up to page_size in ListJobTriggersRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobTriggers")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta2JobTrigger> JobTriggers { get; set; } 
+
+        /// <summary>If the next page is available then the next page token to be used in following ListJobTriggers
         /// request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
@@ -5476,6 +6082,34 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message for specifying a window around a finding to apply a detection rule.</summary>
+    public class GooglePrivacyDlpV2beta2Proximity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of characters after the finding to consider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowAfter")]
+        public virtual System.Nullable<int> WindowAfter { get; set; } 
+
+        /// <summary>Number of characters before the finding to consider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowBefore")]
+        public virtual System.Nullable<int> WindowBefore { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Publish the results of a DlpJob to a pub sub channel. Compatible with: Inpect, Risk</summary>
+    public class GooglePrivacyDlpV2beta2PublishToPubSub : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to
+        /// the DLP API service account executing the long running DlpJob sending the notifications. Format is
+        /// projects/{project}/topics/{topic}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which
     /// column in the statistical model.</summary>
     public class GooglePrivacyDlpV2beta2QuasiIdField : Google.Apis.Requests.IDirectResponseSchema
@@ -5606,6 +6240,17 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Message defining a custom regular expression.</summary>
+    public class GooglePrivacyDlpV2beta2Regex : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Pattern defining the regular expression.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pattern")]
+        public virtual string Pattern { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request to re-identify an item.</summary>
     public class GooglePrivacyDlpV2beta2ReidentifyContentRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5712,6 +6357,10 @@ namespace Google.Apis.DLP.v2beta2.Data
     /// <summary>Configuration for a risk analysis job.</summary>
     public class GooglePrivacyDlpV2beta2RiskAnalysisJobConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Actions to execute at the completion of the job. Are executed in the order provided.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta2Action> Actions { get; set; } 
+
         /// <summary>Privacy metric to compute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyMetric")]
         public virtual GooglePrivacyDlpV2beta2PrivacyMetric PrivacyMetric { get; set; } 
@@ -5733,6 +6382,34 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>If set, the detailed findings will be persisted to the specified OutputStorageConfig. Compatible with:
+    /// Inspect</summary>
+    public class GooglePrivacyDlpV2beta2SaveFindings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GooglePrivacyDlpV2beta2OutputStorageConfig OutputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Schedule for triggeredJobs.</summary>
+    public class GooglePrivacyDlpV2beta2Schedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>With this option a job is started a regular periodic basis. For example: every 10 minutes.
+        ///
+        /// A scheduled start time will be skipped if the previous execution has not ended when its scheduled time
+        /// occurs.
+        ///
+        /// This value must be set to a time duration greater than or equal to 60 minutes and can be no longer than 60
+        /// days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reccurrencePeriodDuration")]
+        public virtual object ReccurrencePeriodDuration { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Shared message indicating Cloud storage type.</summary>
     public class GooglePrivacyDlpV2beta2StorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5747,6 +6424,9 @@ namespace Google.Apis.DLP.v2beta2.Data
         /// <summary>Google Cloud Datastore options specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastoreOptions")]
         public virtual GooglePrivacyDlpV2beta2DatastoreOptions DatastoreOptions { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timespanConfig")]
+        public virtual GooglePrivacyDlpV2beta2TimespanConfig TimespanConfig { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5844,6 +6524,28 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Configuration of the timespan of the items to include in scanning. Currently only supported when
+    /// inspecting Google Cloud Storage and BigQuery.</summary>
+    public class GooglePrivacyDlpV2beta2TimespanConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When the job is started by a JobTrigger we will automatically figure out a valid start_time to
+        /// avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be
+        /// based on the time of the execution of the last run of the JobTrigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableAutoPopulationOfTimespanConfig")]
+        public virtual System.Nullable<bool> EnableAutoPopulationOfTimespanConfig { get; set; } 
+
+        /// <summary>Exclude files newer than this value. If set to zero, no upper time limit is applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>Exclude files older than this value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Overview of the modifications that occurred.</summary>
     public class GooglePrivacyDlpV2beta2TransformationOverview : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5910,6 +6612,17 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>What event needs to occur for a new job to be started.</summary>
+    public class GooglePrivacyDlpV2beta2Trigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Create a job on a repeating basis based on the elapse of time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
+        public virtual GooglePrivacyDlpV2beta2Schedule Schedule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of
     /// key if possible.</summary>
     public class GooglePrivacyDlpV2beta2UnwrappedCryptoKey : Google.Apis.Requests.IDirectResponseSchema
@@ -5943,6 +6656,21 @@ namespace Google.Apis.DLP.v2beta2.Data
         /// <summary>New InspectTemplate value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
         public virtual GooglePrivacyDlpV2beta2InspectTemplate InspectTemplate { get; set; } 
+
+        /// <summary>Mask to control which fields get updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for UpdateJobTrigger.</summary>
+    public class GooglePrivacyDlpV2beta2UpdateJobTriggerRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>New JobTrigger value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobTrigger")]
+        public virtual GooglePrivacyDlpV2beta2JobTrigger JobTrigger { get; set; } 
 
         /// <summary>Mask to control which fields get updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
