@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/7pl1sDmdBC-mu1KF-9O2eOURI9U\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/OaqVMTEcX5L63gqgZRXrZJKJU08\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180205",
+ "revision": "20180211",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -378,6 +378,20 @@
        "bigquery.datasets.update"
       ]
      }
+    }
+   }
+  },
+  "DestinationTableProperties": {
+   "id": "DestinationTableProperties",
+   "type": "object",
+   "properties": {
+    "description": {
+     "type": "string",
+     "description": "[Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail."
+    },
+    "friendlyName": {
+     "type": "string",
+     "description": "[Optional] The friendly name for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current friendly name is provided, the job will fail."
     }
    }
   },
@@ -826,7 +840,7 @@
    "properties": {
     "compression": {
      "type": "string",
-     "description": "[Optional] The compression type to use for exported files. Possible values include GZIP and NONE. The default value is NONE."
+     "description": "[Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro."
     },
     "destinationFormat": {
      "type": "string",
@@ -880,11 +894,15 @@
     },
     "destinationEncryptionConfiguration": {
      "$ref": "EncryptionConfiguration",
-     "description": "[Experimental] Custom encryption configuration (e.g., Cloud KMS keys)."
+     "description": "Custom encryption configuration (e.g., Cloud KMS keys)."
     },
     "destinationTable": {
      "$ref": "TableReference",
      "description": "[Required] The destination table to load the data into."
+    },
+    "destinationTableProperties": {
+     "$ref": "DestinationTableProperties",
+     "description": "[Experimental] [Optional] Properties with which to create the destination table if it is new."
     },
     "encoding": {
      "type": "string",
@@ -984,7 +1002,7 @@
     },
     "destinationEncryptionConfiguration": {
      "$ref": "EncryptionConfiguration",
-     "description": "[Experimental] Custom encryption configuration (e.g., Cloud KMS keys)."
+     "description": "Custom encryption configuration (e.g., Cloud KMS keys)."
     },
     "destinationTable": {
      "$ref": "TableReference",
@@ -1079,7 +1097,7 @@
     },
     "destinationEncryptionConfiguration": {
      "$ref": "EncryptionConfiguration",
-     "description": "[Experimental] Custom encryption configuration (e.g., Cloud KMS keys)."
+     "description": "Custom encryption configuration (e.g., Cloud KMS keys)."
     },
     "destinationTable": {
      "$ref": "TableReference",
@@ -1674,14 +1692,14 @@
    "type": "object",
    "properties": {
     "activeInputs": {
-     "type": "integer",
+     "type": "string",
      "description": "Total number of active workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.",
-     "format": "int32"
+     "format": "int64"
     },
     "completedInputs": {
-     "type": "integer",
+     "type": "string",
      "description": "Total parallel units of work completed by this query.",
-     "format": "int32"
+     "format": "int64"
     },
     "elapsedMs": {
      "type": "string",
@@ -1736,7 +1754,7 @@
     },
     "encryptionConfiguration": {
      "$ref": "EncryptionConfiguration",
-     "description": "[Experimental] Custom encryption configuration (e.g., Cloud KMS keys)."
+     "description": "Custom encryption configuration (e.g., Cloud KMS keys)."
     },
     "etag": {
      "type": "string",

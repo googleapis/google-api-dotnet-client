@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Container Builder API Version v1
+ *   Cloud Container Builder API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/container-builder/docs/'>Google Cloud Container Builder API</a>
+ *          <td><a href='https://cloud.google.com/container-builder/docs/'>Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180213 (1139)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Container Builder API can be found at
+ * The complete API documentation for using Cloud Container Builder API can be found at
  * <a href='https://cloud.google.com/container-builder/docs/'>https://cloud.google.com/container-builder/docs/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -106,7 +106,7 @@ namespace Google.Apis.CloudBuild.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Container Builder API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Container Builder API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -542,10 +542,6 @@ namespace Google.Apis.CloudBuild.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -553,6 +549,10 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -588,15 +588,6 @@ namespace Google.Apis.CloudBuild.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -609,6 +600,15 @@ namespace Google.Apis.CloudBuild.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -927,6 +927,10 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>The raw filter text to constrain the results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -934,10 +938,6 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Number of results to return in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The raw filter text to constrain the results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -973,6 +973,15 @@ namespace Google.Apis.CloudBuild.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -985,15 +994,6 @@ namespace Google.Apis.CloudBuild.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1855,6 +1855,16 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// be specified in the build's secrets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretEnv")]
         public virtual System.Collections.Generic.IList<string> SecretEnv { get; set; } 
+
+        /// <summary>Status of the build step. At this time, build step status is only updated on build completion; step
+        /// status is not updated in real-time as the build progresses. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>Time limit for executing this build step. If not defined, the step has no time limit and will be
+        /// allowed to continue to run until either it completes or the build itself times out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; } 
 
         /// <summary>Stores timing information for executing this build step. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timing")]

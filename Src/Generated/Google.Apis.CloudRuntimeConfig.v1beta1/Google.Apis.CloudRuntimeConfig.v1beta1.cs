@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>Google Cloud Runtime Configuration API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180108 (1103)
+ *      <tr><th>API Rev<td>20180212 (1138)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/runtime-configurator/'>
  *              https://cloud.google.com/deployment-manager/runtime-configurator/</a>
@@ -858,11 +858,6 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Specifies the number of results to return per page. If there are fewer elements than
-                    /// the specified number, returns all elements.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Filters variables by matching the specified filter. For example:
                     ///
                     /// `projects/example-project/config/[CONFIG_NAME]/variables/example-variable`.</summary>
@@ -879,6 +874,11 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     /// values.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("returnValues", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ReturnValues { get; set; }
+
+                    /// <summary>Specifies the number of results to return per page. If there are fewer elements than
+                    /// the specified number, returns all elements.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -914,15 +914,6 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 Pattern = @"^projects/[^/]+/configs/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -944,6 +935,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                             "returnValues", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "returnValues",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1475,15 +1475,15 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Specifies the number of results to return per page. If there are fewer elements than
-                    /// the specified number, returns all elements.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Specifies a page token to use. Set `pageToken` to a `nextPageToken` returned by a
                     /// previous list request to get the next page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Specifies the number of results to return per page. If there are fewer elements than
+                    /// the specified number, returns all elements.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1519,18 +1519,18 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1
                                 Pattern = @"^projects/[^/]+/configs/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2593,7 +2593,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; } 
 
-        /// <summary>[Output Only] The time of the last variable update.</summary>
+        /// <summary>Output only. The time of the last variable update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -2621,12 +2621,12 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
     /// configurator/creating-a-waiter) documentation.</summary>
     public class Waiter : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] The instant at which this Waiter resource was created. Adding the value of `timeout`
+        /// <summary>Output only. The instant at which this Waiter resource was created. Adding the value of `timeout`
         /// to this instant yields the timeout deadline for the waiter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
-        /// <summary>[Output Only] If the value is `false`, it means the waiter is still waiting for one of its
+        /// <summary>Output only. If the value is `false`, it means the waiter is still waiting for one of its
         /// conditions to be met.
         ///
         /// If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be
@@ -2634,7 +2634,7 @@ namespace Google.Apis.CloudRuntimeConfig.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("done")]
         public virtual System.Nullable<bool> Done { get; set; } 
 
-        /// <summary>[Output Only] If the waiter ended due to a failure or timeout, this value will be set.</summary>
+        /// <summary>Output only. If the waiter ended due to a failure or timeout, this value will be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; } 
 

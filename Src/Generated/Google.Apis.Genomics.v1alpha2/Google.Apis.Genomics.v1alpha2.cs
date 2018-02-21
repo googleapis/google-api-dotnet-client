@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20180213 (1139)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -919,6 +919,11 @@ namespace Google.Apis.Genomics.v1alpha2
             }
 
 
+            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
+            /// in the project, up to `pageSize`, will be returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NamePrefix { get; set; }
+
             /// <summary>Token to use to indicate where to start getting results. If unspecified, returns the first page
             /// of results.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -932,11 +937,6 @@ namespace Google.Apis.Genomics.v1alpha2
             /// project.</summary>
             [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ProjectId { get; set; }
-
-            /// <summary>Pipelines with names that match this prefix should be returned.  If unspecified, all pipelines
-            /// in the project, up to `pageSize`, will be returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("namePrefix", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string NamePrefix { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -963,6 +963,15 @@ namespace Google.Apis.Genomics.v1alpha2
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "namePrefix", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "namePrefix",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -984,15 +993,6 @@ namespace Google.Apis.Genomics.v1alpha2
                     "projectId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "projectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "namePrefix", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "namePrefix",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1159,6 +1159,43 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This event is generated when a container starts.</summary>
+    public class ContainerStartedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric ID of the action that started this container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
+        public virtual System.Nullable<int> ActionId { get; set; } 
+
+        /// <summary>The public IP address that can be used to connect to the container.  This field is only populated
+        /// when at least one port mapping is present.  If the instance was created with a private address this field
+        /// will be empty even if port mappings exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; } 
+
+        /// <summary>The container to host port mappings installed for this container.  This set will contain any ports
+        /// exposed using the PUBLISH_EXPOSED_PORTS flag as well as any specified in the Action definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portMappings")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<int>> PortMappings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when a container exits.</summary>
+    public class ContainerStoppedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric ID of the action that started this container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
+        public virtual System.Nullable<int> ActionId { get; set; } 
+
+        /// <summary>The exit status of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitStatus")]
+        public virtual System.Nullable<int> ExitStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Stores the information that the controller will fetch from the server in order to run. Should only be
     /// used by VMs created by the Pipelines Service and not by end users.</summary>
     public class ControllerConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -1186,6 +1223,25 @@ namespace Google.Apis.Genomics.v1alpha2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("vars")]
         public virtual System.Collections.Generic.IDictionary<string,string> Vars { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated whenever a resource limitation or transient error delays execution of a
+    /// pipeline that was otherwise ready to run.</summary>
+    public class DelayedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A textual description of the cause of the delay.  The string may change without notice since it is
+        /// often generated by another service (such as Compute Engine).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cause")]
+        public virtual string Cause { get; set; } 
+
+        /// <summary>If the delay was caused by a resource shortage, this field lists the Compute Engine metrics that
+        /// are preventing this operation from running (for example, CPUS or INSTANCES).  If the particular metric is
+        /// not known, a single UNKNOWN metric will be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1265,6 +1321,42 @@ namespace Google.Apis.Genomics.v1alpha2.Data
     /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Event carries information about events that occur during pipeline execution.</summary>
+    public class Event : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A human readable description of the event.  Note that these strings may change at any time without
+        /// notice.  Any application logic must use the information in the details field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Machine readable details about the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Details { get; set; } 
+
+        /// <summary>The time that the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual object Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when the execution of a pipeline has failed.  Note that other events may
+    /// continue to occur after this event.</summary>
+    public class FailedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human readable description of the cause of the failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cause")]
+        public virtual string Cause { get; set; } 
+
+        /// <summary>The Google standard error code that best describes this failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1643,6 +1735,28 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This event is generated when the worker starts pulling an image.</summary>
+    public class PullStartedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI of the image that was pulled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when the worker stops pulling an image.</summary>
+    public class PullStoppedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI of the image that was pulled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class RepeatedString : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
@@ -1861,6 +1975,54 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>The time this event occured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when the execution of a container results in a non-zero exit status that was
+    /// not otherwise ignored.  Execution will continue, but only actions that are flagged as ALWAYS_RUN will be
+    /// executed: other actions will be skipped.</summary>
+    public class UnexpectedExitStatusEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric ID of the action that started the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
+        public virtual System.Nullable<int> ActionId { get; set; } 
+
+        /// <summary>The exit status of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitStatus")]
+        public virtual System.Nullable<int> ExitStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated once a worker VM has been assigned to run the pipeline.</summary>
+    public class WorkerAssignedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The worker's instance name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; } 
+
+        /// <summary>The zone the worker is running in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when the worker VM that was assigned to the pipeline has been released (i.e.,
+    /// deleted).</summary>
+    public class WorkerReleasedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The worker's instance name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; } 
+
+        /// <summary>The zone the worker was running in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

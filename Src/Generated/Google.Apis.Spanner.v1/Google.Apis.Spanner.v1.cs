@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180207 (1133)
+ *      <tr><th>API Rev<td>20180206 (1132)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -1498,6 +1498,11 @@ namespace Google.Apis.Spanner.v1
                         [Google.Apis.Util.RequestParameterAttribute("database", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Database { get; private set; }
 
+                        /// <summary>Number of sessions to be returned in the response. If 0 or less, defaults to the
+                        /// server's maximum allowed page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
                         /// <summary>An expression for filtering the results of the request. Filter rules are case
                         /// insensitive. The fields eligible for filtering are:
                         ///
@@ -1514,11 +1519,6 @@ namespace Google.Apis.Spanner.v1
                         /// ListSessionsResponse.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
-
-                        /// <summary>Number of sessions to be returned in the response. If 0 or less, defaults to the
-                        /// server's maximum allowed page size.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -1554,6 +1554,15 @@ namespace Google.Apis.Spanner.v1
                                     Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "filter", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "filter",
@@ -1571,14 +1580,161 @@ namespace Google.Apis.Spanner.v1
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
+                        }
+
+                    }
+
+                    /// <summary>Creates a set of partition tokens that can be used to execute a query operation in
+                    /// parallel.  Each of the returned partition tokens can be used by ExecuteStreamingSql to specify a
+                    /// subset of the query result to read.  The same session and read-only transaction must be used by
+                    /// the PartitionQueryRequest used to create the partition tokens and the ExecuteSqlRequests that
+                    /// use the partition tokens. Partition tokens become invalid when the session used to create them
+                    /// is deleted or begins a new transaction.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="session">Required. The session used to create the partitions.</param>
+                    public virtual PartitionQueryRequest PartitionQuery(Google.Apis.Spanner.v1.Data.PartitionQueryRequest body, string session)
+                    {
+                        return new PartitionQueryRequest(service, body, session);
+                    }
+
+                    /// <summary>Creates a set of partition tokens that can be used to execute a query operation in
+                    /// parallel.  Each of the returned partition tokens can be used by ExecuteStreamingSql to specify a
+                    /// subset of the query result to read.  The same session and read-only transaction must be used by
+                    /// the PartitionQueryRequest used to create the partition tokens and the ExecuteSqlRequests that
+                    /// use the partition tokens. Partition tokens become invalid when the session used to create them
+                    /// is deleted or begins a new transaction.</summary>
+                    public class PartitionQueryRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.PartitionResponse>
+                    {
+                        /// <summary>Constructs a new PartitionQuery request.</summary>
+                        public PartitionQueryRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.PartitionQueryRequest body, string session)
+                            : base(service)
+                        {
+                            Session = session;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The session used to create the partitions.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Session { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.PartitionQueryRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "partitionQuery"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+session}:partitionQuery"; }
+                        }
+
+                        /// <summary>Initializes PartitionQuery parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "session", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
+                                    Name = "session",
+                                    IsRequired = true,
+                                    ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Creates a set of partition tokens that can be used to execute a read operation in
+                    /// parallel.  Each of the returned partition tokens can be used by StreamingRead to specify a
+                    /// subset of the read result to read.  The same session and read-only transaction must be used by
+                    /// the PartitionReadRequest used to create the partition tokens and the ReadRequests that use the
+                    /// partition tokens. Partition tokens become invalid when the session used to create them is
+                    /// deleted or begins a new transaction.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="session">Required. The session used to create the partitions.</param>
+                    public virtual PartitionReadRequest PartitionRead(Google.Apis.Spanner.v1.Data.PartitionReadRequest body, string session)
+                    {
+                        return new PartitionReadRequest(service, body, session);
+                    }
+
+                    /// <summary>Creates a set of partition tokens that can be used to execute a read operation in
+                    /// parallel.  Each of the returned partition tokens can be used by StreamingRead to specify a
+                    /// subset of the read result to read.  The same session and read-only transaction must be used by
+                    /// the PartitionReadRequest used to create the partition tokens and the ReadRequests that use the
+                    /// partition tokens. Partition tokens become invalid when the session used to create them is
+                    /// deleted or begins a new transaction.</summary>
+                    public class PartitionReadRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.PartitionResponse>
+                    {
+                        /// <summary>Constructs a new PartitionRead request.</summary>
+                        public PartitionReadRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.PartitionReadRequest body, string session)
+                            : base(service)
+                        {
+                            Session = session;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>Required. The session used to create the partitions.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Session { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.PartitionReadRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "partitionRead"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+session}:partitionRead"; }
+                        }
+
+                        /// <summary>Initializes PartitionRead parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "session", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "session",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
                                 });
                         }
 
@@ -2738,10 +2894,6 @@ namespace Google.Apis.Spanner.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>The standard list filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -2749,6 +2901,10 @@ namespace Google.Apis.Spanner.v1
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2784,15 +2940,6 @@ namespace Google.Apis.Spanner.v1
                                 Pattern = @"^projects/[^/]+/instances/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -2805,6 +2952,15 @@ namespace Google.Apis.Spanner.v1
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3174,11 +3330,6 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
-                /// maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive.
                 /// The fields eligible for filtering are:
                 ///
@@ -3199,6 +3350,11 @@ namespace Google.Apis.Spanner.v1
                 /// ListInstancesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
+                /// maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3234,15 +3390,6 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -3255,6 +3402,15 @@ namespace Google.Apis.Spanner.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3809,7 +3965,14 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
 
-        /// <summary>Used to control the amount of debugging information returned in ResultSetStats.</summary>
+        /// <summary>If present, results will be restricted to the specified partition previously created using
+        /// PartitionQuery().  There must be an exact match for the values of fields common to this message and the
+        /// PartitionQueryRequest message used to create this partition_token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
+        public virtual string PartitionToken { get; set; } 
+
+        /// <summary>Used to control the amount of debugging information returned in ResultSetStats. If partition_token
+        /// is set, query_mode can only be set to QueryMode.NORMAL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryMode")]
         public virtual string QueryMode { get; set; } 
 
@@ -4281,6 +4444,136 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Information returned for each partition returned in a PartitionResponse.</summary>
+    public class Partition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This token can be passed to Read, StreamingRead, ExecuteSql, or ExecuteStreamingSql requests to
+        /// restrict the results to those identified by this partition token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
+        public virtual string PartitionToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Options for a PartitionQueryRequest and PartitionReadRequest.</summary>
+    public class PartitionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired maximum number of partitions to return.  For example, this may be set to the number of
+        /// workers available.  The default for this option is currently 10,000. The maximum value is currently 200,000.
+        /// This is only a hint.  The actual number of partitions returned may be smaller than this maximum count
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPartitions")]
+        public virtual System.Nullable<long> MaxPartitions { get; set; } 
+
+        /// <summary>The desired data size for each partition generated.  The default for this option is currently 1
+        /// GiB.  This is only a hint. The actual size of each partition may be smaller or larger than this size
+        /// request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionSizeBytes")]
+        public virtual System.Nullable<long> PartitionSizeBytes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for PartitionQuery</summary>
+    public class PartitionQueryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>It is not always possible for Cloud Spanner to infer the right SQL type from a JSON value.  For
+        /// example, values of type `BYTES` and values of type `STRING` both appear in params as JSON strings.
+        ///
+        /// In these cases, `param_types` can be used to specify the exact SQL type for some or all of the SQL query
+        /// parameters. See the definition of Type for more information about SQL types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paramTypes")]
+        public virtual System.Collections.Generic.IDictionary<string,Type> ParamTypes { get; set; } 
+
+        /// <summary>The SQL query string can contain parameter placeholders. A parameter placeholder consists of `'@'`
+        /// followed by the parameter name. Parameter names consist of any combination of letters, numbers, and
+        /// underscores.
+        ///
+        /// Parameters can appear anywhere that a literal value is expected.  The same parameter name can be used more
+        /// than once, for example: `"WHERE id > @msg_id AND id < @msg_id + 100"`
+        ///
+        /// It is an error to execute an SQL query with unbound parameters.
+        ///
+        /// Parameter values are specified using `params`, which is a JSON object whose keys are parameter names, and
+        /// whose values are the corresponding parameter values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("params")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Params__ { get; set; } 
+
+        /// <summary>Additional options that affect how many partitions are created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionOptions")]
+        public virtual PartitionOptions PartitionOptions { get; set; } 
+
+        /// <summary>The query request to generate partitions for. The request will fail if the query is not root
+        /// partitionable. The query plan of a root partitionable query has a single distributed union operator. A
+        /// distributed union operator conceptually divides one or more tables into multiple splits, remotely evaluates
+        /// a subquery independently on each split, and then unions all results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sql")]
+        public virtual string Sql { get; set; } 
+
+        /// <summary>Read only snapshot transactions are supported, read/write and single use transactions are
+        /// not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual TransactionSelector Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for PartitionRead</summary>
+    public class PartitionReadRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The columns of table to be returned for each row matching this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual System.Collections.Generic.IList<string> Columns { get; set; } 
+
+        /// <summary>If non-empty, the name of an index on table. This index is used instead of the table primary key
+        /// when interpreting key_set and sorting result rows. See key_set for further information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("index")]
+        public virtual string Index { get; set; } 
+
+        /// <summary>Required. `key_set` identifies the rows to be yielded. `key_set` names the primary keys of the rows
+        /// in table to be yielded, unless index is present. If index is present, then key_set instead names index keys
+        /// in index.
+        ///
+        /// It is not an error for the `key_set` to name rows that do not exist in the database. Read yields nothing for
+        /// nonexistent rows.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keySet")]
+        public virtual KeySet KeySet { get; set; } 
+
+        /// <summary>Additional options that affect how many partitions are created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionOptions")]
+        public virtual PartitionOptions PartitionOptions { get; set; } 
+
+        /// <summary>Required. The name of the table in the database to be read.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("table")]
+        public virtual string Table { get; set; } 
+
+        /// <summary>Read only snapshot transactions are supported, read/write and single use transactions are
+        /// not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual TransactionSelector Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for PartitionQuery or PartitionRead</summary>
+    public class PartitionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Partitions created by this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
+        public virtual System.Collections.Generic.IList<Partition> Partitions { get; set; } 
+
+        /// <summary>Transaction created by this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transaction")]
+        public virtual Transaction Transaction { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Node information for nodes appearing in a QueryPlan.plan_nodes.</summary>
     public class PlanNode : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4454,7 +4747,9 @@ namespace Google.Apis.Spanner.v1.Data
         /// in table to be yielded, unless index is present. If index is present, then key_set instead names index keys
         /// in index.
         ///
-        /// Rows are yielded in table primary key order (if index is empty) or index key order (if index is non-empty).
+        /// If the partition_token field is empty, rows are yielded in table primary key order (if index is empty) or
+        /// index key order (if index is non-empty).  If the partition_token field is not empty, rows will be yielded in
+        /// an unspecified order.
         ///
         /// It is not an error for the `key_set` to name rows that do not exist in the database. Read yields nothing for
         /// nonexistent rows.</summary>
@@ -4462,9 +4757,15 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual KeySet KeySet { get; set; } 
 
         /// <summary>If greater than zero, only the first `limit` rows are yielded. If `limit` is zero, the default is
-        /// no limit.</summary>
+        /// no limit. A limit cannot be specified if `partition_token` is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; } 
+
+        /// <summary>If present, results will be restricted to the specified partition previously created using
+        /// PartitionRead().    There must be an exact match for the values of fields common to this message and the
+        /// PartitionReadRequest message used to create this partition_token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionToken")]
+        public virtual string PartitionToken { get; set; } 
 
         /// <summary>If this request is resuming a previously interrupted read, `resume_token` should be copied from the
         /// last PartialResultSet yielded before the interruption. Doing this enables the new read to resume where the

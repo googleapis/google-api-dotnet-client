@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/NjDAyNYViWyiQJ3nkxFfnADn_-M\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/YsfS98tGUHtpWsBkoC1BS0aFrns\"",
  "discoveryVersion": "v1",
  "id": "deploymentmanager:alpha",
  "name": "deploymentmanager",
  "canonicalName": "Deployment Manager Alpha",
  "version": "alpha",
- "revision": "20180119",
+ "revision": "20180214",
  "title": "Google Cloud Deployment Manager Alpha API",
  "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -2038,6 +2038,22 @@
      "httpMethod": "POST",
      "description": "Creates a deployment and all of the resources described by the deployment manifest.",
      "parameters": {
+      "createPolicy": {
+       "type": "string",
+       "description": "",
+       "default": "CREATE_OR_ACQUIRE",
+       "enum": [
+        "ACQUIRE",
+        "CREATE",
+        "CREATE_OR_ACQUIRE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        ""
+       ],
+       "location": "query"
+      },
       "preview": {
        "type": "boolean",
        "description": "If set to true, creates a deployment and creates \"shell\" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the update() method or you can use the cancelPreview() method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.",
@@ -2127,9 +2143,11 @@
        "default": "CREATE_OR_ACQUIRE",
        "enum": [
         "ACQUIRE",
+        "CREATE",
         "CREATE_OR_ACQUIRE"
        ],
        "enumDescriptions": [
+        "",
         "",
         ""
        ],
@@ -2305,9 +2323,11 @@
        "default": "CREATE_OR_ACQUIRE",
        "enum": [
         "ACQUIRE",
+        "CREATE",
         "CREATE_OR_ACQUIRE"
        ],
        "enumDescriptions": [
+        "",
         "",
         ""
        ],

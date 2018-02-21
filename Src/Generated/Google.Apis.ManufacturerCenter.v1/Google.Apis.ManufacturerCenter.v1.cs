@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180207 (1133)
+ *      <tr><th>API Rev<td>20180219 (1145)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -609,13 +609,13 @@ namespace Google.Apis.ManufacturerCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Maximum number of product statuses to return in the response, used for paging.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The token returned by the previous request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of product statuses to return in the response, used for paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -651,18 +651,18 @@ namespace Google.Apis.ManufacturerCenter.v1
                             Pattern = @"^accounts/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -672,15 +672,16 @@ namespace Google.Apis.ManufacturerCenter.v1
 
             }
 
-            /// <summary>Inserts or updates the product in a Manufacturer Center account.
+            /// <summary>Inserts or updates the attributes of the product in a Manufacturer Center account.
             ///
-            /// The checks at upload time are minimal. All required attributes need to be present for a product to be
-            /// valid. Issues may show up later after the API has accepted an update for a product and it is possible to
-            /// overwrite an existing valid product with an invalid product. To detect this, you should retrieve the
-            /// product and check it for issues once the updated version is available.
+            /// Creates a product with the provided attributes. If the product already exists, then all attributes are
+            /// replaced with the new ones. The checks at upload time are minimal. All required attributes need to be
+            /// present for a product to be valid. Issues may show up later after the API has accepted a new upload for
+            /// a product and it is possible to overwrite an existing valid product with an invalid product. To detect
+            /// this, you should retrieve the product and check it for issues once the new version is available.
             ///
-            /// Inserted or updated products first need to be processed before they can be retrieved. Until then, new
-            /// products will be unavailable, and retrieval of updated products will return the original state of the
+            /// Uploaded attributes first need to be processed before they can be retrieved. Until then, new products
+            /// will be unavailable, and retrieval of previously uploaded products will return the original state of the
             /// product.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Parent ID in the format `accounts/{account_id}`.
@@ -697,25 +698,26 @@ namespace Google.Apis.ManufacturerCenter.v1
             ///
             /// `product_id`     -   The ID of the product. For more information, see
             /// https://support.google.com/manufacturers/answer/6124116#id.</param>
-            public virtual UpdateRequest Update(Google.Apis.ManufacturerCenter.v1.Data.Product body, string parent, string name)
+            public virtual UpdateRequest Update(Google.Apis.ManufacturerCenter.v1.Data.Attributes body, string parent, string name)
             {
                 return new UpdateRequest(service, body, parent, name);
             }
 
-            /// <summary>Inserts or updates the product in a Manufacturer Center account.
+            /// <summary>Inserts or updates the attributes of the product in a Manufacturer Center account.
             ///
-            /// The checks at upload time are minimal. All required attributes need to be present for a product to be
-            /// valid. Issues may show up later after the API has accepted an update for a product and it is possible to
-            /// overwrite an existing valid product with an invalid product. To detect this, you should retrieve the
-            /// product and check it for issues once the updated version is available.
+            /// Creates a product with the provided attributes. If the product already exists, then all attributes are
+            /// replaced with the new ones. The checks at upload time are minimal. All required attributes need to be
+            /// present for a product to be valid. Issues may show up later after the API has accepted a new upload for
+            /// a product and it is possible to overwrite an existing valid product with an invalid product. To detect
+            /// this, you should retrieve the product and check it for issues once the new version is available.
             ///
-            /// Inserted or updated products first need to be processed before they can be retrieved. Until then, new
-            /// products will be unavailable, and retrieval of updated products will return the original state of the
+            /// Uploaded attributes first need to be processed before they can be retrieved. Until then, new products
+            /// will be unavailable, and retrieval of previously uploaded products will return the original state of the
             /// product.</summary>
-            public class UpdateRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Product>
+            public class UpdateRequest : ManufacturerCenterBaseServiceRequest<Google.Apis.ManufacturerCenter.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Update request.</summary>
-                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManufacturerCenter.v1.Data.Product body, string parent, string name)
+                public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ManufacturerCenter.v1.Data.Attributes body, string parent, string name)
                     : base(service)
                 {
                     Parent = parent;
@@ -745,7 +747,7 @@ namespace Google.Apis.ManufacturerCenter.v1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.ManufacturerCenter.v1.Data.Product Body { get; set; }
+                Google.Apis.ManufacturerCenter.v1.Data.Attributes Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }

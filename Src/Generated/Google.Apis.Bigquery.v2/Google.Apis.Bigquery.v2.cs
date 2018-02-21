@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180205 (1131)
+ *      <tr><th>API Rev<td>20180211 (1137)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2906,6 +2906,24 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class DestinationTableProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] The description for the destination table. This will only be used if the destination
+        /// table is newly created. If the table already exists and a value different than the current description is
+        /// provided, the job will fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>[Optional] The friendly name for the destination table. This will only be used if the destination
+        /// table is newly created. If the table already exists and a value different than the current friendly name is
+        /// provided, the job will fail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
+        public virtual string FriendlyName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
@@ -3333,8 +3351,8 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class JobConfigurationExtract : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Optional] The compression type to use for exported files. Possible values include GZIP and NONE.
-        /// The default value is NONE.</summary>
+        /// <summary>[Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE,
+        /// SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compression")]
         public virtual string Compression { get; set; } 
 
@@ -3396,13 +3414,18 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
         public virtual string CreateDisposition { get; set; } 
 
-        /// <summary>[Experimental] Custom encryption configuration (e.g., Cloud KMS keys).</summary>
+        /// <summary>Custom encryption configuration (e.g., Cloud KMS keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
         public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
 
         /// <summary>[Required] The destination table to load the data into.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationTable")]
         public virtual TableReference DestinationTable { get; set; } 
+
+        /// <summary>[Experimental] [Optional] Properties with which to create the destination table if it is
+        /// new.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTableProperties")]
+        public virtual DestinationTableProperties DestinationTableProperties { get; set; } 
 
         /// <summary>[Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The
         /// default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values
@@ -3538,7 +3561,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultDataset")]
         public virtual DatasetReference DefaultDataset { get; set; } 
 
-        /// <summary>[Experimental] Custom encryption configuration (e.g., Cloud KMS keys).</summary>
+        /// <summary>Custom encryption configuration (e.g., Cloud KMS keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
         public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
 
@@ -3648,7 +3671,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createDisposition")]
         public virtual string CreateDisposition { get; set; } 
 
-        /// <summary>[Experimental] Custom encryption configuration (e.g., Cloud KMS keys).</summary>
+        /// <summary>Custom encryption configuration (e.g., Cloud KMS keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationEncryptionConfiguration")]
         public virtual EncryptionConfiguration DestinationEncryptionConfiguration { get; set; } 
 
@@ -4215,11 +4238,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Total number of active workers. This does not correspond directly to slot usage. This is the
         /// largest value observed since the last sample.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeInputs")]
-        public virtual System.Nullable<int> ActiveInputs { get; set; } 
+        public virtual System.Nullable<long> ActiveInputs { get; set; } 
 
         /// <summary>Total parallel units of work completed by this query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completedInputs")]
-        public virtual System.Nullable<int> CompletedInputs { get; set; } 
+        public virtual System.Nullable<long> CompletedInputs { get; set; } 
 
         /// <summary>Milliseconds elapsed since the start of query execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedMs")]
@@ -4268,7 +4291,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Experimental] Custom encryption configuration (e.g., Cloud KMS keys).</summary>
+        /// <summary>Custom encryption configuration (e.g., Cloud KMS keys).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfiguration")]
         public virtual EncryptionConfiguration EncryptionConfiguration { get; set; } 
 

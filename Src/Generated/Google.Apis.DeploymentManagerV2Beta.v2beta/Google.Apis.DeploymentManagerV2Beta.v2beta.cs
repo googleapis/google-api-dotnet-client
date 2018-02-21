@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API V2Beta Methods</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20180119 (1114)
+ *      <tr><th>API Rev<td>20180214 (1140)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>
@@ -1237,6 +1237,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
+
+            /// [default: CREATE_OR_ACQUIRE]
+            [Google.Apis.Util.RequestParameterAttribute("createPolicy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<CreatePolicyEnum> CreatePolicy { get; set; }
+
+
+            public enum CreatePolicyEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
+                ACQUIRE,
+                [Google.Apis.Util.StringValueAttribute("CREATE")]
+                CREATE,
+                [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
+                CREATEORACQUIRE,
+            }
+
             /// <summary>If set to true, creates a deployment and creates "shell" resources but does not actually
             /// instantiate these resources. This allows you to preview what your deployment looks like. After
             /// previewing a deployment, you can deploy your resources by making a request with the update() method or
@@ -1284,6 +1300,15 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "createPolicy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createPolicy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "CREATE_OR_ACQUIRE",
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "preview", new Google.Apis.Discovery.Parameter
@@ -1486,6 +1511,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
                 ACQUIRE,
+                [Google.Apis.Util.StringValueAttribute("CREATE")]
+                CREATE,
                 [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
                 CREATEORACQUIRE,
             }
@@ -1890,6 +1917,8 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             {
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
                 ACQUIRE,
+                [Google.Apis.Util.StringValueAttribute("CREATE")]
+                CREATE,
                 [Google.Apis.Util.StringValueAttribute("CREATE_OR_ACQUIRE")]
                 CREATEORACQUIRE,
             }
@@ -3740,6 +3769,22 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
 namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
 {    
 
+    /// <summary>Async options that determine when a resource should finish.</summary>
+    public class AsyncOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Method regex where this policy will apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodMatch")]
+        public virtual string MethodMatch { get; set; } 
+
+        /// <summary>Deployment manager will poll instances for this API resource setting a RUNNING state, and blocking
+        /// until polling conditions tell whether the resource is completed or failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingOptions")]
+        public virtual PollingOptions PollingOptions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
     /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
     /// AuditLogConfigs.
@@ -4199,6 +4244,21 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class Diagnostic : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>JsonPath expression on the resource that if non empty, indicates that this field needs to be
+        /// extracted as a diagnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; } 
+
+        /// <summary>Level to record this diagnostic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("level")]
+        public virtual string Level { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an expression text. Example:
     ///
     /// title: "User account presence" description: "Determines whether the request has a user account" expression:
@@ -4605,6 +4665,10 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
     /// <summary>Options allows customized resource handling by Deployment Manager.</summary>
     public class Options : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Options regarding how to thread async requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asyncOptions")]
+        public virtual System.Collections.Generic.IList<AsyncOptions> AsyncOptions { get; set; } 
+
         /// <summary>The mappings that apply for requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputMappings")]
         public virtual System.Collections.Generic.IList<InputMapping> InputMappings { get; set; } 
@@ -4677,6 +4741,33 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
+    }    
+
+    public class PollingOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An array of diagnostics to be collected by Deployment Manager, these diagnostics will be displayed
+        /// to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnostics")]
+        public virtual System.Collections.Generic.IList<Diagnostic> Diagnostics { get; set; } 
+
+        /// <summary>JsonPath expression that determines if the request failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failCondition")]
+        public virtual string FailCondition { get; set; } 
+
+        /// <summary>JsonPath expression that determines if the request is completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishCondition")]
+        public virtual string FinishCondition { get; set; } 
+
+        /// <summary>JsonPath expression that evaluates to string, it indicates where to poll.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pollingLink")]
+        public virtual string PollingLink { get; set; } 
+
+        /// <summary>JsonPath expression, after polling is completed, indicates where to fetch the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
+        public virtual string TargetLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     public class Resource : Google.Apis.Requests.IDirectResponseSchema

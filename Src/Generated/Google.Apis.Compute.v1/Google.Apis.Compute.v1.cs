@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180112 (1107)
+ *      <tr><th>API Rev<td>20180123 (1118)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -38994,7 +38994,7 @@ namespace Google.Apis.Compute.v1.Data
         public virtual string Status { get; set; } 
 
         /// <summary>URL of the disk type resource describing which disk type to use to create the disk. Provide this
-        /// when creating the disk.</summary>
+        /// when creating the disk. For example: project/zones/zone/diskTypes/pd-standard or pd-ssd</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -39809,9 +39809,9 @@ namespace Google.Apis.Compute.v1.Data
         /// port ranges.
         ///
         /// Some types of forwarding target have constraints on the acceptable ports: - TargetHttpProxy: 80, 8080 -
-        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 -
-        /// TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 - TargetVpnGateway: 500,
-        /// 4500</summary>
+        /// TargetHttpsProxy: 443 - TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883,
+        /// 5222 - TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883, 5222 -
+        /// TargetVpnGateway: 500, 4500</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("portRange")]
         public virtual string PortRange { get; set; } 
 

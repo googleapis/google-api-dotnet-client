@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/bid-manager/'>DoubleClick Bid Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20170705 (916)
+ *      <tr><th>API Rev<td>20180215 (1141)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/bid-manager/'>
  *              https://developers.google.com/bid-manager/</a>
@@ -288,14 +288,14 @@ namespace Google.Apis.DoubleClickBidManager.v1
         }
 
 
-        /// <summary>Retrieves line items in CSV format.</summary>
+        /// <summary>Retrieves line items in CSV format. TrueView line items are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual DownloadlineitemsRequest Downloadlineitems(Google.Apis.DoubleClickBidManager.v1.Data.DownloadLineItemsRequest body)
         {
             return new DownloadlineitemsRequest(service, body);
         }
 
-        /// <summary>Retrieves line items in CSV format.</summary>
+        /// <summary>Retrieves line items in CSV format. TrueView line items are not supported.</summary>
         public class DownloadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.DownloadLineItemsResponse>
         {
             /// <summary>Constructs a new Downloadlineitems request.</summary>
@@ -341,14 +341,14 @@ namespace Google.Apis.DoubleClickBidManager.v1
 
         }
 
-        /// <summary>Uploads line items in CSV format.</summary>
+        /// <summary>Uploads line items in CSV format. TrueView line items are not supported.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual UploadlineitemsRequest Uploadlineitems(Google.Apis.DoubleClickBidManager.v1.Data.UploadLineItemsRequest body)
         {
             return new UploadlineitemsRequest(service, body);
         }
 
-        /// <summary>Uploads line items in CSV format.</summary>
+        /// <summary>Uploads line items in CSV format. TrueView line items are not supported.</summary>
         public class UploadlineitemsRequest : DoubleClickBidManagerBaseServiceRequest<Google.Apis.DoubleClickBidManager.v1.Data.UploadLineItemsResponse>
         {
             /// <summary>Constructs a new Uploadlineitems request.</summary>
@@ -922,6 +922,10 @@ namespace Google.Apis.DoubleClickBidManager.v1.Data
         /// <summary>Retrieved ads in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ads")]
         public virtual string Ads { get; set; } 
+
+        /// <summary>Retrieved campaigns in SDF format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
+        public virtual string Campaigns { get; set; } 
 
         /// <summary>Retrieved insertion orders in SDF format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertionOrders")]

@@ -1171,7 +1171,7 @@
           "enum": [
             "NON_COMPLIANCE_REASON_UNSPECIFIED",
             "API_LEVEL",
-            "ADMIN_TYPE",
+            "MANAGEMENT_MODE",
             "USER_ACTION",
             "INVALID_VALUE",
             "APP_NOT_INSTALLED",
@@ -1184,7 +1184,7 @@
           "enumDescriptions": [
             "This value is disallowed.",
             "The setting is not supported in the API level of the Android version running on the device.",
-            "The admin type (profile owner, device owner, etc.) doesn't support the setting.",
+            "The management mode (profile owner, device owner, etc.) doesn't support the setting.",
             "The user has not taken required action to comply with the setting.",
             "The setting has an invalid value.",
             "The app required to implement the policy is not installed.",
@@ -1262,7 +1262,7 @@
           "enum": [
             "NON_COMPLIANCE_REASON_UNSPECIFIED",
             "API_LEVEL",
-            "ADMIN_TYPE",
+            "MANAGEMENT_MODE",
             "USER_ACTION",
             "INVALID_VALUE",
             "APP_NOT_INSTALLED",
@@ -1275,7 +1275,7 @@
           "enumDescriptions": [
             "This value is disallowed.",
             "The setting is not supported in the API level of the Android version running on the device.",
-            "The admin type (profile owner, device owner, etc.) doesn't support the setting.",
+            "The management mode (profile owner, device owner, etc.) doesn't support the setting.",
             "The user has not taken required action to comply with the setting.",
             "The setting has an invalid value.",
             "The app required to implement the policy is not installed.",
@@ -2577,7 +2577,7 @@
       "id": "HardwareStatus"
     }
   },
-  "revision": "20180207",
+  "revision": "20180212",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

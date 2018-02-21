@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180212 (1138)
+ *      <tr><th>API Rev<td>20180214 (1140)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -537,6 +537,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
+            /// <summary>The maximum number of Organizations to return in the response. This field is
+            /// optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>An optional query string used to filter the Organizations to return in the response. Filter
             /// rules are case-insensitive.
             ///
@@ -555,11 +560,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// where listing should continue. This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of Organizations to return in the response. This field is
-            /// optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -586,6 +586,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -598,15 +607,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1946,8 +1946,9 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual object CreationTime { get; set; } 
 
-        /// <summary>A friendly string to be used to refer to the Organization in the UI. Assigned by the server, set to
-        /// the primary domain of the G Suite customer that owns the organization. @OutputOnly</summary>
+        /// <summary>A human-readable string that refers to the Organization in the GCP Console UI. This string is set
+        /// by the server and cannot be changed. The string will be set to the primary domain (for example,
+        /// "google.com") of the G Suite customer that owns the organization. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 
@@ -1961,8 +1962,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1.Data
         public virtual string Name { get; set; } 
 
         /// <summary>An immutable id for the Organization that is assigned on creation. This should be omitted when
-        /// creating a new Organization. This field is read-only. This field is deprecated and will be removed in v1.
-        /// Use name instead.</summary>
+        /// creating a new Organization. This field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
         public virtual string OrganizationId { get; set; } 
 

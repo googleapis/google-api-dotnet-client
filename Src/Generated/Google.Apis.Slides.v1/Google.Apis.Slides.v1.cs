@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180208 (1134)
+ *      <tr><th>API Rev<td>20180216 (1142)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -2592,6 +2592,33 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Replaces an existing image with a new image.
+    ///
+    /// Replacing an image removes some image effects from the existing image.</summary>
+    public class ReplaceImageRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the existing image that will be replaced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageObjectId")]
+        public virtual string ImageObjectId { get; set; } 
+
+        /// <summary>The replacement method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageReplaceMethod")]
+        public virtual string ImageReplaceMethod { get; set; } 
+
+        /// <summary>The URL of the new image.
+        ///
+        /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
+        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
+        /// format.
+        ///
+        /// The provided URL can be at most 2 kB in length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A single kind of update to apply to a presentation.</summary>
     public class Request : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2686,6 +2713,10 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>Replaces all instances of specified text.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replaceAllText")]
         public virtual ReplaceAllTextRequest ReplaceAllText { get; set; } 
+
+        /// <summary>Replaces an existing image with a new image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replaceImage")]
+        public virtual ReplaceImageRequest ReplaceImage { get; set; } 
 
         /// <summary>Ungroups objects, such as groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ungroupObjects")]
@@ -4060,10 +4091,32 @@ namespace Google.Apis.Slides.v1.Data
     /// <summary>The properties of the Video.</summary>
     public class VideoProperties : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether to enable video autoplay when the page is displayed in present mode. Defaults to
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoPlay")]
+        public virtual System.Nullable<bool> AutoPlay { get; set; } 
+
+        /// <summary>The time at which to end playback, measured in seconds from the beginning of the video. If set, the
+        /// end time should be after the start time. If not set or if you set this to a value that exceeds the video
+        /// duration, the video will be played until its end.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual System.Nullable<long> End { get; set; } 
+
+        /// <summary>Whether to mute the audio during video playback. Defaults to false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mute")]
+        public virtual System.Nullable<bool> Mute { get; set; } 
+
         /// <summary>The outline of the video. The default outline matches the defaults for new videos created in the
         /// Slides editor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outline")]
         public virtual Outline Outline { get; set; } 
+
+        /// <summary>The time at which to start playback, measured in seconds from the beginning of the video. If set,
+        /// the start time should be before the end time. If you set this to a value that exceeds the video's length in
+        /// seconds, the video will be played from the last second. If not set, the video will be played from the
+        /// beginning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual System.Nullable<long> Start { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

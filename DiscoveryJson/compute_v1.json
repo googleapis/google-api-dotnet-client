@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/VVFHwTcA6SoK5z-8D9nB3uGnswc\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/6GExLFjB5rHAp-JdM7ICcHT2Gvg\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20180112",
+ "revision": "20180123",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -2964,7 +2964,7 @@
     },
     "type": {
      "type": "string",
-     "description": "URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk."
+     "description": "URL of the disk type resource describing which disk type to use to create the disk. Provide this when creating the disk. For example: project/zones/zone/diskTypes/pd-standard or pd-ssd"
     },
     "users": {
      "type": "array",
@@ -4036,7 +4036,7 @@
     },
     "portRange": {
      "type": "string",
-     "description": "This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.\n\nApplicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.\n\nSome types of forwarding target have constraints on the acceptable ports:  \n- TargetHttpProxy: 80, 8080 \n- TargetHttpsProxy: 443 \n- TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 \n- TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 \n- TargetVpnGateway: 500, 4500"
+     "description": "This field is used along with the target field for TargetHttpProxy, TargetHttpsProxy, TargetSslProxy, TargetTcpProxy, TargetVpnGateway, TargetPool, TargetInstance.\n\nApplicable only when IPProtocol is TCP, UDP, or SCTP, only packets addressed to ports in the specified range will be forwarded to target. Forwarding rules with the same [IPAddress, IPProtocol] pair must have disjoint port ranges.\n\nSome types of forwarding target have constraints on the acceptable ports:  \n- TargetHttpProxy: 80, 8080 \n- TargetHttpsProxy: 443 \n- TargetTcpProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883, 5222 \n- TargetSslProxy: 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1688, 1883, 5222 \n- TargetVpnGateway: 500, 4500"
     },
     "ports": {
      "type": "array",

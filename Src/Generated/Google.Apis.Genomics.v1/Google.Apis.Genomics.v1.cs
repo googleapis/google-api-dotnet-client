@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180213 (1139)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -1905,6 +1905,10 @@ namespace Google.Apis.Genomics.v1
             }
 
 
+            /// <summary>Required. The Google Cloud project ID to list datasets for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProjectId { get; set; }
+
             /// <summary>The continuation token, which is used to page through large result sets. To get the next page
             /// of results, set this parameter to the value of `nextPageToken` from the previous response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1914,10 +1918,6 @@ namespace Google.Apis.Genomics.v1
             /// maximum value is 1024.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Required. The Google Cloud project ID to list datasets for.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1944,6 +1944,15 @@ namespace Google.Apis.Genomics.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1956,15 +1965,6 @@ namespace Google.Apis.Genomics.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "projectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "projectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2476,11 +2476,6 @@ namespace Google.Apis.Genomics.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
-            /// 2048.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>A string for filtering Operations. The following filter fields are supported
             ///
             /// * projectId Required. Corresponds to OperationMetadata.projectId. * createTime The time this job was
@@ -2499,6 +2494,11 @@ namespace Google.Apis.Genomics.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
+            /// 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2534,15 +2534,6 @@ namespace Google.Apis.Genomics.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -2555,6 +2546,15 @@ namespace Google.Apis.Genomics.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2646,12 +2646,6 @@ namespace Google.Apis.Genomics.v1
                 [Google.Apis.Util.RequestParameterAttribute("readGroupSetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ReadGroupSetId { get; private set; }
 
-                /// <summary>The end position of the range on the reference, 0-based exclusive. If specified,
-                /// `referenceName` must also be specified. If unset or 0, defaults to the length of the
-                /// reference.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("end", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> End { get; set; }
-
                 /// <summary>The continuation token, which is used to page through large result sets. To get the next
                 /// page of results, set this parameter to the value of `nextPageToken` from the previous
                 /// response.</summary>
@@ -2680,6 +2674,12 @@ namespace Google.Apis.Genomics.v1
                 /// Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("referenceName", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ReferenceName { get; set; }
+
+                /// <summary>The end position of the range on the reference, 0-based exclusive. If specified,
+                /// `referenceName` must also be specified. If unset or 0, defaults to the length of the
+                /// reference.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("end", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> End { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2711,15 +2711,6 @@ namespace Google.Apis.Genomics.v1
                             Name = "readGroupSetId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "end", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "end",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -2763,6 +2754,15 @@ namespace Google.Apis.Genomics.v1
                         "referenceName", new Google.Apis.Discovery.Parameter
                         {
                             Name = "referenceName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "end", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "end",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3412,11 +3412,6 @@ namespace Google.Apis.Genomics.v1
                 [Google.Apis.Util.RequestParameterAttribute("referenceId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ReferenceId { get; private set; }
 
-                /// <summary>The maximum number of bases to return in a single page. If unspecified, defaults to 200Kbp
-                /// (kilo base pairs). The maximum value is 10Mbp (mega base pairs).</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The start position (0-based) of this query. Defaults to 0.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("start", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> Start { get; set; }
@@ -3431,6 +3426,11 @@ namespace Google.Apis.Genomics.v1
                 /// response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of bases to return in a single page. If unspecified, defaults to 200Kbp
+                /// (kilo base pairs). The maximum value is 10Mbp (mega base pairs).</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3466,15 +3466,6 @@ namespace Google.Apis.Genomics.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "start", new Google.Apis.Discovery.Parameter
                         {
                             Name = "start",
@@ -3496,6 +3487,15 @@ namespace Google.Apis.Genomics.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5095,6 +5095,43 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This event is generated when a container starts.</summary>
+    public class ContainerStartedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric ID of the action that started this container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
+        public virtual System.Nullable<int> ActionId { get; set; } 
+
+        /// <summary>The public IP address that can be used to connect to the container.  This field is only populated
+        /// when at least one port mapping is present.  If the instance was created with a private address this field
+        /// will be empty even if port mappings exist.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
+        public virtual string IpAddress { get; set; } 
+
+        /// <summary>The container to host port mappings installed for this container.  This set will contain any ports
+        /// exposed using the PUBLISH_EXPOSED_PORTS flag as well as any specified in the Action definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portMappings")]
+        public virtual System.Collections.Generic.IDictionary<string,System.Nullable<int>> PortMappings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when a container exits.</summary>
+    public class ContainerStoppedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric ID of the action that started this container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
+        public virtual System.Nullable<int> ActionId { get; set; } 
+
+        /// <summary>The exit status of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitStatus")]
+        public virtual System.Nullable<int> ExitStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A bucket over which read coverage has been precomputed. A bucket corresponds to a specific range of the
     /// reference sequence.</summary>
     public class CoverageBucket : Google.Apis.Requests.IDirectResponseSchema
@@ -5138,6 +5175,25 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This event is generated whenever a resource limitation or transient error delays execution of a
+    /// pipeline that was otherwise ready to run.</summary>
+    public class DelayedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A textual description of the cause of the delay.  The string may change without notice since it is
+        /// often generated by another service (such as Compute Engine).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cause")]
+        public virtual string Cause { get; set; } 
+
+        /// <summary>If the delay was caused by a resource shortage, this field lists the Compute Engine metrics that
+        /// are preventing this operation from running (for example, CPUS or INSTANCES).  If the particular metric is
+        /// not known, a single UNKNOWN metric will be present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -5159,6 +5215,26 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>The creation status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual Status Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Event carries information about events that occur during pipeline execution.</summary>
+    public class Event : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A human readable description of the event.  Note that these strings may change at any time without
+        /// notice.  Any application logic must use the information in the details field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Machine readable details about the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Details { get; set; } 
+
+        /// <summary>The time that the event occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual object Timestamp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5280,6 +5356,22 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>The name of the source of this data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceName")]
         public virtual string SourceName { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when the execution of a pipeline has failed.  Note that other events may
+    /// continue to occur after this event.</summary>
+    public class FailedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The human readable description of the cause of the failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cause")]
+        public virtual string Cause { get; set; } 
+
+        /// <summary>The Google standard error code that best describes this failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5679,6 +5771,28 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>The version of the program run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when the worker starts pulling an image.</summary>
+    public class PullStartedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI of the image that was pulled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when the worker stops pulling an image.</summary>
+    public class PullStoppedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI of the image that was pulled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6660,6 +6774,23 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>This event is generated when the execution of a container results in a non-zero exit status that was
+    /// not otherwise ignored.  Execution will continue, but only actions that are flagged as ALWAYS_RUN will be
+    /// executed: other actions will be skipped.</summary>
+    public class UnexpectedExitStatusEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The numeric ID of the action that started the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
+        public virtual System.Nullable<int> ActionId { get; set; } 
+
+        /// <summary>The exit status of the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitStatus")]
+        public virtual System.Nullable<int> ExitStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A variant represents a change in DNA sequence relative to a reference sequence. For example, a variant
     /// could represent a SNP or an insertion. Variants belong to a variant set.
     ///
@@ -6898,6 +7029,37 @@ namespace Google.Apis.Genomics.v1.Data
         /// <summary>The value field for simple metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated once a worker VM has been assigned to run the pipeline.</summary>
+    public class WorkerAssignedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The worker's instance name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; } 
+
+        /// <summary>The zone the worker is running in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This event is generated when the worker VM that was assigned to the pipeline has been released (i.e.,
+    /// deleted).</summary>
+    public class WorkerReleasedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The worker's instance name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; } 
+
+        /// <summary>The zone the worker was running in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
