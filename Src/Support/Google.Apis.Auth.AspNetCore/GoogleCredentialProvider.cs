@@ -17,15 +17,20 @@ namespace Google.Apis.Auth.AspNetCore
 {
     public class GoogleCredentialProvider : IGoogleCredentialProvider
     {
-        public GoogleCredentialProvider(IServiceProvider services) => _services = services;
+        public GoogleCredentialProvider(IServiceProvider services, string authenticationScheme)
+        {
+            _services = services;
+            _authenticationScheme = authenticationScheme;
+        }
 
         private readonly IServiceProvider _services;
+        private readonly string _authenticationScheme;
 
         public async Task<GoogleCredential> GetAsync(CancellationToken cancellationToken)
         {
             // TODO: Should failures throw an exception? Or return null (as currently coded)?
             var httpContext = _services.GetRequiredService<IHttpContextAccessor>().HttpContext;
-            var auth = await httpContext.AuthenticateAsync();
+            var auth = await httpContext.AuthenticateAsync(_authenticationScheme);
             if (!auth.Succeeded || auth.None)
             {
                 // Auth failed, cannot provide a credential.
