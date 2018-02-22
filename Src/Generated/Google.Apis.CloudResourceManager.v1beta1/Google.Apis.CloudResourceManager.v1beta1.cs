@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Resource Manager API Version v1beta1
+ *   Cloud Resource Manager API Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/resource-manager'>Google Cloud Resource Manager API</a>
+ *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180214 (1140)
+ *      <tr><th>API Rev<td>20180219 (1145)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Resource Manager API can be found at
+ * The complete API documentation for using Cloud Resource Manager API can be found at
  * <a href='https://cloud.google.com/resource-manager'>https://cloud.google.com/resource-manager</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -106,7 +106,7 @@ namespace Google.Apis.CloudResourceManager.v1beta1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Resource Manager API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Resource Manager API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -537,6 +537,11 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             }
 
 
+            /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
+            /// where listing should continue. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of Organizations to return in the response. This field is
             /// optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -555,11 +560,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
             /// This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>A pagination token returned from a previous call to `ListOrganizations` that indicates from
-            /// where listing should continue. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -586,6 +586,15 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -598,15 +607,6 @@ namespace Google.Apis.CloudResourceManager.v1beta1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

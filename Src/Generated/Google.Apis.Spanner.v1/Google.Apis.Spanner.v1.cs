@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/spanner/'>Cloud Spanner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180206 (1132)
+ *      <tr><th>API Rev<td>20180213 (1139)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/spanner/'>
  *              https://cloud.google.com/spanner/</a>
@@ -3330,6 +3330,11 @@ namespace Google.Apis.Spanner.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
+                /// maximum allowed page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>An expression for filtering the results of the request. Filter rules are case insensitive.
                 /// The fields eligible for filtering are:
                 ///
@@ -3350,11 +3355,6 @@ namespace Google.Apis.Spanner.v1
                 /// ListInstancesResponse.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Number of instances to be returned in the response. If 0 or less, defaults to the server's
-                /// maximum allowed page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3390,6 +3390,15 @@ namespace Google.Apis.Spanner.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -3402,15 +3411,6 @@ namespace Google.Apis.Spanner.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3916,7 +3916,8 @@ namespace Google.Apis.Spanner.v1.Data
     /// <summary>Arguments to delete operations.</summary>
     public class Delete : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The primary keys of the rows within table to delete.</summary>
+        /// <summary>Required. The primary keys of the rows within table to delete. Delete is idempotent. The
+        /// transaction will succeed even if some or all rows do not exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keySet")]
         public virtual KeySet KeySet { get; set; } 
 
@@ -4461,8 +4462,8 @@ namespace Google.Apis.Spanner.v1.Data
     {
         /// <summary>The desired maximum number of partitions to return.  For example, this may be set to the number of
         /// workers available.  The default for this option is currently 10,000. The maximum value is currently 200,000.
-        /// This is only a hint.  The actual number of partitions returned may be smaller than this maximum count
-        /// request.</summary>
+        /// This is only a hint.  The actual number of partitions returned may be smaller or larger than this maximum
+        /// count request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPartitions")]
         public virtual System.Nullable<long> MaxPartitions { get; set; } 
 

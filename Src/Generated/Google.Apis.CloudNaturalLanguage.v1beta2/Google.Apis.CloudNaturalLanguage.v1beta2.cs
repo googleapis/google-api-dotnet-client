@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Natural Language API Version v1beta2
+ *   Cloud Natural Language API Version v1beta2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/natural-language/'>Google Cloud Natural Language API</a>
+ *          <td><a href='https://cloud.google.com/natural-language/'>Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180212 (1138)
+ *      <tr><th>API Rev<td>20180221 (1147)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Natural Language API can be found at
+ * The complete API documentation for using Cloud Natural Language API can be found at
  * <a href='https://cloud.google.com/natural-language/'>https://cloud.google.com/natural-language/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Natural Language API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Natural Language API.</summary>
         public class Scope
         {
             /// <summary>Apply machine learning models to reveal the structure and meaning of text</summary>

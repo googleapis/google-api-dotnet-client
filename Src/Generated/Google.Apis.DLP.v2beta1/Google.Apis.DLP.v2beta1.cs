@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180216 (1142)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -939,10 +939,6 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -950,6 +946,10 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -985,15 +985,6 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^inspect/operations$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1006,6 +997,15 @@ namespace Google.Apis.DLP.v2beta1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1430,6 +1430,10 @@ namespace Google.Apis.DLP.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Filters by `done`. That is, `done=true` or `done=false`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1437,10 +1441,6 @@ namespace Google.Apis.DLP.v2beta1
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The list page size. The maximum allowed value is 256 and the default is 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1476,6 +1476,15 @@ namespace Google.Apis.DLP.v2beta1
                             Pattern = @"^riskAnalysis/operations$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -1488,15 +1497,6 @@ namespace Google.Apis.DLP.v2beta1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1773,6 +1773,21 @@ namespace Google.Apis.DLP.v2beta1.Data
         /// <summary>Auxiliary table location. [required]</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2beta1BigQueryTable Table { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>LINT.IfChange Row key for identifying a record in BigQuery table.</summary>
+    public class GooglePrivacyDlpV2beta1BigQueryKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Absolute number of the row from the beginning of the table at the time of scanning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowNumber")]
+        public virtual System.Nullable<long> RowNumber { get; set; } 
+
+        /// <summary>Complete BigQuery table reference.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
+        public virtual GooglePrivacyDlpV2beta1BigQueryTable TableReference { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3359,6 +3374,9 @@ namespace Google.Apis.DLP.v2beta1.Data
     /// <summary>Message for a unique key indicating a record that contains a finding.</summary>
     public class GooglePrivacyDlpV2beta1RecordKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryKey")]
+        public virtual GooglePrivacyDlpV2beta1BigQueryKey BigQueryKey { get; set; } 
+
         [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageKey")]
         public virtual GooglePrivacyDlpV2beta1CloudStorageKey CloudStorageKey { get; set; } 
 

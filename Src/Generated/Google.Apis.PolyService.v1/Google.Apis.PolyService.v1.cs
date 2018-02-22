@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/poly/'>Poly API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180215 (1141)
+ *      <tr><th>API Rev<td>20180217 (1143)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/poly/'>
  *              https://developers.google.com/poly/</a>
@@ -440,16 +440,6 @@ namespace Google.Apis.PolyService.v1
             }
 
 
-            /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults
-            /// to `20`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>One or more search terms to be matched against all text that Poly has indexed for assets, which
-            /// includes display_name, description, and tags. Multiple keywords should be separated by spaces.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("keywords", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Keywords { get; set; }
-
             /// <summary>Specifies an ordering for assets. Acceptable values are: `BEST`, `NEWEST`, `OLDEST`. Defaults
             /// to `BEST`, which ranks assets based on a combination of popularity and other features.</summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
@@ -494,6 +484,16 @@ namespace Google.Apis.PolyService.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>The maximum number of assets to be returned. This value must be between `1` and `100`. Defaults
+            /// to `20`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>One or more search terms to be matched against all text that Poly has indexed for assets, which
+            /// includes display_name, description, and tags. Multiple keywords should be separated by spaces.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("keywords", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Keywords { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -518,24 +518,6 @@ namespace Google.Apis.PolyService.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "keywords", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "keywords",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "orderBy", new Google.Apis.Discovery.Parameter
                     {
@@ -585,6 +567,24 @@ namespace Google.Apis.PolyService.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "keywords", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "keywords",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -666,11 +666,6 @@ namespace Google.Apis.PolyService.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
-                /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Format { get; set; }
-
                 /// <summary>Specifies a continuation token from a previous search whose results were split into
                 /// multiple pages. To get the next page, submit the same request specifying the value from
                 /// next_page_token.</summary>
@@ -704,6 +699,11 @@ namespace Google.Apis.PolyService.v1
                 /// features.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
+
+                /// <summary>Return only assets with the matching format. Acceptable values are: `BLOCKS`, `FBX`,
+                /// `GLTF`, `GLTF2`, `OBJ`, and `TILT`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("format", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Format { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -739,15 +739,6 @@ namespace Google.Apis.PolyService.v1
                             Pattern = @"^users/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "format", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "format",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -778,6 +769,15 @@ namespace Google.Apis.PolyService.v1
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "format", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "format",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1007,6 +1007,29 @@ namespace Google.Apis.PolyService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A message generated by the asset import process.</summary>
+    public class AssetImportMessage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The code associated with this message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>An optional file path. Only present for those error codes that specify it.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; } 
+
+        /// <summary>An optional image error. Only present for INVALID_IMAGE_FILE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageError")]
+        public virtual ImageError ImageError { get; set; } 
+
+        /// <summary>An optional OBJ parse error. Only present for OBJ_PARSE_ERROR.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objParseError")]
+        public virtual ObjParseError ObjParseError { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents a file in Poly, which can be a root, resource, or thumbnail file.</summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1078,6 +1101,21 @@ namespace Google.Apis.PolyService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A message resulting from reading an image file.</summary>
+    public class ImageError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of image error encountered. Optional for older image errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>The file path in the import of the image that was rejected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A response message from a request to list.</summary>
     public class ListAssetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1138,6 +1176,38 @@ namespace Google.Apis.PolyService.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Details of an error resulting from parsing an OBJ file</summary>
+    public class ObjParseError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of problem found (required).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>The ending character index at which the problem was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endIndex")]
+        public virtual System.Nullable<int> EndIndex { get; set; } 
+
+        /// <summary>The file path in which the problem was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filePath")]
+        public virtual string FilePath { get; set; } 
+
+        /// <summary>The text of the line. Note that this may be truncated if the line was very long. This may not
+        /// include the error if it occurs after line truncation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("line")]
+        public virtual string Line { get; set; } 
+
+        /// <summary>Line number at which the problem was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<int> LineNumber { get; set; } 
+
+        /// <summary>The starting character index at which the problem was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
+        public virtual System.Nullable<int> StartIndex { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Hints for displaying the asset, based on information available when the asset was uploaded.</summary>
     public class PresentationParams : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1184,6 +1254,32 @@ namespace Google.Apis.PolyService.v1.Data
         /// <summary>The z component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("z")]
         public virtual System.Nullable<double> Z { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A response message from a request to list. This is returned in the response field of the
+    /// Operation.</summary>
+    public class StartAssetImportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of newly created asset. If this is empty when the operation is complete it means the import
+        /// failed. Please refer to the asset_import_message field to understand what went wrong.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetId")]
+        public virtual string AssetId { get; set; } 
+
+        /// <summary>The id of the asset import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetImportId")]
+        public virtual string AssetImportId { get; set; } 
+
+        /// <summary>The message from the asset import. This will contain any warnings (or - in the case of failure -
+        /// errors) that occurred during import.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetImportMessages")]
+        public virtual System.Collections.Generic.IList<AssetImportMessage> AssetImportMessages { get; set; } 
+
+        /// <summary>The publish URL for the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishUrl")]
+        public virtual string PublishUrl { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
