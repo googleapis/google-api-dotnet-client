@@ -65,6 +65,8 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
                 UtcNow = newNow
             };
 
+            const int ExpectedRefreshTimeSeconds = 6 * 60;
+
             // Issued not set.
             var response = new TokenResponse();
             Assert.True(response.IsExpired(mockClock));
@@ -79,19 +81,19 @@ namespace Google.Apis.Auth.Tests.OAuth2.Responses
             response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60 - 2, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + ExpectedRefreshTimeSeconds - 2, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60 - 1, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + ExpectedRefreshTimeSeconds - 1, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + ExpectedRefreshTimeSeconds, IssuedUtc = issued };
             Assert.True(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60 + 1, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + ExpectedRefreshTimeSeconds + 1, IssuedUtc = issued };
             Assert.False(response.IsExpired(mockClock));
 
-            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + 5 * 60 + 2, IssuedUtc = issued };
+            response = new TokenResponse() { AccessToken = "a", ExpiresInSeconds = 100 + ExpectedRefreshTimeSeconds + 2, IssuedUtc = issued };
             Assert.False(response.IsExpired(mockClock));
         }
 

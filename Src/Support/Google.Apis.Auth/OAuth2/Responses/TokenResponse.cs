@@ -30,7 +30,10 @@ namespace Google.Apis.Auth.OAuth2.Responses
     /// </summary>
     public class TokenResponse
     {
-        private const int TokenExpiryTimeWindowSeconds = 60 * 5; // Refresh token 5 minutes before it expires.
+        // Refresh token 6 minutes before it expires.
+        private const int TokenRefreshTimeWindowSeconds = 60 * 6;
+        // Don't use a token within 5 minutes of it actually expiring.
+        private const int TokenExpiryTimeWindowSeconds = 60 * 5;
 
         /// <summary>Gets or sets the access token issued by the authorization server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access_token")]
@@ -88,10 +91,24 @@ namespace Google.Apis.Auth.OAuth2.Responses
         [Newtonsoft.Json.JsonPropertyAttribute(Order = 2)]
         public DateTime IssuedUtc { get; set; }
 
+        // Note: ideally this would be called ShouldRefresh or similar.
         /// <summary>
-        /// Returns <c>true</c> if the token is expired or it's going to be expired in the next minute.
+        /// Returns <c>true</c> if the token is expired or it's going expire soon.
         /// </summary>
         public bool IsExpired(IClock clock)
+        {
+            if (AccessToken == null || !ExpiresInSeconds.HasValue)
+            {
+                return true;
+            }
+
+            return IssuedUtc.AddSeconds(ExpiresInSeconds.Value - TokenRefreshTimeWindowSeconds) <= clock.UtcNow;
+        }
+
+        /// <summary>
+        /// Returns true if the token is missing, expired, or sufficiently close to expiry that it shouldn't be used.
+        /// </summary>
+        internal bool IsEffectivelyExpired(IClock clock)
         {
             if (AccessToken == null || !ExpiresInSeconds.HasValue)
             {
