@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180220 (1146)
+ *      <tr><th>API Rev<td>20180223 (1149)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1098,15 +1098,15 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
-                /// `ListInspectTemplates`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
                 /// size 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// `ListInspectTemplates`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1142,18 +1142,18 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2281,6 +2281,27 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional. Allows filtering.
+                ///
+                /// Supported syntax:
+                ///
+                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
+                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
+                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
+                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
+                /// `trigger_name` - The resource name of the trigger that created job. * Supported fields for risk
+                /// analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or `!=`.
+                ///
+                /// Examples:
+                ///
+                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
+                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
+                /// canceled)
+                ///
+                /// The length of this field should be no more than 500 characters.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2303,27 +2324,6 @@ namespace Google.Apis.DLP.v2beta2
                     [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
                     RISKANALYSISJOB,
                 }
-
-                /// <summary>Optional. Allows filtering.
-                ///
-                /// Supported syntax:
-                ///
-                /// * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by
-                /// `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction
-                /// has the form of `  `. * Supported fields/values for inspect jobs: - `state` -
-                /// PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY -
-                /// `trigger_name` - The resource name of the trigger that created job. * Supported fields for risk
-                /// analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or `!=`.
-                ///
-                /// Examples:
-                ///
-                /// * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR
-                /// inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state =
-                /// canceled)
-                ///
-                /// The length of this field should be no more than 500 characters.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2359,6 +2359,15 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2380,15 +2389,6 @@ namespace Google.Apis.DLP.v2beta2
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3116,6 +3116,10 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional size of the page, can be limited by a server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
                 /// `order_by` and `filter` should not change for subsequent calls, but can be omitted if token is
                 /// specified.</summary>
@@ -3134,10 +3138,6 @@ namespace Google.Apis.DLP.v2beta2
                 /// `status`: corresponds to the triggeredJob status.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
-
-                /// <summary>Optional size of the page, can be limited by a server.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3173,6 +3173,15 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3185,15 +3194,6 @@ namespace Google.Apis.DLP.v2beta2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4790,6 +4790,55 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Shifts dates by random number of days, with option to be consistent for the same context.</summary>
+    public class GooglePrivacyDlpV2beta2DateShiftConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Points to the field that contains the context, for example, an entity id. If set, must also set
+        /// method. If set, shift will be consistent for the given context.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual GooglePrivacyDlpV2beta2FieldId Context { get; set; } 
+
+        /// <summary>Causes the shift to be computed based on this key and the context. This results in the same shift
+        /// for the same context and crypto_key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
+        public virtual GooglePrivacyDlpV2beta2CryptoKey CryptoKey { get; set; } 
+
+        /// <summary>For example, -5 means shift date to at most 5 days back in the past. [Required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lowerBoundDays")]
+        public virtual System.Nullable<int> LowerBoundDays { get; set; } 
+
+        /// <summary>Range of shift in days. Actual shift will be selected at random within this range (inclusive ends).
+        /// Negative means shift to earlier in time. Must not be more than 365250 days (1000 years) each direction.
+        ///
+        /// For example, 3 means shift date to at most 3 days into the future. [Required]</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upperBoundDays")]
+        public virtual System.Nullable<int> UpperBoundDays { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message for a date time object.</summary>
+    public class GooglePrivacyDlpV2beta2DateTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One or more of the following must be set. All fields are optional, but when set must be valid date
+        /// or time values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual GoogleTypeDate Date { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+        public virtual string DayOfWeek { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("time")]
+        public virtual GoogleTypeTimeOfDay Time { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual GooglePrivacyDlpV2beta2TimeZone TimeZone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The configuration that controls how the data will change.</summary>
     public class GooglePrivacyDlpV2beta2DeidentifyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5094,6 +5143,11 @@ namespace Google.Apis.DLP.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quote")]
         public virtual string Quote { get; set; } 
 
+        /// <summary>Contains data parsed from quotes. Only populated if include_quote was set to true and a supported
+        /// infoType was requested. Currently supported infoTypes: DATE, DATE_OF_BIRTH and TIME.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quoteInfo")]
+        public virtual GooglePrivacyDlpV2beta2QuoteInfo QuoteInfo { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -5164,7 +5218,10 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual GooglePrivacyDlpV2beta2LikelihoodAdjustment LikelihoodAdjustment { get; set; } 
 
         /// <summary>Proximity of the finding within which the entire hotword must reside. The total length of the
-        /// window cannot exceed 1000 characters.</summary>
+        /// window cannot exceed 1000 characters. Note that the finding itself will be included in the window, so that
+        /// hotwords may be used to match substrings of the finding itself. For example, the certainty of a phone number
+        /// regex "\(\d{3}\) \d{3}-\d{4}" could be adjusted upwards if the area code is known to be the local area code
+        /// of a company office using the hotword regex "\(xxx\)", where "xxx" is the area code in question.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proximity")]
         public virtual GooglePrivacyDlpV2beta2Proximity Proximity { get; set; } 
 
@@ -5989,9 +6046,20 @@ namespace Google.Apis.DLP.v2beta2.Data
     /// <summary>Cloud repository for storing output.</summary>
     public class GooglePrivacyDlpV2beta2OutputStorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Store findings in a new table in an existing dataset. If table_id is not set a new one will be
-        /// generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will
-        /// be used for generating the date details.</summary>
+        /// <summary>Schema used for writing the findings. Columns are derived from the `Finding` object. If appending
+        /// to an existing table, any columns from the predefined schema that are missing will be added. No columns in
+        /// the existing table will be deleted.
+        ///
+        /// If unspecified, then all available columns will be used for a new table, and no changes will be made to an
+        /// existing table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputSchema")]
+        public virtual string OutputSchema { get; set; } 
+
+        /// <summary>Store findings in an existing table or a new table in an existing dataset. Each column in an
+        /// existing table must have the same name, type, and mode of a field in the `Finding` object. If table_id is
+        /// not set a new one will be generated for you with the following format:
+        /// dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date
+        /// details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual GooglePrivacyDlpV2beta2BigQueryTable Table { get; set; } 
 
@@ -6055,6 +6123,9 @@ namespace Google.Apis.DLP.v2beta2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoReplaceFfxFpeConfig")]
         public virtual GooglePrivacyDlpV2beta2CryptoReplaceFfxFpeConfig CryptoReplaceFfxFpeConfig { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dateShiftConfig")]
+        public virtual GooglePrivacyDlpV2beta2DateShiftConfig DateShiftConfig { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("fixedSizeBucketingConfig")]
         public virtual GooglePrivacyDlpV2beta2FixedSizeBucketingConfig FixedSizeBucketingConfig { get; set; } 
@@ -6134,6 +6205,16 @@ namespace Google.Apis.DLP.v2beta2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual GooglePrivacyDlpV2beta2FieldId Field { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message for infoType-dependent details parsed from quote.</summary>
+    public class GooglePrivacyDlpV2beta2QuoteInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dateTime")]
+        public virtual GooglePrivacyDlpV2beta2DateTime DateTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6542,6 +6623,17 @@ namespace Google.Apis.DLP.v2beta2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class GooglePrivacyDlpV2beta2TimeZone : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set only if the offset can be determined. Positive for time ahead of UTC. E.g. For "UTC-9", this
+        /// value is -540.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offsetMinutes")]
+        public virtual System.Nullable<int> OffsetMinutes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Configuration of the timespan of the items to include in scanning. Currently only supported when
     /// inspecting Google Cloud Storage and BigQuery.</summary>
     public class GooglePrivacyDlpV2beta2TimespanConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -6709,6 +6801,9 @@ namespace Google.Apis.DLP.v2beta2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
         public virtual GoogleTypeDate DateValue { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeekValue")]
+        public virtual string DayOfWeekValue { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
         public virtual System.Nullable<double> FloatValue { get; set; } 

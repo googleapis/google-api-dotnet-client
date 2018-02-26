@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20180213 (1139)
+ *      <tr><th>API Rev<td>20180221 (1147)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -1012,7 +1012,8 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
-        /// <summary>Page height in pixels.</summary>
+        /// <summary>Page height. For PDFs the unit is points. For images (including TIFFs) the unit is
+        /// pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; } 
 
@@ -1020,7 +1021,7 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("property")]
         public virtual GoogleCloudVisionV1p1beta1TextAnnotationTextProperty Property { get; set; } 
 
-        /// <summary>Page width in pixels.</summary>
+        /// <summary>Page width. For PDFs the unit is points. For images (including TIFFs) the unit is pixels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
         public virtual System.Nullable<int> Width { get; set; } 
 
@@ -1378,6 +1379,93 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>List of symbols in the word. The order of the symbols follows the natural reading order.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("symbols")]
         public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p1beta1Symbol> Symbols { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for a single offline file annotation request.</summary>
+    public class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The output location and metadata from AsyncAnnotateFileRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
+        public virtual GoogleCloudVisionV1p2beta1OutputConfig OutputConfig { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to an async batch file annotation request.</summary>
+    public class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of file annotation responses, one for each request in
+        /// AsyncBatchAnnotateFilesRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse> Responses { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The Google Cloud Storage location where the output will be written to.</summary>
+    public class GoogleCloudVisionV1p2beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Google Cloud Storage URI where the results will be stored. Results will be in JSON format and
+        /// preceded by its corresponding input URI. This field can either represent a single file, or a prefix for
+        /// multiple outputs. Prefixes must end in a `/`.
+        ///
+        /// Examples:
+        ///
+        /// *    File: gs://bucket-name/filename.json *    Prefix: gs://bucket-name/prefix/here/ *    File: gs://bucket-
+        /// name/prefix/here
+        ///
+        /// If multiple outputs, each response is still AnnotateFileResponse, each of which contains some subset of the
+        /// full list of AnnotateImageResponse. Multiple outputs can happen if, for example, the output JSON is too
+        /// large and overflows into multiple sharded files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Contains metadata for the BatchAnnotateImages operation.</summary>
+    public class GoogleCloudVisionV1p2beta1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time when the batch request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; } 
+
+        /// <summary>Current state of the batch operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The time when the operation result was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The desired output location and metadata.</summary>
+    public class GoogleCloudVisionV1p2beta1OutputConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The max number of response protos to put into each output JSON file on GCS. The valid range is [1,
+        /// 100]. If not specified, the default value is 20.
+        ///
+        /// For example, for one pdf file with 100 pages, 100 response protos will be generated. If `batch_size` = 20,
+        /// then 5 json files each containing 20 response protos will be written under the prefix
+        /// `gcs_destination`.`uri`.
+        ///
+        /// Currently, batch_size only applies to GcsDestination, with potential future support for other output
+        /// configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
+        public virtual System.Nullable<int> BatchSize { get; set; } 
+
+        /// <summary>The Google Cloud Storage location to write the output(s) to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
+        public virtual GoogleCloudVisionV1p2beta1GcsDestination GcsDestination { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

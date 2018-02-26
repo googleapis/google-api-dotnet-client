@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Vision.v1p1beta1 Client Library</Title>
-    <Version>1.32.2.1139</Version>
+    <Version>1.32.2.1147</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

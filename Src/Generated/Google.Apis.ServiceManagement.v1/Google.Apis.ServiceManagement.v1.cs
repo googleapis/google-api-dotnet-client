@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180202 (1128)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -792,13 +792,13 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>The max number of items to include in the response list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>The max number of items to include in the response list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -834,18 +834,18 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1908,6 +1908,10 @@ namespace Google.Apis.ServiceManagement.v1
             [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ServiceName { get; private set; }
 
+            /// <summary>The id of the service configuration resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ConfigId { get; set; }
+
             /// <summary>Specifies which parts of the Service Config should be returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -1920,10 +1924,6 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
             }
-
-            /// <summary>The id of the service configuration resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("configId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ConfigId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1959,18 +1959,18 @@ namespace Google.Apis.ServiceManagement.v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "view", new Google.Apis.Discovery.Parameter
+                    "configId", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "view",
+                        Name = "configId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "configId", new Google.Apis.Discovery.Parameter
+                    "view", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "configId",
+                        Name = "view",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2081,6 +2081,10 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>Requested size of the next page of data.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2094,10 +2098,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
             [Google.Apis.Util.RequestParameterAttribute("consumerId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ConsumerId { get; set; }
-
-            /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2124,6 +2124,15 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -2145,15 +2154,6 @@ namespace Google.Apis.ServiceManagement.v1
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2747,12 +2747,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>Associates `members` with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow
-        /// user access via current binding. Different bindings, including their conditions, are examined independently.
-        /// This field is only visible as GOOGLE_INTERNAL or CONDITION_TRUSTED_TESTER.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
-        public virtual Expr Condition { get; set; } 
-
         /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
         /// following values:
         ///
@@ -2898,7 +2892,18 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and
     /// `google.rpc.context.OriginContext`.
     ///
-    /// Available context types are defined in package `google.rpc.context`.</summary>
+    /// Available context types are defined in package `google.rpc.context`.
+    ///
+    /// This also provides mechanism to whitelist any protobuf message extension that can be sent in grpc metadata using
+    /// “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can
+    /// appear in grpc metadata as follows in your yaml file:
+    ///
+    /// Example:
+    ///
+    /// context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: -
+    /// google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension
+    ///
+    /// You can also specify extension ID instead of fully qualified extension name here.</summary>
     public class Context : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of RPC context rules that apply to individual API methods.
@@ -2914,6 +2919,16 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// <summary>A context rule provides information about the context for an individual API element.</summary>
     public class ContextRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of full type names or extension IDs of extensions allowed in grpc side channel from client
+        /// to backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedRequestExtensions")]
+        public virtual System.Collections.Generic.IList<string> AllowedRequestExtensions { get; set; } 
+
+        /// <summary>A list of full type names or extension IDs of extensions allowed in grpc side channel from backend
+        /// to client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedResponseExtensions")]
+        public virtual System.Collections.Generic.IList<string> AllowedResponseExtensions { get; set; } 
+
         /// <summary>A list of full type names of provided contexts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provided")]
         public virtual System.Collections.Generic.IList<string> Provided { get; set; } 
@@ -3250,38 +3265,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// <summary>Authorization configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorization")]
         public virtual AuthorizationConfig Authorization { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents an expression text. Example:
-    ///
-    /// title: "User account presence" description: "Determines whether the request has a user account" expression:
-    /// "size(request.user) > 0"</summary>
-    public class Expr : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An optional description of the expression. This is a longer text which describes the expression,
-        /// e.g. when hovered over it in a UI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>Textual representation of an expression in Common Expression Language syntax.
-        ///
-        /// The application context of the containing message determines which well-known feature set of CEL is
-        /// supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
-        public virtual string Expression { get; set; } 
-
-        /// <summary>An optional string indicating the location of the expression for error reporting, e.g. a file name
-        /// and a position in the file.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual string Location { get; set; } 
-
-        /// <summary>An optional title for the expression, i.e. a short string describing its purpose. This can be used
-        /// e.g. in UIs which allow to enter the expression.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

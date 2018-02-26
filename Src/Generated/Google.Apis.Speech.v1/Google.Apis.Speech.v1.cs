@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180206 (1132)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -637,11 +637,6 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>Provides information to the recognizer that specifies how to process the request.</summary>
     public class RecognitionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Optional* If `true`, the top result includes a list of words and the confidence for those words.
-        /// If `false`, no word-level confidence information is returned. The default is `false`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableWordConfidence")]
-        public virtual System.Nullable<bool> EnableWordConfidence { get; set; } 
-
         /// <summary>*Optional* If `true`, the top result includes a list of words and the start and end time offsets
         /// (timestamps) for those words. If `false`, no word-level time offset information is returned. The default is
         /// `false`.</summary>

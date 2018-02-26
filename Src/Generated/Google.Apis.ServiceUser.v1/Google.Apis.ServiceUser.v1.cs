@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180202 (1128)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -1048,7 +1048,18 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// The above specifies that all methods in the API request `google.rpc.context.ProjectContext` and
     /// `google.rpc.context.OriginContext`.
     ///
-    /// Available context types are defined in package `google.rpc.context`.</summary>
+    /// Available context types are defined in package `google.rpc.context`.
+    ///
+    /// This also provides mechanism to whitelist any protobuf message extension that can be sent in grpc metadata using
+    /// “x-goog-ext--bin” and “x-goog-ext--jspb” format. For example, list any service specific protobuf types that can
+    /// appear in grpc metadata as follows in your yaml file:
+    ///
+    /// Example:
+    ///
+    /// context: rules: - selector: "google.example.library.v1.LibraryService.CreateBook" allowed_request_extensions: -
+    /// google.foo.v1.NewExtension allowed_response_extensions: - google.foo.v1.NewExtension
+    ///
+    /// You can also specify extension ID instead of fully qualified extension name here.</summary>
     public class Context : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of RPC context rules that apply to individual API methods.
@@ -1064,6 +1075,16 @@ namespace Google.Apis.ServiceUser.v1.Data
     /// <summary>A context rule provides information about the context for an individual API element.</summary>
     public class ContextRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of full type names or extension IDs of extensions allowed in grpc side channel from client
+        /// to backend.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedRequestExtensions")]
+        public virtual System.Collections.Generic.IList<string> AllowedRequestExtensions { get; set; } 
+
+        /// <summary>A list of full type names or extension IDs of extensions allowed in grpc side channel from backend
+        /// to client.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedResponseExtensions")]
+        public virtual System.Collections.Generic.IList<string> AllowedResponseExtensions { get; set; } 
+
         /// <summary>A list of full type names of provided contexts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provided")]
         public virtual System.Collections.Generic.IList<string> Provided { get; set; } 

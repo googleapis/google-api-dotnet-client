@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>Ad Exchange Buyer API</a>
  *      <tr><th>API Version<td>v1.4
- *      <tr><th>API Rev<td>20170810 (952)
+ *      <tr><th>API Rev<td>20180222 (1148)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest'>
  *              https://developers.google.com/ad-exchange/buyer-rest</a>
@@ -3445,6 +3445,12 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
     /// <summary>Configuration data for an Ad Exchange buyer account.</summary>
     public class Account : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>When this is false, bid requests that include a deal ID for a private auction or preferred deal are
+        /// always sent to your bidder. When true, all active pretargeting configs will be applied to private auctions
+        /// and preferred deals. Programmatic Guaranteed deals (when enabled) are always sent to your bidder.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyPretargetingToNonGuaranteedDeals")]
+        public virtual System.Nullable<bool> ApplyPretargetingToNonGuaranteedDeals { get; set; } 
+
         /// <summary>Your bidder locations that have distinct URLs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bidderLocation")]
         public virtual System.Collections.Generic.IList<Account.BidderLocationData> BidderLocation { get; set; } 
@@ -3702,8 +3708,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
     /// <summary>A creative and its classification data.</summary>
     public class Creative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The HTML snippet that displays the ad when inserted in the web page. If set, videoURL should not be
-        /// set.</summary>
+        /// <summary>The HTML snippet that displays the ad when inserted in the web page. If set, videoURL,
+        /// videoVastXML, and nativeAd should not be set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("HTMLSnippet")]
         public virtual string HTMLSnippet { get; set; } 
 
@@ -3798,8 +3804,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languages")]
         public virtual System.Collections.Generic.IList<string> Languages { get; set; } 
 
-        /// <summary>If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should not be set. (The
-        /// videoURL inside nativeAd can be set.)</summary>
+        /// <summary>If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of nativeAd should not be
+        /// set. (The videoURL inside nativeAd can be set.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nativeAd")]
         public virtual Creative.NativeAdData NativeAd { get; set; } 
 
@@ -3841,10 +3847,15 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; } 
 
-        /// <summary>The URL to fetch a video ad. If set, HTMLSnippet and the nativeAd should not be set. Note, this is
-        /// different from resource.native_ad.video_url above.</summary>
+        /// <summary>The URL to fetch a video ad. If set, HTMLSnippet, videoVastXML, and nativeAd should not be set.
+        /// Note, this is different from resource.native_ad.video_url above.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoURL")]
         public virtual string VideoURL { get; set; } 
+
+        /// <summary>The contents of a VAST document for a video ad. This document should conform to the VAST 2.0 or 3.0
+        /// standard. If set, HTMLSnippet, videoURL, and nativeAd and should not be set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoVastXML")]
+        public virtual string VideoVastXML { get; set; } 
 
         /// <summary>Ad width.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("width")]
@@ -3923,8 +3934,8 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
             }
         }    
 
-        /// <summary>If nativeAd is set, HTMLSnippet and the videoURL outside of nativeAd should not be set. (The
-        /// videoURL inside nativeAd can be set.)</summary>
+        /// <summary>If nativeAd is set, HTMLSnippet, videoVastXML, and the videoURL outside of nativeAd should not be
+        /// set. (The videoURL inside nativeAd can be set.)</summary>
         public class NativeAdData
         {
             [Newtonsoft.Json.JsonPropertyAttribute("advertiser")]
@@ -5495,6 +5506,12 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dayPartTargetingValue")]
         public virtual TargetingValueDayPartTargeting DayPartTargetingValue { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("demogAgeCriteriaValue")]
+        public virtual TargetingValueDemogAgeCriteria DemogAgeCriteriaValue { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("demogGenderCriteriaValue")]
+        public virtual TargetingValueDemogGenderCriteria DemogGenderCriteriaValue { get; set; } 
+
         /// <summary>The long value to exclude/include.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longValue")]
         public virtual System.Nullable<long> LongValue { get; set; } 
@@ -5507,8 +5524,13 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Next Id: 7</summary>
     public class TargetingValueCreativeSize : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The formats allowed by the publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedFormats")]
+        public virtual System.Collections.Generic.IList<string> AllowedFormats { get; set; } 
+
         /// <summary>For video size type, the list of companion sizes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionSizes")]
         public virtual System.Collections.Generic.IList<TargetingValueSize> CompanionSizes { get; set; } 
@@ -5561,6 +5583,24 @@ namespace Google.Apis.AdExchangeBuyer.v1_4.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("startMinute")]
         public virtual System.Nullable<int> StartMinute { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TargetingValueDemogAgeCriteria : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("demogAgeCriteriaIds")]
+        public virtual System.Collections.Generic.IList<string> DemogAgeCriteriaIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TargetingValueDemogGenderCriteria : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("demogGenderCriteriaIds")]
+        public virtual System.Collections.Generic.IList<string> DemogGenderCriteriaIds { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
