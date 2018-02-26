@@ -74,7 +74,7 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
-        internal async Task<string> GetAccessTokenForRequestAsync(string authUri, CancellationToken cancellationToken)
+        internal async Task<string> GetAccessTokenForRequestAsync(CancellationToken cancellationToken)
         {
             TokenResponse currentToken;
             Task<TokenResponse> currentRefreshTask;

@@ -110,7 +110,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc />
         public virtual Task<string> GetAccessTokenForRequestAsync(string authUri = null,
             CancellationToken cancellationToken = default(CancellationToken)) =>
-            _refreshManager.GetAccessTokenForRequestAsync(authUri, cancellationToken);    
+            _refreshManager.GetAccessTokenForRequestAsync(cancellationToken);    
         #endregion
 
         /// <summary>
