@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Google Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180213 (1139)
+ *      <tr><th>API Rev<td>20180227 (1153)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1733,7 +1733,7 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A description of how to set up the device prior to running the test</summary>
+    /// <summary>A description of how to set up the Android device prior to running the test.</summary>
     public class TestSetup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The device will be logged in on this account for the duration of the test. Optional</summary>
@@ -1800,7 +1800,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disableVideoRecording")]
         public virtual System.Nullable<bool> DisableVideoRecording { get; set; } 
 
-        /// <summary>Test setup requirements e.g. files to install, bootstrap scripts Optional</summary>
+        /// <summary>Test setup requirements for Android e.g. files to install, bootstrap scripts. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testSetup")]
         public virtual TestSetup TestSetup { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180215 (1141)
+ *      <tr><th>API Rev<td>20180221 (1147)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8751,6 +8751,12 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
     /// <summary>The device policy for a given managed device.</summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The auto-update policy for apps installed on the device. "choiceToTheUser" allows the device's user
+        /// to configure the app update policy. "always" enables auto updates. "never" disables auto updates. "wifiOnly"
+        /// enables auto updates only when the device is connected to wifi.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoUpdatePolicy")]
+        public virtual string AutoUpdatePolicy { get; set; } 
+
         /// <summary>The availability granted to the device for the specified products. "all" gives the device access to
         /// all products, regardless of approval status. "allApproved" entitles the device to access all products that
         /// are approved for the enterprise. "allApproved" and "all" do not enable automatic visibility of "alpha" or

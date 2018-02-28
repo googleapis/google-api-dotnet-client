@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/mKx7GqZedzQPb3Hotnutg3_St-s\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/BekewWSAdUldI-NtmUAiG8YIr08\"",
  "discoveryVersion": "v1",
  "id": "androidenterprise:v1",
  "name": "androidenterprise",
  "canonicalName": "Android Enterprise",
  "version": "v1",
- "revision": "20180215",
+ "revision": "20180221",
  "title": "Google Play EMM API",
  "description": "Manages the deployment of apps to Android for Work users.",
  "ownerDomain": "google.com",
@@ -1021,6 +1021,10 @@
    "type": "object",
    "description": "The device policy for a given managed device.",
    "properties": {
+    "autoUpdatePolicy": {
+     "type": "string",
+     "description": "The auto-update policy for apps installed on the device. \"choiceToTheUser\" allows the device's user to configure the app update policy. \"always\" enables auto updates. \"never\" disables auto updates. \"wifiOnly\" enables auto updates only when the device is connected to wifi."
+    },
     "productAvailabilityPolicy": {
      "type": "string",
      "description": "The availability granted to the device for the specified products. \"all\" gives the device access to all products, regardless of approval status. \"allApproved\" entitles the device to access all products that are approved for the enterprise. \"allApproved\" and \"all\" do not enable automatic visibility of \"alpha\" or \"beta\" tracks. \"whitelist\" grants the device access the products specified in productPolicy[]. Only products that are approved or products that were previously approved (products with revoked approval) by the enterprise can be whitelisted. If no value is provided, the availability set at the user level is applied by default."

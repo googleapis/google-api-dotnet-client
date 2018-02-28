@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20180222 (1148)
+ *      <tr><th>API Rev<td>20180226 (1152)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -3608,7 +3608,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// <summary>An Android mobile test specification.</summary>
     public class AndroidTest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Infomation about the application under test.</summary>
+        /// <summary>Information about the application under test.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidAppInfo")]
         public virtual AndroidAppInfo AndroidAppInfo { get; set; } 
 
@@ -4158,7 +4158,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
 
     public class ListScreenshotClustersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The set of clustres associated with an execution Always set</summary>
+        /// <summary>The set of clusters associated with an execution Always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
         public virtual System.Collections.Generic.IList<ScreenshotCluster> Clusters { get; set; } 
 
