@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>Google Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180105 (1100)
+ *      <tr><th>API Rev<td>20180217 (1143)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -837,6 +837,21 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.RequestParameterAttribute("holdId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string HoldId { get; private set; }
 
+                /// <summary>Specifies which parts of the Hold to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Specifies which parts of the Hold to return.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
+                    HOLDVIEWUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
+                    BASICHOLD,
+                    [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
+                    FULLHOLD,
+                }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -879,6 +894,15 @@ namespace Google.Apis.Vault.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -917,6 +941,21 @@ namespace Google.Apis.Vault.v1
                 /// empty, or as 0, is the same as page_size = 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Specifies which parts of the Hold to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                /// <summary>Specifies which parts of the Hold to return.</summary>
+                public enum ViewEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("HOLD_VIEW_UNSPECIFIED")]
+                    HOLDVIEWUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("BASIC_HOLD")]
+                    BASICHOLD,
+                    [Google.Apis.Util.StringValueAttribute("FULL_HOLD")]
+                    FULLHOLD,
+                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -964,6 +1003,15 @@ namespace Google.Apis.Vault.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1413,6 +1461,25 @@ namespace Google.Apis.Vault.v1
             }
 
 
+            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
+            /// states.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<StateEnum> State { get; set; }
+
+            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
+            /// states.</summary>
+            public enum StateEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
+                STATEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("OPEN")]
+                OPEN,
+                [Google.Apis.Util.StringValueAttribute("CLOSED")]
+                CLOSED,
+                [Google.Apis.Util.StringValueAttribute("DELETED")]
+                DELETED,
+            }
+
             /// <summary>The pagination token as returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1434,25 +1501,6 @@ namespace Google.Apis.Vault.v1
                 BASIC,
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
-            }
-
-            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
-            /// states.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<StateEnum> State { get; set; }
-
-            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
-            /// states.</summary>
-            public enum StateEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
-                STATEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("OPEN")]
-                OPEN,
-                [Google.Apis.Util.StringValueAttribute("CLOSED")]
-                CLOSED,
-                [Google.Apis.Util.StringValueAttribute("DELETED")]
-                DELETED,
             }
 
 
@@ -1480,6 +1528,15 @@ namespace Google.Apis.Vault.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "state", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "state",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1501,15 +1558,6 @@ namespace Google.Apis.Vault.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "state", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "state",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1885,7 +1933,7 @@ namespace Google.Apis.Vault.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Query options for drive holds.</summary>
+    /// <summary>Query options for Drive holds.</summary>
     public class HeldDriveQuery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, include files in Team Drives in the hold.</summary>
@@ -1945,7 +1993,7 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("holdTime")]
         public virtual object HoldTime { get; set; } 
 
-        /// <summary>The org unit's immutable ID as provided by the admin SDK.</summary>
+        /// <summary>The org unit's immutable ID as provided by the Admin SDK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orgUnitId")]
         public virtual string OrgUnitId { get; set; } 
 

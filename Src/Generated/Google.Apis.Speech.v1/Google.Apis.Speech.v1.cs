@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Google Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180220 (1146)
+ *      <tr><th>API Rev<td>20180227 (1153)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -643,7 +643,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableWordTimeOffsets")]
         public virtual System.Nullable<bool> EnableWordTimeOffsets { get; set; } 
 
-        /// <summary>*Required* Encoding of audio data sent in all `RecognitionAudio` messages.</summary>
+        /// <summary>Encoding of audio data sent in all `RecognitionAudio` messages. This field is optional for `FLAC`
+        /// and `WAV` audio files and required for all other audio formats. For details, see AudioEncoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
         public virtual string Encoding { get; set; } 
 
@@ -667,10 +668,11 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("profanityFilter")]
         public virtual System.Nullable<bool> ProfanityFilter { get; set; } 
 
-        /// <summary>*Required* Sample rate in Hertz of the audio data sent in all `RecognitionAudio` messages. Valid
-        /// values are: 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to
-        /// 16000 Hz. If that's not possible, use the native sample rate of the audio source (instead of re-
-        /// sampling).</summary>
+        /// <summary>Sample rate in Hertz of the audio data sent in all `RecognitionAudio` messages. Valid values are:
+        /// 8000-48000. 16000 is optimal. For best results, set the sampling rate of the audio source to 16000 Hz. If
+        /// that's not possible, use the native sample rate of the audio source (instead of re-sampling). This field is
+        /// optional for `FLAC` and `WAV` audio files and required for all other audio formats. For details, see
+        /// AudioEncoding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 
