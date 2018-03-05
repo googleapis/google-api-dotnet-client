@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180213 (1139)
+ *      <tr><th>API Rev<td>20180227 (1153)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -634,6 +634,70 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:getIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Instantiates a template and begins execution.The returned Operation can be used to track
                 /// execution of workflow by polling operations.get. The Operation will complete when entire workflow is
                 /// finished.The running workflow can be aborted via operations.cancel. This will cause any inflight
@@ -905,6 +969,154 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:setIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "testIamPermissions"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:testIamPermissions"; }
+                    }
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflowTemplates/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Updates (replaces) workflow template. The updated template must contain version that
                 /// matches the current server version.</summary>
                 /// <param name="body">The body of the request.</param>
@@ -1065,6 +1277,16 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. A unique id used to identify the request. If the server receives two
+                    /// CreateClusterRequest requests with the same id, then the second request will be ignored and the
+                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
+                    /// recommended to always set this value to a UUID
+                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
+                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+                    /// characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
 
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.Dataproc.v1beta2.Data.Cluster Body { get; set; }
@@ -1110,6 +1332,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Name = "region",
                                 IsRequired = true,
                                 ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
@@ -1159,6 +1390,16 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// if cluster with specified UUID does not exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClusterUuid { get; set; }
+
+                    /// <summary>Optional. A unique id used to identify the request. If the server receives two
+                    /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
+                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
+                    /// recommended to always set this value to a UUID
+                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
+                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+                    /// characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1215,6 +1456,15 @@ namespace Google.Apis.Dataproc.v1beta2
                             "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterUuid",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1516,6 +1766,10 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
+                    /// <summary>Optional. The standard List page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
                     /// <summary>Optional. A filter constraining the clusters to list. Filters are case-sensitive and
                     /// have the following syntax:field = value AND field = value ...where field is one of status.state,
                     /// clusterName, or labels.[KEY], and [KEY] is a label key. value can be * to match all values.
@@ -1531,10 +1785,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// <summary>Optional. The standard List page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
-
-                    /// <summary>Optional. The standard List page size.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1579,6 +1829,15 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -1591,15 +1850,6 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1648,22 +1898,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
-                    /// <summary>Required. Specifies the path, relative to Cluster, of the field to update. For example,
-                    /// to change the number of workers in a cluster to 5, the update_mask parameter would be specified
-                    /// as config.worker_config.num_instances, and the PATCH request body would specify the new value,
-                    /// as follows: { "config":{ "workerConfig":{ "numInstances":"5" } } } Similarly, to change the
-                    /// number of preemptible workers in a cluster to 5, the update_mask parameter would be
-                    /// config.secondary_worker_config.num_instances, and the PATCH request body would be set as
-                    /// follows: { "config":{ "secondaryWorkerConfig":{ "numInstances":"5" } } } Note: currently only
-                    /// some fields can be updated: |Mask|Purpose| |labels|Updates labels|
-                    /// |config.worker_config.num_instances|Resize primary worker group|
-                    /// |config.secondary_worker_config.num_instances|Resize secondary worker group|
-                    /// |config.lifecycle_config.auto_delete_ttl|Reset MAX TTL duration|
-                    /// |config.lifecycle_config.auto_delete_time|Update MAX TTL deletion timestamp|
-                    /// |config.lifecycle_config.idle_delete_ttl|Update Idle TTL duration|</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
                     /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
                     /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
                     /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
@@ -1671,6 +1905,43 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object GracefulDecommissionTimeout { get; set; }
+
+                    /// <summary>Optional. A unique id used to identify the request. If the server receives two
+                    /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
+                    /// first google.longrunning.Operation created and stored in the backend is returned.It is
+                    /// recommended to always set this value to a UUID
+                    /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters
+                    /// (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
+                    /// characters.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Required. Specifies the path, relative to Cluster, of the field to update. For example,
+                    /// to change the number of workers in a cluster to 5, the update_mask parameter would be specified
+                    /// as config.worker_config.num_instances, and the PATCH request body would specify the new value,
+                    /// as follows: { "config":{ "workerConfig":{ "numInstances":"5" } } } Similarly, to change the
+                    /// number of preemptible workers in a cluster to 5, the update_mask parameter would be
+                    /// config.secondary_worker_config.num_instances, and the PATCH request body would be set as
+                    /// follows: { "config":{ "secondaryWorkerConfig":{ "numInstances":"5" } } } Note: currently only
+                    /// the following fields can be updated:
+                    ///
+                    /// MaskPurpose
+                    ///
+                    /// labelsUpdates labels
+                    ///
+                    /// config.worker_config.num_instancesResize primary worker group
+                    ///
+                    /// config.secondary_worker_config.num_instancesResize secondary worker group
+                    ///
+                    /// config.lifecycle_config.auto_delete_ttlReset MAX TTL duration
+                    ///
+                    /// config.lifecycle_config.auto_delete_timeUpdate MAX TTL deletion timestamp
+                    ///
+                    /// config.lifecycle_config.idle_delete_ttlUpdate Idle TTL duration
+                    ///
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1730,18 +2001,27 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "updateMask", new Google.Apis.Discovery.Parameter
+                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "updateMask",
+                                Name = "gracefulDecommissionTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "gracefulDecommissionTimeout",
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2214,6 +2494,70 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:getIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Lists regions/{region}/jobs in a project.</summary>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
                 /// to.</param>
@@ -2246,15 +2590,6 @@ namespace Google.Apis.Dataproc.v1beta2
                     [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Region { get; private set; }
 
-                    /// <summary>Optional. The number of results to return in each response.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
-                    /// named cluster.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterName { get; set; }
-
                     /// <summary>Optional. A filter constraining the jobs to list. Filters are case-sensitive and have
                     /// the following syntax:field = value AND field = value ...where field is status.state or
                     /// labels.[KEY], and [KEY] is a label key. value can be * to match all values. status.state can be
@@ -2285,6 +2620,15 @@ namespace Google.Apis.Dataproc.v1beta2
                     /// results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The number of results to return in each response.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. If set, the returned jobs list includes only jobs that were submitted to the
+                    /// named cluster.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterName { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2329,24 +2673,6 @@ namespace Google.Apis.Dataproc.v1beta2
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterName", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterName",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "filter", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "filter",
@@ -2368,6 +2694,24 @@ namespace Google.Apis.Dataproc.v1beta2
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "clusterName", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterName",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2494,6 +2838,78 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:setIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Submits a job to a cluster.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="projectId">Required. The ID of the Google Cloud Platform project that the job belongs
@@ -2575,6 +2991,82 @@ namespace Google.Apis.Dataproc.v1beta2
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "testIamPermissions"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:testIamPermissions"; }
+                    }
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/jobs/[^/]+$",
                             });
                     }
 
@@ -2802,6 +3294,70 @@ namespace Google.Apis.Dataproc.v1beta2
 
                 }
 
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:getIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
                 /// <summary>Lists operations that match the specified filter in the request. If the server doesn't
                 /// support this method, it returns UNIMPLEMENTED.NOTE: the name binding allows API services to override
                 /// the binding to use different resource name schemes, such as users/operations. To override the
@@ -2908,6 +3464,154 @@ namespace Google.Apis.Dataproc.v1beta2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:setIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "testIamPermissions"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:testIamPermissions"; }
+                    }
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/operations/[^/]+$",
                             });
                     }
 
@@ -3161,6 +3865,70 @@ namespace Google.Apis.Dataproc.v1beta2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                /// exists and does not have a policy set.</summary>
+                public class GetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "getIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:getIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
                             });
                     }
 
@@ -3432,6 +4200,154 @@ namespace Google.Apis.Dataproc.v1beta2
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                    }
+
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                /// policy.</summary>
+                public class SetIamPolicyRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.SetIamPolicyRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "setIamPolicy"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:setIamPolicy"; }
+                    }
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
+                            });
+                    }
+
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                /// documentation for the appropriate value for this field.</param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>Returns permissions that a caller has on the specified resource. If the resource does not
+                /// exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.</summary>
+                public class TestIamPermissionsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest body, string resource)
+                        : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                    /// operation documentation for the appropriate value for this field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataproc.v1beta2.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    ///<summary>Returns the body of the request.</summary>
+                    protected override object GetBody() { return Body; }
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "testIamPermissions"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "POST"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta2/{+resource}:testIamPermissions"; }
+                    }
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/regions/[^/]+/workflowTemplates/[^/]+$",
                             });
                     }
 
@@ -4759,6 +5675,14 @@ namespace Google.Apis.Dataproc.v1beta2.Data
         /// <summary>Required. The job resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("job")]
         public virtual Job Job { get; set; } 
+
+        /// <summary>Optional. A unique id used to identify the request. If the server receives two SubmitJobRequest
+        /// requests with the same id, then the second request will be ignored and the first Job created and stored in
+        /// the backend is returned.It is recommended to always set this value to a UUID
+        /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The id must contain only letters (a-z, A-Z),
+        /// numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/vault'>Google Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180217 (1143)
+ *      <tr><th>API Rev<td>20180303 (1157)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -1897,6 +1897,10 @@ namespace Google.Apis.Vault.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupsQuery")]
         public virtual HeldGroupsQuery GroupsQuery { get; set; } 
 
+        /// <summary>Details pertaining to Hangouts Chat holds. If set, corpus must be Hangouts Chat.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hangoutsChatQuery")]
+        public virtual HeldHangoutsChatQuery HangoutsChatQuery { get; set; } 
+
         /// <summary>Details pertaining to mail holds. If set, corpus must be mail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mailQuery")]
         public virtual HeldMailQuery MailQuery { get; set; } 
@@ -1960,6 +1964,17 @@ namespace Google.Apis.Vault.v1.Data
         /// <summary>The search terms for the hold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("terms")]
         public virtual string Terms { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Query options for hangouts chat holds.</summary>
+    public class HeldHangoutsChatQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, include rooms the user has participated in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeRooms")]
+        public virtual System.Nullable<bool> IncludeRooms { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

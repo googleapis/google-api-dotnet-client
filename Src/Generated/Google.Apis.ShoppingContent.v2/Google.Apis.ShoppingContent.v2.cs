@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180216 (1142)
+ *      <tr><th>API Rev<td>20180227 (1153)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -71,6 +71,7 @@ namespace Google.Apis.ShoppingContent.v2
             datafeedstatuses = new DatafeedstatusesResource(this);
             inventory = new InventoryResource(this);
             orders = new OrdersResource(this);
+            pos = new PosResource(this);
             products = new ProductsResource(this);
             productstatuses = new ProductstatusesResource(this);
             shippingsettings = new ShippingsettingsResource(this);
@@ -178,6 +179,14 @@ namespace Google.Apis.ShoppingContent.v2
         public virtual OrdersResource Orders
         {
             get { return orders; }
+        }
+
+        private readonly PosResource pos;
+
+        /// <summary>Gets the Pos resource.</summary>
+        public virtual PosResource Pos
+        {
+            get { return pos; }
         }
 
         private readonly ProductsResource products;
@@ -4629,6 +4638,651 @@ namespace Google.Apis.ShoppingContent.v2
         }
     }
 
+    /// <summary>The "pos" collection of methods.</summary>
+    public class PosResource
+    {
+        private const string Resource = "pos";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public PosResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Batches multiple POS-related calls in a single request.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.PosCustomBatchRequest body)
+        {
+            return new CustombatchRequest(service, body);
+        }
+
+        /// <summary>Batches multiple POS-related calls in a single request.</summary>
+        public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.PosCustomBatchResponse>
+        {
+            /// <summary>Constructs a new Custombatch request.</summary>
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.PosCustomBatchRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.PosCustomBatchRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "custombatch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "pos/batch"; }
+            }
+
+            /// <summary>Initializes Custombatch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes a store for the given merchant.</summary>
+        /// <param name="merchantId">The ID of the POS provider.</param>
+        /// <param name="targetMerchantId">The ID of the
+        /// target merchant.</param>
+        /// <param name="storeCode">A store code that is unique per merchant.</param>
+        public virtual DeleteRequest Delete(ulong merchantId, ulong targetMerchantId, string storeCode)
+        {
+            return new DeleteRequest(service, merchantId, targetMerchantId, storeCode);
+        }
+
+        /// <summary>Deletes a store for the given merchant.</summary>
+        public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId, string storeCode)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                TargetMerchantId = targetMerchantId;
+                StoreCode = storeCode;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the POS provider.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the target merchant.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong TargetMerchantId { get; private set; }
+
+            /// <summary>A store code that is unique per merchant.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("storeCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StoreCode { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/pos/{targetMerchantId}/store/{storeCode}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "targetMerchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetMerchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "storeCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "storeCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves information about the given store.</summary>
+        /// <param name="merchantId">The ID of the POS provider.</param>
+        /// <param name="targetMerchantId">The ID of the
+        /// target merchant.</param>
+        /// <param name="storeCode">A store code that is unique per merchant.</param>
+        public virtual GetRequest Get(ulong merchantId, ulong targetMerchantId, string storeCode)
+        {
+            return new GetRequest(service, merchantId, targetMerchantId, storeCode);
+        }
+
+        /// <summary>Retrieves information about the given store.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.PosStore>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId, string storeCode)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                TargetMerchantId = targetMerchantId;
+                StoreCode = storeCode;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the POS provider.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the target merchant.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong TargetMerchantId { get; private set; }
+
+            /// <summary>A store code that is unique per merchant.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("storeCode", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string StoreCode { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/pos/{targetMerchantId}/store/{storeCode}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "targetMerchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetMerchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "storeCode", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "storeCode",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a store for the given merchant.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the POS provider.</param>
+        /// <param name="targetMerchantId">The ID of the
+        /// target merchant.</param>
+        public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.PosStore body, ulong merchantId, ulong targetMerchantId)
+        {
+            return new InsertRequest(service, body, merchantId, targetMerchantId);
+        }
+
+        /// <summary>Creates a store for the given merchant.</summary>
+        public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.PosStore>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.PosStore body, ulong merchantId, ulong targetMerchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                TargetMerchantId = targetMerchantId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the POS provider.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the target merchant.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong TargetMerchantId { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.PosStore Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/pos/{targetMerchantId}/store"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "targetMerchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetMerchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Submit inventory for the given merchant.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the POS provider.</param>
+        /// <param name="targetMerchantId">The ID of the
+        /// target merchant.</param>
+        public virtual InventoryRequest Inventory(Google.Apis.ShoppingContent.v2.Data.PosInventoryRequest body, ulong merchantId, ulong targetMerchantId)
+        {
+            return new InventoryRequest(service, body, merchantId, targetMerchantId);
+        }
+
+        /// <summary>Submit inventory for the given merchant.</summary>
+        public class InventoryRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.PosInventoryResponse>
+        {
+            /// <summary>Constructs a new Inventory request.</summary>
+            public InventoryRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.PosInventoryRequest body, ulong merchantId, ulong targetMerchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                TargetMerchantId = targetMerchantId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the POS provider.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the target merchant.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong TargetMerchantId { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.PosInventoryRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "inventory"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/pos/{targetMerchantId}/inventory"; }
+            }
+
+            /// <summary>Initializes Inventory parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "targetMerchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetMerchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the stores of the target merchant.</summary>
+        /// <param name="merchantId">The ID of the POS provider.</param>
+        /// <param name="targetMerchantId">The ID of the
+        /// target merchant.</param>
+        public virtual ListRequest List(ulong merchantId, ulong targetMerchantId)
+        {
+            return new ListRequest(service, merchantId, targetMerchantId);
+        }
+
+        /// <summary>Lists the stores of the target merchant.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.PosListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong targetMerchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                TargetMerchantId = targetMerchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the POS provider.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the target merchant.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong TargetMerchantId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/pos/{targetMerchantId}/store"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "targetMerchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetMerchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Submit a sale event for the given merchant.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the POS provider.</param>
+        /// <param name="targetMerchantId">The ID of the
+        /// target merchant.</param>
+        public virtual SaleRequest Sale(Google.Apis.ShoppingContent.v2.Data.PosSaleRequest body, ulong merchantId, ulong targetMerchantId)
+        {
+            return new SaleRequest(service, body, merchantId, targetMerchantId);
+        }
+
+        /// <summary>Submit a sale event for the given merchant.</summary>
+        public class SaleRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.PosSaleResponse>
+        {
+            /// <summary>Constructs a new Sale request.</summary>
+            public SaleRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.PosSaleRequest body, ulong merchantId, ulong targetMerchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                TargetMerchantId = targetMerchantId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the POS provider.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the target merchant.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("targetMerchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong TargetMerchantId { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.PosSaleRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "sale"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/pos/{targetMerchantId}/sale"; }
+            }
+
+            /// <summary>Initializes Sale parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "targetMerchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "targetMerchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
     /// <summary>The "products" collection of methods.</summary>
     public class ProductsResource
     {
@@ -5963,7 +6617,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>URL for individual seller reviews, i.e., reviews for each child account.</summary>
+        /// <summary>[DEPRECATED] This field is never returned and will be ignored if provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewsUrl")]
         public virtual string ReviewsUrl { get; set; } 
 
@@ -6013,7 +6667,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class AccountGoogleMyBusinessLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The GMB email address.</summary>
+        /// <summary>The GMB email address of which a specific account within a GMB account. A sample account within a
+        /// GMB account could be a business account with set of locations, managed under the GMB account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbEmail")]
         public virtual string GmbEmail { get; set; } 
 
@@ -9173,6 +9828,392 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// "content#ordersUpdateShipmentResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosCustomBatchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The request entries to be processed in the batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<PosCustomBatchRequestEntry> Entries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosCustomBatchRequestEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An entry ID, unique within the batch request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
+        public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>The inventory to submit. Set this only if the method is inventory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
+        public virtual PosInventory Inventory { get; set; } 
+
+        /// <summary>The ID of the POS provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; } 
+
+        /// <summary>The sale information to submit. Set this only if the method is sale.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sale")]
+        public virtual PosSale Sale { get; set; } 
+
+        /// <summary>The store information to submit. Set this only if the method is insert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("store")]
+        public virtual PosStore Store { get; set; } 
+
+        /// <summary>The store code. Required only to get/submit store information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; } 
+
+        /// <summary>The ID of the account for which to get/submit data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetMerchantId")]
+        public virtual System.Nullable<ulong> TargetMerchantId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosCustomBatchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result of the execution of the batch requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<PosCustomBatchResponseEntry> Entries { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#posCustomBatchResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosCustomBatchResponseEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the request entry to which this entry responds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
+        public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>A list of errors defined if, and only if, the request failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual Errors Errors { get; set; } 
+
+        /// <summary>The updated inventory information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
+        public virtual PosInventory Inventory { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#posCustomBatchResponseEntry".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The updated sale information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sale")]
+        public virtual PosSale Sale { get; set; } 
+
+        /// <summary>The retrieved or updated store information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("store")]
+        public virtual PosStore Store { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The absolute quantity of an item available at the given store.</summary>
+    public class PosInventory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The two-letter ISO 639-1 language code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
+        public virtual string ContentLanguage { get; set; } 
+
+        /// <summary>Global Trade Item Number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
+        public virtual string Gtin { get; set; } 
+
+        /// <summary>A unique identifier for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#posInventory".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The current price of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; } 
+
+        /// <summary>The available quantity of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; } 
+
+        /// <summary>The identifier of the merchant's store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; } 
+
+        /// <summary>The CLDR territory code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
+        public virtual string TargetCountry { get; set; } 
+
+        /// <summary>The inventory timestamp, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosInventoryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The two-letter ISO 639-1 language code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
+        public virtual string ContentLanguage { get; set; } 
+
+        /// <summary>Global Trade Item Number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
+        public virtual string Gtin { get; set; } 
+
+        /// <summary>A unique identifier for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; } 
+
+        /// <summary>The current price of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; } 
+
+        /// <summary>The available quantity of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; } 
+
+        /// <summary>The identifier of the merchant's store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; } 
+
+        /// <summary>The CLDR territory code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
+        public virtual string TargetCountry { get; set; } 
+
+        /// <summary>The inventory timestamp, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosInventoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The two-letter ISO 639-1 language code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
+        public virtual string ContentLanguage { get; set; } 
+
+        /// <summary>Global Trade Item Number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
+        public virtual string Gtin { get; set; } 
+
+        /// <summary>A unique identifier for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#posInventoryResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The current price of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; } 
+
+        /// <summary>The available quantity of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; } 
+
+        /// <summary>The identifier of the merchant's store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; } 
+
+        /// <summary>The CLDR territory code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
+        public virtual string TargetCountry { get; set; } 
+
+        /// <summary>The inventory timestamp, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#posListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<PosStore> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The change of the available quantity of an item at the given store.</summary>
+    public class PosSale : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The two-letter ISO 639-1 language code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
+        public virtual string ContentLanguage { get; set; } 
+
+        /// <summary>Global Trade Item Number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
+        public virtual string Gtin { get; set; } 
+
+        /// <summary>A unique identifier for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#posSale".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The price of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; } 
+
+        /// <summary>The relative change of the available quantity. Negative for items sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; } 
+
+        /// <summary>A unique ID to group items from the same sale event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
+        public virtual string SaleId { get; set; } 
+
+        /// <summary>The identifier of the merchant's store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; } 
+
+        /// <summary>The CLDR territory code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
+        public virtual string TargetCountry { get; set; } 
+
+        /// <summary>The inventory timestamp, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosSaleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The two-letter ISO 639-1 language code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
+        public virtual string ContentLanguage { get; set; } 
+
+        /// <summary>Global Trade Item Number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
+        public virtual string Gtin { get; set; } 
+
+        /// <summary>A unique identifier for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; } 
+
+        /// <summary>The price of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; } 
+
+        /// <summary>The relative change of the available quantity. Negative for items sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; } 
+
+        /// <summary>A unique ID to group items from the same sale event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
+        public virtual string SaleId { get; set; } 
+
+        /// <summary>The identifier of the merchant's store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; } 
+
+        /// <summary>The CLDR territory code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
+        public virtual string TargetCountry { get; set; } 
+
+        /// <summary>The inventory timestamp, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosSaleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The two-letter ISO 639-1 language code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
+        public virtual string ContentLanguage { get; set; } 
+
+        /// <summary>Global Trade Item Number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtin")]
+        public virtual string Gtin { get; set; } 
+
+        /// <summary>A unique identifier for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
+        public virtual string ItemId { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#posSaleResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The price of the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("price")]
+        public virtual Price Price { get; set; } 
+
+        /// <summary>The relative change of the available quantity. Negative for items sold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
+        public virtual System.Nullable<long> Quantity { get; set; } 
+
+        /// <summary>A unique ID to group items from the same sale event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
+        public virtual string SaleId { get; set; } 
+
+        /// <summary>The identifier of the merchant's store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; } 
+
+        /// <summary>The CLDR territory code for the item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
+        public virtual string TargetCountry { get; set; } 
+
+        /// <summary>The inventory timestamp, in ISO 8601 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
+        public virtual string Timestamp { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Store resource.</summary>
+    public class PosStore : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#posStore".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The street address of the store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeAddress")]
+        public virtual string StoreAddress { get; set; } 
+
+        /// <summary>A store identifier that is unique for the given merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

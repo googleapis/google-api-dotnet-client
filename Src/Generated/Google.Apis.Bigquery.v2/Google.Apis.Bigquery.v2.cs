@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180218 (1144)
+ *      <tr><th>API Rev<td>20180223 (1149)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -1358,9 +1358,19 @@ namespace Google.Apis.Bigquery.v2
             [Google.Apis.Util.RequestParameterAttribute("allUsers", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> AllUsers { get; set; }
 
+            /// <summary>Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
+            /// created before or at this timestamp are returned</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxCreationTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> MaxCreationTime { get; set; }
+
             /// <summary>Maximum number of results to return</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs
+            /// created after or at this timestamp are returned</summary>
+            [Google.Apis.Util.RequestParameterAttribute("minCreationTime", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ulong> MinCreationTime { get; set; }
 
             /// <summary>Page token, returned by a previous call, to request the next page of results</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1442,9 +1452,27 @@ namespace Google.Apis.Bigquery.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "maxCreationTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxCreationTime",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "maxResults", new Google.Apis.Discovery.Parameter
                     {
                         Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "minCreationTime", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "minCreationTime",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

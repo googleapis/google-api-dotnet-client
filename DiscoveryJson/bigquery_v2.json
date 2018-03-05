@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/4e_OLM5AQsKKBIrOlAU115vhdno\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/635jJ7Ek3ovMh_Mrru9RCl0fBYw\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180218",
+ "revision": "20180223",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -2591,10 +2591,22 @@
        "description": "Whether to display jobs owned by all users in the project. Default false",
        "location": "query"
       },
+      "maxCreationTime": {
+       "type": "string",
+       "description": "Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs created before or at this timestamp are returned",
+       "format": "uint64",
+       "location": "query"
+      },
       "maxResults": {
        "type": "integer",
        "description": "Maximum number of results to return",
        "format": "uint32",
+       "location": "query"
+      },
+      "minCreationTime": {
+       "type": "string",
+       "description": "Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs created after or at this timestamp are returned",
+       "format": "uint64",
        "location": "query"
       },
       "pageToken": {

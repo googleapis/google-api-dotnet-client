@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20180124 (1119)
+ *      <tr><th>API Rev<td>20180227 (1153)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4470,6 +4470,14 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Configuration specific to read-replicas replicating from the on-premises master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicaConfiguration")]
         public virtual DemoteMasterConfiguration ReplicaConfiguration { get; set; } 
+
+        /// <summary>Verify GTID consistency for demote operation. Default value: True. Second Generation instances
+        /// only. Setting this flag to false enables you to bypass GTID consistency check between on-premises master and
+        /// Cloud SQL instance during the demotion operation but also exposes you to the risk of future replication
+        /// failures. Change the value only if you know the reason for the GTID divergence and are confident that doing
+        /// so will not cause any replication issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyGtidConsistency")]
+        public virtual System.Nullable<bool> VerifyGtidConsistency { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

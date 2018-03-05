@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/YQd9hHhcRTaIR4_25hY4L-_a-cg\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/gJB8GL3rqyQgZKVcAAG1fQCi82g\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20180216",
+ "revision": "20180227",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -124,7 +124,7 @@
     },
     "reviewsUrl": {
      "type": "string",
-     "description": "URL for individual seller reviews, i.e., reviews for each child account."
+     "description": "[DEPRECATED] This field is never returned and will be ignored if provided."
     },
     "sellerId": {
      "type": "string",
@@ -171,7 +171,7 @@
    "properties": {
     "gmbEmail": {
      "type": "string",
-     "description": "The GMB email address."
+     "description": "The GMB email address of which a specific account within a GMB account. A sample account within a GMB account could be a business account with set of locations, managed under the GMB account."
     },
     "status": {
      "type": "string",
@@ -3521,6 +3521,414 @@
     }
    }
   },
+  "PosCustomBatchRequest": {
+   "id": "PosCustomBatchRequest",
+   "type": "object",
+   "properties": {
+    "entries": {
+     "type": "array",
+     "description": "The request entries to be processed in the batch.",
+     "items": {
+      "$ref": "PosCustomBatchRequestEntry"
+     }
+    }
+   }
+  },
+  "PosCustomBatchRequestEntry": {
+   "id": "PosCustomBatchRequestEntry",
+   "type": "object",
+   "properties": {
+    "batchId": {
+     "type": "integer",
+     "description": "An entry ID, unique within the batch request.",
+     "format": "uint32"
+    },
+    "inventory": {
+     "$ref": "PosInventory",
+     "description": "The inventory to submit. Set this only if the method is inventory."
+    },
+    "merchantId": {
+     "type": "string",
+     "description": "The ID of the POS provider.",
+     "format": "uint64"
+    },
+    "method": {
+     "type": "string"
+    },
+    "sale": {
+     "$ref": "PosSale",
+     "description": "The sale information to submit. Set this only if the method is sale."
+    },
+    "store": {
+     "$ref": "PosStore",
+     "description": "The store information to submit. Set this only if the method is insert."
+    },
+    "storeCode": {
+     "type": "string",
+     "description": "The store code. Required only to get/submit store information."
+    },
+    "targetMerchantId": {
+     "type": "string",
+     "description": "The ID of the account for which to get/submit data.",
+     "format": "uint64"
+    }
+   }
+  },
+  "PosCustomBatchResponse": {
+   "id": "PosCustomBatchResponse",
+   "type": "object",
+   "properties": {
+    "entries": {
+     "type": "array",
+     "description": "The result of the execution of the batch requests.",
+     "items": {
+      "$ref": "PosCustomBatchResponseEntry"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#posCustomBatchResponse\".",
+     "default": "content#posCustomBatchResponse"
+    }
+   }
+  },
+  "PosCustomBatchResponseEntry": {
+   "id": "PosCustomBatchResponseEntry",
+   "type": "object",
+   "properties": {
+    "batchId": {
+     "type": "integer",
+     "description": "The ID of the request entry to which this entry responds.",
+     "format": "uint32"
+    },
+    "errors": {
+     "$ref": "Errors",
+     "description": "A list of errors defined if, and only if, the request failed."
+    },
+    "inventory": {
+     "$ref": "PosInventory",
+     "description": "The updated inventory information."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#posCustomBatchResponseEntry\".",
+     "default": "content#posCustomBatchResponseEntry"
+    },
+    "sale": {
+     "$ref": "PosSale",
+     "description": "The updated sale information."
+    },
+    "store": {
+     "$ref": "PosStore",
+     "description": "The retrieved or updated store information."
+    }
+   }
+  },
+  "PosInventory": {
+   "id": "PosInventory",
+   "type": "object",
+   "description": "The absolute quantity of an item available at the given store.",
+   "properties": {
+    "contentLanguage": {
+     "type": "string",
+     "description": "The two-letter ISO 639-1 language code for the item."
+    },
+    "gtin": {
+     "type": "string",
+     "description": "Global Trade Item Number."
+    },
+    "itemId": {
+     "type": "string",
+     "description": "A unique identifier for the item."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#posInventory\".",
+     "default": "content#posInventory"
+    },
+    "price": {
+     "$ref": "Price",
+     "description": "The current price of the item."
+    },
+    "quantity": {
+     "type": "string",
+     "description": "The available quantity of the item.",
+     "format": "int64"
+    },
+    "storeCode": {
+     "type": "string",
+     "description": "The identifier of the merchant's store."
+    },
+    "targetCountry": {
+     "type": "string",
+     "description": "The CLDR territory code for the item."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "The inventory timestamp, in ISO 8601 format."
+    }
+   }
+  },
+  "PosInventoryRequest": {
+   "id": "PosInventoryRequest",
+   "type": "object",
+   "properties": {
+    "contentLanguage": {
+     "type": "string",
+     "description": "The two-letter ISO 639-1 language code for the item."
+    },
+    "gtin": {
+     "type": "string",
+     "description": "Global Trade Item Number."
+    },
+    "itemId": {
+     "type": "string",
+     "description": "A unique identifier for the item."
+    },
+    "price": {
+     "$ref": "Price",
+     "description": "The current price of the item."
+    },
+    "quantity": {
+     "type": "string",
+     "description": "The available quantity of the item.",
+     "format": "int64"
+    },
+    "storeCode": {
+     "type": "string",
+     "description": "The identifier of the merchant's store."
+    },
+    "targetCountry": {
+     "type": "string",
+     "description": "The CLDR territory code for the item."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "The inventory timestamp, in ISO 8601 format."
+    }
+   }
+  },
+  "PosInventoryResponse": {
+   "id": "PosInventoryResponse",
+   "type": "object",
+   "properties": {
+    "contentLanguage": {
+     "type": "string",
+     "description": "The two-letter ISO 639-1 language code for the item."
+    },
+    "gtin": {
+     "type": "string",
+     "description": "Global Trade Item Number."
+    },
+    "itemId": {
+     "type": "string",
+     "description": "A unique identifier for the item."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#posInventoryResponse\".",
+     "default": "content#posInventoryResponse"
+    },
+    "price": {
+     "$ref": "Price",
+     "description": "The current price of the item."
+    },
+    "quantity": {
+     "type": "string",
+     "description": "The available quantity of the item.",
+     "format": "int64"
+    },
+    "storeCode": {
+     "type": "string",
+     "description": "The identifier of the merchant's store."
+    },
+    "targetCountry": {
+     "type": "string",
+     "description": "The CLDR territory code for the item."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "The inventory timestamp, in ISO 8601 format."
+    }
+   }
+  },
+  "PosListResponse": {
+   "id": "PosListResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#posListResponse\".",
+     "default": "content#posListResponse"
+    },
+    "resources": {
+     "type": "array",
+     "items": {
+      "$ref": "PosStore"
+     }
+    }
+   }
+  },
+  "PosSale": {
+   "id": "PosSale",
+   "type": "object",
+   "description": "The change of the available quantity of an item at the given store.",
+   "properties": {
+    "contentLanguage": {
+     "type": "string",
+     "description": "The two-letter ISO 639-1 language code for the item."
+    },
+    "gtin": {
+     "type": "string",
+     "description": "Global Trade Item Number."
+    },
+    "itemId": {
+     "type": "string",
+     "description": "A unique identifier for the item."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#posSale\".",
+     "default": "content#posSale"
+    },
+    "price": {
+     "$ref": "Price",
+     "description": "The price of the item."
+    },
+    "quantity": {
+     "type": "string",
+     "description": "The relative change of the available quantity. Negative for items sold.",
+     "format": "int64"
+    },
+    "saleId": {
+     "type": "string",
+     "description": "A unique ID to group items from the same sale event."
+    },
+    "storeCode": {
+     "type": "string",
+     "description": "The identifier of the merchant's store."
+    },
+    "targetCountry": {
+     "type": "string",
+     "description": "The CLDR territory code for the item."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "The inventory timestamp, in ISO 8601 format."
+    }
+   }
+  },
+  "PosSaleRequest": {
+   "id": "PosSaleRequest",
+   "type": "object",
+   "properties": {
+    "contentLanguage": {
+     "type": "string",
+     "description": "The two-letter ISO 639-1 language code for the item."
+    },
+    "gtin": {
+     "type": "string",
+     "description": "Global Trade Item Number."
+    },
+    "itemId": {
+     "type": "string",
+     "description": "A unique identifier for the item."
+    },
+    "price": {
+     "$ref": "Price",
+     "description": "The price of the item."
+    },
+    "quantity": {
+     "type": "string",
+     "description": "The relative change of the available quantity. Negative for items sold.",
+     "format": "int64"
+    },
+    "saleId": {
+     "type": "string",
+     "description": "A unique ID to group items from the same sale event."
+    },
+    "storeCode": {
+     "type": "string",
+     "description": "The identifier of the merchant's store."
+    },
+    "targetCountry": {
+     "type": "string",
+     "description": "The CLDR territory code for the item."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "The inventory timestamp, in ISO 8601 format."
+    }
+   }
+  },
+  "PosSaleResponse": {
+   "id": "PosSaleResponse",
+   "type": "object",
+   "properties": {
+    "contentLanguage": {
+     "type": "string",
+     "description": "The two-letter ISO 639-1 language code for the item."
+    },
+    "gtin": {
+     "type": "string",
+     "description": "Global Trade Item Number."
+    },
+    "itemId": {
+     "type": "string",
+     "description": "A unique identifier for the item."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#posSaleResponse\".",
+     "default": "content#posSaleResponse"
+    },
+    "price": {
+     "$ref": "Price",
+     "description": "The price of the item."
+    },
+    "quantity": {
+     "type": "string",
+     "description": "The relative change of the available quantity. Negative for items sold.",
+     "format": "int64"
+    },
+    "saleId": {
+     "type": "string",
+     "description": "A unique ID to group items from the same sale event."
+    },
+    "storeCode": {
+     "type": "string",
+     "description": "The identifier of the merchant's store."
+    },
+    "targetCountry": {
+     "type": "string",
+     "description": "The CLDR territory code for the item."
+    },
+    "timestamp": {
+     "type": "string",
+     "description": "The inventory timestamp, in ISO 8601 format."
+    }
+   }
+  },
+  "PosStore": {
+   "id": "PosStore",
+   "type": "object",
+   "description": "Store resource.",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#posStore\".",
+     "default": "content#posStore"
+    },
+    "storeAddress": {
+     "type": "string",
+     "description": "The street address of the store."
+    },
+    "storeCode": {
+     "type": "string",
+     "description": "A store identifier that is unique for the given merchant."
+    }
+   }
+  },
   "PostalCodeGroup": {
    "id": "PostalCodeGroup",
    "type": "object",
@@ -6772,6 +7180,264 @@
      },
      "response": {
       "$ref": "OrdersUpdateShipmentResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    }
+   }
+  },
+  "pos": {
+   "methods": {
+    "custombatch": {
+     "id": "content.pos.custombatch",
+     "path": "pos/batch",
+     "httpMethod": "POST",
+     "description": "Batches multiple POS-related calls in a single request.",
+     "parameters": {
+      "dryRun": {
+       "type": "boolean",
+       "description": "Flag to run the request in dry-run mode.",
+       "location": "query"
+      }
+     },
+     "request": {
+      "$ref": "PosCustomBatchRequest"
+     },
+     "response": {
+      "$ref": "PosCustomBatchResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "delete": {
+     "id": "content.pos.delete",
+     "path": "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
+     "httpMethod": "DELETE",
+     "description": "Deletes a store for the given merchant.",
+     "parameters": {
+      "dryRun": {
+       "type": "boolean",
+       "description": "Flag to run the request in dry-run mode.",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the POS provider.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "storeCode": {
+       "type": "string",
+       "description": "A store code that is unique per merchant.",
+       "required": true,
+       "location": "path"
+      },
+      "targetMerchantId": {
+       "type": "string",
+       "description": "The ID of the target merchant.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "targetMerchantId",
+      "storeCode"
+     ],
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "get": {
+     "id": "content.pos.get",
+     "path": "{merchantId}/pos/{targetMerchantId}/store/{storeCode}",
+     "httpMethod": "GET",
+     "description": "Retrieves information about the given store.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the POS provider.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "storeCode": {
+       "type": "string",
+       "description": "A store code that is unique per merchant.",
+       "required": true,
+       "location": "path"
+      },
+      "targetMerchantId": {
+       "type": "string",
+       "description": "The ID of the target merchant.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "targetMerchantId",
+      "storeCode"
+     ],
+     "response": {
+      "$ref": "PosStore"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "insert": {
+     "id": "content.pos.insert",
+     "path": "{merchantId}/pos/{targetMerchantId}/store",
+     "httpMethod": "POST",
+     "description": "Creates a store for the given merchant.",
+     "parameters": {
+      "dryRun": {
+       "type": "boolean",
+       "description": "Flag to run the request in dry-run mode.",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the POS provider.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "targetMerchantId": {
+       "type": "string",
+       "description": "The ID of the target merchant.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "targetMerchantId"
+     ],
+     "request": {
+      "$ref": "PosStore"
+     },
+     "response": {
+      "$ref": "PosStore"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "inventory": {
+     "id": "content.pos.inventory",
+     "path": "{merchantId}/pos/{targetMerchantId}/inventory",
+     "httpMethod": "POST",
+     "description": "Submit inventory for the given merchant.",
+     "parameters": {
+      "dryRun": {
+       "type": "boolean",
+       "description": "Flag to run the request in dry-run mode.",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the POS provider.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "targetMerchantId": {
+       "type": "string",
+       "description": "The ID of the target merchant.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "targetMerchantId"
+     ],
+     "request": {
+      "$ref": "PosInventoryRequest"
+     },
+     "response": {
+      "$ref": "PosInventoryResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "list": {
+     "id": "content.pos.list",
+     "path": "{merchantId}/pos/{targetMerchantId}/store",
+     "httpMethod": "GET",
+     "description": "Lists the stores of the target merchant.",
+     "parameters": {
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the POS provider.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "targetMerchantId": {
+       "type": "string",
+       "description": "The ID of the target merchant.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "targetMerchantId"
+     ],
+     "response": {
+      "$ref": "PosListResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "sale": {
+     "id": "content.pos.sale",
+     "path": "{merchantId}/pos/{targetMerchantId}/sale",
+     "httpMethod": "POST",
+     "description": "Submit a sale event for the given merchant.",
+     "parameters": {
+      "dryRun": {
+       "type": "boolean",
+       "description": "Flag to run the request in dry-run mode.",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the POS provider.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "targetMerchantId": {
+       "type": "string",
+       "description": "The ID of the target merchant.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "targetMerchantId"
+     ],
+     "request": {
+      "$ref": "PosSaleRequest"
+     },
+     "response": {
+      "$ref": "PosSaleResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/content"

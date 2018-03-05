@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Service User API Version v1
+ *   Service User API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/service-management/'>Google Service User API</a>
+ *          <td><a href='https://cloud.google.com/service-management/'>Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180220 (1146)
+ *      <tr><th>API Rev<td>20180223 (1149)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Service User API can be found at
+ * The complete API documentation for using Service User API can be found at
  * <a href='https://cloud.google.com/service-management/'>https://cloud.google.com/service-management/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -106,7 +106,7 @@ namespace Google.Apis.ServiceUser.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Service User API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Service User API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
