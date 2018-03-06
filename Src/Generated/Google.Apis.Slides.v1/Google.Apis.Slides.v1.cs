@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180222 (1148)
+ *      <tr><th>API Rev<td>20180301 (1155)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -708,16 +708,18 @@ namespace Google.Apis.Slides.v1
 
         }
 
-        /// <summary>Creates a new presentation using the title given in the request. Other fields in the request are
-        /// ignored. Returns the created presentation.</summary>
+        /// <summary>Creates a new presentation using the title given in the request. If a presentationId is provided,
+        /// uses it as the ID of the new presentation. Otherwise, a new presentationId is generated. Returns the created
+        /// presentation.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Slides.v1.Data.Presentation body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new presentation using the title given in the request. Other fields in the request are
-        /// ignored. Returns the created presentation.</summary>
+        /// <summary>Creates a new presentation using the title given in the request. If a presentationId is provided,
+        /// uses it as the ID of the new presentation. Otherwise, a new presentationId is generated. Returns the created
+        /// presentation.</summary>
         public class CreateRequest : SlidesBaseServiceRequest<Google.Apis.Slides.v1.Data.Presentation>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1011,8 +1013,7 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The image URL.
         ///
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
-        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
-        /// format.
+        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
         ///
         /// The provided URL can be at most 2 kB in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -2476,8 +2477,7 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The image URL.
         ///
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
-        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
-        /// format.
+        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
         ///
         /// The provided URL can be at most 2 kB in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
@@ -2608,8 +2608,7 @@ namespace Google.Apis.Slides.v1.Data
         /// <summary>The URL of the new image.
         ///
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
-        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or GIF
-        /// format.
+        /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
         ///
         /// The provided URL can be at most 2 kB in length.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -3106,7 +3105,7 @@ namespace Google.Apis.Slides.v1.Data
         /// Writing the content_url:
         ///
         /// The picture is fetched once at insertion time and a copy is stored for display inside the presentation.
-        /// Pictures must be less than 50MB in size, cannot exceed 25 megapixels, and must be in either in PNG, JPEG, or
+        /// Pictures must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or
         /// GIF format.
         ///
         /// The provided URL can be at most 2 kB in length.</summary>

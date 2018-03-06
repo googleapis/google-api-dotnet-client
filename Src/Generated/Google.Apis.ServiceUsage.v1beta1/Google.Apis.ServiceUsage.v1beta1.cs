@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Service Usage API Version v1
+ *   Service Usage API Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
- *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180301 (1155)
+ *      <tr><th>API Version<td>v1beta1
+ *      <tr><th>API Rev<td>20180303 (1157)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -43,13 +43,13 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.ServiceUsage.v1
+namespace Google.Apis.ServiceUsage.v1beta1
 {
     /// <summary>The ServiceUsage Service.</summary>
     public class ServiceUsageService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v1";
+        public const string Version = "v1beta1";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
@@ -371,148 +371,6 @@ namespace Google.Apis.ServiceUsage.v1
         }
 
 
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
-        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">The name of the operation resource to be cancelled.</param>
-        public virtual CancelRequest Cancel(Google.Apis.ServiceUsage.v1.Data.CancelOperationRequest body, string name)
-        {
-            return new CancelRequest(service, body, name);
-        }
-
-        /// <summary>Starts asynchronous cancellation on a long-running operation.  The server makes a best effort to
-        /// cancel the operation, but success is not guaranteed.  If the server doesn't support this method, it returns
-        /// `google.rpc.Code.UNIMPLEMENTED`.  Clients can use Operations.GetOperation or other methods to check whether
-        /// the cancellation succeeded or whether the operation completed despite cancellation. On successful
-        /// cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value
-        /// with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.</summary>
-        public class CancelRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new Cancel request.</summary>
-            public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1.Data.CancelOperationRequest body, string name)
-                : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the operation resource to be cancelled.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.ServiceUsage.v1.Data.CancelOperationRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "cancel"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "POST"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+name}:cancel"; }
-            }
-
-            /// <summary>Initializes Cancel parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.+$",
-                    });
-            }
-
-        }
-
-        /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested in
-        /// the operation result. It does not cancel the operation. If the server doesn't support this method, it
-        /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-        /// <param name="name">The name of the operation resource to be deleted.</param>
-        public virtual DeleteRequest Delete(string name)
-        {
-            return new DeleteRequest(service, name);
-        }
-
-        /// <summary>Deletes a long-running operation. This method indicates that the client is no longer interested in
-        /// the operation result. It does not cancel the operation. If the server doesn't support this method, it
-        /// returns `google.rpc.Code.UNIMPLEMENTED`.</summary>
-        public class DeleteRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-
-            /// <summary>The name of the operation resource to be deleted.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "delete"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "DELETE"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/{+name}"; }
-            }
-
-            /// <summary>Initializes Delete parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^operations/.+$",
-                    });
-            }
-
-        }
-
         /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
         /// <param name="name">The name of the operation resource.</param>
@@ -523,7 +381,7 @@ namespace Google.Apis.ServiceUsage.v1
 
         /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
         /// operation result at intervals as recommended by the API service.</summary>
-        public class GetRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Operation>
+        public class GetRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -554,7 +412,7 @@ namespace Google.Apis.ServiceUsage.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1/{+name}"; }
+                get { return "v1beta1/{+name}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -596,7 +454,7 @@ namespace Google.Apis.ServiceUsage.v1
         /// `"/v1/{name=users}/operations"` to their service configuration. For backwards compatibility, the default
         /// name includes the operations collection id, however overriding users must ensure the name binding is the
         /// parent resource, without the operations collection id.</summary>
-        public class ListRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.ListOperationsResponse>
+        public class ListRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.ListOperationsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
             public ListRequest(Google.Apis.Services.IClientService service)
@@ -638,7 +496,7 @@ namespace Google.Apis.ServiceUsage.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1/operations"; }
+                get { return "v1beta1/operations"; }
             }
 
             /// <summary>Initializes List parameter list.</summary>
@@ -703,11 +561,93 @@ namespace Google.Apis.ServiceUsage.v1
         }
 
 
-        /// <summary>Disable a service so it can no longer be used with a project. This prevents unintended usage that
-        /// may cause unexpected billing charges or security leaks.
+        /// <summary>Enable multiple services on a project. The operation is atomic: if enabling any service fails, then
+        /// the entire batch fails, and no state changes occur.
+        ///
+        /// Operation</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">Parent to enable services on.
+        ///
+        /// An example name would be: projects/123
+        ///
+        /// The `BatchEnableServices` method currently only supports projects.</param>
+        public virtual BatchEnableRequest BatchEnable(Google.Apis.ServiceUsage.v1beta1.Data.BatchEnableServicesRequest body, string parent)
+        {
+            return new BatchEnableRequest(service, body, parent);
+        }
+
+        /// <summary>Enable multiple services on a project. The operation is atomic: if enabling any service fails, then
+        /// the entire batch fails, and no state changes occur.
+        ///
+        /// Operation</summary>
+        public class BatchEnableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
+        {
+            /// <summary>Constructs a new BatchEnable request.</summary>
+            public BatchEnableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.BatchEnableServicesRequest body, string parent)
+                : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Parent to enable services on.
+            ///
+            /// An example name would be: projects/123
+            ///
+            /// The `BatchEnableServices` method currently only supports projects.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ServiceUsage.v1beta1.Data.BatchEnableServicesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "batchEnable"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1beta1/{+parent}/services:batchEnable"; }
+            }
+
+            /// <summary>Initializes BatchEnable parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Disable a service so that it can no longer be used with a project. This prevents unintended usage
+        /// that may cause unexpected billing charges or security leaks.
         ///
         /// It is not valid to call the disable method on a service that is not currently enabled. Callers will receive
-        /// a FAILED_PRECONDITION status if the target service is not currently enabled.
+        /// a `FAILED_PRECONDITION` status if the target service is not currently enabled.
         ///
         /// Operation</summary>
         /// <param name="body">The body of the request.</param>
@@ -716,22 +656,22 @@ namespace Google.Apis.ServiceUsage.v1
         /// The enable and disable methods currently only support projects.
         ///
         /// An example name would be: projects/123/services/serviceusage.googleapis.com</param>
-        public virtual DisableRequest Disable(Google.Apis.ServiceUsage.v1.Data.DisableServiceRequest body, string name)
+        public virtual DisableRequest Disable(Google.Apis.ServiceUsage.v1beta1.Data.DisableServiceRequest body, string name)
         {
             return new DisableRequest(service, body, name);
         }
 
-        /// <summary>Disable a service so it can no longer be used with a project. This prevents unintended usage that
-        /// may cause unexpected billing charges or security leaks.
+        /// <summary>Disable a service so that it can no longer be used with a project. This prevents unintended usage
+        /// that may cause unexpected billing charges or security leaks.
         ///
         /// It is not valid to call the disable method on a service that is not currently enabled. Callers will receive
-        /// a FAILED_PRECONDITION status if the target service is not currently enabled.
+        /// a `FAILED_PRECONDITION` status if the target service is not currently enabled.
         ///
         /// Operation</summary>
-        public class DisableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Operation>
+        public class DisableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Disable request.</summary>
-            public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1.Data.DisableServiceRequest body, string name)
+            public DisableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.DisableServiceRequest body, string name)
                 : base(service)
             {
                 Name = name;
@@ -750,7 +690,7 @@ namespace Google.Apis.ServiceUsage.v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.ServiceUsage.v1.Data.DisableServiceRequest Body { get; set; }
+            Google.Apis.ServiceUsage.v1beta1.Data.DisableServiceRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -770,7 +710,7 @@ namespace Google.Apis.ServiceUsage.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1/{+name}:disable"; }
+                get { return "v1beta1/{+name}:disable"; }
             }
 
             /// <summary>Initializes Disable parameter list.</summary>
@@ -791,31 +731,29 @@ namespace Google.Apis.ServiceUsage.v1
 
         }
 
-        /// <summary>Enable a service so it can be used with a project. See [Cloud Auth
-        /// Guide](https://cloud.google.com/docs/authentication) for more information.
+        /// <summary>Enable a service so that it can be used with a project.
         ///
         /// Operation</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Name of the consumer and service to enable the service on.
         ///
-        /// The enable and disable methods currently only support projects.
+        /// The `EnableService` and `DisableService` methods currently only support projects.
         ///
         /// Enabling a service requires that the service is public or is shared with the user enabling the service.
         ///
         /// An example name would be: projects/123/services/serviceusage.googleapis.com</param>
-        public virtual EnableRequest Enable(Google.Apis.ServiceUsage.v1.Data.EnableServiceRequest body, string name)
+        public virtual EnableRequest Enable(Google.Apis.ServiceUsage.v1beta1.Data.EnableServiceRequest body, string name)
         {
             return new EnableRequest(service, body, name);
         }
 
-        /// <summary>Enable a service so it can be used with a project. See [Cloud Auth
-        /// Guide](https://cloud.google.com/docs/authentication) for more information.
+        /// <summary>Enable a service so that it can be used with a project.
         ///
         /// Operation</summary>
-        public class EnableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.Operation>
+        public class EnableRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Operation>
         {
             /// <summary>Constructs a new Enable request.</summary>
-            public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1.Data.EnableServiceRequest body, string name)
+            public EnableRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceUsage.v1beta1.Data.EnableServiceRequest body, string name)
                 : base(service)
             {
                 Name = name;
@@ -826,7 +764,7 @@ namespace Google.Apis.ServiceUsage.v1
 
             /// <summary>Name of the consumer and service to enable the service on.
             ///
-            /// The enable and disable methods currently only support projects.
+            /// The `EnableService` and `DisableService` methods currently only support projects.
             ///
             /// Enabling a service requires that the service is public or is shared with the user enabling the service.
             ///
@@ -836,7 +774,7 @@ namespace Google.Apis.ServiceUsage.v1
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.ServiceUsage.v1.Data.EnableServiceRequest Body { get; set; }
+            Google.Apis.ServiceUsage.v1beta1.Data.EnableServiceRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -856,7 +794,7 @@ namespace Google.Apis.ServiceUsage.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1/{+name}:enable"; }
+                get { return "v1beta1/{+name}:enable"; }
             }
 
             /// <summary>Initializes Enable parameter list.</summary>
@@ -877,8 +815,8 @@ namespace Google.Apis.ServiceUsage.v1
 
         }
 
-        /// <summary>Returns the service definition and EnabledState for a given service.</summary>
-        /// <param name="name">Name of the consumer and service to get the ConsumerState for.
+        /// <summary>Returns the service configuration and enabled state for a given service.</summary>
+        /// <param name="name">Name of the consumer and service to get the `ConsumerState` for.
         ///
         /// An example name would be: projects/123/services/serviceusage.googleapis.com</param>
         public virtual GetRequest Get(string name)
@@ -886,8 +824,8 @@ namespace Google.Apis.ServiceUsage.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Returns the service definition and EnabledState for a given service.</summary>
-        public class GetRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.ServiceState>
+        /// <summary>Returns the service configuration and enabled state for a given service.</summary>
+        public class GetRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.Service>
         {
             /// <summary>Constructs a new Get request.</summary>
             public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -898,7 +836,7 @@ namespace Google.Apis.ServiceUsage.v1
             }
 
 
-            /// <summary>Name of the consumer and service to get the ConsumerState for.
+            /// <summary>Name of the consumer and service to get the `ConsumerState` for.
             ///
             /// An example name would be: projects/123/services/serviceusage.googleapis.com</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -920,7 +858,7 @@ namespace Google.Apis.ServiceUsage.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1/{+name}"; }
+                get { return "v1beta1/{+name}"; }
             }
 
             /// <summary>Initializes Get parameter list.</summary>
@@ -941,20 +879,28 @@ namespace Google.Apis.ServiceUsage.v1
 
         }
 
-        /// <summary>List enabled services.</summary>
+        /// <summary>List all services available to the specified project, and the current state of those services with
+        /// respect to the project. The list includes all public services, all services for which the calling user has
+        /// the `servicemanagement.services.bind` permission, and all services that have already been enabled on the
+        /// project. The list can be filtered to only include services in a specific state, for example to only include
+        /// services enabled on the project.</summary>
         /// <param name="parent">Parent to search for services on.
         ///
         /// An example name would be: projects/123</param>
-        public virtual ListEnabledRequest ListEnabled(string parent)
+        public virtual ListRequest List(string parent)
         {
-            return new ListEnabledRequest(service, parent);
+            return new ListRequest(service, parent);
         }
 
-        /// <summary>List enabled services.</summary>
-        public class ListEnabledRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.ListEnabledServicesResponse>
+        /// <summary>List all services available to the specified project, and the current state of those services with
+        /// respect to the project. The list includes all public services, all services for which the calling user has
+        /// the `servicemanagement.services.bind` permission, and all services that have already been enabled on the
+        /// project. The list can be filtered to only include services in a specific state, for example to only include
+        /// services enabled on the project.</summary>
+        public class ListRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1beta1.Data.ListServicesResponse>
         {
-            /// <summary>Constructs a new ListEnabled request.</summary>
-            public ListEnabledRequest(Google.Apis.Services.IClientService service, string parent)
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string parent)
                 : base(service)
             {
                 Parent = parent;
@@ -968,7 +914,8 @@ namespace Google.Apis.ServiceUsage.v1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
-            /// <summary>Token identifying which result to start with; returned by a previous list call.</summary>
+            /// <summary>Token identifying which result to start with, which is returned by a previous list
+            /// call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
@@ -976,11 +923,16 @@ namespace Google.Apis.ServiceUsage.v1
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
 
+            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
+            /// `state:ENABLED` and `state:DISABLED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
             {
-                get { return "listEnabled"; }
+                get { return "list"; }
             }
 
             ///<summary>Gets the HTTP method.</summary>
@@ -992,10 +944,10 @@ namespace Google.Apis.ServiceUsage.v1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v1/{+parent}/services:enabled"; }
+                get { return "v1beta1/{+parent}/services"; }
             }
 
-            /// <summary>Initializes ListEnabled parameter list.</summary>
+            /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -1027,78 +979,10 @@ namespace Google.Apis.ServiceUsage.v1
                         DefaultValue = null,
                         Pattern = null,
                     });
-            }
-
-        }
-
-        /// <summary>Search available services.
-        ///
-        /// When no filter is specified, returns all accessible services. This includes public services and services for
-        /// which the calling user has the "servicemanagement.services.bind" permission.</summary>
-        public virtual SearchRequest Search()
-        {
-            return new SearchRequest(service);
-        }
-
-        /// <summary>Search available services.
-        ///
-        /// When no filter is specified, returns all accessible services. This includes public services and services for
-        /// which the calling user has the "servicemanagement.services.bind" permission.</summary>
-        public class SearchRequest : ServiceUsageBaseServiceRequest<Google.Apis.ServiceUsage.v1.Data.SearchServicesResponse>
-        {
-            /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service)
-                : base(service)
-            {
-                InitParameters();
-            }
-
-
-            /// <summary>Token identifying which result to start with; returned by a previous search call.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>Requested size of the next page of data.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "search"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "v1/services:search"; }
-            }
-
-            /// <summary>Initializes Search parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "filter", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1110,7 +994,7 @@ namespace Google.Apis.ServiceUsage.v1
     }
 }
 
-namespace Google.Apis.ServiceUsage.v1.Data
+namespace Google.Apis.ServiceUsage.v1beta1.Data
 {    
 
     /// <summary>Api is a light-weight descriptor for an API Interface.
@@ -1398,6 +1282,26 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for the `BatchEnableServices` method.</summary>
+    public class BatchEnableServicesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The identifiers of the services to enable on the project.
+        ///
+        /// A valid identifier would be: serviceusage.googleapis.com
+        ///
+        /// Enabling services requires that each service is public or is shared with the user enabling the service.
+        ///
+        /// Two or more services must be specified. To enable a single service, use the `EnableService` method instead.
+        ///
+        /// A single request can enable a maximum of 20 services at a time. If more than 20 services are specified, the
+        /// request will fail, and no state changes will occur.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceIds")]
+        public virtual System.Collections.Generic.IList<string> ServiceIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Billing related configuration of the service.
     ///
     /// The following example shows how to configure monitored resources and metrics for billing:
@@ -1433,13 +1337,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("monitoredResource")]
         public virtual string MonitoredResource { get; set; } 
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for Operations.CancelOperation.</summary>
-    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1589,7 +1486,7 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Request message for DisableService.</summary>
+    /// <summary>Request message for the `DisableService` method.</summary>
     public class DisableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1680,32 +1577,9 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
-    /// typical example is to use it as the request or the response type of an API method. For instance:
-    ///
-    /// service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
-    ///
-    /// The JSON representation for `Empty` is empty JSON object `{}`.</summary>
-    public class Empty : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Request message for EnableService.</summary>
+    /// <summary>Request message for the `EnableService` method.</summary>
     public class EnableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The EnabledState reflects whether the service has been explicitly enabled or not.</summary>
-    public class EnabledState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether or not the service has been explicitly enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -2265,21 +2139,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for ListEnabledServices.</summary>
-    public class ListEnabledServicesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Token that can be passed to `ListEnabledServices` to resume a paginated query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The state of the enabled services for the requested parent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<ServiceState> Services { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The response message for Operations.ListOperations.</summary>
     public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2290,6 +2149,21 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `ListServices` method.</summary>
+    public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token that can be passed to `ListServices` to resume a paginated query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The available services for the requested project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2892,23 +2766,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The published version of a Service that is managed by Google Service Management.</summary>
-    public class PublishedService : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The resource name of the service.
-        ///
-        /// A valid name would be: - services/serviceusage.googleapis.com</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The service's published configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual GoogleApiService Service { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Quota configuration helps to achieve fairness and budgeting in service usage.
     ///
     /// The quota configuration works this way: - The service configuration defines a set of metrics. - For API calls,
@@ -3038,27 +2895,14 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for SearchServices.</summary>
-    public class SearchServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>A service that is available for use by the consumer.</summary>
+    public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Token that can be passed to `SearchServices` to resume a paginated query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The state of services available publicly or available to the authenticated caller.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("services")]
-        public virtual System.Collections.Generic.IList<PublishedService> Services { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The properties of a consumer with respect to a Service.</summary>
-    public class ServiceState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Reflects whether or not the service has been explicitly enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual EnabledState Enabled { get; set; } 
+        /// <summary>The service configuration of the available service. Some fields may be filtered out of the
+        /// configuration in responses to the `ListServices` method. These fields are present only in responses to the
+        /// `GetService` method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual ServiceConfig Config { get; set; } 
 
         /// <summary>The resource name of the consumer and service.
         ///
@@ -3066,9 +2910,58 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>The published version of the consumed service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("service")]
-        public virtual PublishedService Service { get; set; } 
+        /// <summary>The resource name of the consumer.
+        ///
+        /// A valid name would be: - projects/123</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>Whether or not the service has been enabled for use by the consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The configuration of the service.</summary>
+    public class ServiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of API interfaces exported by this service. Contains only the names, versions, and method
+        /// names of the interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apis")]
+        public virtual System.Collections.Generic.IList<Api> Apis { get; set; } 
+
+        /// <summary>Auth configuration. Contains only the OAuth rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
+        public virtual Authentication Authentication { get; set; } 
+
+        /// <summary>Additional API documentation. Contains only the summary and the documentation URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
+        public virtual Documentation Documentation { get; set; } 
+
+        /// <summary>Configuration for network endpoints. Contains only the names and aliases of the
+        /// endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; } 
+
+        /// <summary>The DNS address at which this service is available.
+        ///
+        /// An example DNS address would be: `calendar.googleapis.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Quota configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quota")]
+        public virtual Quota Quota { get; set; } 
+
+        /// <summary>The product title for this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
+
+        /// <summary>Configuration controlling usage of this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usage")]
+        public virtual Usage Usage { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

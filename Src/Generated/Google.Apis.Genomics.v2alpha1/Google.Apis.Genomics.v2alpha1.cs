@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20180225 (1151)
+ *      <tr><th>API Rev<td>20180303 (1157)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -382,7 +382,9 @@ namespace Google.Apis.Genomics.v2alpha1
         /// **Note:** In order to use this method, the Genomics Service Agent must have access to your project.  This is
         /// done automatically when the Genomics API is first enabled, but if you delete this permission, or if you have
         /// already enabled the Genomics API prior to the launch of the v2alpha1 API, you must disable and re-enable the
-        /// API to grant the Genomics Service Agent the required permissions.</summary>
+        /// API to grant the Genomics Service Agent the required permissions.
+        ///
+        /// [1]: /genomics/gsa</summary>
         /// <param name="body">The body of the request.</param>
         public virtual RunRequest Run(Google.Apis.Genomics.v2alpha1.Data.RunPipelineRequest body)
         {
@@ -394,7 +396,9 @@ namespace Google.Apis.Genomics.v2alpha1
         /// **Note:** In order to use this method, the Genomics Service Agent must have access to your project.  This is
         /// done automatically when the Genomics API is first enabled, but if you delete this permission, or if you have
         /// already enabled the Genomics API prior to the launch of the v2alpha1 API, you must disable and re-enable the
-        /// API to grant the Genomics Service Agent the required permissions.</summary>
+        /// API to grant the Genomics Service Agent the required permissions.
+        ///
+        /// [1]: /genomics/gsa</summary>
         public class RunRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v2alpha1.Data.Operation>
         {
             /// <summary>Constructs a new Run request.</summary>
@@ -640,15 +644,6 @@ namespace Google.Apis.Genomics.v2alpha1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value
-                /// is 2048.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
                 ///
                 /// * createTime The time this job was created * events The set of event (names) that have occurred
@@ -671,6 +666,15 @@ namespace Google.Apis.Genomics.v2alpha1
                 /// labels.color = *` * `projectId = my-project AND labels.color = red`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value
+                /// is 2048.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -706,6 +710,15 @@ namespace Google.Apis.Genomics.v2alpha1
                             Pattern = @"^projects/[^/]+/operations$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -718,15 +731,6 @@ namespace Google.Apis.Genomics.v2alpha1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -843,7 +847,18 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         public virtual string Entrypoint { get; set; } 
 
         /// <summary>The environment to pass into the container.  This environment is merged with any values specified
-        /// in the Pipeline message.  These values overwrite any in the Pipeline message.</summary>
+        /// in the Pipeline message.  These values overwrite any in the Pipeline message.
+        ///
+        /// In addition to the values passed here, a few other values are automatically injected into the environment.
+        /// These cannot be hidden or overwritten.
+        ///
+        /// `GOOGLE_PIPELINE_FAILED` will be set to "1" if the pipeline has failed because an action has exited with a
+        /// non-zero status (and did not have the IGNORE_EXIT_STATUS flag set).  This can be used to determine if
+        /// additional debug or logging actions should execute.
+        ///
+        /// `GOOGLE_LAST_EXIT_STATUS` will be set to the exit status of the last non-background action that executed.
+        /// This can be used by workflow engine authors to determine whether an individual action has succeeded or
+        /// failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual System.Collections.Generic.IDictionary<string,string> Environment { get; set; } 
 
@@ -1363,7 +1378,7 @@ namespace Google.Apis.Genomics.v2alpha1.Data
     /// permission for the Google Genomics Service Account or the request will fail.</summary>
     public class RunPipelineRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>User defined labels to associate with the returned operation.  These labels are not propogated to
+        /// <summary>User defined labels to associate with the returned operation.  These labels are not propagated to
         /// any Google Cloud Platform resources used by the operation, and may be modified at any time.
         ///
         /// To associate labels with resources created while executing the operation, see the appropriate resource

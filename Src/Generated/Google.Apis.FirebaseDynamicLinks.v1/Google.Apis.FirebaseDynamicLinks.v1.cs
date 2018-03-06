@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180228 (1154)
+ *      <tr><th>API Rev<td>20180303 (1157)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -622,15 +622,14 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     /// <summary>Request to create a short Dynamic Link.</summary>
     public class CreateShortDynamicLinkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Information about the Dynamic Link to be shortened. [Learn more](https://firebase.google.com/docs
-        /// /dynamic-links/android#create-a-dynamic-link-programmatically).</summary>
+        /// <summary>Information about the Dynamic Link to be shortened. [Learn
+        /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinkInfo")]
         public virtual DynamicLinkInfo DynamicLinkInfo { get; set; } 
 
         /// <summary>Full long Dynamic Link URL with desired query parameters specified. For example,
         /// "https://sample.app.goo.gl/?link=http://www.google.com=com.sample", [Learn
-        /// more](https://firebase.google.com/docs/dynamic-links/android#create-a-dynamic-link-
-        /// programmatically).</summary>
+        /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longDynamicLink")]
         public virtual string LongDynamicLink { get; set; } 
 

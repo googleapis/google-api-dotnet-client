@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20180301 (1155)
+ *      <tr><th>API Rev<td>20180305 (1159)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4034,7 +4034,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("historyId")]
         public virtual string HistoryId { get; set; } 
 
-        /// <summary>A name to uniquely identify a history within a project. Maximum of 100 characters.
+        /// <summary>A name to uniquely identify a history within a project. Maximum of 200 characters.
         ///
         /// - In response always set - In create request: always set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
