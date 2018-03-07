@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180226 (1152)
+ *      <tr><th>API Rev<td>20180303 (1157)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -449,16 +449,18 @@ namespace Google.Apis.ServiceControl.v1
 
         }
 
-        /// <summary>Checks an operation with Google Service Control to decide whether the given operation should
-        /// proceed. It should be called before the operation is executed.
+        /// <summary>Checks whether an operation on a service should be allowed to proceed based on the configuration of
+        /// the service and related policies. It must be called before the operation is executed.
         ///
-        /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of server
-        /// errors, the client can rely on the cached results for longer time.
+        /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of any server
+        /// errors, the client should rely on the cached results for much longer time to avoid outage. WARNING: There is
+        /// general 60s delay for the configuration and policy propagation, therefore callers MUST NOT depend on the
+        /// `Check` method having the latest policy information.
         ///
         /// NOTE: the CheckRequest has the size limit of 64KB.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// information, see [Cloud IAM](https://cloud.google.com/iam).</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="serviceName">The service name as specified in its service configuration. For example,
         /// `"pubsub.googleapis.com"`.
@@ -470,16 +472,18 @@ namespace Google.Apis.ServiceControl.v1
             return new CheckRequest(service, body, serviceName);
         }
 
-        /// <summary>Checks an operation with Google Service Control to decide whether the given operation should
-        /// proceed. It should be called before the operation is executed.
+        /// <summary>Checks whether an operation on a service should be allowed to proceed based on the configuration of
+        /// the service and related policies. It must be called before the operation is executed.
         ///
-        /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of server
-        /// errors, the client can rely on the cached results for longer time.
+        /// If feasible, the client should cache the check results and reuse them for 60 seconds. In case of any server
+        /// errors, the client should rely on the cached results for much longer time to avoid outage. WARNING: There is
+        /// general 60s delay for the configuration and policy propagation, therefore callers MUST NOT depend on the
+        /// `Check` method having the latest policy information.
         ///
         /// NOTE: the CheckRequest has the size limit of 64KB.
         ///
         /// This method requires the `servicemanagement.services.check` permission on the specified service. For more
-        /// information, see [Google Cloud IAM](https://cloud.google.com/iam).</summary>
+        /// information, see [Cloud IAM](https://cloud.google.com/iam).</summary>
         public class CheckRequest : ServiceControlBaseServiceRequest<Google.Apis.ServiceControl.v1.Data.CheckResponse>
         {
             /// <summary>Constructs a new Check request.</summary>
@@ -1535,7 +1539,7 @@ namespace Google.Apis.ServiceControl.v1.Data
         /// operation happened, - `servicecontrol.googleapis.com/user_agent` describing the user agent of the API
         /// request, - `servicecontrol.googleapis.com/service_agent` describing the service used to handle the API
         /// request (e.g. ESP), - `servicecontrol.googleapis.com/platform` describing the platform where the API is
-        /// served (e.g. GAE, GCE, GKE).</summary>
+        /// served, such as App Engine, Compute Engine, or Kubernetes Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
