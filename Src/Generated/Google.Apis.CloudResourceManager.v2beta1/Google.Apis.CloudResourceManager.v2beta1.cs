@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180221 (1147)
+ *      <tr><th>API Rev<td>20180308 (1162)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -82,7 +82,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://cloudresourcemanager.googleapis.com/"; }
+            get { return "https://content-cloudresourcemanager.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -95,7 +95,7 @@ namespace Google.Apis.CloudResourceManager.v2beta1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://cloudresourcemanager.googleapis.com/batch"; }
+            get { return "https://content-cloudresourcemanager.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

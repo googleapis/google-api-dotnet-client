@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180123 (1118)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -17672,6 +17672,143 @@ namespace Google.Apis.Compute.v1
             }
 
         }
+
+        /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">The instance name for this request.</param>
+        /// <param
+        /// name="networkInterface">The name of the network interface to update.</param>
+        public virtual UpdateNetworkInterfaceRequest UpdateNetworkInterface(Google.Apis.Compute.v1.Data.NetworkInterface body, string project, string zone, string instance, string networkInterface)
+        {
+            return new UpdateNetworkInterfaceRequest(service, body, project, zone, instance, networkInterface);
+        }
+
+        /// <summary>Updates an instance's network interface. This method follows PATCH semantics.</summary>
+        public class UpdateNetworkInterfaceRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new UpdateNetworkInterface request.</summary>
+            public UpdateNetworkInterfaceRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.NetworkInterface body, string project, string zone, string instance, string networkInterface)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                NetworkInterface = networkInterface;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>The instance name for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>The name of the network interface to update.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("networkInterface", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string NetworkInterface { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.NetworkInterface Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateNetworkInterface"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/updateNetworkInterface"; }
+            }
+
+            /// <summary>Initializes UpdateNetworkInterface parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "networkInterface", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "networkInterface",
+                        IsRequired = true,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
     }
 
     /// <summary>The "interconnectAttachments" collection of methods.</summary>
@@ -29360,6 +29497,133 @@ namespace Google.Apis.Compute.v1
 
         }
 
+        /// <summary>Patches the specified subnetwork with the data included in the request. Only the following fields
+        /// within the subnetwork resource can be specified in the request: secondary_ip_range and
+        /// allow_subnet_cidr_routes_overlap. It is also mandatory to specify the current fingeprint of the subnetwork
+        /// resource being patched.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region scoping
+        /// this request.</param>
+        /// <param name="subnetwork">Name of the Subnetwork resource to patch.</param>
+        public virtual PatchRequest Patch(Google.Apis.Compute.v1.Data.Subnetwork body, string project, string region, string subnetwork)
+        {
+            return new PatchRequest(service, body, project, region, subnetwork);
+        }
+
+        /// <summary>Patches the specified subnetwork with the data included in the request. Only the following fields
+        /// within the subnetwork resource can be specified in the request: secondary_ip_range and
+        /// allow_subnet_cidr_routes_overlap. It is also mandatory to specify the current fingeprint of the subnetwork
+        /// resource being patched.</summary>
+        public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Subnetwork body, string project, string region, string subnetwork)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Subnetwork = subnetwork;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the Subnetwork resource to patch.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("subnetwork", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Subnetwork { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.Subnetwork Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/subnetworks/{subnetwork}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "subnetwork", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "subnetwork",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Set whether VMs in this subnet can access Google services without assigning external IP addresses
         /// through Private Google Access.</summary>
         /// <param name="body">The body of the request.</param>
@@ -37090,7 +37354,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -37386,6 +37650,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
+        /// <summary>A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// Read  Enabling guest operating system features to see a list of available options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
+
         /// <summary>[Output Only] A zero-based index to this disk, where 0 is reserved for the boot disk. If you have
         /// many disks attached to an instance, each disk would have a unique index number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("index")]
@@ -37537,7 +37806,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -37997,7 +38266,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -38156,7 +38425,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -38536,7 +38805,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -38880,6 +39149,11 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionKey")]
         public virtual CustomerEncryptionKey DiskEncryptionKey { get; set; } 
 
+        /// <summary>A list of features to enable on the guest operating system. Applicable only for bootable images.
+        /// Read  Enabling guest operating system features to see a list of available options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
+
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -38916,7 +39190,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -39530,7 +39804,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -39788,7 +40062,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -40063,7 +40337,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>A list of labels to apply for this resource. Each label key & value must comply with RFC1035.
         /// Specifically, the name must be 1-63 characters long and match the regular expression
-        /// [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// For example, "webserver-frontend": "images". A label value can also be empty (e.g. "my-label":
         /// "").</summary>
@@ -40185,7 +40459,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -40390,7 +40664,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -40532,7 +40806,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -40711,7 +40985,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -40759,6 +41033,23 @@ namespace Google.Apis.Compute.v1.Data
         /// name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceImageId")]
         public virtual string SourceImageId { get; set; } 
+
+        /// <summary>URL of the source snapshot used to create this image. This can be a full or valid partial URL. You
+        /// must provide exactly one of: - this property, or - the sourceImage property, or - the rawDisk.source
+        /// property, or - the sourceDisk property   in order to create an image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; } 
+
+        /// <summary>The customer-supplied encryption key of the source snapshot. Required if the source snapshot is
+        /// protected by a customer-supplied encryption key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotEncryptionKey")]
+        public virtual CustomerEncryptionKey SourceSnapshotEncryptionKey { get; set; } 
+
+        /// <summary>[Output Only] The ID value of the snapshot used to create this image. This value may be used to
+        /// determine whether the snapshot was taken from the current or a previous instance of a given snapshot
+        /// name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshotId")]
+        public virtual string SourceSnapshotId { get; set; } 
 
         /// <summary>The type of the image used to create this disk. The default and only value is RAW</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
@@ -40953,7 +41244,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The name of the resource, provided by the client when initially creating the resource. The resource
         /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
-        /// long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a
+        /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -42155,7 +42446,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -42466,7 +42757,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -42549,7 +42840,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -43401,6 +43692,7 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    /// <summary>Next available tag: 12</summary>
     public class ManagedInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The current action that the managed instance group has scheduled for the instance.
@@ -43579,7 +43871,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -43619,6 +43911,12 @@ namespace Google.Apis.Compute.v1.Data
         /// interfaces on subnet-mode networks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aliasIpRanges")]
         public virtual System.Collections.Generic.IList<AliasIpRange> AliasIpRanges { get; set; } 
+
+        /// <summary>Fingerprint hash of contents stored in this network interface. This field will be ignored when
+        /// inserting an Instance or adding a NetworkInterface. An up-to-date fingerprint must be provided in order to
+        /// update the NetworkInterface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
 
         /// <summary>[Output Only] Type of the resource. Always compute#networkInterface for network
         /// interfaces.</summary>
@@ -43747,9 +44045,9 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of this peering. Provided by the client when the peering is created. The name must comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
-        /// [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all the following
-        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
-        /// dash.</summary>
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all the
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -44986,7 +45284,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -45194,7 +45492,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -45212,6 +45510,21 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Description-tagged IP ranges for the router to advertise.</summary>
+    public class RouterAdvertisedIpRange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User-specified description for the IP range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>The IP range to advertise. The value must be a CIDR-formatted string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual string Range { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -45291,6 +45604,23 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RouterBgp : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>User-specified flag to indicate which mode to use for advertisement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiseMode")]
+        public virtual string AdvertiseMode { get; set; } 
+
+        /// <summary>User-specified list of prefix groups to advertise in custom mode. This field can only be populated
+        /// if advertise_mode is CUSTOM and is advertised to all peers of the router. These groups will be advertised in
+        /// addition to any specified prefixes. Leave this field blank to advertise no custom groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedGroups")]
+        public virtual System.Collections.Generic.IList<string> AdvertisedGroups { get; set; } 
+
+        /// <summary>User-specified list of individual IP ranges to advertise in custom mode. This field can only be
+        /// populated if advertise_mode is CUSTOM and is advertised to all peers of the router. These IP ranges will be
+        /// advertised in addition to any specified groups. Leave this field blank to advertise no custom IP
+        /// ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedIpRanges")]
+        public virtual System.Collections.Generic.IList<RouterAdvertisedIpRange> AdvertisedIpRanges { get; set; } 
+
         /// <summary>Local BGP Autonomous System Number (ASN). Must be an RFC6996 private ASN, either 16-bit or 32-bit.
         /// The value will be fixed for this router resource. All VPN tunnels that link to this router will have the
         /// same local ASN.</summary>
@@ -45303,6 +45633,24 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RouterBgpPeer : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>User-specified flag to indicate which mode to use for advertisement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertiseMode")]
+        public virtual string AdvertiseMode { get; set; } 
+
+        /// <summary>User-specified list of prefix groups to advertise in custom mode. This field can only be populated
+        /// if advertise_mode is CUSTOM and overrides the list defined for the router (in Bgp message). These groups
+        /// will be advertised in addition to any specified prefixes. Leave this field blank to advertise no custom
+        /// groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedGroups")]
+        public virtual System.Collections.Generic.IList<string> AdvertisedGroups { get; set; } 
+
+        /// <summary>User-specified list of individual IP ranges to advertise in custom mode. This field can only be
+        /// populated if advertise_mode is CUSTOM and overrides the list defined for the router (in Bgp message). These
+        /// IP ranges will be advertised in addition to any specified groups. Leave this field blank to advertise no
+        /// custom IP ranges.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advertisedIpRanges")]
+        public virtual System.Collections.Generic.IList<RouterAdvertisedIpRange> AdvertisedIpRanges { get; set; } 
+
         /// <summary>The priority of routes advertised to this BGP peer. In the case where there is more than one
         /// matching route of maximum length, the routes with lowest priority value win.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertisedRoutePriority")]
@@ -45728,7 +46076,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -45889,7 +46237,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -45992,6 +46340,12 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
+        /// optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must
+        /// be provided in order to update the Subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; } 
+
         /// <summary>[Output Only] The gateway address for default routes to reach destination addresses outside this
         /// subnetwork.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayAddress")]
@@ -46014,7 +46368,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>The name of the resource, provided by the client when initially creating the resource. The name
         /// must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long
-        /// and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a
+        /// and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -46362,7 +46716,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -46487,7 +46841,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -46618,7 +46972,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -46901,7 +47255,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -47248,7 +47602,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -47393,7 +47747,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -47517,7 +47871,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -47803,7 +48157,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -48032,7 +48386,7 @@ namespace Google.Apis.Compute.v1.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

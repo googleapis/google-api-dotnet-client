@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180227 (1153)
+ *      <tr><th>API Rev<td>20180305 (1159)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -7537,7 +7537,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datafeed")]
         public virtual Datafeed Datafeed { get; set; } 
 
-        /// <summary>The ID of the data feed to get or delete.</summary>
+        /// <summary>The ID of the data feed to get, delete or fetch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datafeedId")]
         public virtual System.Nullable<ulong> DatafeedId { get; set; } 
 

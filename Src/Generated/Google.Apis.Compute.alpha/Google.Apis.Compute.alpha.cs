@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20180123 (1118)
+ *      <tr><th>API Rev<td>20180220 (1146)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -56081,11 +56081,16 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The URL of the network in which to reserve the address. This field can only be used with INTERNAL
+        /// type with VPC_PEERING purpose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
 
         /// <summary>This signifies the networking tier used for configuring this Address and can only take the
         /// following values: PREMIUM , STANDARD.
@@ -56093,6 +56098,14 @@ namespace Google.Apis.Compute.alpha.Data
         /// If this field is not specified, it is assumed to be PREMIUM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTier")]
         public virtual string NetworkTier { get; set; } 
+
+        /// <summary>The prefix length if the resource reprensents an IP range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prefixLength")]
+        public virtual System.Nullable<int> PrefixLength { get; set; } 
+
+        /// <summary>The purpose of resource, only used with INTERNAL type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; } 
 
         /// <summary>[Output Only] URL of the region where the regional address resides. This field is not applicable to
         /// global addresses. You must specify this field as part of the HTTP request URL. You cannot set this field in
@@ -56622,7 +56635,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -57203,7 +57216,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -57399,7 +57412,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -57919,7 +57932,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -58375,7 +58388,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -58583,7 +58596,14 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
         public virtual string DeviceName { get; set; } 
 
-        /// <summary>Specifies whether to include the disk and what image to use.</summary>
+        /// <summary>Specifies whether to include the disk and what image to use. Possible values are: - source-image:
+        /// to use the same image that was used to create the source instance's corresponding disk. Applicable to the
+        /// boot disk and additional read-write disks. - source-image-family: to use the same image family that was used
+        /// to create the source instance's corresponding disk. Applicable to the boot disk and additional read-write
+        /// disks. - custom-image: to use a user-provided image url for disk creation. Applicable to the boot disk and
+        /// additional read-write disks. - attach-read-only: to attach a read-only disk. Applicable to read-only disks.
+        /// - do-not-include: to exclude a disk from the template. Applicable to additional read-write disks, local
+        /// SSDs, and read-only disks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instantiateFrom")]
         public virtual string InstantiateFrom { get; set; } 
 
@@ -59101,7 +59121,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -59406,7 +59426,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -59468,9 +59488,9 @@ namespace Google.Apis.Compute.alpha.Data
         /// label of the fully qualified service name.
         ///
         /// The label must be 1-63 characters long, and comply with RFC1035. Specifically, the label must be 1-63
-        /// characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character
-        /// must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except
-        /// the last character, which cannot be a dash.
+        /// characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first
+        /// character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or
+        /// digit, except the last character, which cannot be a dash.
         ///
         /// This field is only used for internal load balancing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLabel")]
@@ -59719,7 +59739,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>A list of labels to apply for this resource. Each label key & value must comply with RFC1035.
         /// Specifically, the name must be 1-63 characters long and match the regular expression
-        /// [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all following
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following
         /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// For example, "webserver-frontend": "images". A label value can also be empty (e.g. "my-label":
         /// "").</summary>
@@ -59943,7 +59963,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -60156,7 +60176,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The name of the resource, provided by the client when initially creating the resource. The resource
         /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
-        /// long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a
+        /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -60715,7 +60735,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -60857,7 +60877,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -61040,7 +61060,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -61330,7 +61350,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The name of the resource, provided by the client when initially creating the resource. The resource
         /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
-        /// long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a
+        /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -62898,7 +62918,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -63285,7 +63305,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -63414,7 +63434,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -64784,7 +64804,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>The name of the resource, provided by the client when initially creating the resource. The resource
         /// name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters
-        /// long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a
+        /// long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -64891,6 +64911,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Next available tag: 12</summary>
     public class ManagedInstance : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output Only] The current action that the managed instance group has scheduled for the instance.
@@ -64936,11 +64957,6 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Override defined for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("override")]
         public virtual ManagedInstanceOverride Override__ { get; set; } 
-
-        /// <summary>[Output Only] Standby mode of the instance. This field is non-empty iff the instance is a
-        /// standby.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("standbyMode")]
-        public virtual string StandbyMode { get; set; } 
 
         /// <summary>[Output Only] Tag describing the version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
@@ -65172,7 +65188,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -65255,7 +65271,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -65766,9 +65782,9 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of this peering. Provided by the client when the peering is created. The name must comply with
         /// RFC1035. Specifically, the name must be 1-63 characters long and match regular expression
-        /// [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter, and all the following
-        /// characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a
-        /// dash.</summary>
+        /// `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all the
+        /// following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be
+        /// a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -67312,7 +67328,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -67520,7 +67536,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -68178,6 +68194,10 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("automaticRestart")]
         public virtual System.Nullable<bool> AutomaticRestart { get; set; } 
 
+        /// <summary>A set of node affinity and anti-affinity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeAffinities")]
+        public virtual System.Collections.Generic.IList<SchedulingNodeAffinity> NodeAffinities { get; set; } 
+
         /// <summary>Defines the maintenance behavior for this instance. For standard instances, the default behavior is
         /// MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more
         /// information, see Setting Instance Scheduling Options.</summary>
@@ -68188,6 +68208,26 @@ namespace Google.Apis.Compute.alpha.Data
         /// cannot be set or changed after the instance has been created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
         public virtual System.Nullable<bool> Preemptible { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Node Affinity: the configuration of desired nodes onto which this Instance could be
+    /// scheduled.</summary>
+    public class SchedulingNodeAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Corresponds to the label key of Node resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; } 
+
+        /// <summary>Defines the operation of node selection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operator")]
+        public virtual string Operator__ { get; set; } 
+
+        /// <summary>Corresponds to the label values of Node resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -68226,7 +68266,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -68374,7 +68414,7 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expr")]
         public virtual Expr Expr { get; set; } 
 
-        /// <summary>CIDR IP address range. Only IPv4 is supported.</summary>
+        /// <summary>CIDR IP address range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcIpRanges")]
         public virtual System.Collections.Generic.IList<string> SrcIpRanges { get; set; } 
 
@@ -68390,7 +68430,7 @@ namespace Google.Apis.Compute.alpha.Data
 
     public class SecurityPolicyRuleMatcherConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>CIDR IP address range. Only IPv4 is supported.</summary>
+        /// <summary>CIDR IP address range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcIpRanges")]
         public virtual System.Collections.Generic.IList<string> SrcIpRanges { get; set; } 
 
@@ -68447,6 +68487,10 @@ namespace Google.Apis.Compute.alpha.Data
     /// <summary>A set of Shielded VM options.</summary>
     public class ShieldedVmConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Defines whether the instance should have integrity monitoring enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; } 
+
         /// <summary>Defines whether the instance should have secure boot enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
         public virtual System.Nullable<bool> EnableSecureBoot { get; set; } 
@@ -68463,7 +68507,7 @@ namespace Google.Apis.Compute.alpha.Data
     public class SignedUrlKey : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Name of the key. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the
-        /// name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means
+        /// name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means
         /// the first character must be a lowercase letter, and all following characters must be a dash, lowercase
         /// letter, or digit, except the last character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
@@ -68494,6 +68538,12 @@ namespace Google.Apis.Compute.alpha.Data
         /// <summary>[Output Only] Size of the snapshot, specified in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<long> DiskSizeGb { get; set; } 
+
+        /// <summary>[Output Only] A list of features to enable on the guest operating system. Applicable only for
+        /// bootable images. Read  Enabling guest operating system features to see a list of available
+        /// options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestOsFeatures")]
+        public virtual System.Collections.Generic.IList<GuestOsFeature> GuestOsFeatures { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -68529,7 +68579,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource; provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -68716,7 +68766,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -68982,7 +69032,7 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string MinTlsVersion { get; set; } 
 
         /// <summary>Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically,
-        /// the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which
+        /// the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which
         /// means the first character must be a lowercase letter, and all following characters must be a dash, lowercase
         /// letter, or digit, except the last character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -69144,13 +69194,17 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
         public virtual string IpCidrRange { get; set; } 
 
+        /// <summary>[Output Only] The range of internal IPv6 addresses that are owned by this subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipv6CidrRange")]
+        public virtual string Ipv6CidrRange { get; set; } 
+
         /// <summary>[Output Only] Type of the resource. Always compute#subnetwork for Subnetwork resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
         /// <summary>The name of the resource, provided by the client when initially creating the resource. The name
         /// must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long
-        /// and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a
+        /// and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a
         /// lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last
         /// character, which cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -69508,7 +69562,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -69648,7 +69702,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -69792,7 +69846,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -70075,7 +70129,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -70427,7 +70481,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -70577,7 +70631,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -70715,7 +70769,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -71047,7 +71101,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -71394,7 +71448,7 @@ namespace Google.Apis.Compute.alpha.Data
 
         /// <summary>Name of the resource. Provided by the client when the resource is created. The name must be 1-63
         /// characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the
-        /// regular expression [a-z]([-a-z0-9]*[a-z0-9])? which means the first character must be a lowercase letter,
+        /// regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter,
         /// and all following characters must be a dash, lowercase letter, or digit, except the last character, which
         /// cannot be a dash.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

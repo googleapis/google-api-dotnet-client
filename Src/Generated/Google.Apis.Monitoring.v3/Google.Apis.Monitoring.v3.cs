@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/monitoring/api/'>Stackdriver Monitoring API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180225 (1151)
+ *      <tr><th>API Rev<td>20180303 (1157)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/monitoring/api/'>
  *              https://cloud.google.com/monitoring/api/</a>
@@ -371,15 +371,466 @@ namespace Google.Apis.Monitoring.v3
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            alertPolicies = new AlertPoliciesResource(service);
             collectdTimeSeries = new CollectdTimeSeriesResource(service);
             groups = new GroupsResource(service);
             metricDescriptors = new MetricDescriptorsResource(service);
             monitoredResourceDescriptors = new MonitoredResourceDescriptorsResource(service);
+            notificationChannelDescriptors = new NotificationChannelDescriptorsResource(service);
+            notificationChannels = new NotificationChannelsResource(service);
             timeSeries = new TimeSeriesResource(service);
             uptimeCheckConfigs = new UptimeCheckConfigsResource(service);
 
         }
 
+        private readonly AlertPoliciesResource alertPolicies;
+
+        /// <summary>Gets the AlertPolicies resource.</summary>
+        public virtual AlertPoliciesResource AlertPolicies
+        {
+            get { return alertPolicies; }
+        }
+
+        /// <summary>The "alertPolicies" collection of methods.</summary>
+        public class AlertPoliciesResource
+        {
+            private const string Resource = "alertPolicies";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AlertPoliciesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new alerting policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The project in which to create the alerting policy. The format is projects/[PROJECT_ID].Note that
+            /// this field names the parent container in which the alerting policy will be written, not the name of the created
+            /// policy. The alerting policy that is returned will have a name that contains a normalized representation of this name
+            /// as a prefix but adds a suffix of the form /alertPolicies/[POLICY_ID], identifying the policy in the
+            /// container.</param>
+            public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
+            {
+                return new CreateRequest(service, body, name);
+            }
+
+            /// <summary>Creates a new alerting policy.</summary>
+            public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.AlertPolicy>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The project in which to create the alerting policy. The format is
+                /// projects/[PROJECT_ID].Note that this field names the parent container in which the alerting policy
+                /// will be written, not the name of the created policy. The alerting policy that is returned will have
+                /// a name that contains a normalized representation of this name as a prefix but adds a suffix of the
+                /// form /alertPolicies/[POLICY_ID], identifying the policy in the container.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.AlertPolicy Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}/alertPolicies"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes an alerting policy.</summary>
+            /// <param name="name">The alerting policy to delete. The format is:
+            /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] For more information, see AlertPolicy.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an alerting policy.</summary>
+            public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The alerting policy to delete. The format is:
+                /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] For more information, see
+                /// AlertPolicy.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/alertPolicies/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a single alerting policy.</summary>
+            /// <param name="name">The alerting policy to retrieve. The format is
+            /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a single alerting policy.</summary>
+            public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.AlertPolicy>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The alerting policy to retrieve. The format is
+                /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/alertPolicies/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists the existing alerting policies for the project.</summary>
+            /// <param name="name">The project whose alert policies are to be listed. The format is projects/[PROJECT_ID] Note that
+            /// this field names the parent container in which the alerting policies to be listed are stored. To retrieve a single
+            /// alerting policy by name, use the GetAlertPolicy operation, instead.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists the existing alerting policies for the project.</summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListAlertPoliciesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The project whose alert policies are to be listed. The format is projects/[PROJECT_ID] Note
+                /// that this field names the parent container in which the alerting policies to be listed are stored.
+                /// To retrieve a single alerting policy by name, use the GetAlertPolicy operation, instead.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>If provided, this field specifies the criteria that must be met by alert policies to be
+                /// included in the response.For more details, see sorting and filtering.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>A comma-separated list of fields by which to sort the result. Supports the same set of
+                /// field references as the filter field. Entries can be prefixed with a minus sign to sort by the field
+                /// in descending order.For more details, see sorting and filtering.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return more results from the
+                /// previous method call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results to return in a single response.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}/alertPolicies"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates an alerting policy. You can either replace the entire policy with a new one or replace
+            /// only certain fields in the current alerting policy by specifying the fields to be updated via
+            /// updateMask. Returns the updated alerting policy.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Required if the policy exists. The resource name for this policy. The syntax is:
+            /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver Monitoring when
+            /// the policy is created. When calling the alertPolicies.create method, do not include the name field in the alerting
+            /// policy passed as part of the request.</param>
+            public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates an alerting policy. You can either replace the entire policy with a new one or replace
+            /// only certain fields in the current alerting policy by specifying the fields to be updated via
+            /// updateMask. Returns the updated alerting policy.</summary>
+            public class PatchRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.AlertPolicy>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.AlertPolicy body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>Required if the policy exists. The resource name for this policy. The syntax is:
+                /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver
+                /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include
+                /// the name field in the alerting policy passed as part of the request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Optional. A list of alerting policy field names. If this field is not empty, each listed
+                /// field in the existing alerting policy is set to the value of the corresponding field in the supplied
+                /// policy (alert_policy), or to the field's default value if the field is not in the supplied alerting
+                /// policy. Fields not listed retain their previous value.Examples of valid field masks include
+                /// display_name, documentation, documentation.content, documentation.mime_type, user_labels,
+                /// user_label.nameofkey, enabled, conditions, combiner, etc.If this field is empty, then the supplied
+                /// alerting policy replaces the existing policy. It is the same as deleting the existing policy and
+                /// adding the supplied policy, except for the following: The new policy will have the same
+                /// [ALERT_POLICY_ID] as the former policy. This gives you continuity with the former policy in your
+                /// notifications and incidents. Conditions in the new policy will keep their former [CONDITION_ID] if
+                /// the supplied condition includes the name field with that [CONDITION_ID]. If the supplied condition
+                /// omits the name field, then a new [CONDITION_ID] is created.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.AlertPolicy Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/alertPolicies/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
         private readonly CollectdTimeSeriesResource collectdTimeSeries;
 
         /// <summary>Gets the CollectdTimeSeries resource.</summary>
@@ -549,15 +1000,6 @@ namespace Google.Apis.Monitoring.v3
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The beginning of the time interval. The default value for the start time is
-                    /// the end time. The start time must not be later than the end time.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object IntervalStartTime { get; set; }
-
-                    /// <summary>A positive number that is the maximum number of results to return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>Required. The end of the time interval.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object IntervalEndTime { get; set; }
@@ -574,6 +1016,15 @@ namespace Google.Apis.Monitoring.v3
                     /// from the previous method call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. The beginning of the time interval. The default value for the start time is
+                    /// the end time. The start time must not be later than the end time.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("interval.startTime", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object IntervalStartTime { get; set; }
+
+                    /// <summary>A positive number that is the maximum number of results to return.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -609,24 +1060,6 @@ namespace Google.Apis.Monitoring.v3
                                 Pattern = @"^projects/[^/]+/groups/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "interval.startTime", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "interval.startTime",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "interval.endTime", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "interval.endTime",
@@ -648,6 +1081,24 @@ namespace Google.Apis.Monitoring.v3
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "interval.startTime", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "interval.startTime",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1339,6 +1790,12 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return additional results from
+                /// the previous method call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>A positive number that is the maximum number of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1349,12 +1806,6 @@ namespace Google.Apis.Monitoring.v3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
-                /// previous call to this method. Using this field causes the method to return additional results from
-                /// the previous method call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1390,6 +1841,15 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1402,15 +1862,6 @@ namespace Google.Apis.Monitoring.v3
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1537,6 +1988,12 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
+                /// previous call to this method. Using this field causes the method to return additional results from
+                /// the previous method call.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>A positive number that is the maximum number of results to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -1547,12 +2004,6 @@ namespace Google.Apis.Monitoring.v3
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
-
-                /// <summary>If this field is not empty then it must contain the nextPageToken value returned by a
-                /// previous call to this method. Using this field causes the method to return additional results from
-                /// the previous method call.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1588,6 +2039,15 @@ namespace Google.Apis.Monitoring.v3
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -1605,6 +2065,172 @@ namespace Google.Apis.Monitoring.v3
                             DefaultValue = null,
                             Pattern = null,
                         });
+                }
+
+            }
+        }
+        private readonly NotificationChannelDescriptorsResource notificationChannelDescriptors;
+
+        /// <summary>Gets the NotificationChannelDescriptors resource.</summary>
+        public virtual NotificationChannelDescriptorsResource NotificationChannelDescriptors
+        {
+            get { return notificationChannelDescriptors; }
+        }
+
+        /// <summary>The "notificationChannelDescriptors" collection of methods.</summary>
+        public class NotificationChannelDescriptorsResource
+        {
+            private const string Resource = "notificationChannelDescriptors";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public NotificationChannelDescriptorsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets a single channel descriptor. The descriptor indicates which fields are expected /
+            /// permitted for a notification channel of the given type.</summary>
+            /// <param name="name">The channel type for which to execute the request. The format is
+            /// projects/[PROJECT_ID]/notificationChannelDescriptors/{channel_type}.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a single channel descriptor. The descriptor indicates which fields are expected /
+            /// permitted for a notification channel of the given type.</summary>
+            public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.NotificationChannelDescriptor>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The channel type for which to execute the request. The format is
+                /// projects/[PROJECT_ID]/notificationChannelDescriptors/{channel_type}.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/notificationChannelDescriptors/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists the descriptors for supported channel types. The use of descriptors makes it possible for
+            /// new channel types to be dynamically added.</summary>
+            /// <param name="name">The REST resource name of the parent from which to retrieve the notification channel descriptors.
+            /// The expected syntax is: projects/[PROJECT_ID] Note that this names the parent container in which to look for the
+            /// descriptors; to retrieve a single descriptor by name, use the GetNotificationChannelDescriptor operation,
+            /// instead.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists the descriptors for supported channel types. The use of descriptors makes it possible for
+            /// new channel types to be dynamically added.</summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListNotificationChannelDescriptorsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The REST resource name of the parent from which to retrieve the notification channel
+                /// descriptors. The expected syntax is: projects/[PROJECT_ID] Note that this names the parent container
+                /// in which to look for the descriptors; to retrieve a single descriptor by name, use the
+                /// GetNotificationChannelDescriptor operation, instead.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>If non-empty, page_token must contain a value returned as the next_page_token in a previous
+                /// response to request the next set of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results to return in a single response. If not set to a positive
+                /// number, a reasonable value will be chosen by the service.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}/notificationChannelDescriptors"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
                     RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
@@ -1613,6 +2239,707 @@ namespace Google.Apis.Monitoring.v3
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+        }
+        private readonly NotificationChannelsResource notificationChannels;
+
+        /// <summary>Gets the NotificationChannels resource.</summary>
+        public virtual NotificationChannelsResource NotificationChannels
+        {
+            get { return notificationChannels; }
+        }
+
+        /// <summary>The "notificationChannels" collection of methods.</summary>
+        public class NotificationChannelsResource
+        {
+            private const string Resource = "notificationChannels";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public NotificationChannelsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Creates a new notification channel, representing a single notification endpoint such as an
+            /// email address, SMS number, or pagerduty service.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The project on which to execute the request. The format is: projects/[PROJECT_ID] Note that this
+            /// names the container into which the channel will be written. This does not name the newly created channel. The
+            /// resulting channel's name will have a normalized version of this field as a prefix, but will add
+            /// /notificationChannels/[CHANNEL_ID] to identify the channel.</param>
+            public virtual CreateRequest Create(Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
+            {
+                return new CreateRequest(service, body, name);
+            }
+
+            /// <summary>Creates a new notification channel, representing a single notification endpoint such as an
+            /// email address, SMS number, or pagerduty service.</summary>
+            public class CreateRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.NotificationChannel>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The project on which to execute the request. The format is: projects/[PROJECT_ID] Note that
+                /// this names the container into which the channel will be written. This does not name the newly
+                /// created channel. The resulting channel's name will have a normalized version of this field as a
+                /// prefix, but will add /notificationChannels/[CHANNEL_ID] to identify the channel.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.NotificationChannel Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "create"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}/notificationChannels"; }
+                }
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Deletes a notification channel.</summary>
+            /// <param name="name">The channel for which to execute the request. The format is
+            /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a notification channel.</summary>
+            public class DeleteRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The channel for which to execute the request. The format is
+                /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>If true, the notification channel will be deleted regardless of its use in alert policies
+                /// (the policies will be updated to remove the channel). If false, channels that are still referenced
+                /// by an existing alerting policy will fail to be deleted in a delete operation.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Force { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "delete"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "DELETE"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/notificationChannels/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Gets a single notification channel. The channel includes the relevant configuration details
+            /// with which the channel was created. However, the response may truncate or omit passwords, API keys, or
+            /// other private key matter and thus the response may not be 100% identical to the information that was
+            /// supplied in the call to the create method.</summary>
+            /// <param name="name">The channel for which to execute the request. The format is
+            /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a single notification channel. The channel includes the relevant configuration details
+            /// with which the channel was created. However, the response may truncate or omit passwords, API keys, or
+            /// other private key matter and thus the response may not be 100% identical to the information that was
+            /// supplied in the call to the create method.</summary>
+            public class GetRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.NotificationChannel>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The channel for which to execute the request. The format is
+                /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/notificationChannels/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Requests a verification code for an already verified channel that can then be used in a call to
+            /// VerifyNotificationChannel() on a different channel with an equivalent identity in the same or in a
+            /// different project. This makes it possible to copy a channel between projects without requiring manual
+            /// reverification of the channel. If the channel is not in the verified state, this method will fail (in
+            /// other words, this may only be used if the SendNotificationChannelVerificationCode and
+            /// VerifyNotificationChannel paths have already been used to put the given channel into the verified
+            /// state).There is no guarantee that the verification codes returned by this method will be of a similar
+            /// structure or form as the ones that are delivered to the channel via
+            /// SendNotificationChannelVerificationCode; while VerifyNotificationChannel() will recognize both the codes
+            /// delivered via SendNotificationChannelVerificationCode() and returned from
+            /// GetNotificationChannelVerificationCode(), it is typically the case that the verification codes delivered
+            /// via SendNotificationChannelVerificationCode() will be shorter and also have a shorter expiration (e.g.
+            /// codes such as "G-123456") whereas GetVerificationCode() will typically return a much longer, websafe
+            /// base 64 encoded string that has a longer expiration time.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The notification channel for which a verification code is to be generated and retrieved. This
+            /// must name a channel that is already verified; if the specified channel is not verified, the request will
+            /// fail.</param>
+            public virtual GetVerificationCodeRequest GetVerificationCode(Google.Apis.Monitoring.v3.Data.GetNotificationChannelVerificationCodeRequest body, string name)
+            {
+                return new GetVerificationCodeRequest(service, body, name);
+            }
+
+            /// <summary>Requests a verification code for an already verified channel that can then be used in a call to
+            /// VerifyNotificationChannel() on a different channel with an equivalent identity in the same or in a
+            /// different project. This makes it possible to copy a channel between projects without requiring manual
+            /// reverification of the channel. If the channel is not in the verified state, this method will fail (in
+            /// other words, this may only be used if the SendNotificationChannelVerificationCode and
+            /// VerifyNotificationChannel paths have already been used to put the given channel into the verified
+            /// state).There is no guarantee that the verification codes returned by this method will be of a similar
+            /// structure or form as the ones that are delivered to the channel via
+            /// SendNotificationChannelVerificationCode; while VerifyNotificationChannel() will recognize both the codes
+            /// delivered via SendNotificationChannelVerificationCode() and returned from
+            /// GetNotificationChannelVerificationCode(), it is typically the case that the verification codes delivered
+            /// via SendNotificationChannelVerificationCode() will be shorter and also have a shorter expiration (e.g.
+            /// codes such as "G-123456") whereas GetVerificationCode() will typically return a much longer, websafe
+            /// base 64 encoded string that has a longer expiration time.</summary>
+            public class GetVerificationCodeRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.GetNotificationChannelVerificationCodeResponse>
+            {
+                /// <summary>Constructs a new GetVerificationCode request.</summary>
+                public GetVerificationCodeRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.GetNotificationChannelVerificationCodeRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The notification channel for which a verification code is to be generated and retrieved.
+                /// This must name a channel that is already verified; if the specified channel is not verified, the
+                /// request will fail.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.GetNotificationChannelVerificationCodeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "getVerificationCode"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}:getVerificationCode"; }
+                }
+
+                /// <summary>Initializes GetVerificationCode parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/notificationChannels/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Lists the notification channels that have been created for the project.</summary>
+            /// <param name="name">The project on which to execute the request. The format is projects/[PROJECT_ID]. That is, this
+            /// names the container in which to look for the notification channels; it does not name a specific channel. To query a
+            /// specific channel by REST resource name, use the GetNotificationChannel operation.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists the notification channels that have been created for the project.</summary>
+            public class ListRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.ListNotificationChannelsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The project on which to execute the request. The format is projects/[PROJECT_ID]. That is,
+                /// this names the container in which to look for the notification channels; it does not name a specific
+                /// channel. To query a specific channel by REST resource name, use the GetNotificationChannel
+                /// operation.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>A comma-separated list of fields by which to sort the result. Supports the same set of
+                /// fields as in filter. Entries can be prefixed with a minus sign to sort in descending rather than
+                /// ascending order.For more details, see sorting and filtering.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>If non-empty, page_token must contain a value returned as the next_page_token in a previous
+                /// response to request the next set of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The maximum number of results to return in a single response. If not set to a positive
+                /// number, a reasonable value will be chosen by the service.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>If provided, this field specifies the criteria that must be met by notification channels to
+                /// be included in the response.For more details, see sorting and filtering.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "list"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}/notificationChannels"; }
+                }
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Updates a notification channel. Fields not specified in the field mask remain
+            /// unchanged.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The full REST resource name for this channel. The syntax is:
+            /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the server on
+            /// creation.</param>
+            public virtual PatchRequest Patch(Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a notification channel. Fields not specified in the field mask remain
+            /// unchanged.</summary>
+            public class PatchRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.NotificationChannel>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.NotificationChannel body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The full REST resource name for this channel. The syntax is:
+                /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned
+                /// by the server on creation.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.NotificationChannel Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/notificationChannels/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                }
+
+            }
+
+            /// <summary>Causes a verification code to be delivered to the channel. The code can then be supplied in
+            /// VerifyNotificationChannel to verify the channel.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The notification channel to which to send a verification code.</param>
+            public virtual SendVerificationCodeRequest SendVerificationCode(Google.Apis.Monitoring.v3.Data.SendNotificationChannelVerificationCodeRequest body, string name)
+            {
+                return new SendVerificationCodeRequest(service, body, name);
+            }
+
+            /// <summary>Causes a verification code to be delivered to the channel. The code can then be supplied in
+            /// VerifyNotificationChannel to verify the channel.</summary>
+            public class SendVerificationCodeRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.Empty>
+            {
+                /// <summary>Constructs a new SendVerificationCode request.</summary>
+                public SendVerificationCodeRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.SendNotificationChannelVerificationCodeRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The notification channel to which to send a verification code.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.SendNotificationChannelVerificationCodeRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "sendVerificationCode"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}:sendVerificationCode"; }
+                }
+
+                /// <summary>Initializes SendVerificationCode parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/notificationChannels/[^/]+$",
+                        });
+                }
+
+            }
+
+            /// <summary>Verifies a NotificationChannel by proving receipt of the code delivered to the channel as a
+            /// result of calling SendNotificationChannelVerificationCode.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The notification channel to verify.</param>
+            public virtual VerifyRequest Verify(Google.Apis.Monitoring.v3.Data.VerifyNotificationChannelRequest body, string name)
+            {
+                return new VerifyRequest(service, body, name);
+            }
+
+            /// <summary>Verifies a NotificationChannel by proving receipt of the code delivered to the channel as a
+            /// result of calling SendNotificationChannelVerificationCode.</summary>
+            public class VerifyRequest : MonitoringBaseServiceRequest<Google.Apis.Monitoring.v3.Data.NotificationChannel>
+            {
+                /// <summary>Constructs a new Verify request.</summary>
+                public VerifyRequest(Google.Apis.Services.IClientService service, Google.Apis.Monitoring.v3.Data.VerifyNotificationChannelRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The notification channel to verify.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Monitoring.v3.Data.VerifyNotificationChannelRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "verify"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "POST"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v3/{+name}:verify"; }
+                }
+
+                /// <summary>Initializes Verify parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/notificationChannels/[^/]+$",
                         });
                 }
 
@@ -1742,36 +3069,6 @@ namespace Google.Apis.Monitoring.v3
                 /// "projects/{project_id_or_number}".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
-
-                /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields
-                /// determine how the time series are partitioned into subsets prior to applying the aggregation
-                /// function. Each subset contains time series that have the same value for each of the grouping fields.
-                /// Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to
-                /// each subset of time series. It is not possible to reduce across different resource types, so this
-                /// field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away.
-                /// If groupByFields is not specified and all the time series have the same resource type, then the time
-                /// series are aggregated into a single output time series. If crossSeriesReducer is not defined, this
-                /// field is ignored.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
-
-                /// <summary>Required. The end of the time interval.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object IntervalEndTime { get; set; }
-
-                /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at
-                /// least 60 seconds. After per-time series alignment, each time series will contain data points only on
-                /// the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
-                /// ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be
-                /// defined; otherwise an error is returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object AggregationAlignmentPeriod { get; set; }
-
-                /// <summary>A positive number that is the maximum number of results to return. When view field sets to
-                /// FULL, it limits the number of Points server will return; if view field is HEADERS, it limits the
-                /// number of TimeSeries server will return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>Unsupported: must be left blank. The points in each time series are returned in reverse
                 /// time order.</summary>
@@ -1913,6 +3210,36 @@ namespace Google.Apis.Monitoring.v3
                     HEADERS,
                 }
 
+                /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields
+                /// determine how the time series are partitioned into subsets prior to applying the aggregation
+                /// function. Each subset contains time series that have the same value for each of the grouping fields.
+                /// Each individual time series is a member of exactly one subset. The crossSeriesReducer is applied to
+                /// each subset of time series. It is not possible to reduce across different resource types, so this
+                /// field implicitly contains resource.type. Fields not specified in groupByFields are aggregated away.
+                /// If groupByFields is not specified and all the time series have the same resource type, then the time
+                /// series are aggregated into a single output time series. If crossSeriesReducer is not defined, this
+                /// field is ignored.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.groupByFields", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> AggregationGroupByFields { get; set; }
+
+                /// <summary>Required. The end of the time interval.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("interval.endTime", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object IntervalEndTime { get; set; }
+
+                /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at
+                /// least 60 seconds. After per-time series alignment, each time series will contain data points only on
+                /// the period boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is
+                /// ignored. If perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be
+                /// defined; otherwise an error is returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("aggregation.alignmentPeriod", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object AggregationAlignmentPeriod { get; set; }
+
+                /// <summary>A positive number that is the maximum number of results to return. When view field sets to
+                /// FULL, it limits the number of Points server will return; if view field is HEADERS, it limits the
+                /// number of TimeSeries server will return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -1945,42 +3272,6 @@ namespace Google.Apis.Monitoring.v3
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+$",
-                        });
-                    RequestParameters.Add(
-                        "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.groupByFields",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "interval.endTime", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "interval.endTime",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "aggregation.alignmentPeriod",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "orderBy", new Google.Apis.Discovery.Parameter
@@ -2040,6 +3331,42 @@ namespace Google.Apis.Monitoring.v3
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "aggregation.groupByFields", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.groupByFields",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "interval.endTime", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "interval.endTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "aggregation.alignmentPeriod", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "aggregation.alignmentPeriod",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2556,6 +3883,124 @@ namespace Google.Apis.Monitoring.v3
 namespace Google.Apis.Monitoring.v3.Data
 {    
 
+    /// <summary>Describes how to combine multiple time series to provide different views of the data. Aggregation
+    /// consists of an alignment step on individual time series (alignment_period and per_series_aligner) followed by an
+    /// optional reduction step of the data across the aligned time series (cross_series_reducer and group_by_fields).
+    /// For more details, see Aggregation.</summary>
+    public class Aggregation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alignment period for per-time series alignment. If present, alignmentPeriod must be at least 60
+        /// seconds. After per-time series alignment, each time series will contain data points only on the period
+        /// boundaries. If perSeriesAligner is not specified or equals ALIGN_NONE, then this field is ignored. If
+        /// perSeriesAligner is specified and does not equal ALIGN_NONE, then this field must be defined; otherwise an
+        /// error is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alignmentPeriod")]
+        public virtual object AlignmentPeriod { get; set; } 
+
+        /// <summary>The approach to be used to combine time series. Not all reducer functions may be applied to all
+        /// time series, depending on the metric type and the value type of the original time series. Reduction may
+        /// change the metric type of value type of the time series.Time series data must be aligned in order to perform
+        /// cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be specified and
+        /// not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crossSeriesReducer")]
+        public virtual string CrossSeriesReducer { get; set; } 
+
+        /// <summary>The set of fields to preserve when crossSeriesReducer is specified. The groupByFields determine how
+        /// the time series are partitioned into subsets prior to applying the aggregation function. Each subset
+        /// contains time series that have the same value for each of the grouping fields. Each individual time series
+        /// is a member of exactly one subset. The crossSeriesReducer is applied to each subset of time series. It is
+        /// not possible to reduce across different resource types, so this field implicitly contains resource.type.
+        /// Fields not specified in groupByFields are aggregated away. If groupByFields is not specified and all the
+        /// time series have the same resource type, then the time series are aggregated into a single output time
+        /// series. If crossSeriesReducer is not defined, this field is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupByFields")]
+        public virtual System.Collections.Generic.IList<string> GroupByFields { get; set; } 
+
+        /// <summary>The approach to be used to align individual time series. Not all alignment functions may be applied
+        /// to all time series, depending on the metric type and value type of the original time series. Alignment may
+        /// change the metric type or the value type of the time series.Time series data must be aligned in order to
+        /// perform cross-time series reduction. If crossSeriesReducer is specified, then perSeriesAligner must be
+        /// specified and not equal ALIGN_NONE and alignmentPeriod must be specified; otherwise, an error is
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perSeriesAligner")]
+        public virtual string PerSeriesAligner { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A description of the conditions under which some aspect of your system is considered to be "unhealthy"
+    /// and the ways to notify people or services about this state. For an overview of alert policies, see Introduction
+    /// to Alerting.</summary>
+    public class AlertPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How to combine the results of multiple conditions to determine if an incident should be
+        /// opened.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("combiner")]
+        public virtual string Combiner { get; set; } 
+
+        /// <summary>A list of conditions for the policy. The conditions are combined by AND or OR according to the
+        /// combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have
+        /// from one to six conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<Condition> Conditions { get; set; } 
+
+        /// <summary>A read-only record of the creation of the alerting policy. If provided in a call to create or
+        /// update, this field will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationRecord")]
+        public virtual MutationRecord CreationRecord { get; set; } 
+
+        /// <summary>A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To
+        /// avoid confusion, don't use the same display name for multiple policies in the same project. The name is
+        /// limited to 512 Unicode characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Documentation that is included with notifications and incidents related to this policy. Best
+        /// practice is for the documentation to include information to help responders understand, mitigate, escalate,
+        /// and correct the underlying problems detected by the alerting policy. Notification channels that have limited
+        /// capacity might not show this documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
+        public virtual Documentation Documentation { get; set; } 
+
+        /// <summary>Whether or not the policy is enabled. On write, the default interpretation if unset is that the
+        /// policy is enabled. On read, clients should not make any assumption about the state if it has not been
+        /// populated. The field should always be populated on List and Get operations, unless a field projection has
+        /// been specified that strips it out.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>A read-only record of the most recent change to the alerting policy. If provided in a call to
+        /// create or update, this field will be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationRecord")]
+        public virtual MutationRecord MutationRecord { get; set; } 
+
+        /// <summary>Required if the policy exists. The resource name for this policy. The syntax is:
+        /// projects/[PROJECT_ID]/alertPolicies/[ALERT_POLICY_ID] [ALERT_POLICY_ID] is assigned by Stackdriver
+        /// Monitoring when the policy is created. When calling the alertPolicies.create method, do not include the name
+        /// field in the alerting policy passed as part of the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Identifies the notification channels to which notifications should be sent when incidents are
+        /// opened or closed or when new violations occur on an already opened incident. Each element of this array
+        /// corresponds to the name field in each of the NotificationChannel objects that are returned from the
+        /// ListNotificationChannels method. The syntax of the entries in this field is:
+        /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationChannels")]
+        public virtual System.Collections.Generic.IList<string> NotificationChannels { get; set; } 
+
+        /// <summary>User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The
+        /// field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes,
+        /// whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and
+        /// dashes. Keys must begin with a letter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A type of authentication to perform against the specified resource or URL that uses username and
     /// password. Currently, only Basic authentication is supported in Uptime Monitoring.</summary>
     public class BasicAuthentication : Google.Apis.Requests.IDirectResponseSchema
@@ -2698,6 +4143,40 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A condition is a true/false test that determines when an alerting policy should open an incident. If a
+    /// condition evaluates to true, it signifies that something is wrong.</summary>
+    public class Condition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A condition that checks that a time series continues to receive new data points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionAbsent")]
+        public virtual MetricAbsence ConditionAbsent { get; set; } 
+
+        /// <summary>A condition that compares a time series against a threshold.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionThreshold")]
+        public virtual MetricThreshold ConditionThreshold { get; set; } 
+
+        /// <summary>A short name or phrase used to identify the condition in dashboards, notifications, and incidents.
+        /// To avoid confusion, don't use the same display name for multiple conditions in the same policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Required if the condition exists. The unique resource name for this condition. Its syntax is:
+        /// projects/[PROJECT_ID]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by
+        /// Stackdriver Monitoring when the condition is created as part of a new or updated alerting policy.When
+        /// calling the alertPolicies.create method, do not include the name field in the conditions of the requested
+        /// alerting policy. Stackdriver Monitoring creates the condition identifiers and includes them in the new
+        /// policy.When calling the alertPolicies.update method to update a policy, including a condition name causes
+        /// the existing condition to be updated. Conditions without names are added to the updated policy. Existing
+        /// conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only
+        /// small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the
+        /// change as a new condition and let the existing condition be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Used to perform string matching. Currently, this matches on the exact content. In the future, it can be
     /// expanded to allow for regular expressions and more complex matching.</summary>
     public class ContentMatcher : Google.Apis.Requests.IDirectResponseSchema
@@ -2806,6 +4285,24 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A content string and a MIME type that describes the content string's format.</summary>
+    public class Documentation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192
+        /// Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is
+        /// smaller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; } 
+
+        /// <summary>The format of the content field. Presently, only the value "text/markdown" is supported. See
+        /// Markdown (https://en.wikipedia.org/wiki/Markdown) for more information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance: service Foo {
     /// rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); } The JSON representation for Empty is empty
@@ -2896,6 +4393,42 @@ namespace Google.Apis.Monitoring.v3.Data
         /// "type.googleapis.com/google.protobuf.Timestamp".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The GetNotificationChannelVerificationCode request.</summary>
+    public class GetNotificationChannelVerificationCodeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The desired expiration time. If specified, the API will guarantee that the returned code will not
+        /// be valid after the specified timestamp; however, the API cannot guarantee that the returned code will be
+        /// valid for at least as long as the requested time (the API puts an upper bound on the amount of time for
+        /// which a code may be valid). If omitted, a default expiration will be used, which may be less than the max
+        /// permissible expiration (so specifying an expiration may extend the code's lifetime over omitting an
+        /// expiration, even though the API does impose an upper limit on the maximum expiration that is
+        /// permitted).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The GetNotificationChannelVerificationCode request.</summary>
+    public class GetNotificationChannelVerificationCodeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The verification code, which may be used to verify other channels that have an equivalent identity
+        /// (i.e. other channels of the same type with the same fingerprint such as other email channels with the same
+        /// email address or other sms channels with the same number).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
+
+        /// <summary>The expiration time associated with the code that was returned. If an expiration was provided in
+        /// the request, this is the minimum of the requested expiration in the request and the max permitted
+        /// expiration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3057,6 +4590,22 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The protocol for the ListAlertPolicies response.</summary>
+    public class ListAlertPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The returned alert policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alertPolicies")]
+        public virtual System.Collections.Generic.IList<AlertPolicy> AlertPolicies { get; set; } 
+
+        /// <summary>If there might be more results than were returned, then this field is set to a non-empty value. To
+        /// see the additional results, use that value as pageToken in the next call to this method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The ListGroupMembers response.</summary>
     public class ListGroupMembersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3122,6 +4671,41 @@ namespace Google.Apis.Monitoring.v3.Data
         /// present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceDescriptors")]
         public virtual System.Collections.Generic.IList<MonitoredResourceDescriptor> ResourceDescriptors { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The ListNotificationChannelDescriptors response.</summary>
+    public class ListNotificationChannelDescriptorsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The monitored resource descriptors supported for the specified project, optionally
+        /// filtered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("channelDescriptors")]
+        public virtual System.Collections.Generic.IList<NotificationChannelDescriptor> ChannelDescriptors { get; set; } 
+
+        /// <summary>If not empty, indicates that there may be more results that match the request. Use the value in the
+        /// page_token field in a subsequent request to fetch the next set of results. If empty, all results have been
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The ListNotificationChannels response.</summary>
+    public class ListNotificationChannelsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If not empty, indicates that there may be more results that match the request. Use the value in the
+        /// page_token field in a subsequent request to fetch the next set of results. If empty, all results have been
+        /// returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The notification channels defined for the specified project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationChannels")]
+        public virtual System.Collections.Generic.IList<NotificationChannel> NotificationChannels { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3203,6 +4787,44 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A condition type that checks that monitored resources are reporting data. The configuration defines a
+    /// metric and a set of monitored resources. The predicate is considered in violation when a time series for the
+    /// specified metric of a monitored resource does not include any data in the specified duration.</summary>
+    public class MetricAbsence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the alignment of data points in individual time series as well as how to combine the
+        /// retrieved time series together (such as when aggregating multiple streams on each resource to a single
+        /// stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple
+        /// aggregations are applied in the order specified.This field is similar to the one in the
+        /// MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when debugging this
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
+        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; } 
+
+        /// <summary>The amount of time that a time series must fail to report new data to be considered failing.
+        /// Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an
+        /// invalid value is given, an error will be returned. The Duration.nanos field is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; } 
+
+        /// <summary>A filter that identifies which time series should be compared with the threshold.The filter is
+        /// similar to the one that is specified in the MetricService.ListTimeSeries request (that call is useful to
+        /// verify the time series that will be retrieved / processed) and must specify the metric type and optionally
+        /// may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed
+        /// 2048 Unicode characters in length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>The number/percent of time series for which the comparison must hold in order for the condition to
+        /// trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time
+        /// series that have been identified by filter and aggregations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual Trigger Trigger { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it
     /// stops data collection and makes the metric type's existing data unusable.</summary>
     public class MetricDescriptor : Google.Apis.Requests.IDirectResponseSchema
@@ -3251,6 +4873,77 @@ namespace Google.Apis.Monitoring.v3.Data
         /// metric_kind and value_type might not be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A condition type that compares a collection of time series against a threshold.</summary>
+    public class MetricThreshold : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the alignment of data points in individual time series as well as how to combine the
+        /// retrieved time series together (such as when aggregating multiple streams on each resource to a single
+        /// stream for each resource or when aggregating streams across all members of a group of resrouces). Multiple
+        /// aggregations are applied in the order specified.This field is similar to the one in the
+        /// MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when debugging this
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregations")]
+        public virtual System.Collections.Generic.IList<Aggregation> Aggregations { get; set; } 
+
+        /// <summary>The comparison to apply between the time series (indicated by filter and aggregation) and the
+        /// threshold (indicated by threshold_value). The comparison is applied on each time series, with the time
+        /// series on the left-hand side and the threshold on the right-hand side.Only COMPARISON_LT and COMPARISON_GT
+        /// are supported currently.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparison")]
+        public virtual string Comparison { get; set; } 
+
+        /// <summary>Specifies the alignment of data points in individual time series selected by denominatorFilter as
+        /// well as how to combine the retrieved time series together (such as when aggregating multiple streams on each
+        /// resource to a single stream for each resource or when aggregating streams across all members of a group of
+        /// resources).When computing ratios, the aggregations and denominator_aggregations fields must use the same
+        /// alignment period and produce time series that have the same periodicity and labels.This field is similar to
+        /// the one in the MetricService.ListTimeSeries request. It is advisable to use the ListTimeSeries method when
+        /// debugging this field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denominatorAggregations")]
+        public virtual System.Collections.Generic.IList<Aggregation> DenominatorAggregations { get; set; } 
+
+        /// <summary>A filter that identifies a time series that should be used as the denominator of a ratio that will
+        /// be compared with the threshold. If a denominator_filter is specified, the time series specified by the
+        /// filter field will be used as the numerator.The filter is similar to the one that is specified in the
+        /// MetricService.ListTimeSeries request (that call is useful to verify the time series that will be retrieved /
+        /// processed) and must specify the metric type and optionally may contain restrictions on resource type,
+        /// resource labels, and metric labels. This field may not exceed 2048 Unicode characters in length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denominatorFilter")]
+        public virtual string DenominatorFilter { get; set; } 
+
+        /// <summary>The amount of time that a time series must violate the threshold to be considered failing.
+        /// Currently, only values that are a multiple of a minute--e.g. 60, 120, or 300 seconds--are supported. If an
+        /// invalid value is given, an error will be returned. The Duration.nanos field is ignored. When choosing a
+        /// duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be
+        /// affected by any alignments specified in the aggregation field); a good duration is long enough so that a
+        /// single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and
+        /// alerted on quickly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
+        public virtual object Duration { get; set; } 
+
+        /// <summary>A filter that identifies which time series should be compared with the threshold.The filter is
+        /// similar to the one that is specified in the MetricService.ListTimeSeries request (that call is useful to
+        /// verify the time series that will be retrieved / processed) and must specify the metric type and optionally
+        /// may contain restrictions on resource type, resource labels, and metric labels. This field may not exceed
+        /// 2048 Unicode characters in length.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; } 
+
+        /// <summary>A value against which to compare the time series.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholdValue")]
+        public virtual System.Nullable<double> ThresholdValue { get; set; } 
+
+        /// <summary>The number/percent of time series for which the comparison must hold in order for the condition to
+        /// trigger. If unspecified, then the condition will trigger if the comparison is true for any of the time
+        /// series that have been identified by filter and aggregations, or by the ratio, if denominator_filter and
+        /// denominator_aggregations are specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual Trigger Trigger { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3343,6 +5036,126 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Describes a change made to a configuration.</summary>
+    public class MutationRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>When the change occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutateTime")]
+        public virtual object MutateTime { get; set; } 
+
+        /// <summary>The email address of the user making the change.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutatedBy")]
+        public virtual string MutatedBy { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A NotificationChannel is a medium through which an alert is delivered when a policy violation is
+    /// detected. Examples of channels include email, SMS, and third-party messaging applications. Fields containing
+    /// sensitive information like authentication tokens or contact info are only partially populated on
+    /// retrieval.</summary>
+    public class NotificationChannel : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An optional human-readable description of this notification channel. This description may provide
+        /// additional details, beyond the display name, for the channel. This may not exceeed 1024 Unicode
+        /// characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>An optional human-readable name for this notification channel. It is recommended that you specify a
+        /// non-empty and unique name in order to make it easier to identify the channels in your project, though this
+        /// is not enforced. The display name is limited to 512 Unicode characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Whether notifications are forwarded to the described channel. This makes it possible to disable
+        /// delivery of notifications to a particular channel without removing the channel from all alerting policies
+        /// that reference the channel. This is a more convenient approach when the change is temporary and you want to
+        /// receive notifications from the same set of alerting policies on the channel at some point in the
+        /// future.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>Configuration fields that define the channel and its behavior. The permissible and required labels
+        /// are specified in the NotificationChannelDescriptor.labels of the NotificationChannelDescriptor corresponding
+        /// to the type field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The full REST resource name for this channel. The syntax is:
+        /// projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID] The [CHANNEL_ID] is automatically assigned by the
+        /// server on creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The type of the notification channel. This field matches the value of the
+        /// NotificationChannelDescriptor.type field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>User-supplied key/value data that does not need to conform to the corresponding
+        /// NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for
+        /// organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key
+        /// and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can
+        /// contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
+
+        /// <summary>Indicates whether this channel has been verified or not. On a ListNotificationChannels or
+        /// GetNotificationChannel operation, this field is expected to be populated.If the value is UNVERIFIED, then it
+        /// indicates that the channel is non-functioning (it both requires verification and lacks verification);
+        /// otherwise, it is assumed that the channel works.If the channel is neither VERIFIED nor UNVERIFIED, it
+        /// implies that the channel is of a type that does not require verification or that this specific channel has
+        /// been exempted from verification because it was created prior to verification being required for channels of
+        /// this type.This field cannot be modified using a standard UpdateNotificationChannel operation. To change the
+        /// value of this field, you must call VerifyNotificationChannel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
+        public virtual string VerificationStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A description of a notification channel. The descriptor includes the properties of the channel and the
+    /// set of labels or fields that must be specified to configure channels of a given type.</summary>
+    public class NotificationChannelDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A human-readable description of the notification channel type. The description may include a
+        /// description of the properties of the channel and pointers to external documentation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>A human-readable name for the notification channel type. This form of the name is suitable for a
+        /// user interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The set of labels that must be defined to identify a particular channel of the corresponding type.
+        /// Each label includes a description for how that field should be populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<LabelDescriptor> Labels { get; set; } 
+
+        /// <summary>The full REST resource name for this descriptor. The syntax is:
+        /// projects/[PROJECT_ID]/notificationChannelDescriptors/[TYPE] In the above, [TYPE] is the value of the type
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The tiers that support this notification channel; the project service tier must be one of the
+        /// supported_tiers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedTiers")]
+        public virtual System.Collections.Generic.IList<string> SupportedTiers { get; set; } 
+
+        /// <summary>The type of notification channel, such as "email", "sms", etc. Notification channel types are
+        /// globally unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3410,6 +5223,13 @@ namespace Google.Apis.Monitoring.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The SendNotificationChannelVerificationCode request.</summary>
+    public class SendNotificationChannelVerificationCodeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3546,6 +5366,24 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a
+    /// {count: 1} trigger is used.</summary>
+    public class Trigger : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The absolute number of time series that must fail the predicate for the condition to be
+        /// triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; } 
+
+        /// <summary>The percentage of time series that must fail the predicate for the condition to be
+        /// triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percent")]
+        public virtual System.Nullable<double> Percent { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A protocol buffer message type.</summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3649,7 +5487,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string Name { get; set; } 
 
         /// <summary>How often, in seconds, the uptime check is performed. Currently, the only supported values are 60s
-        /// (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Required.</summary>
+        /// (1 minute), 300s (5 minutes), 600s (10 minutes), and 900s (15 minutes). Optional, defaults to
+        /// 300s.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("period")]
         public virtual object Period { get; set; } 
 
@@ -3695,6 +5534,21 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>A broad region category in which the IP address is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The VerifyNotificationChannel request.</summary>
+    public class VerifyNotificationChannelRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The verification code that was delivered to the channel as a result of invoking the
+        /// SendNotificationChannelVerificationCode API method or that was retrieved from a verified channel via
+        /// GetNotificationChannelVerificationCode. For example, one might have "G-123456" or "TKNZGhhd2EyN3I1MnRnMjRv"
+        /// (in general, one is only guaranteed that the code is valid UTF-8; one should not make any assumptions
+        /// regarding the structure or format of the code).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

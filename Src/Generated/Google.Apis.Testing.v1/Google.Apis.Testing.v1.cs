@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Google Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180305 (1159)
+ *      <tr><th>API Rev<td>20180307 (1161)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1108,6 +1108,11 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("roboDirectives")]
         public virtual System.Collections.Generic.IList<RoboDirective> RoboDirectives { get; set; } 
 
+        /// <summary>A JSON file with a sequence of actions Robo should perform as a prologue for the crawl.
+        /// Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roboScript")]
+        public virtual FileReference RoboScript { get; set; } 
+
         /// <summary>The intents used to launch the app for the crawl. If none are provided, then the main launcher
         /// activity is launched. If some are provided, then only those provided are launched (the main launcher
         /// activity must be provided explicitly).</summary>
@@ -1194,6 +1199,22 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>A string representing this version of the Android OS. Examples: "4.3", "4.4" @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionString")]
         public virtual string VersionString { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An Android package file to install.</summary>
+    public class Apk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The path to an APK to be installed on the device before the test begins. Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual FileReference Location { get; set; } 
+
+        /// <summary>The java package for the APK to be installed. Optional, value is determined by examining the
+        /// application's manifest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1309,6 +1330,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>A reference to an opaque binary blob file</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("obbFile")]
         public virtual ObbFile ObbFile { get; set; } 
+
+        /// <summary>A reference to a regular file</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regularFile")]
+        public virtual RegularFile RegularFile { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1530,6 +1555,31 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>A file or directory to install on the device before the test starts</summary>
+    public class RegularFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual FileReference Content { get; set; } 
+
+        /// <summary>Where to put the content on the device. Must be an absolute, whitelisted path. If the file exists,
+        /// it will be replaced. The following device-side directories and any of their subdirectories are whitelisted:
+        /// ${EXTERNAL_STORAGE}, or /sdcard ${ANDROID_DATA}/local/tmp, or /data/local/tmp Specifying a path outside of
+        /// these directory trees is invalid.
+        ///
+        /// The paths /sdcard and /data will be made available and treated as implicit path substitutions. E.g. if
+        /// /sdcard on a particular device does not map to external storage, the system will replace it with the
+        /// external storage path prefix for that device and copy the file there.
+        ///
+        /// It is strongly advised to use the Environment API in app and test code to access files on the device in a
+        /// portable way. Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("devicePath")]
+        public virtual string DevicePath { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Locations where the results of running the test are stored.</summary>
     public class ResultStorage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1739,6 +1789,11 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>The device will be logged in on this account for the duration of the test. Optional</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual Account Account { get; set; } 
+
+        /// <summary>APKs to install in addition to those being directly tested. Currently capped at 100.
+        /// Optional</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalApks")]
+        public virtual System.Collections.Generic.IList<Apk> AdditionalApks { get; set; } 
 
         /// <summary>List of directories on the device to upload to GCS at the end of the test; they must be absolute
         /// paths under /sdcard or /data/local/tmp. Path names are restricted to characters a-z A-Z 0-9 _ - . + and /

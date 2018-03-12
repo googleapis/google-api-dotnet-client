@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud OS Login API Version v1beta
+ *   Cloud OS Login API Version v1beta
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Google Cloud OS Login API</a>
+ *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20180212 (1138)
+ *      <tr><th>API Rev<td>20180306 (1160)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud OS Login API can be found at
+ * The complete API documentation for using Cloud OS Login API can be found at
  * <a href='https://cloud.google.com/compute/docs/oslogin/rest/'>https://cloud.google.com/compute/docs/oslogin/rest/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.CloudOSLogin.v1beta
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud OS Login API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud OS Login API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

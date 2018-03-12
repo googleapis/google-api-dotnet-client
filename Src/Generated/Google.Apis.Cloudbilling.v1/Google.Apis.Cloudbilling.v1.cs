@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Billing API Version v1
+ *   Cloud Billing API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/billing/'>Google Cloud Billing API</a>
+ *          <td><a href='https://cloud.google.com/billing/'>Cloud Billing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180213 (1139)
+ *      <tr><th>API Rev<td>20180307 (1161)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/billing/'>
  *              https://cloud.google.com/billing/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Billing API can be found at
+ * The complete API documentation for using Cloud Billing API can be found at
  * <a href='https://cloud.google.com/billing/'>https://cloud.google.com/billing/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -107,7 +107,7 @@ namespace Google.Apis.Cloudbilling.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Billing API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Billing API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -399,8 +399,8 @@ namespace Google.Apis.Cloudbilling.v1
 
 
             /// <summary>Lists the projects associated with a billing account. The current authenticated user must have
-            /// the "billing.resourceAssociations.list" IAM permission, which is often given to billing account
-            /// [viewers](https://support.google.com/cloud/answer/4430947).</summary>
+            /// the `billing.resourceAssociations.list` IAM permission, which is often given to billing account
+            /// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).</summary>
             /// <param name="name">The resource name of the billing account associated with the projects that you want to list. For
             /// example, `billingAccounts/012345-567890-ABCDEF`.</param>
             public virtual ListRequest List(string name)
@@ -409,8 +409,8 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
             /// <summary>Lists the projects associated with a billing account. The current authenticated user must have
-            /// the "billing.resourceAssociations.list" IAM permission, which is often given to billing account
-            /// [viewers](https://support.google.com/cloud/answer/4430947).</summary>
+            /// the `billing.resourceAssociations.list` IAM permission, which is often given to billing account
+            /// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).</summary>
             public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.ListProjectBillingInfoResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -493,8 +493,73 @@ namespace Google.Apis.Cloudbilling.v1
             }
         }
 
-        /// <summary>Gets information about a billing account. The current authenticated user must be an [owner of the
-        /// billing account](https://support.google.com/cloud/answer/4430947).</summary>
+        /// <summary>Creates a billing account. This method can only be used to create [billing
+        /// subaccounts](https://cloud.google.com/billing/docs/concepts). When creating a subaccount, the current
+        /// authenticated user must have the `billing.accounts.update` IAM permission on the master account, which is
+        /// typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-
+        /// access).
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a billing account. This method can only be used to create [billing
+        /// subaccounts](https://cloud.google.com/billing/docs/concepts). When creating a subaccount, the current
+        /// authenticated user must have the `billing.accounts.update` IAM permission on the master account, which is
+        /// typically given to billing account [administrators](https://cloud.google.com/billing/docs/how-to/billing-
+        /// access).
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        public class CreateRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.BillingAccount>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudbilling.v1.Data.BillingAccount body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Cloudbilling.v1.Data.BillingAccount Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/billingAccounts"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
+        }
+
+        /// <summary>Gets information about a billing account. The current authenticated user must be a [viewer of the
+        /// billing account](https://cloud.google.com/billing/docs/how-to/billing-access).</summary>
         /// <param name="name">The resource name of the billing account to retrieve. For example,
         /// `billingAccounts/012345-567890-ABCDEF`.</param>
         public virtual GetRequest Get(string name)
@@ -502,8 +567,8 @@ namespace Google.Apis.Cloudbilling.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Gets information about a billing account. The current authenticated user must be an [owner of the
-        /// billing account](https://support.google.com/cloud/answer/4430947).</summary>
+        /// <summary>Gets information about a billing account. The current authenticated user must be a [viewer of the
+        /// billing account](https://cloud.google.com/billing/docs/how-to/billing-access).</summary>
         public class GetRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.BillingAccount>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -557,15 +622,85 @@ namespace Google.Apis.Cloudbilling.v1
 
         }
 
-        /// <summary>Lists the billing accounts that the current authenticated user
-        /// [owns](https://support.google.com/cloud/answer/4430947).</summary>
+        /// <summary>Gets the access control policy for a billing account. The caller must have the
+        /// `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account
+        /// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+        {
+            return new GetIamPolicyRequest(service, resource);
+        }
+
+        /// <summary>Gets the access control policy for a billing account. The caller must have the
+        /// `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account
+        /// [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        public class GetIamPolicyRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new GetIamPolicy request.</summary>
+            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource)
+                : base(service)
+            {
+                Resource = resource;
+                InitParameters();
+            }
+
+
+            /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation documentation
+            /// for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resource}:getIamPolicy"; }
+            }
+
+            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the billing accounts that the current authenticated user has permission to
+        /// [view](https://cloud.google.com/billing/docs/how-to/billing-access).</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists the billing accounts that the current authenticated user
-        /// [owns](https://support.google.com/cloud/answer/4430947).</summary>
+        /// <summary>Lists the billing accounts that the current authenticated user has permission to
+        /// [view](https://cloud.google.com/billing/docs/how-to/billing-access).</summary>
         public class ListRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.ListBillingAccountsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -575,6 +710,15 @@ namespace Google.Apis.Cloudbilling.v1
                 InitParameters();
             }
 
+
+            /// <summary>Options for how to filter the returned billing accounts. Currently this only supports filtering
+            /// for [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided reseller
+            /// billing account. (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean algebra
+            /// and other fields are not currently supported.
+            ///
+            /// > This field is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
             /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
             /// returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is
@@ -611,6 +755,15 @@ namespace Google.Apis.Cloudbilling.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -627,6 +780,253 @@ namespace Google.Apis.Cloudbilling.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates a billing account's fields. Currently the only field that can be edited is `display_name`.
+        /// The current authenticated user must have the `billing.accounts.update` IAM permission, which is typically
+        /// given to the [administrator](https://cloud.google.com/billing/docs/how-to/billing-access) of the billing
+        /// account.
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The name of the billing account resource to be updated.</param>
+        public virtual PatchRequest Patch(Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>Updates a billing account's fields. Currently the only field that can be edited is `display_name`.
+        /// The current authenticated user must have the `billing.accounts.update` IAM permission, which is typically
+        /// given to the [administrator](https://cloud.google.com/billing/docs/how-to/billing-access) of the billing
+        /// account.
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        public class PatchRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.BillingAccount>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudbilling.v1.Data.BillingAccount body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the billing account resource to be updated.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>The update mask applied to the resource. Only "display_name" is currently supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Cloudbilling.v1.Data.BillingAccount Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                RequestParameters.Add(
+                    "updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the access control policy for a billing account. Replaces any existing policy. The caller must
+        /// have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account
+        /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Cloudbilling.v1.Data.SetIamPolicyRequest body, string resource)
+        {
+            return new SetIamPolicyRequest(service, body, resource);
+        }
+
+        /// <summary>Sets the access control policy for a billing account. Replaces any existing policy. The caller must
+        /// have the `billing.accounts.setIamPolicy` permission on the account, which is often given to billing account
+        /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access).
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        public class SetIamPolicyRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.Policy>
+        {
+            /// <summary>Constructs a new SetIamPolicy request.</summary>
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudbilling.v1.Data.SetIamPolicyRequest body, string resource)
+                : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation documentation
+            /// for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Cloudbilling.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setIamPolicy"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resource}:setIamPolicy"; }
+            }
+
+            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Tests the access control policy for a billing account. This method takes the resource and a set of
+        /// permissions as input and returns the subset of the input permissions that the caller is allowed for that
+        /// resource.
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+        /// documentation for the appropriate value for this field.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Cloudbilling.v1.Data.TestIamPermissionsRequest body, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, resource);
+        }
+
+        /// <summary>Tests the access control policy for a billing account. This method takes the resource and a set of
+        /// permissions as input and returns the subset of the input permissions that the caller is allowed for that
+        /// resource.
+        ///
+        /// > This method is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        public class TestIamPermissionsRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.TestIamPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Cloudbilling.v1.Data.TestIamPermissionsRequest body, string resource)
+                : base(service)
+            {
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the operation
+            /// documentation for the appropriate value for this field.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Cloudbilling.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+resource}:testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^billingAccounts/[^/]+$",
                     });
             }
 
@@ -719,13 +1119,13 @@ namespace Google.Apis.Cloudbilling.v1
         /// charges for resource usage. If the project already had a billing account, this method changes the billing
         /// account used for resource usage charges.
         ///
-        /// *Note:* Incurred charges that have not yet been reported in the transaction history of the Google Cloud
-        /// Console may be billed to the new billing account, even if the charge occurred before the new billing account
-        /// was assigned to the project.
+        /// *Note:* Incurred charges that have not yet been reported in the transaction history of the GCP Console might
+        /// be billed to the new billing account, even if the charge occurred before the new billing account was
+        /// assigned to the project.
         ///
         /// The current authenticated user must have ownership privileges for both the
         /// [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ) and the [billing
-        /// account](https://support.google.com/cloud/answer/4430947).
+        /// account](https://cloud.google.com/billing/docs/how-to/billing-access).
         ///
         /// You can disable billing on the project by setting the `billing_account_name` field to empty. This action
         /// disassociates the current billing account from the project. Any billable activity of your in-use services
@@ -750,13 +1150,13 @@ namespace Google.Apis.Cloudbilling.v1
         /// charges for resource usage. If the project already had a billing account, this method changes the billing
         /// account used for resource usage charges.
         ///
-        /// *Note:* Incurred charges that have not yet been reported in the transaction history of the Google Cloud
-        /// Console may be billed to the new billing account, even if the charge occurred before the new billing account
-        /// was assigned to the project.
+        /// *Note:* Incurred charges that have not yet been reported in the transaction history of the GCP Console might
+        /// be billed to the new billing account, even if the charge occurred before the new billing account was
+        /// assigned to the project.
         ///
         /// The current authenticated user must have ownership privileges for both the
         /// [project](https://cloud.google.com/docs/permissions-overview#h.bgs0oxofvnoo ) and the [billing
-        /// account](https://support.google.com/cloud/answer/4430947).
+        /// account](https://cloud.google.com/billing/docs/how-to/billing-access).
         ///
         /// You can disable billing on the project by setting the `billing_account_name` field to empty. This action
         /// disassociates the current billing account from the project. Any billable activity of your in-use services
@@ -1099,14 +1499,76 @@ namespace Google.Apis.Cloudbilling.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A billing account in [Google Cloud Console](https://console.cloud.google.com/). You can assign a
-    /// billing account to one or more projects.</summary>
+    /// <summary>Specifies the audit configuration for a service. The configuration determines which permission types
+    /// are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more
+    /// AuditLogConfigs.
+    ///
+    /// If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is
+    /// used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted.
+    ///
+    /// Example Policy with multiple AuditConfigs:
+    ///
+    /// { "audit_configs": [ { "service": "allServices" "audit_log_configs": [ { "log_type": "DATA_READ",
+    /// "exempted_members": [ "user:foo@gmail.com" ] }, { "log_type": "DATA_WRITE", }, { "log_type": "ADMIN_READ", } ]
+    /// }, { "service": "fooservice.googleapis.com" "audit_log_configs": [ { "log_type": "DATA_READ", }, { "log_type":
+    /// "DATA_WRITE", "exempted_members": [ "user:bar@gmail.com" ] } ] } ] }
+    ///
+    /// For fooservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts foo@gmail.com
+    /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
+    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for logging of each type of permission. Next ID: 4</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
+
+        /// <summary>Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Provides the configuration for logging a type of permissions. Example:
+    ///
+    /// { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:foo@gmail.com" ] }, {
+    /// "log_type": "DATA_WRITE", } ] }
+    ///
+    /// This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting foo@gmail.com from DATA_READ
+    /// logging.</summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities that do not cause logging for this type of permission. Follows the same
+        /// format of Binding.members.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; } 
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A billing account in [GCP Console](https://console.cloud.google.com/). You can assign a billing account
+    /// to one or more projects.</summary>
     public class BillingAccount : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The display name given to the billing account, such as `My Billing Account`. This name is displayed
-        /// in the Google Cloud Console.</summary>
+        /// in the GCP Console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
+
+        /// <summary>If this account is a [subaccount](https://cloud.google.com/billing/docs/concepts), then this will
+        /// be the resource name of the master billing account that it is being resold through. Otherwise this will be
+        /// empty.
+        ///
+        /// > This field is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterBillingAccount")]
+        public virtual string MasterBillingAccount { get; set; } 
 
         /// <summary>The resource name of the billing account. The resource name has the form
         /// `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` would be the
@@ -1119,6 +1581,42 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// to use paid services.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("open")]
         public virtual System.Nullable<bool> Open { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Associates `members` with a `role`.</summary>
+    public class Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the identities requesting access for a Cloud Platform resource. `members` can have the
+        /// following values:
+        ///
+        /// * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google
+        /// account.
+        ///
+        /// * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google
+        /// account or a service account.
+        ///
+        /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
+        /// `alice@gmail.com` or `joe@example.com`.
+        ///
+        /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
+        /// app@appspot.gserviceaccount.com`.
+        ///
+        /// * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`.
+        ///
+        /// * `domain:{domain}`: A Google Apps domain name that represents all the users of that domain. For example,
+        /// `google.com` or `example.com`.
+        ///
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; } 
+
+        /// <summary>Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
+        /// Required</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1242,6 +1740,49 @@ namespace Google.Apis.Cloudbilling.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
+    /// for Cloud Platform resources.
+    ///
+    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
+    /// permissions defined by IAM.
+    ///
+    /// **Example**
+    ///
+    /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// For a description of IAM and its features, see the [IAM developer's
+    /// guide](https://cloud.google.com/iam/docs).</summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; } 
+
+        /// <summary>Associates a list of `members` to a `role`. `bindings` with no members will result in an
+        /// error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>`etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of
+        /// a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy.
+        ///
+        /// If no `etag` is provided in the call to `setIamPolicy`, then the existing policy is overwritten
+        /// blindly.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>Deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; } 
+
+    }    
+
     /// <summary>Expresses a mathematical pricing formula. For Example:-
     ///
     /// `usage_unit: GBy` `tiered_rates:` `[start_usage_amount: 20, unit_price: $10]` `[start_usage_amount: 100,
@@ -1325,7 +1866,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Encapsulation of billing information for a Cloud Console project. A project has at most one associated
+    /// <summary>Encapsulation of billing information for a GCP Console project. A project has at most one associated
     /// billing account at a time (but a billing account can be assigned to multiple projects).</summary>
     public class ProjectBillingInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1375,6 +1916,25 @@ namespace Google.Apis.Cloudbilling.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request message for `SetIamPolicy` method.</summary>
+    public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to
+        /// a few 10s of KB. An empty policy is a valid policy but certain Cloud Platform services (such as Projects)
+        /// might reject them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; } 
+
+        /// <summary>OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask
+        /// will be modified. If no mask is provided, the following default mask is used: paths: "bindings, etag" This
+        /// field is only used by Cloud IAM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Encapsulates a single SKU in Google Cloud Platform</summary>
     public class Sku : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1407,6 +1967,30 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>The identifier for the SKU. Example: "AA95-CD31-42FE"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuId")]
         public virtual string SkuId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request message for `TestIamPermissions` method.</summary>
+    public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of permissions to check for the `resource`. Permissions with wildcards (such as '*' or
+        /// 'storage.*') are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for `TestIamPermissions` method.</summary>
+    public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

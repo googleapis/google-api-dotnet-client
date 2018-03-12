@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>DLP API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180227 (1153)
+ *      <tr><th>API Rev<td>20180308 (1162)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1905,15 +1905,15 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional page token to continue retrieval. Comes from previous call to
-                /// `ListDeidentifyTemplates`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
                 /// size 100.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional page token to continue retrieval. Comes from previous call to
+                /// `ListDeidentifyTemplates`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1949,18 +1949,18 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2739,15 +2739,15 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListInspectTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2783,18 +2783,18 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4384,6 +4384,10 @@ namespace Google.Apis.DLP.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
         public virtual System.Nullable<long> BucketSize { get; set; } 
 
+        /// <summary>Total number of distinct values in this bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
+        public virtual System.Nullable<long> BucketValueCount { get; set; } 
+
         /// <summary>Sample of value frequencies in this bucket. The total number of values returned per bucket is
         /// capped at 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
@@ -5643,6 +5647,10 @@ namespace Google.Apis.DLP.v2beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
         public virtual System.Nullable<long> BucketSize { get; set; } 
 
+        /// <summary>Total number of distinct equivalence classes in this bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
+        public virtual System.Nullable<long> BucketValueCount { get; set; } 
+
         /// <summary>Sample of equivalence classes in this bucket. The total number of classes returned per bucket is
         /// capped at 20.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
@@ -5706,6 +5714,10 @@ namespace Google.Apis.DLP.v2beta2.Data
         /// <summary>Number of records within these anonymity bounds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
         public virtual System.Nullable<long> BucketSize { get; set; } 
+
+        /// <summary>Total number of distinct quasi-identifier tuple values in this bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
+        public virtual System.Nullable<long> BucketValueCount { get; set; } 
 
         /// <summary>Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per
         /// bucket is capped at 20.</summary>
@@ -5851,6 +5863,10 @@ namespace Google.Apis.DLP.v2beta2.Data
         /// <summary>Total number of equivalence classes in this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
         public virtual System.Nullable<long> BucketSize { get; set; } 
+
+        /// <summary>Total number of distinct equivalence classes in this bucket.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucketValueCount")]
+        public virtual System.Nullable<long> BucketValueCount { get; set; } 
 
         /// <summary>Sample of equivalence classes in this bucket. The total number of classes returned per bucket is
         /// capped at 20.</summary>

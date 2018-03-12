@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dataproc/'>Google Cloud Dataproc API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180227 (1153)
+ *      <tr><th>API Rev<td>20180306 (1160)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dataproc/'>
  *              https://cloud.google.com/dataproc/</a>
@@ -82,7 +82,7 @@ namespace Google.Apis.Dataproc.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://dataproc.googleapis.com/"; }
+            get { return "https://content-dataproc.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -95,7 +95,7 @@ namespace Google.Apis.Dataproc.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://dataproc.googleapis.com/batch"; }
+            get { return "https://content-dataproc.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
@@ -549,6 +549,11 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
+                    /// if cluster with specified UUID does not exist.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterUuid { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// DeleteClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -558,11 +563,6 @@ namespace Google.Apis.Dataproc.v1
                     /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
-
-                    /// <summary>Optional. Specifying the cluster_uuid means the RPC should fail (with error NOT_FOUND)
-                    /// if cluster with specified UUID does not exist.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterUuid", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterUuid { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -616,18 +616,18 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "requestId", new Google.Apis.Discovery.Parameter
+                            "clusterUuid", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "requestId",
+                                Name = "clusterUuid",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "clusterUuid", new Google.Apis.Discovery.Parameter
+                            "requestId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "clusterUuid",
+                                Name = "requestId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -997,6 +997,14 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("clusterName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string ClusterName { get; private set; }
 
+                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
+                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
+                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
+                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
+                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object GracefulDecommissionTimeout { get; set; }
+
                     /// <summary>Optional. A unique id used to identify the request. If the server receives two
                     /// UpdateClusterRequest requests with the same id, then the second request will be ignored and the
                     /// first google.longrunning.Operation created and stored in the backend is returned.It is
@@ -1019,14 +1027,6 @@ namespace Google.Apis.Dataproc.v1
                     /// config.secondary_worker_config.num_instances  Resize secondary worker group      </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Optional. Timeout for graceful YARN decomissioning. Graceful decommissioning allows
-                    /// removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how
-                    /// long to wait for jobs in progress to finish before forcefully removing nodes (and potentially
-                    /// interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed
-                    /// timeout is 1 day.Only supported on Dataproc image versions 1.2 and higher.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("gracefulDecommissionTimeout", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object GracefulDecommissionTimeout { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1086,6 +1086,15 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "gracefulDecommissionTimeout",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "requestId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "requestId",
@@ -1098,15 +1107,6 @@ namespace Google.Apis.Dataproc.v1
                             "updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "gracefulDecommissionTimeout", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "gracefulDecommissionTimeout",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2054,10 +2054,6 @@ namespace Google.Apis.Dataproc.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The standard list filter.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
                     /// <summary>The standard list page token.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2065,6 +2061,10 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>The standard list page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2100,15 +2100,6 @@ namespace Google.Apis.Dataproc.v1
                                 Pattern = @"^projects/[^/]+/regions/[^/]+/operations$",
                             });
                         RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2121,6 +2112,15 @@ namespace Google.Apis.Dataproc.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2146,7 +2146,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<int> AcceleratorCount { get; set; } 
 
         /// <summary>Full URL, partial URI, or short name of the accelerator type resource to expose to this instance.
-        /// See Google Compute Engine AcceleratorTypes.Examples:
+        /// See Compute Engine AcceleratorTypes.Examples:
         /// https://www.googleapis.com/compute/beta/projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-
         /// tesla-k80 projects/[project_id]/zones/us-east1-a/acceleratorTypes/nvidia-tesla-k80 nvidia-
         /// tesla-k80</summary>
@@ -2164,7 +2164,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Describes the identifying information, config, and status of a cluster of Google Compute Engine
+    /// <summary>Describes the identifying information, config, and status of a cluster of Compute Engine
     /// instances.</summary>
     public class Cluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2214,16 +2214,14 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>The cluster config.</summary>
     public class ClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. A Google Cloud Storage staging bucket used for sharing generated SSH keys and config. If
-        /// you do not specify a staging bucket, Cloud Dataproc will determine an appropriate Cloud Storage location
-        /// (US, ASIA, or EU) for your cluster's staging bucket according to the Google Compute Engine zone where your
-        /// cluster is deployed, and then it will create and manage this project-level, per-location bucket for
-        /// you.</summary>
+        /// <summary>Optional. A Cloud Storage staging bucket used for sharing generated SSH keys and config. If you do
+        /// not specify a staging bucket, Cloud Dataproc will determine an appropriate Cloud Storage location (US, ASIA,
+        /// or EU) for your cluster's staging bucket according to the Google Compute Engine zone where your cluster is
+        /// deployed, and then it will create and manage this project-level, per-location bucket for you.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBucket")]
         public virtual string ConfigBucket { get; set; } 
 
-        /// <summary>Required. The shared Google Compute Engine config settings for all instances in a
-        /// cluster.</summary>
+        /// <summary>Required. The shared Compute Engine config settings for all instances in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gceClusterConfig")]
         public virtual GceClusterConfig GceClusterConfig { get; set; } 
 
@@ -2235,11 +2233,11 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("initializationActions")]
         public virtual System.Collections.Generic.IList<NodeInitializationAction> InitializationActions { get; set; } 
 
-        /// <summary>Optional. The Google Compute Engine config settings for the master instance in a cluster.</summary>
+        /// <summary>Optional. The Compute Engine config settings for the master instance in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterConfig")]
         public virtual InstanceGroupConfig MasterConfig { get; set; } 
 
-        /// <summary>Optional. The Google Compute Engine config settings for additional worker instances in a
+        /// <summary>Optional. The Compute Engine config settings for additional worker instances in a
         /// cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryWorkerConfig")]
         public virtual InstanceGroupConfig SecondaryWorkerConfig { get; set; } 
@@ -2248,7 +2246,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; } 
 
-        /// <summary>Optional. The Google Compute Engine config settings for worker instances in a cluster.</summary>
+        /// <summary>Optional. The Compute Engine config settings for worker instances in a cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerConfig")]
         public virtual InstanceGroupConfig WorkerConfig { get; set; } 
 
@@ -2404,8 +2402,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Common config settings for resources of Google Compute Engine cluster instances, applicable to all
-    /// instances in the cluster.</summary>
+    /// <summary>Common config settings for resources of Compute Engine cluster instances, applicable to all instances
+    /// in the cluster.</summary>
     public class GceClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. If true, all instances in the cluster will only have internal IP addresses. By default,
@@ -2415,23 +2413,23 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("internalIpOnly")]
         public virtual System.Nullable<bool> InternalIpOnly { get; set; } 
 
-        /// <summary>The Google Compute Engine metadata entries to add to all instances (see Project and instance
-        /// metadata (https://cloud.google.com/compute/docs/storing-retrieving-
+        /// <summary>The Compute Engine metadata entries to add to all instances (see Project and instance metadata
+        /// (https://cloud.google.com/compute/docs/storing-retrieving-
         /// metadata#project_and_instance_metadata)).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string,string> Metadata { get; set; } 
 
-        /// <summary>Optional. The Google Compute Engine network to be used for machine communications. Cannot be
-        /// specified with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network
-        /// of the project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks for more
+        /// <summary>Optional. The Compute Engine network to be used for machine communications. Cannot be specified
+        /// with subnetwork_uri. If neither network_uri nor subnetwork_uri is specified, the "default" network of the
+        /// project is used, if it exists. Cannot be a "Custom Subnet Network" (see Using Subnetworks for more
         /// information).A full URL, partial URI, or short name are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default
         /// projects/[project_id]/regions/global/default default</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; } 
 
-        /// <summary>Optional. The service account of the instances. Defaults to the default Google Compute Engine
-        /// service account. Custom service accounts need permissions equivalent to the folloing IAM roles:
+        /// <summary>Optional. The service account of the instances. Defaults to the default Compute Engine service
+        /// account. Custom service accounts need permissions equivalent to the folloing IAM roles:
         /// roles/logging.logWriter roles/storage.objectAdmin(see https://cloud.google.com/compute/docs/access/service-
         /// accounts#custom_service_accounts for more information). Example:
         /// [account_id]@[project_id].iam.gserviceaccount.com</summary>
@@ -2447,20 +2445,20 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
         public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; } 
 
-        /// <summary>Optional. The Google Compute Engine subnetwork to be used for machine communications. Cannot be
-        /// specified with network_uri.A full URL, partial URI, or short name are valid. Examples:
+        /// <summary>Optional. The Compute Engine subnetwork to be used for machine communications. Cannot be specified
+        /// with network_uri.A full URL, partial URI, or short name are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/regions/us-east1/sub0
         /// projects/[project_id]/regions/us-east1/sub0 sub0</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworkUri")]
         public virtual string SubnetworkUri { get; set; } 
 
-        /// <summary>The Google Compute Engine tags to add to all instances (see Tagging instances).</summary>
+        /// <summary>The Compute Engine tags to add to all instances (see Tagging instances).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
-        /// <summary>Optional. The zone where the Google Compute Engine cluster will be located. On a create request, it
-        /// is required in the "global" region. If omitted in a non-global Cloud Dataproc region, the service will pick
-        /// a zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL,
+        /// <summary>Optional. The zone where the Compute Engine cluster will be located. On a create request, it is
+        /// required in the "global" region. If omitted in a non-global Cloud Dataproc region, the service will pick a
+        /// zone in the corresponding Compute Engine region. On a get request, zone will always be present.A full URL,
         /// partial URI, or short name are valid. Examples:
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone]
         /// us-central1-f</summary>
@@ -2557,12 +2555,12 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Optional. The config settings for Google Compute Engine resources in an instance group, such as a
-    /// master or worker group.</summary>
+    /// <summary>Optional. The config settings for Compute Engine resources in an instance group, such as a master or
+    /// worker group.</summary>
     public class InstanceGroupConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The Google Compute Engine accelerator configuration for these instances.Beta Feature:
-        /// This feature is still under development. It may be changed before final release.</summary>
+        /// <summary>Optional. The Compute Engine accelerator configuration for these instances.Beta Feature: This
+        /// feature is still under development. It may be changed before final release.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> Accelerators { get; set; } 
 
@@ -2570,7 +2568,7 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskConfig")]
         public virtual DiskConfig DiskConfig { get; set; } 
 
-        /// <summary>Output only. The Google Compute Engine image resource used for cluster instances. Inferred from
+        /// <summary>Output only. The Compute Engine image resource used for cluster instances. Inferred from
         /// SoftwareConfig.image_version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; } 
@@ -2585,15 +2583,15 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isPreemptible")]
         public virtual System.Nullable<bool> IsPreemptible { get; set; } 
 
-        /// <summary>Optional. The Google Compute Engine machine type used for cluster instances.A full URL, partial
-        /// URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones
-        /// /us-east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
+        /// <summary>Optional. The Compute Engine machine type used for cluster instances.A full URL, partial URI, or
+        /// short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/us-
+        /// east1-a/machineTypes/n1-standard-2 projects/[project_id]/zones/us-east1-a/machineTypes/n1-standard-2
         /// n1-standard-2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypeUri")]
         public virtual string MachineTypeUri { get; set; } 
 
-        /// <summary>Output only. The config for Google Compute Engine Instance Group Manager that manages this group.
-        /// This is only used for preemptible instance groups.</summary>
+        /// <summary>Output only. The config for Compute Engine Instance Group Manager that manages this group. This is
+        /// only used for preemptible instance groups.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedGroupConfig")]
         public virtual ManagedGroupConfig ManagedGroupConfig { get; set; } 
 
@@ -2831,7 +2829,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// completion.</summary>
     public class NodeInitializationAction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Google Cloud Storage URI of executable file.</summary>
+        /// <summary>Required. Cloud Storage URI of executable file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executableFile")]
         public virtual string ExecutableFile { get; set; } 
 
