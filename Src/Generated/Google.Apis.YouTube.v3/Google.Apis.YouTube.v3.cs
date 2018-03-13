@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180205 (1131)
+ *      <tr><th>API Rev<td>20180308 (1162)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -13170,6 +13170,9 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startWithSlate")]
         public virtual System.Nullable<bool> StartWithSlate { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("stereoLayout")]
+        public virtual string StereoLayout { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -14857,6 +14860,10 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The id of the channel being sponsored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
         public virtual string ChannelId { get; set; } 
+
+        /// <summary>The cumulative time a user has been a sponsor in months.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cumulativeDurationMonths")]
+        public virtual System.Nullable<int> CumulativeDurationMonths { get; set; } 
 
         /// <summary>Details about the sponsor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sponsorDetails")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20171211 (1075)
+ *      <tr><th>API Rev<td>20180309 (1163)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -9650,7 +9650,7 @@ namespace Google.Apis.Analytics.v3
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "provisioning/createAccount"; }
+                get { return "provisioning/createAccountTree"; }
             }
 
             /// <summary>Initializes CreateAccountTree parameter list.</summary>

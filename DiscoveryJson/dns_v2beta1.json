@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/au1gYnmtYu2zvRChX832O9wl9hk\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/ny0i9cWEjUVfIjcSyB67BjMjFQE\"",
  "discoveryVersion": "v1",
  "id": "dns:v2beta1",
  "name": "dns",
  "version": "v2beta1",
- "revision": "20180301",
+ "revision": "20180309",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -367,6 +367,13 @@
      "type": "string",
      "description": "Identifies what kind of resource this is. Value: the fixed string \"dns#managedZone\".",
      "default": "dns#managedZone"
+    },
+    "labels": {
+     "type": "object",
+     "description": "User labels.",
+     "additionalProperties": {
+      "type": "string"
+     }
     },
     "name": {
      "type": "string",

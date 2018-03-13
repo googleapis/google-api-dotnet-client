@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/o3DGRejYlQONYxz9qTIt_cgX6AA\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/pZyXISvfodVzorQpGHmIl5L61w8\"",
  "discoveryVersion": "v1",
  "id": "analytics:v3",
  "name": "analytics",
  "version": "v3",
- "revision": "20171211",
+ "revision": "20180309",
  "title": "Google Analytics API",
  "description": "Views and manages your Google Analytics data.",
  "ownerDomain": "google.com",
@@ -7351,7 +7351,7 @@
     },
     "createAccountTree": {
      "id": "analytics.provisioning.createAccountTree",
-     "path": "provisioning/createAccount",
+     "path": "provisioning/createAccountTree",
      "httpMethod": "POST",
      "description": "Provision account.",
      "request": {

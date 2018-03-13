@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20180306 (1160)
+ *      <tr><th>API Rev<td>20180309 (1163)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -731,23 +731,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
-
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                public enum ResponseDateTimeRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
-                }
-
                 /// <summary>Determines if the update response should include the values of the cells that were
                 /// appended. By default, responses do not include the updated values.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
@@ -796,6 +779,23 @@ namespace Google.Apis.Sheets.v4
                     RAW,
                     [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
                     USERENTERED,
+                }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                public enum ResponseDateTimeRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
+                    SERIALNUMBER,
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
+                    FORMATTEDSTRING,
                 }
 
 
@@ -847,15 +847,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseDateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "includeValuesInResponse", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeValuesInResponse",
@@ -886,6 +877,15 @@ namespace Google.Apis.Sheets.v4
                         "valueInputOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueInputOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "responseDateTimeRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1532,29 +1532,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
-
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                public enum MajorDimensionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
-                    DIMENSIONUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("ROWS")]
-                    ROWS,
-                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
-                    COLUMNS,
-                }
-
                 /// <summary>How values should be represented in the output. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -1587,6 +1564,29 @@ namespace Google.Apis.Sheets.v4
                     SERIALNUMBER,
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING,
+                }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                public enum MajorDimensionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
+                    DIMENSIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("ROWS")]
+                    ROWS,
+                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
+                    COLUMNS,
                 }
 
 
@@ -1632,15 +1632,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "valueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueRenderOption",
@@ -1653,6 +1644,15 @@ namespace Google.Apis.Sheets.v4
                         "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "majorDimension", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "majorDimension",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1696,23 +1696,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
-
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                public enum ResponseDateTimeRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
-                }
-
                 /// <summary>Determines if the update response should include the values of the cells that were updated.
                 /// By default, responses do not include the updated values. If the range to write was larger than than
                 /// the range actually written, the response will include all values in the requested range (excluding
@@ -1750,6 +1733,23 @@ namespace Google.Apis.Sheets.v4
                     RAW,
                     [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
                     USERENTERED,
+                }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                public enum ResponseDateTimeRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
+                    SERIALNUMBER,
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
+                    FORMATTEDSTRING,
                 }
 
 
@@ -1801,15 +1801,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseDateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "includeValuesInResponse", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeValuesInResponse",
@@ -1831,6 +1822,15 @@ namespace Google.Apis.Sheets.v4
                         "valueInputOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueInputOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "responseDateTimeRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2635,8 +2635,8 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual System.Collections.Generic.IList<BasicChartSeries> Series { get; set; } 
 
-        /// <summary>The stacked type for charts that support vertical stacking. Applies to Area, Bar, Column, and
-        /// Stepped Area charts.</summary>
+        /// <summary>The stacked type for charts that support vertical stacking. Applies to Area, Bar, Column, Combo,
+        /// and Stepped Area charts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stackedType")]
         public virtual string StackedType { get; set; } 
 
@@ -3397,6 +3397,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The title text position. This field is optional.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titleTextPosition")]
         public virtual TextPosition TitleTextPosition { get; set; } 
+
+        /// <summary>A treemap chart specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treemapChart")]
+        public virtual TreemapChartSpec TreemapChart { get; set; } 
 
         /// <summary>A waterfall chart specification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("waterfallChart")]
@@ -5892,6 +5896,106 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The source data range.  This must span exactly one column.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual GridRange Source { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A color scale for a treemap chart.</summary>
+    public class TreemapChartColorScale : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The background color for cells with a color value greater than or equal to maxValue. Defaults to
+        /// #109618 if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValueColor")]
+        public virtual Color MaxValueColor { get; set; } 
+
+        /// <summary>The background color for cells with a color value at the midpoint between minValue and maxValue.
+        /// Defaults to #efe6dc if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("midValueColor")]
+        public virtual Color MidValueColor { get; set; } 
+
+        /// <summary>The background color for cells with a color value less than or equal to minValue. Defaults to
+        /// #dc3912 if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValueColor")]
+        public virtual Color MinValueColor { get; set; } 
+
+        /// <summary>The background color for cells that have no color data associated with them. Defaults to #000000 if
+        /// not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noDataColor")]
+        public virtual Color NoDataColor { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A Treemap chart.</summary>
+    public class TreemapChartSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The data that determines the background color of each treemap data cell. This field is optional. If
+        /// not specified, size_data will be used to determine background colors. If specified, the data is expected to
+        /// be numeric. color_scale will determine how the values in this data map to data cell background
+        /// colors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorData")]
+        public virtual ChartData ColorData { get; set; } 
+
+        /// <summary>The color scale for data cells in the treemap chart. Data cells are assigned colors based on their
+        /// color values. These color values come from color_data, or from size_data if color_data is not specified.
+        /// Cells with color values less than or equal to min_value will have minValueColor as their background color.
+        /// Cells with color values greater than or equal to max_value will have maxValueColor as their background
+        /// color. Cells with color values between min_value and max_value will have background colors on a gradient
+        /// between minValueColor and maxValueColor, the midpoint of the gradient being midValueColor. Cells with
+        /// missing or non-numeric color values will have noDataColor as their background color.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("colorScale")]
+        public virtual TreemapChartColorScale ColorScale { get; set; } 
+
+        /// <summary>The background color for header cells.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headerColor")]
+        public virtual Color HeaderColor { get; set; } 
+
+        /// <summary>True to hide tooltips.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hideTooltips")]
+        public virtual System.Nullable<bool> HideTooltips { get; set; } 
+
+        /// <summary>The number of additional data levels beyond the labeled levels to be shown on the treemap chart.
+        /// These levels are not interactive and are shown without their labels. Defaults to 0 if not
+        /// specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hintedLevels")]
+        public virtual System.Nullable<int> HintedLevels { get; set; } 
+
+        /// <summary>The data that contains the treemap cell labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual ChartData Labels { get; set; } 
+
+        /// <summary>The number of data levels to show on the treemap chart. These levels are interactive and are shown
+        /// with their labels. Defaults to 2 if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("levels")]
+        public virtual System.Nullable<int> Levels { get; set; } 
+
+        /// <summary>The maximum possible data value. Cells with values greater than this will have the same color as
+        /// cells with this value. If not specified, defaults to the actual maximum value from color_data, or the
+        /// maximum value from size_data if color_data is not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
+        public virtual System.Nullable<double> MaxValue { get; set; } 
+
+        /// <summary>The minimum possible data value. Cells with values less than this will have the same color as cells
+        /// with this value. If not specified, defaults to the actual minimum value from color_data, or the minimum
+        /// value from size_data if color_data is not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
+        public virtual System.Nullable<double> MinValue { get; set; } 
+
+        /// <summary>The data the contains the treemap cells' parent labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentLabels")]
+        public virtual ChartData ParentLabels { get; set; } 
+
+        /// <summary>The data that determines the size of each treemap data cell. This data is expected to be numeric.
+        /// The cells corresponding to non-numeric or missing data will not be rendered. If color_data is not specified,
+        /// this data will be used to determine data cell background colors as well.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeData")]
+        public virtual ChartData SizeData { get; set; } 
+
+        /// <summary>The text format for all labels on the chart.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textFormat")]
+        public virtual TextFormat TextFormat { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

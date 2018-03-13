@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/4RE3yZ8G6hkc4zQ8l8vwLojqIsk\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/-ZA6uS3KXkDeiPcCXgXN_f_GBAw\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20180205",
+ "revision": "20180308",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -4037,6 +4037,19 @@
        "youtube.liveBroadcasts.update"
       ]
      }
+    },
+    "stereoLayout": {
+     "type": "string",
+     "enum": [
+      "left_right",
+      "mono",
+      "top_bottom"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ]
     }
    }
   },
@@ -5841,6 +5854,11 @@
     "channelId": {
      "type": "string",
      "description": "The id of the channel being sponsored."
+    },
+    "cumulativeDurationMonths": {
+     "type": "integer",
+     "description": "The cumulative time a user has been a sponsor in months.",
+     "format": "int32"
     },
     "sponsorDetails": {
      "$ref": "ChannelProfileDetails",

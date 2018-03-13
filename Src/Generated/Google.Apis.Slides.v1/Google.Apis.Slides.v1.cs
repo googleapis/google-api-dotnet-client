@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180306 (1160)
+ *      <tr><th>API Rev<td>20180307 (1161)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -4096,8 +4096,8 @@ namespace Google.Apis.Slides.v1.Data
         public virtual System.Nullable<bool> AutoPlay { get; set; } 
 
         /// <summary>The time at which to end playback, measured in seconds from the beginning of the video. If set, the
-        /// end time should be after the start time. If not set or if you set this to a value that exceeds the video
-        /// duration, the video will be played until its end.</summary>
+        /// end time should be after the start time. If not set or if you set this to a value that exceeds the video's
+        /// length, the video will be played until its end.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("end")]
         public virtual System.Nullable<long> End { get; set; } 
 
