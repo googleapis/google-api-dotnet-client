@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180309 (1163)
+ *      <tr><th>API Rev<td>20180312 (1166)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>
@@ -83,7 +83,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://content-adexchangebuyer.googleapis.com/"; }
+            get { return "https://adexchangebuyer.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -96,7 +96,7 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://content-adexchangebuyer.googleapis.com/batch"; }
+            get { return "https://adexchangebuyer.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

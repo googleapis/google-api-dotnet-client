@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/hangouts/chat'>Hangouts Chat API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180301 (1155)
+ *      <tr><th>API Rev<td>20180306 (1160)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/hangouts/chat'>
  *              https://developers.google.com/hangouts/chat</a>
@@ -1492,14 +1492,14 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
 
-            /// <summary>A token identifying a page of results the server should return.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>Requested page size. The value is capped at 1000. Server may return fewer results than
             /// requested. If unspecified, server will default to 100.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A token identifying a page of results the server should return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1526,18 +1526,18 @@ namespace Google.Apis.HangoutsChat.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
+                    "pageSize", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageToken",
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
+                    "pageToken", new Google.Apis.Discovery.Parameter
                     {
-                        Name = "pageSize",
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

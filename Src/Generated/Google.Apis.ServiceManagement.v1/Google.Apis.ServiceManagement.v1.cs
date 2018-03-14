@@ -2081,10 +2081,6 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Include services produced by the specified project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProducerProjectId { get; set; }
-
             /// <summary>Include services consumed by the specified consumer.
             ///
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
@@ -2098,6 +2094,10 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Requested size of the next page of data.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Include services produced by the specified project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProducerProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2124,15 +2124,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "producerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "producerProjectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
@@ -2154,6 +2145,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "producerProjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "producerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

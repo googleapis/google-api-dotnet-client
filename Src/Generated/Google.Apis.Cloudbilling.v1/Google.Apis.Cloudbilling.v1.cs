@@ -711,6 +711,12 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
+            /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
+            /// returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is
+            /// returned.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -723,12 +729,6 @@ namespace Google.Apis.Cloudbilling.v1
             /// > This field is currently in > [Beta](https://cloud.google.com/terms/launch-stages).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>A token identifying a page of results to return. This should be a `next_page_token` value
-            /// returned from a previous `ListBillingAccounts` call. If unspecified, the first page of results is
-            /// returned.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -755,6 +755,15 @@ namespace Google.Apis.Cloudbilling.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -767,15 +776,6 @@ namespace Google.Apis.Cloudbilling.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
