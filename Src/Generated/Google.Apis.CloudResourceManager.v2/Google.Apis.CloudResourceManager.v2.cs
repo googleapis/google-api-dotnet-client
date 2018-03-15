@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180308 (1162)
+ *      <tr><th>API Rev<td>20180312 (1166)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -82,7 +82,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://content-cloudresourcemanager.googleapis.com/"; }
+            get { return "https://cloudresourcemanager.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -95,7 +95,7 @@ namespace Google.Apis.CloudResourceManager.v2
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://content-cloudresourcemanager.googleapis.com/batch"; }
+            get { return "https://cloudresourcemanager.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
@@ -693,16 +693,6 @@ namespace Google.Apis.CloudResourceManager.v2
             }
 
 
-            /// <summary>Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
-            /// This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> ShowDeleted { get; set; }
-
-            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
-            /// listing should continue from. This field is optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The maximum number of Folders to return in the response. This field is optional.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -712,6 +702,16 @@ namespace Google.Apis.CloudResourceManager.v2
             /// the `resourcemanager.folders.list` permission on the `parent`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
+
+            /// <summary>Controls whether Folders in the DELETE_REQUESTED state should be returned. Defaults to false.
+            /// This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+            /// <summary>A pagination token returned from a previous call to `ListFolders` that indicates where this
+            /// listing should continue from. This field is optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -738,24 +738,6 @@ namespace Google.Apis.CloudResourceManager.v2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "showDeleted", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "showDeleted",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -768,6 +750,24 @@ namespace Google.Apis.CloudResourceManager.v2
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

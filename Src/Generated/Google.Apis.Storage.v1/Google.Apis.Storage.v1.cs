@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180222 (1148)
+ *      <tr><th>API Rev<td>20180305 (1159)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -672,7 +672,7 @@ namespace Google.Apis.Storage.v1
 
         }
 
-        /// <summary>Updates an ACL entry on the specified bucket. This method supports patch semantics.</summary>
+        /// <summary>Patches an ACL entry on the specified bucket.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="entity">The entity holding the permission. Can
@@ -683,7 +683,7 @@ namespace Google.Apis.Storage.v1
             return new PatchRequest(service, body, bucket, entity);
         }
 
-        /// <summary>Updates an ACL entry on the specified bucket. This method supports patch semantics.</summary>
+        /// <summary>Patches an ACL entry on the specified bucket.</summary>
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.BucketAccessControl>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2628,8 +2628,7 @@ namespace Google.Apis.Storage.v1
 
         }
 
-        /// <summary>Updates a default object ACL entry on the specified bucket. This method supports patch
-        /// semantics.</summary>
+        /// <summary>Patches a default object ACL entry on the specified bucket.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="entity">The entity holding the permission. Can
@@ -2640,8 +2639,7 @@ namespace Google.Apis.Storage.v1
             return new PatchRequest(service, body, bucket, entity);
         }
 
-        /// <summary>Updates a default object ACL entry on the specified bucket. This method supports patch
-        /// semantics.</summary>
+        /// <summary>Patches a default object ACL entry on the specified bucket.</summary>
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3654,7 +3652,7 @@ namespace Google.Apis.Storage.v1
 
         }
 
-        /// <summary>Updates an ACL entry on the specified object. This method supports patch semantics.</summary>
+        /// <summary>Patches an ACL entry on the specified object.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="storageObject">Name of the object. For
@@ -3667,7 +3665,7 @@ namespace Google.Apis.Storage.v1
             return new PatchRequest(service, body, bucket, storageObject, entity);
         }
 
-        /// <summary>Updates an ACL entry on the specified object. This method supports patch semantics.</summary>
+        /// <summary>Patches an ACL entry on the specified object.</summary>
         public class PatchRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.ObjectAccessControl>
         {
             /// <summary>Constructs a new Patch request.</summary>

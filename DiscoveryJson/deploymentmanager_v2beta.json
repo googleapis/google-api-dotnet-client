@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/B1OS2E-NHd77zXZDaV-Mnjlc6ho\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/Y2xp_qL157IVoOjU4Jvc6XPGf28\"",
  "discoveryVersion": "v1",
  "id": "deploymentmanager:v2beta",
  "name": "deploymentmanager",
  "canonicalName": "Deployment Manager V2Beta",
  "version": "v2beta",
- "revision": "20180301",
+ "revision": "20180309",
  "title": "Google Cloud Deployment Manager API V2Beta Methods",
  "description": "The Deployment Manager API allows users to declaratively configure, deploy and run complex solutions on the Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1861,7 +1861,6 @@
        "type": "string",
        "description": "The name of the deployment for this request.",
        "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
        "location": "path"
       },
       "project": {
@@ -1960,7 +1959,7 @@
      "parameters": {
       "createPolicy": {
        "type": "string",
-       "description": "",
+       "description": "Sets the policy to use for creating new resources.",
        "default": "CREATE_OR_ACQUIRE",
        "enum": [
         "ACQUIRE",

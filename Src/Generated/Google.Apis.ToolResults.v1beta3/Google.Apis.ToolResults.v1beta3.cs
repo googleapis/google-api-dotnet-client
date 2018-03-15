@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>Cloud Tool Results API</a>
  *      <tr><th>API Version<td>v1beta3
- *      <tr><th>API Rev<td>20180313 (1167)
+ *      <tr><th>API Rev<td>20180314 (1168)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/test-lab/'>
  *              https://firebase.google.com/docs/test-lab/</a>
@@ -4998,7 +4998,9 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// "{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z" where {year} is always expressed using four digits while
     /// {month}, {day}, {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional seconds, which can
     /// go up to 9 digits (i.e. up to 1 nanosecond resolution), are optional. The "Z" suffix indicates the timezone
-    /// ("UTC"); the timezone is required, though only UTC (as indicated by "Z") is currently supported.
+    /// ("UTC"); the timezone is required. A proto3 JSON serializer should always use UTC (as indicated by "Z") when
+    /// printing the Timestamp type and a proto3 JSON parser should be able to accept both UTC and other timezones (as
+    /// indicated by an offset).
     ///
     /// For example, "2017-01-15T01:30:15.01Z" encodes 15.01 seconds past 01:30 UTC on January 15, 2017.
     ///

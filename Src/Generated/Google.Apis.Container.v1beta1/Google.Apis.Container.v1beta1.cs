@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Google Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180223 (1149)
+ *      <tr><th>API Rev<td>20180312 (1166)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -2637,11 +2637,6 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
-                    /// and replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OperationId { get; set; }
-
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -2653,6 +2648,11 @@ namespace Google.Apis.Container.v1beta1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
+
+                    /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
+                    /// and replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OperationId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2688,15 +2688,6 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "operationId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "operationId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -2709,6 +2700,15 @@ namespace Google.Apis.Container.v1beta1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "operationId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "operationId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6612,6 +6612,11 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; } 
 
+        /// <summary>The IP prefix in CIDR notation to use for the hosted master network. This prefix will be used for
+        /// assigning private IP addresses to the master or set of masters, as well as the ILB VIP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterIpv4CidrBlock")]
+        public virtual string MasterIpv4CidrBlock { get; set; } 
+
         /// <summary>The monitoring service the cluster should use to write metrics. Currently available options:
         ///
         /// * `monitoring.googleapis.com` - the Google Cloud Monitoring service. * `none` - no metrics will be exported
@@ -6659,6 +6664,11 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Configuration for the PodSecurityPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podSecurityPolicyConfig")]
         public virtual PodSecurityPolicyConfig PodSecurityPolicyConfig { get; set; } 
+
+        /// <summary>If this is a private cluster setup. Private clusters are clusters that, by default have no external
+        /// IP addresses on the nodes and where nodes and the master communicate over private IP addresses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateCluster")]
+        public virtual System.Nullable<bool> PrivateCluster { get; set; } 
 
         /// <summary>The resource labels for the cluster to use to annotate any related GCE resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]

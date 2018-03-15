@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180305 (1159)
+ *      <tr><th>API Rev<td>20180314 (1168)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -70,6 +70,7 @@ namespace Google.Apis.ShoppingContent.v2
             datafeeds = new DatafeedsResource(this);
             datafeedstatuses = new DatafeedstatusesResource(this);
             inventory = new InventoryResource(this);
+            liasettings = new LiasettingsResource(this);
             orders = new OrdersResource(this);
             pos = new PosResource(this);
             products = new ProductsResource(this);
@@ -171,6 +172,14 @@ namespace Google.Apis.ShoppingContent.v2
         public virtual InventoryResource Inventory
         {
             get { return inventory; }
+        }
+
+        private readonly LiasettingsResource liasettings;
+
+        /// <summary>Gets the Liasettings resource.</summary>
+        public virtual LiasettingsResource Liasettings
+        {
+            get { return liasettings; }
         }
 
         private readonly OrdersResource orders;
@@ -2860,6 +2869,859 @@ namespace Google.Apis.ShoppingContent.v2
                     "productId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "productId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "liasettings" collection of methods.</summary>
+    public class LiasettingsResource
+    {
+        private const string Resource = "liasettings";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LiasettingsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Retrieves and updates the Lia settings of multiple accounts in a single request.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.LiasettingsCustomBatchRequest body)
+        {
+            return new CustombatchRequest(service, body);
+        }
+
+        /// <summary>Retrieves and updates the Lia settings of multiple accounts in a single request.</summary>
+        public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsCustomBatchResponse>
+        {
+            /// <summary>Constructs a new Custombatch request.</summary>
+            public CustombatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.LiasettingsCustomBatchRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.LiasettingsCustomBatchRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "custombatch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "liasettings/batch"; }
+            }
+
+            /// <summary>Initializes Custombatch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the Lia settings of the account.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
+        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account.</param>
+        /// <param name="accountId">The ID of the account for which to get/update Lia
+        /// settings.</param>
+        public virtual GetRequest Get(ulong merchantId, ulong accountId)
+        {
+            return new GetRequest(service, merchantId, accountId);
+        }
+
+        /// <summary>Retrieves the Lia settings of the account.</summary>
+        public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiaSettings>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to get/update Lia settings.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/liasettings/{accountId}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of accesable Google My Business accounts.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
+        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account.</param>
+        /// <param name="accountId">The ID of the account for which to retrieve the accessible Google
+        /// My Business accounts.</param>
+        public virtual GetaccessiblegmbaccountsRequest Getaccessiblegmbaccounts(ulong merchantId, ulong accountId)
+        {
+            return new GetaccessiblegmbaccountsRequest(service, merchantId, accountId);
+        }
+
+        /// <summary>Retrieves the list of accesable Google My Business accounts.</summary>
+        public class GetaccessiblegmbaccountsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsGetAccessibleGmbAccountsResponse>
+        {
+            /// <summary>Constructs a new Getaccessiblegmbaccounts request.</summary>
+            public GetaccessiblegmbaccountsRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to retrieve the accessible Google My Business
+            /// accounts.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getaccessiblegmbaccounts"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts"; }
+            }
+
+            /// <summary>Initializes Getaccessiblegmbaccounts parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Lists the Lia settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
+        public virtual ListRequest List(ulong merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>Lists the Lia settings of the sub-accounts in your Merchant Center account.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsListResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, ulong merchantId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. This must be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The maximum number of Lia settings to return in the response, used for paging.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>The token returned by the previous request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/liasettings"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the Lia settings of the account. This method supports patch semantics.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
+        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account.</param>
+        /// <param name="accountId">The ID of the account for which to get/update Lia
+        /// settings.</param>
+        public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2.Data.LiaSettings body, ulong merchantId, ulong accountId)
+        {
+            return new PatchRequest(service, body, merchantId, accountId);
+        }
+
+        /// <summary>Updates the Lia settings of the account. This method supports patch semantics.</summary>
+        public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiaSettings>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.LiaSettings body, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to get/update Lia settings.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.LiaSettings Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "patch"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/liasettings/{accountId}"; }
+            }
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Requests access to a specified Google By Business account.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
+        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account.</param>
+        /// <param name="accountId">The ID of the account for which GMB access is
+        /// requested.</param>
+        public virtual RequestgmbaccessRequest Requestgmbaccess(ulong merchantId, ulong accountId)
+        {
+            return new RequestgmbaccessRequest(service, merchantId, accountId);
+        }
+
+        /// <summary>Requests access to a specified Google By Business account.</summary>
+        public class RequestgmbaccessRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsRequestGmbAccessResponse>
+        {
+            /// <summary>Constructs a new Requestgmbaccess request.</summary>
+            public RequestgmbaccessRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which GMB access is requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>The email of the Google My Business Account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("gmbEmail", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string GmbEmail { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "requestgmbaccess"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/liasettings/{accountId}/requestgmbaccess"; }
+            }
+
+            /// <summary>Initializes Requestgmbaccess parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "gmbEmail", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "gmbEmail",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Requests the inventory validation for the specified country.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
+        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account.</param>
+        /// <param name="accountId">The ID of the account that manages the order. This cannot be a
+        /// multi-client account.</param>
+        /// <param name="country">The country for which the inventory validation is
+        /// requested.</param>
+        public virtual RequestinventoryverificationRequest Requestinventoryverification(ulong merchantId, ulong accountId, string country)
+        {
+            return new RequestinventoryverificationRequest(service, merchantId, accountId, country);
+        }
+
+        /// <summary>Requests the inventory validation for the specified country.</summary>
+        public class RequestinventoryverificationRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsRequestInventoryVerificationResponse>
+        {
+            /// <summary>Constructs a new Requestinventoryverification request.</summary>
+            public RequestinventoryverificationRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId, string country)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                Country = country;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>The country for which the inventory validation is requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Country { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "requestinventoryverification"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}"; }
+            }
+
+            /// <summary>Initializes Requestinventoryverification parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "country", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "country",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the inventory validation verification for the specified country.</summary>
+        /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
+        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account.</param>
+        /// <param name="accountId">The ID of the account that manages the order. This cannot be a
+        /// multi-client account.</param>
+        public virtual SetinventoryverificationcontactRequest Setinventoryverificationcontact(ulong merchantId, ulong accountId)
+        {
+            return new SetinventoryverificationcontactRequest(service, merchantId, accountId);
+        }
+
+        /// <summary>Sets the inventory validation verification for the specified country.</summary>
+        public class SetinventoryverificationcontactRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsSetInventoryVerificationContactResponse>
+        {
+            /// <summary>Constructs a new Setinventoryverificationcontact request.</summary>
+            public SetinventoryverificationcontactRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account that manages the order. This cannot be a multi-client account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>The email of the inventory check contact.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("contactEmail", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ContactEmail { get; set; }
+
+            /// <summary>The name of the inventory verification contact.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("contactName", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ContactName { get; set; }
+
+            /// <summary>The country for which the inventory verification is requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Country { get; set; }
+
+            /// <summary>The country for which the inventory verification is requested.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Language { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setinventoryverificationcontact"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/liasettings/{accountId}/setinventoryverificationcontact"; }
+            }
+
+            /// <summary>Initializes Setinventoryverificationcontact parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "contactEmail", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contactEmail",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "contactName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "contactName",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "country", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "country",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "language", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "language",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the Lia settings of the account.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
+        /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+        /// account.</param>
+        /// <param name="accountId">The ID of the account for which to get/update Lia
+        /// settings.</param>
+        public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2.Data.LiaSettings body, ulong merchantId, ulong accountId)
+        {
+            return new UpdateRequest(service, body, merchantId, accountId);
+        }
+
+        /// <summary>Updates the Lia settings of the account.</summary>
+        public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiaSettings>
+        {
+            /// <summary>Constructs a new Update request.</summary>
+            public UpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2.Data.LiaSettings body, ulong merchantId, ulong accountId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the managing account. If this parameter is not the same as accountId, then this
+            /// account must be a multi-client account and accountId must be the ID of a sub-account of this
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to get/update Lia settings.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2.Data.LiaSettings Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "update"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PUT"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/liasettings/{accountId}"; }
+            }
+
+            /// <summary>Initializes Update parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "accountId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "accountId",
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
@@ -7757,6 +8619,42 @@ namespace Google.Apis.ShoppingContent.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class GmbAccounts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual System.Nullable<ulong> AccountId { get; set; } 
+
+        /// <summary>A list of GMB account which are available to the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
+        public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccountsValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class GmbAccountsGmbAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email which identifies the GMB account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; } 
+
+        /// <summary>Number of listings under this account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listingCount")]
+        public virtual System.Nullable<ulong> ListingCount { get; set; } 
+
+        /// <summary>The name of the GMB account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Type of the GMB account (User or Business).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A non-empty list of row or column headers for a table. Exactly one of prices, weights, numItems,
     /// postalCodeGroupNames, or locations must be set.</summary>
     public class Headers : Google.Apis.Requests.IDirectResponseSchema
@@ -8069,6 +8967,268 @@ namespace Google.Apis.ShoppingContent.v2.Data
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
         /// "content#inventorySetResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiaAboutPageSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status verification process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The about URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiaCountrySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The about page settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("about")]
+        public virtual LiaAboutPageSettings About { get; set; } 
+
+        /// <summary>CLDR country code (e.g. "US").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>The status of the "Merchant hosted local storefront" feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostedLocalStorefrontActive")]
+        public virtual System.Nullable<bool> HostedLocalStorefrontActive { get; set; } 
+
+        /// <summary>LIA inventory settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
+        public virtual LiaInventorySettings Inventory { get; set; } 
+
+        /// <summary>LIA "On Display To Order" settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onDisplayToOrder")]
+        public virtual LiaOnDisplayToOrderSettings OnDisplayToOrder { get; set; } 
+
+        /// <summary>The status of the "Store pickup" feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storePickupActive")]
+        public virtual System.Nullable<bool> StorePickupActive { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiaInventorySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email of contact which will be contacted during the verification process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactEmail")]
+        public virtual string InventoryVerificationContactEmail { get; set; } 
+
+        /// <summary>The name of contact which will be contacted during the verification process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactName")]
+        public virtual string InventoryVerificationContactName { get; set; } 
+
+        /// <summary>The status of the verification contact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactStatus")]
+        public virtual string InventoryVerificationContactStatus { get; set; } 
+
+        /// <summary>The status of the inventory verification process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiaOnDisplayToOrderSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Shipping cost and policy URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shippingCostPolicyUrl")]
+        public virtual string ShippingCostPolicyUrl { get; set; } 
+
+        /// <summary>The status of the ?On display to order? feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiaSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the account to which these LIA settings belong. Ignored upon update, always present in
+        /// get request responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual System.Nullable<ulong> AccountId { get; set; } 
+
+        /// <summary>The LIA settings for each country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countrySettings")]
+        public virtual System.Collections.Generic.IList<LiaCountrySettings> CountrySettings { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string "content#liaSettings".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsCustomBatchRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The request entries to be processed in the batch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<LiasettingsCustomBatchRequestEntry> Entries { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsCustomBatchRequestEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the account for which to get/update account shipping settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual System.Nullable<ulong> AccountId { get; set; } 
+
+        /// <summary>An entry ID, unique within the batch request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
+        public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>Inventory validation contact email. Required only for SetInventoryValidationContact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactEmail")]
+        public virtual string ContactEmail { get; set; } 
+
+        /// <summary>Inventory validation contact name. Required only for SetInventoryValidationContact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactName")]
+        public virtual string ContactName { get; set; } 
+
+        /// <summary>The country code. Required only for RequestInventoryVerification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>The GMB account. Required only for RequestGmbAccess.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmbEmail")]
+        public virtual string GmbEmail { get; set; } 
+
+        /// <summary>The account Lia settings to update. Only defined if the method is update.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("liaSettings")]
+        public virtual LiaSettings LiaSettings { get; set; } 
+
+        /// <summary>The ID of the managing account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<ulong> MerchantId { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsCustomBatchResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result of the execution of the batch requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entries")]
+        public virtual System.Collections.Generic.IList<LiasettingsCustomBatchResponseEntry> Entries { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#liasettingsCustomBatchResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsCustomBatchResponseEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the request entry to which this entry responds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
+        public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>A list of errors defined if, and only if, the request failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual Errors Errors { get; set; } 
+
+        /// <summary>The the list of accessible GMB accounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
+        public virtual GmbAccounts GmbAccounts { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#liasettingsCustomBatchResponseEntry".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The retrieved or updated Lia settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("liaSettings")]
+        public virtual LiaSettings LiaSettings { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsGetAccessibleGmbAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
+        public virtual System.Nullable<ulong> AccountId { get; set; } 
+
+        /// <summary>A list of GMB account which are available to the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
+        public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccounts { get; set; } 
+
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#liasettingsGetAccessibleGmbAccountsResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsListResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#liasettingsListResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The token for the retrieval of the next page of Lia settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<LiaSettings> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsRequestGmbAccessResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#liasettingsRequestGmbAccessResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsRequestInventoryVerificationResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#liasettingsRequestInventoryVerificationResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class LiasettingsSetInventoryVerificationContactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#liasettingsSetInventoryVerificationContactResponse".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 

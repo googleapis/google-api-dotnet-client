@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/1qOLk-oK_dMC3AStRBy-xt64OKE\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/viqemhmQQxAoxqj8nxZHD7zTSa8\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20180305",
+ "revision": "20180314",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -1372,6 +1372,47 @@
     }
    }
   },
+  "GmbAccounts": {
+   "id": "GmbAccounts",
+   "type": "object",
+   "properties": {
+    "accountId": {
+     "type": "string",
+     "description": "The ID of the account.",
+     "format": "uint64"
+    },
+    "gmbAccounts": {
+     "type": "array",
+     "description": "A list of GMB account which are available to the merchant.",
+     "items": {
+      "$ref": "GmbAccountsGmbAccount"
+     }
+    }
+   }
+  },
+  "GmbAccountsGmbAccount": {
+   "id": "GmbAccountsGmbAccount",
+   "type": "object",
+   "properties": {
+    "email": {
+     "type": "string",
+     "description": "The email which identifies the GMB account."
+    },
+    "listingCount": {
+     "type": "string",
+     "description": "Number of listings under this account.",
+     "format": "uint64"
+    },
+    "name": {
+     "type": "string",
+     "description": "The name of the GMB account."
+    },
+    "type": {
+     "type": "string",
+     "description": "Type of the GMB account (User or Business)."
+    }
+   }
+  },
   "Headers": {
    "id": "Headers",
    "type": "object",
@@ -1683,6 +1724,294 @@
      "type": "string",
      "description": "Identifies what kind of resource this is. Value: the fixed string \"content#inventorySetResponse\".",
      "default": "content#inventorySetResponse"
+    }
+   }
+  },
+  "LiaAboutPageSettings": {
+   "id": "LiaAboutPageSettings",
+   "type": "object",
+   "properties": {
+    "status": {
+     "type": "string",
+     "description": "The status verification process."
+    },
+    "url": {
+     "type": "string",
+     "description": "The about URL."
+    }
+   }
+  },
+  "LiaCountrySettings": {
+   "id": "LiaCountrySettings",
+   "type": "object",
+   "properties": {
+    "about": {
+     "$ref": "LiaAboutPageSettings",
+     "description": "The about page settings."
+    },
+    "country": {
+     "type": "string",
+     "description": "CLDR country code (e.g. \"US\").",
+     "annotations": {
+      "required": [
+       "content.liasettings.update"
+      ]
+     }
+    },
+    "hostedLocalStorefrontActive": {
+     "type": "boolean",
+     "description": "The status of the \"Merchant hosted local storefront\" feature."
+    },
+    "inventory": {
+     "$ref": "LiaInventorySettings",
+     "description": "LIA inventory settings."
+    },
+    "onDisplayToOrder": {
+     "$ref": "LiaOnDisplayToOrderSettings",
+     "description": "LIA \"On Display To Order\" settings."
+    },
+    "storePickupActive": {
+     "type": "boolean",
+     "description": "The status of the \"Store pickup\" feature."
+    }
+   }
+  },
+  "LiaInventorySettings": {
+   "id": "LiaInventorySettings",
+   "type": "object",
+   "properties": {
+    "inventoryVerificationContactEmail": {
+     "type": "string",
+     "description": "The email of contact which will be contacted during the verification process."
+    },
+    "inventoryVerificationContactName": {
+     "type": "string",
+     "description": "The name of contact which will be contacted during the verification process."
+    },
+    "inventoryVerificationContactStatus": {
+     "type": "string",
+     "description": "The status of the verification contact."
+    },
+    "status": {
+     "type": "string",
+     "description": "The status of the inventory verification process."
+    }
+   }
+  },
+  "LiaOnDisplayToOrderSettings": {
+   "id": "LiaOnDisplayToOrderSettings",
+   "type": "object",
+   "properties": {
+    "shippingCostPolicyUrl": {
+     "type": "string",
+     "description": "Shipping cost and policy URL."
+    },
+    "status": {
+     "type": "string",
+     "description": "The status of the ?On display to order? feature."
+    }
+   }
+  },
+  "LiaSettings": {
+   "id": "LiaSettings",
+   "type": "object",
+   "properties": {
+    "accountId": {
+     "type": "string",
+     "description": "The ID of the account to which these LIA settings belong. Ignored upon update, always present in get request responses.",
+     "format": "uint64"
+    },
+    "countrySettings": {
+     "type": "array",
+     "description": "The LIA settings for each country.",
+     "items": {
+      "$ref": "LiaCountrySettings"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#liaSettings\".",
+     "default": "content#liaSettings"
+    }
+   }
+  },
+  "LiasettingsCustomBatchRequest": {
+   "id": "LiasettingsCustomBatchRequest",
+   "type": "object",
+   "properties": {
+    "entries": {
+     "type": "array",
+     "description": "The request entries to be processed in the batch.",
+     "items": {
+      "$ref": "LiasettingsCustomBatchRequestEntry"
+     }
+    }
+   }
+  },
+  "LiasettingsCustomBatchRequestEntry": {
+   "id": "LiasettingsCustomBatchRequestEntry",
+   "type": "object",
+   "properties": {
+    "accountId": {
+     "type": "string",
+     "description": "The ID of the account for which to get/update account shipping settings.",
+     "format": "uint64"
+    },
+    "batchId": {
+     "type": "integer",
+     "description": "An entry ID, unique within the batch request.",
+     "format": "uint32"
+    },
+    "contactEmail": {
+     "type": "string",
+     "description": "Inventory validation contact email. Required only for SetInventoryValidationContact."
+    },
+    "contactName": {
+     "type": "string",
+     "description": "Inventory validation contact name. Required only for SetInventoryValidationContact."
+    },
+    "country": {
+     "type": "string",
+     "description": "The country code. Required only for RequestInventoryVerification."
+    },
+    "gmbEmail": {
+     "type": "string",
+     "description": "The GMB account. Required only for RequestGmbAccess."
+    },
+    "liaSettings": {
+     "$ref": "LiaSettings",
+     "description": "The account Lia settings to update. Only defined if the method is update."
+    },
+    "merchantId": {
+     "type": "string",
+     "description": "The ID of the managing account.",
+     "format": "uint64"
+    },
+    "method": {
+     "type": "string"
+    }
+   }
+  },
+  "LiasettingsCustomBatchResponse": {
+   "id": "LiasettingsCustomBatchResponse",
+   "type": "object",
+   "properties": {
+    "entries": {
+     "type": "array",
+     "description": "The result of the execution of the batch requests.",
+     "items": {
+      "$ref": "LiasettingsCustomBatchResponseEntry"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsCustomBatchResponse\".",
+     "default": "content#liasettingsCustomBatchResponse"
+    }
+   }
+  },
+  "LiasettingsCustomBatchResponseEntry": {
+   "id": "LiasettingsCustomBatchResponseEntry",
+   "type": "object",
+   "properties": {
+    "batchId": {
+     "type": "integer",
+     "description": "The ID of the request entry to which this entry responds.",
+     "format": "uint32"
+    },
+    "errors": {
+     "$ref": "Errors",
+     "description": "A list of errors defined if, and only if, the request failed."
+    },
+    "gmbAccounts": {
+     "$ref": "GmbAccounts",
+     "description": "The the list of accessible GMB accounts."
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsCustomBatchResponseEntry\".",
+     "default": "content#liasettingsCustomBatchResponseEntry"
+    },
+    "liaSettings": {
+     "$ref": "LiaSettings",
+     "description": "The retrieved or updated Lia settings."
+    }
+   }
+  },
+  "LiasettingsGetAccessibleGmbAccountsResponse": {
+   "id": "LiasettingsGetAccessibleGmbAccountsResponse",
+   "type": "object",
+   "properties": {
+    "accountId": {
+     "type": "string",
+     "description": "The ID of the account.",
+     "format": "uint64"
+    },
+    "gmbAccounts": {
+     "type": "array",
+     "description": "A list of GMB account which are available to the merchant.",
+     "items": {
+      "$ref": "GmbAccountsGmbAccount"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsGetAccessibleGmbAccountsResponse\".",
+     "default": "content#liasettingsGetAccessibleGmbAccountsResponse"
+    }
+   }
+  },
+  "LiasettingsListResponse": {
+   "id": "LiasettingsListResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsListResponse\".",
+     "default": "content#liasettingsListResponse"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "The token for the retrieval of the next page of Lia settings."
+    },
+    "resources": {
+     "type": "array",
+     "items": {
+      "$ref": "LiaSettings"
+     }
+    }
+   }
+  },
+  "LiasettingsRequestGmbAccessResponse": {
+   "id": "LiasettingsRequestGmbAccessResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsRequestGmbAccessResponse\".",
+     "default": "content#liasettingsRequestGmbAccessResponse"
+    }
+   }
+  },
+  "LiasettingsRequestInventoryVerificationResponse": {
+   "id": "LiasettingsRequestInventoryVerificationResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsRequestInventoryVerificationResponse\".",
+     "default": "content#liasettingsRequestInventoryVerificationResponse"
+    }
+   }
+  },
+  "LiasettingsSetInventoryVerificationContactResponse": {
+   "id": "LiasettingsSetInventoryVerificationContactResponse",
+   "type": "object",
+   "properties": {
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"content#liasettingsSetInventoryVerificationContactResponse\".",
+     "default": "content#liasettingsSetInventoryVerificationContactResponse"
     }
    }
   },
@@ -3631,7 +3960,12 @@
    "properties": {
     "contentLanguage": {
      "type": "string",
-     "description": "The two-letter ISO 639-1 language code for the item."
+     "description": "The two-letter ISO 639-1 language code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "gtin": {
      "type": "string",
@@ -3639,7 +3973,12 @@
     },
     "itemId": {
      "type": "string",
-     "description": "A unique identifier for the item."
+     "description": "A unique identifier for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "kind": {
      "type": "string",
@@ -3648,24 +3987,49 @@
     },
     "price": {
      "$ref": "Price",
-     "description": "The current price of the item."
+     "description": "The current price of the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "quantity": {
      "type": "string",
      "description": "The available quantity of the item.",
-     "format": "int64"
+     "format": "int64",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store."
+     "description": "The identifier of the merchant's store.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "targetCountry": {
      "type": "string",
-     "description": "The CLDR territory code for the item."
+     "description": "The CLDR territory code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "timestamp": {
      "type": "string",
-     "description": "The inventory timestamp, in ISO 8601 format."
+     "description": "The inventory timestamp, in ISO 8601 format.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     }
    }
   },
@@ -3675,7 +4039,12 @@
    "properties": {
     "contentLanguage": {
      "type": "string",
-     "description": "The two-letter ISO 639-1 language code for the item."
+     "description": "The two-letter ISO 639-1 language code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "gtin": {
      "type": "string",
@@ -3683,28 +4052,58 @@
     },
     "itemId": {
      "type": "string",
-     "description": "A unique identifier for the item."
+     "description": "A unique identifier for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "price": {
      "$ref": "Price",
-     "description": "The current price of the item."
+     "description": "The current price of the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "quantity": {
      "type": "string",
      "description": "The available quantity of the item.",
-     "format": "int64"
+     "format": "int64",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store."
+     "description": "The identifier of the merchant's store.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "targetCountry": {
      "type": "string",
-     "description": "The CLDR territory code for the item."
+     "description": "The CLDR territory code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "timestamp": {
      "type": "string",
-     "description": "The inventory timestamp, in ISO 8601 format."
+     "description": "The inventory timestamp, in ISO 8601 format.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     }
    }
   },
@@ -3714,7 +4113,12 @@
    "properties": {
     "contentLanguage": {
      "type": "string",
-     "description": "The two-letter ISO 639-1 language code for the item."
+     "description": "The two-letter ISO 639-1 language code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "gtin": {
      "type": "string",
@@ -3722,7 +4126,12 @@
     },
     "itemId": {
      "type": "string",
-     "description": "A unique identifier for the item."
+     "description": "A unique identifier for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "kind": {
      "type": "string",
@@ -3731,24 +4140,49 @@
     },
     "price": {
      "$ref": "Price",
-     "description": "The current price of the item."
+     "description": "The current price of the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "quantity": {
      "type": "string",
      "description": "The available quantity of the item.",
-     "format": "int64"
+     "format": "int64",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store."
+     "description": "The identifier of the merchant's store.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "targetCountry": {
      "type": "string",
-     "description": "The CLDR territory code for the item."
+     "description": "The CLDR territory code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     },
     "timestamp": {
      "type": "string",
-     "description": "The inventory timestamp, in ISO 8601 format."
+     "description": "The inventory timestamp, in ISO 8601 format.",
+     "annotations": {
+      "required": [
+       "content.pos.inventory"
+      ]
+     }
     }
    }
   },
@@ -3776,7 +4210,12 @@
    "properties": {
     "contentLanguage": {
      "type": "string",
-     "description": "The two-letter ISO 639-1 language code for the item."
+     "description": "The two-letter ISO 639-1 language code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "gtin": {
      "type": "string",
@@ -3784,7 +4223,12 @@
     },
     "itemId": {
      "type": "string",
-     "description": "A unique identifier for the item."
+     "description": "A unique identifier for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "kind": {
      "type": "string",
@@ -3793,12 +4237,22 @@
     },
     "price": {
      "$ref": "Price",
-     "description": "The price of the item."
+     "description": "The price of the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "quantity": {
      "type": "string",
      "description": "The relative change of the available quantity. Negative for items sold.",
-     "format": "int64"
+     "format": "int64",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "saleId": {
      "type": "string",
@@ -3806,15 +4260,30 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store."
+     "description": "The identifier of the merchant's store.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "targetCountry": {
      "type": "string",
-     "description": "The CLDR territory code for the item."
+     "description": "The CLDR territory code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "timestamp": {
      "type": "string",
-     "description": "The inventory timestamp, in ISO 8601 format."
+     "description": "The inventory timestamp, in ISO 8601 format.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     }
    }
   },
@@ -3824,7 +4293,12 @@
    "properties": {
     "contentLanguage": {
      "type": "string",
-     "description": "The two-letter ISO 639-1 language code for the item."
+     "description": "The two-letter ISO 639-1 language code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "gtin": {
      "type": "string",
@@ -3832,16 +4306,31 @@
     },
     "itemId": {
      "type": "string",
-     "description": "A unique identifier for the item."
+     "description": "A unique identifier for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "price": {
      "$ref": "Price",
-     "description": "The price of the item."
+     "description": "The price of the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "quantity": {
      "type": "string",
      "description": "The relative change of the available quantity. Negative for items sold.",
-     "format": "int64"
+     "format": "int64",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "saleId": {
      "type": "string",
@@ -3849,15 +4338,30 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store."
+     "description": "The identifier of the merchant's store.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "targetCountry": {
      "type": "string",
-     "description": "The CLDR territory code for the item."
+     "description": "The CLDR territory code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "timestamp": {
      "type": "string",
-     "description": "The inventory timestamp, in ISO 8601 format."
+     "description": "The inventory timestamp, in ISO 8601 format.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     }
    }
   },
@@ -3867,7 +4371,12 @@
    "properties": {
     "contentLanguage": {
      "type": "string",
-     "description": "The two-letter ISO 639-1 language code for the item."
+     "description": "The two-letter ISO 639-1 language code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "gtin": {
      "type": "string",
@@ -3875,7 +4384,12 @@
     },
     "itemId": {
      "type": "string",
-     "description": "A unique identifier for the item."
+     "description": "A unique identifier for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "kind": {
      "type": "string",
@@ -3884,12 +4398,22 @@
     },
     "price": {
      "$ref": "Price",
-     "description": "The price of the item."
+     "description": "The price of the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "quantity": {
      "type": "string",
      "description": "The relative change of the available quantity. Negative for items sold.",
-     "format": "int64"
+     "format": "int64",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "saleId": {
      "type": "string",
@@ -3897,15 +4421,30 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store."
+     "description": "The identifier of the merchant's store.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "targetCountry": {
      "type": "string",
-     "description": "The CLDR territory code for the item."
+     "description": "The CLDR territory code for the item.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     },
     "timestamp": {
      "type": "string",
-     "description": "The inventory timestamp, in ISO 8601 format."
+     "description": "The inventory timestamp, in ISO 8601 format.",
+     "annotations": {
+      "required": [
+       "content.pos.sale"
+      ]
+     }
     }
    }
   },
@@ -3921,11 +4460,21 @@
     },
     "storeAddress": {
      "type": "string",
-     "description": "The street address of the store."
+     "description": "The street address of the store.",
+     "annotations": {
+      "required": [
+       "content.pos.insert"
+      ]
+     }
     },
     "storeCode": {
      "type": "string",
-     "description": "A store identifier that is unique for the given merchant."
+     "description": "A store identifier that is unique for the given merchant.",
+     "annotations": {
+      "required": [
+       "content.pos.insert"
+      ]
+     }
     }
    }
   },
@@ -6461,6 +7010,339 @@
      },
      "response": {
       "$ref": "InventorySetResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    }
+   }
+  },
+  "liasettings": {
+   "methods": {
+    "custombatch": {
+     "id": "content.liasettings.custombatch",
+     "path": "liasettings/batch",
+     "httpMethod": "POST",
+     "description": "Retrieves and updates the Lia settings of multiple accounts in a single request.",
+     "parameters": {
+      "dryRun": {
+       "type": "boolean",
+       "description": "Flag to run the request in dry-run mode.",
+       "location": "query"
+      }
+     },
+     "request": {
+      "$ref": "LiasettingsCustomBatchRequest"
+     },
+     "response": {
+      "$ref": "LiasettingsCustomBatchResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "get": {
+     "id": "content.liasettings.get",
+     "path": "{merchantId}/liasettings/{accountId}",
+     "httpMethod": "GET",
+     "description": "Retrieves the Lia settings of the account.",
+     "parameters": {
+      "accountId": {
+       "type": "string",
+       "description": "The ID of the account for which to get/update Lia settings.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "accountId"
+     ],
+     "response": {
+      "$ref": "LiaSettings"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "getaccessiblegmbaccounts": {
+     "id": "content.liasettings.getaccessiblegmbaccounts",
+     "path": "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts",
+     "httpMethod": "GET",
+     "description": "Retrieves the list of accesable Google My Business accounts.",
+     "parameters": {
+      "accountId": {
+       "type": "string",
+       "description": "The ID of the account for which to retrieve the accessible Google My Business accounts.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "accountId"
+     ],
+     "response": {
+      "$ref": "LiasettingsGetAccessibleGmbAccountsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "list": {
+     "id": "content.liasettings.list",
+     "path": "{merchantId}/liasettings",
+     "httpMethod": "GET",
+     "description": "Lists the Lia settings of the sub-accounts in your Merchant Center account.",
+     "parameters": {
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of Lia settings to return in the response, used for paging.",
+       "format": "uint32",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the managing account. This must be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "The token returned by the previous request.",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "merchantId"
+     ],
+     "response": {
+      "$ref": "LiasettingsListResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "patch": {
+     "id": "content.liasettings.patch",
+     "path": "{merchantId}/liasettings/{accountId}",
+     "httpMethod": "PATCH",
+     "description": "Updates the Lia settings of the account. This method supports patch semantics.",
+     "parameters": {
+      "accountId": {
+       "type": "string",
+       "description": "The ID of the account for which to get/update Lia settings.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "dryRun": {
+       "type": "boolean",
+       "description": "Flag to run the request in dry-run mode.",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "accountId"
+     ],
+     "request": {
+      "$ref": "LiaSettings"
+     },
+     "response": {
+      "$ref": "LiaSettings"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "requestgmbaccess": {
+     "id": "content.liasettings.requestgmbaccess",
+     "path": "{merchantId}/liasettings/{accountId}/requestgmbaccess",
+     "httpMethod": "POST",
+     "description": "Requests access to a specified Google By Business account.",
+     "parameters": {
+      "accountId": {
+       "type": "string",
+       "description": "The ID of the account for which GMB access is requested.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "gmbEmail": {
+       "type": "string",
+       "description": "The email of the Google My Business Account.",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "accountId"
+     ],
+     "response": {
+      "$ref": "LiasettingsRequestGmbAccessResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "requestinventoryverification": {
+     "id": "content.liasettings.requestinventoryverification",
+     "path": "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}",
+     "httpMethod": "POST",
+     "description": "Requests the inventory validation for the specified country.",
+     "parameters": {
+      "accountId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "country": {
+       "type": "string",
+       "description": "The country for which the inventory validation is requested.",
+       "required": true,
+       "location": "path"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "accountId",
+      "country"
+     ],
+     "response": {
+      "$ref": "LiasettingsRequestInventoryVerificationResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "setinventoryverificationcontact": {
+     "id": "content.liasettings.setinventoryverificationcontact",
+     "path": "{merchantId}/liasettings/{accountId}/setinventoryverificationcontact",
+     "httpMethod": "POST",
+     "description": "Sets the inventory validation verification for the specified country.",
+     "parameters": {
+      "accountId": {
+       "type": "string",
+       "description": "The ID of the account that manages the order. This cannot be a multi-client account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "contactEmail": {
+       "type": "string",
+       "description": "The email of the inventory check contact.",
+       "location": "query"
+      },
+      "contactName": {
+       "type": "string",
+       "description": "The name of the inventory verification contact.",
+       "location": "query"
+      },
+      "country": {
+       "type": "string",
+       "description": "The country for which the inventory verification is requested.",
+       "location": "query"
+      },
+      "language": {
+       "type": "string",
+       "description": "The country for which the inventory verification is requested.",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "accountId"
+     ],
+     "response": {
+      "$ref": "LiasettingsSetInventoryVerificationContactResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/content"
+     ]
+    },
+    "update": {
+     "id": "content.liasettings.update",
+     "path": "{merchantId}/liasettings/{accountId}",
+     "httpMethod": "PUT",
+     "description": "Updates the Lia settings of the account.",
+     "parameters": {
+      "accountId": {
+       "type": "string",
+       "description": "The ID of the account for which to get/update Lia settings.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      },
+      "dryRun": {
+       "type": "boolean",
+       "description": "Flag to run the request in dry-run mode.",
+       "location": "query"
+      },
+      "merchantId": {
+       "type": "string",
+       "description": "The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account.",
+       "required": true,
+       "format": "uint64",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "merchantId",
+      "accountId"
+     ],
+     "request": {
+      "$ref": "LiaSettings"
+     },
+     "response": {
+      "$ref": "LiaSettings"
      },
      "scopes": [
       "https://www.googleapis.com/auth/content"

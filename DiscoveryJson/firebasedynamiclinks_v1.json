@@ -1,13 +1,275 @@
 {
   "basePath": "",
-  "revision": "20180306",
+  "revision": "20180314",
   "documentationLink": "https://firebase.google.com/docs/dynamic-links/",
   "id": "firebasedynamiclinks:v1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "CreateShortDynamicLinkResponse": {
+      "description": "Response to create a short Dynamic Link.",
+      "type": "object",
+      "properties": {
+        "shortLink": {
+          "description": "Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz",
+          "type": "string"
+        },
+        "previewLink": {
+          "description": "Preivew link to show the link flow chart.",
+          "type": "string"
+        },
+        "warning": {
+          "description": "Information about potential warnings on link creation.",
+          "type": "array",
+          "items": {
+            "$ref": "DynamicLinkWarning"
+          }
+        }
+      },
+      "id": "CreateShortDynamicLinkResponse"
+    },
+    "Suffix": {
+      "description": "Short Dynamic Link suffix.",
+      "type": "object",
+      "properties": {
+        "option": {
+          "enumDescriptions": [
+            "The suffix option is not specified, performs as NOT_GUESSABLE .",
+            "Short Dynamic Link suffix is a base62 [0-9A-Za-z] encoded string of\na random generated 96 bit random number, which has a length of 17 chars.\nFor example, \"nlAR8U4SlKRZw1cb2\".\nIt prevents other people from guessing and crawling short Dynamic Links\nthat contain personal identifiable information.",
+            "Short Dynamic Link suffix is a base62 [0-9A-Za-z] string starting with a\nlength of 4 chars. the length will increase when all the space is\noccupied."
+          ],
+          "enum": [
+            "OPTION_UNSPECIFIED",
+            "UNGUESSABLE",
+            "SHORT"
+          ],
+          "description": "Suffix option.",
+          "type": "string"
+        }
+      },
+      "id": "Suffix"
+    },
+    "GooglePlayAnalytics": {
+      "description": "Parameters for Google Play Campaign Measurements.\n[Learn more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params)",
+      "type": "object",
+      "properties": {
+        "utmMedium": {
+          "description": "Campaign medium; used to identify a medium such as email or cost-per-click.",
+          "type": "string"
+        },
+        "utmTerm": {
+          "description": "Campaign term; used with paid search to supply the keywords for ads.",
+          "type": "string"
+        },
+        "utmSource": {
+          "description": "Campaign source; used to identify a search engine, newsletter, or other\nsource.",
+          "type": "string"
+        },
+        "gclid": {
+          "description": "[AdWords autotagging parameter](https://support.google.com/analytics/answer/1033981?hl=en);\nused to measure Google AdWords ads. This value is generated dynamically\nand should never be modified.",
+          "type": "string"
+        },
+        "utmCampaign": {
+          "description": "Campaign name; used for keyword analysis to identify a specific product\npromotion or strategic campaign.",
+          "type": "string"
+        },
+        "utmContent": {
+          "description": "Campaign content; used for A/B testing and content-targeted ads to\ndifferentiate ads or links that point to the same URL.",
+          "type": "string"
+        }
+      },
+      "id": "GooglePlayAnalytics"
+    },
+    "DynamicLinkInfo": {
+      "properties": {
+        "desktopInfo": {
+          "description": "Desktop related information. See desktop related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).",
+          "$ref": "DesktopInfo"
+        },
+        "link": {
+          "description": "The link your app will open, You can specify any URL your app can handle.\nThis link must be a well-formatted URL, be properly URL-encoded, and use\nthe HTTP or HTTPS scheme. See 'link' parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).\n\nRequired.",
+          "type": "string"
+        },
+        "iosInfo": {
+          "description": "iOS related information. See iOS related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).",
+          "$ref": "IosInfo"
+        },
+        "socialMetaTagInfo": {
+          "$ref": "SocialMetaTagInfo",
+          "description": "Parameters for social meta tag params.\nUsed to set meta tag data for link previews on social sites."
+        },
+        "androidInfo": {
+          "description": "Android related information. See Android related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).",
+          "$ref": "AndroidInfo"
+        },
+        "navigationInfo": {
+          "description": "Information of navigation behavior of a Firebase Dynamic Links.",
+          "$ref": "NavigationInfo"
+        },
+        "analyticsInfo": {
+          "description": "Parameters used for tracking. See all tracking parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).",
+          "$ref": "AnalyticsInfo"
+        },
+        "dynamicLinkDomain": {
+          "description": "Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl\n[Learn more](https://firebase.google.com/docs/dynamic-links/android/receive)\non how to set up Dynamic Link domain associated with your Firebase project.\n\nRequired.",
+          "type": "string"
+        }
+      },
+      "id": "DynamicLinkInfo",
+      "description": "Information about a Dynamic Link.",
+      "type": "object"
+    },
+    "ITunesConnectAnalytics": {
+      "properties": {
+        "ct": {
+          "description": "Campaign text that developers can optionally add to any link in order to\ntrack sales from a specific marketing campaign.",
+          "type": "string"
+        },
+        "mt": {
+          "description": "iTune media types, including music, podcasts, audiobooks and so on.",
+          "type": "string"
+        },
+        "pt": {
+          "description": "Provider token that enables analytics for Dynamic Links from within iTunes\nConnect.",
+          "type": "string"
+        },
+        "at": {
+          "description": "Affiliate token used to create affiliate-coded links.",
+          "type": "string"
+        }
+      },
+      "id": "ITunesConnectAnalytics",
+      "description": "Parameters for iTunes Connect App Analytics.",
+      "type": "object"
+    },
+    "DeviceInfo": {
+      "properties": {
+        "deviceModelName": {
+          "description": "Device model name.",
+          "type": "string"
+        },
+        "languageCodeFromWebview": {
+          "description": "Device language code setting obtained by executing JavaScript code in\nWebView.",
+          "type": "string"
+        },
+        "languageCodeRaw": {
+          "description": "Device language code raw setting.\niOS does returns language code in different format than iOS WebView.\nFor example WebView returns en_US, but iOS returns en-US.\nField below will return raw value returned by iOS.",
+          "type": "string"
+        },
+        "screenResolutionWidth": {
+          "description": "Device display resolution width.",
+          "format": "int64",
+          "type": "string"
+        },
+        "timezone": {
+          "description": "Device timezone setting.",
+          "type": "string"
+        },
+        "screenResolutionHeight": {
+          "description": "Device display resolution height.",
+          "format": "int64",
+          "type": "string"
+        },
+        "languageCode": {
+          "description": "Device language code setting.",
+          "type": "string"
+        }
+      },
+      "id": "DeviceInfo",
+      "description": "Signals associated with the device making the request.",
+      "type": "object"
+    },
+    "GetIosPostInstallAttributionResponse": {
+      "description": "Response for iSDK to execute strong match flow for post-install attribution.",
+      "type": "object",
+      "properties": {
+        "utmSource": {
+          "description": "Scion source value to be propagated by iSDK to Scion at post-install.",
+          "type": "string"
+        },
+        "isStrongMatchExecutable": {
+          "description": "Instruction for iSDK to attemmpt to perform strong match. For instance,\nif browser does not support/allow cookie or outside of support browsers,\nthis will be false.",
+          "type": "boolean"
+        },
+        "appMinimumVersion": {
+          "description": "The minimum version for app, specified by dev through ?imv= parameter.\nReturn to iSDK to allow app to evaluate if current version meets this.",
+          "type": "string"
+        },
+        "deepLink": {
+          "description": "The deep-link attributed post-install via one of several techniques\n(fingerprint, copy unique).",
+          "type": "string"
+        },
+        "invitationId": {
+          "description": "Invitation ID attributed post-install via one of several techniques\n(fingerprint, copy unique).",
+          "type": "string"
+        },
+        "attributionConfidence": {
+          "enum": [
+            "UNKNOWN_ATTRIBUTION_CONFIDENCE",
+            "WEAK",
+            "DEFAULT",
+            "UNIQUE"
+          ],
+          "description": "The confidence of the returned attribution.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unset.",
+            "Weak confidence, more than one matching link found or link suspected to\nbe false positive",
+            "Default confidence, match based on fingerprint",
+            "Unique confidence, match based on \"unique match link to check\" or other\nmeans"
+          ]
+        },
+        "externalBrowserDestinationLink": {
+          "description": "User-agent specific custom-scheme URIs for iSDK to open. This will be set\naccording to the user-agent tha the click was originally made in. There is\nno Safari-equivalent custom-scheme open URLs.\nie: googlechrome://www.example.com\nie: firefox://open-url?url=http://www.example.com\nie: opera-http://example.com",
+          "type": "string"
+        },
+        "matchMessage": {
+          "description": "Describes why match failed, ie: \"discarded due to low confidence\".\nThis message will be publicly visible.",
+          "type": "string"
+        },
+        "resolvedLink": {
+          "description": "The entire FDL, expanded from a short link. It is the same as the\nrequested_link, if it is long. Parameters from this should not be\nused directly (ie: server can default utm_[campaign|medium|source]\nto a value when requested_link lack them, server determine the best\nfallback_link when requested_link specifies \u003e1 fallback links).",
+          "type": "string"
+        },
+        "utmCampaign": {
+          "description": "Scion campaign value to be propagated by iSDK to Scion at post-install.",
+          "type": "string"
+        },
+        "fallbackLink": {
+          "description": "The link to navigate to update the app if min version is not met.\nThis is either (in order): 1) fallback link (from ?ifl= parameter, if\nspecified by developer) or 2) AppStore URL (from ?isi= parameter, if\nspecified), or 3) the payload link (from required link= parameter).",
+          "type": "string"
+        },
+        "requestedLink": {
+          "description": "Entire FDL (short or long) attributed post-install via one of several\ntechniques (fingerprint, copy unique).",
+          "type": "string"
+        },
+        "utmMedium": {
+          "description": "Scion medium value to be propagated by iSDK to Scion at post-install.",
+          "type": "string"
+        }
+      },
+      "id": "GetIosPostInstallAttributionResponse"
+    },
+    "SocialMetaTagInfo": {
+      "properties": {
+        "socialTitle": {
+          "description": "Title to be displayed. Optional.",
+          "type": "string"
+        },
+        "socialImageLink": {
+          "description": "An image url string. Optional.",
+          "type": "string"
+        },
+        "socialDescription": {
+          "description": "A short description of the link. Optional.",
+          "type": "string"
+        }
+      },
+      "id": "SocialMetaTagInfo",
+      "description": "Parameters for social meta tag params.\nUsed to set meta tag data for link previews on social sites.",
+      "type": "object"
+    },
     "DynamicLinkStats": {
-      "id": "DynamicLinkStats",
       "description": "Analytics stats of a Dynamic Link for a given timeframe.",
       "type": "object",
       "properties": {
@@ -18,20 +280,13 @@
             "$ref": "DynamicLinkEventStat"
           }
         }
-      }
+      },
+      "id": "DynamicLinkStats"
     },
     "DynamicLinkWarning": {
       "description": "Dynamic Links warning messages.",
       "type": "object",
       "properties": {
-        "warningMessage": {
-          "description": "The warning message to help developers improve their requests.",
-          "type": "string"
-        },
-        "warningDocumentLink": {
-          "description": "The document describing the warning, and helps resolve.",
-          "type": "string"
-        },
         "warningCode": {
           "enum": [
             "CODE_UNSPECIFIED",
@@ -97,15 +352,26 @@
             "Dynamic Link URL contains fragments.",
             "The iOS bundle ID does not match with the given iOS store ID."
           ]
+        },
+        "warningMessage": {
+          "description": "The warning message to help developers improve their requests.",
+          "type": "string"
+        },
+        "warningDocumentLink": {
+          "description": "The document describing the warning, and helps resolve.",
+          "type": "string"
         }
       },
       "id": "DynamicLinkWarning"
     },
     "AndroidInfo": {
-      "id": "AndroidInfo",
       "description": "Android related attributes to the Dynamic Link.",
       "type": "object",
       "properties": {
+        "androidPackageName": {
+          "description": "Android package name of the app.",
+          "type": "string"
+        },
         "androidMinPackageVersionCode": {
           "description": "Minimum version code for the Android app. If the installed app’s version\ncode is lower, then the user is taken to the Play Store.",
           "type": "string"
@@ -117,28 +383,35 @@
         "androidFallbackLink": {
           "description": "Link to open on Android if the app is not installed.",
           "type": "string"
-        },
-        "androidPackageName": {
-          "description": "Android package name of the app.",
-          "type": "string"
         }
-      }
+      },
+      "id": "AndroidInfo"
     },
     "NavigationInfo": {
-      "description": "Information of navigation behavior.",
-      "type": "object",
       "properties": {
         "enableForcedRedirect": {
           "description": "If this option is on, FDL click will be forced to redirect rather than\nshow an interstitial page.",
           "type": "boolean"
         }
       },
-      "id": "NavigationInfo"
+      "id": "NavigationInfo",
+      "description": "Information of navigation behavior.",
+      "type": "object"
     },
     "IosInfo": {
-      "description": "iOS related attributes to the Dynamic Link..",
-      "type": "object",
       "properties": {
+        "iosFallbackLink": {
+          "description": "Link to open on iOS if the app is not installed.",
+          "type": "string"
+        },
+        "iosAppStoreId": {
+          "description": "iOS App Store ID.",
+          "type": "string"
+        },
+        "iosIpadFallbackLink": {
+          "description": "If specified, this overrides the ios_fallback_link value on iPads.",
+          "type": "string"
+        },
         "iosIpadBundleId": {
           "description": "iPad bundle ID of the app.",
           "type": "string"
@@ -150,25 +423,13 @@
         "iosBundleId": {
           "description": "iOS bundle ID of the app.",
           "type": "string"
-        },
-        "iosFallbackLink": {
-          "description": "Link to open on iOS if the app is not installed.",
-          "type": "string"
-        },
-        "iosAppStoreId": {
-          "type": "string",
-          "description": "iOS App Store ID."
-        },
-        "iosIpadFallbackLink": {
-          "description": "If specified, this overrides the ios_fallback_link value on iPads.",
-          "type": "string"
         }
       },
-      "id": "IosInfo"
+      "id": "IosInfo",
+      "description": "iOS related attributes to the Dynamic Link..",
+      "type": "object"
     },
     "AnalyticsInfo": {
-      "description": "Tracking parameters supported by Dynamic Link.",
-      "type": "object",
       "properties": {
         "itunesConnectAnalytics": {
           "description": "iTunes Connect App Analytics.",
@@ -179,7 +440,9 @@
           "$ref": "GooglePlayAnalytics"
         }
       },
-      "id": "AnalyticsInfo"
+      "id": "AnalyticsInfo",
+      "description": "Tracking parameters supported by Dynamic Link.",
+      "type": "object"
     },
     "CreateShortDynamicLinkRequest": {
       "description": "Request to create a short Dynamic Link.",
@@ -194,55 +457,26 @@
           "type": "string"
         },
         "suffix": {
-          "$ref": "Suffix",
-          "description": "Short Dynamic Link suffix. Optional."
+          "description": "Short Dynamic Link suffix. Optional.",
+          "$ref": "Suffix"
         }
       },
       "id": "CreateShortDynamicLinkRequest"
     },
     "DesktopInfo": {
-      "description": "Desktop related attributes to the Dynamic Link.",
-      "type": "object",
       "properties": {
         "desktopFallbackLink": {
           "description": "Link to open on desktop.",
           "type": "string"
         }
       },
-      "id": "DesktopInfo"
+      "id": "DesktopInfo",
+      "description": "Desktop related attributes to the Dynamic Link.",
+      "type": "object"
     },
     "DynamicLinkEventStat": {
-      "description": "Dynamic Link event stat.",
-      "type": "object",
       "properties": {
-        "count": {
-          "description": "The number of times this event occurred.",
-          "format": "int64",
-          "type": "string"
-        },
-        "event": {
-          "enumDescriptions": [
-            "Unspecified type.",
-            "Indicates that an FDL is clicked by users.",
-            "Indicates that an FDL redirects users to fallback link.",
-            "Indicates that an FDL triggers an app install from Play store, currently\nit's impossible to get stats from App store.",
-            "Indicates that the app is opened for the first time after an install\ntriggered by FDLs",
-            "Indicates that the app is opened via an FDL for non-first time."
-          ],
-          "enum": [
-            "DYNAMIC_LINK_EVENT_UNSPECIFIED",
-            "CLICK",
-            "REDIRECT",
-            "APP_INSTALL",
-            "APP_FIRST_OPEN",
-            "APP_RE_OPEN"
-          ],
-          "description": "Link event.",
-          "type": "string"
-        },
         "platform": {
-          "description": "Requested platform.",
-          "type": "string",
           "enumDescriptions": [
             "Unspecified platform.",
             "Represents Android platform.\nAll apps and browsers on Android are classfied in this category.",
@@ -254,22 +488,45 @@
             "ANDROID",
             "IOS",
             "DESKTOP"
+          ],
+          "description": "Requested platform.",
+          "type": "string"
+        },
+        "count": {
+          "description": "The number of times this event occurred.",
+          "format": "int64",
+          "type": "string"
+        },
+        "event": {
+          "enum": [
+            "DYNAMIC_LINK_EVENT_UNSPECIFIED",
+            "CLICK",
+            "REDIRECT",
+            "APP_INSTALL",
+            "APP_FIRST_OPEN",
+            "APP_RE_OPEN"
+          ],
+          "description": "Link event.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unspecified type.",
+            "Indicates that an FDL is clicked by users.",
+            "Indicates that an FDL redirects users to fallback link.",
+            "Indicates that an FDL triggers an app install from Play store, currently\nit's impossible to get stats from App store.",
+            "Indicates that the app is opened for the first time after an install\ntriggered by FDLs",
+            "Indicates that the app is opened via an FDL for non-first time."
           ]
         }
       },
-      "id": "DynamicLinkEventStat"
+      "id": "DynamicLinkEventStat",
+      "description": "Dynamic Link event stat.",
+      "type": "object"
     },
     "GetIosPostInstallAttributionRequest": {
-      "description": "Request for iSDK to execute strong match flow for post-install attribution.\nThis is meant for iOS requests only. Requests from other platforms will\nnot be honored.",
-      "type": "object",
       "properties": {
-        "bundleId": {
-          "type": "string",
-          "description": "APP bundle ID."
-        },
         "device": {
-          "$ref": "DeviceInfo",
-          "description": "Device information."
+          "description": "Device information.",
+          "$ref": "DeviceInfo"
         },
         "uniqueMatchLinkToCheck": {
           "description": "Possible unique matched link that server need to check before performing\nfingerprint match. If passed link is short server need to expand the link.\nIf link is long server need to vslidate the link.",
@@ -282,20 +539,6 @@
         },
         "iosVersion": {
           "description": "iOS version, ie: 9.3.5.\nConsider adding \"build\".",
-          "type": "string"
-        },
-        "visualStyle": {
-          "enumDescriptions": [
-            "Unknown style.",
-            "Default style.",
-            "Custom style."
-          ],
-          "enum": [
-            "UNKNOWN_VISUAL_STYLE",
-            "DEFAULT_STYLE",
-            "CUSTOM_STYLE"
-          ],
-          "description": "Strong match page information. Disambiguates between default UI and\ncustom page to present when strong match succeeds/fails to find cookie.",
           "type": "string"
         },
         "retrievalMethod": {
@@ -314,281 +557,38 @@
           "description": "App post install attribution retrieval information. Disambiguates\nmechanism (iSDK or developer invoked) to retrieve payload from\nclicked link.",
           "type": "string"
         },
+        "visualStyle": {
+          "enum": [
+            "UNKNOWN_VISUAL_STYLE",
+            "DEFAULT_STYLE",
+            "CUSTOM_STYLE"
+          ],
+          "description": "Strong match page information. Disambiguates between default UI and\ncustom page to present when strong match succeeds/fails to find cookie.",
+          "type": "string",
+          "enumDescriptions": [
+            "Unknown style.",
+            "Default style.",
+            "Custom style."
+          ]
+        },
         "sdkVersion": {
           "description": "Google SDK version.",
           "type": "string"
-        }
-      },
-      "id": "GetIosPostInstallAttributionRequest"
-    },
-    "CreateShortDynamicLinkResponse": {
-      "description": "Response to create a short Dynamic Link.",
-      "type": "object",
-      "properties": {
-        "shortLink": {
-          "description": "Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz",
-          "type": "string"
         },
-        "previewLink": {
-          "description": "Preivew link to show the link flow chart.",
-          "type": "string"
-        },
-        "warning": {
-          "description": "Information about potential warnings on link creation.",
-          "type": "array",
-          "items": {
-            "$ref": "DynamicLinkWarning"
-          }
-        }
-      },
-      "id": "CreateShortDynamicLinkResponse"
-    },
-    "Suffix": {
-      "description": "Short Dynamic Link suffix.",
-      "type": "object",
-      "properties": {
-        "option": {
-          "enumDescriptions": [
-            "The suffix option is not specified, performs as NOT_GUESSABLE .",
-            "Short Dynamic Link suffix is a base62 [0-9A-Za-z] encoded string of\na random generated 96 bit random number, which has a length of 17 chars.\nFor example, \"nlAR8U4SlKRZw1cb2\".\nIt prevents other people from guessing and crawling short Dynamic Links\nthat contain personal identifiable information.",
-            "Short Dynamic Link suffix is a base62 [0-9A-Za-z] string starting with a\nlength of 4 chars. the length will increase when all the space is\noccupied."
-          ],
-          "enum": [
-            "OPTION_UNSPECIFIED",
-            "UNGUESSABLE",
-            "SHORT"
-          ],
-          "description": "Suffix option.",
+        "bundleId": {
+          "description": "APP bundle ID.",
           "type": "string"
         }
       },
-      "id": "Suffix"
-    },
-    "GooglePlayAnalytics": {
-      "properties": {
-        "utmContent": {
-          "description": "Campaign content; used for A/B testing and content-targeted ads to\ndifferentiate ads or links that point to the same URL.",
-          "type": "string"
-        },
-        "utmMedium": {
-          "description": "Campaign medium; used to identify a medium such as email or cost-per-click.",
-          "type": "string"
-        },
-        "utmTerm": {
-          "description": "Campaign term; used with paid search to supply the keywords for ads.",
-          "type": "string"
-        },
-        "utmSource": {
-          "description": "Campaign source; used to identify a search engine, newsletter, or other\nsource.",
-          "type": "string"
-        },
-        "gclid": {
-          "description": "[AdWords autotagging parameter](https://support.google.com/analytics/answer/1033981?hl=en);\nused to measure Google AdWords ads. This value is generated dynamically\nand should never be modified.",
-          "type": "string"
-        },
-        "utmCampaign": {
-          "description": "Campaign name; used for keyword analysis to identify a specific product\npromotion or strategic campaign.",
-          "type": "string"
-        }
-      },
-      "id": "GooglePlayAnalytics",
-      "description": "Parameters for Google Play Campaign Measurements.\n[Learn more](https://developers.google.com/analytics/devguides/collection/android/v4/campaigns#campaign-params)",
+      "id": "GetIosPostInstallAttributionRequest",
+      "description": "Request for iSDK to execute strong match flow for post-install attribution.\nThis is meant for iOS requests only. Requests from other platforms will\nnot be honored.",
       "type": "object"
-    },
-    "DynamicLinkInfo": {
-      "type": "object",
-      "properties": {
-        "androidInfo": {
-          "$ref": "AndroidInfo",
-          "description": "Android related information. See Android related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."
-        },
-        "navigationInfo": {
-          "description": "Information of navigation behavior of a Firebase Dynamic Links.",
-          "$ref": "NavigationInfo"
-        },
-        "analyticsInfo": {
-          "$ref": "AnalyticsInfo",
-          "description": "Parameters used for tracking. See all tracking parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."
-        },
-        "dynamicLinkDomain": {
-          "description": "Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl\n[Learn more](https://firebase.google.com/docs/dynamic-links/android/receive)\non how to set up Dynamic Link domain associated with your Firebase project.\n\nRequired.",
-          "type": "string"
-        },
-        "desktopInfo": {
-          "description": "Desktop related information. See desktop related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).",
-          "$ref": "DesktopInfo"
-        },
-        "link": {
-          "description": "The link your app will open, You can specify any URL your app can handle.\nThis link must be a well-formatted URL, be properly URL-encoded, and use\nthe HTTP or HTTPS scheme. See 'link' parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually).\n\nRequired.",
-          "type": "string"
-        },
-        "iosInfo": {
-          "$ref": "IosInfo",
-          "description": "iOS related information. See iOS related parameters in the\n[documentation](https://firebase.google.com/docs/dynamic-links/create-manually)."
-        },
-        "socialMetaTagInfo": {
-          "$ref": "SocialMetaTagInfo",
-          "description": "Parameters for social meta tag params.\nUsed to set meta tag data for link previews on social sites."
-        }
-      },
-      "id": "DynamicLinkInfo",
-      "description": "Information about a Dynamic Link."
-    },
-    "ITunesConnectAnalytics": {
-      "properties": {
-        "at": {
-          "type": "string",
-          "description": "Affiliate token used to create affiliate-coded links."
-        },
-        "ct": {
-          "description": "Campaign text that developers can optionally add to any link in order to\ntrack sales from a specific marketing campaign.",
-          "type": "string"
-        },
-        "mt": {
-          "description": "iTune media types, including music, podcasts, audiobooks and so on.",
-          "type": "string"
-        },
-        "pt": {
-          "description": "Provider token that enables analytics for Dynamic Links from within iTunes\nConnect.",
-          "type": "string"
-        }
-      },
-      "id": "ITunesConnectAnalytics",
-      "description": "Parameters for iTunes Connect App Analytics.",
-      "type": "object"
-    },
-    "DeviceInfo": {
-      "description": "Signals associated with the device making the request.",
-      "type": "object",
-      "properties": {
-        "deviceModelName": {
-          "description": "Device model name.",
-          "type": "string"
-        },
-        "languageCodeFromWebview": {
-          "description": "Device language code setting obtained by executing JavaScript code in\nWebView.",
-          "type": "string"
-        },
-        "languageCodeRaw": {
-          "description": "Device language code raw setting.\niOS does returns language code in different format than iOS WebView.\nFor example WebView returns en_US, but iOS returns en-US.\nField below will return raw value returned by iOS.",
-          "type": "string"
-        },
-        "screenResolutionWidth": {
-          "description": "Device display resolution width.",
-          "format": "int64",
-          "type": "string"
-        },
-        "timezone": {
-          "description": "Device timezone setting.",
-          "type": "string"
-        },
-        "languageCode": {
-          "description": "Device language code setting.",
-          "type": "string"
-        },
-        "screenResolutionHeight": {
-          "description": "Device display resolution height.",
-          "format": "int64",
-          "type": "string"
-        }
-      },
-      "id": "DeviceInfo"
-    },
-    "GetIosPostInstallAttributionResponse": {
-      "properties": {
-        "matchMessage": {
-          "type": "string",
-          "description": "Describes why match failed, ie: \"discarded due to low confidence\".\nThis message will be publicly visible."
-        },
-        "resolvedLink": {
-          "description": "The entire FDL, expanded from a short link. It is the same as the\nrequested_link, if it is long. Parameters from this should not be\nused directly (ie: server can default utm_[campaign|medium|source]\nto a value when requested_link lack them, server determine the best\nfallback_link when requested_link specifies \u003e1 fallback links).",
-          "type": "string"
-        },
-        "utmCampaign": {
-          "description": "Scion campaign value to be propagated by iSDK to Scion at post-install.",
-          "type": "string"
-        },
-        "fallbackLink": {
-          "description": "The link to navigate to update the app if min version is not met.\nThis is either (in order): 1) fallback link (from ?ifl= parameter, if\nspecified by developer) or 2) AppStore URL (from ?isi= parameter, if\nspecified), or 3) the payload link (from required link= parameter).",
-          "type": "string"
-        },
-        "requestedLink": {
-          "description": "Entire FDL (short or long) attributed post-install via one of several\ntechniques (fingerprint, copy unique).",
-          "type": "string"
-        },
-        "utmMedium": {
-          "description": "Scion medium value to be propagated by iSDK to Scion at post-install.",
-          "type": "string"
-        },
-        "utmSource": {
-          "description": "Scion source value to be propagated by iSDK to Scion at post-install.",
-          "type": "string"
-        },
-        "isStrongMatchExecutable": {
-          "description": "Instruction for iSDK to attemmpt to perform strong match. For instance,\nif browser does not support/allow cookie or outside of support browsers,\nthis will be false.",
-          "type": "boolean"
-        },
-        "appMinimumVersion": {
-          "description": "The minimum version for app, specified by dev through ?imv= parameter.\nReturn to iSDK to allow app to evaluate if current version meets this.",
-          "type": "string"
-        },
-        "deepLink": {
-          "description": "The deep-link attributed post-install via one of several techniques\n(fingerprint, copy unique).",
-          "type": "string"
-        },
-        "invitationId": {
-          "description": "Invitation ID attributed post-install via one of several techniques\n(fingerprint, copy unique).",
-          "type": "string"
-        },
-        "attributionConfidence": {
-          "enumDescriptions": [
-            "Unset.",
-            "Weak confidence, more than one matching link found or link suspected to\nbe false positive",
-            "Default confidence, match based on fingerprint",
-            "Unique confidence, match based on \"unique match link to check\" or other\nmeans"
-          ],
-          "enum": [
-            "UNKNOWN_ATTRIBUTION_CONFIDENCE",
-            "WEAK",
-            "DEFAULT",
-            "UNIQUE"
-          ],
-          "description": "The confidence of the returned attribution.",
-          "type": "string"
-        },
-        "externalBrowserDestinationLink": {
-          "description": "User-agent specific custom-scheme URIs for iSDK to open. This will be set\naccording to the user-agent tha the click was originally made in. There is\nno Safari-equivalent custom-scheme open URLs.\nie: googlechrome://www.example.com\nie: firefox://open-url?url=http://www.example.com\nie: opera-http://example.com",
-          "type": "string"
-        }
-      },
-      "id": "GetIosPostInstallAttributionResponse",
-      "description": "Response for iSDK to execute strong match flow for post-install attribution.",
-      "type": "object"
-    },
-    "SocialMetaTagInfo": {
-      "description": "Parameters for social meta tag params.\nUsed to set meta tag data for link previews on social sites.",
-      "type": "object",
-      "properties": {
-        "socialTitle": {
-          "description": "Title to be displayed. Optional.",
-          "type": "string"
-        },
-        "socialImageLink": {
-          "description": "An image url string. Optional.",
-          "type": "string"
-        },
-        "socialDescription": {
-          "description": "A short description of the link. Optional.",
-          "type": "string"
-        }
-      },
-      "id": "SocialMetaTagInfo"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Firebase Dynamic Links",
   "auth": {
@@ -610,22 +610,22 @@
     "shortLinks": {
       "methods": {
         "create": {
-          "flatPath": "v1/shortLinks",
-          "path": "v1/shortLinks",
-          "id": "firebasedynamiclinks.shortLinks.create",
-          "request": {
-            "$ref": "CreateShortDynamicLinkRequest"
-          },
-          "description": "Creates a short Dynamic Link given either a valid long Dynamic Link or\ndetails such as Dynamic Link domain, Android and iOS app information.\nThe created short Dynamic Link will not expire.\n\nRepeated calls with the same long Dynamic Link or Dynamic Link information\nwill produce the same short Dynamic Link.\n\nThe Dynamic Link domain in the request must be owned by requester's\nFirebase project.",
+          "httpMethod": "POST",
+          "parameterOrder": [],
           "response": {
             "$ref": "CreateShortDynamicLinkResponse"
           },
-          "parameterOrder": [],
-          "httpMethod": "POST",
+          "parameters": {},
           "scopes": [
             "https://www.googleapis.com/auth/firebase"
           ],
-          "parameters": {}
+          "flatPath": "v1/shortLinks",
+          "id": "firebasedynamiclinks.shortLinks.create",
+          "path": "v1/shortLinks",
+          "description": "Creates a short Dynamic Link given either a valid long Dynamic Link or\ndetails such as Dynamic Link domain, Android and iOS app information.\nThe created short Dynamic Link will not expire.\n\nRepeated calls with the same long Dynamic Link or Dynamic Link information\nwill produce the same short Dynamic Link.\n\nThe Dynamic Link domain in the request must be owned by requester's\nFirebase project.",
+          "request": {
+            "$ref": "CreateShortDynamicLinkRequest"
+          }
         }
       }
     },
@@ -639,6 +639,9 @@
             "dynamicLink"
           ],
           "httpMethod": "GET",
+          "scopes": [
+            "https://www.googleapis.com/auth/firebase"
+          ],
           "parameters": {
             "durationDays": {
               "location": "query",
@@ -653,40 +656,63 @@
               "type": "string"
             }
           },
-          "scopes": [
-            "https://www.googleapis.com/auth/firebase"
-          ],
           "flatPath": "v1/{dynamicLink}/linkStats",
           "path": "v1/{dynamicLink}/linkStats",
           "id": "firebasedynamiclinks.getLinkStats",
           "description": "Fetches analytics stats of a short Dynamic Link for a given\nduration. Metrics include number of clicks, redirects, installs,\napp first opens, and app reopens."
         },
         "installAttribution": {
-          "httpMethod": "POST",
-          "parameterOrder": [],
+          "path": "v1/installAttribution",
+          "id": "firebasedynamiclinks.installAttribution",
+          "request": {
+            "$ref": "GetIosPostInstallAttributionRequest"
+          },
+          "description": "Get iOS strong/weak-match info for post-install attribution.",
           "response": {
             "$ref": "GetIosPostInstallAttributionResponse"
           },
-          "parameters": {},
+          "parameterOrder": [],
+          "httpMethod": "POST",
           "scopes": [
             "https://www.googleapis.com/auth/firebase"
           ],
-          "flatPath": "v1/installAttribution",
-          "id": "firebasedynamiclinks.installAttribution",
-          "path": "v1/installAttribution",
-          "description": "Get iOS strong/weak-match info for post-install attribution.",
-          "request": {
-            "$ref": "GetIosPostInstallAttributionRequest"
-          }
+          "parameters": {},
+          "flatPath": "v1/installAttribution"
         }
       }
     }
   },
   "parameters": {
-    "quotaUser": {
+    "alt": {
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
       "location": "query",
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
       "type": "string"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
     },
     "pp": {
       "description": "Pretty-print response.",
@@ -694,14 +720,14 @@
       "default": "true",
       "location": "query"
     },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
     "oauth_token": {
       "location": "query",
       "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "bearer_token": {
+      "location": "query",
+      "description": "OAuth bearer token.",
       "type": "string"
     },
     "upload_protocol": {
@@ -710,23 +736,18 @@
       "location": "query"
     },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "uploadType": {
-      "location": "query",
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string"
+      "default": "true"
     },
     "fields": {
       "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "callback": {
-      "description": "JSONP",
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
       "type": "string",
       "location": "query"
     },
@@ -743,29 +764,8 @@
       "description": "V1 error format.",
       "type": "string"
     },
-    "alt": {
-      "default": "json",
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response."
-    },
-    "key": {
-      "location": "query",
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
+    "callback": {
+      "description": "JSONP",
       "type": "string",
       "location": "query"
     }

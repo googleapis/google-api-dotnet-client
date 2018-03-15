@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/deployment-manager/'>Google Cloud Deployment Manager API V2Beta Methods</a>
  *      <tr><th>API Version<td>v2beta
- *      <tr><th>API Rev<td>20180301 (1155)
+ *      <tr><th>API Rev<td>20180309 (1163)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/deployment-manager/'>
  *              https://developers.google.com/deployment-manager/</a>
@@ -1040,7 +1040,7 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "deletePolicy", new Google.Apis.Discovery.Parameter
@@ -1234,12 +1234,12 @@ namespace Google.Apis.DeploymentManagerV2Beta.v2beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-
+            /// <summary>Sets the policy to use for creating new resources.</summary>
             /// [default: CREATE_OR_ACQUIRE]
             [Google.Apis.Util.RequestParameterAttribute("createPolicy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<CreatePolicyEnum> CreatePolicy { get; set; }
 
-
+            /// <summary>Sets the policy to use for creating new resources.</summary>
             public enum CreatePolicyEnum
             {
                 [Google.Apis.Util.StringValueAttribute("ACQUIRE")]
