@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180220 (1146)
+ *      <tr><th>API Rev<td>20180314 (1168)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -785,25 +785,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1029,25 +1026,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1199,25 +1193,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -1662,25 +1653,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -2054,25 +2042,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -2517,25 +2502,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -3516,25 +3498,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -4001,25 +3980,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -4614,25 +4590,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -5188,25 +5161,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -5432,25 +5402,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -5602,25 +5569,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -6220,25 +6184,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -6997,25 +6958,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -7460,25 +7418,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -7927,25 +7882,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -8711,25 +8663,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -9310,25 +9259,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -9749,25 +9695,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -10047,25 +9990,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -10476,25 +10416,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -11205,25 +11142,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -11934,25 +11868,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -12867,25 +12798,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -13340,25 +13268,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -13965,25 +13890,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -15571,25 +15493,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -16041,25 +15960,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -16211,25 +16127,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -17021,25 +16934,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -17403,25 +17313,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -18425,25 +18332,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -18593,25 +18497,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -20095,6 +19996,97 @@ namespace Google.Apis.Compute.beta
 
         }
 
+        /// <summary>Simulates a maintenance event on the instance.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="zone">The name of the zone for this
+        /// request.</param>
+        /// <param name="instance">Name of the instance scoping this request.</param>
+        public virtual SimulateMaintenanceEventRequest SimulateMaintenanceEvent(string project, string zone, string instance)
+        {
+            return new SimulateMaintenanceEventRequest(service, project, zone, instance);
+        }
+
+        /// <summary>Simulates a maintenance event on the instance.</summary>
+        public class SimulateMaintenanceEventRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
+        {
+            /// <summary>Constructs a new SimulateMaintenanceEvent request.</summary>
+            public SimulateMaintenanceEventRequest(Google.Apis.Services.IClientService service, string project, string zone, string instance)
+                : base(service)
+            {
+                Project = project;
+                Zone = zone;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the zone for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Zone { get; private set; }
+
+            /// <summary>Name of the instance scoping this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "simulateMaintenanceEvent"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/zones/{zone}/instances/{instance}/simulateMaintenanceEvent"; }
+            }
+
+            /// <summary>Initializes SimulateMaintenanceEvent parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "zone", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "zone",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
         /// <summary>Starts an instance that was stopped using the using the instances().stop method. For more
         /// information, see Restart an instance.</summary>
         /// <param name="project">Project ID for this request.</param>
@@ -20869,25 +20861,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -21334,25 +21323,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -21928,25 +21914,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -22355,25 +22338,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -23159,25 +23139,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -23320,25 +23297,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -23564,25 +23538,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -24106,25 +24077,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -26157,25 +26125,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -27090,25 +27055,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -27613,25 +27575,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -27963,25 +27922,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -28233,25 +28189,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -28860,25 +28813,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -29984,25 +29934,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -31407,25 +31354,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -31580,25 +31524,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("instanceGroup", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string InstanceGroup { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -32175,25 +32116,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -32423,25 +32361,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -32584,25 +32519,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -33140,25 +33072,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -34020,25 +33949,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -34702,25 +34628,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -35423,25 +35346,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -36022,25 +35942,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -36537,25 +36454,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -36681,25 +36595,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -37033,25 +36944,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -37708,25 +37616,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -37861,25 +37766,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -38738,25 +38640,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -39357,25 +39256,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -40033,25 +39929,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -40498,25 +40391,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -41011,25 +40901,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -41578,25 +41465,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -42493,25 +42377,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -43436,25 +43317,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -43809,25 +43687,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -44274,25 +44149,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -45042,25 +44914,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -45587,25 +45456,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -46052,25 +45918,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -46633,25 +46496,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Zone { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -46881,25 +46741,22 @@ namespace Google.Apis.Compute.beta
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Project { get; private set; }
 
-            /// <summary>Sets a filter {expression} for filtering listed resources. Your {expression} must be in the
-            /// format: field_name comparison_string literal_string.
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
             ///
-            /// The field_name is the name of the field you want to compare. Only atomic field types are supported
-            /// (string, number, boolean). The comparison_string must be either eq (equals) or ne (not equals). The
-            /// literal_string is the string value to filter to. The literal value must be valid for the type of field
-            /// you are filtering by (string, number, boolean). For string fields, the literal value is interpreted as a
-            /// regular expression using RE2 syntax. The literal value must match the entire field.
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
             ///
-            /// For example, to filter for instances that do not have a name of example-instance, you would use name ne
-            /// example-instance.
-            ///
-            /// You can filter on nested fields. For example, you could filter on instances that have set the
-            /// scheduling.automaticRestart field to true. Use filtering on nested fields to take advantage of labels to
-            /// organize and search for results based on label values.
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
             ///
             /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
-            /// (scheduling.automaticRestart eq true) (zone eq us-central1-f). Multiple expressions are treated as AND
-            /// expressions, meaning that resources must match all expressions to pass the filters.</summary>
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
@@ -50154,6 +50011,12 @@ namespace Google.Apis.Compute.beta.Data
         /// sourceRanges OR sourceTags.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("direction")]
         public virtual string Direction { get; set; } 
+
+        /// <summary>Denotes whether the firewall rule is disabled, i.e not applied to the network it is associated
+        /// with. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If
+        /// this is unspecified, the firewall rule will be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
+        public virtual System.Nullable<bool> Disabled { get; set; } 
 
         /// <summary>[Output Only] The unique identifier for the resource. This identifier is defined by the
         /// server.</summary>
@@ -53465,6 +53328,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
+        /// <summary>[Output Only] The current state of whether or not this Interconnect is functional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -53477,6 +53344,12 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminEnabled")]
         public virtual System.Nullable<bool> AdminEnabled { get; set; } 
+
+        /// <summary>Provisioned bandwidth capacity for the interconnectAttachment. Can be set by the partner to update
+        /// the customer's provisioned bandwidth. Output only for for PARTNER type, mutable for PARTNER_PROVIDER, not
+        /// available for DEDICATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bandwidth")]
+        public virtual string Bandwidth { get; set; } 
 
         /// <summary>Up to 16 candidate prefixes that can be used to restrict the allocation of cloudRouterIpAddress and
         /// customerRouterIpAddress for this attachment. All prefixes must be within link-local address space
@@ -53503,6 +53376,14 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>An optional description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Desired availability domain for the attachment. Only available for type PARTNER, at creation time.
+        /// For improved reliability, customers should configure a pair of attachments with one per availability domain.
+        /// The selected availability domain will be provided to the Partner via the pairing key so that the provisioned
+        /// circuit will lie in the specified domain. If not specified, the value will default to
+        /// AVAILABILITY_DOMAIN_ANY.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeAvailabilityDomain")]
+        public virtual string EdgeAvailabilityDomain { get; set; } 
 
         /// <summary>[Output Only] Google reference ID, to be used when raising support tickets with Google or otherwise
         /// to debug backend connectivity issues.</summary>
@@ -53551,6 +53432,23 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operationalStatus")]
         public virtual string OperationalStatus { get; set; } 
 
+        /// <summary>[Output only for type PARTNER. Input only for PARTNER_PROVIDER. Not present for DEDICATED]. The
+        /// opaque identifier of an PARTNER attachment used to initiate provisioning with a selected partner. Of the
+        /// form "XXXXX/region/domain"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pairingKey")]
+        public virtual string PairingKey { get; set; } 
+
+        /// <summary>Optional BGP ASN for the router that should be supplied by a layer 3 Partner if they configured BGP
+        /// on behalf of the customer. Output only for PARTNER type, input only for PARTNER_PROVIDER, not available for
+        /// DEDICATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerAsn")]
+        public virtual System.Nullable<long> PartnerAsn { get; set; } 
+
+        /// <summary>Informational metadata about Partner attachments from Partners to display to customers. Output only
+        /// for for PARTNER type, mutable for PARTNER_PROVIDER, not available for DEDICATED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerMetadata")]
+        public virtual InterconnectAttachmentPartnerMetadata PartnerMetadata { get; set; } 
+
         /// <summary>[Output Only] Information specific to an InterconnectAttachment. This property is populated if the
         /// interconnect that this is attached to is of type DEDICATED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateInterconnectInfo")]
@@ -53571,6 +53469,10 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] The current state of this attachment's functionality.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
@@ -53728,6 +53630,30 @@ namespace Google.Apis.Compute.beta.Data
 
             }
         }
+    }    
+
+    /// <summary>Informational metadata about Partner attachments from Partners to display to customers. These fields
+    /// are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.</summary>
+    public class InterconnectAttachmentPartnerMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner?s
+        /// portal. For instance ?Chicago 1?. This value may be validated to match approved Partner values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectName")]
+        public virtual string InterconnectName { get; set; } 
+
+        /// <summary>Plain text name of the Partner providing this attachment. This value may be validated to match
+        /// approved Partner values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerName")]
+        public virtual string PartnerName { get; set; } 
+
+        /// <summary>URL of the Partner?s portal for this Attachment. Partners may customise this to be a deep-link to
+        /// the specific resource on the Partner portal. This value may be validated to match approved Partner
+        /// values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portalUrl")]
+        public virtual string PortalUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Information for an interconnect attachment when this belongs to an interconnect of type
@@ -57965,6 +57891,10 @@ namespace Google.Apis.Compute.beta.Data
         /// field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Whether to enable flow logging for this subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableFlowLogs")]
+        public virtual System.Nullable<bool> EnableFlowLogs { get; set; } 
 
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must

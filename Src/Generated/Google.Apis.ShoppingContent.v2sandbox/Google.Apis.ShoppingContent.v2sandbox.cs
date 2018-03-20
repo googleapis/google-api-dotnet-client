@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2sandbox
- *      <tr><th>API Rev<td>20180314 (1168)
+ *      <tr><th>API Rev<td>20180316 (1170)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -2203,7 +2203,8 @@ namespace Google.Apis.ShoppingContent.v2sandbox.Data
 
     public class OrderCustomer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Email address of the customer.</summary>
+        /// <summary>Email address that should be used for order related communications. In certain cases this might not
+        /// be a real users email, but a proxy email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 

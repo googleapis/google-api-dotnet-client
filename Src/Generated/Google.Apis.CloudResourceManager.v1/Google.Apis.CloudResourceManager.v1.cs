@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/resource-manager'>Cloud Resource Manager API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180312 (1166)
+ *      <tr><th>API Rev<td>20180315 (1169)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/resource-manager'>
  *              https://cloud.google.com/resource-manager</a>
@@ -990,10 +990,6 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
-            /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The maximum number of items to return. This is a suggestion for the server.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -1001,6 +997,10 @@ namespace Google.Apis.CloudResourceManager.v1
             /// <summary>The name of the resource to list all attached Liens. For example, `projects/1234`.</summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Parent { get; set; }
+
+            /// <summary>The `next_page_token` value returned from a previous List request, if any.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -1027,15 +1027,6 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -1048,6 +1039,15 @@ namespace Google.Apis.CloudResourceManager.v1
                     "parent", new Google.Apis.Discovery.Parameter
                     {
                         Name = "parent",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2093,10 +2093,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for
-        /// deletion. This method will only affect the Project if the following criteria are met:
-        ///
-        /// + The Project does not have a billing account associated with it. + The Project has a lifecycle state of
-        /// ACTIVE.
+        /// deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE.
         ///
         /// This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an
         /// unspecified time, at which point the Project is no longer accessible.
@@ -2116,10 +2113,7 @@ namespace Google.Apis.CloudResourceManager.v1
         }
 
         /// <summary>Marks the Project identified by the specified `project_id` (for example, `my-project-123`) for
-        /// deletion. This method will only affect the Project if the following criteria are met:
-        ///
-        /// + The Project does not have a billing account associated with it. + The Project has a lifecycle state of
-        /// ACTIVE.
+        /// deletion. This method will only affect the Project if it has a lifecycle state of ACTIVE.
         ///
         /// This method changes the Project's lifecycle state from ACTIVE to DELETE_REQUESTED. The deletion starts at an
         /// unspecified time, at which point the Project is no longer accessible.
@@ -2583,6 +2577,13 @@ namespace Google.Apis.CloudResourceManager.v1
             }
 
 
+            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
+            /// listing should continue.
+            ///
+            /// Optional.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
             /// <summary>The maximum number of Projects to return in the response. The server can return fewer Projects
             /// than requested. If unspecified, server picks an appropriate default.
             ///
@@ -2614,13 +2615,6 @@ namespace Google.Apis.CloudResourceManager.v1
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
 
-            /// <summary>A pagination token returned from a previous call to ListProjects that indicates from where
-            /// listing should continue.
-            ///
-            /// Optional.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -2646,6 +2640,15 @@ namespace Google.Apis.CloudResourceManager.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -2658,15 +2661,6 @@ namespace Google.Apis.CloudResourceManager.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

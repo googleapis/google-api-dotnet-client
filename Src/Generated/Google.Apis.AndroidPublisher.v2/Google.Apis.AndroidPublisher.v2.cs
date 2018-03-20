@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180307 (1161)
+ *      <tr><th>API Rev<td>20180318 (1172)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -3770,8 +3770,8 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-            /// "rollout".</param>
+            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
+            /// "internal".</param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
                 return new GetRequest(service, packageName, editId, track);
@@ -3800,8 +3800,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-                /// "rollout".</summary>
+                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
+                /// "rollout" or "internal".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -3854,7 +3854,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout)",
+                            Pattern = @"(alpha|beta|production|rollout|internal)",
                         });
                 }
 
@@ -3866,8 +3866,8 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-            /// "rollout".</param>
+            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
+            /// "internal".</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v2.Data.Testers body, string packageName, string editId, string track)
             {
                 return new PatchRequest(service, body, packageName, editId, track);
@@ -3897,8 +3897,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-                /// "rollout".</summary>
+                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
+                /// "rollout" or "internal".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -3957,7 +3957,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout)",
+                            Pattern = @"(alpha|beta|production|rollout|internal)",
                         });
                 }
 
@@ -3969,8 +3969,8 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-            /// "rollout".</param>
+            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
+            /// "internal".</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v2.Data.Testers body, string packageName, string editId, string track)
             {
                 return new UpdateRequest(service, body, packageName, editId, track);
@@ -4000,8 +4000,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-                /// "rollout".</summary>
+                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
+                /// "rollout" or "internal".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4060,7 +4060,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout)",
+                            Pattern = @"(alpha|beta|production|rollout|internal)",
                         });
                 }
 
@@ -4096,8 +4096,8 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-            /// "rollout".</param>
+            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
+            /// "internal".</param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
                 return new GetRequest(service, packageName, editId, track);
@@ -4127,8 +4127,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-                /// "rollout".</summary>
+                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
+                /// "rollout" or "internal".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4181,7 +4181,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout)",
+                            Pattern = @"(alpha|beta|production|rollout|internal)",
                         });
                 }
 
@@ -4272,8 +4272,8 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-            /// "rollout".</param>
+            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
+            /// "internal".</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v2.Data.Track body, string packageName, string editId, string track)
             {
                 return new PatchRequest(service, body, packageName, editId, track);
@@ -4305,8 +4305,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-                /// "rollout".</summary>
+                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
+                /// "rollout" or "internal".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4365,7 +4365,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout)",
+                            Pattern = @"(alpha|beta|production|rollout|internal)",
                         });
                 }
 
@@ -4378,8 +4378,8 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-            /// "rollout".</param>
+            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
+            /// "internal".</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v2.Data.Track body, string packageName, string editId, string track)
             {
                 return new UpdateRequest(service, body, packageName, editId, track);
@@ -4410,8 +4410,8 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production" or
-                /// "rollout".</summary>
+                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
+                /// "rollout" or "internal".</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4470,7 +4470,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout)",
+                            Pattern = @"(alpha|beta|production|rollout|internal)",
                         });
                 }
 
@@ -7559,7 +7559,7 @@ namespace Google.Apis.AndroidPublisher.v2.Data
 
     public class Track : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifier for this track. One of "alpha", "beta", "production" or "rollout".</summary>
+        /// <summary>Identifier for this track. One of "alpha", "beta", "production", "rollout" or "internal".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
         public virtual string TrackValue { get; set; } 
 

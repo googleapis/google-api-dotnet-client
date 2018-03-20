@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/YYUnFerY4M5DVUJ6-1fvnhyFfQI\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/e5F2mTs50sJnLnMkzFkqjWW6G1k\"",
  "discoveryVersion": "v1",
  "id": "dns:v1beta2",
  "name": "dns",
  "version": "v1beta2",
- "revision": "20180309",
+ "revision": "20180314",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -458,15 +458,6 @@
      "items": {
       "$ref": "Operation"
      }
-    }
-   }
-  },
-  "ManagedZonesDeleteResponse": {
-   "id": "ManagedZonesDeleteResponse",
-   "type": "object",
-   "properties": {
-    "header": {
-     "$ref": "ResponseHeader"
     }
    }
   },
@@ -1148,9 +1139,6 @@
       "project",
       "managedZone"
      ],
-     "response": {
-      "$ref": "ManagedZonesDeleteResponse"
-     },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/ndev.clouddns.readwrite"

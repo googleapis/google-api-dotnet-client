@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/mSPyWksLXfT4Y1yNDG7t3sTwHiI\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/FsDAXvP1EaK5M44tzgwKdZouc_s\"",
  "discoveryVersion": "v1",
  "id": "sqladmin:v1beta4",
  "name": "sqladmin",
  "canonicalName": "SQL Admin",
  "version": "v1beta4",
- "revision": "20180227",
+ "revision": "20180314",
  "title": "Cloud SQL Administration API",
  "description": "Creates and configures Cloud SQL instances, which provide fully-managed MySQL databases.",
  "ownerDomain": "google.com",
@@ -125,7 +125,7 @@
     },
     "replicationLogArchivingEnabled": {
      "type": "boolean",
-     "description": "Whether replication log archiving is enabled. Replication log archiving is required for the point-in-time recovery (PITR) feature. PostgreSQL instances only."
+     "description": "Reserved for future use."
     },
     "startTime": {
      "type": "string",
@@ -258,7 +258,7 @@
     },
     "pitrTimestampMs": {
      "type": "string",
-     "description": "The epoch timestamp, in milliseconds, of the time to which a point-in-time recovery (PITR) is performed. PostgreSQL instances only. For MySQL instances, use the binLogCoordinates property.",
+     "description": "Reserved for future use.",
      "format": "int64"
     }
    }

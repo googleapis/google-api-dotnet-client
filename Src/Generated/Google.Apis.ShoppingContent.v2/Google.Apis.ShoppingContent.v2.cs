@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180314 (1168)
+ *      <tr><th>API Rev<td>20180316 (1170)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -2904,14 +2904,14 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
 
-        /// <summary>Retrieves and updates the Lia settings of multiple accounts in a single request.</summary>
+        /// <summary>Retrieves and/or updates the LIA settings of multiple accounts in a single request.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CustombatchRequest Custombatch(Google.Apis.ShoppingContent.v2.Data.LiasettingsCustomBatchRequest body)
         {
             return new CustombatchRequest(service, body);
         }
 
-        /// <summary>Retrieves and updates the Lia settings of multiple accounts in a single request.</summary>
+        /// <summary>Retrieves and/or updates the LIA settings of multiple accounts in a single request.</summary>
         public class CustombatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsCustomBatchResponse>
         {
             /// <summary>Constructs a new Custombatch request.</summary>
@@ -2970,18 +2970,18 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the Lia settings of the account.</summary>
+        /// <summary>Retrieves the LIA settings of the account.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
-        /// <param name="accountId">The ID of the account for which to get/update Lia
+        /// <param name="accountId">The ID of the account for which to get or update LIA
         /// settings.</param>
         public virtual GetRequest Get(ulong merchantId, ulong accountId)
         {
             return new GetRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the Lia settings of the account.</summary>
+        /// <summary>Retrieves the LIA settings of the account.</summary>
         public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiaSettings>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -3000,7 +3000,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the account for which to get/update Lia settings.</summary>
+            /// <summary>The ID of the account for which to get or update LIA settings.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
@@ -3050,18 +3050,18 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Retrieves the list of accesable Google My Business accounts.</summary>
+        /// <summary>Retrieves the list of accessible Google My Business accounts.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
-        /// <param name="accountId">The ID of the account for which to retrieve the accessible Google
-        /// My Business accounts.</param>
+        /// <param name="accountId">The ID of the account for which to retrieve accessible Google My
+        /// Business accounts.</param>
         public virtual GetaccessiblegmbaccountsRequest Getaccessiblegmbaccounts(ulong merchantId, ulong accountId)
         {
             return new GetaccessiblegmbaccountsRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Retrieves the list of accesable Google My Business accounts.</summary>
+        /// <summary>Retrieves the list of accessible Google My Business accounts.</summary>
         public class GetaccessiblegmbaccountsRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsGetAccessibleGmbAccountsResponse>
         {
             /// <summary>Constructs a new Getaccessiblegmbaccounts request.</summary>
@@ -3080,8 +3080,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the account for which to retrieve the accessible Google My Business
-            /// accounts.</summary>
+            /// <summary>The ID of the account for which to retrieve accessible Google My Business accounts.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
@@ -3131,14 +3130,14 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Lists the Lia settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the LIA settings of the sub-accounts in your Merchant Center account.</summary>
         /// <param name="merchantId">The ID of the managing account. This must be a multi-client account.</param>
         public virtual ListRequest List(ulong merchantId)
         {
             return new ListRequest(service, merchantId);
         }
 
-        /// <summary>Lists the Lia settings of the sub-accounts in your Merchant Center account.</summary>
+        /// <summary>Lists the LIA settings of the sub-accounts in your Merchant Center account.</summary>
         public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -3154,7 +3153,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The maximum number of Lia settings to return in the response, used for paging.</summary>
+            /// <summary>The maximum number of LIA settings to return in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -3217,19 +3216,19 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the Lia settings of the account. This method supports patch semantics.</summary>
+        /// <summary>Updates the LIA settings of the account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
-        /// <param name="accountId">The ID of the account for which to get/update Lia
+        /// <param name="accountId">The ID of the account for which to get or update LIA
         /// settings.</param>
         public virtual PatchRequest Patch(Google.Apis.ShoppingContent.v2.Data.LiaSettings body, ulong merchantId, ulong accountId)
         {
             return new PatchRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the Lia settings of the account. This method supports patch semantics.</summary>
+        /// <summary>Updates the LIA settings of the account. This method supports patch semantics.</summary>
         public class PatchRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiaSettings>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3249,7 +3248,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the account for which to get/update Lia settings.</summary>
+            /// <summary>The ID of the account for which to get or update LIA settings.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
@@ -3318,7 +3317,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Requests access to a specified Google By Business account.</summary>
+        /// <summary>Requests access to a specified Google My Business account.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
@@ -3329,7 +3328,7 @@ namespace Google.Apis.ShoppingContent.v2
             return new RequestgmbaccessRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Requests access to a specified Google By Business account.</summary>
+        /// <summary>Requests access to a specified Google My Business account.</summary>
         public class RequestgmbaccessRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsRequestGmbAccessResponse>
         {
             /// <summary>Constructs a new Requestgmbaccess request.</summary>
@@ -3352,7 +3351,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>The email of the Google My Business Account.</summary>
+            /// <summary>The email of the Google My Business account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("gmbEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string GmbEmail { get; set; }
 
@@ -3411,20 +3410,20 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Requests the inventory validation for the specified country.</summary>
+        /// <summary>Requests inventory validation for the specified country.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
         /// <param name="accountId">The ID of the account that manages the order. This cannot be a
         /// multi-client account.</param>
-        /// <param name="country">The country for which the inventory validation is
+        /// <param name="country">The country for which inventory validation is
         /// requested.</param>
         public virtual RequestinventoryverificationRequest Requestinventoryverification(ulong merchantId, ulong accountId, string country)
         {
             return new RequestinventoryverificationRequest(service, merchantId, accountId, country);
         }
 
-        /// <summary>Requests the inventory validation for the specified country.</summary>
+        /// <summary>Requests inventory validation for the specified country.</summary>
         public class RequestinventoryverificationRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsRequestInventoryVerificationResponse>
         {
             /// <summary>Constructs a new Requestinventoryverification request.</summary>
@@ -3448,7 +3447,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>The country for which the inventory validation is requested.</summary>
+            /// <summary>The country for which inventory validation is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Country { get; private set; }
 
@@ -3507,7 +3506,7 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Sets the inventory validation verification for the specified country.</summary>
+        /// <summary>Sets the inventory verification contract for the specified country.</summary>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
@@ -3518,7 +3517,7 @@ namespace Google.Apis.ShoppingContent.v2
             return new SetinventoryverificationcontactRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Sets the inventory validation verification for the specified country.</summary>
+        /// <summary>Sets the inventory verification contract for the specified country.</summary>
         public class SetinventoryverificationcontactRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiasettingsSetInventoryVerificationContactResponse>
         {
             /// <summary>Constructs a new Setinventoryverificationcontact request.</summary>
@@ -3541,7 +3540,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
-            /// <summary>The email of the inventory check contact.</summary>
+            /// <summary>The email of the inventory verification contact.</summary>
             [Google.Apis.Util.RequestParameterAttribute("contactEmail", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ContactEmail { get; set; }
 
@@ -3549,11 +3548,11 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("contactName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ContactName { get; set; }
 
-            /// <summary>The country for which the inventory verification is requested.</summary>
+            /// <summary>The country for which inventory verification is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Country { get; set; }
 
-            /// <summary>The country for which the inventory verification is requested.</summary>
+            /// <summary>The language for which inventory verification is requested.</summary>
             [Google.Apis.Util.RequestParameterAttribute("language", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Language { get; set; }
 
@@ -3639,19 +3638,19 @@ namespace Google.Apis.ShoppingContent.v2
 
         }
 
-        /// <summary>Updates the Lia settings of the account.</summary>
+        /// <summary>Updates the LIA settings of the account.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">The ID of the managing account. If this parameter is not the same as accountId, then this
         /// account must be a multi-client account and accountId must be the ID of a sub-account of this
         /// account.</param>
-        /// <param name="accountId">The ID of the account for which to get/update Lia
+        /// <param name="accountId">The ID of the account for which to get or update LIA
         /// settings.</param>
         public virtual UpdateRequest Update(Google.Apis.ShoppingContent.v2.Data.LiaSettings body, ulong merchantId, ulong accountId)
         {
             return new UpdateRequest(service, body, merchantId, accountId);
         }
 
-        /// <summary>Updates the Lia settings of the account.</summary>
+        /// <summary>Updates the LIA settings of the account.</summary>
         public class UpdateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.LiaSettings>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -3671,7 +3670,7 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The ID of the account for which to get/update Lia settings.</summary>
+            /// <summary>The ID of the account for which to get or update LIA settings.</summary>
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
@@ -5583,10 +5582,11 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Deletes a store for the given merchant.</summary>
-        /// <param name="merchantId">The ID of the POS provider.</param>
-        /// <param name="targetMerchantId">The ID of the
-        /// target merchant.</param>
-        /// <param name="storeCode">A store code that is unique per merchant.</param>
+        /// <param name="merchantId">The ID of the POS or inventory data provider.</param>
+        /// <param
+        /// name="targetMerchantId">The ID of the target merchant.</param>
+        /// <param name="storeCode">A store code that is
+        /// unique per merchant.</param>
         public virtual DeleteRequest Delete(ulong merchantId, ulong targetMerchantId, string storeCode)
         {
             return new DeleteRequest(service, merchantId, targetMerchantId, storeCode);
@@ -5606,7 +5606,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the POS provider.</summary>
+            /// <summary>The ID of the POS or inventory data provider.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -5687,10 +5687,11 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Retrieves information about the given store.</summary>
-        /// <param name="merchantId">The ID of the POS provider.</param>
-        /// <param name="targetMerchantId">The ID of the
-        /// target merchant.</param>
-        /// <param name="storeCode">A store code that is unique per merchant.</param>
+        /// <param name="merchantId">The ID of the POS or inventory data provider.</param>
+        /// <param
+        /// name="targetMerchantId">The ID of the target merchant.</param>
+        /// <param name="storeCode">A store code that is
+        /// unique per merchant.</param>
         public virtual GetRequest Get(ulong merchantId, ulong targetMerchantId, string storeCode)
         {
             return new GetRequest(service, merchantId, targetMerchantId, storeCode);
@@ -5710,7 +5711,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the POS provider.</summary>
+            /// <summary>The ID of the POS or inventory data provider.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -5779,9 +5780,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Creates a store for the given merchant.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the POS provider.</param>
-        /// <param name="targetMerchantId">The ID of the
-        /// target merchant.</param>
+        /// <param name="merchantId">The ID of the POS or inventory data provider.</param>
+        /// <param
+        /// name="targetMerchantId">The ID of the target merchant.</param>
         public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2.Data.PosStore body, ulong merchantId, ulong targetMerchantId)
         {
             return new InsertRequest(service, body, merchantId, targetMerchantId);
@@ -5801,7 +5802,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the POS provider.</summary>
+            /// <summary>The ID of the POS or inventory data provider.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -5876,9 +5877,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Submit inventory for the given merchant.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the POS provider.</param>
-        /// <param name="targetMerchantId">The ID of the
-        /// target merchant.</param>
+        /// <param name="merchantId">The ID of the POS or inventory data provider.</param>
+        /// <param
+        /// name="targetMerchantId">The ID of the target merchant.</param>
         public virtual InventoryRequest Inventory(Google.Apis.ShoppingContent.v2.Data.PosInventoryRequest body, ulong merchantId, ulong targetMerchantId)
         {
             return new InventoryRequest(service, body, merchantId, targetMerchantId);
@@ -5898,7 +5899,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the POS provider.</summary>
+            /// <summary>The ID of the POS or inventory data provider.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -5972,9 +5973,9 @@ namespace Google.Apis.ShoppingContent.v2
         }
 
         /// <summary>Lists the stores of the target merchant.</summary>
-        /// <param name="merchantId">The ID of the POS provider.</param>
-        /// <param name="targetMerchantId">The ID of the
-        /// target merchant.</param>
+        /// <param name="merchantId">The ID of the POS or inventory data provider.</param>
+        /// <param
+        /// name="targetMerchantId">The ID of the target merchant.</param>
         public virtual ListRequest List(ulong merchantId, ulong targetMerchantId)
         {
             return new ListRequest(service, merchantId, targetMerchantId);
@@ -5993,7 +5994,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the POS provider.</summary>
+            /// <summary>The ID of the POS or inventory data provider.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -6049,9 +6050,9 @@ namespace Google.Apis.ShoppingContent.v2
 
         /// <summary>Submit a sale event for the given merchant.</summary>
         /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">The ID of the POS provider.</param>
-        /// <param name="targetMerchantId">The ID of the
-        /// target merchant.</param>
+        /// <param name="merchantId">The ID of the POS or inventory data provider.</param>
+        /// <param
+        /// name="targetMerchantId">The ID of the target merchant.</param>
         public virtual SaleRequest Sale(Google.Apis.ShoppingContent.v2.Data.PosSaleRequest body, ulong merchantId, ulong targetMerchantId)
         {
             return new SaleRequest(service, body, merchantId, targetMerchantId);
@@ -6071,7 +6072,7 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
 
-            /// <summary>The ID of the POS provider.</summary>
+            /// <summary>The ID of the POS or inventory data provider.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
@@ -8625,7 +8626,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; } 
 
-        /// <summary>A list of GMB account which are available to the merchant.</summary>
+        /// <summary>A list of GMB accounts which are available to the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
         public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccountsValue { get; set; } 
 
@@ -8647,7 +8648,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>Type of the GMB account (User or Business).</summary>
+        /// <summary>The type of the GMB account (User or Business).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
 
@@ -8976,11 +8977,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class LiaAboutPageSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The status verification process.</summary>
+        /// <summary>The status of the verification process for the About page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; } 
 
-        /// <summary>The about URL.</summary>
+        /// <summary>The URL for the About page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -8990,7 +8991,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class LiaCountrySettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The about page settings.</summary>
+        /// <summary>The settings for the About page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("about")]
         public virtual LiaAboutPageSettings About { get; set; } 
 
@@ -9002,7 +9003,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostedLocalStorefrontActive")]
         public virtual System.Nullable<bool> HostedLocalStorefrontActive { get; set; } 
 
-        /// <summary>LIA inventory settings.</summary>
+        /// <summary>LIA inventory verification settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual LiaInventorySettings Inventory { get; set; } 
 
@@ -9020,11 +9021,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class LiaInventorySettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The email of contact which will be contacted during the verification process.</summary>
+        /// <summary>The email of the contact for the inventory verification process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactEmail")]
         public virtual string InventoryVerificationContactEmail { get; set; } 
 
-        /// <summary>The name of contact which will be contacted during the verification process.</summary>
+        /// <summary>The name of the contact for the inventory verification process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inventoryVerificationContactName")]
         public virtual string InventoryVerificationContactName { get; set; } 
 
@@ -9172,7 +9173,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
         public virtual System.Nullable<ulong> AccountId { get; set; } 
 
-        /// <summary>A list of GMB account which are available to the merchant.</summary>
+        /// <summary>A list of GMB accounts which are available to the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gmbAccounts")]
         public virtual System.Collections.Generic.IList<GmbAccountsGmbAccount> GmbAccounts { get; set; } 
 
@@ -9192,7 +9193,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The token for the retrieval of the next page of Lia settings.</summary>
+        /// <summary>The token for the retrieval of the next page of LIA settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; } 
 
@@ -9424,7 +9425,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class OrderCustomer : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Email address of the customer.</summary>
+        /// <summary>Email address that should be used for order related communications. In certain cases this might not
+        /// be a real users email, but a proxy email.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
@@ -11113,7 +11115,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The identifier of the merchant's store.</summary>
+        /// <summary>The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the
+        /// store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
 
@@ -11151,7 +11154,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The identifier of the merchant's store.</summary>
+        /// <summary>The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the
+        /// store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
 
@@ -11194,7 +11198,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; } 
 
-        /// <summary>The identifier of the merchant's store.</summary>
+        /// <summary>The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the
+        /// store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
 
@@ -11255,7 +11260,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
         public virtual string SaleId { get; set; } 
 
-        /// <summary>The identifier of the merchant's store.</summary>
+        /// <summary>The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the
+        /// store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
 
@@ -11297,7 +11303,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
         public virtual string SaleId { get; set; } 
 
-        /// <summary>The identifier of the merchant's store.</summary>
+        /// <summary>The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the
+        /// store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
 
@@ -11344,7 +11351,8 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("saleId")]
         public virtual string SaleId { get; set; } 
 
-        /// <summary>The identifier of the merchant's store.</summary>
+        /// <summary>The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the
+        /// store in Google My Business.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
 

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/qArKDyCJRHFmotUmE3KnUn3h_s8\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/GzeGhrgiJKQlQpHAXI2VovJdlQo\"",
  "discoveryVersion": "v1",
  "id": "content:v2sandbox",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2sandbox",
- "revision": "20180314",
+ "revision": "20180316",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -295,7 +295,7 @@
    "properties": {
     "email": {
      "type": "string",
-     "description": "Email address of the customer."
+     "description": "Email address that should be used for order related communications. In certain cases this might not be a real users email, but a proxy email."
     },
     "explicitMarketingPreference": {
      "type": "boolean",

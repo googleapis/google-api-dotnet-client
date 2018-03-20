@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20171212 (1076)
+ *      <tr><th>API Rev<td>20180316 (1170)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -3165,16 +3165,19 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Checks Membership of an user within a Group</summary>
-        /// <param name="groupKey">Email or immutable Id of the group</param>
-        /// <param name="memberKey">Email or immutable
-        /// Id of the member</param>
+        /// <summary>Checks whether the given user is a member of the group. Membership can be direct or
+        /// nested.</summary>
+        /// <param name="groupKey">Identifies the group in the API request. The value can be the group's email address, group
+        /// alias, or the unique group ID.</param>
+        /// <param name="memberKey">Identifies the user member in the API
+        /// request. The value can be the user's primary email address, alias, or unique ID.</param>
         public virtual HasMemberRequest HasMember(string groupKey, string memberKey)
         {
             return new HasMemberRequest(service, groupKey, memberKey);
         }
 
-        /// <summary>Checks Membership of an user within a Group</summary>
+        /// <summary>Checks whether the given user is a member of the group. Membership can be direct or
+        /// nested.</summary>
         public class HasMemberRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.MembersHasMember>
         {
             /// <summary>Constructs a new HasMember request.</summary>
@@ -3187,11 +3190,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
 
 
-            /// <summary>Email or immutable Id of the group</summary>
+            /// <summary>Identifies the group in the API request. The value can be the group's email address, group
+            /// alias, or the unique group ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
-            /// <summary>Email or immutable Id of the member</summary>
+            /// <summary>Identifies the user member in the API request. The value can be the user's primary email
+            /// address, alias, or unique ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("memberKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string MemberKey { get; private set; }
 
@@ -5470,6 +5475,16 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
 
+                /// <summary>Maximum number of results to return.</summary>
+                /// [minimum: 1]
+                /// [maximum: 500]
+                [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> MaxResults { get; set; }
+
+                /// <summary>Token to specify the next page in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -5500,6 +5515,24 @@ namespace Google.Apis.Admin.Directory.directory_v1
                             Name = "customer",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "maxResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "maxResults",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -5974,8 +6007,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
                 /// <summary>String query used to filter results. Should be of the form "field operator value" where
                 /// field can be any of supported fields and operators can be any of supported operations. Operators
-                /// include '=' for exact match and ':' for prefix match where applicable. For prefix match, the value
-                /// should always be followed by a *.</summary>
+                /// include '=' for exact match and ':' for prefix match or HAS match where applicable. For prefix
+                /// match, the value should always be followed by a *. Supported fields include generatedResourceName,
+                /// name, buildingId, featureInstances.feature.name. For example buildingId=US-NYC-9TH AND
+                /// featureInstances.feature.name:Phone.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Query { get; set; }
 
@@ -6513,6 +6548,12 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Customer { get; private set; }
 
+                /// <summary>Maximum number of results to return.</summary>
+                /// [minimum: 1]
+                /// [maximum: 500]
+                [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> MaxResults { get; set; }
+
                 /// <summary>Token to specify the next page in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -6547,6 +6588,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
                             Name = "customer",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "maxResults", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "maxResults",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -10791,6 +10841,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             }
         }
 
+        /// <summary>Trusted Platform Module (TPM) (Read-only)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tpmVersionInfo")]
         public virtual ChromeOsDevice.TpmVersionInfoData TpmVersionInfo { get; set; } 
 
@@ -10832,7 +10883,7 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
                 }
             }
 
-            /// <summary>File downlod URL</summary>
+            /// <summary>File download URL</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("downloadUrl")]
             public virtual string DownloadUrl { get; set; } 
 
@@ -10858,23 +10909,30 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
 
         }    
 
+        /// <summary>Trusted Platform Module (TPM) (Read-only)</summary>
         public class TpmVersionInfoData
         {
+            /// <summary>TPM family.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("family")]
             public virtual string Family { get; set; } 
 
+            /// <summary>TPM firmware version.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
             public virtual string FirmwareVersion { get; set; } 
 
+            /// <summary>TPM manufacturer code.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("manufacturer")]
             public virtual string Manufacturer { get; set; } 
 
+            /// <summary>TPM specification level.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("specLevel")]
             public virtual string SpecLevel { get; set; } 
 
+            /// <summary>TPM model number.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("tpmModel")]
             public virtual string TpmModel { get; set; } 
 
+            /// <summary>Vendor-specific information such as Vendor ID.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("vendorSpecific")]
             public virtual string VendorSpecific { get; set; } 
 
@@ -11148,6 +11206,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for a "feature instance".</summary>
     public class FeatureInstance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The feature that this is an instance of. A calendar resource may have multiple instances of a
+        /// feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("feature")]
         public virtual Feature Feature { get; set; } 
 
@@ -11312,7 +11372,8 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for Has Member response in Directory API.</summary>
     public class MembersHasMember : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Identifies whether given user is a member or not.</summary>
+        /// <summary>Identifies whether the given user is a member of the group. Membership can be direct or
+        /// nested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isMember")]
         public virtual System.Nullable<bool> IsMember { get; set; } 
 

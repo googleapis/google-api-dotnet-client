@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>Service Consumer Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180313 (1167)
+ *      <tr><th>API Rev<td>20180317 (1171)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-consumer-management/docs/overview'>
  *              https://cloud.google.com/service-consumer-management/docs/overview</a>
@@ -875,7 +875,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
 
             }
 
-            /// <summary>Delete a tenancy unit.  Before the tenancy unit is deleted, there should be no tenant resource
+            /// <summary>Delete a tenancy unit.  Before the tenancy unit is deleted, there should be no tenant resources
             /// in it. Operation.</summary>
             /// <param name="name">Name of the tenancy unit to be deleted.</param>
             public virtual DeleteRequest Delete(string name)
@@ -883,7 +883,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Delete a tenancy unit.  Before the tenancy unit is deleted, there should be no tenant resource
+            /// <summary>Delete a tenancy unit.  Before the tenancy unit is deleted, there should be no tenant resources
             /// in it. Operation.</summary>
             public class DeleteRequest : ServiceConsumerManagementBaseServiceRequest<Google.Apis.ServiceConsumerManagement.v1.Data.Operation>
             {
@@ -970,10 +970,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The continuation token, which is used to page through large result sets. To get the next
                 /// page of results, set this parameter to the value of `nextPageToken` from the previous
                 /// response.</summary>
@@ -983,6 +979,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                 /// <summary>The maximum number of results returned by this request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Filter expression over tenancy resources field. Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1018,15 +1018,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                             Pattern = @"^services/[^/]+/[^/]+/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1039,6 +1030,15 @@ namespace Google.Apis.ServiceConsumerManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1783,10 +1783,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     ///
     /// In order to reference a proto element, the following notation can be used: fully.qualified.proto.name]] To
     /// override the display text used for the link, this can be used: display text]fully.qualified.proto.name] Text can
-    /// be excluded from doc using the following notation: -- internal comment -- Comments can be made conditional using
-    /// a visibility label. The below text will be only rendered if the `BETA` label is available: --BETA: comment for
-    /// BETA users -- A few directives are available in documentation. Note that directives must appear on a single line
-    /// to be properly identified. The `include` directive includes a markdown file from an external source: == include
+    /// be excluded from doc using the following notation: -- internal comment --
+    ///
+    /// A few directives are available in documentation. Note that directives must appear on a single line to be
+    /// properly identified. The `include` directive includes a markdown file from an external source: == include
     /// path/to/file == The `resource_for` directive marks a message to be the resource of a collection in REST view. If
     /// it is not specified, tools attempt to infer the resource from the operations in a collection: == resource_for
     /// v1.shelves.books == The directive `suppress_warning` does not directly affect documentation and is documented
@@ -3183,10 +3183,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
         public virtual Usage Usage { get; set; } 
 
-        /// <summary>API visibility configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual Visibility Visibility { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3420,7 +3416,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         public virtual ServiceAccountConfig ServiceAccountConfig { get; set; } 
 
         /// <summary>Google Cloud API names of services that will be activated on this project during provisioning.  If
-        /// any of these services can not be activated, the `addTenantProject` method will fail. For example:
+        /// any of these services can not be activated, request will fail. For example:
         /// 'compute.googleapis.com','cloudfunctions.googleapis.com'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("services")]
         public virtual System.Collections.Generic.IList<string> Services { get; set; } 
@@ -3560,60 +3556,6 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         /// internal methods, such as service health check methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipServiceControl")]
         public virtual System.Nullable<bool> SkipServiceControl { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>`Visibility` defines restrictions for the visibility of service elements.  Restrictions are specified
-    /// using visibility labels (e.g., TRUSTED_TESTER) that are elsewhere linked to users and projects.
-    ///
-    /// Users and projects can have access to more than one visibility label. The effective visibility for multiple
-    /// labels is the union of each label's elements, plus any unrestricted elements.
-    ///
-    /// If an element and its parents have no restrictions, visibility is unconditionally granted.
-    ///
-    /// Example:
-    ///
-    /// visibility: rules: - selector: google.calendar.Calendar.EnhancedSearch restriction: TRUSTED_TESTER - selector:
-    /// google.calendar.Calendar.Delegate restriction: GOOGLE_INTERNAL
-    ///
-    /// Here, all methods are publicly visible except for the restricted methods EnhancedSearch and Delegate.</summary>
-    public class Visibility : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of visibility rules that apply to individual API elements.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<VisibilityRule> Rules { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A visibility rule provides visibility configuration for an individual API element.</summary>
-    public class VisibilityRule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A comma-separated list of visibility labels that apply to the `selector`. Any of the listed labels
-        /// can be used to grant the visibility.
-        ///
-        /// If a rule has multiple labels, removing one of the labels but not all of them can break clients.
-        ///
-        /// Example:
-        ///
-        /// visibility: rules: - selector: google.calendar.Calendar.EnhancedSearch restriction: GOOGLE_INTERNAL,
-        /// TRUSTED_TESTER
-        ///
-        /// Removing GOOGLE_INTERNAL from this restriction will break clients that rely on this method and only had
-        /// access to it through GOOGLE_INTERNAL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restriction")]
-        public virtual string Restriction { get; set; } 
-
-        /// <summary>Selects methods, messages, fields, enums, etc. to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
-        public virtual string Selector { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

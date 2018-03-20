@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud DLP API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180314 (1168)
+ *      <tr><th>API Rev<td>20180317 (1171)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -4664,7 +4664,8 @@ namespace Google.Apis.DLP.v2beta2.Data
     /// the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the
     /// original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same
     /// identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the
-    /// case that the identifier is the empty string, it will be skipped.</summary>
+    /// case that the identifier is the empty string, it will be skipped. See
+    /// [Pseudonymization](/dlp/docs/pseudonymization) for example usage.</summary>
     public class GooglePrivacyDlpV2beta2CryptoReplaceFfxFpeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("commonAlphabet")]

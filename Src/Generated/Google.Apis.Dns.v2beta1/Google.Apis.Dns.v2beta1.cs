@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180309 (1163)
+ *      <tr><th>API Rev<td>20180314 (1168)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -1282,7 +1282,7 @@ namespace Google.Apis.Dns.v2beta1
         }
 
         /// <summary>Delete a previously created ManagedZone.</summary>
-        public class DeleteRequest : DnsBaseServiceRequest<Google.Apis.Dns.v2beta1.Data.ManagedZonesDeleteResponse>
+        public class DeleteRequest : DnsBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
             public DeleteRequest(Google.Apis.Services.IClientService service, string project, string managedZone)
@@ -2301,15 +2301,6 @@ namespace Google.Apis.Dns.v2beta1.Data
         /// <summary>The operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class ManagedZonesDeleteResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual ResponseHeader Header { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

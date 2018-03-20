@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href=''>PageSpeed Insights API</a>
+ *          <td><a href='https://developers.google.com/speed/docs/insights/v4/getting-started'>PageSpeed Insights API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20180308 (1162)
+ *      <tr><th>API Rev<td>20180315 (1169)
  *      <tr><th>API Docs
- *          <td><a href=''>
- *              </a>
+ *          <td><a href='https://developers.google.com/speed/docs/insights/v4/getting-started'>
+ *              https://developers.google.com/speed/docs/insights/v4/getting-started</a>
  *      <tr><th>Discovery Name<td>pagespeedonline
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using PageSpeed Insights API can be found at
- * <a href=''></a>.
+ * <a href='https://developers.google.com/speed/docs/insights/v4/getting-started'>https://developers.google.com/speed/docs/insights/v4/getting-started</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>

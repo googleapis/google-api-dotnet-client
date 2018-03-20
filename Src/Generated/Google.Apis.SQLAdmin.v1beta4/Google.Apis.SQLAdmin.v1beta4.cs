@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20180227 (1153)
+ *      <tr><th>API Rev<td>20180314 (1168)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -4023,8 +4023,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>Whether replication log archiving is enabled. Replication log archiving is required for the point-
-        /// in-time recovery (PITR) feature. PostgreSQL instances only.</summary>
+        /// <summary>Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replicationLogArchivingEnabled")]
         public virtual System.Nullable<bool> ReplicationLogArchivingEnabled { get; set; } 
 
@@ -4210,8 +4209,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The epoch timestamp, in milliseconds, of the time to which a point-in-time recovery (PITR) is
-        /// performed. PostgreSQL instances only. For MySQL instances, use the binLogCoordinates property.</summary>
+        /// <summary>Reserved for future use.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pitrTimestampMs")]
         public virtual System.Nullable<long> PitrTimestampMs { get; set; } 
 

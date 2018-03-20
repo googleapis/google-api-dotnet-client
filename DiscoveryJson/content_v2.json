@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/viqemhmQQxAoxqj8nxZHD7zTSa8\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/7AU-xNxfu9N_gwoFbvlNkxATsnE\"",
  "discoveryVersion": "v1",
  "id": "content:v2",
  "name": "content",
  "canonicalName": "Shopping Content",
  "version": "v2",
- "revision": "20180314",
+ "revision": "20180316",
  "title": "Content API for Shopping",
  "description": "Manages product items, inventory, and Merchant Center accounts for Google Shopping.",
  "ownerDomain": "google.com",
@@ -1383,7 +1383,7 @@
     },
     "gmbAccounts": {
      "type": "array",
-     "description": "A list of GMB account which are available to the merchant.",
+     "description": "A list of GMB accounts which are available to the merchant.",
      "items": {
       "$ref": "GmbAccountsGmbAccount"
      }
@@ -1409,7 +1409,7 @@
     },
     "type": {
      "type": "string",
-     "description": "Type of the GMB account (User or Business)."
+     "description": "The type of the GMB account (User or Business)."
     }
    }
   },
@@ -1733,11 +1733,11 @@
    "properties": {
     "status": {
      "type": "string",
-     "description": "The status verification process."
+     "description": "The status of the verification process for the About page."
     },
     "url": {
      "type": "string",
-     "description": "The about URL."
+     "description": "The URL for the About page."
     }
    }
   },
@@ -1747,7 +1747,7 @@
    "properties": {
     "about": {
      "$ref": "LiaAboutPageSettings",
-     "description": "The about page settings."
+     "description": "The settings for the About page."
     },
     "country": {
      "type": "string",
@@ -1764,7 +1764,7 @@
     },
     "inventory": {
      "$ref": "LiaInventorySettings",
-     "description": "LIA inventory settings."
+     "description": "LIA inventory verification settings."
     },
     "onDisplayToOrder": {
      "$ref": "LiaOnDisplayToOrderSettings",
@@ -1782,11 +1782,11 @@
    "properties": {
     "inventoryVerificationContactEmail": {
      "type": "string",
-     "description": "The email of contact which will be contacted during the verification process."
+     "description": "The email of the contact for the inventory verification process."
     },
     "inventoryVerificationContactName": {
      "type": "string",
-     "description": "The name of contact which will be contacted during the verification process."
+     "description": "The name of the contact for the inventory verification process."
     },
     "inventoryVerificationContactStatus": {
      "type": "string",
@@ -1949,7 +1949,7 @@
     },
     "gmbAccounts": {
      "type": "array",
-     "description": "A list of GMB account which are available to the merchant.",
+     "description": "A list of GMB accounts which are available to the merchant.",
      "items": {
       "$ref": "GmbAccountsGmbAccount"
      }
@@ -1972,7 +1972,7 @@
     },
     "nextPageToken": {
      "type": "string",
-     "description": "The token for the retrieval of the next page of Lia settings."
+     "description": "The token for the retrieval of the next page of LIA settings."
     },
     "resources": {
      "type": "array",
@@ -2224,7 +2224,7 @@
    "properties": {
     "email": {
      "type": "string",
-     "description": "Email address of the customer."
+     "description": "Email address that should be used for order related communications. In certain cases this might not be a real users email, but a proxy email."
     },
     "explicitMarketingPreference": {
      "type": "boolean",
@@ -4006,7 +4006,7 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store.",
+     "description": "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business.",
      "annotations": {
       "required": [
        "content.pos.inventory"
@@ -4080,7 +4080,7 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store.",
+     "description": "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business.",
      "annotations": {
       "required": [
        "content.pos.inventory"
@@ -4159,7 +4159,7 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store.",
+     "description": "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business.",
      "annotations": {
       "required": [
        "content.pos.inventory"
@@ -4260,7 +4260,7 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store.",
+     "description": "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business.",
      "annotations": {
       "required": [
        "content.pos.sale"
@@ -4338,7 +4338,7 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store.",
+     "description": "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business.",
      "annotations": {
       "required": [
        "content.pos.sale"
@@ -4421,7 +4421,7 @@
     },
     "storeCode": {
      "type": "string",
-     "description": "The identifier of the merchant's store.",
+     "description": "The identifier of the merchant's store. Either a storeCode inserted via the API or the code of the store in Google My Business.",
      "annotations": {
       "required": [
        "content.pos.sale"
@@ -7023,7 +7023,7 @@
      "id": "content.liasettings.custombatch",
      "path": "liasettings/batch",
      "httpMethod": "POST",
-     "description": "Retrieves and updates the Lia settings of multiple accounts in a single request.",
+     "description": "Retrieves and/or updates the LIA settings of multiple accounts in a single request.",
      "parameters": {
       "dryRun": {
        "type": "boolean",
@@ -7045,11 +7045,11 @@
      "id": "content.liasettings.get",
      "path": "{merchantId}/liasettings/{accountId}",
      "httpMethod": "GET",
-     "description": "Retrieves the Lia settings of the account.",
+     "description": "Retrieves the LIA settings of the account.",
      "parameters": {
       "accountId": {
        "type": "string",
-       "description": "The ID of the account for which to get/update Lia settings.",
+       "description": "The ID of the account for which to get or update LIA settings.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -7077,11 +7077,11 @@
      "id": "content.liasettings.getaccessiblegmbaccounts",
      "path": "{merchantId}/liasettings/{accountId}/accessiblegmbaccounts",
      "httpMethod": "GET",
-     "description": "Retrieves the list of accesable Google My Business accounts.",
+     "description": "Retrieves the list of accessible Google My Business accounts.",
      "parameters": {
       "accountId": {
        "type": "string",
-       "description": "The ID of the account for which to retrieve the accessible Google My Business accounts.",
+       "description": "The ID of the account for which to retrieve accessible Google My Business accounts.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -7109,11 +7109,11 @@
      "id": "content.liasettings.list",
      "path": "{merchantId}/liasettings",
      "httpMethod": "GET",
-     "description": "Lists the Lia settings of the sub-accounts in your Merchant Center account.",
+     "description": "Lists the LIA settings of the sub-accounts in your Merchant Center account.",
      "parameters": {
       "maxResults": {
        "type": "integer",
-       "description": "The maximum number of Lia settings to return in the response, used for paging.",
+       "description": "The maximum number of LIA settings to return in the response, used for paging.",
        "format": "uint32",
        "location": "query"
       },
@@ -7144,11 +7144,11 @@
      "id": "content.liasettings.patch",
      "path": "{merchantId}/liasettings/{accountId}",
      "httpMethod": "PATCH",
-     "description": "Updates the Lia settings of the account. This method supports patch semantics.",
+     "description": "Updates the LIA settings of the account. This method supports patch semantics.",
      "parameters": {
       "accountId": {
        "type": "string",
-       "description": "The ID of the account for which to get/update Lia settings.",
+       "description": "The ID of the account for which to get or update LIA settings.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -7184,7 +7184,7 @@
      "id": "content.liasettings.requestgmbaccess",
      "path": "{merchantId}/liasettings/{accountId}/requestgmbaccess",
      "httpMethod": "POST",
-     "description": "Requests access to a specified Google By Business account.",
+     "description": "Requests access to a specified Google My Business account.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -7195,7 +7195,7 @@
       },
       "gmbEmail": {
        "type": "string",
-       "description": "The email of the Google My Business Account.",
+       "description": "The email of the Google My Business account.",
        "location": "query"
       },
       "merchantId": {
@@ -7221,7 +7221,7 @@
      "id": "content.liasettings.requestinventoryverification",
      "path": "{merchantId}/liasettings/{accountId}/requestinventoryverification/{country}",
      "httpMethod": "POST",
-     "description": "Requests the inventory validation for the specified country.",
+     "description": "Requests inventory validation for the specified country.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -7232,7 +7232,7 @@
       },
       "country": {
        "type": "string",
-       "description": "The country for which the inventory validation is requested.",
+       "description": "The country for which inventory validation is requested.",
        "required": true,
        "location": "path"
       },
@@ -7260,7 +7260,7 @@
      "id": "content.liasettings.setinventoryverificationcontact",
      "path": "{merchantId}/liasettings/{accountId}/setinventoryverificationcontact",
      "httpMethod": "POST",
-     "description": "Sets the inventory validation verification for the specified country.",
+     "description": "Sets the inventory verification contract for the specified country.",
      "parameters": {
       "accountId": {
        "type": "string",
@@ -7271,7 +7271,7 @@
       },
       "contactEmail": {
        "type": "string",
-       "description": "The email of the inventory check contact.",
+       "description": "The email of the inventory verification contact.",
        "location": "query"
       },
       "contactName": {
@@ -7281,12 +7281,12 @@
       },
       "country": {
        "type": "string",
-       "description": "The country for which the inventory verification is requested.",
+       "description": "The country for which inventory verification is requested.",
        "location": "query"
       },
       "language": {
        "type": "string",
-       "description": "The country for which the inventory verification is requested.",
+       "description": "The language for which inventory verification is requested.",
        "location": "query"
       },
       "merchantId": {
@@ -7312,11 +7312,11 @@
      "id": "content.liasettings.update",
      "path": "{merchantId}/liasettings/{accountId}",
      "httpMethod": "PUT",
-     "description": "Updates the Lia settings of the account.",
+     "description": "Updates the LIA settings of the account.",
      "parameters": {
       "accountId": {
        "type": "string",
-       "description": "The ID of the account for which to get/update Lia settings.",
+       "description": "The ID of the account for which to get or update LIA settings.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -8106,7 +8106,7 @@
       },
       "merchantId": {
        "type": "string",
-       "description": "The ID of the POS provider.",
+       "description": "The ID of the POS or inventory data provider.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -8142,7 +8142,7 @@
      "parameters": {
       "merchantId": {
        "type": "string",
-       "description": "The ID of the POS provider.",
+       "description": "The ID of the POS or inventory data provider.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -8186,7 +8186,7 @@
       },
       "merchantId": {
        "type": "string",
-       "description": "The ID of the POS provider.",
+       "description": "The ID of the POS or inventory data provider.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -8226,7 +8226,7 @@
       },
       "merchantId": {
        "type": "string",
-       "description": "The ID of the POS provider.",
+       "description": "The ID of the POS or inventory data provider.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -8261,7 +8261,7 @@
      "parameters": {
       "merchantId": {
        "type": "string",
-       "description": "The ID of the POS provider.",
+       "description": "The ID of the POS or inventory data provider.",
        "required": true,
        "format": "uint64",
        "location": "path"
@@ -8298,7 +8298,7 @@
       },
       "merchantId": {
        "type": "string",
-       "description": "The ID of the POS provider.",
+       "description": "The ID of the POS or inventory data provider.",
        "required": true,
        "format": "uint64",
        "location": "path"

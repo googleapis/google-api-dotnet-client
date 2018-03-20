@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/i8pHnNDJzIriWDVUxX6ne2mLdyQ\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/77sYFu0di9EzzwuBGmUFES4JWbE\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180304",
+ "revision": "20180311",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -1324,6 +1324,11 @@
     "totalBytesProcessed": {
      "type": "string",
      "description": "[Output-only] Total bytes processed for the job.",
+     "format": "int64"
+    },
+    "totalPartitionsProcessed": {
+     "type": "string",
+     "description": "[Output-only] Total number of partitions processed from all partitioned tables referenced in the job.",
      "format": "int64"
     },
     "totalSlotMs": {

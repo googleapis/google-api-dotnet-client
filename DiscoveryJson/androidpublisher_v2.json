@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/yzOx-CaUw5HGIsPwx_vYO4MLyn0\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/zZMdIDoiaDfUtDgyloXiZAB03OU\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20180307",
+ "revision": "20180318",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -1021,7 +1021,7 @@
    "properties": {
     "track": {
      "type": "string",
-     "description": "Identifier for this track. One of \"alpha\", \"beta\", \"production\" or \"rollout\"."
+     "description": "Identifier for this track. One of \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\"."
     },
     "userFraction": {
      "type": "number",
@@ -2602,9 +2602,9 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
+         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout)",
+         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2639,9 +2639,9 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
+         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout)",
+         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2679,9 +2679,9 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
+         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout)",
+         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2724,9 +2724,9 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
+         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout)",
+         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2792,9 +2792,9 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
+         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout)",
+         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2833,9 +2833,9 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\" or \"rollout\".",
+         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout)",
+         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },

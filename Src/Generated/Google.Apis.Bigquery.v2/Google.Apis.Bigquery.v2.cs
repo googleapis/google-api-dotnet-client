@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180304 (1158)
+ *      <tr><th>API Rev<td>20180311 (1165)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -3920,6 +3920,11 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] Total bytes processed for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalBytesProcessed")]
         public virtual System.Nullable<long> TotalBytesProcessed { get; set; } 
+
+        /// <summary>[Output-only] Total number of partitions processed from all partitioned tables referenced in the
+        /// job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalPartitionsProcessed")]
+        public virtual System.Nullable<long> TotalPartitionsProcessed { get; set; } 
 
         /// <summary>[Output-only] Slot-milliseconds for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]

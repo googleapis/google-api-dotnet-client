@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>Google Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180307 (1161)
+ *      <tr><th>API Rev<td>20180316 (1170)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -1073,6 +1073,11 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; } 
 
+        /// <summary>True if and only if tests with this model DO NOT have video output. See also
+        /// TestSpecification.disable_video_recording @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoRecordingNotSupported")]
+        public virtual System.Nullable<bool> VideoRecordingNotSupported { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1671,6 +1676,12 @@ namespace Google.Apis.Testing.v1.Data
         /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressMessages")]
         public virtual System.Collections.Generic.IList<string> ProgressMessages { get; set; } 
+
+        /// <summary>Indicates that video will not be recorded for this execution either because the user chose to
+        /// disable it or the device does not support it. See AndroidModel.video_recording_not_supported
+        /// @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("videoRecordingDisabled")]
+        public virtual System.Nullable<bool> VideoRecordingDisabled { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
