@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180307 (1161)
+ *      <tr><th>API Rev<td>20180320 (1174)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -661,6 +661,10 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
+                /// <summary>Continuation token for fetching the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
                 /// <summary>Maximum results to return per page.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -677,10 +681,6 @@ namespace Google.Apis.Appengine.v1
                     [Google.Apis.Util.StringValueAttribute("FULL_CERTIFICATE")]
                     FULLCERTIFICATE,
                 }
-
-                /// <summary>Continuation token for fetching the next page of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -716,6 +716,15 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -728,15 +737,6 @@ namespace Google.Apis.Appengine.v1
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1263,13 +1263,13 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>Maximum results to return per page.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Continuation token for fetching the next page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum results to return per page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1305,18 +1305,18 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1804,6 +1804,11 @@ namespace Google.Apis.Appengine.v1
                     [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AppsId { get; private set; }
 
+                    /// <summary>A valid IP Address. If set, only rules matching this address will be returned. The
+                    /// first returned rule will be the rule that fires on requests from this IP.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("matchingAddress", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MatchingAddress { get; set; }
+
                     /// <summary>Continuation token for fetching the next page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1811,11 +1816,6 @@ namespace Google.Apis.Appengine.v1
                     /// <summary>Maximum results to return per page.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>A valid IP Address. If set, only rules matching this address will be returned. The
-                    /// first returned rule will be the rule that fires on requests from this IP.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("matchingAddress", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string MatchingAddress { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1851,6 +1851,15 @@ namespace Google.Apis.Appengine.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "matchingAddress", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "matchingAddress",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1863,15 +1872,6 @@ namespace Google.Apis.Appengine.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "matchingAddress", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "matchingAddress",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2005,7 +2005,7 @@ namespace Google.Apis.Appengine.v1
             }
 
 
-            /// <summary>Get information about a location.</summary>
+            /// <summary>Gets information about a location.</summary>
             /// <param name="appsId">Part of `name`. Resource name for the location.</param>
             /// <param name="locationsId">Part
             /// of `name`. See documentation of `appsId`.</param>
@@ -2014,7 +2014,7 @@ namespace Google.Apis.Appengine.v1
                 return new GetRequest(service, appsId, locationsId);
             }
 
-            /// <summary>Get information about a location.</summary>
+            /// <summary>Gets information about a location.</summary>
             public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Location>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -2104,10 +2104,6 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2115,6 +2111,10 @@ namespace Google.Apis.Appengine.v1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2150,15 +2150,6 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -2171,6 +2162,15 @@ namespace Google.Apis.Appengine.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2849,13 +2849,13 @@ namespace Google.Apis.Appengine.v1
                         [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string VersionsId { get; private set; }
 
-                        /// <summary>Maximum results to return per page.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>Continuation token for fetching the next page of results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Maximum results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -2909,18 +2909,18 @@ namespace Google.Apis.Appengine.v1
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -3697,13 +3697,13 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>Maximum results to return per page.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Continuation token for fetching the next page of results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum results to return per page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3739,18 +3739,18 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4467,6 +4467,25 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Options for the build operations performed as a part of the version deployment. Only applicable for App
+    /// Engine flexible environment when creating a version using source code directly.</summary>
+    public class CloudBuildOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to the yaml file used in deployment, used to determine runtime configuration details.Required
+        /// for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref
+        /// for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appYamlPath")]
+        public virtual string AppYamlPath { get; set; } 
+
+        /// <summary>The Cloud Build timeout used as part of any dependent builds performed by version creation.
+        /// Defaults to 10 minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildTimeout")]
+        public virtual object CloudBuildTimeout { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Docker image that is used to create a container and start a VM instance for the version that you
     /// deploy. Only applicable for instances running in the App Engine flexible environment.</summary>
     public class ContainerInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -4491,6 +4510,18 @@ namespace Google.Apis.Appengine.v1.Data
         /// <summary>Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetUtilization")]
         public virtual System.Nullable<double> TargetUtilization { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for the given google.longrunning.Operation during a
+    /// google.appengine.v1.CreateVersionRequest.</summary>
+    public class CreateVersionMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Build ID if one was created as part of the version create. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildId")]
+        public virtual string CloudBuildId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4537,6 +4568,13 @@ namespace Google.Apis.Appengine.v1.Data
     /// <summary>Code and application artifacts used to deploy a version to App Engine.</summary>
     public class Deployment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Options for any Google Cloud Container Builder builds created as a part of this deployment.Note
+        /// that this is orthogonal to the build parameter, where the deployment depends on an already existing cloud
+        /// build. These options will only be used if a new build is created, such as when deploying to the App Engine
+        /// flexible environment using files or zip.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudBuildOptions")]
+        public virtual CloudBuildOptions CloudBuildOptions { get; set; } 
+
         /// <summary>The Docker image for the container that runs the version. Only applicable for instances running in
         /// the App Engine flexible environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
@@ -4614,9 +4652,9 @@ namespace Google.Apis.Appengine.v1.Data
     }    
 
     /// <summary>Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides
-    /// tooling for serving Open API and gRPC endpoints via an NGINX proxy.The fields here refer to the name and
-    /// configuration id of a "service" resource in the Service Management API (https://cloud.google.com/service-
-    /// management/overview).</summary>
+    /// tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible
+    /// environment deployments.The fields here refer to the name and configuration id of a "service" resource in the
+    /// Service Management API (https://cloud.google.com/service-management/overview).</summary>
     public class EndpointsApiService : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Endpoints service configuration id as specified by the Service Management API. For example
@@ -5236,6 +5274,9 @@ namespace Google.Apis.Appengine.v1.Data
     /// <summary>Metadata for the given google.longrunning.Operation.</summary>
     public class OperationMetadataV1 : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("createVersionMetadata")]
+        public virtual CreateVersionMetadataV1 CreateVersionMetadata { get; set; } 
+
         /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 

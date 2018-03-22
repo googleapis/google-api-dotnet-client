@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180318 (1172)
+ *      <tr><th>API Rev<td>20180319 (1173)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -7443,9 +7443,24 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("developerPayload")]
         public virtual string DeveloperPayload { get; set; } 
 
+        /// <summary>The email address of the user when the subscription was purchased. Only present for purchases made
+        /// with 'Subscribe with Google'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
+        public virtual string EmailAddress { get; set; } 
+
         /// <summary>Time at which the subscription will expire, in milliseconds since the Epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTimeMillis")]
         public virtual System.Nullable<long> ExpiryTimeMillis { get; set; } 
+
+        /// <summary>The family name of the user when the subscription was purchased. Only present for purchases made
+        /// with 'Subscribe with Google'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
+        public virtual string FamilyName { get; set; } 
+
+        /// <summary>The given name of the user when the subscription was purchased. Only present for purchases made
+        /// with 'Subscribe with Google'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
+        public virtual string GivenName { get; set; } 
 
         /// <summary>This kind represents a subscriptionPurchase object in the androidpublisher service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -7481,6 +7496,16 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// British pounds sterling, price_currency_code is "GBP".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceCurrencyCode")]
         public virtual string PriceCurrencyCode { get; set; } 
+
+        /// <summary>The profile id of the user when the subscription was purchased. Only present for purchases made
+        /// with 'Subscribe with Google'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileId")]
+        public virtual string ProfileId { get; set; } 
+
+        /// <summary>The profile name of the user when the subscription was purchased. Only present for purchases made
+        /// with 'Subscribe with Google'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileName")]
+        public virtual string ProfileName { get; set; } 
 
         /// <summary>The type of purchase of the subscription. This field is only set if this purchase was not made
         /// using the standard in-app billing flow. Possible values are: - Test (i.e. purchased from a license testing

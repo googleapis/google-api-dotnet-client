@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Google Service Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180312 (1166)
+ *      <tr><th>API Rev<td>20180317 (1171)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -453,6 +453,19 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
+            /// <summary>Not used.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
+            /// is 100.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>A string for filtering Operations. The following filter fields are supported
             ///
             /// * serviceName Required. Only `=` operator is allowed. * startTime The time this job was started, in ISO
@@ -470,19 +483,6 @@ namespace Google.Apis.ServiceManagement.v1
             /// ={some-service}.googleapis.com AND (status=done OR startTime>="2017-02-01")`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>Not used.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of operations to return. If unspecified, defaults to 50. The maximum value
-            /// is 100.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -509,15 +509,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -539,6 +530,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -593,7 +593,10 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Creates a new service configuration (version) for a managed service. This method only stores
             /// the service configuration. To roll out the service configuration to backend systems please call
-            /// CreateServiceRollout.</summary>
+            /// CreateServiceRollout.
+            ///
+            /// Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for
+            /// each service. The rest will be deleted eventually.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
             /// requirements.  For example: `example.googleapis.com`.</param>
@@ -604,7 +607,10 @@ namespace Google.Apis.ServiceManagement.v1
 
             /// <summary>Creates a new service configuration (version) for a managed service. This method only stores
             /// the service configuration. To roll out the service configuration to backend systems please call
-            /// CreateServiceRollout.</summary>
+            /// CreateServiceRollout.
+            ///
+            /// Only the 100 most recent service configurations and ones referenced by existing rollouts are kept for
+            /// each service. The rest will be deleted eventually.</summary>
             public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Service>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -860,6 +866,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// configurations as well as the generated service configuration. To rollout the service configuration to
             /// other services, please call CreateServiceRollout.
             ///
+            /// Only the 100 most recent configuration sources and ones referenced by existing service configurtions are
+            /// kept for each service. The rest will be deleted eventually.
+            ///
             /// Operation</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
@@ -873,6 +882,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// configuration source files (for example: OpenAPI Specification). This method stores the source
             /// configurations as well as the generated service configuration. To rollout the service configuration to
             /// other services, please call CreateServiceRollout.
+            ///
+            /// Only the 100 most recent configuration sources and ones referenced by existing service configurtions are
+            /// kept for each service. The rest will be deleted eventually.
             ///
             /// Operation</summary>
             public class SubmitRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
@@ -1212,6 +1224,9 @@ namespace Google.Apis.ServiceManagement.v1
             /// Please note that any previous pending and running Rollouts and associated Operations will be
             /// automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts.
             ///
+            /// Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of
+            /// 100 most recent) rollouts are kept for each service. The rest will be deleted eventually.
+            ///
             /// Operation</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="serviceName">The name of the service.  See the [overview](/service-management/overview) for naming
@@ -1227,6 +1242,9 @@ namespace Google.Apis.ServiceManagement.v1
             ///
             /// Please note that any previous pending and running Rollouts and associated Operations will be
             /// automatically cancelled so that the latest Rollout will not be blocked by previous Rollouts.
+            ///
+            /// Only the 100 most recent (in any state) and the last 10 successful (if not already part of the set of
+            /// 100 most recent) rollouts are kept for each service. The rest will be deleted eventually.
             ///
             /// Operation</summary>
             public class CreateRequest : ServiceManagementBaseServiceRequest<Google.Apis.ServiceManagement.v1.Data.Operation>
@@ -1394,14 +1412,6 @@ namespace Google.Apis.ServiceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("serviceName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServiceName { get; private set; }
 
-                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
-                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
-                /// filter='status=SUCCESS' -- To limit the results to those in
-                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
-                /// filter='status=CANCELLED OR status=FAILED'</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The token of the page to retrieve.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1409,6 +1419,14 @@ namespace Google.Apis.ServiceManagement.v1
                 /// <summary>The max number of items to include in the response list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Use `filter` to return subset of rollouts. The following filters are supported: -- To limit
+                /// the results to only those in [status](google.api.servicemanagement.v1.RolloutStatus) 'SUCCESS', use
+                /// filter='status=SUCCESS' -- To limit the results to those in
+                /// [status](google.api.servicemanagement.v1.RolloutStatus) 'CANCELLED' or 'FAILED', use
+                /// filter='status=CANCELLED OR status=FAILED'</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1444,15 +1462,6 @@ namespace Google.Apis.ServiceManagement.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1465,6 +1474,15 @@ namespace Google.Apis.ServiceManagement.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2081,10 +2099,6 @@ namespace Google.Apis.ServiceManagement.v1
             }
 
 
-            /// <summary>Include services produced by the specified project.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProducerProjectId { get; set; }
-
             /// <summary>Include services consumed by the specified consumer.
             ///
             /// The Google Service Management implementation accepts the following forms: - project:</summary>
@@ -2098,6 +2112,10 @@ namespace Google.Apis.ServiceManagement.v1
             /// <summary>Requested size of the next page of data.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>Include services produced by the specified project.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("producerProjectId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string ProducerProjectId { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2124,15 +2142,6 @@ namespace Google.Apis.ServiceManagement.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "producerProjectId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "producerProjectId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "consumerId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "consumerId",
@@ -2154,6 +2163,15 @@ namespace Google.Apis.ServiceManagement.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "producerProjectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "producerProjectId",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3088,10 +3106,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
     ///
     /// In order to reference a proto element, the following notation can be used: fully.qualified.proto.name]] To
     /// override the display text used for the link, this can be used: display text]fully.qualified.proto.name] Text can
-    /// be excluded from doc using the following notation: -- internal comment -- Comments can be made conditional using
-    /// a visibility label. The below text will be only rendered if the `BETA` label is available: --BETA: comment for
-    /// BETA users -- A few directives are available in documentation. Note that directives must appear on a single line
-    /// to be properly identified. The `include` directive includes a markdown file from an external source: == include
+    /// be excluded from doc using the following notation: -- internal comment --
+    ///
+    /// A few directives are available in documentation. Note that directives must appear on a single line to be
+    /// properly identified. The `include` directive includes a markdown file from an external source: == include
     /// path/to/file == The `resource_for` directive marks a message to be the resource of a collection in REST view. If
     /// it is not specified, tools attempt to infer the resource from the operations in a collection: == resource_for
     /// v1.shelves.books == The directive `suppress_warning` does not directly affect documentation and is documented
@@ -4619,10 +4637,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
         public virtual Usage Usage { get; set; } 
 
-        /// <summary>API visibility configuration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual Visibility Visibility { get; set; } 
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -4997,60 +5011,6 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// internal methods, such as service health check methods.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipServiceControl")]
         public virtual System.Nullable<bool> SkipServiceControl { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>`Visibility` defines restrictions for the visibility of service elements.  Restrictions are specified
-    /// using visibility labels (e.g., TRUSTED_TESTER) that are elsewhere linked to users and projects.
-    ///
-    /// Users and projects can have access to more than one visibility label. The effective visibility for multiple
-    /// labels is the union of each label's elements, plus any unrestricted elements.
-    ///
-    /// If an element and its parents have no restrictions, visibility is unconditionally granted.
-    ///
-    /// Example:
-    ///
-    /// visibility: rules: - selector: google.calendar.Calendar.EnhancedSearch restriction: TRUSTED_TESTER - selector:
-    /// google.calendar.Calendar.Delegate restriction: GOOGLE_INTERNAL
-    ///
-    /// Here, all methods are publicly visible except for the restricted methods EnhancedSearch and Delegate.</summary>
-    public class Visibility : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of visibility rules that apply to individual API elements.
-        ///
-        /// **NOTE:** All service configuration rules follow "last one wins" order.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
-        public virtual System.Collections.Generic.IList<VisibilityRule> Rules { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A visibility rule provides visibility configuration for an individual API element.</summary>
-    public class VisibilityRule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A comma-separated list of visibility labels that apply to the `selector`. Any of the listed labels
-        /// can be used to grant the visibility.
-        ///
-        /// If a rule has multiple labels, removing one of the labels but not all of them can break clients.
-        ///
-        /// Example:
-        ///
-        /// visibility: rules: - selector: google.calendar.Calendar.EnhancedSearch restriction: GOOGLE_INTERNAL,
-        /// TRUSTED_TESTER
-        ///
-        /// Removing GOOGLE_INTERNAL from this restriction will break clients that rely on this method and only had
-        /// access to it through GOOGLE_INTERNAL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restriction")]
-        public virtual string Restriction { get; set; } 
-
-        /// <summary>Selects methods, messages, fields, enums, etc. to which this rule applies.
-        ///
-        /// Refer to selector for syntax details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
-        public virtual string Selector { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

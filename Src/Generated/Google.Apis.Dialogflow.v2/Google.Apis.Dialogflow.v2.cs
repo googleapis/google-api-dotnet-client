@@ -19,13 +19,13 @@
 
 /**
  * \brief
- *   Dialogflow API Version v2beta1
+ *   Dialogflow API Version v2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
- *      <tr><th>API Version<td>v2beta1
+ *      <tr><th>API Version<td>v2
  *      <tr><th>API Rev<td>20180317 (1171)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
@@ -43,13 +43,13 @@
  * https://developers.google.com/api-client-library/dotnet/get_started</a>
  */
 
-namespace Google.Apis.Dialogflow.v2beta1
+namespace Google.Apis.Dialogflow.v2
 {
     /// <summary>The Dialogflow Service.</summary>
     public class DialogflowService : Google.Apis.Services.BaseClientService
     {
         /// <summary>The API version.</summary>
-        public const string Version = "v2beta1";
+        public const string Version = "v2";
 
         /// <summary>The discovery version used to generate this service.</summary>
         public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed =
@@ -439,7 +439,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to create entities in. Format:
                     /// `projects//agent/entityTypes/`.</param>
-                    public virtual BatchCreateRequest BatchCreate(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest body, string parent)
+                    public virtual BatchCreateRequest BatchCreate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest body, string parent)
                     {
                         return new BatchCreateRequest(service, body, parent);
                     }
@@ -448,10 +448,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// collection of entries).
                     ///
                     /// Operation </summary>
-                    public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+                    public class BatchCreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchCreate request.</summary>
-                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest body, string parent)
+                        public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest body, string parent)
                             : base(service)
                         {
                             Parent = parent;
@@ -467,7 +467,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest Body { get; set; }
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchCreateEntitiesRequest Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -487,7 +487,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+parent}/entities:batchCreate"; }
+                            get { return "v2/{+parent}/entities:batchCreate"; }
                         }
 
                         /// <summary>Initializes BatchCreate parameter list.</summary>
@@ -514,7 +514,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to delete entries for. Format:
                     /// `projects//agent/entityTypes/`.</param>
-                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest body, string parent)
+                    public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest body, string parent)
                     {
                         return new BatchDeleteRequest(service, body, parent);
                     }
@@ -522,10 +522,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Deletes entities in the specified entity type.
                     ///
                     /// Operation </summary>
-                    public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+                    public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchDelete request.</summary>
-                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest body, string parent)
+                        public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest body, string parent)
                             : base(service)
                         {
                             Parent = parent;
@@ -541,7 +541,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest Body { get; set; }
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntitiesRequest Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -561,7 +561,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+parent}/entities:batchDelete"; }
+                            get { return "v2/{+parent}/entities:batchDelete"; }
                         }
 
                         /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -589,7 +589,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The name of the entity type to update the entities in. Format:
                     /// `projects//agent/entityTypes/`.</param>
-                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest body, string parent)
+                    public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent)
                     {
                         return new BatchUpdateRequest(service, body, parent);
                     }
@@ -598,10 +598,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// entries).
                     ///
                     /// Operation </summary>
-                    public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+                    public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new BatchUpdate request.</summary>
-                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest body, string parent)
+                        public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest body, string parent)
                             : base(service)
                         {
                             Parent = parent;
@@ -617,7 +617,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest Body { get; set; }
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntitiesRequest Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -637,7 +637,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+parent}/entities:batchUpdate"; }
+                            get { return "v2/{+parent}/entities:batchUpdate"; }
                         }
 
                         /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -665,7 +665,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to delete all entities types for. Format:
                 /// `projects//agent`.</param>
-                public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest body, string parent)
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest body, string parent)
                 {
                     return new BatchDeleteRequest(service, body, parent);
                 }
@@ -673,10 +673,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Deletes entity types in the specified agent.
                 ///
                 /// Operation </summary>
-                public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+                public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
-                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest body, string parent)
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -692,7 +692,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -712,7 +712,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/entityTypes:batchDelete"; }
+                        get { return "v2/{+parent}/entityTypes:batchDelete"; }
                     }
 
                     /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -739,7 +739,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to update or create entity types in. Format:
                 /// `projects//agent`.</param>
-                public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest body, string parent)
+                public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest body, string parent)
                 {
                     return new BatchUpdateRequest(service, body, parent);
                 }
@@ -747,10 +747,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Updates/Creates multiple entity types in the specified agent.
                 ///
                 /// Operation </summary>
-                public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+                public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
-                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest body, string parent)
+                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -766,7 +766,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -786,7 +786,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/entityTypes:batchUpdate"; }
+                        get { return "v2/{+parent}/entityTypes:batchUpdate"; }
                     }
 
                     /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -810,16 +810,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Creates an entity type in the specified agent.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The agent to create a entity type for. Format: `projects//agent`.</param>
-                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType body, string parent)
+                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates an entity type in the specified agent.</summary>
-                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType>
+                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType body, string parent)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -841,7 +841,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -861,7 +861,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/entityTypes"; }
+                        get { return "v2/{+parent}/entityTypes"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -900,7 +900,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Deletes the specified entity type.</summary>
-                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -932,7 +932,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+name}"; }
+                        get { return "v2/{+name}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -961,7 +961,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Retrieves the specified entity type.</summary>
-                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType>
+                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1000,7 +1000,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+name}"; }
+                        get { return "v2/{+name}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1038,7 +1038,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Returns the list of all entity types in the specified agent.</summary>
-                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListEntityTypesResponse>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListEntityTypesResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1085,7 +1085,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/entityTypes"; }
+                        get { return "v2/{+parent}/entityTypes"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1137,16 +1137,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required for all methods except `create` (`create` populates the name automatically. The unique
                 /// identifier of the entity type. Format: `projects//agent/entityTypes/`.</param>
-                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType body, string name)
+                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
                 /// <summary>Updates the specified entity type.</summary>
-                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType>
+                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType body, string name)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -1173,7 +1173,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1EntityType Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2EntityType Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1193,7 +1193,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+name}"; }
+                        get { return "v2/{+name}"; }
                     }
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1262,7 +1262,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to delete all entities types for. Format:
                 /// `projects//agent`.</param>
-                public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest body, string parent)
+                public virtual BatchDeleteRequest BatchDelete(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest body, string parent)
                 {
                     return new BatchDeleteRequest(service, body, parent);
                 }
@@ -1270,10 +1270,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Deletes intents in the specified agent.
                 ///
                 /// Operation </summary>
-                public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+                public class BatchDeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchDelete request.</summary>
-                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest body, string parent)
+                    public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -1289,7 +1289,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchDeleteIntentsRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1309,7 +1309,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/intents:batchDelete"; }
+                        get { return "v2/{+parent}/intents:batchDelete"; }
                     }
 
                     /// <summary>Initializes BatchDelete parameter list.</summary>
@@ -1336,7 +1336,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The name of the agent to update or create intents in. Format:
                 /// `projects//agent`.</param>
-                public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest body, string parent)
+                public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest body, string parent)
                 {
                     return new BatchUpdateRequest(service, body, parent);
                 }
@@ -1344,10 +1344,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Updates/Creates multiple intents in the specified agent.
                 ///
                 /// Operation </summary>
-                public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+                public class BatchUpdateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
                 {
                     /// <summary>Constructs a new BatchUpdate request.</summary>
-                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest body, string parent)
+                    public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -1363,7 +1363,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2BatchUpdateIntentsRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1383,7 +1383,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/intents:batchUpdate"; }
+                        get { return "v2/{+parent}/intents:batchUpdate"; }
                     }
 
                     /// <summary>Initializes BatchUpdate parameter list.</summary>
@@ -1407,16 +1407,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Creates an intent in the specified agent.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The agent to create a intent for. Format: `projects//agent`.</param>
-                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent body, string parent)
+                public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
                 }
 
                 /// <summary>Creates an intent in the specified agent.</summary>
-                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent>
+                public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
                 {
                     /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent body, string parent)
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string parent)
                         : base(service)
                     {
                         Parent = parent;
@@ -1451,7 +1451,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1471,7 +1471,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/intents"; }
+                        get { return "v2/{+parent}/intents"; }
                     }
 
                     /// <summary>Initializes Create parameter list.</summary>
@@ -1518,7 +1518,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Deletes the specified intent.</summary>
-                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
                     public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -1550,7 +1550,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+name}"; }
+                        get { return "v2/{+name}"; }
                     }
 
                     /// <summary>Initializes Delete parameter list.</summary>
@@ -1579,7 +1579,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Retrieves the specified intent.</summary>
-                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent>
+                public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
                 {
                     /// <summary>Constructs a new Get request.</summary>
                     public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -1630,7 +1630,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+name}"; }
+                        get { return "v2/{+name}"; }
                     }
 
                     /// <summary>Initializes Get parameter list.</summary>
@@ -1677,7 +1677,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Returns the list of all intents in the specified agent.</summary>
-                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListIntentsResponse>
+                public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListIntentsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
                     public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -1737,7 +1737,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/intents"; }
+                        get { return "v2/{+parent}/intents"; }
                     }
 
                     /// <summary>Initializes List parameter list.</summary>
@@ -1798,16 +1798,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required for all methods except `create` (`create` populates the name automatically. The unique
                 /// identifier of this intent. Format: `projects//agent/intents/`.</param>
-                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent body, string name)
+                public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name)
                 {
                     return new PatchRequest(service, body, name);
                 }
 
                 /// <summary>Updates the specified intent.</summary>
-                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent>
+                public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent body, string name)
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent body, string name)
                         : base(service)
                     {
                         Name = name;
@@ -1820,6 +1820,17 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// The unique identifier of this intent. Format: `projects//agent/intents/`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The mask to control which fields get updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
 
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
@@ -1834,20 +1845,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                         INTENTVIEWFULL,
                     }
 
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The mask to control which fields get updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Intent Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Intent Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -1867,7 +1867,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+name}"; }
+                        get { return "v2/{+name}"; }
                     }
 
                     /// <summary>Initializes Patch parameter list.</summary>
@@ -1885,15 +1885,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -1906,6 +1897,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "updateMask", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1993,16 +1993,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                         /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
                         /// `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is not
                         /// specified, we assume default 'sandbox' runtime.</param>
-                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
                         }
 
                         /// <summary>Creates a context.</summary>
-                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                         {
                             /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
                                 : base(service)
                             {
                                 Parent = parent;
@@ -2020,7 +2020,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                             /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
 
                             ///<summary>Returns the body of the request.</summary>
                             protected override object GetBody() { return Body; }
@@ -2040,7 +2040,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+parent}/contexts"; }
+                                get { return "v2/{+parent}/contexts"; }
                             }
 
                             /// <summary>Initializes Create parameter list.</summary>
@@ -2071,7 +2071,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         }
 
                         /// <summary>Deletes the specified context.</summary>
-                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
                             public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -2106,7 +2106,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+name}"; }
+                                get { return "v2/{+name}"; }
                             }
 
                             /// <summary>Initializes Delete parameter list.</summary>
@@ -2137,7 +2137,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         }
 
                         /// <summary>Retrieves the specified context.</summary>
-                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                         {
                             /// <summary>Constructs a new Get request.</summary>
                             public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -2172,7 +2172,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+name}"; }
+                                get { return "v2/{+name}"; }
                             }
 
                             /// <summary>Initializes Get parameter list.</summary>
@@ -2203,7 +2203,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         }
 
                         /// <summary>Returns the list of all contexts in the specified session.</summary>
-                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListContextsResponse>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListContextsResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
                             public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -2221,15 +2221,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Optional. The next_page_token value returned from a previous list
-                            /// request.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
                             /// <summary>Optional. The maximum number of items to return in a single page. By default
                             /// 100 and at most 1000.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>Optional. The next_page_token value returned from a previous list
+                            /// request.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -2247,7 +2247,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+parent}/contexts"; }
+                                get { return "v2/{+parent}/contexts"; }
                             }
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -2265,18 +2265,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                         Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
+                                    "pageSize", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "pageToken",
+                                        Name = "pageSize",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
+                                    "pageToken", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "pageSize",
+                                        Name = "pageToken",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -2292,16 +2292,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                         /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available soon.
                         /// The Context ID is always converted to lowercase. If  is not specified, we assume default 'sandbox'
                         /// runtime.</param>
-                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                         {
                             return new PatchRequest(service, body, name);
                         }
 
                         /// <summary>Updates the specified context.</summary>
-                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
-                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                                 : base(service)
                             {
                                 Name = name;
@@ -2324,7 +2324,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                             /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
 
                             ///<summary>Returns the body of the request.</summary>
                             protected override object GetBody() { return Body; }
@@ -2344,7 +2344,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+name}"; }
+                                get { return "v2/{+name}"; }
                             }
 
                             /// <summary>Initializes Patch parameter list.</summary>
@@ -2403,16 +2403,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                         /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
                         /// or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is
                         /// not specified, we assume default 'sandbox' runtime.</param>
-                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
+                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
                         }
 
                         /// <summary>Creates a session entity type.</summary>
-                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                         {
                             /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
+                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
                                 : base(service)
                             {
                                 Parent = parent;
@@ -2430,7 +2430,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                             /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType Body { get; set; }
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
 
                             ///<summary>Returns the body of the request.</summary>
                             protected override object GetBody() { return Body; }
@@ -2450,7 +2450,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+parent}/entityTypes"; }
+                                get { return "v2/{+parent}/entityTypes"; }
                             }
 
                             /// <summary>Initializes Create parameter list.</summary>
@@ -2481,7 +2481,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         }
 
                         /// <summary>Deletes the specified session entity type.</summary>
-                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                         {
                             /// <summary>Constructs a new Delete request.</summary>
                             public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -2516,7 +2516,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+name}"; }
+                                get { return "v2/{+name}"; }
                             }
 
                             /// <summary>Initializes Delete parameter list.</summary>
@@ -2547,7 +2547,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         }
 
                         /// <summary>Retrieves the specified session entity type.</summary>
-                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                         {
                             /// <summary>Constructs a new Get request.</summary>
                             public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -2582,7 +2582,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+name}"; }
+                                get { return "v2/{+name}"; }
                             }
 
                             /// <summary>Initializes Get parameter list.</summary>
@@ -2613,7 +2613,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         }
 
                         /// <summary>Returns the list of all session entity types in the specified session.</summary>
-                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse>
+                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListSessionEntityTypesResponse>
                         {
                             /// <summary>Constructs a new List request.</summary>
                             public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -2631,15 +2631,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Optional. The maximum number of items to return in a single page. By default
-                            /// 100 and at most 1000.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
                             /// <summary>Optional. The next_page_token value returned from a previous list
                             /// request.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
+
+                            /// <summary>Optional. The maximum number of items to return in a single page. By default
+                            /// 100 and at most 1000.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
 
 
                             ///<summary>Gets the method name.</summary>
@@ -2657,7 +2657,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+parent}/entityTypes"; }
+                                get { return "v2/{+parent}/entityTypes"; }
                             }
 
                             /// <summary>Initializes List parameter list.</summary>
@@ -2675,18 +2675,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                         Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+$",
                                     });
                                 RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
+                                    "pageToken", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "pageSize",
+                                        Name = "pageToken",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
                                         Pattern = null,
                                     });
                                 RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
+                                    "pageSize", new Google.Apis.Discovery.Parameter
                                     {
-                                        Name = "pageToken",
+                                        Name = "pageSize",
                                         IsRequired = false,
                                         ParameterType = "query",
                                         DefaultValue = null,
@@ -2702,16 +2702,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                         /// `projects//agent/sessions//entityTypes/`, or `projects//agent/runtimes/sessions//entityTypes/`. Note: Runtimes are
                         /// under construction and will be available soon. If  is not specified, we assume default 'sandbox'
                         /// runtime.</param>
-                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
+                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                         {
                             return new PatchRequest(service, body, name);
                         }
 
                         /// <summary>Updates the specified session entity type.</summary>
-                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                         {
                             /// <summary>Constructs a new Patch request.</summary>
-                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                                 : base(service)
                             {
                                 Name = name;
@@ -2734,7 +2734,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                             /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType Body { get; set; }
+                            Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
 
                             ///<summary>Returns the body of the request.</summary>
                             protected override object GetBody() { return Body; }
@@ -2754,7 +2754,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                             ///<summary>Gets the REST path.</summary>
                             public override string RestPath
                             {
-                                get { return "v2beta1/{+name}"; }
+                                get { return "v2/{+name}"; }
                             }
 
                             /// <summary>Initializes Patch parameter list.</summary>
@@ -2795,7 +2795,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Deletes all active contexts in the specified session.</summary>
-                    public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                    public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new DeleteContexts request.</summary>
                         public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent)
@@ -2829,7 +2829,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+parent}/contexts"; }
+                            get { return "v2/{+parent}/contexts"; }
                         }
 
                         /// <summary>Initializes DeleteContexts parameter list.</summary>
@@ -2859,7 +2859,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// not specified, we assume default 'sandbox' runtime. It's up to the API caller to choose an appropriate session ID.
                     /// It can be a random number or some type of user identifier (preferably hashed). The length of the session ID must not
                     /// exceed 36 bytes.</param>
-                    public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
+                    public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                     {
                         return new DetectIntentRequest(service, body, session);
                     }
@@ -2867,10 +2867,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Processes a natural language query and returns structured, actionable data as a result.
                     /// This method is not idempotent, because it may cause contexts and session entity types to be
                     /// updated, which in turn might affect results of future queries.</summary>
-                    public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentResponse>
+                    public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentResponse>
                     {
                         /// <summary>Constructs a new DetectIntent request.</summary>
-                        public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
+                        public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                             : base(service)
                         {
                             Session = session;
@@ -2890,7 +2890,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest Body { get; set; }
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -2910,7 +2910,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+session}:detectIntent"; }
+                            get { return "v2/{+session}:detectIntent"; }
                         }
 
                         /// <summary>Initializes DetectIntent parameter list.</summary>
@@ -2986,16 +2986,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
                     /// `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is not
                     /// specified, we assume default 'sandbox' runtime.</param>
-                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
                     }
 
                     /// <summary>Creates a context.</summary>
-                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string parent)
                             : base(service)
                         {
                             Parent = parent;
@@ -3012,7 +3012,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -3032,7 +3032,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+parent}/contexts"; }
+                            get { return "v2/{+parent}/contexts"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -3063,7 +3063,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Deletes the specified context.</summary>
-                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
                         public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -3097,7 +3097,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+name}"; }
+                            get { return "v2/{+name}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -3128,7 +3128,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Retrieves the specified context.</summary>
-                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                     {
                         /// <summary>Constructs a new Get request.</summary>
                         public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -3161,7 +3161,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+name}"; }
+                            get { return "v2/{+name}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -3192,7 +3192,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Returns the list of all contexts in the specified session.</summary>
-                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListContextsResponse>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListContextsResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -3236,7 +3236,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+parent}/contexts"; }
+                            get { return "v2/{+parent}/contexts"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3281,16 +3281,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available soon.
                     /// The Context ID is always converted to lowercase. If  is not specified, we assume default 'sandbox'
                     /// runtime.</param>
-                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                     {
                         return new PatchRequest(service, body, name);
                     }
 
                     /// <summary>Updates the specified context.</summary>
-                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context body, string name)
                             : base(service)
                         {
                             Name = name;
@@ -3312,7 +3312,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Context Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -3332,7 +3332,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+name}"; }
+                            get { return "v2/{+name}"; }
                         }
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -3391,16 +3391,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
                     /// or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is
                     /// not specified, we assume default 'sandbox' runtime.</param>
-                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
                     }
 
                     /// <summary>Creates a session entity type.</summary>
-                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Create request.</summary>
-                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string parent)
                             : base(service)
                         {
                             Parent = parent;
@@ -3418,7 +3418,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType Body { get; set; }
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -3438,7 +3438,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+parent}/entityTypes"; }
+                            get { return "v2/{+parent}/entityTypes"; }
                         }
 
                         /// <summary>Initializes Create parameter list.</summary>
@@ -3469,7 +3469,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Deletes the specified session entity type.</summary>
-                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
                         public DeleteRequest(Google.Apis.Services.IClientService service, string name)
@@ -3504,7 +3504,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+name}"; }
+                            get { return "v2/{+name}"; }
                         }
 
                         /// <summary>Initializes Delete parameter list.</summary>
@@ -3535,7 +3535,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Retrieves the specified session entity type.</summary>
-                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Get request.</summary>
                         public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -3570,7 +3570,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+name}"; }
+                            get { return "v2/{+name}"; }
                         }
 
                         /// <summary>Initializes Get parameter list.</summary>
@@ -3601,7 +3601,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     }
 
                     /// <summary>Returns the list of all session entity types in the specified session.</summary>
-                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ListSessionEntityTypesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
                         public ListRequest(Google.Apis.Services.IClientService service, string parent)
@@ -3645,7 +3645,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+parent}/entityTypes"; }
+                            get { return "v2/{+parent}/entityTypes"; }
                         }
 
                         /// <summary>Initializes List parameter list.</summary>
@@ -3690,16 +3690,16 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// `projects//agent/sessions//entityTypes/`, or `projects//agent/runtimes/sessions//entityTypes/`. Note: Runtimes are
                     /// under construction and will be available soon. If  is not specified, we assume default 'sandbox'
                     /// runtime.</param>
-                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
+                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                     {
                         return new PatchRequest(service, body, name);
                     }
 
                     /// <summary>Updates the specified session entity type.</summary>
-                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType>
                     {
                         /// <summary>Constructs a new Patch request.</summary>
-                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType body, string name)
                             : base(service)
                         {
                             Name = name;
@@ -3721,7 +3721,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType Body { get; set; }
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SessionEntityType Body { get; set; }
 
                         ///<summary>Returns the body of the request.</summary>
                         protected override object GetBody() { return Body; }
@@ -3741,7 +3741,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ///<summary>Gets the REST path.</summary>
                         public override string RestPath
                         {
-                            get { return "v2beta1/{+name}"; }
+                            get { return "v2/{+name}"; }
                         }
 
                         /// <summary>Initializes Patch parameter list.</summary>
@@ -3782,7 +3782,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
 
                 /// <summary>Deletes all active contexts in the specified session.</summary>
-                public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleProtobufEmpty>
                 {
                     /// <summary>Constructs a new DeleteContexts request.</summary>
                     public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent)
@@ -3816,7 +3816,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+parent}/contexts"; }
+                        get { return "v2/{+parent}/contexts"; }
                     }
 
                     /// <summary>Initializes DeleteContexts parameter list.</summary>
@@ -3846,7 +3846,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// not specified, we assume default 'sandbox' runtime. It's up to the API caller to choose an appropriate session ID.
                 /// It can be a random number or some type of user identifier (preferably hashed). The length of the session ID must not
                 /// exceed 36 bytes.</param>
-                public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
+                public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                 {
                     return new DetectIntentRequest(service, body, session);
                 }
@@ -3854,10 +3854,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// <summary>Processes a natural language query and returns structured, actionable data as a result.
                 /// This method is not idempotent, because it may cause contexts and session entity types to be updated,
                 /// which in turn might affect results of future queries.</summary>
-                public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentResponse>
+                public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentResponse>
                 {
                     /// <summary>Constructs a new DetectIntent request.</summary>
-                    public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
+                    public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest body, string session)
                         : base(service)
                     {
                         Session = session;
@@ -3877,7 +3877,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest Body { get; set; }
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2DetectIntentRequest Body { get; set; }
 
                     ///<summary>Returns the body of the request.</summary>
                     protected override object GetBody() { return Body; }
@@ -3897,7 +3897,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                     ///<summary>Gets the REST path.</summary>
                     public override string RestPath
                     {
-                        get { return "v2beta1/{+session}:detectIntent"; }
+                        get { return "v2/{+session}:detectIntent"; }
                     }
 
                     /// <summary>Initializes DetectIntent parameter list.</summary>
@@ -3925,7 +3925,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to export is associated with. Format:
             /// `projects/`.</param>
-            public virtual ExportRequest Export(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ExportAgentRequest body, string parent)
+            public virtual ExportRequest Export(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest body, string parent)
             {
                 return new ExportRequest(service, body, parent);
             }
@@ -3933,10 +3933,10 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// <summary>Exports the specified agent to a ZIP file.
             ///
             /// Operation </summary>
-            public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+            public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Export request.</summary>
-                public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ExportAgentRequest body, string parent)
+                public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -3952,7 +3952,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ExportAgentRequest Body { get; set; }
+                Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ExportAgentRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -3972,7 +3972,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/agent:export"; }
+                    get { return "v2/{+parent}/agent:export"; }
                 }
 
                 /// <summary>Initializes Export parameter list.</summary>
@@ -4002,7 +4002,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to import is associated with. Format:
             /// `projects/`.</param>
-            public virtual ImportRequest Import(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ImportAgentRequest body, string parent)
+            public virtual ImportRequest Import(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest body, string parent)
             {
                 return new ImportRequest(service, body, parent);
             }
@@ -4013,10 +4013,10 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// the same name are replaced with the new versions from ImportAgentRequest.
             ///
             /// Operation </summary>
-            public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+            public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Import request.</summary>
-                public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ImportAgentRequest body, string parent)
+                public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -4032,7 +4032,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ImportAgentRequest Body { get; set; }
+                Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2ImportAgentRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -4052,7 +4052,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/agent:import"; }
+                    get { return "v2/{+parent}/agent:import"; }
                 }
 
                 /// <summary>Initializes Import parameter list.</summary>
@@ -4082,7 +4082,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to restore is associated with. Format:
             /// `projects/`.</param>
-            public virtual RestoreRequest Restore(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1RestoreAgentRequest body, string parent)
+            public virtual RestoreRequest Restore(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest body, string parent)
             {
                 return new RestoreRequest(service, body, parent);
             }
@@ -4093,10 +4093,10 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// are deleted.
             ///
             /// Operation </summary>
-            public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+            public class RestoreRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Restore request.</summary>
-                public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1RestoreAgentRequest body, string parent)
+                public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -4112,7 +4112,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1RestoreAgentRequest Body { get; set; }
+                Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2RestoreAgentRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -4132,7 +4132,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/agent:restore"; }
+                    get { return "v2/{+parent}/agent:restore"; }
                 }
 
                 /// <summary>Initializes Restore parameter list.</summary>
@@ -4171,7 +4171,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// all agents across projects the caller has access to. One can achieve that with a wildcard project
             /// collection id "-". Refer to [List Sub-Collections](https://cloud.google.com/apis/design/design_patterns
             /// #list_sub-collections).</summary>
-            public class SearchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SearchAgentsResponse>
+            public class SearchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchAgentsResponse>
             {
                 /// <summary>Constructs a new Search request.</summary>
                 public SearchRequest(Google.Apis.Services.IClientService service, string parent)
@@ -4211,7 +4211,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/agent:search"; }
+                    get { return "v2/{+parent}/agent:search"; }
                 }
 
                 /// <summary>Initializes Search parameter list.</summary>
@@ -4256,7 +4256,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The project that the agent to train is associated with. Format:
             /// `projects/`.</param>
-            public virtual TrainRequest Train(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1TrainAgentRequest body, string parent)
+            public virtual TrainRequest Train(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest body, string parent)
             {
                 return new TrainRequest(service, body, parent);
             }
@@ -4264,10 +4264,10 @@ namespace Google.Apis.Dialogflow.v2beta1
             /// <summary>Trains the specified agent.
             ///
             /// Operation </summary>
-            public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+            public class TrainRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Train request.</summary>
-                public TrainRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1TrainAgentRequest body, string parent)
+                public TrainRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest body, string parent)
                     : base(service)
                 {
                     Parent = parent;
@@ -4283,7 +4283,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1TrainAgentRequest Body { get; set; }
+                Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2TrainAgentRequest Body { get; set; }
 
                 ///<summary>Returns the body of the request.</summary>
                 protected override object GetBody() { return Body; }
@@ -4303,7 +4303,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+parent}/agent:train"; }
+                    get { return "v2/{+parent}/agent:train"; }
                 }
 
                 /// <summary>Initializes Train parameter list.</summary>
@@ -4358,7 +4358,7 @@ namespace Google.Apis.Dialogflow.v2beta1
 
             /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
             /// operation result at intervals as recommended by the API service.</summary>
-            public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleLongrunningOperation>
+            public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleLongrunningOperation>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name)
@@ -4389,7 +4389,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 ///<summary>Gets the REST path.</summary>
                 public override string RestPath
                 {
-                    get { return "v2beta1/{+name}"; }
+                    get { return "v2/{+name}"; }
                 }
 
                 /// <summary>Initializes Get parameter list.</summary>
@@ -4420,7 +4420,7 @@ namespace Google.Apis.Dialogflow.v2beta1
         }
 
         /// <summary>Retrieves the specified agent.</summary>
-        public class GetAgentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Agent>
+        public class GetAgentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2Agent>
         {
             /// <summary>Constructs a new GetAgent request.</summary>
             public GetAgentRequest(Google.Apis.Services.IClientService service, string parent)
@@ -4452,7 +4452,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             ///<summary>Gets the REST path.</summary>
             public override string RestPath
             {
-                get { return "v2beta1/{+parent}/agent"; }
+                get { return "v2/{+parent}/agent"; }
             }
 
             /// <summary>Initializes GetAgent parameter list.</summary>
@@ -4475,8 +4475,171 @@ namespace Google.Apis.Dialogflow.v2beta1
     }
 }
 
-namespace Google.Apis.Dialogflow.v2beta1.Data
+namespace Google.Apis.Dialogflow.v2.Data
 {    
+
+    /// <summary>Represents a conversational agent.</summary>
+    public class GoogleCloudDialogflowV2Agent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The URI of the agent's avatar. Avatars are used throughout API.AI console and in the
+        /// self-hosted [Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avatarUri")]
+        public virtual string AvatarUri { get; set; } 
+
+        /// <summary>Optional. To filter out false positive results and still get variety in matched natural language
+        /// inputs for your agent, you can tune the machine learning classification threshold. If the returned score
+        /// value is less than the threshold value, then a fallback intent is be triggered or, if there are no fallback
+        /// intents defined, no intent will be triggered. The score values range from 0.0 (completely uncertain) to 1.0
+        /// (completely certain). If set to 0.0, the default of 0.3 is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classificationThreshold")]
+        public virtual System.Nullable<float> ClassificationThreshold { get; set; } 
+
+        /// <summary>Required. The default language of the agent as a language tag. See [Language
+        /// Support](https://dialogflow.com/docs/reference/language) for a list of the currently supported language
+        /// codes. This field cannot be set by the `Update` method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
+        public virtual string DefaultLanguageCode { get; set; } 
+
+        /// <summary>Optional. The description of this agent. The maximum length is 500 characters. If exceeded, the
+        /// request is rejected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
+        /// <summary>Required. The name of this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>Optional. Determines whether this agent should log conversation queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
+        public virtual System.Nullable<bool> EnableLogging { get; set; } 
+
+        /// <summary>Optional. Determines how intents are detected from user queries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchMode")]
+        public virtual string MatchMode { get; set; } 
+
+        /// <summary>Required. The project of this agent. Format: `projects/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>Optional. The list of all languages supported by this agent (except for the
+        /// `default_language_code`).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedLanguageCodes")]
+        public virtual System.Collections.Generic.IList<string> SupportedLanguageCodes { get; set; } 
+
+        /// <summary>Required. The time zone of this agent from the [time zone database](https://www.iana.org/time-
+        /// zones), e.g., America/New_York, Europe/Paris.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for EntityTypes.BatchCreateEntities.</summary>
+    public class GoogleCloudDialogflowV2BatchCreateEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The collection of entities to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; } 
+
+        /// <summary>Optional. The language of entity synonyms defined in `entities`. If not specified, the agent's
+        /// default language is used. [More than a dozen languages](https://dialogflow.com/docs/reference/language) are
+        /// supported. Note: languages must be enabled in the agent, before they can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for EntityTypes.BatchDeleteEntities.</summary>
+    public class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The canonical `values` of the entities to delete. Note that these are not fully-qualified
+        /// names, i.e. they don't start with `projects/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityValues")]
+        public virtual System.Collections.Generic.IList<string> EntityValues { get; set; } 
+
+        /// <summary>Optional. The language of entity synonyms defined in `entities`. If not specified, the agent's
+        /// default language is used. [More than a dozen languages](https://dialogflow.com/docs/reference/language) are
+        /// supported. Note: languages must be enabled in the agent, before they can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for EntityTypes.BatchDeleteEntityTypes.</summary>
+    public class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The names entity types to delete. All names must point to the same agent as
+        /// `parent`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeNames")]
+        public virtual System.Collections.Generic.IList<string> EntityTypeNames { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for Intents.BatchDeleteIntents.</summary>
+    public class GoogleCloudDialogflowV2BatchDeleteIntentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The collection of intents to delete. Only intent `name` must be filled in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Intent> Intents { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for EntityTypes.BatchCreateEntities.</summary>
+    public class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The collection of new entities to replace the existing entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; } 
+
+        /// <summary>Optional. The language of entity synonyms defined in `entities`. If not specified, the agent's
+        /// default language is used. [More than a dozen languages](https://dialogflow.com/docs/reference/language) are
+        /// supported. Note: languages must be enabled in the agent, before they can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Optional. The mask to control which fields get updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for EntityTypes.BatchUpdateEntityTypes.</summary>
+    public class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The collection of entity type to update or create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeBatchInline")]
+        public virtual GoogleCloudDialogflowV2EntityTypeBatch EntityTypeBatchInline { get; set; } 
+
+        /// <summary>The URI to a Google Cloud Storage file containing entity types to update or create. The file format
+        /// can either be a serialized proto (of EntityBatch type) or a JSON object. Note: The URI must start with
+        /// "gs://".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeBatchUri")]
+        public virtual string EntityTypeBatchUri { get; set; } 
+
+        /// <summary>Optional. The language of entity synonyms defined in `entity_types`. If not specified, the agent's
+        /// default language is used. [More than a dozen languages](https://dialogflow.com/docs/reference/language) are
+        /// supported. Note: languages must be enabled in the agent, before they can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Optional. The mask to control which fields get updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>The response message for EntityTypes.BatchUpdateEntityTypes.</summary>
     public class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
@@ -4484,6 +4647,38 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>The collection of updated or created entity types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityType> EntityTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for Intents.BatchUpdateIntents.</summary>
+    public class GoogleCloudDialogflowV2BatchUpdateIntentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The collection of intents to update or create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentBatchInline")]
+        public virtual GoogleCloudDialogflowV2IntentBatch IntentBatchInline { get; set; } 
+
+        /// <summary>The URI to a Google Cloud Storage file containing intents to update or create. The file format can
+        /// either be a serialized proto (of IntentBatch type) or JSON object. Note: The URI must start with
+        /// "gs://".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentBatchUri")]
+        public virtual string IntentBatchUri { get; set; } 
+
+        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentView")]
+        public virtual string IntentView { get; set; } 
+
+        /// <summary>Optional. The language of training phrases, parameters and rich messages defined in `intents`. If
+        /// not specified, the agent's default language is used. [More than a dozen
+        /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must be enabled in
+        /// the agent, before they can be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Optional. The mask to control which fields get updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4525,6 +4720,54 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request to detect user's intent.</summary>
+    public class GoogleCloudDialogflowV2DetectIntentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The natural language speech audio to be processed. This field should be populated iff
+        /// `query_input` is set to an input audio config. A single request can contain up to 1 minute of speech audio
+        /// data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputAudio")]
+        public virtual string InputAudio { get; set; } 
+
+        /// <summary>Required. The input specification. It can be set to:
+        ///
+        /// 1.  an audio config which instructs the speech recognizer how to process the speech audio,
+        ///
+        /// 2.  a conversational query in the form of text, or
+        ///
+        /// 3.  an event that specifies which intent to trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryInput")]
+        public virtual GoogleCloudDialogflowV2QueryInput QueryInput { get; set; } 
+
+        /// <summary>Optional. The parameters of this query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
+        public virtual GoogleCloudDialogflowV2QueryParameters QueryParams { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The message returned from the DetectIntent method.</summary>
+    public class GoogleCloudDialogflowV2DetectIntentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The results of the conversational query or event processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
+        public virtual GoogleCloudDialogflowV2QueryResult QueryResult { get; set; } 
+
+        /// <summary>The unique identifier of the response. It can be used to locate a response in the training example
+        /// set or for reporting issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
+        public virtual string ResponseId { get; set; } 
+
+        /// <summary>Specifies the status of the webhook request. `webhook_status` is never populated in webhook
+        /// requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookStatus")]
+        public virtual GoogleRpcStatus WebhookStatus { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents an entity type. Entity types serve as a tool for extracting parameter values from natural
     /// language queries.</summary>
     public class GoogleCloudDialogflowV2EntityType : Google.Apis.Requests.IDirectResponseSchema
@@ -4549,6 +4792,17 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// identifier of the entity type. Format: `projects//agent/entityTypes/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This message is a wrapper around a collection of entity types.</summary>
+    public class GoogleCloudDialogflowV2EntityTypeBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of entity types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityType> EntityTypes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4595,6 +4849,18 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for Agents.ExportAgent.</summary>
+    public class GoogleCloudDialogflowV2ExportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The Google Cloud Storage URI to export the agent to. Note: The URI must start with
+        /// "gs://". If left unspecified, the serialized agent is returned inline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
+        public virtual string AgentUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The response message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowV2ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4613,6 +4879,55 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// specified in `ExportAgentRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for Agents.ImportAgent.</summary>
+    public class GoogleCloudDialogflowV2ImportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The agent to import.
+        ///
+        /// Example for how to import an agent via the command line:
+        ///
+        /// curl \ 'https://dialogflow.googleapis.com/v2/projects//agent:import\ -X POST \ -H 'Authorization: Bearer
+        /// '$(gcloud auth print-access-token) \ -H 'Accept: application/json' \ -H 'Content-Type: application/json' \
+        /// --compressed \ --data-binary "{ 'agentContent': '$(cat  | base64 -w 0)' }"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
+        public virtual string AgentContent { get; set; } 
+
+        /// <summary>The URI to a Google Cloud Storage file containing the agent to import. Note: The URI must start
+        /// with "gs://".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
+        public virtual string AgentUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Instructs the speech recognizer how to process the audio content.</summary>
+    public class GoogleCloudDialogflowV2InputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Audio encoding of the audio content to process.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
+        public virtual string AudioEncoding { get; set; } 
+
+        /// <summary>Required. The language of the supplied audio. Dialogflow does not do translations. See [Language
+        /// Support](https://dialogflow.com/docs/languages) for a list of the currently supported language codes. Note
+        /// that queries in the same session do not necessarily need to specify the same language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Optional. The collection of phrase hints which are used to boost accuracy of speech recognition.
+        /// Refer to [Cloud Speech API documentation](/speech/docs/basics#phrase-hints) for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phraseHints")]
+        public virtual System.Collections.Generic.IList<string> PhraseHints { get; set; } 
+
+        /// <summary>Required. Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API
+        /// documentation](/speech/docs/basics) for more details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
+        public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4708,6 +5023,17 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Required. Indicates whether webhooks are enabled for the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookState")]
         public virtual string WebhookState { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>This message is a wrapper around a collection of intents.</summary>
+    public class GoogleCloudDialogflowV2IntentBatch : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A collection of intents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Intent> Intents { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5172,6 +5498,74 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The response message for Contexts.ListContexts.</summary>
+    public class GoogleCloudDialogflowV2ListContextsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of contexts. There will be a maximum number of items returned based on the page_size field
+        /// in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> Contexts { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for EntityTypes.ListEntityTypes.</summary>
+    public class GoogleCloudDialogflowV2ListEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of agent entity types. There will be a maximum number of items returned based on the
+        /// page_size field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityType> EntityTypes { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Intents.ListIntents.</summary>
+    public class GoogleCloudDialogflowV2ListIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of agent intents. There will be a maximum number of items returned based on the page_size
+        /// field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Intent> Intents { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for SessionEntityTypes.ListSessionEntityTypes.</summary>
+    public class GoogleCloudDialogflowV2ListSessionEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The list of session entity types. There will be a maximum number of items returned based on the
+        /// page_size field in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SessionEntityType> SessionEntityTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Represents the contents of the original request that was passed to the `[Streaming]DetectIntent`
     /// call.</summary>
     public class GoogleCloudDialogflowV2OriginalDetectIntentRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -5185,6 +5579,67 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// servers. Possible values of this field correspond to Intent.Message.Platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the query input. It can contain either:
+    ///
+    /// 1.  An audio config which instructs the speech recognizer how to process the speech audio.
+    ///
+    /// 2.  A conversational query in the form of text,.
+    ///
+    /// 3.  An event that specifies which intent to trigger.</summary>
+    public class GoogleCloudDialogflowV2QueryInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Instructs the speech recognizer how to process the speech audio.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
+        public virtual GoogleCloudDialogflowV2InputAudioConfig AudioConfig { get; set; } 
+
+        /// <summary>The event to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual GoogleCloudDialogflowV2EventInput Event__ { get; set; } 
+
+        /// <summary>The natural language text to be processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual GoogleCloudDialogflowV2TextInput Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the parameters of the conversational query.</summary>
+    public class GoogleCloudDialogflowV2QueryParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The collection of contexts to be activated before this query is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> Contexts { get; set; } 
+
+        /// <summary>Optional. The geo location of this conversational query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
+        public virtual GoogleTypeLatLng GeoLocation { get; set; } 
+
+        /// <summary>Optional. This field can be used to pass custom data into the webhook associated with the agent.
+        /// Arbitrary JSON objects are supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
+
+        /// <summary>Optional. Specifies whether to delete all contexts in the current session before the new ones are
+        /// activated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resetContexts")]
+        public virtual System.Nullable<bool> ResetContexts { get; set; } 
+
+        /// <summary>Optional. The collection of session entity types to replace or extend developer entities with for
+        /// this query only. The entity synonyms apply to all languages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SessionEntityType> SessionEntityTypes { get; set; } 
+
+        /// <summary>Optional. The time zone of this conversational query from the [time zone
+        /// database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. If not provided, the time
+        /// zone specified in agent settings is used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5272,6 +5727,98 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The request message for Agents.RestoreAgent.</summary>
+    public class GoogleCloudDialogflowV2RestoreAgentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The agent to restore.
+        ///
+        /// Example for how to restore an agent via the command line:
+        ///
+        /// curl \ 'https://dialogflow.googleapis.com/v2/projects//agent:restore\ -X POST \ -H 'Authorization: Bearer
+        /// '$(gcloud auth print-access-token) \ -H 'Accept: application/json' \ -H 'Content-Type: application/json' \
+        /// --compressed \ --data-binary "{ 'agentContent': '$(cat  | base64 -w 0)' }" \</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
+        public virtual string AgentContent { get; set; } 
+
+        /// <summary>The URI to a Google Cloud Storage file containing the agent to restore. Note: The URI must start
+        /// with "gs://".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
+        public virtual string AgentUri { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response message for Agents.SearchAgents.</summary>
+    public class GoogleCloudDialogflowV2SearchAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of agents. There will be a maximum number of items returned based on the page_size field
+        /// in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Agent> Agents { get; set; } 
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
+        /// list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents a session entity type.
+    ///
+    /// Extends or replaces a developer entity type at the user session level (we refer to the entity types defined at
+    /// the agent level as "developer entity types").
+    ///
+    /// Note: session entity types apply to all queries, regardless of the language.</summary>
+    public class GoogleCloudDialogflowV2SessionEntityType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The collection of entities associated with this session entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2EntityTypeEntity> Entities { get; set; } 
+
+        /// <summary>Required. Indicates whether the additional data should override or supplement the developer entity
+        /// type definition.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityOverrideMode")]
+        public virtual string EntityOverrideMode { get; set; } 
+
+        /// <summary>Required. The unique identifier of this session entity type. Format:
+        /// `projects//agent/sessions//entityTypes/`, or `projects//agent/runtimes/sessions//entityTypes/`. Note:
+        /// Runtimes are under construction and will be available soon. If  is not specified, we assume default
+        /// 'sandbox' runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Represents the natural language text to be processed.</summary>
+    public class GoogleCloudDialogflowV2TextInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The language of this conversational query. See [Language
+        /// Support](https://dialogflow.com/docs/languages) for a list of the currently supported language codes. Note
+        /// that queries in the same session do not necessarily need to specify the same language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; } 
+
+        /// <summary>Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256
+        /// bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request message for Agents.TrainAgent.</summary>
+    public class GoogleCloudDialogflowV2TrainAgentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>The request message for a webhook call.</summary>
     public class GoogleCloudDialogflowV2WebhookRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5334,207 +5881,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Represents a conversational agent.</summary>
-    public class GoogleCloudDialogflowV2beta1Agent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The URI of the agent's avatar. Avatars are used throughout API.AI console and in the
-        /// self-hosted [Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("avatarUri")]
-        public virtual string AvatarUri { get; set; } 
-
-        /// <summary>Optional. To filter out false positive results and still get variety in matched natural language
-        /// inputs for your agent, you can tune the machine learning classification threshold. If the returned score
-        /// value is less than the threshold value, then a fallback intent is be triggered or, if there are no fallback
-        /// intents defined, no intent will be triggered. The score values range from 0.0 (completely uncertain) to 1.0
-        /// (completely certain). If set to 0.0, the default of 0.3 is used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("classificationThreshold")]
-        public virtual System.Nullable<float> ClassificationThreshold { get; set; } 
-
-        /// <summary>Required. The default language of the agent as a language tag. See [Language
-        /// Support](https://dialogflow.com/docs/reference/language) for a list of the currently supported language
-        /// codes. This field cannot be set by the `Update` method.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultLanguageCode")]
-        public virtual string DefaultLanguageCode { get; set; } 
-
-        /// <summary>Optional. The description of this agent. The maximum length is 500 characters. If exceeded, the
-        /// request is rejected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; } 
-
-        /// <summary>Required. The name of this agent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; } 
-
-        /// <summary>Optional. Determines whether this agent should log conversation queries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enableLogging")]
-        public virtual System.Nullable<bool> EnableLogging { get; set; } 
-
-        /// <summary>Optional. Determines how intents are detected from user queries.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchMode")]
-        public virtual string MatchMode { get; set; } 
-
-        /// <summary>Required. The project of this agent. Format: `projects/`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
-        public virtual string Parent { get; set; } 
-
-        /// <summary>Optional. The list of all languages supported by this agent (except for the
-        /// `default_language_code`).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportedLanguageCodes")]
-        public virtual System.Collections.Generic.IList<string> SupportedLanguageCodes { get; set; } 
-
-        /// <summary>Required. The time zone of this agent from the [time zone database](https://www.iana.org/time-
-        /// zones), e.g., America/New_York, Europe/Paris.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for EntityTypes.BatchCreateEntities.</summary>
-    public class GoogleCloudDialogflowV2beta1BatchCreateEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The collection of entities to create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityTypeEntity> Entities { get; set; } 
-
-        /// <summary>Optional. The language of entity synonyms defined in `entities`. If not specified, the agent's
-        /// default language is used. [More than a dozen languages](https://dialogflow.com/docs/reference/language) are
-        /// supported. Note: languages must be enabled in the agent, before they can be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for EntityTypes.BatchDeleteEntities.</summary>
-    public class GoogleCloudDialogflowV2beta1BatchDeleteEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The canonical `values` of the entities to delete. Note that these are not fully-qualified
-        /// names, i.e. they don't start with `projects/`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityValues")]
-        public virtual System.Collections.Generic.IList<string> EntityValues { get; set; } 
-
-        /// <summary>Optional. The language of entity synonyms defined in `entities`. If not specified, the agent's
-        /// default language is used. [More than a dozen languages](https://dialogflow.com/docs/reference/language) are
-        /// supported. Note: languages must be enabled in the agent, before they can be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for EntityTypes.BatchDeleteEntityTypes.</summary>
-    public class GoogleCloudDialogflowV2beta1BatchDeleteEntityTypesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The names entity types to delete. All names must point to the same agent as
-        /// `parent`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeNames")]
-        public virtual System.Collections.Generic.IList<string> EntityTypeNames { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for Intents.BatchDeleteIntents.</summary>
-    public class GoogleCloudDialogflowV2beta1BatchDeleteIntentsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The collection of intents to delete. Only intent `name` must be filled in.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Intent> Intents { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for EntityTypes.BatchCreateEntities.</summary>
-    public class GoogleCloudDialogflowV2beta1BatchUpdateEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The collection of new entities to replace the existing entities.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityTypeEntity> Entities { get; set; } 
-
-        /// <summary>Optional. The language of entity synonyms defined in `entities`. If not specified, the agent's
-        /// default language is used. [More than a dozen languages](https://dialogflow.com/docs/reference/language) are
-        /// supported. Note: languages must be enabled in the agent, before they can be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
-
-        /// <summary>Optional. The mask to control which fields get updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for EntityTypes.BatchUpdateEntityTypes.</summary>
-    public class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The collection of entity type to update or create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeBatchInline")]
-        public virtual GoogleCloudDialogflowV2beta1EntityTypeBatch EntityTypeBatchInline { get; set; } 
-
-        /// <summary>The URI to a Google Cloud Storage file containing entity types to update or create. The file format
-        /// can either be a serialized proto (of EntityBatch type) or a JSON object. Note: The URI must start with
-        /// "gs://".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeBatchUri")]
-        public virtual string EntityTypeBatchUri { get; set; } 
-
-        /// <summary>Optional. The language of entity synonyms defined in `entity_types`. If not specified, the agent's
-        /// default language is used. [More than a dozen languages](https://dialogflow.com/docs/reference/language) are
-        /// supported. Note: languages must be enabled in the agent, before they can be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
-
-        /// <summary>Optional. The mask to control which fields get updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The response message for EntityTypes.BatchUpdateEntityTypes.</summary>
     public class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The collection of updated or created entity types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityType> EntityTypes { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for Intents.BatchUpdateIntents.</summary>
-    public class GoogleCloudDialogflowV2beta1BatchUpdateIntentsRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The collection of intents to update or create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intentBatchInline")]
-        public virtual GoogleCloudDialogflowV2beta1IntentBatch IntentBatchInline { get; set; } 
-
-        /// <summary>The URI to a Google Cloud Storage file containing intents to update or create. The file format can
-        /// either be a serialized proto (of IntentBatch type) or JSON object. Note: The URI must start with
-        /// "gs://".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intentBatchUri")]
-        public virtual string IntentBatchUri { get; set; } 
-
-        /// <summary>Optional. The resource view to apply to the returned intent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intentView")]
-        public virtual string IntentView { get; set; } 
-
-        /// <summary>Optional. The language of training phrases, parameters and rich messages defined in `intents`. If
-        /// not specified, the agent's default language is used. [More than a dozen
-        /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must be enabled in
-        /// the agent, before they can be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
-
-        /// <summary>Optional. The mask to control which fields get updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5576,54 +5928,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request to detect user's intent.</summary>
-    public class GoogleCloudDialogflowV2beta1DetectIntentRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The natural language speech audio to be processed. This field should be populated iff
-        /// `query_input` is set to an input audio config. A single request can contain up to 1 minute of speech audio
-        /// data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inputAudio")]
-        public virtual string InputAudio { get; set; } 
-
-        /// <summary>Required. The input specification. It can be set to:
-        ///
-        /// 1.  an audio config which instructs the speech recognizer how to process the speech audio,
-        ///
-        /// 2.  a conversational query in the form of text, or
-        ///
-        /// 3.  an event that specifies which intent to trigger.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryInput")]
-        public virtual GoogleCloudDialogflowV2beta1QueryInput QueryInput { get; set; } 
-
-        /// <summary>Optional. The parameters of this query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
-        public virtual GoogleCloudDialogflowV2beta1QueryParameters QueryParams { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The message returned from the DetectIntent method.</summary>
-    public class GoogleCloudDialogflowV2beta1DetectIntentResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The results of the conversational query or event processing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
-        public virtual GoogleCloudDialogflowV2beta1QueryResult QueryResult { get; set; } 
-
-        /// <summary>The unique identifier of the response. It can be used to locate a response in the training example
-        /// set or for reporting issues.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("responseId")]
-        public virtual string ResponseId { get; set; } 
-
-        /// <summary>Specifies the status of the webhook request. `webhook_status` is never populated in webhook
-        /// requests.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("webhookStatus")]
-        public virtual GoogleRpcStatus WebhookStatus { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Represents an entity type. Entity types serve as a tool for extracting parameter values from natural
     /// language queries.</summary>
     public class GoogleCloudDialogflowV2beta1EntityType : Google.Apis.Requests.IDirectResponseSchema
@@ -5648,17 +5952,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// identifier of the entity type. Format: `projects//agent/entityTypes/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>This message is a wrapper around a collection of entity types.</summary>
-    public class GoogleCloudDialogflowV2beta1EntityTypeBatch : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A collection of entity types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityType> EntityTypes { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5705,18 +5998,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The request message for Agents.ExportAgent.</summary>
-    public class GoogleCloudDialogflowV2beta1ExportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The Google Cloud Storage URI to export the agent to. Note: The URI must start with
-        /// "gs://". If left unspecified, the serialized agent is returned inline.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>The response message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowV2beta1ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5735,55 +6016,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// specified in `ExportAgentRequest`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for Agents.ImportAgent.</summary>
-    public class GoogleCloudDialogflowV2beta1ImportAgentRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The agent to import.
-        ///
-        /// Example for how to import an agent via the command line:
-        ///
-        /// curl \ 'https://dialogflow.googleapis.com/v2beta1/projects//agent:import\ -X POST \ -H 'Authorization:
-        /// Bearer '$(gcloud auth print-access-token) \ -H 'Accept: application/json' \ -H 'Content-Type:
-        /// application/json' \ --compressed \ --data-binary "{ 'agentContent': '$(cat  | base64 -w 0)' }"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
-        public virtual string AgentContent { get; set; } 
-
-        /// <summary>The URI to a Google Cloud Storage file containing the agent to import. Note: The URI must start
-        /// with "gs://".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Instructs the speech recognizer how to process the audio content.</summary>
-    public class GoogleCloudDialogflowV2beta1InputAudioConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Audio encoding of the audio content to process.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audioEncoding")]
-        public virtual string AudioEncoding { get; set; } 
-
-        /// <summary>Required. The language of the supplied audio. Dialogflow does not do translations. See [Language
-        /// Support](https://dialogflow.com/docs/languages) for a list of the currently supported language codes. Note
-        /// that queries in the same session do not necessarily need to specify the same language.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
-
-        /// <summary>Optional. The collection of phrase hints which are used to boost accuracy of speech recognition.
-        /// Refer to [Cloud Speech API documentation](/speech/docs/basics#phrase-hints) for more details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("phraseHints")]
-        public virtual System.Collections.Generic.IList<string> PhraseHints { get; set; } 
-
-        /// <summary>Required. Sample rate (in Hertz) of the audio content sent in the query. Refer to [Cloud Speech API
-        /// documentation](/speech/docs/basics) for more details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
-        public virtual System.Nullable<int> SampleRateHertz { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5888,17 +6120,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Required. Indicates whether webhooks are enabled for the intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webhookState")]
         public virtual string WebhookState { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>This message is a wrapper around a collection of intents.</summary>
-    public class GoogleCloudDialogflowV2beta1IntentBatch : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A collection of intents.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Intent> Intents { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6363,74 +6584,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The response message for Contexts.ListContexts.</summary>
-    public class GoogleCloudDialogflowV2beta1ListContextsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of contexts. There will be a maximum number of items returned based on the page_size field
-        /// in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> Contexts { get; set; } 
-
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for EntityTypes.ListEntityTypes.</summary>
-    public class GoogleCloudDialogflowV2beta1ListEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of agent entity types. There will be a maximum number of items returned based on the
-        /// page_size field in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityType> EntityTypes { get; set; } 
-
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for Intents.ListIntents.</summary>
-    public class GoogleCloudDialogflowV2beta1ListIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of agent intents. There will be a maximum number of items returned based on the page_size
-        /// field in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Intent> Intents { get; set; } 
-
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for SessionEntityTypes.ListSessionEntityTypes.</summary>
-    public class GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The list of session entity types. There will be a maximum number of items returned based on the
-        /// page_size field in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SessionEntityType> SessionEntityTypes { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Represents the contents of the original request that was passed to the `[Streaming]DetectIntent`
     /// call.</summary>
     public class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -6444,67 +6597,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// servers. Possible values of this field correspond to Intent.Message.Platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents the query input. It can contain either:
-    ///
-    /// 1.  An audio config which instructs the speech recognizer how to process the speech audio.
-    ///
-    /// 2.  A conversational query in the form of text,.
-    ///
-    /// 3.  An event that specifies which intent to trigger.</summary>
-    public class GoogleCloudDialogflowV2beta1QueryInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Instructs the speech recognizer how to process the speech audio.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
-        public virtual GoogleCloudDialogflowV2beta1InputAudioConfig AudioConfig { get; set; } 
-
-        /// <summary>The event to be processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("event")]
-        public virtual GoogleCloudDialogflowV2beta1EventInput Event__ { get; set; } 
-
-        /// <summary>The natural language text to be processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual GoogleCloudDialogflowV2beta1TextInput Text { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents the parameters of the conversational query.</summary>
-    public class GoogleCloudDialogflowV2beta1QueryParameters : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The collection of contexts to be activated before this query is executed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> Contexts { get; set; } 
-
-        /// <summary>Optional. The geo location of this conversational query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
-        public virtual GoogleTypeLatLng GeoLocation { get; set; } 
-
-        /// <summary>Optional. This field can be used to pass custom data into the webhook associated with the agent.
-        /// Arbitrary JSON objects are supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
-        public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
-
-        /// <summary>Optional. Specifies whether to delete all contexts in the current session before the new ones are
-        /// activated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resetContexts")]
-        public virtual System.Nullable<bool> ResetContexts { get; set; } 
-
-        /// <summary>Optional. The collection of session entity types to replace or extend developer entities with for
-        /// this query only. The entity synonyms apply to all languages.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SessionEntityType> SessionEntityTypes { get; set; } 
-
-        /// <summary>Optional. The time zone of this conversational query from the [time zone
-        /// database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris. If not provided, the time
-        /// zone specified in agent settings is used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
-        public virtual string TimeZone { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6588,98 +6680,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("webhookSource")]
         public virtual string WebhookSource { get; set; } 
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for Agents.RestoreAgent.</summary>
-    public class GoogleCloudDialogflowV2beta1RestoreAgentRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The agent to restore.
-        ///
-        /// Example for how to restore an agent via the command line:
-        ///
-        /// curl \ 'https://dialogflow.googleapis.com/v2beta1/projects//agent:restore\ -X POST \ -H 'Authorization:
-        /// Bearer '$(gcloud auth print-access-token) \ -H 'Accept: application/json' \ -H 'Content-Type:
-        /// application/json' \ --compressed \ --data-binary "{ 'agentContent': '$(cat  | base64 -w 0)' }" \</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
-        public virtual string AgentContent { get; set; } 
-
-        /// <summary>The URI to a Google Cloud Storage file containing the agent to restore. Note: The URI must start
-        /// with "gs://".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
-        public virtual string AgentUri { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The response message for Agents.SearchAgents.</summary>
-    public class GoogleCloudDialogflowV2beta1SearchAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of agents. There will be a maximum number of items returned based on the page_size field
-        /// in the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("agents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Agent> Agents { get; set; } 
-
-        /// <summary>Token to retrieve the next page of results, or empty if there are no more results in the
-        /// list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents a session entity type.
-    ///
-    /// Extends or replaces a developer entity type at the user session level (we refer to the entity types defined at
-    /// the agent level as "developer entity types").
-    ///
-    /// Note: session entity types apply to all queries, regardless of the language.</summary>
-    public class GoogleCloudDialogflowV2beta1SessionEntityType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The collection of entities associated with this session entity type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1EntityTypeEntity> Entities { get; set; } 
-
-        /// <summary>Required. Indicates whether the additional data should override or supplement the developer entity
-        /// type definition.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityOverrideMode")]
-        public virtual string EntityOverrideMode { get; set; } 
-
-        /// <summary>Required. The unique identifier of this session entity type. Format:
-        /// `projects//agent/sessions//entityTypes/`, or `projects//agent/runtimes/sessions//entityTypes/`. Note:
-        /// Runtimes are under construction and will be available soon. If  is not specified, we assume default
-        /// 'sandbox' runtime.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Represents the natural language text to be processed.</summary>
-    public class GoogleCloudDialogflowV2beta1TextInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The language of this conversational query. See [Language
-        /// Support](https://dialogflow.com/docs/languages) for a list of the currently supported language codes. Note
-        /// that queries in the same session do not necessarily need to specify the same language.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; } 
-
-        /// <summary>Required. The UTF-8 encoded natural language text to be processed. Text length must not exceed 256
-        /// bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The request message for Agents.TrainAgent.</summary>
-    public class GoogleCloudDialogflowV2beta1TrainAgentRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    

@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Cloud DLP API Version v2beta2
+ *   Cloud Data Loss Prevention (DLP) API Version v2beta2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud DLP API</a>
+ *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180317 (1171)
+ *      <tr><th>API Rev<td>20180320 (1174)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Cloud DLP API can be found at
+ * The complete API documentation for using Cloud Data Loss Prevention (DLP) API can be found at
  * <a href='https://cloud.google.com/dlp/docs/'>https://cloud.google.com/dlp/docs/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -107,7 +107,7 @@ namespace Google.Apis.DLP.v2beta2
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud DLP API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Data Loss Prevention (DLP) API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -3116,6 +3116,10 @@ namespace Google.Apis.DLP.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>Optional size of the page, can be limited by a server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to ListJobTriggers.
                 /// `order_by` and `filter` should not change for subsequent calls, but can be omitted if token is
                 /// specified.</summary>
@@ -3134,10 +3138,6 @@ namespace Google.Apis.DLP.v2beta2
                 /// `status`: corresponds to the triggeredJob status.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
-
-                /// <summary>Optional size of the page, can be limited by a server.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3173,6 +3173,15 @@ namespace Google.Apis.DLP.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -3185,15 +3194,6 @@ namespace Google.Apis.DLP.v2beta2
                         "orderBy", new Google.Apis.Discovery.Parameter
                         {
                             Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

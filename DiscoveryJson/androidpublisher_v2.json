@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/zZMdIDoiaDfUtDgyloXiZAB03OU\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/430OMYxRvf9sCM_VRkUKZWSfR7U\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20180318",
+ "revision": "20180319",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -901,10 +901,22 @@
      "type": "string",
      "description": "A developer-specified string that contains supplemental information about an order."
     },
+    "emailAddress": {
+     "type": "string",
+     "description": "The email address of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."
+    },
     "expiryTimeMillis": {
      "type": "string",
      "description": "Time at which the subscription will expire, in milliseconds since the Epoch.",
      "format": "int64"
+    },
+    "familyName": {
+     "type": "string",
+     "description": "The family name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."
+    },
+    "givenName": {
+     "type": "string",
+     "description": "The given name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."
     },
     "kind": {
      "type": "string",
@@ -932,6 +944,14 @@
     "priceCurrencyCode": {
      "type": "string",
      "description": "ISO 4217 currency code for the subscription price. For example, if the price is specified in British pounds sterling, price_currency_code is \"GBP\"."
+    },
+    "profileId": {
+     "type": "string",
+     "description": "The profile id of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."
+    },
+    "profileName": {
+     "type": "string",
+     "description": "The profile name of the user when the subscription was purchased. Only present for purchases made with 'Subscribe with Google'."
     },
     "purchaseType": {
      "type": "integer",
