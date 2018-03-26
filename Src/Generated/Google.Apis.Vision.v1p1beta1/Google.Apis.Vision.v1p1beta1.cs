@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Vision API Version v1p1beta1
+ *   Cloud Vision API Version v1p1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
+ *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1p1beta1
- *      <tr><th>API Rev<td>20180305 (1159)
+ *      <tr><th>API Rev<td>20180320 (1174)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Vision API can be found at
+ * The complete API documentation for using Cloud Vision API can be found at
  * <a href='https://cloud.google.com/vision/'>https://cloud.google.com/vision/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.Vision.v1p1beta1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Vision API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Vision API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -1390,6 +1390,10 @@ namespace Google.Apis.Vision.v1p1beta1.Data
         /// <summary>The output location and metadata from AsyncAnnotateFileRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GoogleCloudVisionV1p2beta1OutputConfig OutputConfig { get; set; } 
+
+        /// <summary>The full list of output files in GCS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1GcsDestination> Outputs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

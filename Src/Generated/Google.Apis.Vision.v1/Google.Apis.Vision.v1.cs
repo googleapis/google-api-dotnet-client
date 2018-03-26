@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Vision API Version v1
+ *   Cloud Vision API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/vision/'>Google Cloud Vision API</a>
+ *          <td><a href='https://cloud.google.com/vision/'>Cloud Vision API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180305 (1159)
+ *      <tr><th>API Rev<td>20180320 (1174)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/vision/'>
  *              https://cloud.google.com/vision/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Vision API can be found at
+ * The complete API documentation for using Cloud Vision API can be found at
  * <a href='https://cloud.google.com/vision/'>https://cloud.google.com/vision/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -65,6 +65,7 @@ namespace Google.Apis.Vision.v1
             : base(initializer)
         {
             images = new ImagesResource(this);
+            locations = new LocationsResource(this);
             operations = new OperationsResource(this);
         }
 
@@ -106,7 +107,7 @@ namespace Google.Apis.Vision.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Vision API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Vision API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -125,6 +126,14 @@ namespace Google.Apis.Vision.v1
         public virtual ImagesResource Images
         {
             get { return images; }
+        }
+
+        private readonly LocationsResource locations;
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations
+        {
+            get { return locations; }
         }
 
         private readonly OperationsResource operations;
@@ -422,6 +431,110 @@ namespace Google.Apis.Vision.v1
         }
     }
 
+    /// <summary>The "locations" collection of methods.</summary>
+    public class LocationsResource
+    {
+        private const string Resource = "locations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public LocationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            operations = new OperationsResource(service);
+
+        }
+
+        private readonly OperationsResource operations;
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations
+        {
+            get { return operations; }
+        }
+
+        /// <summary>The "operations" collection of methods.</summary>
+        public class OperationsResource
+        {
+            private const string Resource = "operations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public OperationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+
+            }
+
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            /// <param name="name">The name of the operation resource.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets the latest state of a long-running operation.  Clients can use this method to poll the
+            /// operation result at intervals as recommended by the API service.</summary>
+            public class GetRequest : VisionBaseServiceRequest<Google.Apis.Vision.v1.Data.Operation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the operation resource.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "get"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "GET"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
+                    RequestParameters.Add(
+                        "name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^locations/[^/]+/operations/[^/]+$",
+                        });
+                }
+
+            }
+        }
+    }
+
     /// <summary>The "operations" collection of methods.</summary>
     public class OperationsResource
     {
@@ -636,7 +749,7 @@ namespace Google.Apis.Vision.v1
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^operations/.+$",
+                        Pattern = @"^operations/[^/]+$",
                     });
             }
 
@@ -679,10 +792,6 @@ namespace Google.Apis.Vision.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page size.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -690,6 +799,10 @@ namespace Google.Apis.Vision.v1
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>The standard list page size.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -725,15 +838,6 @@ namespace Google.Apis.Vision.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -746,6 +850,15 @@ namespace Google.Apis.Vision.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1272,6 +1385,10 @@ namespace Google.Apis.Vision.v1.Data
         /// <summary>The output location and metadata from AsyncAnnotateFileRequest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual GoogleCloudVisionV1p2beta1OutputConfig OutputConfig { get; set; } 
+
+        /// <summary>The full list of output files in GCS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudVisionV1p2beta1GcsDestination> Outputs { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

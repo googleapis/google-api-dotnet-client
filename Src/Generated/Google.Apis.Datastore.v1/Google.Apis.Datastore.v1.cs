@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180117 (1112)
+ *      <tr><th>API Rev<td>20180321 (1175)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -899,6 +899,158 @@ namespace Google.Apis.Datastore.v1
 
         }
 
+        /// <summary>Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage
+        /// system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The
+        /// export occurs in the background and its progress can be monitored and managed via the Operation resource
+        /// that is created. The output of an export may only be used once the associated operation is done. If an
+        /// export operation is cancelled before completion it may leave partial data behind in Google Cloud
+        /// Storage.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Project ID against which to make the request.</param>
+        public virtual ExportRequest Export(Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ExportEntitiesRequest body, string projectId)
+        {
+            return new ExportRequest(service, body, projectId);
+        }
+
+        /// <summary>Exports a copy of all or a subset of entities from Google Cloud Datastore to another storage
+        /// system, such as Google Cloud Storage. Recent updates to entities may not be reflected in the export. The
+        /// export occurs in the background and its progress can be monitored and managed via the Operation resource
+        /// that is created. The output of an export may only be used once the associated operation is done. If an
+        /// export operation is cancelled before completion it may leave partial data behind in Google Cloud
+        /// Storage.</summary>
+        public class ExportRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Export request.</summary>
+            public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ExportEntitiesRequest body, string projectId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID against which to make the request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ExportEntitiesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "export"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/projects/{projectId}:export"; }
+            }
+
+            /// <summary>Initializes Export parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten.
+        /// The import occurs in the background and its progress can be monitored and managed via the Operation resource
+        /// that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has
+        /// already been imported to Cloud Datastore.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="projectId">Project ID against which to make the request.</param>
+        public virtual ImportRequest Import(Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ImportEntitiesRequest body, string projectId)
+        {
+            return new ImportRequest(service, body, projectId);
+        }
+
+        /// <summary>Imports entities into Google Cloud Datastore. Existing entities with the same key are overwritten.
+        /// The import occurs in the background and its progress can be monitored and managed via the Operation resource
+        /// that is created. If an ImportEntities operation is cancelled, it is possible that a subset of the data has
+        /// already been imported to Cloud Datastore.</summary>
+        public class ImportRequest : DatastoreBaseServiceRequest<Google.Apis.Datastore.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Import request.</summary>
+            public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ImportEntitiesRequest body, string projectId)
+                : base(service)
+            {
+                ProjectId = projectId;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID against which to make the request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProjectId { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Datastore.v1.Data.GoogleDatastoreAdminV1ImportEntitiesRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "import"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/projects/{projectId}:import"; }
+            }
+
+            /// <summary>Initializes Import parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "projectId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Looks up entities by key.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="projectId">The ID of the project against which to make the request.</param>
@@ -1364,6 +1516,213 @@ namespace Google.Apis.Datastore.v1.Data
         /// <summary>A filter on a property.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyFilter")]
         public virtual PropertyFilter PropertyFilter { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata common to all Datastore Admin operations.</summary>
+    public class GoogleDatastoreAdminV1CommonMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the operation ended, either successfully or otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The client-assigned labels which were provided when the operation was created. May also include
+        /// additional labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The type of the operation. Can be used as a filter in ListOperationsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; } 
+
+        /// <summary>The time that work began on the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The current state of the Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
+    /// (either or both of which may be all, as described in the following examples). Example usage:
+    ///
+    /// Entire project: kinds=[], namespace_ids=[]
+    ///
+    /// Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[]
+    ///
+    /// Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=['']
+    ///
+    /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
+    ///
+    /// The entire Baz namespace: kinds=[], namespace_ids=['Baz']</summary>
+    public class GoogleDatastoreAdminV1EntityFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If empty, then this represents all kinds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kinds")]
+        public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
+
+        /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
+        /// namespaces.
+        ///
+        /// An empty string element represents the default namespace. This should be used if the project has data in
+        /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ExportEntities operations.</summary>
+    public class GoogleDatastoreAdminV1ExportEntitiesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata common to all Datastore Admin operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; } 
+
+        /// <summary>Description of which entities are being exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+
+        /// <summary>Location for the export metadata and data files. This will be the same value as the
+        /// google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field. The final output location is
+        /// provided in google.datastore.admin.v1.ExportEntitiesResponse.output_url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUrlPrefix")]
+        public virtual string OutputUrlPrefix { get; set; } 
+
+        /// <summary>An estimate of the number of bytes processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleDatastoreAdminV1Progress ProgressBytes { get; set; } 
+
+        /// <summary>An estimate of the number of entities processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
+        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.</summary>
+    public class GoogleDatastoreAdminV1ExportEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of what data from the project is included in the export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+
+        /// <summary>Client-assigned labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>Location for the export metadata and data files.
+        ///
+        /// The full resource URL of the external storage location. Currently, only Google Cloud Storage is supported.
+        /// So output_url_prefix should be of the form: `gs://BUCKET_NAME[/NAMESPACE_PATH]`, where `BUCKET_NAME` is the
+        /// name of the Cloud Storage bucket and `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is
+        /// not a Cloud Datastore namespace). For more information about Cloud Storage namespace paths, see [Object name
+        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
+        ///
+        /// The resulting files will be nested deeper than the specified URL prefix. The final output URL will be
+        /// provided in the google.datastore.admin.v1.ExportEntitiesResponse.output_url field. That value should be used
+        /// for subsequent ImportEntities operations.
+        ///
+        /// By nesting the data files deeper, the same Cloud Storage bucket can be used in multiple ExportEntities
+        /// operations without conflict.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUrlPrefix")]
+        public virtual string OutputUrlPrefix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.</summary>
+    public class GoogleDatastoreAdminV1ExportEntitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Location of the output metadata file. This can be used to begin an import into Cloud Datastore
+        /// (this project or another project). See google.datastore.admin.v1.ImportEntitiesRequest.input_url. Only
+        /// present if the operation completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUrl")]
+        public virtual string OutputUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ImportEntities operations.</summary>
+    public class GoogleDatastoreAdminV1ImportEntitiesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata common to all Datastore Admin operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; } 
+
+        /// <summary>Description of which entities are being imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+
+        /// <summary>The location of the import metadata file. This will be the same value as the
+        /// google.datastore.admin.v1.ExportEntitiesResponse.output_url field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
+        public virtual string InputUrl { get; set; } 
+
+        /// <summary>An estimate of the number of bytes processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleDatastoreAdminV1Progress ProgressBytes { get; set; } 
+
+        /// <summary>An estimate of the number of entities processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
+        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The request for google.datastore.admin.v1.DatastoreAdmin.ImportEntities.</summary>
+    public class GoogleDatastoreAdminV1ImportEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optionally specify which kinds/namespaces are to be imported. If provided, the list must be a
+        /// subset of the EntityFilter used in creating the export, otherwise a FAILED_PRECONDITION error will be
+        /// returned. If no filter is specified then all entities from the export are imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+
+        /// <summary>The full resource URL of the external storage location. Currently, only Google Cloud Storage is
+        /// supported. So input_url should be of the form:
+        /// `gs://BUCKET_NAME[/NAMESPACE_PATH]/OVERALL_EXPORT_METADATA_FILE`, where `BUCKET_NAME` is the name of the
+        /// Cloud Storage bucket, `NAMESPACE_PATH` is an optional Cloud Storage namespace path (this is not a Cloud
+        /// Datastore namespace), and `OVERALL_EXPORT_METADATA_FILE` is the metadata file written by the ExportEntities
+        /// operation. For more information about Cloud Storage namespace paths, see [Object name
+        /// considerations](https://cloud.google.com/storage/docs/naming#object-considerations).
+        ///
+        /// For more information, see google.datastore.admin.v1.ExportEntitiesResponse.output_url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
+        public virtual string InputUrl { get; set; } 
+
+        /// <summary>Client-assigned labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Measures the progress of a particular metric.</summary>
+    public class GoogleDatastoreAdminV1Progress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of work that has been completed. Note that this may be greater than
+        /// work_estimated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workCompleted")]
+        public virtual System.Nullable<long> WorkCompleted { get; set; } 
+
+        /// <summary>An estimate of how much work needs to be performed. May be zero if the work estimate is
+        /// unavailable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workEstimated")]
+        public virtual System.Nullable<long> WorkEstimated { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

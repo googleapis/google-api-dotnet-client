@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/gmail/api/'>Gmail API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180213 (1139)
+ *      <tr><th>API Rev<td>20180319 (1173)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/gmail/api/'>
  *              https://developers.google.com/gmail/api/</a>
@@ -6983,7 +6983,8 @@ namespace Google.Apis.Gmail.v1.Data
     {
         /// <summary>A name that appears in the "From:" header for mail sent using this alias. For custom "from"
         /// addresses, when this is empty, Gmail will populate the "From:" header with the name that is used for the
-        /// primary address associated with the account.</summary>
+        /// primary address associated with the account. If the admin has disabled the ability for users to update their
+        /// name format, requests to update this field for the primary login will silently fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; } 
 

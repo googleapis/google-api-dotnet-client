@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/Irmr4KsClcVVxdp4FW7wbGl2680\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/HU5u3llBS2pcCtNMtKD_RzuFbzU\"",
  "discoveryVersion": "v1",
  "id": "gmail:v1",
  "name": "gmail",
  "version": "v1",
- "revision": "20180213",
+ "revision": "20180319",
  "title": "Gmail API",
  "description": "Access Gmail mailboxes including sending user email.",
  "ownerDomain": "google.com",
@@ -966,7 +966,7 @@
    "properties": {
     "displayName": {
      "type": "string",
-     "description": "A name that appears in the \"From:\" header for mail sent using this alias. For custom \"from\" addresses, when this is empty, Gmail will populate the \"From:\" header with the name that is used for the primary address associated with the account."
+     "description": "A name that appears in the \"From:\" header for mail sent using this alias. For custom \"from\" addresses, when this is empty, Gmail will populate the \"From:\" header with the name that is used for the primary address associated with the account. If the admin has disabled the ability for users to update their name format, requests to update this field for the primary login will silently fail."
     },
     "isDefault": {
      "type": "boolean",
