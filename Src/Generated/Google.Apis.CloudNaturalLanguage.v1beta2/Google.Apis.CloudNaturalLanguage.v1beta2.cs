@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180313 (1167)
+ *      <tr><th>API Rev<td>20180322 (1176)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -887,7 +887,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
-        /// <summary>The name of the category representing the document.</summary>
+        /// <summary>The name of the category representing the document, from the [predefined taxonomy](/natural-
+        /// language/docs/categories).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

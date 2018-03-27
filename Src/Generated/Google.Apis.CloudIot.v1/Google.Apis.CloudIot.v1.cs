@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Cloud IoT API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180314 (1168)
+ *      <tr><th>API Rev<td>20180321 (1175)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -880,11 +880,6 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>A list of device numerical ids. If empty, it will ignore this field. This field
-                        /// cannot hold more than 10,000 entries.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
-
                         /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
                         /// continuation of a prior `ListDevices` call, and that the system should return the next page
                         /// of data.</summary>
@@ -908,6 +903,11 @@ namespace Google.Apis.CloudIot.v1
                         /// entries.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
+
+                        /// <summary>A list of device numerical ids. If empty, it will ignore this field. This field
+                        /// cannot hold more than 10,000 entries.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -943,15 +943,6 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "deviceNumIds", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "deviceNumIds",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "pageToken", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageToken",
@@ -982,6 +973,15 @@ namespace Google.Apis.CloudIot.v1
                                 "deviceIds", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "deviceIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "deviceNumIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceNumIds",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

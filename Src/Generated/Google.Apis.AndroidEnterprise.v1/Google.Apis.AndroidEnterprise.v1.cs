@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180320 (1174)
+ *      <tr><th>API Rev<td>20180322 (1176)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8425,6 +8425,24 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Maintenance window for managed Google Play Accounts. This allows Play store to update the apps on the
+    /// foreground in the designated window.</summary>
+    public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Duration of the maintenance window, in milliseconds. The duration must be between 30 minutes and 24
+        /// hours (inclusive).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("durationMs")]
+        public virtual System.Nullable<long> DurationMs { get; set; } 
+
+        /// <summary>Start time of the maintenance window, in milliseconds after midnight on the device. Windows can
+        /// span midnight.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeAfterMidnightMs")]
+        public virtual System.Nullable<long> StartTimeAfterMidnightMs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A managed configuration resource contains the set of managed properties defined by the app developer in
     /// the app's managed configurations schema, as well as any configuration variables defined for the user.</summary>
     public class ManagedConfiguration : Google.Apis.Requests.IDirectResponseSchema
@@ -8756,6 +8774,11 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         /// enables auto updates only when the device is connected to wifi.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoUpdatePolicy")]
         public virtual string AutoUpdatePolicy { get; set; } 
+
+        /// <summary>The maintenance window defining when apps running in the foreground should be updated. This feature
+        /// is only supported on fully managed devices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maintenanceWindow")]
+        public virtual MaintenanceWindow MaintenanceWindow { get; set; } 
 
         /// <summary>The availability granted to the device for the specified products. "all" gives the device access to
         /// all products, regardless of approval status. "allApproved" entitles the device to access all products that

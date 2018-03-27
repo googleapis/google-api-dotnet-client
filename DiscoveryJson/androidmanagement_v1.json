@@ -1372,7 +1372,7 @@
           "type": "boolean"
         },
         "appAutoUpdatePolicy": {
-          "description": "The auto update policy value. Specifies whether the user is given a choice to configure the app update policy, or otherwise contains the enforced update policy",
+          "description": "The app auto update policy, which controls when automatic app updates can be applied.",
           "enum": [
             "APP_AUTO_UPDATE_POLICY_UNSPECIFIED",
             "CHOICE_TO_THE_USER",
@@ -1381,7 +1381,7 @@
             "ALWAYS"
           ],
           "enumDescriptions": [
-            "The auto-update policy is not set. Same as giving auto-update policy choice to the user.",
+            "The auto-update policy is not set. Equivalent to CHOICE_TO_THE_USER.",
             "The user can control auto-updates.",
             "Apps are never auto-updated.",
             "Apps are auto-updated over Wi-Fi only.",
@@ -1432,6 +1432,10 @@
           "description": "Whether the network escape hatch is enabled. If a network connection can't be made at boot time, the escape hatch prompts the user to temporarily connect to a network in order to refresh the device policy. After applying policy, the temporary network will be forgotten and the device will continue booting. This prevents being unable to connect to a network if there is no suitable network in the last policy and the device boots into an app in lock task mode, or the user is otherwise unable to reach device settings.",
           "type": "boolean"
         },
+        "shareLocationDisabled": {
+          "description": "Whether location sharing is disabled.",
+          "type": "boolean"
+        },
         "keyguardDisabledFeatures": {
           "description": "Disabled keyguard customizations, such as widgets.",
           "enumDescriptions": [
@@ -1458,6 +1462,20 @@
             ],
             "type": "string"
           }
+        },
+        "encryptionPolicy": {
+          "description": "Whether encryption is enabled",
+          "enum": [
+            "ENCRYPTION_POLICY_UNSPECIFIED",
+            "ENABLED_WITHOUT_PASSWORD",
+            "ENABLED_WITH_PASSWORD"
+          ],
+          "enumDescriptions": [
+            "This value is ignored, i.e. no encryption required",
+            "Encryption required but no password required to boot",
+            "Encryption required with password required to boot"
+          ],
+          "type": "string"
         },
         "defaultPermissionPolicy": {
           "description": "The default permission policy for runtime permission requests.",
@@ -1530,6 +1548,10 @@
         },
         "smsDisabled": {
           "description": "Whether sending and receiving SMS messages is disabled.",
+          "type": "boolean"
+        },
+        "skipFirstUseHintsEnabled": {
+          "description": "Flag to skip hints on the first use. Enterprise admin can enable the system recommendation for apps to skip their user tutorial and other introductory hints on first start-up.",
           "type": "boolean"
         },
         "permittedInputMethods": {
@@ -1606,6 +1628,10 @@
           "description": "Whether app verification is force-enabled.",
           "type": "boolean"
         },
+        "usbMassStorageEnabled": {
+          "description": "Allows admins to toggle whether USB storge is enabled or disabled on user's devices. Next ID: 113",
+          "type": "boolean"
+        },
         "kioskCustomLauncherEnabled": {
           "description": "Whether the kiosk custom launcher is enabled. This replaces the home screen with a launcher that locks down the device to the apps installed via the applications setting. The apps appear on a single page in alphabetical order. It is recommended to also use status_bar_disabled to block access to device settings.",
           "type": "boolean"
@@ -1638,6 +1664,14 @@
           "description": "Whether changing the wallpaper is disabled.",
           "type": "boolean"
         },
+        "statusReportingSettings": {
+          "description": "Status reporting settings",
+          "$ref": "StatusReportingSettings"
+        },
+        "deviceOwnerLockScreenInfo": {
+          "description": "The device owner information to be shown on the lock screen.",
+          "$ref": "UserFacingMessage"
+        },
         "version": {
           "description": "The version of the policy. This is a read-only field. The version is incremented each time the policy is updated.",
           "type": "string",
@@ -1649,10 +1683,6 @@
           "items": {
             "$ref": "ComplianceRule"
           }
-        },
-        "statusReportingSettings": {
-          "description": "Status reporting settings",
-          "$ref": "StatusReportingSettings"
         },
         "addUserDisabled": {
           "description": "Whether adding new users and profiles is disabled.",
@@ -1673,6 +1703,24 @@
         "usbFileTransferDisabled": {
           "description": "Whether transferring files over USB is disabled.",
           "type": "boolean"
+        },
+        "locationMode": {
+          "description": "The degree of location detection enabled. The user may change the value unless the user is otherwise blocked from accessing device settings.",
+          "enum": [
+            "LOCATION_MODE_UNSPECIFIED",
+            "HIGH_ACCURACY",
+            "SENSORS_ONLY",
+            "BATTERY_SAVING",
+            "OFF"
+          ],
+          "enumDescriptions": [
+            "The current device value is not modified.",
+            "All location detection methods are enabled, including GPS, networks, and other sensors.",
+            "Only GPS and other sensors are enabled.",
+            "Only the network location provider is enabled.",
+            "Location detection is disabled."
+          ],
+          "type": "string"
         },
         "removeUserDisabled": {
           "description": "Whether removing other users is disabled.",
@@ -1730,6 +1778,26 @@
             ],
             "type": "string"
           }
+        },
+        "errorCode": {
+          "description": "If the command failed, an error code explaining the failure. This is not set when the command is cancelled by the caller.",
+          "enum": [
+            "COMMAND_ERROR_CODE_UNSPECIFIED",
+            "UNKNOWN",
+            "API_LEVEL",
+            "MANAGEMENT_MODE",
+            "INVALID_VALUE",
+            "UNSUPPORTED"
+          ],
+          "enumDescriptions": [
+            "There was no error.",
+            "An unknown error occurred.",
+            "The API level of the device does not support this command.",
+            "The management mode (profile owner, device owner, etc.) does not support the command.",
+            "The command has an invalid parameter value.",
+            "The device doesn't support the command. Updating Android Device Policy to the latest version may resolve the issue."
+          ],
+          "type": "string"
         },
         "createTime": {
           "description": "The timestamp at which the command was created. The timestamp is automatically generated by the server.",
@@ -2599,7 +2667,7 @@
       "id": "HardwareStatus"
     }
   },
-  "revision": "20180312",
+  "revision": "20180320",
   "basePath": "",
   "icons": {
     "x32": "http://www.google.com/images/icons/product/search-32.gif",

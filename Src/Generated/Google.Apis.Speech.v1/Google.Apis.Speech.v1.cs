@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180319 (1173)
+ *      <tr><th>API Rev<td>20180326 (1180)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -704,7 +704,7 @@ namespace Google.Apis.Speech.v1.Data
     /// more sequential `SpeechRecognitionResult` messages.</summary>
     public class RecognizeResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Output-only* Sequential list of transcription results corresponding to sequential portions of
+        /// <summary>Output only. Sequential list of transcription results corresponding to sequential portions of
         /// audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<SpeechRecognitionResult> Results { get; set; } 
@@ -731,7 +731,7 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>Alternative hypotheses (a.k.a. n-best list).</summary>
     public class SpeechRecognitionAlternative : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Output-only* The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
+        /// <summary>Output only. The confidence estimate between 0.0 and 1.0. A higher number indicates an estimated
         /// greater likelihood that the recognized words are correct. This field is set only for the top alternative of
         /// a non-streaming result or, of a streaming result where `is_final=true`. This field is not guaranteed to be
         /// accurate and users should not rely on it to be always provided. The default of 0.0 is a sentinel value
@@ -739,11 +739,11 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; } 
 
-        /// <summary>*Output-only* Transcript text representing the words that the user spoke.</summary>
+        /// <summary>Output only. Transcript text representing the words that the user spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>*Output-only* A list of word-specific information for each recognized word.</summary>
+        /// <summary>Output only. A list of word-specific information for each recognized word.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<WordInfo> Words { get; set; } 
 
@@ -754,7 +754,7 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>A speech recognition result corresponding to a portion of the audio.</summary>
     public class SpeechRecognitionResult : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Output-only* May contain one or more recognition hypotheses (up to the maximum specified in
+        /// <summary>Output only. May contain one or more recognition hypotheses (up to the maximum specified in
         /// `max_alternatives`). These alternatives are ordered in terms of accuracy, with the top (first) alternative
         /// being the most probable, as ranked by the recognizer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
@@ -830,19 +830,19 @@ namespace Google.Apis.Speech.v1.Data
     /// <summary>Word-specific information for recognized words.</summary>
     public class WordInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>*Output-only* Time offset relative to the beginning of the audio, and corresponding to the end of
+        /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the end of
         /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
         /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
 
-        /// <summary>*Output-only* Time offset relative to the beginning of the audio, and corresponding to the start of
+        /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the start of
         /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.
         /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>*Output-only* The word corresponding to this set of information.</summary>
+        /// <summary>Output only. The word corresponding to this set of information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("word")]
         public virtual string Word { get; set; } 
 

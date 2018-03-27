@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180312 (1166)
+ *      <tr><th>API Rev<td>20180320 (1174)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2218,6 +2218,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; } 
 
+        /// <summary>If the command failed, an error code explaining the failure. This is not set when the command is
+        /// cancelled by the caller.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorCode")]
+        public virtual string ErrorCode { get; set; } 
+
         /// <summary>For commands of type RESET_PASSWORD, optionally specifies the new password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPassword")]
         public virtual string NewPassword { get; set; } 
@@ -3090,8 +3095,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidDevicePolicyTracks")]
         public virtual System.Collections.Generic.IList<string> AndroidDevicePolicyTracks { get; set; } 
 
-        /// <summary>The auto update policy value. Specifies whether the user is given a choice to configure the app
-        /// update policy, or otherwise contains the enforced update policy</summary>
+        /// <summary>The app auto update policy, which controls when automatic app updates can be applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appAutoUpdatePolicy")]
         public virtual string AppAutoUpdatePolicy { get; set; } 
 
@@ -3157,6 +3161,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPermissionPolicy")]
         public virtual string DefaultPermissionPolicy { get; set; } 
 
+        /// <summary>The device owner information to be shown on the lock screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceOwnerLockScreenInfo")]
+        public virtual UserFacingMessage DeviceOwnerLockScreenInfo { get; set; } 
+
+        /// <summary>Whether encryption is enabled</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionPolicy")]
+        public virtual string EncryptionPolicy { get; set; } 
+
         /// <summary>Whether app verification is force-enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ensureVerifyAppsEnabled")]
         public virtual System.Nullable<bool> EnsureVerifyAppsEnabled { get; set; } 
@@ -3199,6 +3211,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kioskCustomLauncherEnabled")]
         public virtual System.Nullable<bool> KioskCustomLauncherEnabled { get; set; } 
+
+        /// <summary>The degree of location detection enabled. The user may change the value unless the user is
+        /// otherwise blocked from accessing device settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationMode")]
+        public virtual string LocationMode { get; set; } 
 
         /// <summary>A message displayed to the user in the device administators settings screen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longSupportMessage")]
@@ -3290,10 +3307,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("setWallpaperDisabled")]
         public virtual System.Nullable<bool> SetWallpaperDisabled { get; set; } 
 
+        /// <summary>Whether location sharing is disabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shareLocationDisabled")]
+        public virtual System.Nullable<bool> ShareLocationDisabled { get; set; } 
+
         /// <summary>A message displayed to the user in the settings screen wherever functionality has been disabled by
         /// the admin.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shortSupportMessage")]
         public virtual UserFacingMessage ShortSupportMessage { get; set; } 
+
+        /// <summary>Flag to skip hints on the first use. Enterprise admin can enable the system recommendation for apps
+        /// to skip their user tutorial and other introductory hints on first start-up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipFirstUseHintsEnabled")]
+        public virtual System.Nullable<bool> SkipFirstUseHintsEnabled { get; set; } 
 
         /// <summary>Whether sending and receiving SMS messages is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("smsDisabled")]
@@ -3334,6 +3360,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether transferring files over USB is disabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbFileTransferDisabled")]
         public virtual System.Nullable<bool> UsbFileTransferDisabled { get; set; } 
+
+        /// <summary>Allows admins to toggle whether USB storge is enabled or disabled on user's devices. Next ID:
+        /// 113</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usbMassStorageEnabled")]
+        public virtual System.Nullable<bool> UsbMassStorageEnabled { get; set; } 
 
         /// <summary>The version of the policy. This is a read-only field. The version is incremented each time the
         /// policy is updated.</summary>
