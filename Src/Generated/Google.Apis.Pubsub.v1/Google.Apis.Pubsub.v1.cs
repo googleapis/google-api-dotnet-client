@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180312 (1166)
+ *      <tr><th>API Rev<td>20180319 (1173)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -385,10 +385,11 @@ namespace Google.Apis.Pubsub.v1
             }
 
 
-            /// <summary>Creates a snapshot from the requested subscription. If the snapshot already exists, returns
-            /// `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in
-            /// the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then
-            /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
+            /// <summary>[ALPHA] This method is a part of a closed Alpha API. Creates a snapshot from the requested
+            /// subscription. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription
+            /// doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting
+            /// snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the
+            /// `Snapshot.expire_time` field.
             ///
             /// If the name is not provided in the request, the server will assign a random name for this snapshot on
             /// the same project as the subscription, conforming to the [resource name
@@ -404,10 +405,11 @@ namespace Google.Apis.Pubsub.v1
                 return new CreateRequest(service, body, name);
             }
 
-            /// <summary>Creates a snapshot from the requested subscription. If the snapshot already exists, returns
-            /// `ALREADY_EXISTS`. If the requested subscription doesn't exist, returns `NOT_FOUND`. If the backlog in
-            /// the subscription is too old -- and the resulting snapshot would expire in less than 1 hour -- then
-            /// `FAILED_PRECONDITION` is returned. See also the `Snapshot.expire_time` field.
+            /// <summary>[ALPHA] This method is a part of a closed Alpha API. Creates a snapshot from the requested
+            /// subscription. If the snapshot already exists, returns `ALREADY_EXISTS`. If the requested subscription
+            /// doesn't exist, returns `NOT_FOUND`. If the backlog in the subscription is too old -- and the resulting
+            /// snapshot would expire in less than 1 hour -- then `FAILED_PRECONDITION` is returned. See also the
+            /// `Snapshot.expire_time` field.
             ///
             /// If the name is not provided in the request, the server will assign a random name for this snapshot on
             /// the same project as the subscription, conforming to the [resource name
@@ -478,8 +480,8 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Removes an existing snapshot. All messages retained in the snapshot are immediately dropped.
             /// After a snapshot is deleted, a new one may be created with the same name, but the new one has no
-            /// association with the old snapshot or its subscription, unless the same subscription is
-            /// specified.</summary>
+            /// association with the old snapshot or its subscription, unless the same subscription is specified.
+            /// [ALPHA] This method is a part of a closed Alpha API.</summary>
             /// <param name="snapshot">The name of the snapshot to delete. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual DeleteRequest Delete(string snapshot)
@@ -489,8 +491,8 @@ namespace Google.Apis.Pubsub.v1
 
             /// <summary>Removes an existing snapshot. All messages retained in the snapshot are immediately dropped.
             /// After a snapshot is deleted, a new one may be created with the same name, but the new one has no
-            /// association with the old snapshot or its subscription, unless the same subscription is
-            /// specified.</summary>
+            /// association with the old snapshot or its subscription, unless the same subscription is specified.
+            /// [ALPHA] This method is a part of a closed Alpha API.</summary>
             public class DeleteRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -544,7 +546,8 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Gets the configuration details of a snapshot.</summary>
+            /// <summary>Gets the configuration details of a snapshot. [ALPHA] This method is a part of a closed Alpha
+            /// API.</summary>
             /// <param name="snapshot">The name of the snapshot to get. Format is
             /// `projects/{project}/snapshots/{snap}`.</param>
             public virtual GetRequest Get(string snapshot)
@@ -552,7 +555,8 @@ namespace Google.Apis.Pubsub.v1
                 return new GetRequest(service, snapshot);
             }
 
-            /// <summary>Gets the configuration details of a snapshot.</summary>
+            /// <summary>Gets the configuration details of a snapshot. [ALPHA] This method is a part of a closed Alpha
+            /// API.</summary>
             public class GetRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -669,7 +673,7 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Lists the existing snapshots.</summary>
+            /// <summary>Lists the existing snapshots. [ALPHA] This method is a part of a closed Alpha API.</summary>
             /// <param name="project">The name of the cloud project that snapshots belong to. Format is
             /// `projects/{project}`.</param>
             public virtual ListRequest List(string project)
@@ -677,7 +681,7 @@ namespace Google.Apis.Pubsub.v1
                 return new ListRequest(service, project);
             }
 
-            /// <summary>Lists the existing snapshots.</summary>
+            /// <summary>Lists the existing snapshots. [ALPHA] This method is a part of a closed Alpha API.</summary>
             public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListSnapshotsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -759,8 +763,8 @@ namespace Google.Apis.Pubsub.v1
 
             }
 
-            /// <summary>Updates an existing snapshot. Note that certain properties of a snapshot are not
-            /// modifiable.</summary>
+            /// <summary>Updates an existing snapshot. Note that certain properties of a snapshot are not modifiable.
+            /// [ALPHA] This method is a part of a closed Alpha API.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">The name of the snapshot.</param>
             public virtual PatchRequest Patch(Google.Apis.Pubsub.v1.Data.UpdateSnapshotRequest body, string name)
@@ -768,8 +772,8 @@ namespace Google.Apis.Pubsub.v1
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates an existing snapshot. Note that certain properties of a snapshot are not
-            /// modifiable.</summary>
+            /// <summary>Updates an existing snapshot. Note that certain properties of a snapshot are not modifiable.
+            /// [ALPHA] This method is a part of a closed Alpha API.</summary>
             public class PatchRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.Snapshot>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1761,7 +1765,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided
-            /// in the request.</summary>
+            /// in the request. [ALPHA] This method is a part of a closed Alpha API.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="subscription">The subscription to affect.</param>
             public virtual SeekRequest Seek(Google.Apis.Pubsub.v1.Data.SeekRequest body, string subscription)
@@ -1770,7 +1774,7 @@ namespace Google.Apis.Pubsub.v1
             }
 
             /// <summary>Seeks an existing subscription to a point in time or to a given snapshot, whichever is provided
-            /// in the request.</summary>
+            /// in the request. [ALPHA] This method is a part of a closed Alpha API.</summary>
             public class SeekRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.SeekResponse>
             {
                 /// <summary>Constructs a new Seek request.</summary>
@@ -2029,7 +2033,8 @@ namespace Google.Apis.Pubsub.v1
                 }
 
 
-                /// <summary>Lists the names of the snapshots on this topic.</summary>
+                /// <summary>Lists the names of the snapshots on this topic. [ALPHA] This method is a part of a closed
+                /// Alpha API.</summary>
                 /// <param name="topic">The name of the topic that snapshots are attached to. Format is
                 /// `projects/{project}/topics/{topic}`.</param>
                 public virtual ListRequest List(string topic)
@@ -2037,7 +2042,8 @@ namespace Google.Apis.Pubsub.v1
                     return new ListRequest(service, topic);
                 }
 
-                /// <summary>Lists the names of the snapshots on this topic.</summary>
+                /// <summary>Lists the names of the snapshots on this topic. [ALPHA] This method is a part of a closed
+                /// Alpha API.</summary>
                 public class ListRequest : PubsubBaseServiceRequest<Google.Apis.Pubsub.v1.Data.ListTopicSnapshotsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -2925,7 +2931,8 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response for the `ListTopicSnapshots` method.</summary>
+    /// <summary>Response for the `ListTopicSnapshots` method. [ALPHA] This method is a part of a closed Alpha
+    /// API.</summary>
     public class ListTopicSnapshotsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If not empty, indicates that there may be more snapshots that match the request; this value should
@@ -3266,7 +3273,7 @@ namespace Google.Apis.Pubsub.v1.Data
         /// <summary>How long to retain unacknowledged messages in the subscription's backlog, from the moment a message
         /// is published. If `retain_acked_messages` is true, then this also configures the retention of acknowledged
         /// messages, and thus configures how far back in time a `Seek` can be done. Defaults to 7 days. Cannot be more
-        /// than 7 days or less than 10 minutes.</summary>
+        /// than 7 days or less than 10 minutes. [ALPHA] This field is a part of a closed Alpha API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageRetentionDuration")]
         public virtual object MessageRetentionDuration { get; set; } 
 
@@ -3285,7 +3292,7 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the
         /// subscription's backlog, even if they are acknowledged, until they fall out of the
-        /// `message_retention_duration` window.</summary>
+        /// `message_retention_duration` window. [ALPHA] This field is a part of a closed Alpha API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainAckedMessages")]
         public virtual System.Nullable<bool> RetainAckedMessages { get; set; } 
 

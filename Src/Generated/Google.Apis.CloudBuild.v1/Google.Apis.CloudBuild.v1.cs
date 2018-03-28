@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180326 (1180)
+ *      <tr><th>API Rev<td>20180327 (1181)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -542,10 +542,6 @@ namespace Google.Apis.CloudBuild.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -553,6 +549,10 @@ namespace Google.Apis.CloudBuild.v1
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -588,15 +588,6 @@ namespace Google.Apis.CloudBuild.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -609,6 +600,15 @@ namespace Google.Apis.CloudBuild.v1
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -927,6 +927,10 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectId { get; private set; }
 
+                /// <summary>Number of results to return in the list.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>The raw filter text to constrain the results.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -934,10 +938,6 @@ namespace Google.Apis.CloudBuild.v1
                 /// <summary>Token to provide to skip to a particular spot in the list.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Number of results to return in the list.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -973,6 +973,15 @@ namespace Google.Apis.CloudBuild.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
@@ -985,15 +994,6 @@ namespace Google.Apis.CloudBuild.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1628,6 +1628,55 @@ namespace Google.Apis.CloudBuild.v1
 namespace Google.Apis.CloudBuild.v1.Data
 {    
 
+    /// <summary>Files in the workspace to upload to Cloud Storage upon successful completion of all build
+    /// steps.</summary>
+    public class ArtifactObjects : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see
+        /// [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
+        ///
+        /// Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a
+        /// prefix.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
+
+        /// <summary>Path globs used to match files in the build's workspace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paths")]
+        public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Artifacts produced by a build that should be uploaded upon successful completion of all build
+    /// steps.</summary>
+    public class Artifacts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of images to be pushed upon the successful completion of all build steps.
+        ///
+        /// The images will be pushed using the builder service account's credentials.
+        ///
+        /// The digests of the pushed images will be stored in the Build resource's results field.
+        ///
+        /// If any of the images fail to be pushed, the build is marked FAILURE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("images")]
+        public virtual System.Collections.Generic.IList<string> Images { get; set; } 
+
+        /// <summary>A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
+        ///
+        /// Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage
+        /// location using the builder service account's credentials.
+        ///
+        /// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        ///
+        /// If any objects fail to be pushed, the build is marked FAILURE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objects")]
+        public virtual ArtifactObjects Objects { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A build resource in the Container Builder API.
     ///
     /// At a high level, a `Build` describes where to find source code, how to build it (for example, the builder image
@@ -1642,6 +1691,11 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// $COMMIT_SHA.</summary>
     public class Build : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Artifacts produced by the build that should be uploaded upon successful completion of all build
+        /// steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifacts")]
+        public virtual Artifacts Artifacts { get; set; } 
+
         /// <summary>The ID of the `BuildTrigger` that triggered this build, if it was triggered automatically.
         /// @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildTriggerId")]
@@ -2123,6 +2177,10 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Artifacts created by the build pipeline.</summary>
     public class Results : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Path to the artifact manifest. Only populated when artifacts are uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactManifest")]
+        public virtual string ArtifactManifest { get; set; } 
+
         /// <summary>List of build step digests, in the order corresponding to build step indices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepImages")]
         public virtual System.Collections.Generic.IList<string> BuildStepImages { get; set; } 
@@ -2130,6 +2188,10 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Container images that were built as a part of the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("images")]
         public virtual System.Collections.Generic.IList<BuiltImage> Images { get; set; } 
+
+        /// <summary>Number of artifacts uploaded. Only populated when artifacts are uploaded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numArtifacts")]
+        public virtual System.Nullable<long> NumArtifacts { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

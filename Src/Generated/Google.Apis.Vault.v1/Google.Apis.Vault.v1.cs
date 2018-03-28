@@ -932,6 +932,11 @@ namespace Google.Apis.Vault.v1
                 [Google.Apis.Util.RequestParameterAttribute("matterId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string MatterId { get; private set; }
 
+                /// <summary>The number of holds to return in the response, between 0 and 100 inclusive. Leaving this
+                /// empty, or as 0, is the same as page_size = 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Specifies which parts of the Hold to return.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -951,11 +956,6 @@ namespace Google.Apis.Vault.v1
                 /// beginning.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The number of holds to return in the response, between 0 and 100 inclusive. Leaving this
-                /// empty, or as 0, is the same as page_size = 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -991,6 +991,15 @@ namespace Google.Apis.Vault.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
@@ -1003,15 +1012,6 @@ namespace Google.Apis.Vault.v1
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1461,25 +1461,6 @@ namespace Google.Apis.Vault.v1
             }
 
 
-            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
-            /// states.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<StateEnum> State { get; set; }
-
-            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
-            /// states.</summary>
-            public enum StateEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
-                STATEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("OPEN")]
-                OPEN,
-                [Google.Apis.Util.StringValueAttribute("CLOSED")]
-                CLOSED,
-                [Google.Apis.Util.StringValueAttribute("DELETED")]
-                DELETED,
-            }
-
             /// <summary>The pagination token as returned in the response.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -1501,6 +1482,25 @@ namespace Google.Apis.Vault.v1
                 BASIC,
                 [Google.Apis.Util.StringValueAttribute("FULL")]
                 FULL,
+            }
+
+            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
+            /// states.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<StateEnum> State { get; set; }
+
+            /// <summary>If set, list only matters with that specific state. The default is listing matters of all
+            /// states.</summary>
+            public enum StateEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("STATE_UNSPECIFIED")]
+                STATEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("OPEN")]
+                OPEN,
+                [Google.Apis.Util.StringValueAttribute("CLOSED")]
+                CLOSED,
+                [Google.Apis.Util.StringValueAttribute("DELETED")]
+                DELETED,
             }
 
 
@@ -1528,15 +1528,6 @@ namespace Google.Apis.Vault.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "state", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "state",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -1558,6 +1549,15 @@ namespace Google.Apis.Vault.v1
                     "view", new Google.Apis.Discovery.Parameter
                     {
                         Name = "view",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "state", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "state",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

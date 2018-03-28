@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/datastore/'>Google Cloud Datastore API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180117 (1112)
+ *      <tr><th>API Rev<td>20180321 (1175)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/datastore/'>
  *              https://cloud.google.com/datastore/</a>
@@ -515,6 +515,152 @@ namespace Google.Apis.Datastore.v1beta1
 
 namespace Google.Apis.Datastore.v1beta1.Data
 {    
+
+    /// <summary>Metadata common to all Datastore Admin operations.</summary>
+    public class GoogleDatastoreAdminV1CommonMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The time the operation ended, either successfully or otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
+        /// <summary>The client-assigned labels which were provided when the operation was created. May also include
+        /// additional labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The type of the operation. Can be used as a filter in ListOperationsRequest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operationType")]
+        public virtual string OperationType { get; set; } 
+
+        /// <summary>The time that work began on the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
+
+        /// <summary>The current state of the Operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Identifies a subset of entities in a project. This is specified as combinations of kinds and namespaces
+    /// (either or both of which may be all, as described in the following examples). Example usage:
+    ///
+    /// Entire project: kinds=[], namespace_ids=[]
+    ///
+    /// Kinds Foo and Bar in all namespaces: kinds=['Foo', 'Bar'], namespace_ids=[]
+    ///
+    /// Kinds Foo and Bar only in the default namespace: kinds=['Foo', 'Bar'], namespace_ids=['']
+    ///
+    /// Kinds Foo and Bar in both the default and Baz namespaces: kinds=['Foo', 'Bar'], namespace_ids=['', 'Baz']
+    ///
+    /// The entire Baz namespace: kinds=[], namespace_ids=['Baz']</summary>
+    public class GoogleDatastoreAdminV1EntityFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If empty, then this represents all kinds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kinds")]
+        public virtual System.Collections.Generic.IList<string> Kinds { get; set; } 
+
+        /// <summary>An empty list represents all namespaces. This is the preferred usage for projects that don't use
+        /// namespaces.
+        ///
+        /// An empty string element represents the default namespace. This should be used if the project has data in
+        /// non-default namespaces, but doesn't want to include them. Each namespace in this list must be
+        /// unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaceIds")]
+        public virtual System.Collections.Generic.IList<string> NamespaceIds { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ExportEntities operations.</summary>
+    public class GoogleDatastoreAdminV1ExportEntitiesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata common to all Datastore Admin operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; } 
+
+        /// <summary>Description of which entities are being exported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+
+        /// <summary>Location for the export metadata and data files. This will be the same value as the
+        /// google.datastore.admin.v1.ExportEntitiesRequest.output_url_prefix field. The final output location is
+        /// provided in google.datastore.admin.v1.ExportEntitiesResponse.output_url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUrlPrefix")]
+        public virtual string OutputUrlPrefix { get; set; } 
+
+        /// <summary>An estimate of the number of bytes processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleDatastoreAdminV1Progress ProgressBytes { get; set; } 
+
+        /// <summary>An estimate of the number of entities processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
+        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The response for google.datastore.admin.v1.DatastoreAdmin.ExportEntities.</summary>
+    public class GoogleDatastoreAdminV1ExportEntitiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Location of the output metadata file. This can be used to begin an import into Cloud Datastore
+        /// (this project or another project). See google.datastore.admin.v1.ImportEntitiesRequest.input_url. Only
+        /// present if the operation completed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputUrl")]
+        public virtual string OutputUrl { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Metadata for ImportEntities operations.</summary>
+    public class GoogleDatastoreAdminV1ImportEntitiesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Metadata common to all Datastore Admin operations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("common")]
+        public virtual GoogleDatastoreAdminV1CommonMetadata Common { get; set; } 
+
+        /// <summary>Description of which entities are being imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityFilter")]
+        public virtual GoogleDatastoreAdminV1EntityFilter EntityFilter { get; set; } 
+
+        /// <summary>The location of the import metadata file. This will be the same value as the
+        /// google.datastore.admin.v1.ExportEntitiesResponse.output_url field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
+        public virtual string InputUrl { get; set; } 
+
+        /// <summary>An estimate of the number of bytes processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressBytes")]
+        public virtual GoogleDatastoreAdminV1Progress ProgressBytes { get; set; } 
+
+        /// <summary>An estimate of the number of entities processed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressEntities")]
+        public virtual GoogleDatastoreAdminV1Progress ProgressEntities { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Measures the progress of a particular metric.</summary>
+    public class GoogleDatastoreAdminV1Progress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of work that has been completed. Note that this may be greater than
+        /// work_estimated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workCompleted")]
+        public virtual System.Nullable<long> WorkCompleted { get; set; } 
+
+        /// <summary>An estimate of how much work needs to be performed. May be zero if the work estimate is
+        /// unavailable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workEstimated")]
+        public virtual System.Nullable<long> WorkEstimated { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
 
     /// <summary>Metadata common to all Datastore Admin operations.</summary>
     public class GoogleDatastoreAdminV1beta1CommonMetadata : Google.Apis.Requests.IDirectResponseSchema
