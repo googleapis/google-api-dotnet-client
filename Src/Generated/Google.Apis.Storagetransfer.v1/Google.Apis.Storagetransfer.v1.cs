@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/storage/transfer'>Storage Transfer API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180319 (1173)
+ *      <tr><th>API Rev<td>20180402 (1187)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/storage/transfer'>
  *              https://cloud.google.com/storage/transfer</a>
@@ -604,14 +604,6 @@ namespace Google.Apis.Storagetransfer.v1
             }
 
 
-            /// <summary>A list of query parameters specified as JSON text in the form of {"project_id":"my_project_id",
-            /// "job_names":["jobid1","jobid2",...], "job_statuses":["status1","status2",...]}. Since `job_names` and
-            /// `job_statuses` support multiple values, their values must be specified with array notation. `project_id`
-            /// is required. `job_names` and `job_statuses` are optional.  The valid values for `job_statuses` are case-
-            /// insensitive: `ENABLED`, `DISABLED`, and `DELETED`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
@@ -619,6 +611,14 @@ namespace Google.Apis.Storagetransfer.v1
             /// <summary>The list page size. The max allowed value is 256.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>A list of query parameters specified as JSON text in the form of {"project_id":"my_project_id",
+            /// "job_names":["jobid1","jobid2",...], "job_statuses":["status1","status2",...]}. Since `job_names` and
+            /// `job_statuses` support multiple values, their values must be specified with array notation. `project_id`
+            /// is required. `job_names` and `job_statuses` are optional.  The valid values for `job_statuses` are case-
+            /// insensitive: `ENABLED`, `DISABLED`, and `DELETED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -645,15 +645,6 @@ namespace Google.Apis.Storagetransfer.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -666,6 +657,15 @@ namespace Google.Apis.Storagetransfer.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1220,8 +1220,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An AwsS3Data can be a data source, but not a data sink. In an AwsS3Data, an object's name is the S3
-    /// object's key name.</summary>
+    /// <summary>An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's
+    /// name is the S3 object's key name.</summary>
     public class AwsS3Data : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must
@@ -1309,9 +1309,9 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>In a GcsData, an object's name is the Google Cloud Storage object's name and its `lastModificationTime`
-    /// refers to the object's updated time, which changes when the content or the metadata of the object is
-    /// updated.</summary>
+    /// <summary>In a GcsData resource, an object's name is the Google Cloud Storage object's name and its
+    /// `lastModificationTime` refers to the object's updated time, which changes when the content or the metadata of
+    /// the object is updated.</summary>
     public class GcsData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Google Cloud Storage bucket name (see [Bucket Name
@@ -1334,10 +1334,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An HttpData specifies a list of objects on the web to be transferred over HTTP.  The information of the
-    /// objects to be transferred is contained in a file referenced by a URL. The first line in the file must be
-    /// "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines specify the information of the list
-    /// of objects, one object per list entry. Each entry has the following tab-delimited fields:
+    /// <summary>An HttpData resource specifies a list of objects on the web to be transferred over HTTP.  The
+    /// information of the objects to be transferred is contained in a file referenced by a URL. The first line in the
+    /// file must be "TsvHttpData-1.0", which specifies the format of the file.  Subsequent lines specify the
+    /// information of the list of objects, one object per list entry. Each entry has the following tab-delimited
+    /// fields:
     ///
     /// * HTTP URL - The location of the object.
     ///

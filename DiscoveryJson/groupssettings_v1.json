@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/OtGmapWnnxLrnB8PsHnXNA0QJ0I\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/rgcsakiOkwjGyJaVZpRaldNm9E8\"",
  "discoveryVersion": "v1",
  "id": "groupssettings:v1",
  "name": "groupssettings",
  "version": "v1",
- "revision": "20170607",
+ "revision": "20180404",
  "title": "Groups Settings API",
  "description": "Lets you manage permission levels and related settings of a group.",
  "ownerDomain": "google.com",
@@ -179,7 +179,7 @@
     },
     "whoCanAdd": {
      "type": "string",
-     "description": "Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD ALL_MEMBERS_CAN_ADD NONE_CAN_ADD"
+     "description": "Permissions to add members. Possible values are: ALL_MANAGERS_CAN_ADD ALL_OWNERS_CAN_ADD ALL_MEMBERS_CAN_ADD NONE_CAN_ADD"
     },
     "whoCanContactOwner": {
      "type": "string",
@@ -187,7 +187,7 @@
     },
     "whoCanInvite": {
      "type": "string",
-     "description": "Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE ALL_MANAGERS_CAN_INVITE NONE_CAN_INVITE"
+     "description": "Permissions to invite members. Possible values are: ALL_MEMBERS_CAN_INVITE ALL_MANAGERS_CAN_INVITE ALL_OWNERS_CAN_INVITE NONE_CAN_INVITE"
     },
     "whoCanJoin": {
      "type": "string",
@@ -195,7 +195,7 @@
     },
     "whoCanLeaveGroup": {
      "type": "string",
-     "description": "Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE"
+     "description": "Permission to leave the group. Possible values are: ALL_MANAGERS_CAN_LEAVE ALL_OWNERS_CAN_LEAVE ALL_MEMBERS_CAN_LEAVE NONE_CAN_LEAVE"
     },
     "whoCanPostMessage": {
      "type": "string",
@@ -203,7 +203,7 @@
     },
     "whoCanViewGroup": {
      "type": "string",
-     "description": "Permissions to view group. Possible values are: ANYONE_CAN_VIEW ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW"
+     "description": "Permissions to view group. Possible values are: ANYONE_CAN_VIEW ALL_IN_DOMAIN_CAN_VIEW ALL_MEMBERS_CAN_VIEW ALL_MANAGERS_CAN_VIEW ALL_OWNERS_CAN_VIEW"
     },
     "whoCanViewMembership": {
      "type": "string",

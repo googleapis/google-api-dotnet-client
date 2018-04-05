@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Safe Browsing API Version v4
+ *   Safe Browsing API Version v4
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/safe-browsing/'>Google Safe Browsing API</a>
+ *          <td><a href='https://developers.google.com/safe-browsing/'>Safe Browsing API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20180320 (1174)
+ *      <tr><th>API Rev<td>20180403 (1188)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/safe-browsing/'>
  *              https://developers.google.com/safe-browsing/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Safe Browsing API can be found at
+ * The complete API documentation for using Safe Browsing API can be found at
  * <a href='https://developers.google.com/safe-browsing/'>https://developers.google.com/safe-browsing/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/77sYFu0di9EzzwuBGmUFES4JWbE\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/heK7tYZ7nP8tv8caYkYlUBOTuOY\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180311",
+ "revision": "20180325",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -1696,12 +1696,12 @@
    "id": "QueryTimelineSample",
    "type": "object",
    "properties": {
-    "activeInputs": {
+    "activeUnits": {
      "type": "string",
-     "description": "Total number of active workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.",
+     "description": "Total number of units currently being processed by workers. This does not correspond directly to slot usage. This is the largest value observed since the last sample.",
      "format": "int64"
     },
-    "completedInputs": {
+    "completedUnits": {
      "type": "string",
      "description": "Total parallel units of work completed by this query.",
      "format": "int64"
@@ -1711,7 +1711,7 @@
      "description": "Milliseconds elapsed since the start of query execution.",
      "format": "int64"
     },
-    "pendingInputs": {
+    "pendingUnits": {
      "type": "string",
      "description": "Total parallel units of work remaining for the active stages.",
      "format": "int64"

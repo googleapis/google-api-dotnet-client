@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180317 (1171)
+ *      <tr><th>API Rev<td>20180403 (1188)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -378,8 +378,8 @@ namespace Google.Apis.Dialogflow.v2beta1
             {
                 this.service = service;
                 entityTypes = new EntityTypesResource(service);
+                environments = new EnvironmentsResource(service);
                 intents = new IntentsResource(service);
-                runtimes = new RuntimesResource(service);
                 sessions = new SessionsResource(service);
 
             }
@@ -1053,6 +1053,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
+                    /// default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1061,13 +1068,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. The language to list entity synonyms for. If not specified, the agent's
-                    /// default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1103,6 +1103,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1115,15 +1124,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1230,6 +1230,1071 @@ namespace Google.Apis.Dialogflow.v2beta1
                             });
                     }
 
+                }
+            }
+            private readonly EnvironmentsResource environments;
+
+            /// <summary>Gets the Environments resource.</summary>
+            public virtual EnvironmentsResource Environments
+            {
+                get { return environments; }
+            }
+
+            /// <summary>The "environments" collection of methods.</summary>
+            public class EnvironmentsResource
+            {
+                private const string Resource = "environments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EnvironmentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    users = new UsersResource(service);
+
+                }
+
+                private readonly UsersResource users;
+
+                /// <summary>Gets the Users resource.</summary>
+                public virtual UsersResource Users
+                {
+                    get { return users; }
+                }
+
+                /// <summary>The "users" collection of methods.</summary>
+                public class UsersResource
+                {
+                    private const string Resource = "users";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public UsersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        sessions = new SessionsResource(service);
+
+                    }
+
+                    private readonly SessionsResource sessions;
+
+                    /// <summary>Gets the Sessions resource.</summary>
+                    public virtual SessionsResource Sessions
+                    {
+                        get { return sessions; }
+                    }
+
+                    /// <summary>The "sessions" collection of methods.</summary>
+                    public class SessionsResource
+                    {
+                        private const string Resource = "sessions";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public SessionsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            contexts = new ContextsResource(service);
+                            entityTypes = new EntityTypesResource(service);
+
+                        }
+
+                        private readonly ContextsResource contexts;
+
+                        /// <summary>Gets the Contexts resource.</summary>
+                        public virtual ContextsResource Contexts
+                        {
+                            get { return contexts; }
+                        }
+
+                        /// <summary>The "contexts" collection of methods.</summary>
+                        public class ContextsResource
+                        {
+                            private const string Resource = "contexts";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public ContextsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+
+                            }
+
+
+                            /// <summary>Creates a context.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
+                            /// `projects//agent/environments//users//sessions/`. Note: Environments and users are under construction and will be
+                            /// available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume default
+                            /// '-' user.</param>
+                            public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                            {
+                                return new CreateRequest(service, body, parent);
+                            }
+
+                            /// <summary>Creates a context.</summary>
+                            public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
+                                    : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The session to create a context for. Format:
+                                /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`.
+                                /// Note: Environments and users are under construction and will be available soon. If
+                                /// is not specified, we assume default 'draft' environment. If  is not specified, we
+                                /// assume default '-' user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+
+                                ///<summary>Returns the body of the request.</summary>
+                                protected override object GetBody() { return Body; }
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "create"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "POST"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+parent}/contexts"; }
+                                }
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                        });
+                                }
+
+                            }
+
+                            /// <summary>Deletes the specified context.</summary>
+                            /// <param name="name">Required. The name of the context to delete. Format: `projects//agent/sessions//contexts/` or
+                            /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are under construction and
+                            /// will be available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume
+                            /// default '-' user.</param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(service, name);
+                            }
+
+                            /// <summary>Deletes the specified context.</summary>
+                            public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                                    : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The name of the context to delete. Format:
+                                /// `projects//agent/sessions//contexts/` or
+                                /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and
+                                /// users are under construction and will be available soon. If  is not specified, we
+                                /// assume default 'draft' environment. If is not specified, we assume default '-'
+                                /// user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "delete"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "DELETE"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+name}"; }
+                                }
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                        });
+                                }
+
+                            }
+
+                            /// <summary>Retrieves the specified context.</summary>
+                            /// <param name="name">Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
+                            /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are under construction and
+                            /// will be available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume
+                            /// default '-' user.</param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(service, name);
+                            }
+
+                            /// <summary>Retrieves the specified context.</summary>
+                            public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                                    : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The name of the context. Format:
+                                /// `projects//agent/sessions//contexts/` or
+                                /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and
+                                /// users are under construction and will be available soon. If  is not specified, we
+                                /// assume default 'draft' environment. If is not specified, we assume default '-'
+                                /// user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "get"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "GET"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+name}"; }
+                                }
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                        });
+                                }
+
+                            }
+
+                            /// <summary>Returns the list of all contexts in the specified session.</summary>
+                            /// <param name="parent">Required. The session to list all contexts from. Format: `projects//agent/sessions/` or
+                            /// `projects//agent/environments//users//sessions/`. Note: Environments and users are under construction and will be
+                            /// available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume default
+                            /// '-' user.</param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(service, parent);
+                            }
+
+                            /// <summary>Returns the list of all contexts in the specified session.</summary>
+                            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListContextsResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                                    : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The session to list all contexts from. Format:
+                                /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`.
+                                /// Note: Environments and users are under construction and will be available soon. If
+                                /// is not specified, we assume default 'draft' environment. If  is not specified, we
+                                /// assume default '-' user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Optional. The maximum number of items to return in a single page. By
+                                /// default 100 and at most 1000.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>Optional. The next_page_token value returned from a previous list
+                                /// request.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "list"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "GET"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+parent}/contexts"; }
+                                }
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                        });
+                                    RequestParameters.Add(
+                                        "pageSize", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageSize",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    RequestParameters.Add(
+                                        "pageToken", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageToken",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                }
+
+                            }
+
+                            /// <summary>Updates the specified context.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
+                            /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are under construction and
+                            /// will be available soon. The Context ID is always converted to lowercase. If  is not specified, we assume default
+                            /// 'draft' environment. If  is not specified, we assume default '-' user.</param>
+                            public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                            {
+                                return new PatchRequest(service, body, name);
+                            }
+
+                            /// <summary>Updates the specified context.</summary>
+                            public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
+                            {
+                                /// <summary>Constructs a new Patch request.</summary>
+                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
+                                    : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The unique identifier of the context. Format:
+                                /// `projects//agent/sessions//contexts/`, or
+                                /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and
+                                /// users are under construction and will be available soon. The Context ID is always
+                                /// converted to lowercase. If  is not specified, we assume default 'draft' environment.
+                                /// If  is not specified, we assume default '-' user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Optional. The mask to control which fields get updated.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual object UpdateMask { get; set; }
+
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
+
+                                ///<summary>Returns the body of the request.</summary>
+                                protected override object GetBody() { return Body; }
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "patch"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "PATCH"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+name}"; }
+                                }
+
+                                /// <summary>Initializes Patch parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/contexts/[^/]+$",
+                                        });
+                                    RequestParameters.Add(
+                                        "updateMask", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "updateMask",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                }
+
+                            }
+                        }
+                        private readonly EntityTypesResource entityTypes;
+
+                        /// <summary>Gets the EntityTypes resource.</summary>
+                        public virtual EntityTypesResource EntityTypes
+                        {
+                            get { return entityTypes; }
+                        }
+
+                        /// <summary>The "entityTypes" collection of methods.</summary>
+                        public class EntityTypesResource
+                        {
+                            private const string Resource = "entityTypes";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public EntityTypesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+
+                            }
+
+
+                            /// <summary>Creates a session entity type.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
+                            /// or `projects//agent/environments//users// sessions/`. Note: Environments and users are under construction and will
+                            /// be available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume
+                            /// default '-' user.</param>
+                            public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
+                            {
+                                return new CreateRequest(service, body, parent);
+                            }
+
+                            /// <summary>Creates a session entity type.</summary>
+                            public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                            {
+                                /// <summary>Constructs a new Create request.</summary>
+                                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
+                                    : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The session to create a session entity type for. Format:
+                                /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`.
+                                /// Note: Environments and users are under construction and will be available soon. If
+                                /// is not specified, we assume default 'draft' environment. If  is not specified, we
+                                /// assume default '-' user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType Body { get; set; }
+
+                                ///<summary>Returns the body of the request.</summary>
+                                protected override object GetBody() { return Body; }
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "create"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "POST"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+parent}/entityTypes"; }
+                                }
+
+                                /// <summary>Initializes Create parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                        });
+                                }
+
+                            }
+
+                            /// <summary>Deletes the specified session entity type.</summary>
+                            /// <param name="name">Required. The name of the entity type to delete. Format: `projects//agent/sessions//entityTypes/`
+                            /// or `projects//agent/environments//users//sessions//entityTypes/`. Note: Environments and users are under
+                            /// construction and will be available soon. If  is not specified, we assume default 'draft' environment. If  is not
+                            /// specified, we assume default '-' user.</param>
+                            public virtual DeleteRequest Delete(string name)
+                            {
+                                return new DeleteRequest(service, name);
+                            }
+
+                            /// <summary>Deletes the specified session entity type.</summary>
+                            public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                            {
+                                /// <summary>Constructs a new Delete request.</summary>
+                                public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                                    : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The name of the entity type to delete. Format:
+                                /// `projects//agent/sessions//entityTypes/` or
+                                /// `projects//agent/environments//users//sessions//entityTypes/`. Note: Environments
+                                /// and users are under construction and will be available soon. If  is not specified,
+                                /// we assume default 'draft' environment. If  is not specified, we assume default '-'
+                                /// user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "delete"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "DELETE"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+name}"; }
+                                }
+
+                                /// <summary>Initializes Delete parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                        });
+                                }
+
+                            }
+
+                            /// <summary>Retrieves the specified session entity type.</summary>
+                            /// <param name="name">Required. The name of the session entity type. Format: `projects//agent/sessions//entityTypes/`
+                            /// or `projects//agent/environments//users//sessions// entityTypes/`. Note: Environments and users re under
+                            /// construction and will be available soon. If  is not specified, we assume default 'draft' environment. If  is not
+                            /// specified, we assume default '-' user.</param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(service, name);
+                            }
+
+                            /// <summary>Retrieves the specified session entity type.</summary>
+                            public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name)
+                                    : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The name of the session entity type. Format:
+                                /// `projects//agent/sessions//entityTypes/` or
+                                /// `projects//agent/environments//users//sessions// entityTypes/`. Note: Environments
+                                /// and users re under construction and will be available soon. If  is not specified, we
+                                /// assume default 'draft' environment. If  is not specified, we assume default '-'
+                                /// user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "get"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "GET"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+name}"; }
+                                }
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                        });
+                                }
+
+                            }
+
+                            /// <summary>Returns the list of all session entity types in the specified
+                            /// session.</summary>
+                            /// <param name="parent">Required. The session to list all session entity types from. Format:
+                            /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. Note: Environments and users are
+                            /// under construction and will be available soon. If  is not specified, we assume default 'draft' environment. If  is
+                            /// not specified, we assume default '-' user.</param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(service, parent);
+                            }
+
+                            /// <summary>Returns the list of all session entity types in the specified
+                            /// session.</summary>
+                            public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                                    : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The session to list all session entity types from. Format:
+                                /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`.
+                                /// Note: Environments and users are under construction and will be available soon. If
+                                /// is not specified, we assume default 'draft' environment. If  is not specified, we
+                                /// assume default '-' user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Optional. The next_page_token value returned from a previous list
+                                /// request.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Optional. The maximum number of items to return in a single page. By
+                                /// default 100 and at most 1000.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "list"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "GET"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+parent}/entityTypes"; }
+                                }
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "parent", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "parent",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                        });
+                                    RequestParameters.Add(
+                                        "pageToken", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageToken",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                    RequestParameters.Add(
+                                        "pageSize", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "pageSize",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                }
+
+                            }
+
+                            /// <summary>Updates the specified session entity type.</summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="name">Required. The unique identifier of this session entity type. Format:
+                            /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions //entityTypes/`. Note:
+                            /// Environments and users are under construction and will be available soon. If  is not specified, we assume default
+                            /// 'draft' environment. If  is not specified, we assume default '-' user.</param>
+                            public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
+                            {
+                                return new PatchRequest(service, body, name);
+                            }
+
+                            /// <summary>Updates the specified session entity type.</summary>
+                            public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
+                            {
+                                /// <summary>Constructs a new Patch request.</summary>
+                                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
+                                    : base(service)
+                                {
+                                    Name = name;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>Required. The unique identifier of this session entity type. Format:
+                                /// `projects//agent/sessions//entityTypes/`, or
+                                /// `projects//agent/environments//users//sessions //entityTypes/`. Note: Environments
+                                /// and users are under construction and will be available soon. If  is not specified,
+                                /// we assume default 'draft' environment. If  is not specified, we assume default '-'
+                                /// user.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Optional. The mask to control which fields get updated.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual object UpdateMask { get; set; }
+
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType Body { get; set; }
+
+                                ///<summary>Returns the body of the request.</summary>
+                                protected override object GetBody() { return Body; }
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "patch"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "PATCH"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v2beta1/{+name}"; }
+                                }
+
+                                /// <summary>Initializes Patch parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
+                                        });
+                                    RequestParameters.Add(
+                                        "updateMask", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "updateMask",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                }
+
+                            }
+                        }
+
+                        /// <summary>Deletes all active contexts in the specified session.</summary>
+                        /// <param name="parent">Required. The name of the session to delete all contexts from. Format:
+                        /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. Note: Environments and users are
+                        /// under construction and will be available soon. If  is not specified we assume default 'draft' environment. If  is
+                        /// not specified, we assume default '-' user.</param>
+                        public virtual DeleteContextsRequest DeleteContexts(string parent)
+                        {
+                            return new DeleteContextsRequest(service, parent);
+                        }
+
+                        /// <summary>Deletes all active contexts in the specified session.</summary>
+                        public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
+                        {
+                            /// <summary>Constructs a new DeleteContexts request.</summary>
+                            public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent)
+                                : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The name of the session to delete all contexts from. Format:
+                            /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. Note:
+                            /// Environments and users are under construction and will be available soon. If  is not
+                            /// specified we assume default 'draft' environment. If  is not specified, we assume default
+                            /// '-' user.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "deleteContexts"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "DELETE"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v2beta1/{+parent}/contexts"; }
+                            }
+
+                            /// <summary>Initializes DeleteContexts parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Processes a natural language query and returns structured, actionable data as a
+                        /// result. This method is not idempotent, because it may cause contexts and session entity
+                        /// types to be updated, which in turn might affect results of future queries.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="session">Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`,
+                        /// or `projects//agent/environments//users//sessions/`. Note: Environments and users are under construction and will be
+                        /// available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we are using "-".
+                        /// It’s up to the API caller to choose an appropriate . and . They can be a random numbers or some type of user and
+                        /// session identifiers (preferably hashed). The length of the  and  must not exceed 36 characters.</param>
+                        public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
+                        {
+                            return new DetectIntentRequest(service, body, session);
+                        }
+
+                        /// <summary>Processes a natural language query and returns structured, actionable data as a
+                        /// result. This method is not idempotent, because it may cause contexts and session entity
+                        /// types to be updated, which in turn might affect results of future queries.</summary>
+                        public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentResponse>
+                        {
+                            /// <summary>Constructs a new DetectIntent request.</summary>
+                            public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
+                                : base(service)
+                            {
+                                Session = session;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>Required. The name of the session this query is sent to. Format:
+                            /// `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. Note:
+                            /// Environments and users are under construction and will be available soon. If  is not
+                            /// specified, we assume default 'draft' environment. If  is not specified, we are using
+                            /// "-". It’s up to the API caller to choose an appropriate . and . They can be a random
+                            /// numbers or some type of user and session identifiers (preferably hashed). The length of
+                            /// the  and  must not exceed 36 characters.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Session { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() { return Body; }
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "detectIntent"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "POST"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v2beta1/{+session}:detectIntent"; }
+                            }
+
+                            /// <summary>Initializes DetectIntent parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "session", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "session",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/agent/environments/[^/]+/users/[^/]+/sessions/[^/]+$",
+                                    });
+                            }
+
+                        }
+                    }
                 }
             }
             private readonly IntentsResource intents;
@@ -1429,13 +2494,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1448,6 +2506,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
+
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1489,18 +2554,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1594,13 +2659,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The language to retrieve training phrases, parameters and rich messages for.
-                    /// If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1613,6 +2671,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
+
+                    /// <summary>Optional. The language to retrieve training phrases, parameters and rich messages for.
+                    /// If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1648,18 +2713,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1692,10 +2757,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Optional. The maximum number of items to return in a single page. By default 100 and at
                     /// most 1000.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -1720,6 +2781,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// be enabled in the agent before they can be used.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1755,15 +2820,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
@@ -1785,6 +2841,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1821,17 +2886,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
-                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
-                    /// <summary>Optional. The mask to control which fields get updated.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -1844,6 +2898,17 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
+
+                    /// <summary>Optional. The language of training phrases, parameters and rich messages defined in
+                    /// `intent`. If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Optional. The mask to control which fields get updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
 
 
                     /// <summary>Gets or sets the body of this request.</summary>
@@ -1885,6 +2950,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "intentView", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "intentView",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "languageCode", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "languageCode",
@@ -1902,1034 +2976,8 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
-                        RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
                     }
 
-                }
-            }
-            private readonly RuntimesResource runtimes;
-
-            /// <summary>Gets the Runtimes resource.</summary>
-            public virtual RuntimesResource Runtimes
-            {
-                get { return runtimes; }
-            }
-
-            /// <summary>The "runtimes" collection of methods.</summary>
-            public class RuntimesResource
-            {
-                private const string Resource = "runtimes";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public RuntimesResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    sessions = new SessionsResource(service);
-
-                }
-
-                private readonly SessionsResource sessions;
-
-                /// <summary>Gets the Sessions resource.</summary>
-                public virtual SessionsResource Sessions
-                {
-                    get { return sessions; }
-                }
-
-                /// <summary>The "sessions" collection of methods.</summary>
-                public class SessionsResource
-                {
-                    private const string Resource = "sessions";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public SessionsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                        contexts = new ContextsResource(service);
-                        entityTypes = new EntityTypesResource(service);
-
-                    }
-
-                    private readonly ContextsResource contexts;
-
-                    /// <summary>Gets the Contexts resource.</summary>
-                    public virtual ContextsResource Contexts
-                    {
-                        get { return contexts; }
-                    }
-
-                    /// <summary>The "contexts" collection of methods.</summary>
-                    public class ContextsResource
-                    {
-                        private const string Resource = "contexts";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public ContextsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-
-                        }
-
-
-                        /// <summary>Creates a context.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
-                        /// `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is not
-                        /// specified, we assume default 'sandbox' runtime.</param>
-                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
-                        {
-                            return new CreateRequest(service, body, parent);
-                        }
-
-                        /// <summary>Creates a context.</summary>
-                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
-                        {
-                            /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
-                                : base(service)
-                            {
-                                Parent = parent;
-                                Body = body;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The session to create a context for. Format:
-                            /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                            /// under construction and will be available soon. If  is not specified, we assume default
-                            /// 'sandbox' runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
-
-                            ///<summary>Returns the body of the request.</summary>
-                            protected override object GetBody() { return Body; }
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "create"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "POST"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+parent}/contexts"; }
-                            }
-
-                            /// <summary>Initializes Create parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+$",
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Deletes the specified context.</summary>
-                        /// <param name="name">Required. The name of the context to delete. Format: `projects//agent/sessions//contexts/` or
-                        /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available soon.
-                        /// If  is not specified, we assume default 'sandbox' runtime.</param>
-                        public virtual DeleteRequest Delete(string name)
-                        {
-                            return new DeleteRequest(service, name);
-                        }
-
-                        /// <summary>Deletes the specified context.</summary>
-                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
-                        {
-                            /// <summary>Constructs a new Delete request.</summary>
-                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The name of the context to delete. Format:
-                            /// `projects//agent/sessions//contexts/` or
-                            /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction
-                            /// and will be available soon. If  is not specified, we assume default 'sandbox'
-                            /// runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "delete"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "DELETE"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+name}"; }
-                            }
-
-                            /// <summary>Initializes Delete parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+/contexts/[^/]+$",
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Retrieves the specified context.</summary>
-                        /// <param name="name">Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
-                        /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available soon.
-                        /// If  is not specified, we assume default 'sandbox' runtime.</param>
-                        public virtual GetRequest Get(string name)
-                        {
-                            return new GetRequest(service, name);
-                        }
-
-                        /// <summary>Retrieves the specified context.</summary>
-                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
-                        {
-                            /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The name of the context. Format:
-                            /// `projects//agent/sessions//contexts/` or
-                            /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction
-                            /// and will be available soon. If  is not specified, we assume default 'sandbox'
-                            /// runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "get"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+name}"; }
-                            }
-
-                            /// <summary>Initializes Get parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+/contexts/[^/]+$",
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Returns the list of all contexts in the specified session.</summary>
-                        /// <param name="parent">Required. The session to list all contexts from. Format: `projects//agent/sessions/` or
-                        /// `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is not
-                        /// specified, we assume default 'sandbox' runtime.</param>
-                        public virtual ListRequest List(string parent)
-                        {
-                            return new ListRequest(service, parent);
-                        }
-
-                        /// <summary>Returns the list of all contexts in the specified session.</summary>
-                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListContextsResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                                : base(service)
-                            {
-                                Parent = parent;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The session to list all contexts from. Format:
-                            /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                            /// under construction and will be available soon. If  is not specified, we assume default
-                            /// 'sandbox' runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>Optional. The next_page_token value returned from a previous list
-                            /// request.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Optional. The maximum number of items to return in a single page. By default
-                            /// 100 and at most 1000.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "list"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+parent}/contexts"; }
-                            }
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Updates the specified context.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-                        /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available soon.
-                        /// The Context ID is always converted to lowercase. If  is not specified, we assume default 'sandbox'
-                        /// runtime.</param>
-                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
-                        {
-                            return new PatchRequest(service, body, name);
-                        }
-
-                        /// <summary>Updates the specified context.</summary>
-                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context>
-                        {
-                            /// <summary>Constructs a new Patch request.</summary>
-                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
-                                : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The unique identifier of the context. Format:
-                            /// `projects//agent/sessions//contexts/`, or
-                            /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction
-                            /// and will be available soon. The Context ID is always converted to lowercase. If  is not
-                            /// specified, we assume default 'sandbox' runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Optional. The mask to control which fields get updated.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual object UpdateMask { get; set; }
-
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context Body { get; set; }
-
-                            ///<summary>Returns the body of the request.</summary>
-                            protected override object GetBody() { return Body; }
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "patch"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "PATCH"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+name}"; }
-                            }
-
-                            /// <summary>Initializes Patch parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+/contexts/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "updateMask", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "updateMask",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-                    }
-                    private readonly EntityTypesResource entityTypes;
-
-                    /// <summary>Gets the EntityTypes resource.</summary>
-                    public virtual EntityTypesResource EntityTypes
-                    {
-                        get { return entityTypes; }
-                    }
-
-                    /// <summary>The "entityTypes" collection of methods.</summary>
-                    public class EntityTypesResource
-                    {
-                        private const string Resource = "entityTypes";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public EntityTypesResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-
-                        }
-
-
-                        /// <summary>Creates a session entity type.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
-                        /// or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is
-                        /// not specified, we assume default 'sandbox' runtime.</param>
-                        public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
-                        {
-                            return new CreateRequest(service, body, parent);
-                        }
-
-                        /// <summary>Creates a session entity type.</summary>
-                        public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
-                        {
-                            /// <summary>Constructs a new Create request.</summary>
-                            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
-                                : base(service)
-                            {
-                                Parent = parent;
-                                Body = body;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The session to create a session entity type for. Format:
-                            /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                            /// under construction and will be available soon. If  is not specified, we assume default
-                            /// 'sandbox' runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType Body { get; set; }
-
-                            ///<summary>Returns the body of the request.</summary>
-                            protected override object GetBody() { return Body; }
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "create"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "POST"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+parent}/entityTypes"; }
-                            }
-
-                            /// <summary>Initializes Create parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+$",
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Deletes the specified session entity type.</summary>
-                        /// <param name="name">Required. The name of the entity type to delete. Format: `projects//agent/sessions//entityTypes/`
-                        /// or `projects//agent/runtimes//sessions//entityTypes/`. Note: Runtimes are under construction and will be available
-                        /// soon. If  is not specified, we assume default 'sandbox' runtime.</param>
-                        public virtual DeleteRequest Delete(string name)
-                        {
-                            return new DeleteRequest(service, name);
-                        }
-
-                        /// <summary>Deletes the specified session entity type.</summary>
-                        public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
-                        {
-                            /// <summary>Constructs a new Delete request.</summary>
-                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The name of the entity type to delete. Format:
-                            /// `projects//agent/sessions//entityTypes/` or
-                            /// `projects//agent/runtimes//sessions//entityTypes/`. Note: Runtimes are under
-                            /// construction and will be available soon. If is not specified, we assume default
-                            /// 'sandbox' runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "delete"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "DELETE"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+name}"; }
-                            }
-
-                            /// <summary>Initializes Delete parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Retrieves the specified session entity type.</summary>
-                        /// <param name="name">Required. The name of the session entity type. Format: `projects//agent/sessions//entityTypes/`
-                        /// or `projects//agent/runtimes//sessions//entityTypes/`. Note: Runtimes are under construction and will be available
-                        /// soon. If  is not specified, we assume default 'sandbox' runtime.</param>
-                        public virtual GetRequest Get(string name)
-                        {
-                            return new GetRequest(service, name);
-                        }
-
-                        /// <summary>Retrieves the specified session entity type.</summary>
-                        public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
-                        {
-                            /// <summary>Constructs a new Get request.</summary>
-                            public GetRequest(Google.Apis.Services.IClientService service, string name)
-                                : base(service)
-                            {
-                                Name = name;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The name of the session entity type. Format:
-                            /// `projects//agent/sessions//entityTypes/` or
-                            /// `projects//agent/runtimes//sessions//entityTypes/`. Note: Runtimes are under
-                            /// construction and will be available soon. If is not specified, we assume default
-                            /// 'sandbox' runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "get"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+name}"; }
-                            }
-
-                            /// <summary>Initializes Get parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Returns the list of all session entity types in the specified session.</summary>
-                        /// <param name="parent">Required. The session to list all session entity types from. Format:
-                        /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will
-                        /// be available soon. If  is not specified, we assume default 'sandbox' runtime.</param>
-                        public virtual ListRequest List(string parent)
-                        {
-                            return new ListRequest(service, parent);
-                        }
-
-                        /// <summary>Returns the list of all session entity types in the specified session.</summary>
-                        public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1ListSessionEntityTypesResponse>
-                        {
-                            /// <summary>Constructs a new List request.</summary>
-                            public ListRequest(Google.Apis.Services.IClientService service, string parent)
-                                : base(service)
-                            {
-                                Parent = parent;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The session to list all session entity types from. Format:
-                            /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                            /// under construction and will be available soon. If  is not specified, we assume default
-                            /// 'sandbox' runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Parent { get; private set; }
-
-                            /// <summary>Optional. The next_page_token value returned from a previous list
-                            /// request.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual string PageToken { get; set; }
-
-                            /// <summary>Optional. The maximum number of items to return in a single page. By default
-                            /// 100 and at most 1000.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual System.Nullable<int> PageSize { get; set; }
-
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "list"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "GET"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+parent}/entityTypes"; }
-                            }
-
-                            /// <summary>Initializes List parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "parent", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "parent",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "pageToken", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageToken",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                RequestParameters.Add(
-                                    "pageSize", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "pageSize",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-
-                        /// <summary>Updates the specified session entity type.</summary>
-                        /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Required. The unique identifier of this session entity type. Format:
-                        /// `projects//agent/sessions//entityTypes/`, or `projects//agent/runtimes/sessions//entityTypes/`. Note: Runtimes are
-                        /// under construction and will be available soon. If  is not specified, we assume default 'sandbox'
-                        /// runtime.</param>
-                        public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
-                        {
-                            return new PatchRequest(service, body, name);
-                        }
-
-                        /// <summary>Updates the specified session entity type.</summary>
-                        public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType>
-                        {
-                            /// <summary>Constructs a new Patch request.</summary>
-                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
-                                : base(service)
-                            {
-                                Name = name;
-                                Body = body;
-                                InitParameters();
-                            }
-
-
-                            /// <summary>Required. The unique identifier of this session entity type. Format:
-                            /// `projects//agent/sessions//entityTypes/`, or
-                            /// `projects//agent/runtimes/sessions//entityTypes/`. Note: Runtimes are under construction
-                            /// and will be available soon. If  is not specified, we assume default 'sandbox'
-                            /// runtime.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                            public virtual string Name { get; private set; }
-
-                            /// <summary>Optional. The mask to control which fields get updated.</summary>
-                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                            public virtual object UpdateMask { get; set; }
-
-
-                            /// <summary>Gets or sets the body of this request.</summary>
-                            Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType Body { get; set; }
-
-                            ///<summary>Returns the body of the request.</summary>
-                            protected override object GetBody() { return Body; }
-
-                            ///<summary>Gets the method name.</summary>
-                            public override string MethodName
-                            {
-                                get { return "patch"; }
-                            }
-
-                            ///<summary>Gets the HTTP method.</summary>
-                            public override string HttpMethod
-                            {
-                                get { return "PATCH"; }
-                            }
-
-                            ///<summary>Gets the REST path.</summary>
-                            public override string RestPath
-                            {
-                                get { return "v2beta1/{+name}"; }
-                            }
-
-                            /// <summary>Initializes Patch parameter list.</summary>
-                            protected override void InitParameters()
-                            {
-                                base.InitParameters();
-
-                                RequestParameters.Add(
-                                    "name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+/entityTypes/[^/]+$",
-                                    });
-                                RequestParameters.Add(
-                                    "updateMask", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "updateMask",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                            }
-
-                        }
-                    }
-
-                    /// <summary>Deletes all active contexts in the specified session.</summary>
-                    /// <param name="parent">Required. The name of the session to delete all contexts from. Format:
-                    /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will
-                    /// be available soon. If  is not specified we assume default 'sandbox' runtime.</param>
-                    public virtual DeleteContextsRequest DeleteContexts(string parent)
-                    {
-                        return new DeleteContextsRequest(service, parent);
-                    }
-
-                    /// <summary>Deletes all active contexts in the specified session.</summary>
-                    public class DeleteContextsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleProtobufEmpty>
-                    {
-                        /// <summary>Constructs a new DeleteContexts request.</summary>
-                        public DeleteContextsRequest(Google.Apis.Services.IClientService service, string parent)
-                            : base(service)
-                        {
-                            Parent = parent;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. The name of the session to delete all contexts from. Format:
-                        /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                        /// under construction and will be available soon. If  is not specified we assume default
-                        /// 'sandbox' runtime.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "deleteContexts"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "DELETE"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v2beta1/{+parent}/contexts"; }
-                        }
-
-                        /// <summary>Initializes DeleteContexts parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "parent", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "parent",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+$",
-                                });
-                        }
-
-                    }
-
-                    /// <summary>Processes a natural language query and returns structured, actionable data as a result.
-                    /// This method is not idempotent, because it may cause contexts and session entity types to be
-                    /// updated, which in turn might affect results of future queries.</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="session">Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`,
-                    /// or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is
-                    /// not specified, we assume default 'sandbox' runtime. It's up to the API caller to choose an appropriate session ID.
-                    /// It can be a random number or some type of user identifier (preferably hashed). The length of the session ID must not
-                    /// exceed 36 bytes.</param>
-                    public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
-                    {
-                        return new DetectIntentRequest(service, body, session);
-                    }
-
-                    /// <summary>Processes a natural language query and returns structured, actionable data as a result.
-                    /// This method is not idempotent, because it may cause contexts and session entity types to be
-                    /// updated, which in turn might affect results of future queries.</summary>
-                    public class DetectIntentRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentResponse>
-                    {
-                        /// <summary>Constructs a new DetectIntent request.</summary>
-                        public DetectIntentRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
-                            : base(service)
-                        {
-                            Session = session;
-                            Body = body;
-                            InitParameters();
-                        }
-
-
-                        /// <summary>Required. The name of the session this query is sent to. Format:
-                        /// `projects//agent/sessions/`, or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                        /// under construction and will be available soon. If  is not specified, we assume default
-                        /// 'sandbox' runtime. It's up to the API caller to choose an appropriate session ID. It can be
-                        /// a random number or some type of user identifier (preferably hashed). The length of the
-                        /// session ID must not exceed 36 bytes.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Session { get; private set; }
-
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest Body { get; set; }
-
-                        ///<summary>Returns the body of the request.</summary>
-                        protected override object GetBody() { return Body; }
-
-                        ///<summary>Gets the method name.</summary>
-                        public override string MethodName
-                        {
-                            get { return "detectIntent"; }
-                        }
-
-                        ///<summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod
-                        {
-                            get { return "POST"; }
-                        }
-
-                        ///<summary>Gets the REST path.</summary>
-                        public override string RestPath
-                        {
-                            get { return "v2beta1/{+session}:detectIntent"; }
-                        }
-
-                        /// <summary>Initializes DetectIntent parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-
-                            RequestParameters.Add(
-                                "session", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "session",
-                                    IsRequired = true,
-                                    ParameterType = "path",
-                                    DefaultValue = null,
-                                    Pattern = @"^projects/[^/]+/agent/runtimes/[^/]+/sessions/[^/]+$",
-                                });
-                        }
-
-                    }
                 }
             }
             private readonly SessionsResource sessions;
@@ -2984,8 +3032,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Creates a context.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The session to create a context for. Format: `projects//agent/sessions/` or
-                    /// `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is not
-                    /// specified, we assume default 'sandbox' runtime.</param>
+                    /// `projects//agent/environments//users//sessions/`. Note: Environments and users are under construction and will be
+                    /// available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume default
+                    /// '-' user.</param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
@@ -3005,8 +3054,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The session to create a context for. Format: `projects//agent/sessions/`
-                        /// or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be
-                        /// available soon. If  is not specified, we assume default 'sandbox' runtime.</summary>
+                        /// or `projects//agent/environments//users//sessions/`. Note: Environments and users are under
+                        /// construction and will be available soon. If  is not specified, we assume default 'draft'
+                        /// environment. If  is not specified, we assume default '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3055,8 +3105,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Deletes the specified context.</summary>
                     /// <param name="name">Required. The name of the context to delete. Format: `projects//agent/sessions//contexts/` or
-                    /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available soon.
-                    /// If  is not specified, we assume default 'sandbox' runtime.</param>
+                    /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are under construction and
+                    /// will be available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume
+                    /// default '-' user.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -3075,9 +3126,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The name of the context to delete. Format:
-                        /// `projects//agent/sessions//contexts/` or `projects//agent/runtimes//sessions//contexts/`.
-                        /// Note: Runtimes are under construction and will be available soon. If  is not specified, we
-                        /// assume default 'sandbox' runtime.</summary>
+                        /// `projects//agent/sessions//contexts/` or
+                        /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are
+                        /// under construction and will be available soon. If  is not specified, we assume default
+                        /// 'draft' environment. If is not specified, we assume default '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3120,8 +3172,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Retrieves the specified context.</summary>
                     /// <param name="name">Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
-                    /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available soon.
-                    /// If  is not specified, we assume default 'sandbox' runtime.</param>
+                    /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are under construction and
+                    /// will be available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume
+                    /// default '-' user.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -3140,8 +3193,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The name of the context. Format: `projects//agent/sessions//contexts/` or
-                        /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and
-                        /// will be available soon. If  is not specified, we assume default 'sandbox' runtime.</summary>
+                        /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are
+                        /// under construction and will be available soon. If  is not specified, we assume default
+                        /// 'draft' environment. If is not specified, we assume default '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3184,8 +3238,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Returns the list of all contexts in the specified session.</summary>
                     /// <param name="parent">Required. The session to list all contexts from. Format: `projects//agent/sessions/` or
-                    /// `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is not
-                    /// specified, we assume default 'sandbox' runtime.</param>
+                    /// `projects//agent/environments//users//sessions/`. Note: Environments and users are under construction and will be
+                    /// available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume default
+                    /// '-' user.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -3204,9 +3259,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The session to list all contexts from. Format:
-                        /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                        /// under construction and will be available soon. If  is not specified, we assume default
-                        /// 'sandbox' runtime.</summary>
+                        /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. Note:
+                        /// Environments and users are under construction and will be available soon. If  is not
+                        /// specified, we assume default 'draft' environment. If  is not specified, we assume default
+                        /// '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3278,9 +3334,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Updates the specified context.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-                    /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available soon.
-                    /// The Context ID is always converted to lowercase. If  is not specified, we assume default 'sandbox'
-                    /// runtime.</param>
+                    /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are under construction and
+                    /// will be available soon. The Context ID is always converted to lowercase. If  is not specified, we assume default
+                    /// 'draft' environment. If  is not specified, we assume default '-' user.</param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1Context body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -3300,9 +3356,11 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The unique identifier of the context. Format:
-                        /// `projects//agent/sessions//contexts/`, or `projects//agent/runtimes//sessions//contexts/`.
-                        /// Note: Runtimes are under construction and will be available soon. The Context ID is always
-                        /// converted to lowercase. If  is not specified, we assume default 'sandbox' runtime.</summary>
+                        /// `projects//agent/sessions//contexts/`, or
+                        /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are
+                        /// under construction and will be available soon. The Context ID is always converted to
+                        /// lowercase. If  is not specified, we assume default 'draft' environment. If  is not
+                        /// specified, we assume default '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3389,8 +3447,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Creates a session entity type.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The session to create a session entity type for. Format: `projects//agent/sessions/`
-                    /// or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is
-                    /// not specified, we assume default 'sandbox' runtime.</param>
+                    /// or `projects//agent/environments//users// sessions/`. Note: Environments and users are under construction and will
+                    /// be available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we assume
+                    /// default '-' user.</param>
                     public virtual CreateRequest Create(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string parent)
                     {
                         return new CreateRequest(service, body, parent);
@@ -3410,9 +3469,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The session to create a session entity type for. Format:
-                        /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                        /// under construction and will be available soon. If  is not specified, we assume default
-                        /// 'sandbox' runtime.</summary>
+                        /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. Note:
+                        /// Environments and users are under construction and will be available soon. If  is not
+                        /// specified, we assume default 'draft' environment. If  is not specified, we assume default
+                        /// '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3461,8 +3521,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Deletes the specified session entity type.</summary>
                     /// <param name="name">Required. The name of the entity type to delete. Format: `projects//agent/sessions//entityTypes/`
-                    /// or `projects//agent/runtimes//sessions//entityTypes/`. Note: Runtimes are under construction and will be available
-                    /// soon. If  is not specified, we assume default 'sandbox' runtime.</param>
+                    /// or `projects//agent/environments//users//sessions//entityTypes/`. Note: Environments and users are under
+                    /// construction and will be available soon. If  is not specified, we assume default 'draft' environment. If  is not
+                    /// specified, we assume default '-' user.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
@@ -3482,9 +3543,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                         /// <summary>Required. The name of the entity type to delete. Format:
                         /// `projects//agent/sessions//entityTypes/` or
-                        /// `projects//agent/runtimes//sessions//entityTypes/`. Note: Runtimes are under construction
-                        /// and will be available soon. If is not specified, we assume default 'sandbox'
-                        /// runtime.</summary>
+                        /// `projects//agent/environments//users//sessions//entityTypes/`. Note: Environments and users
+                        /// are under construction and will be available soon. If  is not specified, we assume default
+                        /// 'draft' environment. If  is not specified, we assume default '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3527,8 +3588,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Retrieves the specified session entity type.</summary>
                     /// <param name="name">Required. The name of the session entity type. Format: `projects//agent/sessions//entityTypes/`
-                    /// or `projects//agent/runtimes//sessions//entityTypes/`. Note: Runtimes are under construction and will be available
-                    /// soon. If  is not specified, we assume default 'sandbox' runtime.</param>
+                    /// or `projects//agent/environments//users//sessions// entityTypes/`. Note: Environments and users re under
+                    /// construction and will be available soon. If  is not specified, we assume default 'draft' environment. If  is not
+                    /// specified, we assume default '-' user.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
@@ -3547,10 +3609,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The name of the session entity type. Format:
-                        /// `projects//agent/sessions//entityTypes/` or
-                        /// `projects//agent/runtimes//sessions//entityTypes/`. Note: Runtimes are under construction
-                        /// and will be available soon. If is not specified, we assume default 'sandbox'
-                        /// runtime.</summary>
+                        /// `projects//agent/sessions//entityTypes/` or `projects//agent/environments//users//sessions//
+                        /// entityTypes/`. Note: Environments and users re under construction and will be available
+                        /// soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we
+                        /// assume default '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3593,8 +3655,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                     /// <summary>Returns the list of all session entity types in the specified session.</summary>
                     /// <param name="parent">Required. The session to list all session entity types from. Format:
-                    /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will
-                    /// be available soon. If  is not specified, we assume default 'sandbox' runtime.</param>
+                    /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. Note: Environments and users are
+                    /// under construction and will be available soon. If  is not specified, we assume default 'draft' environment. If  is
+                    /// not specified, we assume default '-' user.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
@@ -3613,9 +3676,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The session to list all session entity types from. Format:
-                        /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are
-                        /// under construction and will be available soon. If  is not specified, we assume default
-                        /// 'sandbox' runtime.</summary>
+                        /// `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. Note:
+                        /// Environments and users are under construction and will be available soon. If  is not
+                        /// specified, we assume default 'draft' environment. If  is not specified, we assume default
+                        /// '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
@@ -3687,9 +3751,9 @@ namespace Google.Apis.Dialogflow.v2beta1
                     /// <summary>Updates the specified session entity type.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required. The unique identifier of this session entity type. Format:
-                    /// `projects//agent/sessions//entityTypes/`, or `projects//agent/runtimes/sessions//entityTypes/`. Note: Runtimes are
-                    /// under construction and will be available soon. If  is not specified, we assume default 'sandbox'
-                    /// runtime.</param>
+                    /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions //entityTypes/`. Note:
+                    /// Environments and users are under construction and will be available soon. If  is not specified, we assume default
+                    /// 'draft' environment. If  is not specified, we assume default '-' user.</param>
                     public virtual PatchRequest Patch(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1SessionEntityType body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -3709,9 +3773,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                         /// <summary>Required. The unique identifier of this session entity type. Format:
-                        /// `projects//agent/sessions//entityTypes/`, or
-                        /// `projects//agent/runtimes/sessions//entityTypes/`. Note: Runtimes are under construction and
-                        /// will be available soon. If  is not specified, we assume default 'sandbox' runtime.</summary>
+                        /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions
+                        /// //entityTypes/`. Note: Environments and users are under construction and will be available
+                        /// soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we
+                        /// assume default '-' user.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3774,8 +3839,9 @@ namespace Google.Apis.Dialogflow.v2beta1
 
                 /// <summary>Deletes all active contexts in the specified session.</summary>
                 /// <param name="parent">Required. The name of the session to delete all contexts from. Format:
-                /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will
-                /// be available soon. If  is not specified we assume default 'sandbox' runtime.</param>
+                /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. Note: Environments and users are
+                /// under construction and will be available soon. If  is not specified we assume default 'draft' environment. If  is
+                /// not specified, we assume default '-' user.</param>
                 public virtual DeleteContextsRequest DeleteContexts(string parent)
                 {
                     return new DeleteContextsRequest(service, parent);
@@ -3794,9 +3860,10 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Required. The name of the session to delete all contexts from. Format:
-                    /// `projects//agent/sessions/` or `projects//agent/runtimes//sessions/`. Note: Runtimes are under
-                    /// construction and will be available soon. If  is not specified we assume default 'sandbox'
-                    /// runtime.</summary>
+                    /// `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. Note:
+                    /// Environments and users are under construction and will be available soon. If  is not specified
+                    /// we assume default 'draft' environment. If  is not specified, we assume default '-'
+                    /// user.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -3842,10 +3909,10 @@ namespace Google.Apis.Dialogflow.v2beta1
                 /// which in turn might affect results of future queries.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="session">Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`,
-                /// or `projects//agent/runtimes//sessions/`. Note: Runtimes are under construction and will be available soon. If  is
-                /// not specified, we assume default 'sandbox' runtime. It's up to the API caller to choose an appropriate session ID.
-                /// It can be a random number or some type of user identifier (preferably hashed). The length of the session ID must not
-                /// exceed 36 bytes.</param>
+                /// or `projects//agent/environments//users//sessions/`. Note: Environments and users are under construction and will be
+                /// available soon. If  is not specified, we assume default 'draft' environment. If  is not specified, we are using "-".
+                /// It’s up to the API caller to choose an appropriate . and . They can be a random numbers or some type of user and
+                /// session identifiers (preferably hashed). The length of the  and  must not exceed 36 characters.</param>
                 public virtual DetectIntentRequest DetectIntent(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1DetectIntentRequest body, string session)
                 {
                     return new DetectIntentRequest(service, body, session);
@@ -3867,11 +3934,12 @@ namespace Google.Apis.Dialogflow.v2beta1
 
 
                     /// <summary>Required. The name of the session this query is sent to. Format:
-                    /// `projects//agent/sessions/`, or `projects//agent/runtimes//sessions/`. Note: Runtimes are under
-                    /// construction and will be available soon. If  is not specified, we assume default 'sandbox'
-                    /// runtime. It's up to the API caller to choose an appropriate session ID. It can be a random
-                    /// number or some type of user identifier (preferably hashed). The length of the session ID must
-                    /// not exceed 36 bytes.</summary>
+                    /// `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. Note:
+                    /// Environments and users are under construction and will be available soon. If  is not specified,
+                    /// we assume default 'draft' environment. If  is not specified, we are using "-". It’s up to the
+                    /// API caller to choose an appropriate . and . They can be a random numbers or some type of user
+                    /// and session identifiers (preferably hashed). The length of the  and  must not exceed 36
+                    /// characters.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Session { get; private set; }
 
@@ -4509,10 +4577,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lifespanCount")]
         public virtual System.Nullable<int> LifespanCount { get; set; } 
 
-        /// <summary>Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-        /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available
-        /// soon. The Context ID is always converted to lowercase. If  is not specified, we assume default 'sandbox'
-        /// runtime.</summary>
+        /// <summary>Required. The unique identifier of the context. Format:
+        /// `projects//agent/sessions//contexts/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -4655,7 +4721,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
         public virtual System.Nullable<bool> IsFallback { get; set; } 
 
-        /// <summary>Optional. The collection of rich messages corresponding to the `Response` field in API.AI
+        /// <summary>Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow
         /// console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2IntentMessage> Messages { get; set; } 
@@ -4728,7 +4794,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Corresponds to the `Response` field in API.AI console.</summary>
+    /// <summary>Corresponds to the `Response` field in the Dialogflow console.</summary>
     public class GoogleCloudDialogflowV2IntentMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The basic card response for Actions on Google.</summary>
@@ -5337,8 +5403,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Represents a conversational agent.</summary>
     public class GoogleCloudDialogflowV2beta1Agent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The URI of the agent's avatar. Avatars are used throughout API.AI console and in the
-        /// self-hosted [Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.</summary>
+        /// <summary>Optional. The URI of the agent's avatar. Avatars are used throughout the Dialogflow console and in
+        /// the self-hosted [Web Demo](https://dialogflow.com/docs/integrations/web-demo) integration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("avatarUri")]
         public virtual string AvatarUri { get; set; } 
 
@@ -5561,9 +5627,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Nullable<int> LifespanCount { get; set; } 
 
         /// <summary>Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
-        /// `projects//agent/runtimes//sessions//contexts/`. Note: Runtimes are under construction and will be available
-        /// soon. The Context ID is always converted to lowercase. If  is not specified, we assume default 'sandbox'
-        /// runtime.</summary>
+        /// `projects//agent/environments//users//sessions//contexts/`. Note: Environments and users are under
+        /// construction and will be available soon. The Context ID is always converted to lowercase. If  is not
+        /// specified, we assume default 'draft' environment. If  is not specified, we assume default '-'
+        /// user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -5826,7 +5893,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isFallback")]
         public virtual System.Nullable<bool> IsFallback { get; set; } 
 
-        /// <summary>Optional. The collection of rich messages corresponding to the `Response` field in API.AI
+        /// <summary>Optional. The collection of rich messages corresponding to the `Response` field in the Dialogflow
         /// console.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1IntentMessage> Messages { get; set; } 
@@ -5919,7 +5986,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Corresponds to the `Response` field in API.AI console.</summary>
+    /// <summary>Corresponds to the `Response` field in the Dialogflow console.</summary>
     public class GoogleCloudDialogflowV2beta1IntentMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Displays a basic card for Actions on Google.</summary>
@@ -6649,9 +6716,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string EntityOverrideMode { get; set; } 
 
         /// <summary>Required. The unique identifier of this session entity type. Format:
-        /// `projects//agent/sessions//entityTypes/`, or `projects//agent/runtimes/sessions//entityTypes/`. Note:
-        /// Runtimes are under construction and will be available soon. If  is not specified, we assume default
-        /// 'sandbox' runtime.</summary>
+        /// `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions //entityTypes/`.
+        /// Note: Environments and users are under construction and will be available soon. If  is not specified, we
+        /// assume default 'draft' environment. If  is not specified, we assume default '-' user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 

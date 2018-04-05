@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/bLlghObDtzT9UXiQogT0nJiadJM\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/KDn4YAg--bUtE2GTVE7dad_5xgQ\"",
  "discoveryVersion": "v1",
  "id": "calendar:v3",
  "name": "calendar",
  "version": "v3",
- "revision": "20180320",
+ "revision": "20180327",
  "title": "Calendar API",
  "description": "Manipulates events and other calendar data.",
  "ownerDomain": "google.com",
@@ -1039,7 +1039,7 @@
     },
     "resource": {
      "type": "boolean",
-     "description": "Whether the attendee is a resource. Read-only. The default is False.",
+     "description": "Whether the attendee is a resource. Can only be set when the attendee is added to the event for the first time. Subsequent modifications are ignored. Optional. The default is False.",
      "default": "false"
     },
     "responseStatus": {

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-search/'>DoubleClick Search API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180321 (1175)
+ *      <tr><th>API Rev<td>20180329 (1183)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-search/'>
  *              https://developers.google.com/doubleclick-search/</a>
@@ -1599,7 +1599,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         /// <summary>The columns to include in the report. This includes both DoubleClick Search columns and saved
         /// columns. For DoubleClick Search columns, only the columnName parameter is required. For saved columns only
         /// the savedColumnName parameter is required. Both columnName and savedColumnName cannot be set in the same
-        /// stanza.</summary>
+        /// stanza. The maximum number of columns per request is 300.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual System.Collections.Generic.IList<ReportApiColumnSpec> Columns { get; set; } 
 
@@ -1607,7 +1607,8 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("downloadFormat")]
         public virtual string DownloadFormat { get; set; } 
 
-        /// <summary>A list of filters to be applied to the report.</summary>
+        /// <summary>A list of filters to be applied to the report. The maximum number of filters per request is
+        /// 300.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filters")]
         public virtual System.Collections.Generic.IList<ReportRequest.FiltersData> Filters { get; set; } 
 
@@ -1626,7 +1627,7 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
         public virtual System.Nullable<int> MaxRowsPerFile { get; set; } 
 
         /// <summary>Synchronous report only. A list of columns and directions defining sorting to be performed on the
-        /// report rows.</summary>
+        /// report rows. The maximum number of orderings per request is 300.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
         public virtual System.Collections.Generic.IList<ReportRequest.OrderByData> OrderBy { get; set; } 
 
@@ -1684,7 +1685,8 @@ namespace Google.Apis.Doubleclicksearch.v2.Data
             [Newtonsoft.Json.JsonPropertyAttribute("operator")]
             public virtual string Operator__ { get; set; } 
 
-            /// <summary>A list of values to filter the column value against.</summary>
+            /// <summary>A list of values to filter the column value against. The maximum number of filter values per
+            /// request is 300.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("values")]
             public virtual System.Collections.Generic.IList<object> Values { get; set; } 
 

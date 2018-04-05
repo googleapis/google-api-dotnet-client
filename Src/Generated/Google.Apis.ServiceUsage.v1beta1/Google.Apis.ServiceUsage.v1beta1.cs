@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180326 (1180)
+ *      <tr><th>API Rev<td>20180402 (1187)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -464,10 +464,6 @@ namespace Google.Apis.ServiceUsage.v1beta1
             }
 
 
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
-
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -479,6 +475,10 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -505,15 +505,6 @@ namespace Google.Apis.ServiceUsage.v1beta1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -535,6 +526,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1168,12 +1168,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
     /// If a method doesn't have any auth requirements, request credentials will be ignored.</summary>
     public class AuthenticationRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether to allow requests without a credential. The credential can be an OAuth token, Google
-        /// cookies (first-party auth) or EndUserCreds.
-        ///
-        /// For requests without credentials, if the service control environment is specified, each incoming request
-        /// **must** be associated with a service consumer. This can be done by passing an API key that belongs to a
-        /// consumer project.</summary>
+        /// <summary>If true, the service accepts API keys without any other credential.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowWithoutCredential")]
         public virtual System.Nullable<bool> AllowWithoutCredential { get; set; } 
 

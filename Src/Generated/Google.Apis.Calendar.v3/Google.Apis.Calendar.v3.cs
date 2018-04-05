@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>Calendar API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180320 (1174)
+ *      <tr><th>API Rev<td>20180327 (1181)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/google-apps/calendar/firstapp'>
  *              https://developers.google.com/google-apps/calendar/firstapp</a>
@@ -5480,7 +5480,8 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("organizer")]
         public virtual System.Nullable<bool> Organizer { get; set; } 
 
-        /// <summary>Whether the attendee is a resource. Read-only. The default is False.</summary>
+        /// <summary>Whether the attendee is a resource. Can only be set when the attendee is added to the event for the
+        /// first time. Subsequent modifications are ignored. Optional. The default is False.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual System.Nullable<bool> Resource { get; set; } 
 

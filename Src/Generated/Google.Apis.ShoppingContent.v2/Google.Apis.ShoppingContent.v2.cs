@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180316 (1170)
+ *      <tr><th>API Rev<td>20180403 (1188)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -1219,6 +1219,11 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong AccountId { get; private set; }
 
+            /// <summary>If set, only issues for the specified destinations are returned, otherwise only issues for the
+            /// Shopping destination.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinations", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Destinations { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1261,6 +1266,15 @@ namespace Google.Apis.ShoppingContent.v2
                         DefaultValue = null,
                         Pattern = null,
                     });
+                RequestParameters.Add(
+                    "destinations", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "destinations",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
             }
 
         }
@@ -1287,6 +1301,11 @@ namespace Google.Apis.ShoppingContent.v2
             /// <summary>The ID of the managing account. This must be a multi-client account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>If set, only issues for the specified destinations are returned, otherwise only issues for the
+            /// Shopping destination.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinations", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Destinations { get; set; }
 
             /// <summary>The maximum number of account statuses to return in the response, used for paging.</summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -1326,6 +1345,15 @@ namespace Google.Apis.ShoppingContent.v2
                         Name = "merchantId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "destinations", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "destinations",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -1940,6 +1968,96 @@ namespace Google.Apis.ShoppingContent.v2
             }
 
             /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "datafeedId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "datafeedId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "dryRun", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "dryRun",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account.</summary>
+        /// <param name="merchantId">The ID of the account that manages the datafeed. This account cannot be a multi-client
+        /// account.</param>
+        /// <param name="datafeedId">The ID of the datafeed to be fetched.</param>
+        public virtual FetchnowRequest Fetchnow(ulong merchantId, ulong datafeedId)
+        {
+            return new FetchnowRequest(service, merchantId, datafeedId);
+        }
+
+        /// <summary>Invokes a fetch for the datafeed in your Merchant Center account.</summary>
+        public class FetchnowRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2.Data.DatafeedsFetchNowResponse>
+        {
+            /// <summary>Constructs a new Fetchnow request.</summary>
+            public FetchnowRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong datafeedId)
+                : base(service)
+            {
+                MerchantId = merchantId;
+                DatafeedId = datafeedId;
+                InitParameters();
+            }
+
+
+            /// <summary>The ID of the account that manages the datafeed. This account cannot be a multi-client
+            /// account.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the datafeed to be fetched.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("datafeedId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong DatafeedId { get; private set; }
+
+            /// <summary>Flag to run the request in dry-run mode.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("dryRun", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> DryRun { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "fetchnow"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{merchantId}/datafeeds/{datafeedId}/fetchNow"; }
+            }
+
+            /// <summary>Initializes Fetchnow parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -6697,6 +6815,11 @@ namespace Google.Apis.ShoppingContent.v2
             [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string ProductId { get; private set; }
 
+            /// <summary>If set, only issues for the specified destinations are returned, otherwise only issues for the
+            /// Shopping destination.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinations", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Destinations { get; set; }
+
             /// <summary>Flag to include full product data in the result of this get request. The default value is
             /// false.</summary>
             [Google.Apis.Util.RequestParameterAttribute("includeAttributes", Google.Apis.Util.RequestParameterType.Query)]
@@ -6745,6 +6868,15 @@ namespace Google.Apis.ShoppingContent.v2
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "destinations", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "destinations",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "includeAttributes", new Google.Apis.Discovery.Parameter
                     {
                         Name = "includeAttributes",
@@ -6781,6 +6913,11 @@ namespace Google.Apis.ShoppingContent.v2
             /// account.</summary>
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>If set, only issues for the specified destinations are returned, otherwise only issues for the
+            /// Shopping destination.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("destinations", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> Destinations { get; set; }
 
             /// <summary>Flag to include full product data in the results of the list request. The default value is
             /// false.</summary>
@@ -6830,6 +6967,15 @@ namespace Google.Apis.ShoppingContent.v2
                         Name = "merchantId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "destinations", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "destinations",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -7593,6 +7739,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
 
+        /// <summary>The destination the issue applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; } 
+
         /// <summary>Additional details about the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
@@ -7618,6 +7768,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>Country for which this issue is reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("country")]
         public virtual string Country { get; set; } 
+
+        /// <summary>The destination the issue applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; } 
 
         /// <summary>A more detailed description of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
@@ -7923,6 +8077,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>If set, only issues for the specified destinations are returned, otherwise only issues for the
+        /// Shopping destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<string> Destinations { get; set; } 
 
         /// <summary>The ID of the managing account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
@@ -8444,6 +8603,17 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>A list of errors defined if and only if the request failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errors")]
         public virtual Errors Errors { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class DatafeedsFetchNowResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifies what kind of resource this is. Value: the fixed string
+        /// "content#datafeedsFetchNowResponse".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11030,7 +11200,7 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("store")]
         public virtual PosStore Store { get; set; } 
 
-        /// <summary>The store code. Required only to get/submit store information.</summary>
+        /// <summary>The store code. Set this only if the method is delete or get.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
         public virtual string StoreCode { get; set; } 
 
@@ -11944,6 +12114,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
     public class ProductStatusDataQualityIssue : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The destination the issue applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; } 
+
         /// <summary>A more detailed error string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detail")]
         public virtual string Detail { get; set; } 
@@ -12198,6 +12372,11 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>An entry ID, unique within the batch request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchId")]
         public virtual System.Nullable<long> BatchId { get; set; } 
+
+        /// <summary>If set, only issues for the specified destinations are returned, otherwise only issues for the
+        /// Shopping destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinations")]
+        public virtual System.Collections.Generic.IList<string> Destinations { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("includeAttributes")]
         public virtual System.Nullable<bool> IncludeAttributes { get; set; } 

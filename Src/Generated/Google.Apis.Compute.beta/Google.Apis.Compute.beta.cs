@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180314 (1168)
+ *      <tr><th>API Rev<td>20180312 (1166)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -37885,9 +37885,9 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Patches the specified subnetwork with the data included in the request. Only the following fields
-        /// within the subnetwork resource can be specified in the request: secondary_ip_range and
-        /// allow_subnet_cidr_routes_overlap. It is also mandatory to specify the current fingeprint of the subnetwork
-        /// resource being patched.</summary>
+        /// within the subnetwork resource can be specified in the request: secondary_ip_range,
+        /// allow_subnet_cidr_routes_overlap and role. It is also mandatory to specify the current fingeprint of the
+        /// subnetwork resource being patched.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -37899,9 +37899,9 @@ namespace Google.Apis.Compute.beta
         }
 
         /// <summary>Patches the specified subnetwork with the data included in the request. Only the following fields
-        /// within the subnetwork resource can be specified in the request: secondary_ip_range and
-        /// allow_subnet_cidr_routes_overlap. It is also mandatory to specify the current fingeprint of the subnetwork
-        /// resource being patched.</summary>
+        /// within the subnetwork resource can be specified in the request: secondary_ip_range,
+        /// allow_subnet_cidr_routes_overlap and role. It is also mandatory to specify the current fingeprint of the
+        /// subnetwork resource being patched.</summary>
         public class PatchRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -48393,6 +48393,10 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Creation timestamp in RFC3339 text format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
+
+        /// <summary>Headers that the HTTP/S load balancer should add to proxied requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRequestHeaders")]
+        public virtual System.Collections.Generic.IList<string> CustomRequestHeaders { get; set; } 
 
         /// <summary>An optional description of this resource. Provide this property when you create the
         /// resource.</summary>

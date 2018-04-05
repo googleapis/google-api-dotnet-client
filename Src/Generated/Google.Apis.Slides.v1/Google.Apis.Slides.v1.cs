@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180323 (1177)
+ *      <tr><th>API Rev<td>20180402 (1187)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -1015,7 +1015,8 @@ namespace Google.Apis.Slides.v1.Data
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
         /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
         ///
-        /// The provided URL can be at most 2 kB in length.</summary>
+        /// The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the
+        /// Image.source_url field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 
@@ -1140,8 +1141,8 @@ namespace Google.Apis.Slides.v1.Data
 
     /// <summary>Creates an embedded Google Sheets chart.
     ///
-    /// NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly, or drive
-    /// OAuth scopes.</summary>
+    /// NOTE: Chart creation requires at least one of the spreadsheets.readonly, spreadsheets, drive.readonly,
+    /// drive.file, or drive OAuth scopes.</summary>
     public class CreateSheetsChartRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the specific chart in the Google Sheets spreadsheet.</summary>
@@ -1823,7 +1824,8 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A PageElement kind representing a line, curved connector, or bent connector.</summary>
+    /// <summary>A PageElement kind representing a non-connector line, straight connector, curved connector or bent
+    /// connector.</summary>
     public class Line : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The properties of the line.</summary>
@@ -2479,7 +2481,8 @@ namespace Google.Apis.Slides.v1.Data
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
         /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
         ///
-        /// The provided URL can be at most 2 kB in length.</summary>
+        /// The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the
+        /// Image.source_url field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; } 
 
@@ -2610,7 +2613,8 @@ namespace Google.Apis.Slides.v1.Data
         /// The image is fetched once at insertion time and a copy is stored for display inside the presentation. Images
         /// must be less than 50MB in size, cannot exceed 25 megapixels, and must be in one of PNG, JPEG, or GIF format.
         ///
-        /// The provided URL can be at most 2 kB in length.</summary>
+        /// The provided URL can be at most 2 kB in length. The URL itself is saved with the image, and exposed via the
+        /// Image.source_url field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; } 
 

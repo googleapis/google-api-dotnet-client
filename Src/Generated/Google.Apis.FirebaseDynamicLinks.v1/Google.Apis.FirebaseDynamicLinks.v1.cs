@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>Firebase Dynamic Links API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180325 (1179)
+ *      <tr><th>API Rev<td>20180403 (1188)
  *      <tr><th>API Docs
  *          <td><a href='https://firebase.google.com/docs/dynamic-links/'>
  *              https://firebase.google.com/docs/dynamic-links/</a>
@@ -64,6 +64,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         public FirebaseDynamicLinksService(Google.Apis.Services.BaseClientService.Initializer initializer)
             : base(initializer)
         {
+            managedShortLinks = new ManagedShortLinksResource(this);
             shortLinks = new ShortLinksResource(this);
             v1 = new V1Resource(this);
         }
@@ -115,6 +116,14 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
         }
 
 
+
+        private readonly ManagedShortLinksResource managedShortLinks;
+
+        /// <summary>Gets the ManagedShortLinks resource.</summary>
+        public virtual ManagedShortLinksResource ManagedShortLinks
+        {
+            get { return managedShortLinks; }
+        }
 
         private readonly ShortLinksResource shortLinks;
 
@@ -346,6 +355,92 @@ namespace Google.Apis.FirebaseDynamicLinks.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+        }
+    }
+
+    /// <summary>The "managedShortLinks" collection of methods.</summary>
+    public class ManagedShortLinksResource
+    {
+        private const string Resource = "managedShortLinks";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ManagedShortLinksResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as
+        /// Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire.
+        ///
+        /// This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for
+        /// the link (non unique name for the front end). - The response must be authenticated with an auth token
+        /// (generated with the admin service account). - The link will appear in the FDL list of links in the console
+        /// front end.
+        ///
+        /// The Dynamic Link domain in the request must be owned by requester's Firebase project.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkRequest body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as
+        /// Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire.
+        ///
+        /// This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for
+        /// the link (non unique name for the front end). - The response must be authenticated with an auth token
+        /// (generated with the admin service account). - The link will appear in the FDL list of links in the console
+        /// front end.
+        ///
+        /// The Dynamic Link domain in the request must be owned by requester's Firebase project.</summary>
+        public class CreateRequest : FirebaseDynamicLinksBaseServiceRequest<Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkResponse>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkRequest body)
+                : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.FirebaseDynamicLinks.v1.Data.CreateManagedShortLinkRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "create"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/managedShortLinks:create"; }
+            }
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+            }
+
         }
     }
 
@@ -619,6 +714,52 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Request to create a managed Short Dynamic Link.</summary>
+    public class CreateManagedShortLinkRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Information about the Dynamic Link to be shortened. [Learn
+        /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicLinkInfo")]
+        public virtual DynamicLinkInfo DynamicLinkInfo { get; set; } 
+
+        /// <summary>Full long Dynamic Link URL with desired query parameters specified. For example,
+        /// "https://sample.app.goo.gl/?link=http://www.google.com=com.sample", [Learn
+        /// more](https://firebase.google.com/docs/reference/dynamic-links/link-shortener).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longDynamicLink")]
+        public virtual string LongDynamicLink { get; set; } 
+
+        /// <summary>Link name to associate with the link. It's used for marketer to identify manually-created links in
+        /// the Firebase console (https://console.firebase.google.com/). Links must be named to be tracked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Short Dynamic Link suffix. Optional.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suffix")]
+        public virtual Suffix Suffix { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response to create a short Dynamic Link.</summary>
+    public class CreateManagedShortLinkResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedShortLink")]
+        public virtual ManagedShortLink ManagedShortLink { get; set; } 
+
+        /// <summary>Preview link to show the link flow chart. (debug info.)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("previewLink")]
+        public virtual string PreviewLink { get; set; } 
+
+        /// <summary>Information about potential warnings on link creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual System.Collections.Generic.IList<DynamicLinkWarning> Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request to create a short Dynamic Link.</summary>
     public class CreateShortDynamicLinkRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -644,7 +785,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     /// <summary>Response to create a short Dynamic Link.</summary>
     public class CreateShortDynamicLinkResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Preivew link to show the link flow chart.</summary>
+        /// <summary>Preview link to show the link flow chart. (debug info.)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("previewLink")]
         public virtual string PreviewLink { get; set; } 
 
@@ -744,6 +885,11 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         /// [documentation](https://firebase.google.com/docs/dynamic-links/create-manually).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desktopInfo")]
         public virtual DesktopInfo DesktopInfo { get; set; } 
+
+        /// <summary>E.g. https://maps.app.goo.gl, https://maps.page.link, https://g.co/maps More examples can be found
+        /// in description of getNormalizedUriPrefix in j/c/g/firebase/dynamiclinks/uri/DdlDomain.java</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainUriPrefix")]
+        public virtual string DomainUriPrefix { get; set; } 
 
         /// <summary>Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn
         /// more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain
@@ -1019,6 +1165,41 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Managed Short Link.</summary>
+    public class ManagedShortLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Creation timestamp of the short link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual object CreationTime { get; set; } 
+
+        /// <summary>Attributes that have been flagged about this short url.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flaggedAttribute")]
+        public virtual System.Collections.Generic.IList<string> FlaggedAttribute { get; set; } 
+
+        /// <summary>Full Dyamic Link info</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("info")]
+        public virtual DynamicLinkInfo Info { get; set; } 
+
+        /// <summary>Short durable link url, for example, "https://sample.app.goo.gl/xyz123".
+        ///
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("link")]
+        public virtual string Link { get; set; } 
+
+        /// <summary>Link name defined by the creator.
+        ///
+        /// Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkName")]
+        public virtual string LinkName { get; set; } 
+
+        /// <summary>Visibility status of link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
+        public virtual string Visibility { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Information of navigation behavior.</summary>
     public class NavigationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1054,6 +1235,10 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
     /// <summary>Short Dynamic Link suffix.</summary>
     public class Suffix : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Only applies to Option.CUSTOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customSuffix")]
+        public virtual string CustomSuffix { get; set; } 
+
         /// <summary>Suffix option.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("option")]
         public virtual string Option { get; set; } 

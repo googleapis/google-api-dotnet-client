@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.HangoutsChat.v1 Client Library</Title>
-    <Version>1.32.2.1175</Version>
+    <Version>1.32.2.1187</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>

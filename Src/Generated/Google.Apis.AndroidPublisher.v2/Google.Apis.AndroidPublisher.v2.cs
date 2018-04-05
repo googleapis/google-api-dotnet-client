@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180319 (1173)
+ *      <tr><th>API Rev<td>20180402 (1187)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -65,7 +65,6 @@ namespace Google.Apis.AndroidPublisher.v2
             : base(initializer)
         {
             edits = new EditsResource(this);
-            entitlements = new EntitlementsResource(this);
             inappproducts = new InappproductsResource(this);
             purchases = new PurchasesResource(this);
             reviews = new ReviewsResource(this);
@@ -125,14 +124,6 @@ namespace Google.Apis.AndroidPublisher.v2
         public virtual EditsResource Edits
         {
             get { return edits; }
-        }
-
-        private readonly EntitlementsResource entitlements;
-
-        /// <summary>Gets the Entitlements resource.</summary>
-        public virtual EntitlementsResource Entitlements
-        {
-            get { return entitlements; }
         }
 
         private readonly InappproductsResource inappproducts;
@@ -4862,138 +4853,6 @@ namespace Google.Apis.AndroidPublisher.v2
         }
     }
 
-    /// <summary>The "entitlements" collection of methods.</summary>
-    public class EntitlementsResource
-    {
-        private const string Resource = "entitlements";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public EntitlementsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Lists the user's current inapp item or subscription entitlements</summary>
-        /// <param name="packageName">The package name of the application the inapp product was sold in (for example,
-        /// 'com.some.thing').</param>
-        public virtual ListRequest List(string packageName)
-        {
-            return new ListRequest(service, packageName);
-        }
-
-        /// <summary>Lists the user's current inapp item or subscription entitlements</summary>
-        public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v2.Data.EntitlementsListResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string packageName)
-                : base(service)
-            {
-                PackageName = packageName;
-                InitParameters();
-            }
-
-
-            /// <summary>The package name of the application the inapp product was sold in (for example,
-            /// 'com.some.thing').</summary>
-            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string PackageName { get; private set; }
-
-
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>The product id of the inapp product (for example, 'sku1'). This can be used to restrict the
-            /// result set.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string ProductId { get; set; }
-
-
-            [Google.Apis.Util.RequestParameterAttribute("startIndex", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> StartIndex { get; set; }
-
-
-            [Google.Apis.Util.RequestParameterAttribute("token", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Token { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "list"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "{packageName}/entitlements"; }
-            }
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "packageName", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "packageName",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "productId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "productId",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "startIndex", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "startIndex",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "token", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "token",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-    }
-
     /// <summary>The "inappproducts" collection of methods.</summary>
     public class InappproductsResource
     {
@@ -6889,46 +6748,6 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// <summary>Screen width in pixels</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("screenWidthPx")]
         public virtual System.Nullable<int> ScreenWidthPx { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>An Entitlement resource indicates a user's current entitlement to an inapp item or
-    /// subscription.</summary>
-    public class Entitlement : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>This kind represents an entitlement object in the androidpublisher service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The SKU of the product.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
-        public virtual string ProductId { get; set; } 
-
-        /// <summary>The type of the inapp product. Possible values are: - In-app item: "inapp" - Subscription:
-        /// "subs"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("productType")]
-        public virtual string ProductType { get; set; } 
-
-        /// <summary>The token which can be verified using the subscriptions or products API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual string Token { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    public class EntitlementsListResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<Entitlement> Resources { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

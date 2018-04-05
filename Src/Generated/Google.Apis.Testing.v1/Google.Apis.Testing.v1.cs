@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Testing API Version v1
+ *   Cloud Testing API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/cloud-test-lab/'>Google Cloud Testing API</a>
+ *          <td><a href='https://developers.google.com/cloud-test-lab/'>Cloud Testing API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180320 (1174)
+ *      <tr><th>API Rev<td>20180404 (1189)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-test-lab/'>
  *              https://developers.google.com/cloud-test-lab/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Testing API can be found at
+ * The complete API documentation for using Cloud Testing API can be found at
  * <a href='https://developers.google.com/cloud-test-lab/'>https://developers.google.com/cloud-test-lab/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -107,7 +107,7 @@ namespace Google.Apis.Testing.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Testing API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Testing API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -1317,7 +1317,7 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
         public virtual System.Nullable<int> Day { get; set; } 
 
-        /// <summary>Month of year. Must be from 1 to 12.</summary>
+        /// <summary>Month of year. Must be from 1 to 12, or 0 if specifying a date without a month.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
         public virtual System.Nullable<int> Month { get; set; } 
 

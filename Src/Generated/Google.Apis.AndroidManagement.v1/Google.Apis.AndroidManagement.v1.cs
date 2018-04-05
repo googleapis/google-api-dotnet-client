@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180320 (1174)
+ *      <tr><th>API Rev<td>20180326 (1180)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -3362,7 +3362,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> UsbFileTransferDisabled { get; set; } 
 
         /// <summary>Allows admins to toggle whether USB storge is enabled or disabled on user's devices. Next ID:
-        /// 113</summary>
+        /// 114</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbMassStorageEnabled")]
         public virtual System.Nullable<bool> UsbMassStorageEnabled { get; set; } 
 

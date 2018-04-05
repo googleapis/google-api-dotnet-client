@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-management/'>Service User API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180322 (1176)
+ *      <tr><th>API Rev<td>20180323 (1177)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-management/'>
  *              https://cloud.google.com/service-management/</a>
@@ -83,7 +83,7 @@ namespace Google.Apis.ServiceUser.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://content-serviceuser.googleapis.com/"; }
+            get { return "https://serviceuser.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -96,7 +96,7 @@ namespace Google.Apis.ServiceUser.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://content-serviceuser.googleapis.com/batch"; }
+            get { return "https://serviceuser.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>

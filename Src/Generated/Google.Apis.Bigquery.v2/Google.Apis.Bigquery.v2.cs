@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180311 (1165)
+ *      <tr><th>API Rev<td>20180325 (1179)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -4268,22 +4268,22 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class QueryTimelineSample : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Total number of active workers. This does not correspond directly to slot usage. This is the
-        /// largest value observed since the last sample.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activeInputs")]
-        public virtual System.Nullable<long> ActiveInputs { get; set; } 
+        /// <summary>Total number of units currently being processed by workers. This does not correspond directly to
+        /// slot usage. This is the largest value observed since the last sample.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeUnits")]
+        public virtual System.Nullable<long> ActiveUnits { get; set; } 
 
         /// <summary>Total parallel units of work completed by this query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completedInputs")]
-        public virtual System.Nullable<long> CompletedInputs { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("completedUnits")]
+        public virtual System.Nullable<long> CompletedUnits { get; set; } 
 
         /// <summary>Milliseconds elapsed since the start of query execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elapsedMs")]
         public virtual System.Nullable<long> ElapsedMs { get; set; } 
 
         /// <summary>Total parallel units of work remaining for the active stages.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pendingInputs")]
-        public virtual System.Nullable<long> PendingInputs { get; set; } 
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingUnits")]
+        public virtual System.Nullable<long> PendingUnits { get; set; } 
 
         /// <summary>Cumulative slot-ms consumed by the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSlotMs")]

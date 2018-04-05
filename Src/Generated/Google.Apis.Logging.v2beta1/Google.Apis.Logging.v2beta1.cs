@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180226 (1152)
+ *      <tr><th>API Rev<td>20180326 (1180)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -2458,9 +2458,9 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("receiveTimestamp")]
         public virtual object ReceiveTimestamp { get; set; } 
 
-        /// <summary>Required. The monitored resource associated with this log entry. Example: a log entry that reports
-        /// a database error would be associated with the monitored resource designating the particular database that
-        /// reported the error.</summary>
+        /// <summary>Required. The primary monitored resource associated with this log entry. Example: a log entry that
+        /// reports a database error would be associated with the monitored resource designating the particular database
+        /// that reported the error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual MonitoredResource Resource { get; set; } 
 
