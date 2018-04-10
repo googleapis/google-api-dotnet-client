@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>Cloud Container Builder API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180404 (1189)
+ *      <tr><th>API Rev<td>20180409 (1194)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-builder/docs/'>
  *              https://cloud.google.com/container-builder/docs/</a>
@@ -1643,6 +1643,27 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>Path globs used to match files in the build's workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; } 
+
+        /// <summary>Stores timing information for pushing all artifact objects. @OutputOnly</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timing")]
+        public virtual TimeSpan Timing { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>An artifact that was uploaded during a build. This is a single record in the artifact manifest JSON
+    /// file.</summary>
+    public class ArtifactResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file hash of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileHash")]
+        public virtual System.Collections.Generic.IList<FileHashes> FileHash { get; set; } 
+
+        /// <summary>The path of an artifact in a Google Cloud Storage bucket, with the generation number. For example,
+        /// `gs://mybucket/path/to/output.jar#generation`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

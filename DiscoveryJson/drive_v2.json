@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/OTL9p0QQB985VjHeO9wmpdlhJIs\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/n6L7I7T7JqUooJchg84pjB1v3cs\"",
  "discoveryVersion": "v1",
  "id": "drive:v2",
  "name": "drive",
  "version": "v2",
- "revision": "20180323",
+ "revision": "20180330",
  "title": "Drive API",
  "description": "Manages files in Drive including uploading, downloading, searching, detecting changes, and updating sharing permissions.",
  "ownerDomain": "google.com",
@@ -1775,7 +1775,12 @@
     },
     "key": {
      "type": "string",
-     "description": "The key of this property."
+     "description": "The key of this property.",
+     "annotations": {
+      "required": [
+       "drive.properties.insert"
+      ]
+     }
     },
     "kind": {
      "type": "string",
@@ -1792,7 +1797,7 @@
     },
     "visibility": {
      "type": "string",
-     "description": "The visibility of this property."
+     "description": "The visibility of this property. Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE)"
     }
    }
   },
@@ -4386,7 +4391,7 @@
      "id": "drive.properties.patch",
      "path": "files/{fileId}/properties/{propertyKey}",
      "httpMethod": "PATCH",
-     "description": "Updates a property, or adds it if it doesn't exist. This method supports patch semantics.",
+     "description": "Updates a property. This method supports patch semantics.",
      "parameters": {
       "fileId": {
        "type": "string",
@@ -4402,7 +4407,7 @@
       },
       "visibility": {
        "type": "string",
-       "description": "The visibility of the property.",
+       "description": "The visibility of the property. Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE)",
        "default": "private",
        "location": "query"
       }
@@ -4428,7 +4433,7 @@
      "id": "drive.properties.update",
      "path": "files/{fileId}/properties/{propertyKey}",
      "httpMethod": "PUT",
-     "description": "Updates a property, or adds it if it doesn't exist.",
+     "description": "Updates a property.",
      "parameters": {
       "fileId": {
        "type": "string",
@@ -4444,7 +4449,7 @@
       },
       "visibility": {
        "type": "string",
-       "description": "The visibility of the property.",
+       "description": "The visibility of the property. Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE)",
        "default": "private",
        "location": "query"
       }

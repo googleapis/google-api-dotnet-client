@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180323 (1177)
+ *      <tr><th>API Rev<td>20180330 (1184)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -6103,7 +6103,7 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Updates a property, or adds it if it doesn't exist. This method supports patch semantics.</summary>
+        /// <summary>Updates a property. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="propertyKey">The key of the
@@ -6113,7 +6113,7 @@ namespace Google.Apis.Drive.v2
             return new PatchRequest(service, body, fileId, propertyKey);
         }
 
-        /// <summary>Updates a property, or adds it if it doesn't exist. This method supports patch semantics.</summary>
+        /// <summary>Updates a property. This method supports patch semantics.</summary>
         public class PatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Property>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -6135,7 +6135,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("propertyKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PropertyKey { get; private set; }
 
-            /// <summary>The visibility of the property.</summary>
+            /// <summary>The visibility of the property. Allowed values are PRIVATE and PUBLIC. (Default:
+            /// PRIVATE)</summary>
             /// [default: private]
             [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Visibility { get; set; }
@@ -6201,7 +6202,7 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Updates a property, or adds it if it doesn't exist.</summary>
+        /// <summary>Updates a property.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="propertyKey">The key of the
@@ -6211,7 +6212,7 @@ namespace Google.Apis.Drive.v2
             return new UpdateRequest(service, body, fileId, propertyKey);
         }
 
-        /// <summary>Updates a property, or adds it if it doesn't exist.</summary>
+        /// <summary>Updates a property.</summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Property>
         {
             /// <summary>Constructs a new Update request.</summary>
@@ -6233,7 +6234,8 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("propertyKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string PropertyKey { get; private set; }
 
-            /// <summary>The visibility of the property.</summary>
+            /// <summary>The visibility of the property. Allowed values are PRIVATE and PUBLIC. (Default:
+            /// PRIVATE)</summary>
             /// [default: private]
             [Google.Apis.Util.RequestParameterAttribute("visibility", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Visibility { get; set; }
@@ -9848,7 +9850,8 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; } 
 
-        /// <summary>The visibility of this property.</summary>
+        /// <summary>The visibility of this property. Allowed values are PRIVATE and PUBLIC. (Default:
+        /// PRIVATE)</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; } 
 

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/pZyXISvfodVzorQpGHmIl5L61w8\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/gKPG9b-80SQPfMqO3C9ZpeSPSzg\"",
  "discoveryVersion": "v1",
  "id": "analytics:v3",
  "name": "analytics",
  "version": "v3",
- "revision": "20180309",
+ "revision": "20180403",
  "title": "Google Analytics API",
  "description": "Views and manages your Google Analytics data.",
  "ownerDomain": "google.com",
@@ -307,22 +307,16 @@
     "accountSettings": {
      "type": "object",
      "properties": {
-      "admobReporting": {
+      "shareAnonymouslyWithOthers": {
        "type": "boolean"
       },
-      "sharingWithGoogleAnySales": {
+      "shareWithGoogleProducts": {
        "type": "boolean"
       },
-      "sharingWithGoogleProducts": {
+      "shareWithSpecialists": {
        "type": "boolean"
       },
-      "sharingWithGoogleSales": {
-       "type": "boolean"
-      },
-      "sharingWithGoogleSupport": {
-       "type": "boolean"
-      },
-      "sharingWithOthers": {
+      "shareWithSupport": {
        "type": "boolean"
       }
      }
@@ -378,22 +372,16 @@
     "accountSettings": {
      "type": "object",
      "properties": {
-      "admobReporting": {
+      "shareAnonymouslyWithOthers": {
        "type": "boolean"
       },
-      "sharingWithGoogleAnySales": {
+      "shareWithGoogleProducts": {
        "type": "boolean"
       },
-      "sharingWithGoogleProducts": {
+      "shareWithSpecialists": {
        "type": "boolean"
       },
-      "sharingWithGoogleSales": {
-       "type": "boolean"
-      },
-      "sharingWithGoogleSupport": {
-       "type": "boolean"
-      },
-      "sharingWithOthers": {
+      "shareWithSupport": {
        "type": "boolean"
       }
      }

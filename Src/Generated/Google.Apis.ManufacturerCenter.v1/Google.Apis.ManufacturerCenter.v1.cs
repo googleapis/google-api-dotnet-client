@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/manufacturers/'>Manufacturer Center API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180316 (1170)
+ *      <tr><th>API Rev<td>20180404 (1189)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/manufacturers/'>
  *              https://developers.google.com/manufacturers/</a>
@@ -82,7 +82,7 @@ namespace Google.Apis.ManufacturerCenter.v1
         /// <summary>Gets the service base URI.</summary>
         public override string BaseUri
         {
-            get { return "https://content-manufacturers.googleapis.com/"; }
+            get { return "https://manufacturers.googleapis.com/"; }
         }
 
         /// <summary>Gets the service base path.</summary>
@@ -95,7 +95,7 @@ namespace Google.Apis.ManufacturerCenter.v1
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri
         {
-            get { return "https://content-manufacturers.googleapis.com/batch"; }
+            get { return "https://manufacturers.googleapis.com/batch"; }
         }
 
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
@@ -536,6 +536,31 @@ namespace Google.Apis.ManufacturerCenter.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The information to be included in the response. Only sections listed here will be returned.
+                ///
+                /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned. This behavior is temporary
+                /// and will be removed once all clients are ready or at the latest end of July 2018. After that no
+                /// sections will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<IncludeEnum> Include { get; set; }
+
+                /// <summary>The information to be included in the response. Only sections listed here will be returned.
+                ///
+                /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned. This behavior is temporary
+                /// and will be removed once all clients are ready or at the latest end of July 2018. After that no
+                /// sections will be returned.</summary>
+                public enum IncludeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
+                    UNKNOWN,
+                    [Google.Apis.Util.StringValueAttribute("ATTRIBUTES")]
+                    ATTRIBUTES,
+                    [Google.Apis.Util.StringValueAttribute("ISSUES")]
+                    ISSUES,
+                    [Google.Apis.Util.StringValueAttribute("DESTINATION_STATUSES")]
+                    DESTINATIONSTATUSES,
+                }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -578,6 +603,15 @@ namespace Google.Apis.ManufacturerCenter.v1
                             DefaultValue = null,
                             Pattern = @"^[^/]+$",
                         });
+                    RequestParameters.Add(
+                        "include", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "include",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
                 }
 
             }
@@ -608,6 +642,31 @@ namespace Google.Apis.ManufacturerCenter.v1
                 /// `account_id` - The ID of the Manufacturer Center account.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
+
+                /// <summary>The information to be included in the response. Only sections listed here will be returned.
+                ///
+                /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned. This behavior is temporary
+                /// and will be removed once all clients are ready or at the latest end of July 2018. After that no
+                /// sections will be returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("include", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<IncludeEnum> Include { get; set; }
+
+                /// <summary>The information to be included in the response. Only sections listed here will be returned.
+                ///
+                /// If this parameter is not specified, ATTRIBUTES and ISSUES are returned. This behavior is temporary
+                /// and will be removed once all clients are ready or at the latest end of July 2018. After that no
+                /// sections will be returned.</summary>
+                public enum IncludeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("UNKNOWN")]
+                    UNKNOWN,
+                    [Google.Apis.Util.StringValueAttribute("ATTRIBUTES")]
+                    ATTRIBUTES,
+                    [Google.Apis.Util.StringValueAttribute("ISSUES")]
+                    ISSUES,
+                    [Google.Apis.Util.StringValueAttribute("DESTINATION_STATUSES")]
+                    DESTINATIONSTATUSES,
+                }
 
                 /// <summary>The token returned by the previous request.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -649,6 +708,15 @@ namespace Google.Apis.ManufacturerCenter.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^accounts/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "include", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "include",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
@@ -847,6 +915,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disclosureDate")]
         public virtual string DisclosureDate { get; set; } 
 
+        /// <summary>A list of excluded destinations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedDestination")]
+        public virtual System.Collections.Generic.IList<string> ExcludedDestination { get; set; } 
+
         /// <summary>The rich format description of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#featuredesc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureDescription")]
@@ -876,6 +948,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// https://support.google.com/manufacturers/answer/6124116#image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageLink")]
         public virtual Image ImageLink { get; set; } 
+
+        /// <summary>A list of included destinations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includedDestination")]
+        public virtual System.Collections.Generic.IList<string> IncludedDestination { get; set; } 
 
         /// <summary>The item group id of the product. For more information, see
         /// https://support.google.com/manufacturers/answer/6124116#itemgroupid.</summary>
@@ -1007,6 +1083,21 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>The destination status.</summary>
+    public class DestinationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; } 
+
+        /// <summary>The status of the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A
     /// typical example is to use it as the request or the response type of an API method. For instance:
     ///
@@ -1071,6 +1162,14 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
+        /// <summary>The destination this issue applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; } 
+
+        /// <summary>What needs to happen to resolve the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
+        public virtual string Resolution { get; set; } 
+
         /// <summary>The severity of the issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
         public virtual string Severity { get; set; } 
@@ -1078,6 +1177,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// <summary>The timestamp when this issue appeared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
+
+        /// <summary>Short title describing the nature of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
 
         /// <summary>The server-generated type of the issue, for example, “INCORRECT_TEXT_FORMATTING”,
         /// “IMAGE_NOT_SERVEABLE”, etc.</summary>
@@ -1120,27 +1223,40 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
     /// <summary>Product data.</summary>
     public class Product : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The content language of the product as a two-letter ISO 639-1 language code (for example, en).
-        /// @OutputOnly</summary>
+        /// <summary>Attributes of the product uploaded to the Manufacturer Center.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual Attributes Attributes { get; set; } 
+
+        /// <summary>The content language of the product as a two-letter ISO 639-1 language code (for example,
+        /// en).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentLanguage")]
         public virtual string ContentLanguage { get; set; } 
 
+        /// <summary>The status of the destinations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationStatuses")]
+        public virtual System.Collections.Generic.IList<DestinationStatus> DestinationStatuses { get; set; } 
+
         /// <summary>Final attributes of the product. The final attributes are obtained by overriding the uploaded
         /// attributes with the manually provided and deleted attributes. Google systems only process, evaluate, review,
-        /// and/or use final attributes. @OutputOnly</summary>
+        /// and/or use final attributes.
+        ///
+        /// This field is deprecated and will be removed end of July 2018. Please use attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalAttributes")]
         public virtual Attributes FinalAttributes { get; set; } 
 
-        /// <summary>A server-generated list of issues associated with the product. @OutputOnly</summary>
+        /// <summary>A server-generated list of issues associated with the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issues")]
         public virtual System.Collections.Generic.IList<Issue> Issues { get; set; } 
 
         /// <summary>Names of the attributes of the product deleted manually via the Manufacturer Center UI.
-        /// @OutputOnly</summary>
+        ///
+        /// This field is deprecated and will be removed end of July 2018. Please use attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manuallyDeletedAttributes")]
         public virtual System.Collections.Generic.IList<string> ManuallyDeletedAttributes { get; set; } 
 
-        /// <summary>Attributes of the product provided manually via the Manufacturer Center UI. @OutputOnly</summary>
+        /// <summary>Attributes of the product provided manually via the Manufacturer Center UI.
+        ///
+        /// This field is deprecated and will be removed end of July 2018. Please use attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manuallyProvidedAttributes")]
         public virtual Attributes ManuallyProvidedAttributes { get; set; } 
 
@@ -1152,26 +1268,28 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         /// example, en).
         ///
         /// `product_id`     -   The ID of the product. For more information, see
-        /// https://support.google.com/manufacturers/answer/6124116#id. @OutputOnly</summary>
+        /// https://support.google.com/manufacturers/answer/6124116#id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
         /// <summary>Parent ID in the format `accounts/{account_id}`.
         ///
-        /// `account_id` - The ID of the Manufacturer Center account. @OutputOnly</summary>
+        /// `account_id` - The ID of the Manufacturer Center account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; } 
 
         /// <summary>The ID of the product. For more information, see
-        /// https://support.google.com/manufacturers/answer/6124116#id. @OutputOnly</summary>
+        /// https://support.google.com/manufacturers/answer/6124116#id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productId")]
         public virtual string ProductId { get; set; } 
 
-        /// <summary>The target country of the product as a CLDR territory code (for example, US). @OutputOnly</summary>
+        /// <summary>The target country of the product as a CLDR territory code (for example, US).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetCountry")]
         public virtual string TargetCountry { get; set; } 
 
-        /// <summary>Attributes of the product uploaded via the Manufacturer Center API or via feeds.</summary>
+        /// <summary>Attributes of the product uploaded via the Manufacturer Center API or via feeds.
+        ///
+        /// This field is deprecated and will be removed end of July 2018. Please use attributes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadedAttributes")]
         public virtual Attributes UploadedAttributes { get; set; } 
 

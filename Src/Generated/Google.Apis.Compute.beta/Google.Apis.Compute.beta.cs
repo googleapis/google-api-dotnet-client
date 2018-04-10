@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180312 (1166)
+ *      <tr><th>API Rev<td>20180323 (1177)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -57264,6 +57264,11 @@ namespace Google.Apis.Compute.beta.Data
         /// versioned_expr is specified and cannot be specified if versioned_expr is not specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual SecurityPolicyRuleMatcherConfig Config { get; set; } 
+
+        /// <summary>User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as
+        /// origin.ip, source.region_code and contents in the request header.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expr")]
+        public virtual Expr Expr { get; set; } 
 
         /// <summary>CIDR IP address range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcIpRanges")]

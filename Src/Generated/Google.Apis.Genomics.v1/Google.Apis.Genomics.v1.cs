@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180322 (1176)
+ *      <tr><th>API Rev<td>20180404 (1189)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -1241,20 +1241,14 @@ namespace Google.Apis.Genomics.v1
         }
 
 
-        /// <summary>Creates a new call set.
-        ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Creates a new call set.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Genomics.v1.Data.CallSet body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new call set.
-        ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Creates a new call set.</summary>
         public class CreateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.CallSet>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1300,20 +1294,14 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Deletes a call set.
-        ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Deletes a call set.</summary>
         /// <param name="callSetId">The ID of the call set to be deleted.</param>
         public virtual DeleteRequest Delete(string callSetId)
         {
             return new DeleteRequest(service, callSetId);
         }
 
-        /// <summary>Deletes a call set.
-        ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Deletes a call set.</summary>
         public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1366,20 +1354,14 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Gets a call set by ID.
-        ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a call set by ID.</summary>
         /// <param name="callSetId">The ID of the call set.</param>
         public virtual GetRequest Get(string callSetId)
         {
             return new GetRequest(service, callSetId);
         }
 
-        /// <summary>Gets a call set by ID.
-        ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a call set by ID.</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.CallSet>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1434,9 +1416,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Updates a call set.
         ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="callSetId">The ID of the call set to be updated.</param>
@@ -1446,9 +1425,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Updates a call set.
-        ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// This method supports patch semantics.</summary>
         public class PatchRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.CallSet>
@@ -1526,9 +1502,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Gets a list of call sets matching the criteria.
         ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Implements [GlobalAllianceApi.searchCallSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resource
         /// s/avro/variantmethods.avdl#L178).</summary>
         /// <param name="body">The body of the request.</param>
@@ -1538,9 +1511,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Gets a list of call sets matching the criteria.
-        ///
-        /// For the definitions of call sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Implements [GlobalAllianceApi.searchCallSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resource
         /// s/avro/variantmethods.avdl#L178).</summary>
@@ -1606,20 +1576,14 @@ namespace Google.Apis.Genomics.v1
         }
 
 
-        /// <summary>Creates a new dataset.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Creates a new dataset.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Genomics.v1.Data.Dataset body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new dataset.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Creates a new dataset.</summary>
         public class CreateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Dataset>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -1667,10 +1631,7 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Deletes a dataset and all of its contents (all read group sets, reference sets, variant sets, call
         /// sets, annotation sets, etc.) This is reversible (up to one week after the deletion) via the
-        /// datasets.undelete operation.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// datasets.undelete operation.</summary>
         /// <param name="datasetId">The ID of the dataset to be deleted.</param>
         public virtual DeleteRequest Delete(string datasetId)
         {
@@ -1679,10 +1640,7 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Deletes a dataset and all of its contents (all read group sets, reference sets, variant sets, call
         /// sets, annotation sets, etc.) This is reversible (up to one week after the deletion) via the
-        /// datasets.undelete operation.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// datasets.undelete operation.</summary>
         public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -1735,20 +1693,14 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Gets a dataset by ID.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a dataset by ID.</summary>
         /// <param name="datasetId">The ID of the dataset.</param>
         public virtual GetRequest Get(string datasetId)
         {
             return new GetRequest(service, datasetId);
         }
 
-        /// <summary>Gets a dataset by ID.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a dataset by ID.</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Dataset>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -1804,10 +1756,7 @@ namespace Google.Apis.Genomics.v1
         /// <summary>Gets the access control policy for the dataset. This is empty if the policy or resource does not
         /// exist.
         ///
-        /// See Getting a Policy for more information.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// See Getting a Policy for more information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which policy is being specified. Format is
         /// `datasets/`.</param>
@@ -1819,10 +1768,7 @@ namespace Google.Apis.Genomics.v1
         /// <summary>Gets the access control policy for the dataset. This is empty if the policy or resource does not
         /// exist.
         ///
-        /// See Getting a Policy for more information.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// See Getting a Policy for more information.</summary>
         public class GetIamPolicyRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Policy>
         {
             /// <summary>Constructs a new GetIamPolicy request.</summary>
@@ -1882,19 +1828,13 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Lists datasets within a project.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Lists datasets within a project.</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Lists datasets within a project.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Lists datasets within a project.</summary>
         public class ListRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.ListDatasetsResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -1976,9 +1916,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Updates a dataset.
         ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="datasetId">The ID of the dataset to be updated.</param>
@@ -1988,9 +1925,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Updates a dataset.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// This method supports patch semantics.</summary>
         public class PatchRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Dataset>
@@ -2068,9 +2002,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Sets the access control policy on the specified dataset. Replaces any existing policy.
         ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// See Setting a Policy for more information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which policy is being specified. Format is
@@ -2081,9 +2012,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Sets the access control policy on the specified dataset. Replaces any existing policy.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// See Setting a Policy for more information.</summary>
         public class SetIamPolicyRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Policy>
@@ -2146,10 +2074,7 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource. See Testing Permissions for more
-        /// information.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// information.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="resource">REQUIRED: The resource for which policy is being specified. Format is
         /// `datasets/`.</param>
@@ -2159,10 +2084,7 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Returns permissions that a caller has on the specified resource. See Testing Permissions for more
-        /// information.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// information.</summary>
         public class TestIamPermissionsRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.TestIamPermissionsResponse>
         {
             /// <summary>Constructs a new TestIamPermissions request.</summary>
@@ -2224,9 +2146,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Undeletes a dataset by restoring a dataset which was deleted via this API.
         ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// This operation is only possible for a week after the deletion occurred.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="datasetId">The ID of the dataset to be undeleted.</param>
@@ -2236,9 +2155,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Undeletes a dataset by restoring a dataset which was deleted via this API.
-        ///
-        /// For the definitions of datasets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// This operation is only possible for a week after the deletion occurred.</summary>
         public class UndeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Dataset>
@@ -2476,6 +2392,15 @@ namespace Google.Apis.Genomics.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
+            /// 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
             ///
             /// * createTime The time this job was created * events The set of event (names) that have occurred while
@@ -2497,15 +2422,6 @@ namespace Google.Apis.Genomics.v1
             /// = *` * `projectId = my-project AND labels.color = red`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
-            /// 2048.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2541,15 +2457,6 @@ namespace Google.Apis.Genomics.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2562,6 +2469,15 @@ namespace Google.Apis.Genomics.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2616,9 +2532,6 @@ namespace Google.Apis.Genomics.v1
             /// a reference sequence. Each bucket summarizes coverage information across its corresponding genomic
             /// range.
             ///
-            /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-            /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-            ///
             /// Coverage is defined as the number of reads which are aligned to a given base in the reference sequence.
             /// Coverage buckets are available at several precomputed bucket widths, enabling retrieval of various
             /// coverage 'zoom levels'. The caller must have READ permissions for the target read group set.</summary>
@@ -2631,9 +2544,6 @@ namespace Google.Apis.Genomics.v1
             /// <summary>Lists fixed width coverage buckets for a read group set, each of which correspond to a range of
             /// a reference sequence. Each bucket summarizes coverage information across its corresponding genomic
             /// range.
-            ///
-            /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-            /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
             ///
             /// Coverage is defined as the number of reads which are aligned to a given base in the reference sequence.
             /// Coverage buckets are available at several precomputed bucket widths, enabling retrieval of various
@@ -2780,10 +2690,7 @@ namespace Google.Apis.Genomics.v1
             }
         }
 
-        /// <summary>Deletes a read group set.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Deletes a read group set.</summary>
         /// <param name="readGroupSetId">The ID of the read group set to be deleted. The caller must have WRITE permissions to
         /// the dataset associated with this read group set.</param>
         public virtual DeleteRequest Delete(string readGroupSetId)
@@ -2791,10 +2698,7 @@ namespace Google.Apis.Genomics.v1
             return new DeleteRequest(service, readGroupSetId);
         }
 
-        /// <summary>Deletes a read group set.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Deletes a read group set.</summary>
         public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -2850,9 +2754,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Exports a read group set to a BAM file in Google Cloud Storage.
         ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Note that currently there may be some differences between exported BAM files and the original BAM file at
         /// the time of import. See ImportReadGroupSets for caveats.</summary>
         /// <param name="body">The body of the request.</param>
@@ -2864,9 +2765,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Exports a read group set to a BAM file in Google Cloud Storage.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Note that currently there may be some differences between exported BAM files and the original BAM file at
         /// the time of import. See ImportReadGroupSets for caveats.</summary>
@@ -2930,20 +2828,14 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Gets a read group set by ID.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a read group set by ID.</summary>
         /// <param name="readGroupSetId">The ID of the read group set.</param>
         public virtual GetRequest Get(string readGroupSetId)
         {
             return new GetRequest(service, readGroupSetId);
         }
 
-        /// <summary>Gets a read group set by ID.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a read group set by ID.</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.ReadGroupSet>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -2998,9 +2890,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Creates read group sets by asynchronously importing the provided information.
         ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// The caller must have WRITE permissions to the dataset.
         ///
         /// ## Notes on [BAM](https://samtools.github.io/hts-specs/SAMv1.pdf) import
@@ -3017,9 +2906,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Creates read group sets by asynchronously importing the provided information.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// The caller must have WRITE permissions to the dataset.
         ///
@@ -3077,9 +2963,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Updates a read group set.
         ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="readGroupSetId">The ID of the read group set to be updated. The caller must have WRITE permissions to
@@ -3090,9 +2973,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Updates a read group set.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// This method supports patch semantics.</summary>
         public class PatchRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.ReadGroupSet>
@@ -3174,9 +3054,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Searches for read group sets matching the criteria.
         ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Implements [GlobalAllianceApi.searchReadGroupSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/res
         /// ources/avro/readmethods.avdl#L135).</summary>
         /// <param name="body">The body of the request.</param>
@@ -3186,9 +3063,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Searches for read group sets matching the criteria.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Implements [GlobalAllianceApi.searchReadGroupSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/res
         /// ources/avro/readmethods.avdl#L135).</summary>
@@ -3256,9 +3130,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Gets a list of reads for one or more read group sets.
         ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Reads search operates over a genomic coordinate space of reference sequence & position defined over the
         /// reference sequences to which the requested read group sets are aligned.
         ///
@@ -3280,9 +3151,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Gets a list of reads for one or more read group sets.
-        ///
-        /// For the definitions of read group sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Reads search operates over a genomic coordinate space of reference sequence & position defined over the
         /// reference sequences to which the requested read group sets are aligned.
@@ -3386,9 +3254,6 @@ namespace Google.Apis.Genomics.v1
 
             /// <summary>Lists the bases in a reference, optionally restricted to a range.
             ///
-            /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-            /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-            ///
             /// Implements [GlobalAllianceApi.getReferenceBases](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/r
             /// esources/avro/referencemethods.avdl#L221).</summary>
             /// <param name="referenceId">The ID of the reference.</param>
@@ -3398,9 +3263,6 @@ namespace Google.Apis.Genomics.v1
             }
 
             /// <summary>Lists the bases in a reference, optionally restricted to a range.
-            ///
-            /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-            /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
             ///
             /// Implements [GlobalAllianceApi.getReferenceBases](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/r
             /// esources/avro/referencemethods.avdl#L221).</summary>
@@ -3515,9 +3377,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Gets a reference.
         ///
-        /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Implements [GlobalAllianceApi.getReference](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/
         /// avro/referencemethods.avdl#L158).</summary>
         /// <param name="referenceId">The ID of the reference.</param>
@@ -3527,9 +3386,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Gets a reference.
-        ///
-        /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Implements [GlobalAllianceApi.getReference](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resources/
         /// avro/referencemethods.avdl#L158).</summary>
@@ -3587,9 +3443,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Searches for references which match the given criteria.
         ///
-        /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Implements [GlobalAllianceApi.searchReferences](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resour
         /// ces/avro/referencemethods.avdl#L146).</summary>
         /// <param name="body">The body of the request.</param>
@@ -3599,9 +3452,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Searches for references which match the given criteria.
-        ///
-        /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Implements [GlobalAllianceApi.searchReferences](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resour
         /// ces/avro/referencemethods.avdl#L146).</summary>
@@ -3669,9 +3519,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Gets a reference set.
         ///
-        /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Implements [GlobalAllianceApi.getReferenceSet](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resourc
         /// es/avro/referencemethods.avdl#L83).</summary>
         /// <param name="referenceSetId">The ID of the reference set.</param>
@@ -3681,9 +3528,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Gets a reference set.
-        ///
-        /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Implements [GlobalAllianceApi.getReferenceSet](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resourc
         /// es/avro/referencemethods.avdl#L83).</summary>
@@ -3741,9 +3585,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Searches for reference sets which match the given criteria.
         ///
-        /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Implements [GlobalAllianceApi.searchReferenceSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/res
         /// ources/avro/referencemethods.avdl#L71)</summary>
         /// <param name="body">The body of the request.</param>
@@ -3753,9 +3594,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Searches for reference sets which match the given criteria.
-        ///
-        /// For the definitions of references and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Implements [GlobalAllianceApi.searchReferenceSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/res
         /// ources/avro/referencemethods.avdl#L71)</summary>
@@ -3821,20 +3659,14 @@ namespace Google.Apis.Genomics.v1
         }
 
 
-        /// <summary>Creates a new variant.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Creates a new variant.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Genomics.v1.Data.Variant body)
         {
             return new CreateRequest(service, body);
         }
 
-        /// <summary>Creates a new variant.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Creates a new variant.</summary>
         public class CreateRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Variant>
         {
             /// <summary>Constructs a new Create request.</summary>
@@ -3880,20 +3712,14 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Deletes a variant.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Deletes a variant.</summary>
         /// <param name="variantId">The ID of the variant to be deleted.</param>
         public virtual DeleteRequest Delete(string variantId)
         {
             return new DeleteRequest(service, variantId);
         }
 
-        /// <summary>Deletes a variant.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Deletes a variant.</summary>
         public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -3946,20 +3772,14 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Gets a variant by ID.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a variant by ID.</summary>
         /// <param name="variantId">The ID of the variant.</param>
         public virtual GetRequest Get(string variantId)
         {
             return new GetRequest(service, variantId);
         }
 
-        /// <summary>Gets a variant by ID.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a variant by ID.</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Variant>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4014,9 +3834,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Creates variant data by asynchronously importing the provided information.
         ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// The variants for import will be merged with any existing variant that matches its reference sequence, start,
         /// end, reference bases, and alternative bases. If no such variant exists, a new one will be created.
         ///
@@ -4031,9 +3848,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Creates variant data by asynchronously importing the provided information.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// The variants for import will be merged with any existing variant that matches its reference sequence, start,
         /// end, reference bases, and alternative bases. If no such variant exists, a new one will be created.
@@ -4089,9 +3903,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Merges the given variants with existing variants.
         ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Each variant will be merged with an existing variant that matches its reference sequence, start, end,
         /// reference bases, and alternative bases. If no such variant exists, a new one will be created.
         ///
@@ -4125,9 +3936,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Merges the given variants with existing variants.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Each variant will be merged with an existing variant that matches its reference sequence, start, end,
         /// reference bases, and alternative bases. If no such variant exists, a new one will be created.
@@ -4202,9 +4010,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Updates a variant.
         ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// This method supports patch semantics. Returns the modified variant without its calls.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="variantId">The ID of the variant to be updated.</param>
@@ -4214,9 +4019,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Updates a variant.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// This method supports patch semantics. Returns the modified variant without its calls.</summary>
         public class PatchRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Variant>
@@ -4295,9 +4097,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Gets a list of variants matching the criteria.
         ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Implements [GlobalAllianceApi.searchVariants](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resource
         /// s/avro/variantmethods.avdl#L126).</summary>
         /// <param name="body">The body of the request.</param>
@@ -4307,9 +4106,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Gets a list of variants matching the criteria.
-        ///
-        /// For the definitions of variants and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Implements [GlobalAllianceApi.searchVariants](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resource
         /// s/avro/variantmethods.avdl#L126).</summary>
@@ -4377,9 +4173,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Creates a new variant set.
         ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// The provided variant set must have a valid `datasetId` set - all other fields are optional. Note that the
         /// `id` field will be ignored, as this is assigned by the server.</summary>
         /// <param name="body">The body of the request.</param>
@@ -4389,9 +4182,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Creates a new variant set.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// The provided variant set must have a valid `datasetId` set - all other fields are optional. Note that the
         /// `id` field will be ignored, as this is assigned by the server.</summary>
@@ -4440,20 +4230,16 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not reversible.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not
+        /// reversible.</summary>
         /// <param name="variantSetId">The ID of the variant set to be deleted.</param>
         public virtual DeleteRequest Delete(string variantSetId)
         {
             return new DeleteRequest(service, variantSetId);
         }
 
-        /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not reversible.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Deletes a variant set including all variants, call sets, and calls within. This is not
+        /// reversible.</summary>
         public class DeleteRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Empty>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -4506,10 +4292,7 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Exports variant set data to an external destination.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Exports variant set data to an external destination.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="variantSetId">Required. The ID of the variant set that contains variant data which should be exported.
         /// The caller must have READ access to this variant set.</param>
@@ -4518,10 +4301,7 @@ namespace Google.Apis.Genomics.v1
             return new ExportRequest(service, body, variantSetId);
         }
 
-        /// <summary>Exports variant set data to an external destination.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Exports variant set data to an external destination.</summary>
         public class ExportRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.Operation>
         {
             /// <summary>Constructs a new Export request.</summary>
@@ -4582,20 +4362,14 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Gets a variant set by ID.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a variant set by ID.</summary>
         /// <param name="variantSetId">Required. The ID of the variant set.</param>
         public virtual GetRequest Get(string variantSetId)
         {
             return new GetRequest(service, variantSetId);
         }
 
-        /// <summary>Gets a variant set by ID.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Gets a variant set by ID.</summary>
         public class GetRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.VariantSet>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4648,10 +4422,7 @@ namespace Google.Apis.Genomics.v1
 
         }
 
-        /// <summary>Updates a variant set using patch semantics.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Updates a variant set using patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="variantSetId">The ID of the variant to be updated (must already exist).</param>
         public virtual PatchRequest Patch(Google.Apis.Genomics.v1.Data.VariantSet body, string variantSetId)
@@ -4659,10 +4430,7 @@ namespace Google.Apis.Genomics.v1
             return new PatchRequest(service, body, variantSetId);
         }
 
-        /// <summary>Updates a variant set using patch semantics.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)</summary>
+        /// <summary>Updates a variant set using patch semantics.</summary>
         public class PatchRequest : GenomicsBaseServiceRequest<Google.Apis.Genomics.v1.Data.VariantSet>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -4741,9 +4509,6 @@ namespace Google.Apis.Genomics.v1
 
         /// <summary>Returns a list of all variant sets matching search criteria.
         ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
-        ///
         /// Implements [GlobalAllianceApi.searchVariantSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resou
         /// rces/avro/variantmethods.avdl#L49).</summary>
         /// <param name="body">The body of the request.</param>
@@ -4753,9 +4518,6 @@ namespace Google.Apis.Genomics.v1
         }
 
         /// <summary>Returns a list of all variant sets matching search criteria.
-        ///
-        /// For the definitions of variant sets and other genomics resources, see [Fundamentals of Google
-        /// Genomics](https://cloud.google.com/genomics/fundamentals-of-google-genomics)
         ///
         /// Implements [GlobalAllianceApi.searchVariantSets](https://github.com/ga4gh/schemas/blob/v0.5.1/src/main/resou
         /// rces/avro/variantmethods.avdl#L49).</summary>
@@ -4976,10 +4738,8 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A call set is a collection of variant calls, typically for one sample. It belongs to a variant set.
-    ///
-    /// For more genomics resource definitions, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
-    /// /fundamentals-of-google-genomics)</summary>
+    /// <summary>A call set is a collection of variant calls, typically for one sample. It belongs to a variant
+    /// set.</summary>
     public class CallSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The date this call set was created in milliseconds from the epoch.</summary>
@@ -5156,10 +4916,7 @@ namespace Google.Apis.Genomics.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A Dataset is a collection of genomic data.
-    ///
-    /// For more genomics resource definitions, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
-    /// /fundamentals-of-google-genomics)</summary>
+    /// <summary>A Dataset is a collection of genomic data.</summary>
     public class Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The time this dataset was created, in seconds from the epoch.</summary>
@@ -5829,9 +5586,6 @@ namespace Google.Apis.Genomics.v1.Data
     /// sequencer). A read is equivalent to a line in a SAM file. A read belongs to exactly one read group and exactly
     /// one read group set.
     ///
-    /// For more genomics resource definitions, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
-    /// /fundamentals-of-google-genomics)
-    ///
     /// ### Reverse-stranded reads
     ///
     /// Mapped reads (reads having a non-null `alignment`) can be aligned to either the forward or the reverse strand of
@@ -6020,10 +5774,7 @@ namespace Google.Apis.Genomics.v1.Data
     /// one way.
     ///
     /// * A read group set belongs to one dataset. * A read group belongs to one read group set. * A read belongs to one
-    /// read group.
-    ///
-    /// For more genomics resource definitions, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
-    /// /fundamentals-of-google-genomics)</summary>
+    /// read group.</summary>
     public class ReadGroupSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The dataset to which this read group set belongs.</summary>
@@ -6061,10 +5812,7 @@ namespace Google.Apis.Genomics.v1.Data
 
     /// <summary>A reference is a canonical assembled DNA sequence, intended to act as a reference coordinate space for
     /// other genomic annotations. A single reference might represent the human chromosome 1 or mitochandrial DNA, for
-    /// instance. A reference belongs to one or more reference sets.
-    ///
-    /// For more genomics resource definitions, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
-    /// /fundamentals-of-google-genomics)</summary>
+    /// instance. A reference belongs to one or more reference sets.</summary>
     public class Reference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The server-generated reference ID, unique across all references.</summary>
@@ -6120,10 +5868,7 @@ namespace Google.Apis.Genomics.v1.Data
 
     /// <summary>A reference set is a set of references which typically comprise a reference assembly for a species,
     /// such as `GRCh38` which is representative of the human genome. A reference set defines a common coordinate space
-    /// for comparing reference-aligned experimental data. A reference set contains 1 or more references.
-    ///
-    /// For more genomics resource definitions, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
-    /// /fundamentals-of-google-genomics)</summary>
+    /// for comparing reference-aligned experimental data. A reference set contains 1 or more references.</summary>
     public class ReferenceSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Public id of this reference set, such as `GRCh37`.</summary>
@@ -6801,9 +6546,6 @@ namespace Google.Apis.Genomics.v1.Data
     /// <summary>A variant represents a change in DNA sequence relative to a reference sequence. For example, a variant
     /// could represent a SNP or an insertion. Variants belong to a variant set.
     ///
-    /// For more genomics resource definitions, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
-    /// /fundamentals-of-google-genomics)
-    ///
     /// Each of the calls on a variant represent a determination of genotype with respect to that variant. For example,
     /// a call might assign probability of 0.32 to the occurrence of a SNP named rs1234 in a sample named NA12345. A
     /// call belongs to a call set, which contains related calls typically from one sample.</summary>
@@ -6957,10 +6699,7 @@ namespace Google.Apis.Genomics.v1.Data
     }    
 
     /// <summary>A variant set is a collection of call sets and variants. It contains summary statistics of those
-    /// contents. A variant set belongs to a dataset.
-    ///
-    /// For more genomics resource definitions, see [Fundamentals of Google Genomics](https://cloud.google.com/genomics
-    /// /fundamentals-of-google-genomics)</summary>
+    /// contents. A variant set belongs to a dataset.</summary>
     public class VariantSet : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The dataset to which this variant set belongs.</summary>

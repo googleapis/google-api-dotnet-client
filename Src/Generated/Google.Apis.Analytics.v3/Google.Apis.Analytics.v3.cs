@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180309 (1163)
+ *      <tr><th>API Rev<td>20180403 (1188)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -9923,23 +9923,17 @@ namespace Google.Apis.Analytics.v3.Data
 
         public class AccountSettingsData
         {
-            [Newtonsoft.Json.JsonPropertyAttribute("admobReporting")]
-            public virtual System.Nullable<bool> AdmobReporting { get; set; } 
+            [Newtonsoft.Json.JsonPropertyAttribute("shareAnonymouslyWithOthers")]
+            public virtual System.Nullable<bool> ShareAnonymouslyWithOthers { get; set; } 
 
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleAnySales")]
-            public virtual System.Nullable<bool> SharingWithGoogleAnySales { get; set; } 
+            [Newtonsoft.Json.JsonPropertyAttribute("shareWithGoogleProducts")]
+            public virtual System.Nullable<bool> ShareWithGoogleProducts { get; set; } 
 
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleProducts")]
-            public virtual System.Nullable<bool> SharingWithGoogleProducts { get; set; } 
+            [Newtonsoft.Json.JsonPropertyAttribute("shareWithSpecialists")]
+            public virtual System.Nullable<bool> ShareWithSpecialists { get; set; } 
 
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSales")]
-            public virtual System.Nullable<bool> SharingWithGoogleSales { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSupport")]
-            public virtual System.Nullable<bool> SharingWithGoogleSupport { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithOthers")]
-            public virtual System.Nullable<bool> SharingWithOthers { get; set; } 
+            [Newtonsoft.Json.JsonPropertyAttribute("shareWithSupport")]
+            public virtual System.Nullable<bool> ShareWithSupport { get; set; } 
 
         }
     }    
@@ -9973,23 +9967,17 @@ namespace Google.Apis.Analytics.v3.Data
 
         public class AccountSettingsData
         {
-            [Newtonsoft.Json.JsonPropertyAttribute("admobReporting")]
-            public virtual System.Nullable<bool> AdmobReporting { get; set; } 
+            [Newtonsoft.Json.JsonPropertyAttribute("shareAnonymouslyWithOthers")]
+            public virtual System.Nullable<bool> ShareAnonymouslyWithOthers { get; set; } 
 
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleAnySales")]
-            public virtual System.Nullable<bool> SharingWithGoogleAnySales { get; set; } 
+            [Newtonsoft.Json.JsonPropertyAttribute("shareWithGoogleProducts")]
+            public virtual System.Nullable<bool> ShareWithGoogleProducts { get; set; } 
 
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleProducts")]
-            public virtual System.Nullable<bool> SharingWithGoogleProducts { get; set; } 
+            [Newtonsoft.Json.JsonPropertyAttribute("shareWithSpecialists")]
+            public virtual System.Nullable<bool> ShareWithSpecialists { get; set; } 
 
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSales")]
-            public virtual System.Nullable<bool> SharingWithGoogleSales { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithGoogleSupport")]
-            public virtual System.Nullable<bool> SharingWithGoogleSupport { get; set; } 
-
-            [Newtonsoft.Json.JsonPropertyAttribute("sharingWithOthers")]
-            public virtual System.Nullable<bool> SharingWithOthers { get; set; } 
+            [Newtonsoft.Json.JsonPropertyAttribute("shareWithSupport")]
+            public virtual System.Nullable<bool> ShareWithSupport { get; set; } 
 
         }
     }    

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/VAqwH2zdQVd7aygvmWC3of0ONyk\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/5MKhkeUIzLqBB88xl6c3DdrRfWA\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20180312",
+ "revision": "20180323",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -1291,7 +1291,7 @@
     },
     "recommendedSize": {
      "type": "integer",
-     "description": "[Output Only] Target recommended MIG size computed by autoscaler. Autoscaler calculates recommended MIG size even when autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to the existing managed instance group or autoscaler did not generate its first prediction.",
+     "description": "[Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler calculates recommended MIG size even when autoscaling policy mode is different from ON. This field is empty when autoscaler is not connected to the existing managed instance group or autoscaler did not generate its prediction.",
      "format": "int32"
     },
     "region": {
@@ -15565,16 +15565,6 @@
     }
    }
   },
-  "RegionUrlMapsDeleteRequest": {
-   "id": "RegionUrlMapsDeleteRequest",
-   "type": "object",
-   "properties": {
-    "requestId": {
-     "type": "string",
-     "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency."
-    }
-   }
-  },
   "RegionUrlMapsValidateRequest": {
    "id": "RegionUrlMapsValidateRequest",
    "type": "object",
@@ -18206,9 +18196,33 @@
      "type": "boolean",
      "description": "Whether the VMs in this subnet can access Google services without assigned external IP addresses. This field can be both set at resource creation time and updated using setPrivateIpGoogleAccess."
     },
+    "purpose": {
+     "type": "string",
+     "description": "The purpose of the resource. This field can be either PRIVATE_RFC_1918 or INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose defaults to PRIVATE_RFC_1918.",
+     "enum": [
+      "INTERNAL_HTTPS_LOAD_BALANCER",
+      "PRIVATE_RFC_1918"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "region": {
      "type": "string",
      "description": "URL of the region where the Subnetwork resides. This field can be set only at resource creation time."
+    },
+    "role": {
+     "type": "string",
+     "description": "The role of subnetwork. Currenly, this field is only used when purpose = INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be promoted to ACTIVE or is currently draining.",
+     "enum": [
+      "ACTIVE",
+      "BACKUP"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     },
     "secondaryIpRanges": {
      "type": "array",
@@ -38258,6 +38272,11 @@
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
        "location": "path"
       },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
+      },
       "urlMap": {
        "type": "string",
        "description": "Name of the UrlMap resource to delete.",
@@ -38271,9 +38290,6 @@
       "region",
       "urlMap"
      ],
-     "request": {
-      "$ref": "RegionUrlMapsDeleteRequest"
-     },
      "response": {
       "$ref": "Operation"
      },
@@ -38343,6 +38359,11 @@
        "required": true,
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
        "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
       }
      },
      "parameterOrder": [
@@ -38437,6 +38458,11 @@
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
        "location": "path"
       },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
+      },
       "urlMap": {
        "type": "string",
        "description": "Name of the UrlMap resource to patch.",
@@ -38525,6 +38551,11 @@
        "required": true,
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
        "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.",
+       "location": "query"
       },
       "urlMap": {
        "type": "string",

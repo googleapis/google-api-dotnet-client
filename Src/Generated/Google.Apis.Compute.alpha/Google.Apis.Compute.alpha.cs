@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>alpha
- *      <tr><th>API Rev<td>20180312 (1166)
+ *      <tr><th>API Rev<td>20180323 (1177)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -42292,27 +42292,25 @@ namespace Google.Apis.Compute.alpha
 
 
         /// <summary>Deletes the specified UrlMap resource.</summary>
-        /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource to delete.</param>
-        public virtual DeleteRequest Delete(Google.Apis.Compute.alpha.Data.RegionUrlMapsDeleteRequest body, string project, string region, string urlMap)
+        public virtual DeleteRequest Delete(string project, string region, string urlMap)
         {
-            return new DeleteRequest(service, body, project, region, urlMap);
+            return new DeleteRequest(service, project, region, urlMap);
         }
 
         /// <summary>Deletes the specified UrlMap resource.</summary>
         public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.alpha.Data.Operation>
         {
             /// <summary>Constructs a new Delete request.</summary>
-            public DeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.alpha.Data.RegionUrlMapsDeleteRequest body, string project, string region, string urlMap)
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string urlMap)
                 : base(service)
             {
                 Project = project;
                 Region = region;
                 UrlMap = urlMap;
-                Body = body;
                 InitParameters();
             }
 
@@ -42329,12 +42327,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
 
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.alpha.Data.RegionUrlMapsDeleteRequest Body { get; set; }
-
-            ///<summary>Returns the body of the request.</summary>
-            protected override object GetBody() { return Body; }
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -42385,6 +42381,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -42517,6 +42522,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Region { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.UrlMap Body { get; set; }
@@ -42564,6 +42573,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -42768,6 +42786,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.UrlMap Body { get; set; }
@@ -42824,6 +42846,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -42966,6 +42997,10 @@ namespace Google.Apis.Compute.alpha
             [Google.Apis.Util.RequestParameterAttribute("urlMap", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string UrlMap { get; private set; }
 
+            /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Compute.alpha.Data.UrlMap Body { get; set; }
@@ -43022,6 +43057,15 @@ namespace Google.Apis.Compute.alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
             }
 
@@ -59110,9 +59154,9 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] Target recommended MIG size computed by autoscaler. Autoscaler calculates recommended
-        /// MIG size even when autoscaling policy mode is different from ON. This field is empty when autoscaler is not
-        /// connected to the existing managed instance group or autoscaler did not generate its first
+        /// <summary>[Output Only] Target recommended MIG size (number of instances) computed by autoscaler. Autoscaler
+        /// calculates recommended MIG size even when autoscaling policy mode is different from ON. This field is empty
+        /// when autoscaler is not connected to the existing managed instance group or autoscaler did not generate its
         /// prediction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendedSize")]
         public virtual System.Nullable<int> RecommendedSize { get; set; } 
@@ -69871,16 +69915,6 @@ namespace Google.Apis.Compute.alpha.Data
         public virtual string ETag { get; set; }
     }    
 
-    public class RegionUrlMapsDeleteRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>begin_interface: MixerMutationRequestBuilder Request ID to support idempotency.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     public class RegionUrlMapsValidateRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Content of the UrlMap to be validated.</summary>
@@ -71877,10 +71911,24 @@ namespace Google.Apis.Compute.alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateIpGoogleAccess")]
         public virtual System.Nullable<bool> PrivateIpGoogleAccess { get; set; } 
 
+        /// <summary>The purpose of the resource. This field can be either PRIVATE_RFC_1918 or
+        /// INTERNAL_HTTPS_LOAD_BALANCER. A subnetwork with purpose set to INTERNAL_HTTPS_LOAD_BALANCER is a user-
+        /// created subnetwork that is reserved for Internal HTTP(S) Load Balancing. If unspecified, the purpose
+        /// defaults to PRIVATE_RFC_1918.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purpose")]
+        public virtual string Purpose { get; set; } 
+
         /// <summary>URL of the region where the Subnetwork resides. This field can be set only at resource creation
         /// time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
+
+        /// <summary>The role of subnetwork. Currenly, this field is only used when purpose =
+        /// INTERNAL_HTTPS_LOAD_BALANCER. The value can be set to ACTIVE or BACKUP. An ACTIVE subnetwork is one that is
+        /// currently being used for Internal HTTP(S) Load Balancing. A BACKUP subnetwork is one that is ready to be
+        /// promoted to ACTIVE or is currently draining.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; } 
 
         /// <summary>An array of configurations for secondary IP ranges for VM instances contained in this subnetwork.
         /// The primary IP of such VM must belong to the primary ipCidrRange of the subnetwork. The alias IPs may belong

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180326 (1180)
+ *      <tr><th>API Rev<td>20180402 (1187)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2575,6 +2575,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; } 
 
+        /// <summary>Terms and conditions that must be accepted when provisioning a device for this enterprise. A page
+        /// of terms is generated for each value in this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("termsAndConditions")]
+        public virtual System.Collections.Generic.IList<TermsAndConditions> TermsAndConditions { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -3590,6 +3595,22 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>The type of system update to configure.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A terms and conditions page to be accepted during provisioning.</summary>
+    public class TermsAndConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A well-formatted HTML string. It will be parsed on the client with
+        /// android.text.Html#fromHtml.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual UserFacingMessage Content { get; set; } 
+
+        /// <summary>A short header which appears above the HTML content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual UserFacingMessage Header { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
