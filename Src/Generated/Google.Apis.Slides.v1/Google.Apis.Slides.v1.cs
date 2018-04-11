@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/slides/'>Google Slides API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180402 (1187)
+ *      <tr><th>API Rev<td>20180409 (1194)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/slides/'>
  *              https://developers.google.com/slides/</a>
@@ -1824,7 +1824,7 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A PageElement kind representing a non-connector line, straight connector, curved connector or bent
+    /// <summary>A PageElement kind representing a non-connector line, straight connector, curved connector, or bent
     /// connector.</summary>
     public class Line : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2457,7 +2457,10 @@ namespace Google.Apis.Slides.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Replaces all shapes that match the given criteria with the provided image.</summary>
+    /// <summary>Replaces all shapes that match the given criteria with the provided image.
+    ///
+    /// The images replacing the shapes are rectangular after being inserted into the presentation and do not take on
+    /// the forms of the shapes.</summary>
     public class ReplaceAllShapesWithImageRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If set, this request will replace all of the shapes that contain the given text.</summary>

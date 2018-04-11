@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>Dialogflow API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180406 (1191)
+ *      <tr><th>API Rev<td>20180407 (1192)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dialogflow-enterprise/'>
  *              https://cloud.google.com/dialogflow-enterprise/</a>
@@ -2659,13 +2659,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Optional. The language to retrieve training phrases, parameters and rich messages for.
-                    /// If not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent, before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
-
                     /// <summary>Optional. The resource view to apply to the returned intent.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("intentView", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<IntentViewEnum> IntentView { get; set; }
@@ -2678,6 +2671,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
+
+                    /// <summary>Optional. The language to retrieve training phrases, parameters and rich messages for.
+                    /// If not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent, before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2713,18 +2713,18 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent/intents/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
+                            "intentView", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "languageCode",
+                                Name = "intentView",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "intentView", new Google.Apis.Discovery.Parameter
+                            "languageCode", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "intentView",
+                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -4821,7 +4821,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("listSelect")]
         public virtual GoogleCloudDialogflowV2IntentMessageListSelect ListSelect { get; set; } 
 
-        /// <summary>The response containing a custom payload.</summary>
+        /// <summary>Returns a response containing a custom, platform-specific payload. See the Intent.Message.Platform
+        /// type for a description of the structure that may be required for your platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -5248,7 +5249,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
         /// <summary>The source of this request, e.g., `google`, `facebook`, `slack`. It is set by Dialogflow-owned
-        /// servers. Possible values of this field correspond to Intent.Message.Platform.</summary>
+        /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -5388,7 +5389,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2Context> OutputContexts { get; set; } 
 
-        /// <summary>Optional. This value is passed directly to `QueryResult.webhook_payload`.</summary>
+        /// <summary>Optional. This value is passed directly to `QueryResult.webhook_payload`. See the related
+        /// `fulfillment_messages[i].payload field`, which may be used as an alternative to this field.
+        ///
+        /// This field can be used for Actions on Google responses. It should have a structure similar to the JSON
+        /// message shown here. For more information, see [Actions on Google Webhook
+        /// Format](https://developers.google.com/actions/dialogflow/webhook) { "google": { "expectUserResponse": true,
+        /// "richResponse": { "items": [ { "simpleResponse": { "textToSpeech": "this is a simple response" } } ] } }
+        /// }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -6013,7 +6021,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("listSelect")]
         public virtual GoogleCloudDialogflowV2beta1IntentMessageListSelect ListSelect { get; set; } 
 
-        /// <summary>Returns a response containing a custom payload.</summary>
+        /// <summary>Returns a response containing a custom, platform-specific payload. See the Intent.Message.Platform
+        /// type for a description of the structure that may be required for your platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
@@ -6508,7 +6517,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 
         /// <summary>The source of this request, e.g., `google`, `facebook`, `slack`. It is set by Dialogflow-owned
-        /// servers. Possible values of this field correspond to Intent.Message.Platform.</summary>
+        /// servers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; } 
 
@@ -6801,7 +6810,14 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputContexts")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Context> OutputContexts { get; set; } 
 
-        /// <summary>Optional. This value is passed directly to `QueryResult.webhook_payload`.</summary>
+        /// <summary>Optional. This value is passed directly to `QueryResult.webhook_payload`. See the related
+        /// `fulfillment_messages[i].payload field`, which may be used as an alternative to this field.
+        ///
+        /// This field can be used for Actions on Google responses. It should have a structure similar to the JSON
+        /// message shown here. For more information, see [Actions on Google Webhook
+        /// Format](https://developers.google.com/actions/dialogflow/webhook) { "google": { "expectUserResponse": true,
+        /// "richResponse": { "items": [ { "simpleResponse": { "textToSpeech": "this is a simple response" } } ] } }
+        /// }</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string,object> Payload { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180403 (1188)
+ *      <tr><th>API Rev<td>20180405 (1190)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -9600,15 +9600,38 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
-        /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
-        /// thus not shown the marketing right opt in/out checkbox during the checkout flow.</summary>
+        /// <summary>Deprecated. Please use marketingRightsInfo instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual System.Nullable<bool> ExplicitMarketingPreference { get; set; } 
 
         /// <summary>Full name of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; } 
+
+        /// <summary>Customer's marketing preferences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketingRightsInfo")]
+        public virtual OrderCustomerMarketingRightsInfo MarketingRightsInfo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class OrderCustomerMarketingRightsInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Last known user selection regarding marketing preferences. In certain cases this selection might
+        /// not be known, so this field would be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
+        public virtual string ExplicitMarketingPreference { get; set; } 
+
+        /// <summary>Timestamp when last time marketing preference was updated. Could be empty, if user wasn't offered a
+        /// selection yet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestamp")]
+        public virtual string LastUpdatedTimestamp { get; set; } 
+
+        /// <summary>Email address that can be used for marketing purposes. This field is only filled when
+        /// explicitMarketingPreference is equal to 'granted'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketingEmailAddress")]
+        public virtual string MarketingEmailAddress { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12186,9 +12209,21 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; } 
 
+        /// <summary>A short issue description in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; } 
+
         /// <summary>The destination the issue applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; } 
+
+        /// <summary>A detailed issue description in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; } 
+
+        /// <summary>The URL of a web page to help with resolving this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
+        public virtual string Documentation { get; set; } 
 
         /// <summary>Whether the issue can be resolved by the merchant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolution")]
@@ -12513,6 +12548,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryTime")]
         public virtual DeliveryTime DeliveryTime { get; set; } 
 
+        /// <summary>Eligibility for this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eligibility")]
+        public virtual string Eligibility { get; set; } 
+
         /// <summary>Minimum order value for this service. If set, indicates that customers will have to spend at least
         /// this amount. All prices within a service must have the same currency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumOrderValue")]
@@ -12753,15 +12792,33 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; } 
 
-        /// <summary>If set, this indicates the user explicitly chose to opt in or out of providing marketing rights to
-        /// the merchant. If unset, this indicates the user has already made this choice in a previous purchase, and was
-        /// thus not shown the marketing right opt in/out checkbox during the checkout flow. Optional.</summary>
+        /// <summary>Deprecated. Please use marketingRightsInfo instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
         public virtual System.Nullable<bool> ExplicitMarketingPreference { get; set; } 
 
         /// <summary>Full name of the customer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
         public virtual string FullName { get; set; } 
+
+        /// <summary>Customer's marketing preferences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketingRightsInfo")]
+        public virtual TestOrderCustomerMarketingRightsInfo MarketingRightsInfo { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class TestOrderCustomerMarketingRightsInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Last know user use selection regards marketing preferences. In certain cases selection might not be
+        /// known, so this field would be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("explicitMarketingPreference")]
+        public virtual string ExplicitMarketingPreference { get; set; } 
+
+        /// <summary>Timestamp when last time marketing preference was updated. Could be empty, if user wasn't offered a
+        /// selection yet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimestamp")]
+        public virtual string LastUpdatedTimestamp { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
