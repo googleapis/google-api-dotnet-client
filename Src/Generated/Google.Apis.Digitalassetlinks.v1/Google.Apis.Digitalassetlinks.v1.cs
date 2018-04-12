@@ -410,6 +410,23 @@ namespace Google.Apis.Digitalassetlinks.v1
             }
 
 
+            /// <summary>Query string for the relation.
+            ///
+            /// We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined
+            /// purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use
+            /// case of the statement.
+            ///
+            /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of
+            /// supported relations.
+            ///
+            /// For a query to match an asset link, both the query's and the asset link's relation strings must match
+            /// exactly.
+            ///
+            /// Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with
+            /// relation `delegate_permission/common.handle_all_urls`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("relation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Relation { get; set; }
+
             /// <summary>Web assets are identified by a URL that contains only the scheme, hostname and port parts.  The
             /// format is
             ///
@@ -518,23 +535,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
 
-            /// <summary>Query string for the relation.
-            ///
-            /// We identify relations with strings of the format `/`, where `` must be one of a set of pre-defined
-            /// purpose categories, and `` is a free-form lowercase alphanumeric string that describes the specific use
-            /// case of the statement.
-            ///
-            /// Refer to [our API documentation](/digital-asset-links/v1/relation-strings) for the current list of
-            /// supported relations.
-            ///
-            /// For a query to match an asset link, both the query's and the asset link's relation strings must match
-            /// exactly.
-            ///
-            /// Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with
-            /// relation `delegate_permission/common.handle_all_urls`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("relation", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Relation { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -559,6 +559,15 @@ namespace Google.Apis.Digitalassetlinks.v1
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "relation", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "relation",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "target.web.site", new Google.Apis.Discovery.Parameter
                     {
@@ -608,15 +617,6 @@ namespace Google.Apis.Digitalassetlinks.v1
                     "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source.androidApp.certificate.sha256Fingerprint",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "relation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "relation",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -684,6 +684,20 @@ namespace Google.Apis.Digitalassetlinks.v1
             }
 
 
+            /// <summary>Use only associations that match the specified relation.
+            ///
+            /// See the [`Statement`](#Statement) message for a detailed definition of relation strings.
+            ///
+            /// For a query to match a statement, one of the following must be true:
+            ///
+            /// *    both the query's and the statement's relation strings match exactly, or *    the query's relation
+            /// string is empty or missing.
+            ///
+            /// Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with
+            /// relation `delegate_permission/common.handle_all_urls`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("relation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Relation { get; set; }
+
             /// <summary>Web assets are identified by a URL that contains only the scheme, hostname and port parts.  The
             /// format is
             ///
@@ -738,20 +752,6 @@ namespace Google.Apis.Digitalassetlinks.v1
             [Google.Apis.Util.RequestParameterAttribute("source.androidApp.certificate.sha256Fingerprint", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string SourceAndroidAppCertificateSha256Fingerprint { get; set; }
 
-            /// <summary>Use only associations that match the specified relation.
-            ///
-            /// See the [`Statement`](#Statement) message for a detailed definition of relation strings.
-            ///
-            /// For a query to match a statement, one of the following must be true:
-            ///
-            /// *    both the query's and the statement's relation strings match exactly, or *    the query's relation
-            /// string is empty or missing.
-            ///
-            /// Example: A query with relation `delegate_permission/common.handle_all_urls` matches an asset link with
-            /// relation `delegate_permission/common.handle_all_urls`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("relation", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Relation { get; set; }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -777,6 +777,15 @@ namespace Google.Apis.Digitalassetlinks.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "relation", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "relation",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "source.web.site", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source.web.site",
@@ -798,15 +807,6 @@ namespace Google.Apis.Digitalassetlinks.v1
                     "source.androidApp.certificate.sha256Fingerprint", new Google.Apis.Discovery.Parameter
                     {
                         Name = "source.androidApp.certificate.sha256Fingerprint",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "relation", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "relation",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

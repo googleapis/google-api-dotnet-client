@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Cloud Pub/Sub API Version v1
+ *   Google Cloud Pub/Sub API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/pubsub/docs'>Cloud Pub/Sub API</a>
+ *          <td><a href='https://cloud.google.com/pubsub/docs'>Google Cloud Pub/Sub API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180402 (1187)
+ *      <tr><th>API Rev<td>20180326 (1180)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/pubsub/docs'>
  *              https://cloud.google.com/pubsub/docs</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Cloud Pub/Sub API can be found at
+ * The complete API documentation for using Google Cloud Pub/Sub API can be found at
  * <a href='https://cloud.google.com/pubsub/docs'>https://cloud.google.com/pubsub/docs</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.Pubsub.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Pub/Sub API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Pub/Sub API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>

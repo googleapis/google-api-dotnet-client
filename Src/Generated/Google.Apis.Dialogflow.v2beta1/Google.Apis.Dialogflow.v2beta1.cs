@@ -2757,6 +2757,13 @@ namespace Google.Apis.Dialogflow.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
+                    /// not specified, the agent's default language is used. [More than a dozen
+                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
+                    /// be enabled in the agent before they can be used.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
                     /// <summary>Optional. The next_page_token value returned from a previous list request.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -2778,13 +2785,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                         [Google.Apis.Util.StringValueAttribute("INTENT_VIEW_FULL")]
                         INTENTVIEWFULL,
                     }
-
-                    /// <summary>Optional. The language to list training phrases, parameters and rich messages for. If
-                    /// not specified, the agent's default language is used. [More than a dozen
-                    /// languages](https://dialogflow.com/docs/reference/language) are supported. Note: languages must
-                    /// be enabled in the agent before they can be used.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string LanguageCode { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2820,6 +2820,15 @@ namespace Google.Apis.Dialogflow.v2beta1
                                 Pattern = @"^projects/[^/]+/agent$",
                             });
                         RequestParameters.Add(
+                            "languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -2841,15 +2850,6 @@ namespace Google.Apis.Dialogflow.v2beta1
                             "intentView", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "intentView",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "languageCode", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "languageCode",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,

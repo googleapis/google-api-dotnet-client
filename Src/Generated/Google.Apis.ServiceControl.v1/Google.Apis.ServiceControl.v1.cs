@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Service Control API Version v1
+ *   Service Control API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/service-control/'>Google Service Control API</a>
+ *          <td><a href='https://cloud.google.com/service-control/'>Service Control API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180405 (1190)
+ *      <tr><th>API Rev<td>20180410 (1195)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-control/'>
  *              https://cloud.google.com/service-control/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Service Control API can be found at
+ * The complete API documentation for using Service Control API can be found at
  * <a href='https://cloud.google.com/service-control/'>https://cloud.google.com/service-control/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.ServiceControl.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Service Control API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Service Control API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -1583,7 +1583,8 @@ namespace Google.Apis.ServiceControl.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceContainer")]
         public virtual string ResourceContainer { get; set; } 
 
-        /// <summary>The resources that are involved in the operation.</summary>
+        /// <summary>The resources that are involved in the operation. The maximum supported number of entries in this
+        /// field is 100.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<ResourceInfo> Resources { get; set; } 
 
