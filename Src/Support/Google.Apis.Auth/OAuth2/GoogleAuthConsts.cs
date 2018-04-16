@@ -48,8 +48,9 @@ namespace Google.Apis.Auth.OAuth2
         public const string OidcTokenUrl = "https://www.googleapis.com/oauth2/v4/token";
 
         /// <summary>The Compute Engine authorization token server URL</summary>
+        /// <remarks>IP address instead of name to avoid DNS resolution</remarks>
         public const string ComputeTokenUrl =
-            "http://metadata/computeMetadata/v1/instance/service-accounts/default/token";
+            "http://169.254.169.254/computeMetadata/v1/instance/service-accounts/default/token";
 
         /// <summary>The path to the Google revocation endpoint.</summary>
         public const string RevokeTokenUrl = "https://accounts.google.com/o/oauth2/revoke";
