@@ -34,10 +34,20 @@ namespace Google.Apis.Auth.OAuth2.Requests
         public string AccessType { get; set; }
 
         /// <summary>
+        /// Gets of sets prompt for consent behaviour.
+        /// Value can be <c>null</c>, <c>"none"</c>, <c>"consent"</c>, or <c>"select_account"</c>.
+        /// See <a href="https://developers.google.com/identity/protocols/OpenIDConnect#prompt">OpenIDConnect documentation</a>
+        /// for details.
+        /// </summary>
+        [Google.Apis.Util.RequestParameterAttribute("prompt", Google.Apis.Util.RequestParameterType.Query)]
+        public string Prompt { get; set; }
+
+        /// <summary>
         /// Gets or sets prompt for consent behavior <c>auto</c> to request auto-approval or<c>force</c> to force the 
         /// approval UI to show, or <c>null</c> for the default behavior.
         /// </summary>
         [Google.Apis.Util.RequestParameterAttribute("approval_prompt", Google.Apis.Util.RequestParameterType.Query)]
+        [Obsolete("Unused for Google OpenID; use the 'Prompt' property instead.")]
         public string ApprovalPrompt { get; set; }
 
         /// <summary>
