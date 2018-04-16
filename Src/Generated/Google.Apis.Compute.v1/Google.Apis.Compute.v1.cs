@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180323 (1177)
+ *      <tr><th>API Rev<td>20180329 (1183)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -11579,7 +11579,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns all of the details about the specified managed instance group. Get a list of available
+        /// <summary>Returns all of the details about the specified managed instance group. Gets a list of available
         /// managed instance groups by making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -11591,7 +11591,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, instanceGroupManager);
         }
 
-        /// <summary>Returns all of the details about the specified managed instance group. Get a list of available
+        /// <summary>Returns all of the details about the specified managed instance group. Gets a list of available
         /// managed instance groups by making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceGroupManager>
         {
@@ -13952,7 +13952,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified instance template. Get a list of available instance templates by making a
+        /// <summary>Returns the specified instance template. Gets a list of available instance templates by making a
         /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="instanceTemplate">The name of the
@@ -13962,7 +13962,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, instanceTemplate);
         }
 
-        /// <summary>Returns the specified instance template. Get a list of available instance templates by making a
+        /// <summary>Returns the specified instance template. Gets a list of available instance templates by making a
         /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.InstanceTemplate>
         {
@@ -19994,7 +19994,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified machine type. Get a list of available machine types by making a list()
+        /// <summary>Returns the specified machine type. Gets a list of available machine types by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -20005,7 +20005,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, machineType);
         }
 
-        /// <summary>Returns the specified machine type. Get a list of available machine types by making a list()
+        /// <summary>Returns the specified machine type. Gets a list of available machine types by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.MachineType>
         {
@@ -21509,7 +21509,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Get the shared VPC host project that this project links to. May be empty if no link
+        /// <summary>Gets the shared VPC host project that this project links to. May be empty if no link
         /// exists.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetXpnHostRequest GetXpnHost(string project)
@@ -21517,7 +21517,7 @@ namespace Google.Apis.Compute.v1
             return new GetXpnHostRequest(service, project);
         }
 
-        /// <summary>Get the shared VPC host project that this project links to. May be empty if no link
+        /// <summary>Gets the shared VPC host project that this project links to. May be empty if no link
         /// exists.</summary>
         public class GetXpnHostRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Project>
         {
@@ -21571,14 +21571,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Get service resources (a.k.a service project) associated with this host project.</summary>
+        /// <summary>Gets service resources (a.k.a service project) associated with this host project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual GetXpnResourcesRequest GetXpnResources(string project)
         {
             return new GetXpnResourcesRequest(service, project);
         }
 
-        /// <summary>Get service resources (a.k.a service project) associated with this host project.</summary>
+        /// <summary>Gets service resources (a.k.a service project) associated with this host project.</summary>
         public class GetXpnResourcesRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.ProjectsGetXpnResources>
         {
             /// <summary>Constructs a new GetXpnResources request.</summary>
@@ -21685,7 +21685,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>List all shared VPC host projects visible to the user in an organization.</summary>
+        /// <summary>Lists all shared VPC host projects visible to the user in an organization.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListXpnHostsRequest ListXpnHosts(Google.Apis.Compute.v1.Data.ProjectsListXpnHostsRequest body, string project)
@@ -21693,7 +21693,7 @@ namespace Google.Apis.Compute.v1
             return new ListXpnHostsRequest(service, body, project);
         }
 
-        /// <summary>List all shared VPC host projects visible to the user in an organization.</summary>
+        /// <summary>Lists all shared VPC host projects visible to the user in an organization.</summary>
         public class ListXpnHostsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.XpnHostList>
         {
             /// <summary>Constructs a new ListXpnHosts request.</summary>
@@ -29336,7 +29336,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>List all of the ordered rules present in a single specified policy.</summary>
+        /// <summary>Lists all of the ordered rules present in a single specified policy.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslPolicy">Name of the SSL policy to
         /// update. The name must be 1-63 characters long, and comply with RFC1035.</param>
@@ -29345,7 +29345,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, sslPolicy);
         }
 
-        /// <summary>List all of the ordered rules present in a single specified policy.</summary>
+        /// <summary>Lists all of the ordered rules present in a single specified policy.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslPolicy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -29505,14 +29505,14 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>List all the SSL policies that have been configured for the specified project.</summary>
+        /// <summary>Lists all the SSL policies that have been configured for the specified project.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
         {
             return new ListRequest(service, project);
         }
 
-        /// <summary>List all the SSL policies that have been configured for the specified project.</summary>
+        /// <summary>Lists all the SSL policies that have been configured for the specified project.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.SslPoliciesList>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -38548,7 +38548,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class AcceleratorTypesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of accelerator types contained in this scope.</summary>
+        /// <summary>[Output Only] A list of accelerator types contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorTypes")]
         public virtual System.Collections.Generic.IList<AcceleratorType> AcceleratorTypes { get; set; } 
 
@@ -38859,7 +38859,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class AddressesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of addresses contained in this scope.</summary>
+        /// <summary>[Output Only] A list of addresses contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addresses")]
         public virtual System.Collections.Generic.IList<Address> Addresses { get; set; } 
 
@@ -39326,7 +39326,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class AutoscalersScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of autoscalers contained in this scope.</summary>
+        /// <summary>[Output Only] A list of autoscalers contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscalers")]
         public virtual System.Collections.Generic.IList<Autoscaler> Autoscalers { get; set; } 
 
@@ -39996,7 +39996,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class BackendServicesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of BackendServices contained in this scope.</summary>
+        /// <summary>A list of BackendServices contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backendServices")]
         public virtual System.Collections.Generic.IList<BackendService> BackendServices { get; set; } 
 
@@ -40142,8 +40142,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
-        /// <summary>List of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments
-        /// must occur together.</summary>
+        /// <summary>A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource
+        /// commitments must occur together.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<ResourceCommitment> Resources { get; set; } 
 
@@ -40314,7 +40314,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class CommitmentsScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of commitments contained in this scope.</summary>
+        /// <summary>[Output Only] A list of commitments contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitments")]
         public virtual System.Collections.Generic.IList<Commitment> Commitments { get; set; } 
 
@@ -40970,7 +40970,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class DiskTypesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of disk types contained in this scope.</summary>
+        /// <summary>[Output Only] A list of disk types contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskTypes")]
         public virtual System.Collections.Generic.IList<DiskType> DiskTypes { get; set; } 
 
@@ -41034,7 +41034,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class DisksScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of disks contained in this scope.</summary>
+        /// <summary>[Output Only] A list of disks contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<Disk> Disks { get; set; } 
 
@@ -41602,7 +41602,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class ForwardingRulesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of forwarding rules contained in this scope.</summary>
+        /// <summary>A list of forwarding rules contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
         public virtual System.Collections.Generic.IList<ForwardingRule> ForwardingRules { get; set; } 
 
@@ -42520,7 +42520,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<AttachedDisk> Disks { get; set; } 
 
-        /// <summary>List of the type and count of accelerator cards attached to the instance.</summary>
+        /// <summary>A list of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
@@ -42748,7 +42748,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>The URL of the region where the instance group is located (for regional resources).</summary>
+        /// <summary>[Output Only] The URL of the region where the instance group is located (for regional
+        /// resources).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
         public virtual string Region { get; set; } 
 
@@ -42760,7 +42761,8 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<int> Size { get; set; } 
 
-        /// <summary>The URL of the subnetwork to which all instances in the instance group belong.</summary>
+        /// <summary>[Output Only] The URL of the subnetwork to which all instances in the instance group
+        /// belong.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; } 
 
@@ -43887,7 +43889,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InstancesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of instances contained in this scope.</summary>
+        /// <summary>[Output Only] A list of instances contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instances")]
         public virtual System.Collections.Generic.IList<Instance> Instances { get; set; } 
 
@@ -43955,7 +43957,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InstancesSetMachineResourcesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of the type and count of accelerator cards attached to the instance.</summary>
+        /// <summary>A list of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guestAccelerators")]
         public virtual System.Collections.Generic.IList<AcceleratorConfig> GuestAccelerators { get; set; } 
 
@@ -44024,7 +44026,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adminEnabled")]
         public virtual System.Nullable<bool> AdminEnabled { get; set; } 
 
-        /// <summary>[Output Only] List of CircuitInfo objects, that describe the individual circuits in this
+        /// <summary>[Output Only] A list of CircuitInfo objects, that describe the individual circuits in this
         /// LAG.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("circuitInfos")]
         public virtual System.Collections.Generic.IList<InterconnectCircuitInfo> CircuitInfos { get; set; } 
@@ -44043,7 +44045,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
 
-        /// <summary>[Output Only] List of outages expected for this Interconnect.</summary>
+        /// <summary>[Output Only] A list of outages expected for this Interconnect.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedOutages")]
         public virtual System.Collections.Generic.IList<InterconnectOutageNotification> ExpectedOutages { get; set; } 
 
@@ -44366,7 +44368,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class InterconnectAttachmentsScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of interconnect attachments contained in this scope.</summary>
+        /// <summary>A list of interconnect attachments contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachments")]
         public virtual System.Collections.Generic.IList<InterconnectAttachment> InterconnectAttachments { get; set; } 
 
@@ -44969,7 +44971,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] List of extended scratch disks assigned to the instance.</summary>
+        /// <summary>[Output Only] A list of extended scratch disks assigned to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scratchDisks")]
         public virtual System.Collections.Generic.IList<MachineType.ScratchDisksData> ScratchDisks { get; set; } 
 
@@ -45141,7 +45143,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class MachineTypesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of machine types contained in this scope.</summary>
+        /// <summary>[Output Only] A list of machine types contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineTypes")]
         public virtual System.Collections.Generic.IList<MachineType> MachineTypes { get; set; } 
 
@@ -45376,7 +45378,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
-        /// <summary>[Output Only] List of network peerings for the resource.</summary>
+        /// <summary>[Output Only] A list of network peerings for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("peerings")]
         public virtual System.Collections.Generic.IList<NetworkPeering> Peerings { get; set; } 
 
@@ -45947,7 +45949,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class OperationsScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of operations contained in this scope.</summary>
+        /// <summary>[Output Only] A list of operations contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; } 
 
@@ -46494,7 +46496,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RegionInstanceGroupManagersListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of managed instances.</summary>
+        /// <summary>A list of managed instances.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managedInstances")]
         public virtual System.Collections.Generic.IList<ManagedInstance> ManagedInstances { get; set; } 
 
@@ -47373,7 +47375,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class RoutersScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of routers contained in this scope.</summary>
+        /// <summary>A list of routers contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routers")]
         public virtual System.Collections.Generic.IList<Router> Routers { get; set; } 
 
@@ -47920,7 +47922,7 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
         public virtual string CreationTimestamp { get; set; } 
 
-        /// <summary>List of features enabled when the selected profile is CUSTOM. The - method returns the set of
+        /// <summary>A list of features enabled when the selected profile is CUSTOM. The - method returns the set of
         /// features that can be specified in this list. This field must be empty if the profile is not
         /// CUSTOM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
@@ -48283,7 +48285,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class SubnetworksScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of subnetworks contained in this scope.</summary>
+        /// <summary>A list of subnetworks contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
         public virtual System.Collections.Generic.IList<Subnetwork> Subnetworks { get; set; } 
 
@@ -48848,7 +48850,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetInstancesScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of target instances contained in this scope.</summary>
+        /// <summary>A list of target instances contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetInstances")]
         public virtual System.Collections.Generic.IList<TargetInstance> TargetInstances { get; set; } 
 
@@ -49194,7 +49196,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetPoolsScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of target pools contained in this scope.</summary>
+        /// <summary>A list of target pools contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetPools")]
         public virtual System.Collections.Generic.IList<TargetPool> TargetPools { get; set; } 
 
@@ -49761,7 +49763,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class TargetVpnGatewaysScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] List of target vpn gateways contained in this scope.</summary>
+        /// <summary>[Output Only] A list of target vpn gateways contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetVpnGateways")]
         public virtual System.Collections.Generic.IList<TargetVpnGateway> TargetVpnGateways { get; set; } 
 
@@ -50315,7 +50317,7 @@ namespace Google.Apis.Compute.v1.Data
 
     public class VpnTunnelsScopedList : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of vpn tunnels contained in this scope.</summary>
+        /// <summary>A list of vpn tunnels contained in this scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpnTunnels")]
         public virtual System.Collections.Generic.IList<VpnTunnel> VpnTunnels { get; set; } 
 

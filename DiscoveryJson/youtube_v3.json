@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/-ZA6uS3KXkDeiPcCXgXN_f_GBAw\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/o3iOCgYNiVP6rCeLISJWMIRp4UU\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20180308",
+ "revision": "20180413",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -1469,9 +1469,11 @@
      "enum": [
       "private",
       "public",
-      "unlisted"
+      "unlisted",
+      "unlisted_new"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -2556,12 +2558,14 @@
      "description": "The video's rating in Israel.",
      "enum": [
       "ilfilm12",
+      "ilfilm14",
       "ilfilm16",
       "ilfilm18",
       "ilfilmAa",
       "ilfilmUnrated"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -4234,9 +4238,11 @@
      "enum": [
       "private",
       "public",
-      "unlisted"
+      "unlisted",
+      "unlisted_new"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -5420,9 +5426,11 @@
      "enum": [
       "private",
       "public",
-      "unlisted"
+      "unlisted",
+      "unlisted_new"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -5562,9 +5570,11 @@
      "enum": [
       "private",
       "public",
-      "unlisted"
+      "unlisted",
+      "unlisted_new"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""
@@ -7246,9 +7256,11 @@
      "enum": [
       "private",
       "public",
-      "unlisted"
+      "unlisted",
+      "unlisted_new"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       ""

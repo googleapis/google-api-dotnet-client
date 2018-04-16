@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/5MKhkeUIzLqBB88xl6c3DdrRfWA\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/ByEZEzGIq-TNcKe0RsPdjS3d3zg\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20180323",
+ "revision": "20180329",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -384,7 +384,7 @@
    "properties": {
     "acceleratorTypes": {
      "type": "array",
-     "description": "[Output Only] List of accelerator types contained in this scope.",
+     "description": "[Output Only] A list of accelerator types contained in this scope.",
      "items": {
       "$ref": "AcceleratorType"
      }
@@ -914,7 +914,7 @@
    "properties": {
     "addresses": {
      "type": "array",
-     "description": "[Output Only] List of addresses contained in this scope.",
+     "description": "[Output Only] A list of addresses contained in this scope.",
      "items": {
       "$ref": "Address"
      }
@@ -1613,7 +1613,7 @@
    "properties": {
     "autoscalers": {
      "type": "array",
-     "description": "[Output Only] List of autoscalers contained in this scope.",
+     "description": "[Output Only] A list of autoscalers contained in this scope.",
      "items": {
       "$ref": "Autoscaler"
      }
@@ -2624,7 +2624,7 @@
    "properties": {
     "backendServices": {
      "type": "array",
-     "description": "List of BackendServices contained in this scope.",
+     "description": "A list of BackendServices contained in this scope.",
      "items": {
       "$ref": "BackendService"
      }
@@ -2832,7 +2832,7 @@
     },
     "resources": {
      "type": "array",
-     "description": "List of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.",
+     "description": "A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.",
      "items": {
       "$ref": "ResourceCommitment"
      }
@@ -3111,7 +3111,7 @@
    "properties": {
     "commitments": {
      "type": "array",
-     "description": "[Output Only] List of commitments contained in this scope.",
+     "description": "[Output Only] A list of commitments contained in this scope.",
      "items": {
       "$ref": "Commitment"
      }
@@ -3308,7 +3308,7 @@
     },
     "rsaEncryptedKey": {
      "type": "string",
-     "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.\n\nThe key must meet the following requirements before you can provide it to Compute Engine:  \n- The key is wrapped using a RSA public key certificate provided by Google. \n- After being wrapped, the key must be encoded in RFC 4648 base64 encoding.  Get the RSA public key certificate provided by Google at:\nhttps://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem"
+     "description": "Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit customer-supplied encryption key to either encrypt or decrypt this resource.\n\nThe key must meet the following requirements before you can provide it to Compute Engine:  \n- The key is wrapped using a RSA public key certificate provided by Google. \n- After being wrapped, the key must be encoded in RFC 4648 base64 encoding.  Gets the RSA public key certificate provided by Google at:\nhttps://cloud-certs.storage.googleapis.com/google-cloud-csek-ingress.pem"
     },
     "sha256": {
      "type": "string",
@@ -3327,26 +3327,6 @@
     "source": {
      "type": "string",
      "description": "Specifies a valid partial or full URL to an existing Persistent Disk resource. This field is only applicable for persistent disks."
-    }
-   }
-  },
-  "DailyMaintenanceWindow": {
-   "id": "DailyMaintenanceWindow",
-   "type": "object",
-   "description": "Time window specified for daily maintenance operations.",
-   "properties": {
-    "daysInCycle": {
-     "type": "integer",
-     "description": "Allows to define schedule that runs every nth day of the month.",
-     "format": "int32"
-    },
-    "duration": {
-     "type": "string",
-     "description": "[Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario."
-    },
-    "startTime": {
-     "type": "string",
-     "description": "Time within the maintenance window to start the maintenance operations. It must be in format \"HH:MM?, where HH : [00-23] and MM : [00-59] GMT."
     }
    }
   },
@@ -4124,7 +4104,7 @@
    "properties": {
     "diskTypes": {
      "type": "array",
-     "description": "[Output Only] List of disk types contained in this scope.",
+     "description": "[Output Only] A list of disk types contained in this scope.",
      "items": {
       "$ref": "DiskType"
      }
@@ -4229,7 +4209,7 @@
    "properties": {
     "disks": {
      "type": "array",
-     "description": "[Output Only] List of disks contained in this scope.",
+     "description": "[Output Only] A list of disks contained in this scope.",
      "items": {
       "$ref": "Disk"
      }
@@ -5051,7 +5031,7 @@
    "properties": {
     "forwardingRules": {
      "type": "array",
-     "description": "List of forwarding rules contained in this scope.",
+     "description": "A list of forwarding rules contained in this scope.",
      "items": {
       "$ref": "ForwardingRule"
      }
@@ -5705,7 +5685,7 @@
    "properties": {
     "healthChecks": {
      "type": "array",
-     "description": "List of HealthChecks contained in this scope.",
+     "description": "A list of HealthChecks contained in this scope.",
      "items": {
       "$ref": "HealthCheck"
      }
@@ -6476,7 +6456,7 @@
    "properties": {
     "hostTypes": {
      "type": "array",
-     "description": "[Output Only] List of host types contained in this scope.",
+     "description": "[Output Only] A list of host types contained in this scope.",
      "items": {
       "$ref": "HostType"
      }
@@ -6570,7 +6550,7 @@
    "properties": {
     "hosts": {
      "type": "array",
-     "description": "[Output Only] List of hosts contained in this scope.",
+     "description": "[Output Only] A list of hosts contained in this scope.",
      "items": {
       "$ref": "Host"
      }
@@ -6655,26 +6635,6 @@
        "description": "[Output Only] A human-readable description of the warning code."
       }
      }
-    }
-   }
-  },
-  "HourlyMaintenanceWindow": {
-   "id": "HourlyMaintenanceWindow",
-   "type": "object",
-   "description": "Time window specified for hourly maintenance operations.",
-   "properties": {
-    "duration": {
-     "type": "string",
-     "description": "[Output only] Duration of the time window, automatically chosen to be smallest possible in the given scenario."
-    },
-    "hoursInCycle": {
-     "type": "integer",
-     "description": "Allows to define schedule that runs every nth hour.",
-     "format": "int32"
-    },
-    "startTime": {
-     "type": "string",
-     "description": "Time within the maintenance window to start the maintenance operations. It must be in format \"HH:MM?, where HH : [00-23] and MM : [00-59] GMT."
     }
    }
   },
@@ -7368,7 +7328,7 @@
     },
     "guestAccelerators": {
      "type": "array",
-     "description": "List of the type and count of accelerator cards attached to the instance.",
+     "description": "A list of the type and count of accelerator cards attached to the instance.",
      "items": {
       "$ref": "AcceleratorConfig"
      }
@@ -7410,13 +7370,6 @@
       "required": [
        "compute.instances.insert"
       ]
-     }
-    },
-    "maintenancePolicies": {
-     "type": "array",
-     "description": "Maintenance policies applied to this instance.",
-     "items": {
-      "type": "string"
      }
     },
     "metadata": {
@@ -7675,7 +7628,7 @@
     },
     "region": {
      "type": "string",
-     "description": "The URL of the region where the instance group is located (for regional resources)."
+     "description": "[Output Only] The URL of the region where the instance group is located (for regional resources)."
     },
     "selfLink": {
      "type": "string",
@@ -7688,7 +7641,7 @@
     },
     "subnetwork": {
      "type": "string",
-     "description": "The URL of the subnetwork to which all instances in the instance group belong."
+     "description": "[Output Only] The URL of the subnetwork to which all instances in the instance group belong."
     },
     "zone": {
      "type": "string",
@@ -9726,32 +9679,6 @@
     }
    }
   },
-  "InstancesAddMaintenancePoliciesRequest": {
-   "id": "InstancesAddMaintenancePoliciesRequest",
-   "type": "object",
-   "properties": {
-    "maintenancePolicies": {
-     "type": "array",
-     "description": "Maintenance policies to be added to this instance.",
-     "items": {
-      "type": "string"
-     }
-    }
-   }
-  },
-  "InstancesRemoveMaintenancePoliciesRequest": {
-   "id": "InstancesRemoveMaintenancePoliciesRequest",
-   "type": "object",
-   "properties": {
-    "maintenancePolicies": {
-     "type": "array",
-     "description": "Maintenance policies to be removed from this instance.",
-     "items": {
-      "type": "string"
-     }
-    }
-   }
-  },
   "InstancesResumeRequest": {
    "id": "InstancesResumeRequest",
    "type": "object",
@@ -9775,7 +9702,7 @@
    "properties": {
     "instances": {
      "type": "array",
-     "description": "[Output Only] List of instances contained in this scope.",
+     "description": "[Output Only] A list of instances contained in this scope.",
      "items": {
       "$ref": "Instance"
      }
@@ -9886,7 +9813,7 @@
    "properties": {
     "guestAccelerators": {
      "type": "array",
-     "description": "List of the type and count of accelerator cards attached to the instance.",
+     "description": "A list of the type and count of accelerator cards attached to the instance.",
      "items": {
       "$ref": "AcceleratorConfig"
      }
@@ -9958,7 +9885,7 @@
     },
     "circuitInfos": {
      "type": "array",
-     "description": "[Output Only] List of CircuitInfo objects, that describe the individual circuits in this LAG.",
+     "description": "[Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.",
      "items": {
       "$ref": "InterconnectCircuitInfo"
      }
@@ -9977,7 +9904,7 @@
     },
     "expectedOutages": {
      "type": "array",
-     "description": "[Output Only] List of outages expected for this Interconnect.",
+     "description": "[Output Only] A list of outages expected for this Interconnect.",
      "items": {
       "$ref": "InterconnectOutageNotification"
      }
@@ -10572,7 +10499,7 @@
    "properties": {
     "interconnectAttachments": {
      "type": "array",
-     "description": "List of interconnect attachments contained in this scope.",
+     "description": "A list of interconnect attachments contained in this scope.",
      "items": {
       "$ref": "InterconnectAttachment"
      }
@@ -11868,7 +11795,7 @@
    "properties": {
     "machineTypes": {
      "type": "array",
-     "description": "[Output Only] List of machine types contained in this scope.",
+     "description": "[Output Only] A list of machine types contained in this scope.",
      "items": {
       "$ref": "MachineType"
      }
@@ -11953,382 +11880,6 @@
        "description": "[Output Only] A human-readable description of the warning code."
       }
      }
-    }
-   }
-  },
-  "MaintenancePoliciesList": {
-   "id": "MaintenancePoliciesList",
-   "type": "object",
-   "properties": {
-    "id": {
-     "type": "string",
-     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server."
-    },
-    "items": {
-     "type": "array",
-     "description": "[Output Only] A list of MaintenancePolicy resources.",
-     "items": {
-      "$ref": "MaintenancePolicy"
-     }
-    },
-    "kind": {
-     "type": "string",
-     "description": "[Output Only] Type of resource.Always compute#maintenancePoliciesList for listsof maintenancePolicies",
-     "default": "compute#maintenancePoliciesList"
-    },
-    "nextPageToken": {
-     "type": "string",
-     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
-    },
-    "selfLink": {
-     "type": "string",
-     "description": "[Output Only] Server-defined URL for this resource."
-    },
-    "warning": {
-     "type": "object",
-     "description": "[Output Only] Informational warning message.",
-     "properties": {
-      "code": {
-       "type": "string",
-       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
-       "enum": [
-        "CLEANUP_FAILED",
-        "DEPRECATED_RESOURCE_USED",
-        "DEPRECATED_TYPE_USED",
-        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
-        "EXPERIMENTAL_TYPE_USED",
-        "EXTERNAL_API_WARNING",
-        "FIELD_VALUE_OVERRIDEN",
-        "INJECTED_KERNELS_DEPRECATED",
-        "MISSING_TYPE_DEPENDENCY",
-        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
-        "NEXT_HOP_CANNOT_IP_FORWARD",
-        "NEXT_HOP_INSTANCE_NOT_FOUND",
-        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
-        "NEXT_HOP_NOT_RUNNING",
-        "NOT_CRITICAL_ERROR",
-        "NO_RESULTS_ON_PAGE",
-        "REQUIRED_TOS_AGREEMENT",
-        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
-        "RESOURCE_NOT_DELETED",
-        "SCHEMA_VALIDATION_IGNORED",
-        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
-        "UNDECLARED_PROPERTIES",
-        "UNREACHABLE"
-       ],
-       "enumDescriptions": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-       ]
-      },
-      "data": {
-       "type": "array",
-       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
-       "items": {
-        "type": "object",
-        "properties": {
-         "key": {
-          "type": "string",
-          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
-         },
-         "value": {
-          "type": "string",
-          "description": "[Output Only] A warning data value corresponding to the key."
-         }
-        }
-       }
-      },
-      "message": {
-       "type": "string",
-       "description": "[Output Only] A human-readable description of the warning code."
-      }
-     }
-    }
-   }
-  },
-  "MaintenancePoliciesScopedList": {
-   "id": "MaintenancePoliciesScopedList",
-   "type": "object",
-   "properties": {
-    "maintenancePolicies": {
-     "type": "array",
-     "description": "List of maintenancePolicies contained in this scope.",
-     "items": {
-      "$ref": "MaintenancePolicy"
-     }
-    },
-    "warning": {
-     "type": "object",
-     "description": "Informational warning which replaces the list of maintenancePolicies when the list is empty.",
-     "properties": {
-      "code": {
-       "type": "string",
-       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
-       "enum": [
-        "CLEANUP_FAILED",
-        "DEPRECATED_RESOURCE_USED",
-        "DEPRECATED_TYPE_USED",
-        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
-        "EXPERIMENTAL_TYPE_USED",
-        "EXTERNAL_API_WARNING",
-        "FIELD_VALUE_OVERRIDEN",
-        "INJECTED_KERNELS_DEPRECATED",
-        "MISSING_TYPE_DEPENDENCY",
-        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
-        "NEXT_HOP_CANNOT_IP_FORWARD",
-        "NEXT_HOP_INSTANCE_NOT_FOUND",
-        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
-        "NEXT_HOP_NOT_RUNNING",
-        "NOT_CRITICAL_ERROR",
-        "NO_RESULTS_ON_PAGE",
-        "REQUIRED_TOS_AGREEMENT",
-        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
-        "RESOURCE_NOT_DELETED",
-        "SCHEMA_VALIDATION_IGNORED",
-        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
-        "UNDECLARED_PROPERTIES",
-        "UNREACHABLE"
-       ],
-       "enumDescriptions": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-       ]
-      },
-      "data": {
-       "type": "array",
-       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
-       "items": {
-        "type": "object",
-        "properties": {
-         "key": {
-          "type": "string",
-          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
-         },
-         "value": {
-          "type": "string",
-          "description": "[Output Only] A warning data value corresponding to the key."
-         }
-        }
-       }
-      },
-      "message": {
-       "type": "string",
-       "description": "[Output Only] A human-readable description of the warning code."
-      }
-     }
-    }
-   }
-  },
-  "MaintenancePolicy": {
-   "id": "MaintenancePolicy",
-   "type": "object",
-   "description": "A maintenance policy for an instance. This specifies what kind of maintenance operations our infrastructure may perform on this instance and when.",
-   "properties": {
-    "creationTimestamp": {
-     "type": "string",
-     "description": "[Output Only] Creation timestamp in RFC3339 text format."
-    },
-    "description": {
-     "type": "string"
-    },
-    "id": {
-     "type": "string",
-     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
-     "format": "uint64"
-    },
-    "kind": {
-     "type": "string",
-     "description": "[Output Only] Type of the resource. Always compute#maintenance_policies for maintenance policies.",
-     "default": "compute#maintenancePolicy"
-    },
-    "name": {
-     "type": "string",
-     "description": "The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
-     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-     "annotations": {
-      "required": [
-       "compute.instances.insert"
-      ]
-     }
-    },
-    "region": {
-     "type": "string"
-    },
-    "selfLink": {
-     "type": "string",
-     "description": "[Output Only] Server-defined fully-qualified URL for this resource."
-    },
-    "vmMaintenancePolicy": {
-     "$ref": "VmMaintenancePolicy",
-     "description": "Maintenance policy applicable to VMs for infrastructure maintenance."
-    }
-   }
-  },
-  "MaintenancePolicyAggregatedList": {
-   "id": "MaintenancePolicyAggregatedList",
-   "type": "object",
-   "description": "Contains a list of maintenancePolicies.",
-   "properties": {
-    "id": {
-     "type": "string",
-     "description": "[Output Only] Unique identifier for the resource; defined by the server."
-    },
-    "items": {
-     "type": "object",
-     "description": "A list of MaintenancePolicy resources.",
-     "additionalProperties": {
-      "$ref": "MaintenancePoliciesScopedList",
-      "description": "Name of the scope containing this set of maintenancePolicies."
-     }
-    },
-    "kind": {
-     "type": "string",
-     "description": "Type of resource.",
-     "default": "compute#maintenancePolicyAggregatedList"
-    },
-    "nextPageToken": {
-     "type": "string",
-     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
-    },
-    "selfLink": {
-     "type": "string",
-     "description": "[Output Only] Server-defined URL for this resource."
-    },
-    "warning": {
-     "type": "object",
-     "description": "[Output Only] Informational warning message.",
-     "properties": {
-      "code": {
-       "type": "string",
-       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
-       "enum": [
-        "CLEANUP_FAILED",
-        "DEPRECATED_RESOURCE_USED",
-        "DEPRECATED_TYPE_USED",
-        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
-        "EXPERIMENTAL_TYPE_USED",
-        "EXTERNAL_API_WARNING",
-        "FIELD_VALUE_OVERRIDEN",
-        "INJECTED_KERNELS_DEPRECATED",
-        "MISSING_TYPE_DEPENDENCY",
-        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
-        "NEXT_HOP_CANNOT_IP_FORWARD",
-        "NEXT_HOP_INSTANCE_NOT_FOUND",
-        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
-        "NEXT_HOP_NOT_RUNNING",
-        "NOT_CRITICAL_ERROR",
-        "NO_RESULTS_ON_PAGE",
-        "REQUIRED_TOS_AGREEMENT",
-        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
-        "RESOURCE_NOT_DELETED",
-        "SCHEMA_VALIDATION_IGNORED",
-        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
-        "UNDECLARED_PROPERTIES",
-        "UNREACHABLE"
-       ],
-       "enumDescriptions": [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        ""
-       ]
-      },
-      "data": {
-       "type": "array",
-       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
-       "items": {
-        "type": "object",
-        "properties": {
-         "key": {
-          "type": "string",
-          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
-         },
-         "value": {
-          "type": "string",
-          "description": "[Output Only] A warning data value corresponding to the key."
-         }
-        }
-       }
-      },
-      "message": {
-       "type": "string",
-       "description": "[Output Only] A human-readable description of the warning code."
-      }
-     }
-    }
-   }
-  },
-  "MaintenanceWindow": {
-   "id": "MaintenanceWindow",
-   "type": "object",
-   "description": "A maintenance window for VMs and disks. When set, we restrict our maintenance operations to this window.",
-   "properties": {
-    "dailyMaintenanceWindow": {
-     "$ref": "DailyMaintenanceWindow"
-    },
-    "hourlyMaintenanceWindow": {
-     "$ref": "HourlyMaintenanceWindow"
     }
    }
   },
@@ -12683,7 +12234,7 @@
     },
     "peerings": {
      "type": "array",
-     "description": "[Output Only] List of network peerings for the resource.",
+     "description": "[Output Only] A list of network peerings for the resource.",
      "items": {
       "$ref": "NetworkPeering"
      }
@@ -13542,6 +13093,1227 @@
     }
    }
   },
+  "NodeGroup": {
+   "id": "NodeGroup",
+   "type": "object",
+   "description": "A NodeGroup resource.",
+   "properties": {
+    "creationTimestamp": {
+     "type": "string",
+     "description": "[Output Only] Creation timestamp in RFC3339 text format."
+    },
+    "description": {
+     "type": "string",
+     "description": "[Output Only] An optional textual description of the resource."
+    },
+    "id": {
+     "type": "string",
+     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+     "format": "uint64"
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] The type of the resource. Always compute#nodeGroup for node group.",
+     "default": "compute#nodeGroup"
+    },
+    "name": {
+     "type": "string",
+     "description": "The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash."
+    },
+    "nodeTemplate": {
+     "type": "string",
+     "description": "The URL of the node template to which this node group belongs."
+    },
+    "nodes": {
+     "type": "array",
+     "description": "[Output Only] A list of nodes in this node group.",
+     "items": {
+      "$ref": "NodeGroupNode"
+     }
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "status": {
+     "type": "string",
+     "enum": [
+      "CREATING",
+      "DELETING",
+      "INVALID",
+      "READY"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "zone": {
+     "type": "string",
+     "description": "[Output Only] The name of the zone where the node group resides, such as us-central1-a."
+    }
+   }
+  },
+  "NodeGroupAggregatedList": {
+   "id": "NodeGroupAggregatedList",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "object",
+     "description": "A list of NodeGroupsScopedList resources.",
+     "additionalProperties": {
+      "$ref": "NodeGroupsScopedList",
+      "description": "[Output Only] Name of the scope containing this set of node groups."
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource.Always compute#nodeGroupAggregatedList for aggregated lists of node groups.",
+     "default": "compute#nodeGroupAggregatedList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "NodeGroupList": {
+   "id": "NodeGroupList",
+   "type": "object",
+   "description": "Contains a list of nodeGroups.",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "array",
+     "description": "A list of NodeGroup resources.",
+     "items": {
+      "$ref": "NodeGroup"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource.Always compute#nodeGroupList for lists of node groups.",
+     "default": "compute#nodeGroupList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "NodeGroupNode": {
+   "id": "NodeGroupNode",
+   "type": "object",
+   "properties": {
+    "index": {
+     "type": "integer",
+     "format": "int32"
+    },
+    "instances": {
+     "type": "array",
+     "description": "Instances scheduled on this node.",
+     "items": {
+      "type": "string"
+     }
+    },
+    "nodeType": {
+     "type": "string",
+     "description": "The type of this node."
+    }
+   }
+  },
+  "NodeGroupsAddNodesRequest": {
+   "id": "NodeGroupsAddNodesRequest",
+   "type": "object",
+   "properties": {
+    "additionalNodeCount": {
+     "type": "integer",
+     "description": "Count of additional nodes to be added to the node group.",
+     "format": "int32"
+    }
+   }
+  },
+  "NodeGroupsDeleteNodesRequest": {
+   "id": "NodeGroupsDeleteNodesRequest",
+   "type": "object",
+   "properties": {
+    "nodeIndexes": {
+     "type": "array",
+     "description": "Indexes of the nodes to be deleted from the node group.",
+     "items": {
+      "type": "integer",
+      "format": "int32"
+     }
+    }
+   }
+  },
+  "NodeGroupsScopedList": {
+   "id": "NodeGroupsScopedList",
+   "type": "object",
+   "properties": {
+    "nodeGroups": {
+     "type": "array",
+     "description": "[Output Only] A list of node groups contained in this scope.",
+     "items": {
+      "$ref": "NodeGroup"
+     }
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] An informational warning that appears when the nodeGroup list is empty.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "NodeGroupsSetNodeTemplateRequest": {
+   "id": "NodeGroupsSetNodeTemplateRequest",
+   "type": "object",
+   "properties": {
+    "nodeTemplate": {
+     "type": "string",
+     "description": "Full or partial URL of the node template resource to be updated for this node group."
+    }
+   }
+  },
+  "NodeTemplate": {
+   "id": "NodeTemplate",
+   "type": "object",
+   "description": "A Node Template resource.",
+   "properties": {
+    "creationTimestamp": {
+     "type": "string",
+     "description": "[Output Only] Creation timestamp in RFC3339 text format."
+    },
+    "description": {
+     "type": "string",
+     "description": "An optional description of this resource. Provide this property when you create the resource."
+    },
+    "id": {
+     "type": "string",
+     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+     "format": "uint64"
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] The type of the resource. Always compute#nodeTemplate for node templates.",
+     "default": "compute#nodeTemplate"
+    },
+    "name": {
+     "type": "string",
+     "description": "The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last charaicter, which cannot be a dash."
+    },
+    "nodeAffinityLabels": {
+     "type": "object",
+     "description": "Labels to use for node affinity, which will be used in instance scheduling.",
+     "additionalProperties": {
+      "type": "string"
+     }
+    },
+    "nodeType": {
+     "type": "string",
+     "description": "The node type to use for nodes group that are created from this template."
+    },
+    "nodeTypeFlexibility": {
+     "$ref": "NodeTemplateNodeTypeFlexibility",
+     "description": "The flexible properties of the desired node type. Node groups that use this node template will create nodes of a type that matches these properties.\n\nThis field is mutually exclusive with the node_type property; you can only define one or the other, but not both."
+    },
+    "region": {
+     "type": "string",
+     "description": "[Output Only] The name of the region where the node template resides, such as us-central1."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "status": {
+     "type": "string",
+     "description": "[Output Only] The status of the node template. One of the following values: CREATING, READY, and DELETING.",
+     "enum": [
+      "CREATING",
+      "DELETING",
+      "INVALID",
+      "READY"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      "",
+      ""
+     ]
+    },
+    "statusMessage": {
+     "type": "string",
+     "description": "[Output Only] An optional, human-readable explanation of the status."
+    }
+   }
+  },
+  "NodeTemplateAggregatedList": {
+   "id": "NodeTemplateAggregatedList",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "object",
+     "description": "A list of NodeTemplatesScopedList resources.",
+     "additionalProperties": {
+      "$ref": "NodeTemplatesScopedList",
+      "description": "[Output Only] Name of the scope containing this set of node templates."
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource.Always compute#nodeTemplateAggregatedList for aggregated lists of node templates.",
+     "default": "compute#nodeTemplateAggregatedList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "NodeTemplateList": {
+   "id": "NodeTemplateList",
+   "type": "object",
+   "description": "Contains a list of node templates.",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "array",
+     "description": "A list of NodeTemplate resources.",
+     "items": {
+      "$ref": "NodeTemplate"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource.Always compute#nodeTemplateList for lists of node templates.",
+     "default": "compute#nodeTemplateList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "NodeTemplateNodeTypeFlexibility": {
+   "id": "NodeTemplateNodeTypeFlexibility",
+   "type": "object",
+   "properties": {
+    "cpus": {
+     "type": "string"
+    },
+    "localSsd": {
+     "type": "string"
+    },
+    "memory": {
+     "type": "string"
+    }
+   }
+  },
+  "NodeTemplatesScopedList": {
+   "id": "NodeTemplatesScopedList",
+   "type": "object",
+   "properties": {
+    "nodeTemplates": {
+     "type": "array",
+     "description": "[Output Only] A list of node templates contained in this scope.",
+     "items": {
+      "$ref": "NodeTemplate"
+     }
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] An informational warning that appears when the node templates list is empty.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "NodeType": {
+   "id": "NodeType",
+   "type": "object",
+   "description": "A Node Type resource.",
+   "properties": {
+    "cpuPlatform": {
+     "type": "string",
+     "description": "[Output Only] The CPU platform used by this node type."
+    },
+    "creationTimestamp": {
+     "type": "string",
+     "description": "[Output Only] Creation timestamp in RFC3339 text format."
+    },
+    "deprecated": {
+     "$ref": "DeprecationStatus",
+     "description": "[Output Only] The deprecation status associated with this node type."
+    },
+    "description": {
+     "type": "string",
+     "description": "[Output Only] An optional textual description of the resource."
+    },
+    "guestCpus": {
+     "type": "integer",
+     "description": "[Output Only] The number of virtual CPUs that are available to the node type.",
+     "format": "int32"
+    },
+    "id": {
+     "type": "string",
+     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+     "format": "uint64"
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] The type of the resource. Always compute#nodeType for node types.",
+     "default": "compute#nodeType"
+    },
+    "localSsdGb": {
+     "type": "integer",
+     "description": "[Output Only] Local SSD available to the node type, defined in GB.",
+     "format": "int32"
+    },
+    "memoryMb": {
+     "type": "integer",
+     "description": "[Output Only] The amount of physical memory available to the node type, defined in MB.",
+     "format": "int32"
+    },
+    "name": {
+     "type": "string",
+     "description": "[Output Only] Name of the resource.",
+     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?"
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for the resource."
+    },
+    "zone": {
+     "type": "string",
+     "description": "[Output Only] The name of the zone where the node type resides, such as us-central1-a."
+    }
+   }
+  },
+  "NodeTypeAggregatedList": {
+   "id": "NodeTypeAggregatedList",
+   "type": "object",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "object",
+     "description": "A list of NodeTypesScopedList resources.",
+     "additionalProperties": {
+      "$ref": "NodeTypesScopedList",
+      "description": "[Output Only] Name of the scope containing this set of node types."
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource.Always compute#nodeTypeAggregatedList for aggregated lists of node types.",
+     "default": "compute#nodeTypeAggregatedList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "NodeTypeList": {
+   "id": "NodeTypeList",
+   "type": "object",
+   "description": "Contains a list of node types.",
+   "properties": {
+    "id": {
+     "type": "string",
+     "description": "[Output Only] Unique identifier for the resource; defined by the server."
+    },
+    "items": {
+     "type": "array",
+     "description": "A list of NodeType resources.",
+     "items": {
+      "$ref": "NodeType"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "[Output Only] Type of resource.Always compute#nodeTypeList for lists of node types.",
+     "default": "compute#nodeTypeList"
+    },
+    "nextPageToken": {
+     "type": "string",
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results."
+    },
+    "selfLink": {
+     "type": "string",
+     "description": "[Output Only] Server-defined URL for this resource."
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
+  "NodeTypesScopedList": {
+   "id": "NodeTypesScopedList",
+   "type": "object",
+   "properties": {
+    "nodeTypes": {
+     "type": "array",
+     "description": "[Output Only] A list of node types contained in this scope.",
+     "items": {
+      "$ref": "NodeType"
+     }
+    },
+    "warning": {
+     "type": "object",
+     "description": "[Output Only] An informational warning that appears when the node types list is empty.",
+     "properties": {
+      "code": {
+       "type": "string",
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+       ]
+      },
+      "data": {
+       "type": "array",
+       "description": "[Output Only] Metadata about this warning in key: value format. For example:\n\"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" }",
+       "items": {
+        "type": "object",
+        "properties": {
+         "key": {
+          "type": "string",
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding)."
+         },
+         "value": {
+          "type": "string",
+          "description": "[Output Only] A warning data value corresponding to the key."
+         }
+        }
+       }
+      },
+      "message": {
+       "type": "string",
+       "description": "[Output Only] A human-readable description of the warning code."
+      }
+     }
+    }
+   }
+  },
   "Operation": {
    "id": "Operation",
    "type": "object",
@@ -13989,7 +14761,7 @@
    "properties": {
     "operations": {
      "type": "array",
-     "description": "[Output Only] List of operations contained in this scope.",
+     "description": "[Output Only] A list of operations contained in this scope.",
      "items": {
       "$ref": "Operation"
      }
@@ -14377,7 +15149,6 @@
       "INTERNAL_ADDRESSES",
       "IN_USE_ADDRESSES",
       "LOCAL_SSD_TOTAL_GB",
-      "MAINTENANCE_POLICIES",
       "NETWORKS",
       "NVIDIA_K80_GPUS",
       "NVIDIA_P100_GPUS",
@@ -14410,7 +15181,6 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       "",
@@ -15219,7 +15989,7 @@
    "properties": {
     "managedInstances": {
      "type": "array",
-     "description": "List of managed instances.",
+     "description": "A list of managed instances.",
      "items": {
       "$ref": "ManagedInstance"
      }
@@ -15965,7 +16735,7 @@
     },
     "nats": {
      "type": "array",
-     "description": "List of Nat services created in this router. The maximum number of Nat services within a Router is 3 for Alpha.",
+     "description": "A list of Nat services created in this router. The maximum number of Nat services within a Router is 3 for Alpha.",
      "items": {
       "$ref": "RouterNat"
      }
@@ -16420,7 +17190,7 @@
    "properties": {
     "autoAllocatedNatIps": {
      "type": "array",
-     "description": "[Output Only] List of IPs allocated automatically by GCP for this Nat service. They will be raw IP strings like \"179.12.26.133\". They are ephemeral IPs allocated from the IP blocks managed by the NAT manager. This list can grow and shrink based on the number of VMs configured to use NAT.",
+     "description": "[Output Only] A list of IPs allocated automatically by GCP for this Nat service. They will be raw IP strings like \"179.12.26.133\". They are ephemeral IPs allocated from the IP blocks managed by the NAT manager. This list can grow and shrink based on the number of VMs configured to use NAT.",
      "items": {
       "type": "string"
      }
@@ -16444,7 +17214,7 @@
     },
     "natIps": {
      "type": "array",
-     "description": "List of URLs of the IP resources used for this Nat service. These IPs must be valid static external IP addresses assigned to the project. max_length is subject to change post alpha.",
+     "description": "A list of URLs of the IP resources used for this Nat service. These IPs must be valid static external IP addresses assigned to the project. max_length is subject to change post alpha.",
      "items": {
       "type": "string"
      }
@@ -16465,7 +17235,7 @@
     },
     "subnetworks": {
      "type": "array",
-     "description": "List of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.",
+     "description": "A list of Subnetwork resources whose traffic should be translated by NAT Gateway. It is used only when LIST_OF_SUBNETWORKS is selected for the SubnetworkIpRangeToNatOption above.",
      "items": {
       "$ref": "RouterNatSubnetworkToNat"
      }
@@ -16483,7 +17253,7 @@
     },
     "secondaryIpRangeNames": {
      "type": "array",
-     "description": "List of the secondary ranges of the Subnetwork that are allowed to use NAT. This can be populated only if \"LIST_OF_SECONDARY_IP_RANGES\" is one of the values in source_ip_ranges_to_nat.",
+     "description": "A list of the secondary ranges of the Subnetwork that are allowed to use NAT. This can be populated only if \"LIST_OF_SECONDARY_IP_RANGES\" is one of the values in source_ip_ranges_to_nat.",
      "items": {
       "type": "string"
      }
@@ -16610,7 +17380,7 @@
    "properties": {
     "autoAllocatedNatIps": {
      "type": "array",
-     "description": "List of IPs auto-allocated for NAT. Example: [\"1.1.1.1\", \"129.2.16.89\"]",
+     "description": "A list of IPs auto-allocated for NAT. Example: [\"1.1.1.1\", \"129.2.16.89\"]",
      "items": {
       "type": "string"
      }
@@ -16631,14 +17401,14 @@
     },
     "userAllocatedNatIpResources": {
      "type": "array",
-     "description": "List of fully qualified URLs of reserved IP address resources.",
+     "description": "A list of fully qualified URLs of reserved IP address resources.",
      "items": {
       "type": "string"
      }
     },
     "userAllocatedNatIps": {
      "type": "array",
-     "description": "List of IPs user-allocated for NAT. They will be raw IP strings like \"179.12.26.133\".",
+     "description": "A list of IPs user-allocated for NAT. They will be raw IP strings like \"179.12.26.133\".",
      "items": {
       "type": "string"
      }
@@ -16675,7 +17445,7 @@
    "properties": {
     "routers": {
      "type": "array",
-     "description": "List of routers contained in this scope.",
+     "description": "A list of routers contained in this scope.",
      "items": {
       "$ref": "Router"
      }
@@ -16979,7 +17749,7 @@
     },
     "rules": {
      "type": "array",
-     "description": "List of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match \"*\"). If no rules are provided when creating a security policy, a default rule with action \"allow\" will be added.",
+     "description": "A list of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match \"*\"). If no rules are provided when creating a security policy, a default rule with action \"allow\" will be added.",
      "items": {
       "$ref": "SecurityPolicyRule"
      }
@@ -17784,7 +18554,7 @@
   "SslCertificateSelfManagedSslCertificate": {
    "id": "SslCertificateSelfManagedSslCertificate",
    "type": "object",
-   "description": "Configuration and status of a self-managed SSL certificate..",
+   "description": "Configuration and status of a self-managed SSL certificate.",
    "properties": {
     "certificate": {
      "type": "string",
@@ -17930,7 +18700,7 @@
     },
     "customFeatures": {
      "type": "array",
-     "description": "List of features enabled when the selected profile is CUSTOM. The\n- method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.",
+     "description": "A list of features enabled when the selected profile is CUSTOM. The\n- method returns the set of features that can be specified in this list. This field must be empty if the profile is not CUSTOM.",
      "items": {
       "type": "string"
      }
@@ -18492,7 +19262,7 @@
    "properties": {
     "subnetworks": {
      "type": "array",
-     "description": "List of subnetworks contained in this scope.",
+     "description": "A list of subnetworks contained in this scope.",
      "items": {
       "$ref": "Subnetwork"
      }
@@ -18663,7 +19433,7 @@
    "properties": {
     "targetHttpProxies": {
      "type": "array",
-     "description": "List of TargetHttpProxies contained in this scope.",
+     "description": "A list of TargetHttpProxies contained in this scope.",
      "items": {
       "$ref": "TargetHttpProxy"
      }
@@ -19507,7 +20277,7 @@
    "properties": {
     "targetInstances": {
      "type": "array",
-     "description": "List of target instances contained in this scope.",
+     "description": "A list of target instances contained in this scope.",
      "items": {
       "$ref": "TargetInstance"
      }
@@ -19973,7 +20743,7 @@
    "properties": {
     "targetPools": {
      "type": "array",
-     "description": "List of target pools contained in this scope.",
+     "description": "A list of target pools contained in this scope.",
      "items": {
       "$ref": "TargetPool"
      }
@@ -20798,7 +21568,7 @@
    "properties": {
     "targetVpnGateways": {
      "type": "array",
-     "description": "[Output Only] List of target vpn gateways contained in this scope.",
+     "description": "[Output Only] A list of target vpn gateways contained in this scope.",
      "items": {
       "$ref": "TargetVpnGateway"
      }
@@ -21356,17 +22126,6 @@
     }
    }
   },
-  "VmMaintenancePolicy": {
-   "id": "VmMaintenancePolicy",
-   "type": "object",
-   "description": "A Vm Maintenance Policy specifies what kind of infrastructure maintenance we are allowed to perform on this VM and when.",
-   "properties": {
-    "maintenanceWindow": {
-     "$ref": "MaintenanceWindow",
-     "description": "Maintenance windows that are applied to VMs covered by this policy."
-    }
-   }
-  },
   "VpnTunnel": {
    "id": "VpnTunnel",
    "type": "object",
@@ -21727,7 +22486,7 @@
    "properties": {
     "vpnTunnels": {
      "type": "array",
-     "description": "List of vpn tunnels contained in this scope.",
+     "description": "A list of vpn tunnels contained in this scope.",
      "items": {
       "$ref": "VpnTunnel"
      }
@@ -28037,7 +28796,7 @@
      "id": "compute.instanceGroupManagers.deletePerInstanceConfigs",
      "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs",
      "httpMethod": "POST",
-     "description": "Delete selected per-instance configs for the managed instance group.",
+     "description": "Deletes selected per-instance configs for the managed instance group.",
      "parameters": {
       "instanceGroupManager": {
        "type": "string",
@@ -28079,7 +28838,7 @@
      "id": "compute.instanceGroupManagers.get",
      "path": "{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}",
      "httpMethod": "GET",
-     "description": "Returns all of the details about the specified managed instance group. Get a list of available managed instance groups by making a list() request.",
+     "description": "Returns all of the details about the specified managed instance group. Gets a list of available managed instance groups by making a list() request.",
      "parameters": {
       "instanceGroupManager": {
        "type": "string",
@@ -29337,7 +30096,7 @@
      "id": "compute.instanceTemplates.get",
      "path": "{project}/global/instanceTemplates/{instanceTemplate}",
      "httpMethod": "GET",
-     "description": "Returns the specified instance template. Get a list of available instance templates by making a list() request.",
+     "description": "Returns the specified instance template. Gets a list of available instance templates by making a list() request.",
      "parameters": {
       "instanceTemplate": {
        "type": "string",
@@ -29537,55 +30296,6 @@
      ],
      "request": {
       "$ref": "AccessConfig"
-     },
-     "response": {
-      "$ref": "Operation"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute"
-     ]
-    },
-    "addMaintenancePolicies": {
-     "id": "compute.instances.addMaintenancePolicies",
-     "path": "{project}/zones/{zone}/instances/{instance}/addMaintenancePolicies",
-     "httpMethod": "POST",
-     "description": "Adds existing maintenance policies to an instance. You can only add one policy right now which will be applied to this instance for scheduling live migrations.",
-     "parameters": {
-      "instance": {
-       "type": "string",
-       "description": "The instance name for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "requestId": {
-       "type": "string",
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-       "location": "query"
-      },
-      "zone": {
-       "type": "string",
-       "description": "The name of the zone for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "zone",
-      "instance"
-     ],
-     "request": {
-      "$ref": "InstancesAddMaintenancePoliciesRequest"
      },
      "response": {
       "$ref": "Operation"
@@ -30211,55 +30921,6 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
-     ]
-    },
-    "removeMaintenancePolicies": {
-     "id": "compute.instances.removeMaintenancePolicies",
-     "path": "{project}/zones/{zone}/instances/{instance}/removeMaintenancePolicies",
-     "httpMethod": "POST",
-     "description": "Removes maintenance policies from an instance.",
-     "parameters": {
-      "instance": {
-       "type": "string",
-       "description": "The instance name for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "requestId": {
-       "type": "string",
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-       "location": "query"
-      },
-      "zone": {
-       "type": "string",
-       "description": "The name of the zone for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "zone",
-      "instance"
-     ],
-     "request": {
-      "$ref": "InstancesRemoveMaintenancePoliciesRequest"
-     },
-     "response": {
-      "$ref": "Operation"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute"
      ]
     },
     "reset": {
@@ -32803,7 +33464,7 @@
      "id": "compute.machineTypes.get",
      "path": "{project}/zones/{zone}/machineTypes/{machineType}",
      "httpMethod": "GET",
-     "description": "Returns the specified machine type. Get a list of available machine types by making a list() request.",
+     "description": "Returns the specified machine type. Gets a list of available machine types by making a list() request.",
      "parameters": {
       "machineType": {
        "type": "string",
@@ -32891,376 +33552,6 @@
      ],
      "response": {
       "$ref": "MachineTypeList"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/compute.readonly"
-     ]
-    }
-   }
-  },
-  "maintenancePolicies": {
-   "methods": {
-    "aggregatedList": {
-     "id": "compute.maintenancePolicies.aggregatedList",
-     "path": "{project}/aggregated/maintenancePolicies",
-     "httpMethod": "GET",
-     "description": "Retrieves an aggregated list of maintenance policies.",
-     "parameters": {
-      "filter": {
-       "type": "string",
-       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
-       "location": "query"
-      },
-      "maxResults": {
-       "type": "integer",
-       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
-       "default": "500",
-       "format": "uint32",
-       "minimum": "0",
-       "location": "query"
-      },
-      "orderBy": {
-       "type": "string",
-       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
-       "location": "query"
-      },
-      "pageToken": {
-       "type": "string",
-       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
-       "location": "query"
-      },
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project"
-     ],
-     "response": {
-      "$ref": "MaintenancePolicyAggregatedList"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/compute.readonly"
-     ]
-    },
-    "delete": {
-     "id": "compute.maintenancePolicies.delete",
-     "path": "{project}/regions/{region}/maintenancePolicies/{maintenancePolicy}",
-     "httpMethod": "DELETE",
-     "description": "Deletes the specified maintenance policy.",
-     "parameters": {
-      "maintenancePolicy": {
-       "type": "string",
-       "description": "Name of the maintenance policy to delete.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "region": {
-       "type": "string",
-       "description": "Name of the region for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "requestId": {
-       "type": "string",
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-       "location": "query"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "region",
-      "maintenancePolicy"
-     ],
-     "response": {
-      "$ref": "Operation"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute"
-     ]
-    },
-    "get": {
-     "id": "compute.maintenancePolicies.get",
-     "path": "{project}/regions/{region}/maintenancePolicies/{maintenancePolicy}",
-     "httpMethod": "GET",
-     "description": "Retrieves all information of the specified maintenance policy.",
-     "parameters": {
-      "maintenancePolicy": {
-       "type": "string",
-       "description": "Name of the maintenance policy to retrieve.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "region": {
-       "type": "string",
-       "description": "Name of the region for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "region",
-      "maintenancePolicy"
-     ],
-     "response": {
-      "$ref": "MaintenancePolicy"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/compute.readonly"
-     ]
-    },
-    "getIamPolicy": {
-     "id": "compute.maintenancePolicies.getIamPolicy",
-     "path": "{project}/regions/{region}/maintenancePolicies/{resource}/getIamPolicy",
-     "httpMethod": "GET",
-     "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
-     "parameters": {
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "region": {
-       "type": "string",
-       "description": "The name of the region for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "resource": {
-       "type": "string",
-       "description": "Name of the resource for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "region",
-      "resource"
-     ],
-     "response": {
-      "$ref": "Policy"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/compute.readonly"
-     ]
-    },
-    "insert": {
-     "id": "compute.maintenancePolicies.insert",
-     "path": "{project}/regions/{region}/maintenancePolicies",
-     "httpMethod": "POST",
-     "description": "Creates a new maintenance policy.",
-     "parameters": {
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "region": {
-       "type": "string",
-       "description": "Name of the region for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "requestId": {
-       "type": "string",
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
-       "location": "query"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "region"
-     ],
-     "request": {
-      "$ref": "MaintenancePolicy"
-     },
-     "response": {
-      "$ref": "Operation"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute"
-     ]
-    },
-    "list": {
-     "id": "compute.maintenancePolicies.list",
-     "path": "{project}/regions/{region}/maintenancePolicies",
-     "httpMethod": "GET",
-     "description": "List all the maintenance policies that have been configured for the specified project in specified region.",
-     "parameters": {
-      "filter": {
-       "type": "string",
-       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
-       "location": "query"
-      },
-      "maxResults": {
-       "type": "integer",
-       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
-       "default": "500",
-       "format": "uint32",
-       "minimum": "0",
-       "location": "query"
-      },
-      "orderBy": {
-       "type": "string",
-       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
-       "location": "query"
-      },
-      "pageToken": {
-       "type": "string",
-       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
-       "location": "query"
-      },
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "region": {
-       "type": "string",
-       "description": "Name of the region for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "region"
-     ],
-     "response": {
-      "$ref": "MaintenancePoliciesList"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute",
-      "https://www.googleapis.com/auth/compute.readonly"
-     ]
-    },
-    "setIamPolicy": {
-     "id": "compute.maintenancePolicies.setIamPolicy",
-     "path": "{project}/regions/{region}/maintenancePolicies/{resource}/setIamPolicy",
-     "httpMethod": "POST",
-     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
-     "parameters": {
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "region": {
-       "type": "string",
-       "description": "The name of the region for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "resource": {
-       "type": "string",
-       "description": "Name of the resource for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "region",
-      "resource"
-     ],
-     "request": {
-      "$ref": "Policy"
-     },
-     "response": {
-      "$ref": "Policy"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute"
-     ]
-    },
-    "testIamPermissions": {
-     "id": "compute.maintenancePolicies.testIamPermissions",
-     "path": "{project}/regions/{region}/maintenancePolicies/{resource}/testIamPermissions",
-     "httpMethod": "POST",
-     "description": "Returns permissions that a caller has on the specified resource.",
-     "parameters": {
-      "project": {
-       "type": "string",
-       "description": "Project ID for this request.",
-       "required": true,
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "location": "path"
-      },
-      "region": {
-       "type": "string",
-       "description": "The name of the region for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      },
-      "resource": {
-       "type": "string",
-       "description": "Name of the resource for this request.",
-       "required": true,
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "project",
-      "region",
-      "resource"
-     ],
-     "request": {
-      "$ref": "TestPermissionsRequest"
-     },
-     "response": {
-      "$ref": "TestPermissionsResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -33599,7 +33890,7 @@
      "id": "compute.networkEndpointGroups.listNetworkEndpoints",
      "path": "{project}/zones/{zone}/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints",
      "httpMethod": "POST",
-     "description": "List the network endpoints in the specified network endpoint group.",
+     "description": "Lists the network endpoints in the specified network endpoint group.",
      "parameters": {
       "filter": {
        "type": "string",
@@ -33909,7 +34200,7 @@
      "id": "compute.networks.listIpOwners",
      "path": "{project}/global/networks/{network}/listIpOwners",
      "httpMethod": "GET",
-     "description": "List the internal IP owners in the specified network.",
+     "description": "Lists the internal IP owners in the specified network.",
      "parameters": {
       "filter": {
        "type": "string",
@@ -34150,6 +34441,241 @@
   },
   "nodeGroups": {
    "methods": {
+    "addNodes": {
+     "id": "compute.nodeGroups.addNodes",
+     "path": "{project}/zones/{zone}/nodeGroups/{nodeGroup}/addNodes",
+     "httpMethod": "POST",
+     "description": "Adds specified number of nodes to the node group.",
+     "parameters": {
+      "nodeGroup": {
+       "type": "string",
+       "description": "Name of the NodeGroup resource to delete.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "nodeGroup"
+     ],
+     "request": {
+      "$ref": "NodeGroupsAddNodesRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "aggregatedList": {
+     "id": "compute.nodeGroups.aggregatedList",
+     "path": "{project}/aggregated/nodeGroups",
+     "httpMethod": "GET",
+     "description": "Retrieves an aggregated list of node groups.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project"
+     ],
+     "response": {
+      "$ref": "NodeGroupAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "delete": {
+     "id": "compute.nodeGroups.delete",
+     "path": "{project}/zones/{zone}/nodeGroups/{nodeGroup}",
+     "httpMethod": "DELETE",
+     "description": "Deletes the specified NodeGroup resource.",
+     "parameters": {
+      "nodeGroup": {
+       "type": "string",
+       "description": "Name of the NodeGroup resource to delete.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "nodeGroup"
+     ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "deleteNodes": {
+     "id": "compute.nodeGroups.deleteNodes",
+     "path": "{project}/zones/{zone}/nodeGroups/{nodeGroup}/deleteNodes",
+     "httpMethod": "POST",
+     "description": "Deletes specified nodes from the node group.",
+     "parameters": {
+      "nodeGroup": {
+       "type": "string",
+       "description": "Name of the NodeGroup resource to delete.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "nodeGroup"
+     ],
+     "request": {
+      "$ref": "NodeGroupsDeleteNodesRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "id": "compute.nodeGroups.get",
+     "path": "{project}/zones/{zone}/nodeGroups/{nodeGroup}",
+     "httpMethod": "GET",
+     "description": "Returns the specified NodeGroup. Get a list of available NodeGroups by making a list() request.",
+     "parameters": {
+      "nodeGroup": {
+       "type": "string",
+       "description": "Name of the node group to return.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "nodeGroup"
+     ],
+     "response": {
+      "$ref": "NodeGroup"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "getIamPolicy": {
      "id": "compute.nodeGroups.getIamPolicy",
      "path": "{project}/zones/{zone}/nodeGroups/{resource}/getIamPolicy",
@@ -34185,6 +34711,112 @@
      ],
      "response": {
       "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "id": "compute.nodeGroups.insert",
+     "path": "{project}/zones/{zone}/nodeGroups",
+     "httpMethod": "POST",
+     "description": "Creates a NodeGroup resource in the specified project using the data included in the request.",
+     "parameters": {
+      "initialNodeCount": {
+       "type": "integer",
+       "description": "Initial count of nodes in the node group.",
+       "required": true,
+       "format": "int32",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "initialNodeCount"
+     ],
+     "request": {
+      "$ref": "NodeGroup"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "id": "compute.nodeGroups.list",
+     "path": "{project}/zones/{zone}/nodeGroups",
+     "httpMethod": "GET",
+     "description": "Retrieves a list of node groups available to the specified project.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "response": {
+      "$ref": "NodeGroupList"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -34230,6 +34862,55 @@
      },
      "response": {
       "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "setNodeTemplate": {
+     "id": "compute.nodeGroups.setNodeTemplate",
+     "path": "{project}/zones/{zone}/nodeGroups/{nodeGroup}/setNodeTemplate",
+     "httpMethod": "POST",
+     "description": "Updates the node template of the node group.",
+     "parameters": {
+      "nodeGroup": {
+       "type": "string",
+       "description": "Name of the NodeGroup resource to delete.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "nodeGroup"
+     ],
+     "request": {
+      "$ref": "NodeGroupsSetNodeTemplateRequest"
+     },
+     "response": {
+      "$ref": "Operation"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -34285,6 +34966,143 @@
   },
   "nodeTemplates": {
    "methods": {
+    "aggregatedList": {
+     "id": "compute.nodeTemplates.aggregatedList",
+     "path": "{project}/aggregated/nodeTemplates",
+     "httpMethod": "GET",
+     "description": "Retrieves an aggregated list of node templates.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project"
+     ],
+     "response": {
+      "$ref": "NodeTemplateAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "delete": {
+     "id": "compute.nodeTemplates.delete",
+     "path": "{project}/regions/{region}/nodeTemplates/{nodeTemplate}",
+     "httpMethod": "DELETE",
+     "description": "Deletes the specified NodeTemplate resource.",
+     "parameters": {
+      "nodeTemplate": {
+       "type": "string",
+       "description": "Name of the NodeTemplate resource to delete.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "nodeTemplate"
+     ],
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "id": "compute.nodeTemplates.get",
+     "path": "{project}/regions/{region}/nodeTemplates/{nodeTemplate}",
+     "httpMethod": "GET",
+     "description": "Returns the specified node template. Get a list of available node templates by making a list() request.",
+     "parameters": {
+      "nodeTemplate": {
+       "type": "string",
+       "description": "Name of the node template to return.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region",
+      "nodeTemplate"
+     ],
+     "response": {
+      "$ref": "NodeTemplate"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "getIamPolicy": {
      "id": "compute.nodeTemplates.getIamPolicy",
      "path": "{project}/regions/{region}/nodeTemplates/{resource}/getIamPolicy",
@@ -34320,6 +35138,104 @@
      ],
      "response": {
       "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "id": "compute.nodeTemplates.insert",
+     "path": "{project}/regions/{region}/nodeTemplates",
+     "httpMethod": "POST",
+     "description": "Creates a NodeTemplate resource in the specified project using the data included in the request.",
+     "parameters": {
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "requestId": {
+       "type": "string",
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.\n\nFor example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments.\n\nThe request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "request": {
+      "$ref": "NodeTemplate"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "id": "compute.nodeTemplates.list",
+     "path": "{project}/regions/{region}/nodeTemplates",
+     "httpMethod": "GET",
+     "description": "Retrieves a list of node templates available to the specified project.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "region": {
+       "type": "string",
+       "description": "The name of the region for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "response": {
+      "$ref": "NodeTemplateList"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -34409,6 +35325,158 @@
      },
      "response": {
       "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
+  "nodeTypes": {
+   "methods": {
+    "aggregatedList": {
+     "id": "compute.nodeTypes.aggregatedList",
+     "path": "{project}/aggregated/nodeTypes",
+     "httpMethod": "GET",
+     "description": "Retrieves an aggregated list of node types.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project"
+     ],
+     "response": {
+      "$ref": "NodeTypeAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "get": {
+     "id": "compute.nodeTypes.get",
+     "path": "{project}/zones/{zone}/nodeTypes/{nodeType}",
+     "httpMethod": "GET",
+     "description": "Returns the specified node type. Get a list of available node types by making a list() request.",
+     "parameters": {
+      "nodeType": {
+       "type": "string",
+       "description": "Name of the node type to return.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone",
+      "nodeType"
+     ],
+     "response": {
+      "$ref": "NodeType"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "list": {
+     "id": "compute.nodeTypes.list",
+     "path": "{project}/zones/{zone}/nodeTypes",
+     "httpMethod": "GET",
+     "description": "Retrieves a list of node types available to the specified project.",
+     "parameters": {
+      "filter": {
+       "type": "string",
+       "description": "A filter expression that filters resources listed in the response. The expression must specify the field name, a comparison operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The comparison operator must be either =, !=, \u003e, or \u003c.\n\nFor example, if you are filtering Compute Engine instances, you can exclude instances named example-instance by specifying name != example-instance.\n\nYou can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels.\n\nTo filter on multiple expressions, provide each separate expression within parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\"). By default, each expression is an AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true).",
+       "location": "query"
+      },
+      "maxResults": {
+       "type": "integer",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default: 500)",
+       "default": "500",
+       "format": "uint32",
+       "minimum": "0",
+       "location": "query"
+      },
+      "orderBy": {
+       "type": "string",
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name.\n\nYou can also sort results in descending order based on the creation timestamp using orderBy=\"creationTimestamp desc\". This sorts results based on the creationTimestamp field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first.\n\nCurrently, only sorting by name or creationTimestamp desc is supported.",
+       "location": "query"
+      },
+      "pageToken": {
+       "type": "string",
+       "description": "Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list request to get the next page of results.",
+       "location": "query"
+      },
+      "project": {
+       "type": "string",
+       "description": "Project ID for this request.",
+       "required": true,
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "location": "path"
+      },
+      "zone": {
+       "type": "string",
+       "description": "The name of the zone for this request.",
+       "required": true,
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "location": "path"
+      }
+     },
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "response": {
+      "$ref": "NodeTypeList"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -34576,7 +35644,7 @@
      "id": "compute.projects.getXpnHost",
      "path": "{project}/getXpnHost",
      "httpMethod": "GET",
-     "description": "Get the shared VPC host project that this project links to. May be empty if no link exists.",
+     "description": "Gets the shared VPC host project that this project links to. May be empty if no link exists.",
      "parameters": {
       "project": {
        "type": "string",
@@ -34601,7 +35669,7 @@
      "id": "compute.projects.getXpnResources",
      "path": "{project}/getXpnResources",
      "httpMethod": "GET",
-     "description": "Get service resources (a.k.a service project) associated with this host project.",
+     "description": "Gets service resources (a.k.a service project) associated with this host project.",
      "parameters": {
       "filter": {
        "type": "string",
@@ -34645,7 +35713,7 @@
      "id": "compute.projects.listXpnHosts",
      "path": "{project}/listXpnHosts",
      "httpMethod": "POST",
-     "description": "List all shared VPC host projects visible to the user in an organization.",
+     "description": "Lists all shared VPC host projects visible to the user in an organization.",
      "parameters": {
       "filter": {
        "type": "string",
@@ -36847,7 +37915,7 @@
      "id": "compute.regionInstanceGroupManagers.deletePerInstanceConfigs",
      "path": "{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/deletePerInstanceConfigs",
      "httpMethod": "POST",
-     "description": "Delete selected per-instance configs for the managed instance group.",
+     "description": "Deletes selected per-instance configs for the managed instance group.",
      "parameters": {
       "instanceGroupManager": {
        "type": "string",
@@ -38018,7 +39086,7 @@
      "id": "compute.regionTargetHttpProxies.get",
      "path": "{project}/regions/{region}/targetHttpProxies/{targetHttpProxy}",
      "httpMethod": "GET",
-     "description": "Returns the specified TargetHttpProxy resource in the specified region. Get a list of available target HTTP proxies by making a list() request.",
+     "description": "Returns the specified TargetHttpProxy resource in the specified region. Gets a list of available target HTTP proxies by making a list() request.",
      "parameters": {
       "project": {
        "type": "string",
@@ -40292,7 +41360,7 @@
      "id": "compute.sslPolicies.get",
      "path": "{project}/global/sslPolicies/{sslPolicy}",
      "httpMethod": "GET",
-     "description": "List all of the ordered rules present in a single specified policy.",
+     "description": "Lists all of the ordered rules present in a single specified policy.",
      "parameters": {
       "project": {
        "type": "string",
@@ -40358,7 +41426,7 @@
      "id": "compute.sslPolicies.list",
      "path": "{project}/global/sslPolicies",
      "httpMethod": "GET",
-     "description": "List all the SSL policies that have been configured for the specified project.",
+     "description": "Lists all the SSL policies that have been configured for the specified project.",
      "parameters": {
       "filter": {
        "type": "string",

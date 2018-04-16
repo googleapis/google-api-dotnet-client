@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Kubernetes Engine API Version v1beta1
+ *   Kubernetes Engine API Version v1beta1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/container-engine/'>Google Kubernetes Engine API</a>
+ *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180319 (1173)
+ *      <tr><th>API Rev<td>20180412 (1197)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Kubernetes Engine API can be found at
+ * The complete API documentation for using Kubernetes Engine API can be found at
  * <a href='https://cloud.google.com/container-engine/'>https://cloud.google.com/container-engine/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.Container.v1beta1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Kubernetes Engine API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Kubernetes Engine API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -352,11 +352,168 @@ namespace Google.Apis.Container.v1beta1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            aggregated = new AggregatedResource(service);
             locations = new LocationsResource(service);
             zones = new ZonesResource(service);
 
         }
 
+        private readonly AggregatedResource aggregated;
+
+        /// <summary>Gets the Aggregated resource.</summary>
+        public virtual AggregatedResource Aggregated
+        {
+            get { return aggregated; }
+        }
+
+        /// <summary>The "aggregated" collection of methods.</summary>
+        public class AggregatedResource
+        {
+            private const string Resource = "aggregated";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AggregatedResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                usableSubnetworks = new UsableSubnetworksResource(service);
+
+            }
+
+            private readonly UsableSubnetworksResource usableSubnetworks;
+
+            /// <summary>Gets the UsableSubnetworks resource.</summary>
+            public virtual UsableSubnetworksResource UsableSubnetworks
+            {
+                get { return usableSubnetworks; }
+            }
+
+            /// <summary>The "usableSubnetworks" collection of methods.</summary>
+            public class UsableSubnetworksResource
+            {
+                private const string Resource = "usableSubnetworks";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public UsableSubnetworksResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+
+                }
+
+
+                /// <summary>Lists subnetworks that are usable for creating clusters in a project.</summary>
+                /// <param name="parent">The parent project where subnetworks are usable. Specified in the format
+                /// 'projects'.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists subnetworks that are usable for creating clusters in a project.</summary>
+                public class ListRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1beta1.Data.ListUsableSubnetworksResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                        : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+
+                    /// <summary>The parent project where subnetworks are usable. Specified in the format
+                    /// 'projects'.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Specifies a page token to use. Set this to the nextPageToken returned by previous list
+                    /// requests to get the next page of results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>The max number of results per page that should be returned. If the number of available
+                    /// results is larger than `page_size`, a `next_page_token` is returned which can be used to get the
+                    /// next page of results in subsequent requests. Acceptable values are 0 to 500, inclusive.
+                    /// (Default: 500)</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Filtering currently only supports equality on the networkProjectId and must be in the
+                    /// form: "networkProjectId=[PROJECTID]", where `networkProjectId` is the project which owns the
+                    /// listed subnetworks. This defaults to the parent project ID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+
+                    ///<summary>Gets the method name.</summary>
+                    public override string MethodName
+                    {
+                        get { return "list"; }
+                    }
+
+                    ///<summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod
+                    {
+                        get { return "GET"; }
+                    }
+
+                    ///<summary>Gets the REST path.</summary>
+                    public override string RestPath
+                    {
+                        get { return "v1beta1/{+parent}/aggregated/usableSubnetworks"; }
+                    }
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+
+                        RequestParameters.Add(
+                            "parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+$",
+                            });
+                        RequestParameters.Add(
+                            "pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                    }
+
+                }
+            }
+        }
         private readonly LocationsResource locations;
 
         /// <summary>Gets the Locations resource.</summary>
@@ -645,6 +802,12 @@ namespace Google.Apis.Container.v1beta1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Deprecated. The Google Developers Console [project ID or project
+                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
+                        /// deprecated and replaced by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ProjectId { get; set; }
+
                         /// <summary>Deprecated. The name of the Google Compute Engine
                         /// [zone](/compute/docs/zones#available) in which the cluster resides. This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -660,12 +823,6 @@ namespace Google.Apis.Container.v1beta1
                         /// by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string NodePoolId { get; set; }
-
-                        /// <summary>Deprecated. The Google Developers Console [project ID or project
-                        /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
-                        /// deprecated and replaced by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ProjectId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -701,6 +858,15 @@ namespace Google.Apis.Container.v1beta1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "zone", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "zone",
@@ -722,15 +888,6 @@ namespace Google.Apis.Container.v1beta1
                                 "nodePoolId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "nodePoolId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1607,17 +1764,17 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the parent field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ProjectId { get; set; }
-
                     /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
                     /// in which the cluster resides, or "-" for all zones. This field has been deprecated and replaced
                     /// by the parent field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
+
+                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
+                    /// replaced by the parent field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1653,18 +1810,18 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
+                            "zone", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "projectId",
+                                Name = "zone",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
+                            "projectId", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "zone",
+                                Name = "projectId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2637,6 +2794,12 @@ namespace Google.Apis.Container.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+                    /// in which the cluster resides. This field has been deprecated and replaced by the name
+                    /// field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Zone { get; set; }
+
                     /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
                     /// and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2647,12 +2810,6 @@ namespace Google.Apis.Container.v1beta1
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
-
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Zone { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2688,6 +2845,15 @@ namespace Google.Apis.Container.v1beta1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "operationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "operationId",
@@ -2700,15 +2866,6 @@ namespace Google.Apis.Container.v1beta1
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2836,16 +2993,16 @@ namespace Google.Apis.Container.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) to
+                /// return operations for. This field has been deprecated and replaced by the name field.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Zone { get; set; }
+
                 /// <summary>Deprecated. The Google Developers Console [project ID or project
                 /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                 /// replaced by the name field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ProjectId { get; set; }
-
-                /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) to
-                /// return operations for. This field has been deprecated and replaced by the name field.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Zone { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2881,18 +3038,18 @@ namespace Google.Apis.Container.v1beta1
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "projectId", new Google.Apis.Discovery.Parameter
+                        "zone", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "projectId",
+                            Name = "zone",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "zone", new Google.Apis.Discovery.Parameter
+                        "projectId", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "zone",
+                            Name = "projectId",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6645,6 +6802,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
+        /// <summary>Configuration for cluster networking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual NetworkConfig NetworkConfig { get; set; } 
+
         /// <summary>Configuration options for the NetworkPolicy feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkPolicy")]
         public virtual NetworkPolicy NetworkPolicy { get; set; } 
@@ -6678,7 +6839,8 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateCluster")]
         public virtual System.Nullable<bool> PrivateCluster { get; set; } 
 
-        /// <summary>The resource labels for the cluster to use to annotate any related GCE resources.</summary>
+        /// <summary>The resource labels for the cluster to use to annotate any related Google Compute Engine
+        /// resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLabels")]
         public virtual System.Collections.Generic.IDictionary<string,string> ResourceLabels { get; set; } 
 
@@ -7103,6 +7265,23 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>ListUsableSubnetworksResponse is the response of ListUsableSubnetworksRequest.</summary>
+    public class ListUsableSubnetworksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This token allows you to get the next page of results for list requests. If the number of results
+        /// is larger than `page_size`, use the `next_page_token` as a value for the query parameter `page_token` in the
+        /// next request. The value will become empty when there are no more pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>A list of usable subnetworks in the specified network project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetworks")]
+        public virtual System.Collections.Generic.IList<UsableSubnetwork> Subnetworks { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>MaintenancePolicy defines the maintenance policy to be used for the cluster.</summary>
     public class MaintenancePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7177,6 +7356,23 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Whether or not master authorized networks is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>NetworkConfig reports the relative names of network & subnetwork.</summary>
+    public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The name of the Google Compute Engine network(/compute/docs/networks-and-
+        /// firewalls#networks). Example: projects/my-project/global/networks/my-network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>Output only. The name of the Google Compute Engine [subnetwork](/compute/docs/vpc). Example:
+        /// projects/my-project/regions/us-central1/subnetworks/my-subnet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8006,6 +8202,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; } 
 
+        /// <summary>Whether to rotate credentials during IP rotation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotateCredentials")]
+        public virtual System.Nullable<bool> RotateCredentials { get; set; } 
+
         /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available) in which
         /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
@@ -8129,6 +8329,26 @@ namespace Google.Apis.Container.v1beta1.Data
         /// the cluster resides. This field has been deprecated and replaced by the name field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>UsableSubnetwork resource returns the subnetwork name, its associated network and the primary CIDR
+    /// range.</summary>
+    public class UsableSubnetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range of internal addresses that are owned by this subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; } 
+
+        /// <summary>Network Name. Example: projects/my-project/global/networks/my-network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; } 
+
+        /// <summary>Subnetwork Name. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
