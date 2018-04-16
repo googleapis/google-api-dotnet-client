@@ -38,7 +38,10 @@ namespace Google.Apis.Auth.Tests.OAuth2.Requests
             Assert.Null(request.Scope);
             Assert.Null(request.State);
             Assert.Equal("offline", request.AccessType);
+#pragma warning disable CS0618 // Type or member is obsolete
             Assert.Null(request.ApprovalPrompt);
+#pragma warning restore CS0618 // Type or member is obsolete
+            Assert.Null(request.Prompt);
             Assert.Null(request.LoginHint);
         }
     }
