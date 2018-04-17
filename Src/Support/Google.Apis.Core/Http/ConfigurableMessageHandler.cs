@@ -392,14 +392,12 @@ namespace Google.Apis.Http
             HttpResponseMessage response = null;
             do // While (triesRemaining > 0)
             {
-                cancellationToken.ThrowIfCancellationRequested();
-
-                if (response != null)
-                {
-                    response.Dispose();
-                    response = null;
-                }
+                response?.Dispose();
+                response = null;
                 lastException = null;
+
+                // Check after previous response (if any) has been disposed of.
+                cancellationToken.ThrowIfCancellationRequested();
 
                 // We keep a local list of the interceptors, since we can't call await inside lock.
                 List<IHttpExecuteInterceptor> interceptors;
@@ -532,14 +530,24 @@ namespace Google.Apis.Http
                         // Try to handle the abnormal HTTP response with each handler.
                         foreach (var handler in handlers)
                         {
-                            errorHandled |= await handler.HandleResponseAsync(new HandleUnsuccessfulResponseArgs
-                                {
-                                    Request = request,
-                                    Response = response,
-                                    TotalTries = NumTries,
-                                    CurrentFailedTry = NumTries - triesRemaining,
-                                    CancellationToken = cancellationToken
-                                }).ConfigureAwait(false);
+                            try
+                            {
+                                errorHandled |= await handler.HandleResponseAsync(new HandleUnsuccessfulResponseArgs
+                                    {
+                                        Request = request,
+                                        Response = response,
+                                        TotalTries = NumTries,
+                                        CurrentFailedTry = NumTries - triesRemaining,
+                                        CancellationToken = cancellationToken
+                                    }).ConfigureAwait(false);
+                            }
+                            catch when (DisposeAndReturnFalse(response)) { }
+
+                            bool DisposeAndReturnFalse(IDisposable disposable)
+                            {
+                                disposable.Dispose();
+                                return false;
+                            }
                         }
 
                         if (!errorHandled)
