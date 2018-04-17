@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/zero-touch/'>Android Device Provisioning Partner API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180407 (1192)
+ *      <tr><th>API Rev<td>20180413 (1198)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/zero-touch/'>
  *              https://developers.google.com/zero-touch/</a>
@@ -2629,9 +2629,10 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An EMM's DPC ([device policy controller](/android/work/dpc/build-dpc)). Zero-touch enrollment installs
-    /// a DPC (listed in the `Configuration`) on a device to maintain the customer's mobile policies. All the DPCs
-    /// listed by the API support zero-touch enrollment and are available in Google Play.</summary>
+    /// <summary>An EMM's DPC ([device policy controller](http://developer.android.com/work/dpc/build-dpc.html)). Zero-
+    /// touch enrollment installs a DPC (listed in the `Configuration`) on a device to maintain the customer's mobile
+    /// policies. All the DPCs listed by the API support zero-touch enrollment and are available in Google
+    /// Play.</summary>
     public class Dpc : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The title of the DPC app in Google Play. For example, _Google Apps Device Policy_.

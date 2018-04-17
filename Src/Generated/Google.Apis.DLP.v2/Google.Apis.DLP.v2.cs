@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180404 (1189)
+ *      <tr><th>API Rev<td>20180413 (1198)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -491,7 +491,7 @@ namespace Google.Apis.DLP.v2
             }
 
 
-            /// <summary>Creates a de-identify template for re-using frequently used configuration for Deidentifying
+            /// <summary>Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying
             /// content, images, and storage.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
@@ -501,7 +501,7 @@ namespace Google.Apis.DLP.v2
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a de-identify template for re-using frequently used configuration for Deidentifying
+            /// <summary>Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying
             /// content, images, and storage.</summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
@@ -563,7 +563,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Deletes a de-identify template.</summary>
+            /// <summary>Deletes a DeidentifyTemplate.</summary>
             /// <param name="name">Resource name of the organization and deidentify template to be deleted, for example
             /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
             /// id/deidentifyTemplates/432452342.</param>
@@ -572,7 +572,7 @@ namespace Google.Apis.DLP.v2
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a de-identify template.</summary>
+            /// <summary>Deletes a DeidentifyTemplate.</summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -627,7 +627,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Gets a de-identify template.</summary>
+            /// <summary>Gets a DeidentifyTemplate.</summary>
             /// <param name="name">Resource name of the organization and deidentify template to be read, for example
             /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
             /// id/deidentifyTemplates/432452342.</param>
@@ -636,7 +636,7 @@ namespace Google.Apis.DLP.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a de-identify template.</summary>
+            /// <summary>Gets a DeidentifyTemplate.</summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -691,7 +691,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Lists de-identify templates.</summary>
+            /// <summary>Lists DeidentifyTemplates.</summary>
             /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
             /// id.</param>
             public virtual ListRequest List(string parent)
@@ -699,7 +699,7 @@ namespace Google.Apis.DLP.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists de-identify templates.</summary>
+            /// <summary>Lists DeidentifyTemplates.</summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -781,7 +781,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Updates the de-identify template.</summary>
+            /// <summary>Updates the DeidentifyTemplate.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Resource name of organization and deidentify template to be updated, for example
             /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
@@ -791,7 +791,7 @@ namespace Google.Apis.DLP.v2
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates the de-identify template.</summary>
+            /// <summary>Updates the DeidentifyTemplate.</summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -877,7 +877,7 @@ namespace Google.Apis.DLP.v2
             }
 
 
-            /// <summary>Creates an inspect template for re-using frequently used configuration for inspecting content,
+            /// <summary>Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
             /// images, and storage.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
@@ -887,7 +887,7 @@ namespace Google.Apis.DLP.v2
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates an inspect template for re-using frequently used configuration for inspecting content,
+            /// <summary>Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
             /// images, and storage.</summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -949,7 +949,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Deletes an inspect template.</summary>
+            /// <summary>Deletes an InspectTemplate.</summary>
             /// <param name="name">Resource name of the organization and inspectTemplate to be deleted, for example
             /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual DeleteRequest Delete(string name)
@@ -957,7 +957,7 @@ namespace Google.Apis.DLP.v2
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an inspect template.</summary>
+            /// <summary>Deletes an InspectTemplate.</summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1012,7 +1012,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Gets an inspect template.</summary>
+            /// <summary>Gets an InspectTemplate.</summary>
             /// <param name="name">Resource name of the organization and inspectTemplate to be read, for example
             /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual GetRequest Get(string name)
@@ -1020,7 +1020,7 @@ namespace Google.Apis.DLP.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets an inspect template.</summary>
+            /// <summary>Gets an InspectTemplate.</summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1075,7 +1075,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Lists inspect templates.</summary>
+            /// <summary>Lists InspectTemplates.</summary>
             /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
             /// id.</param>
             public virtual ListRequest List(string parent)
@@ -1083,7 +1083,7 @@ namespace Google.Apis.DLP.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists inspect templates.</summary>
+            /// <summary>Lists InspectTemplates.</summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1165,7 +1165,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Updates the inspect template.</summary>
+            /// <summary>Updates the InspectTemplate.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Resource name of organization and inspectTemplate to be updated, for example
             /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
@@ -1174,7 +1174,7 @@ namespace Google.Apis.DLP.v2
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates the inspect template.</summary>
+            /// <summary>Updates the InspectTemplate.</summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1517,7 +1517,7 @@ namespace Google.Apis.DLP.v2
             }
 
 
-            /// <summary>Creates a de-identify template for re-using frequently used configuration for Deidentifying
+            /// <summary>Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying
             /// content, images, and storage.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
@@ -1527,7 +1527,7 @@ namespace Google.Apis.DLP.v2
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a de-identify template for re-using frequently used configuration for Deidentifying
+            /// <summary>Creates a DeidentifyTemplate for re-using frequently used configuration for de-identifying
             /// content, images, and storage.</summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
@@ -1589,7 +1589,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Deletes a de-identify template.</summary>
+            /// <summary>Deletes a DeidentifyTemplate.</summary>
             /// <param name="name">Resource name of the organization and deidentify template to be deleted, for example
             /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
             /// id/deidentifyTemplates/432452342.</param>
@@ -1598,7 +1598,7 @@ namespace Google.Apis.DLP.v2
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a de-identify template.</summary>
+            /// <summary>Deletes a DeidentifyTemplate.</summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -1653,7 +1653,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Gets a de-identify template.</summary>
+            /// <summary>Gets a DeidentifyTemplate.</summary>
             /// <param name="name">Resource name of the organization and deidentify template to be read, for example
             /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
             /// id/deidentifyTemplates/432452342.</param>
@@ -1662,7 +1662,7 @@ namespace Google.Apis.DLP.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets a de-identify template.</summary>
+            /// <summary>Gets a DeidentifyTemplate.</summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -1717,7 +1717,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Lists de-identify templates.</summary>
+            /// <summary>Lists DeidentifyTemplates.</summary>
             /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
             /// id.</param>
             public virtual ListRequest List(string parent)
@@ -1725,7 +1725,7 @@ namespace Google.Apis.DLP.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists de-identify templates.</summary>
+            /// <summary>Lists DeidentifyTemplates.</summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1807,7 +1807,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Updates the de-identify template.</summary>
+            /// <summary>Updates the DeidentifyTemplate.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Resource name of organization and deidentify template to be updated, for example
             /// `organizations/433245324/deidentifyTemplates/432452342` or projects/project-
@@ -1817,7 +1817,7 @@ namespace Google.Apis.DLP.v2
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates the de-identify template.</summary>
+            /// <summary>Updates the DeidentifyTemplate.</summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DeidentifyTemplate>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -1973,7 +1973,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Creates a new job to inspect storage or calculate risk metrics [How-to guide](/dlp/docs
+            /// <summary>Creates a new job to inspect storage or calculate risk metrics. [How-to guide](/dlp/docs
             /// /compute-risk-analysis).</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The parent resource name, for example projects/my-project-id.</param>
@@ -1982,7 +1982,7 @@ namespace Google.Apis.DLP.v2
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates a new job to inspect storage or calculate risk metrics [How-to guide](/dlp/docs
+            /// <summary>Creates a new job to inspect storage or calculate risk metrics. [How-to guide](/dlp/docs
             /// /compute-risk-analysis).</summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2DlpJob>
             {
@@ -2188,14 +2188,6 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
                 [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<TypeEnum> Type { get; set; }
@@ -2232,6 +2224,14 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -2266,24 +2266,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
@@ -2296,6 +2278,24 @@ namespace Google.Apis.DLP.v2
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2423,7 +2423,7 @@ namespace Google.Apis.DLP.v2
             }
 
 
-            /// <summary>Creates an inspect template for re-using frequently used configuration for inspecting content,
+            /// <summary>Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
             /// images, and storage.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
@@ -2433,7 +2433,7 @@ namespace Google.Apis.DLP.v2
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates an inspect template for re-using frequently used configuration for inspecting content,
+            /// <summary>Creates an InspectTemplate for re-using frequently used configuration for inspecting content,
             /// images, and storage.</summary>
             public class CreateRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
@@ -2495,7 +2495,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Deletes an inspect template.</summary>
+            /// <summary>Deletes an InspectTemplate.</summary>
             /// <param name="name">Resource name of the organization and inspectTemplate to be deleted, for example
             /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual DeleteRequest Delete(string name)
@@ -2503,7 +2503,7 @@ namespace Google.Apis.DLP.v2
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an inspect template.</summary>
+            /// <summary>Deletes an InspectTemplate.</summary>
             public class DeleteRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -2558,7 +2558,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Gets an inspect template.</summary>
+            /// <summary>Gets an InspectTemplate.</summary>
             /// <param name="name">Resource name of the organization and inspectTemplate to be read, for example
             /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
             public virtual GetRequest Get(string name)
@@ -2566,7 +2566,7 @@ namespace Google.Apis.DLP.v2
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets an inspect template.</summary>
+            /// <summary>Gets an InspectTemplate.</summary>
             public class GetRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -2621,7 +2621,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Lists inspect templates.</summary>
+            /// <summary>Lists InspectTemplates.</summary>
             /// <param name="parent">The parent resource name, for example projects/my-project-id or organizations/my-org-
             /// id.</param>
             public virtual ListRequest List(string parent)
@@ -2629,7 +2629,7 @@ namespace Google.Apis.DLP.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists inspect templates.</summary>
+            /// <summary>Lists InspectTemplates.</summary>
             public class ListRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2ListInspectTemplatesResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -2711,7 +2711,7 @@ namespace Google.Apis.DLP.v2
 
             }
 
-            /// <summary>Updates the inspect template.</summary>
+            /// <summary>Updates the InspectTemplate.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Resource name of organization and inspectTemplate to be updated, for example
             /// `organizations/433245324/inspectTemplates/432452342` or projects/project-id/inspectTemplates/432452342.</param>
@@ -2720,7 +2720,7 @@ namespace Google.Apis.DLP.v2
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates the inspect template.</summary>
+            /// <summary>Updates the InspectTemplate.</summary>
             public class PatchRequest : DLPBaseServiceRequest<Google.Apis.DLP.v2.Data.GooglePrivacyDlpV2InspectTemplate>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -5209,7 +5209,7 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Publish the results of a DlpJob to a pub sub channel. Compatible with: Inpect, Risk</summary>
+    /// <summary>Publish the results of a DlpJob to a pub sub channel. Compatible with: Inspect, Risk</summary>
     public class GooglePrivacyDlpV2PublishToPubSub : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to
@@ -5464,7 +5464,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobConfig")]
         public virtual GooglePrivacyDlpV2InspectJobConfig JobConfig { get; set; } 
 
-        /// <summary>If run with an inspect template, a snapshot of it's state at the time of this run.</summary>
+        /// <summary>If run with an InspectTemplate, a snapshot of its state at the time of this run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotInspectTemplate")]
         public virtual GooglePrivacyDlpV2InspectTemplate SnapshotInspectTemplate { get; set; } 
 
@@ -5518,8 +5518,8 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>If set, the detailed findings will be persisted to the specified OutputStorageConfig. Compatible with:
-    /// Inspect</summary>
+    /// <summary>If set, the detailed findings will be persisted to the specified OutputStorageConfig. Only a single
+    /// instance of this action can be specified. Compatible with: Inspect</summary>
     public class GooglePrivacyDlpV2SaveFindings : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]

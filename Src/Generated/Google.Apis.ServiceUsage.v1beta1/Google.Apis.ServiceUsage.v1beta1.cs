@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180412 (1197)
+ *      <tr><th>API Rev<td>20180413 (1198)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>

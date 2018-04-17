@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Key Management Service (KMS) API Version v1
+ *   Cloud Key Management Service (KMS) API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/kms/'>Google Cloud Key Management Service (KMS) API</a>
+ *          <td><a href='https://cloud.google.com/kms/'>Cloud Key Management Service (KMS) API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180412 (1197)
+ *      <tr><th>API Rev<td>20180413 (1198)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/kms/'>
  *              https://cloud.google.com/kms/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Key Management Service (KMS) API can be found at
+ * The complete API documentation for using Cloud Key Management Service (KMS) API can be found at
  * <a href='https://cloud.google.com/kms/'>https://cloud.google.com/kms/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.CloudKMS.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Key Management Service (KMS) API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Key Management Service (KMS) API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -2657,15 +2657,20 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
     /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
     /// permissions defined by IAM.
     ///
-    /// **Example**
+    /// **JSON Example**
     ///
     /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
     /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// **YAML Example**
+    ///
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
+    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>

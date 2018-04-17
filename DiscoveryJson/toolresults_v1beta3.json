@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/rakuPWwJEE_iRPVRTXqDuG1F3PU\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/87FXPv_48ZixMXNQPoAV34Ld7mg\"",
  "discoveryVersion": "v1",
  "id": "toolresults:v1beta3",
  "name": "toolresults",
  "canonicalName": "Tool Results",
  "version": "v1beta3",
- "revision": "20180412",
+ "revision": "20180416",
  "title": "Cloud Tool Results API",
  "description": "Reads and publishes results from Firebase Test Lab.",
  "ownerDomain": "google.com",
@@ -1205,6 +1205,7 @@
       "anr",
       "compatibleWithOrchestrator",
       "completeRoboScriptExecution",
+      "failedToInstall",
       "fatalException",
       "incompleteRoboScriptExecution",
       "launcherActivityNotFound",
@@ -1214,6 +1215,7 @@
       "unusedRoboDirective"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",

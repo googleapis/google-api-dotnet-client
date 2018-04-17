@@ -533,16 +533,16 @@ namespace Google.Apis.YouTubeReporting.v1
                 [Google.Apis.Util.RequestParameterAttribute("createdAfter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object CreatedAfter { get; set; }
 
-                /// <summary>If set, only reports whose start time is greater than or equal the specified date/time are
-                /// returned.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("startTimeAtOrAfter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual object StartTimeAtOrAfter { get; set; }
-
                 /// <summary>A token identifying a page of results the server should return. Typically, this is the
                 /// value of ListReportsResponse.next_page_token returned in response to the previous call to the
                 /// `ListReports` method.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>If set, only reports whose start time is greater than or equal the specified date/time are
+                /// returned.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("startTimeAtOrAfter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object StartTimeAtOrAfter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -614,18 +614,18 @@ namespace Google.Apis.YouTubeReporting.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "startTimeAtOrAfter", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "startTimeAtOrAfter",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "startTimeAtOrAfter", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "startTimeAtOrAfter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

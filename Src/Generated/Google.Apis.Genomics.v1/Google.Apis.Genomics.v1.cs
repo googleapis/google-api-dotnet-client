@@ -2563,11 +2563,6 @@ namespace Google.Apis.Genomics.v1
                 [Google.Apis.Util.RequestParameterAttribute("readGroupSetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ReadGroupSetId { get; private set; }
 
-                /// <summary>The name of the reference to query, within the reference set associated with this query.
-                /// Optional.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("referenceName", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string ReferenceName { get; set; }
-
                 /// <summary>The end position of the range on the reference, 0-based exclusive. If specified,
                 /// `referenceName` must also be specified. If unset or 0, defaults to the length of the
                 /// reference.</summary>
@@ -2597,6 +2592,11 @@ namespace Google.Apis.Genomics.v1
                 /// this is subject to change.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("targetBucketWidth", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<long> TargetBucketWidth { get; set; }
+
+                /// <summary>The name of the reference to query, within the reference set associated with this query.
+                /// Optional.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("referenceName", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ReferenceName { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2628,15 +2628,6 @@ namespace Google.Apis.Genomics.v1
                             Name = "readGroupSetId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "referenceName", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "referenceName",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -2680,6 +2671,15 @@ namespace Google.Apis.Genomics.v1
                         "targetBucketWidth", new Google.Apis.Discovery.Parameter
                         {
                             Name = "targetBucketWidth",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "referenceName", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "referenceName",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
