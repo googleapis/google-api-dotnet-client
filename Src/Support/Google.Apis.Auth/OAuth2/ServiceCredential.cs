@@ -88,55 +88,33 @@ namespace Google.Apis.Auth.OAuth2
             }
         }
 
-        #region Readonly fields
-
-        private readonly string tokenServerUrl;
-        private readonly IClock clock;
-        private readonly IAccessMethod accessMethod;
-        private readonly ConfigurableHttpClient httpClient;
-
-        #endregion
-
         /// <summary>Gets the token server URL.</summary>
-        public string TokenServerUrl { get { return tokenServerUrl; } }
+        public string TokenServerUrl { get; }
 
         /// <summary>Gets the clock used to refresh the token if it expires.</summary>
-        public IClock Clock { get { return clock; } }
+        public IClock Clock { get; }
 
         /// <summary>Gets the method for presenting the access token to the resource server.</summary>
-        public IAccessMethod AccessMethod { get { return accessMethod; } }
+        public IAccessMethod AccessMethod { get; }
 
         /// <summary>Gets the HTTP client used to make authentication requests to the server.</summary>
-        public ConfigurableHttpClient HttpClient { get { return httpClient; } }
+        public ConfigurableHttpClient HttpClient { get; }
 
-        private TokenResponse token;
-        private object lockObject = new object();
+        private readonly TokenRefreshManager _refreshManager;
 
         /// <summary>Gets the token response which contains the access token.</summary>
         public TokenResponse Token
         {
-            get
-            {
-                lock (lockObject)
-                {
-                    return token;
-                }
-            }
-            protected set
-            {
-                lock (lockObject)
-                {
-                    token = value;
-                }
-            }
+            get => _refreshManager.Token;
+            set => _refreshManager.Token = value;
         }
 
         /// <summary>Constructs a new service account credential using the given initializer.</summary>
         public ServiceCredential(Initializer initializer)
         {
-            tokenServerUrl = initializer.TokenServerUrl;
-            accessMethod = initializer.AccessMethod.ThrowIfNull("initializer.AccessMethod");
-            clock = initializer.Clock.ThrowIfNull("initializer.Clock");
+            TokenServerUrl = initializer.TokenServerUrl;
+            AccessMethod = initializer.AccessMethod.ThrowIfNull("initializer.AccessMethod");
+            Clock = initializer.Clock.ThrowIfNull("initializer.Clock");
 
             // Set the HTTP client.
             var httpArgs = new CreateHttpClientArgs();
@@ -148,7 +126,8 @@ namespace Google.Apis.Auth.OAuth2
                     new ExponentialBackOffInitializer(initializer.DefaultExponentialBackOffPolicy,
                         () => new BackOffHandler(new ExponentialBackOff())));
             }
-            httpClient = (initializer.HttpClientFactory ?? new HttpClientFactory()).CreateHttpClient(httpArgs);
+            HttpClient = (initializer.HttpClientFactory ?? new HttpClientFactory()).CreateHttpClient(httpArgs);
+            _refreshManager = new TokenRefreshManager(RequestAccessTokenAsync, Clock, Logger);
         }
 
         #region IConfigurableHttpClientInitializer
@@ -206,23 +185,12 @@ namespace Google.Apis.Auth.OAuth2
         #region ITokenAccess implementation
 
         /// <summary>
-        /// Gets an access token to authorize a request. If the existing token has expired, try to refresh it first.
+        /// Gets an access token to authorize a request. If the existing token expires soon, try to refresh it first.
         /// <seealso cref="ITokenAccess.GetAccessTokenForRequestAsync"/>
         /// </summary>
-        public virtual async Task<string> GetAccessTokenForRequestAsync(string authUri = null,
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (Token == null || Token.IsExpired(Clock))
-            {
-                Logger.Debug("Token has expired, trying to get a new one.");
-                if (!await RequestAccessTokenAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
-                }
-                Logger.Info("New access token was received successfully");
-            }
-            return Token.AccessToken;
-        }
+        public virtual Task<string> GetAccessTokenForRequestAsync(string authUri = null,
+            CancellationToken cancellationToken = default(CancellationToken)) =>
+            _refreshManager.GetAccessTokenForRequestAsync(cancellationToken);
 
         #endregion
 
