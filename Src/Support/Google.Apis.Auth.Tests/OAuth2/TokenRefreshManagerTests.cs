@@ -19,8 +19,6 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Logging;
 using Google.Apis.Tests.Mocks;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -40,8 +38,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             int refreshFnCount = 0;
             TaskCompletionSource<int> delayTask = null;
             TokenRefreshManager trm = null;
-            trm = new TokenRefreshManager(RefreshFn, clock, logger);
-            async Task<bool> RefreshFn(CancellationToken ct)
+            trm = new TokenRefreshManager(async ct =>
             {
                 await delayTask.Task;
                 trm.Token = new TokenResponse
@@ -52,7 +49,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 };
                 Interlocked.Increment(ref refreshFnCount);
                 return true;
-            }
+            }, clock, logger);
 
             for (int iteration = 0; iteration < 3; iteration++)
             {
@@ -87,8 +84,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             TaskCompletionSource<int> delayTask = null;
             string accessToken = null;
             TokenRefreshManager trm = null;
-            trm = new TokenRefreshManager(RefreshFn, clock, logger);
-            async Task<bool> RefreshFn(CancellationToken ct)
+            trm = new TokenRefreshManager(async ct =>
             {
                 await delayTask.Task;
                 trm.Token = new TokenResponse
@@ -99,7 +95,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 };
                 Interlocked.Increment(ref refreshFnCount);
                 return true;
-            }
+            }, clock, logger);
 
             for (int iteration = 0; iteration < 5; iteration++)
             {
@@ -135,8 +131,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             TaskCompletionSource<int> delayTask = null;
             string accessToken = null;
             TokenRefreshManager trm = null;
-            trm = new TokenRefreshManager(RefreshFn, clock, logger);
-            async Task<bool> RefreshFn(CancellationToken ct)
+            trm = new TokenRefreshManager(async ct =>
             {
                 await delayTask.Task;
                 trm.Token = new TokenResponse
@@ -146,7 +141,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                     IssuedUtc = clock.UtcNow
                 };
                 return true;
-            }
+            }, clock, logger);
 
             for (int iteration = 0; iteration < refreshIterations; iteration++)
             {
@@ -160,7 +155,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 delayTask.SetResult(0);
                 var tokens = await Task.WhenAll(tokenTasks);
 
-                // It's non-deterministic if the refresh will return the previous or just-retreived token
+                // It's non-deterministic if the refresh will return the previous or just-retrieved token
                 var expectedAccessTokenA = $"AccessToken{iteration}";
                 var expectedAccessTokenB = $"AccessToken{iteration - 1}";
                 foreach (var token in tokens)
@@ -180,8 +175,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
             int refreshFnCount = 0;
             string accessToken = null;
             TokenRefreshManager trm = null;
-            trm = new TokenRefreshManager(RefreshFn, clock, logger);
-            Task<bool> RefreshFn(CancellationToken ct)
+            trm = new TokenRefreshManager(ct =>
             {
                 trm.Token = new TokenResponse
                 {
@@ -191,7 +185,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 };
                 Interlocked.Increment(ref refreshFnCount);
                 return Task.FromResult(true);
-            }
+            }, clock, logger);
 
             accessToken = "AccessToken1";
             var accessToken1 = await trm.GetAccessTokenForRequestAsync(CancellationToken.None);
@@ -211,18 +205,20 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var logger = new NullLogger();
             int refreshCalled = 0;
             int refreshCompleted = 0;
+            var refreshCts = new CancellationTokenSource();
             TokenRefreshManager trm = null;
-            trm = new TokenRefreshManager(RefreshFn, clock, logger);
-            async Task<bool> RefreshFn(CancellationToken ct)
+            trm = new TokenRefreshManager(async ct =>
             {
                 Interlocked.Increment(ref refreshCalled);
-                await Task.Delay(TimeSpan.FromSeconds(60), ct);
+                await Task.Delay(TimeSpan.FromSeconds(60), refreshCts.Token);
                 // Will never get here
                 Interlocked.Increment(ref refreshCompleted);
                 return false;
-            }
+            }, clock, logger);
+
             var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(10));
             await Assert.ThrowsAsync<TaskCanceledException>(() => trm.GetAccessTokenForRequestAsync(cts.Token));
+            refreshCts.Cancel();
             
             // Non-deterministic if the refresh function gets called by the time this test ends.
             Assert.InRange(Interlocked.Add(ref refreshCalled, 0), 0, 1);
@@ -230,15 +226,14 @@ namespace Google.Apis.Auth.Tests.OAuth2
         }
 
         [Fact]
-        public async Task Retries_Sync()
+        public async Task RetriesTimeout_Sync()
         {
             var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
             var logger = new NullLogger();
             int refreshCallCount = 0;
             int refreshCompleted = 0;
             TokenRefreshManager trm = null;
-            trm = new TokenRefreshManager(RefreshFn, clock, logger);
-            Task<bool> RefreshFn(CancellationToken ct)
+            trm = new TokenRefreshManager(ct =>
             {
                 Interlocked.Increment(ref refreshCallCount);
                 Assert.True(ct.CanBeCanceled);
@@ -246,24 +241,23 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 // Will never get here
                 Interlocked.Increment(ref refreshCompleted);
                 return Task.FromResult(false);
-            }
+            }, clock, logger);
 
             var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => trm.GetAccessTokenForRequestAsync(CancellationToken.None));
-            Assert.Contains("failed with a timeout", ex.Message);
+            Assert.Contains("timeout, timeout, timeout", ex.Message);
             Assert.Equal(TokenRefreshManager.RefreshTimeouts.Length, refreshCallCount);
             Assert.Equal(0, Interlocked.Add(ref refreshCompleted, 0));
         }
 
         [Fact]
-        public async Task Retries_Async()
+        public async Task RetriesTimeout_Async()
         {
             var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
             var logger = new NullLogger();
             int refreshCallCount = 0;
             int refreshCompleted = 0;
             TokenRefreshManager trm = null;
-            trm = new TokenRefreshManager(RefreshFn, clock, logger);
-            async Task<bool> RefreshFn(CancellationToken ct)
+            trm = new TokenRefreshManager(async ct =>
             {
                 Interlocked.Increment(ref refreshCallCount);
                 Assert.True(ct.CanBeCanceled);
@@ -272,10 +266,51 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 // Will never get here
                 Interlocked.Increment(ref refreshCompleted);
                 return false;
-            }
+            }, clock, logger);
 
             var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => trm.GetAccessTokenForRequestAsync(CancellationToken.None));
-            Assert.Contains("failed with a timeout", ex.Message);
+            Assert.Contains("timeout, timeout, timeout", ex.Message);
+            Assert.Equal(TokenRefreshManager.RefreshTimeouts.Length, refreshCallCount);
+            Assert.Equal(0, Interlocked.Add(ref refreshCompleted, 0));
+        }
+
+        [Fact]
+        public async Task RetriesError_Sync()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var logger = new NullLogger();
+            int refreshCallCount = 0;
+            int refreshCompleted = 0;
+            TokenRefreshManager trm = null;
+            trm = new TokenRefreshManager(ct =>
+            {
+                Interlocked.Increment(ref refreshCallCount);
+                return Task.FromResult(false);
+            }, clock, logger);
+
+            var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => trm.GetAccessTokenForRequestAsync(CancellationToken.None));
+            Assert.Contains("refresh error, refresh error, refresh error", ex.Message);
+            Assert.Equal(TokenRefreshManager.RefreshTimeouts.Length, refreshCallCount);
+            Assert.Equal(0, Interlocked.Add(ref refreshCompleted, 0));
+        }
+
+        [Fact]
+        public async Task RetriesError_Async()
+        {
+            var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
+            var logger = new NullLogger();
+            int refreshCallCount = 0;
+            int refreshCompleted = 0;
+            TokenRefreshManager trm = null;
+            trm = new TokenRefreshManager(async ct =>
+            {
+                Interlocked.Increment(ref refreshCallCount);
+                await Task.Yield();
+                return false;
+            }, clock, logger);
+
+            var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => trm.GetAccessTokenForRequestAsync(CancellationToken.None));
+            Assert.Contains("refresh error, refresh error, refresh error", ex.Message);
             Assert.Equal(TokenRefreshManager.RefreshTimeouts.Length, refreshCallCount);
             Assert.Equal(0, Interlocked.Add(ref refreshCompleted, 0));
         }

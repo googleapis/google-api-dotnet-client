@@ -18,6 +18,7 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Logging;
 using Google.Apis.Util;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Threading;
@@ -79,7 +80,7 @@ namespace Google.Apis.Auth.OAuth2
             Task<TokenResponse> refreshTask;
             lock (_lock)
             {
-                // If current token is not expired, then return it.
+                // If current token is not soft-expired, then return it.
                 if (_token != null && !_token.IsExpired(_clock))
                 {
                     return _token.AccessToken;
@@ -87,7 +88,7 @@ namespace Google.Apis.Auth.OAuth2
                 // Token refresh required, so start a task if not already started
                 if (_refreshTask == null)
                 {
-                    // Task.Run is required if the refresh completes synchonously,
+                    // Task.Run is required if the refresh completes synchronously,
                     // otherwise _refreshTask is updated in an incorrect order.
                     // And Task.Run also means it can be run here in the lock.
                     _refreshTask = Task.Run(RefreshTokenAsync);
@@ -119,6 +120,7 @@ namespace Google.Apis.Auth.OAuth2
             _logger.Debug("Token has expired, trying to get a new one.");
             try
             {
+                List<string> errors = null;
                 foreach (var timeout in RefreshTimeouts)
                 {
                     var token = new CancellationTokenSource(timeout).Token;
@@ -132,17 +134,18 @@ namespace Google.Apis.Auth.OAuth2
                         }
                         else
                         {
-                            // If unsuccessful, but didn't timeout, then finish with failure.
-                            // TODO: Should this retry?
-                            throw new InvalidOperationException("The access token has expired and could not be refreshed.");
+                            // If unsuccessful, but didn't timeout, then retry if all retries haven't been exhausted.
+                            (errors = errors ?? new List<string>()).Add("refresh error");
                         }
                     }
                     catch (OperationCanceledException)
                     {
                         // Do nothing, attempt another refresh if all retries haven't been exhausted.
+                        _logger.Debug("Token refresh time-out after {0} seconds", (int)timeout.TotalSeconds);
+                        (errors = errors ?? new List<string>()).Add("timeout");
                     }
                 }
-                throw new InvalidOperationException("The access token has expired and all refresh attempts failed with a timeout.");
+                throw new InvalidOperationException($"The access token has expired and could not be refreshed. Errors: {string.Join(", ", errors)}");
             }
             finally
             {
