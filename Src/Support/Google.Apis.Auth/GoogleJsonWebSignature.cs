@@ -170,7 +170,7 @@ namespace Google.Apis.Auth
                     hash = hashAlg.ComputeHash(Encoding.ASCII.GetBytes($"{parts[0]}.{parts[1]}"));
                 }
                 bool verifiedOk = false;
-                foreach (var googleCert in await GetGoogleCertsAsync(clock, settings.ForceGoogleCertRefresh, certsJson))
+                foreach (var googleCert in await GetGoogleCertsAsync(clock, settings.ForceGoogleCertRefresh, certsJson).ConfigureAwait(false))
                 {
 #if NET45
                     verifiedOk = ((RSACryptoServiceProvider)googleCert).VerifyHash(hash, Sha256Oid, signature);
@@ -254,7 +254,7 @@ namespace Google.Apis.Auth
         internal static async Task<List<RSA>> GetGoogleCertsAsync(IClock clock, bool forceGoogleCertRefresh, string certsJson)
         {
             var now = clock.UtcNow;
-            await _certCacheLock.WaitAsync();
+            await _certCacheLock.WaitAsync().ConfigureAwait(false);
             try
             {
                 if (forceGoogleCertRefresh || _certCache == null || (_certCacheDownloadTime + CertCacheRefreshInterval) < now)
@@ -264,7 +264,7 @@ namespace Google.Apis.Auth
                         // certsJson used for unit tests
                         if (certsJson == null)
                         {
-                            certsJson = await httpClient.GetStringAsync(GoogleAuthConsts.JsonWebKeySetUrl);
+                            certsJson = await httpClient.GetStringAsync(GoogleAuthConsts.JsonWebKeySetUrl).ConfigureAwait(false);
                         }
                     }
                     _certCache = GetGoogleCertsFromJson(certsJson);

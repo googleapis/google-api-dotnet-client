@@ -92,7 +92,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 throw new TokenResponseException(error, response.StatusCode);
             }
 
-            await DeleteTokenAsync(userId, taskCancellationToken);
+            await DeleteTokenAsync(userId, taskCancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc/>
