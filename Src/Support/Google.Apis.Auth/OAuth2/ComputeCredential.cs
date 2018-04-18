@@ -88,7 +88,7 @@ namespace Google.Apis.Auth.OAuth2
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, TokenServerUrl);
             httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
             var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
-            Token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger);
+            Token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
             return true;
         }
 
