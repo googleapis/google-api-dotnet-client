@@ -44,6 +44,8 @@ Supported Platforms:
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="4.0.30506" />
     <ProjectReference Include="..\Google.Apis.Auth\Google.Apis.Auth.csproj" />
     <Reference Include="System.Web" />
+
+    <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="1.0.1" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
