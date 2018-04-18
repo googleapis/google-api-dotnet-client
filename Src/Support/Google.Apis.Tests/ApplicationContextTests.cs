@@ -31,30 +31,15 @@ namespace Google.Apis.Tests
 
             public ILogger ForType<T>() => this;
 
-            public void Info(string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Info(string message, params object[] formatArgs) { }
 
-            public void Warning(string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Warning(string message, params object[] formatArgs) { }
 
-            public void Debug(string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Debug(string message, params object[] formatArgs) { }
 
-            public void Error(Exception exception, string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Error(Exception exception, string message, params object[] formatArgs) { }
 
-            public void Error(string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Error(string message, params object[] formatArgs) { }
         }
 
         /// <summary>
