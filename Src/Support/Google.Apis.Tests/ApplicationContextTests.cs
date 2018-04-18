@@ -23,6 +23,12 @@ namespace Google.Apis.Tests
     /// <summary>Tests for <see cref="Google.ApplicationContext"/>.</summary>
     public class ApplicationContextTests
     {
+        // A mock logger that is identical to the NullLogger,
+        // but is required for tests as an ILogger is required
+        // that is not an instance of NullLogger.
+        // This MockLogger must not throw exceptions as other tests
+        // may be running at the same time as the tests below,
+        // and settings logger is a global operation.
         private class MockLogger : ILogger
         {
             public bool IsDebugEnabled => false;
