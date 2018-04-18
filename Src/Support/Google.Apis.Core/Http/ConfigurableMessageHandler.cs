@@ -353,7 +353,7 @@ namespace Google.Apis.Http
         private async Task LogBody(string fmtText, HttpContent content)
         {
             // This buffers the body content within the HttpContent if required.
-            var bodyBytes = content != null ? await content.ReadAsByteArrayAsync() : new byte[0];
+            var bodyBytes = content != null ? await content.ReadAsByteArrayAsync().ConfigureAwait(false) : new byte[0];
             char[] bodyChars = new char[bodyBytes.Length];
             for (int i = 0; i < bodyBytes.Length; i++)
             {
@@ -428,7 +428,7 @@ namespace Google.Apis.Http
                     }
                     if ((LogEvents & LogEventType.RequestBody) != 0)
                     {
-                        await LogBody($"Request[{loggingRequestId}] Body: '{{0}}'", request.Content);
+                        await LogBody($"Request[{loggingRequestId}] Body: '{{0}}'", request.Content).ConfigureAwait(false);
                     }
                 }
                 try
@@ -503,7 +503,7 @@ namespace Google.Apis.Http
                         }
                         if ((LogEvents & LogEventType.ResponseBody) != 0)
                         {
-                            await LogBody($"Response[{loggingRequestId}] Body: '{{0}}'", response.Content);
+                            await LogBody($"Response[{loggingRequestId}] Body: '{{0}}'", response.Content).ConfigureAwait(false);
                         }
                     }
                     if (response.IsSuccessStatusCode)
