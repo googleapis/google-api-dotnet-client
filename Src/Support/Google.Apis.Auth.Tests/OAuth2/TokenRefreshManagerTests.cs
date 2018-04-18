@@ -27,6 +27,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 {
     public class TokenRefreshManagerTests
     {
+        public int TokenResponseMan { get; private set; }
+
         [Theory, CombinatorialData]
         public async Task SingleTokenConcurrentRefresh(
             [CombinatorialValues(1, 2, 3, 6, 11)] int concurrentRefreshCount)
@@ -221,7 +223,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
             refreshCts.Cancel();
             
             // Non-deterministic if the refresh function gets called by the time this test ends.
-            Assert.InRange(Interlocked.Add(ref refreshCalled, 0), 0, 1);
+            // And it's either be called never, or retried n times by the token refresh manager.
+            Assert.InRange(Interlocked.Add(ref refreshCalled, 0), 0, TokenRefreshManager.RefreshTimeouts.Length);
             Assert.Equal(0, Interlocked.Add(ref refreshCompleted, 0));
         }
 
