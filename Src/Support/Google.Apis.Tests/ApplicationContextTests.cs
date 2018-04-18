@@ -23,6 +23,12 @@ namespace Google.Apis.Tests
     /// <summary>Tests for <see cref="Google.ApplicationContext"/>.</summary>
     public class ApplicationContextTests
     {
+        // A mock logger that is identical to the NullLogger,
+        // but is required for tests as an ILogger is required
+        // that is not an instance of NullLogger.
+        // This MockLogger must not throw exceptions as other tests
+        // may be running at the same time as the tests below,
+        // and settings logger is a global operation.
         private class MockLogger : ILogger
         {
             public bool IsDebugEnabled => false;
@@ -31,30 +37,15 @@ namespace Google.Apis.Tests
 
             public ILogger ForType<T>() => this;
 
-            public void Info(string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Info(string message, params object[] formatArgs) { }
 
-            public void Warning(string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Warning(string message, params object[] formatArgs) { }
 
-            public void Debug(string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Debug(string message, params object[] formatArgs) { }
 
-            public void Error(Exception exception, string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Error(Exception exception, string message, params object[] formatArgs) { }
 
-            public void Error(string message, params object[] formatArgs)
-            {
-                throw new NotImplementedException();
-            }
+            public void Error(string message, params object[] formatArgs) { }
         }
 
         /// <summary>
