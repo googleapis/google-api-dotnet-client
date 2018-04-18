@@ -36,42 +36,20 @@ namespace Google.Apis.Auth.OAuth2
         /// <summary>Logger for this class.</summary>
         protected static readonly ILogger Logger = ApplicationContext.Logger.ForType<UserCredential>();
 
-        private TokenResponse token;
-        private object lockObject = new object();
-
         /// <summary>Gets or sets the token response which contains the access token.</summary>
         public TokenResponse Token
         {
-            get
-            {
-                lock (lockObject)
-                {
-                    return token;
-                }
-            }
-            set
-            {
-                lock (lockObject)
-                {
-                    token = value;
-                }
-            }
+            get => _refreshManager.Token;
+            set => _refreshManager.Token = value;
         }
 
         /// <summary>Gets the authorization code flow.</summary>
-        public IAuthorizationCodeFlow Flow
-        {
-            get { return flow; }
-        }
+        public IAuthorizationCodeFlow Flow { get; }
 
         /// <summary>Gets the user identity.</summary>
-        public string UserId
-        {
-            get { return userId; }
-        }
+        public string UserId { get; }
 
-        private readonly IAuthorizationCodeFlow flow;
-        private readonly string userId;
+        private readonly TokenRefreshManager _refreshManager;
 
         /// <summary>Constructs a new credential instance.</summary>
         /// <param name="flow">Authorization code flow.</param>
@@ -79,9 +57,10 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="token">An initial token for the user.</param>
         public UserCredential(IAuthorizationCodeFlow flow, string userId, TokenResponse token)
         {
-            this.flow = flow;
-            this.userId = userId;
-            this.token = token;
+            this.Flow = flow;
+            this.UserId = userId;
+            _refreshManager = new TokenRefreshManager(RefreshTokenAsync, flow.Clock, Logger);
+            this.Token = token;
         }
 
         #region IHttpExecuteInterceptor
@@ -94,7 +73,7 @@ namespace Google.Apis.Auth.OAuth2
         public async Task InterceptAsync(HttpRequestMessage request, CancellationToken taskCancellationToken)
         {
             var accessToken = await GetAccessTokenForRequestAsync(request.RequestUri.AbsoluteUri, taskCancellationToken).ConfigureAwait(false);
-            flow.AccessMethod.Intercept(request, Token.AccessToken);
+            Flow.AccessMethod.Intercept(request, Token.AccessToken);
         }
 
         #endregion
@@ -107,7 +86,7 @@ namespace Google.Apis.Auth.OAuth2
             // TODO(peleyal): check WWW-Authenticate header.
             if (args.Response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                return !Object.Equals(Token.AccessToken, flow.AccessMethod.GetAccessToken(args.Request))
+                return !Object.Equals(Token.AccessToken, Flow.AccessMethod.GetAccessToken(args.Request))
                     || await RefreshTokenAsync(args.CancellationToken).ConfigureAwait(false);
             }
 
@@ -128,21 +107,10 @@ namespace Google.Apis.Auth.OAuth2
         #endregion
 
         #region ITokenAccess implementation
-
-        /// <inheritdoc/>
-        public virtual async Task<string> GetAccessTokenForRequestAsync(string authUri = null, CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (Token.IsExpired(flow.Clock))
-            {
-                Logger.Debug("Token has expired, trying to refresh it.");
-                if (!await RefreshTokenAsync(cancellationToken).ConfigureAwait(false))
-                {
-                    throw new InvalidOperationException("The access token has expired but we can't refresh it");
-                }
-            }
-            return token.AccessToken;
-        }
-
+        /// <inheritdoc />
+        public virtual Task<string> GetAccessTokenForRequestAsync(string authUri = null,
+            CancellationToken cancellationToken = default(CancellationToken)) =>
+            _refreshManager.GetAccessTokenForRequestAsync(cancellationToken);    
         #endregion
 
         /// <summary>
@@ -162,7 +130,7 @@ namespace Google.Apis.Auth.OAuth2
 
             // It's possible that two concurrent calls will be made to refresh the token, in that case the last one 
             // will win.
-            var newToken = await flow.RefreshTokenAsync(userId, Token.RefreshToken, taskCancellationToken)
+            var newToken = await Flow.RefreshTokenAsync(UserId, Token.RefreshToken, taskCancellationToken)
                 .ConfigureAwait(false);
 
             Logger.Info("Access token was refreshed successfully");
@@ -190,7 +158,7 @@ namespace Google.Apis.Auth.OAuth2
                 return false;
             }
 
-            await flow.RevokeTokenAsync(userId, Token.AccessToken, taskCancellationToken).ConfigureAwait(false);
+            await Flow.RevokeTokenAsync(UserId, Token.AccessToken, taskCancellationToken).ConfigureAwait(false);
             Logger.Info("Access token was revoked successfully");
             // We don't set the token to null, cause we want that the next request (without reauthorizing) will fail).
             return true;
