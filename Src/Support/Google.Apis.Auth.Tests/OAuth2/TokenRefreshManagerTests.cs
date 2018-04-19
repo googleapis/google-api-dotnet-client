@@ -19,6 +19,7 @@ using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Logging;
 using Google.Apis.Tests.Mocks;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -131,42 +132,41 @@ namespace Google.Apis.Auth.Tests.OAuth2
             var clock = new MockClock { UtcNow = new DateTime(2010, 1, 1, 0, 0, 0, DateTimeKind.Utc) };
             var logger = new NullLogger();
             TaskCompletionSource<int> delayTask = null;
-            string accessToken = null;
             TokenRefreshManager trm = null;
             trm = new TokenRefreshManager(async ct =>
             {
-                await delayTask.Task;
+                await Interlocked.CompareExchange(ref delayTask, null, null).Task;
                 trm.Token = new TokenResponse
                 {
-                    AccessToken = Interlocked.Exchange(ref accessToken, accessToken),
+                    AccessToken = clock.UtcNow.ToString("O"),
                     ExpiresInSeconds = TokenResponse.TokenRefreshTimeWindowSeconds + 1,
                     IssuedUtc = clock.UtcNow
                 };
                 return true;
             }, clock, logger);
 
+            HashSet<string> distinctTokens = new HashSet<string>();
             for (int iteration = 0; iteration < refreshIterations; iteration++)
             {
-                delayTask = new TaskCompletionSource<int>();
-                Interlocked.Exchange(ref accessToken, $"AccessToken{iteration}");
+                clock.UtcNow += TimeSpan.FromSeconds(TokenResponse.TokenRefreshTimeWindowSeconds - TokenResponse.TokenHardExpiryTimeWindowSeconds);
+
+                Interlocked.Exchange(ref delayTask, new TaskCompletionSource<int>());
                 var tokenTasks = new Task<string>[concurrentRefreshCount];
                 for (int i = 0; i < concurrentRefreshCount; i++)
                 {
                     tokenTasks[i] = trm.GetAccessTokenForRequestAsync(CancellationToken.None);
                 }
-                delayTask.SetResult(0);
+                Interlocked.CompareExchange(ref delayTask, null, null).SetResult(0);
                 var tokens = await Task.WhenAll(tokenTasks);
 
-                // It's non-deterministic if the refresh will return the previous or just-retrieved token
-                var expectedAccessTokenA = $"AccessToken{iteration}";
-                var expectedAccessTokenB = $"AccessToken{iteration - 1}";
+                // Check all tokens are the same
                 foreach (var token in tokens)
                 {
-                    Assert.True(token == expectedAccessTokenA || token == expectedAccessTokenB);
+                    Assert.Equal(tokens[0], token);
                 }
-
-                clock.UtcNow += TimeSpan.FromSeconds(TokenResponse.TokenRefreshTimeWindowSeconds - TokenResponse.TokenHardExpiryTimeWindowSeconds);
+                distinctTokens.Add(tokens[0]);
             }
+            Assert.InRange(distinctTokens.Count, refreshIterations / 2, refreshIterations / 2 + 1);
         }
 
         [Fact]

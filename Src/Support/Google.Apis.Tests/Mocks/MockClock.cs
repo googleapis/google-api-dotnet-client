@@ -32,6 +32,25 @@ namespace Google.Apis.Tests.Mocks
             set { UtcNow = value.ToUniversalTime(); }
         }
 
-        public DateTime UtcNow { get; set; }
+        private object _lock = new object();
+        private DateTime _utcNow;
+
+        public DateTime UtcNow
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    return _utcNow;
+                }
+            }
+            set
+            {
+                lock (_lock)
+                {
+                    _utcNow = value;
+                }
+            }
+        }
     }
 }
