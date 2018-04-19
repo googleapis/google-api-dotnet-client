@@ -46,6 +46,7 @@ Supported Platforms:
     <Reference Include="System.Web" />
 
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="1.0.1" PrivateAssets="All" />
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
