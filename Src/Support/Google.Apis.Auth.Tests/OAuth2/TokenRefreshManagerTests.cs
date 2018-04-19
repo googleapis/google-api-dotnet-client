@@ -166,7 +166,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 }
                 distinctTokens.Add(tokens[0]);
             }
-            Assert.InRange(distinctTokens.Count, refreshIterations / 2, refreshIterations / 2 + 1);
+            Assert.InRange(distinctTokens.Count, refreshIterations / 2, refreshIterations);
         }
 
         [Fact]
