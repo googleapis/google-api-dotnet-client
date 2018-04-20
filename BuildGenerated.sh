@@ -16,6 +16,9 @@ CODE_GENERATION_DIR=$(pwd)/Src/Generated
 # Directory containing tools used during the build.
 TOOLS_DIR=$(pwd)/Src/Tools
 
+# Forces sourcelink to work during the build.
+export CI=true
+
 while [[ $# -gt 0 ]]; do
   key="$1"
   case $key in
