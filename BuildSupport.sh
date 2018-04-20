@@ -10,6 +10,9 @@ NUPKG_DIR=`pwd`/NuPkgs/Support
 # Build configuration to build/pack.
 BUILD_CONFIGURATION=Release
 
+# Forces sourcelink to work during the build.
+export CI=true
+
 dotnet restore Src/Support/GoogleApisClient.sln
 dotnet build Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION
 dotnet pack Src/Support/GoogleApisClient.sln --configuration $BUILD_CONFIGURATION --no-build --output $NUPKG_DIR
