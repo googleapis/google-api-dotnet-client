@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Appsactivity.v1 Client Library</Title>
-    <Version>1.32.2.1199</Version>
+    <Version>1.33.0.1204</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
@@ -45,16 +45,20 @@
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <DebugType>portable</DebugType>
-    <IncludeSymbols>true</IncludeSymbols>
-    <IncludeSource>true</IncludeSource>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <NoWarn>1570,1587,1591</NoWarn>
   </PropertyGroup>
+
+  <!-- common dependencies -->
+  <ItemGroup>
+    <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="1.0.1" PrivateAssets="All" />
+    <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.0" PrivateAssets="All" />
+  </ItemGroup>
   
   <!-- per-target dependencies -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <PackageReference Include="Google.Apis" Version="1.32.2" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.32.2" />
+    <PackageReference Include="Google.Apis" Version="1.33.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.33.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.0'">
@@ -69,8 +73,8 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net45'">
-    <PackageReference Include="Google.Apis" Version="1.32.2" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.32.2" />
+    <PackageReference Include="Google.Apis" Version="1.33.0" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.33.0" />
   </ItemGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net40'">

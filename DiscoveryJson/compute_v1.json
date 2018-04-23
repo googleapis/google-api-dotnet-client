@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/YuzmGMZgZ_itJuXZM_bqzOztCI4\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/sZF-uivrCQL3JZFob_IJhnki26E\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20180329",
+ "revision": "20180419",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -12850,15 +12850,13 @@
     },
     "minTlsVersion": {
      "type": "string",
-     "description": "The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2, TLS_1_3.",
+     "description": "The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.",
      "enum": [
       "TLS_1_0",
       "TLS_1_1",
-      "TLS_1_2",
-      "TLS_1_3"
+      "TLS_1_2"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""

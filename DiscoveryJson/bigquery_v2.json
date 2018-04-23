@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/5guSuzOH8Z8dUhRcCZ7e08NGvvM\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/EH1WrA9bmAKud9N8fBrRAX4nt90\"",
  "discoveryVersion": "v1",
  "id": "bigquery:v2",
  "name": "bigquery",
  "version": "v2",
- "revision": "20180408",
+ "revision": "20180416",
  "title": "BigQuery API",
  "description": "A data platform for customers to create, manage, share and query data.",
  "ownerDomain": "google.com",
@@ -171,6 +171,19 @@
     "readRowkeyAsString": {
      "type": "boolean",
      "description": "[Optional] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false."
+    }
+   }
+  },
+  "Clustering": {
+   "id": "Clustering",
+   "type": "object",
+   "properties": {
+    "fields": {
+     "type": "array",
+     "description": "[Repeated] One or more fields on which data should be clustered. Only top-level, non-repeated, simple-type fields are supported. The order of the fields will determine how clusters will be generated, so it is important.",
+     "items": {
+      "type": "string"
+     }
     }
    }
   },
@@ -731,6 +744,10 @@
    "id": "GoogleSheetsOptions",
    "type": "object",
    "properties": {
+    "range": {
+     "type": "string",
+     "description": "[Experimental] [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: !:"
+    },
     "skipLeadingRows": {
      "type": "string",
      "description": "[Optional] The number of rows at the top of a sheet that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows that should be skipped. When autodetect is on, behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N \u003e 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.",
@@ -886,7 +903,11 @@
     },
     "autodetect": {
      "type": "boolean",
-     "description": "Indicates if we should automatically infer the options and schema for CSV and JSON sources."
+     "description": "[Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources."
+    },
+    "clustering": {
+     "$ref": "Clustering",
+     "description": "[Experimental] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered."
     },
     "createDisposition": {
      "type": "string",
@@ -975,7 +996,7 @@
     },
     "timePartitioning": {
      "$ref": "TimePartitioning",
-     "description": "If specified, configures time-based partitioning for the destination table."
+     "description": "Time-based partitioning specification for the destination table."
     },
     "writeDisposition": {
      "type": "string",
@@ -991,6 +1012,10 @@
      "type": "boolean",
      "description": "[Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.",
      "default": "false"
+    },
+    "clustering": {
+     "$ref": "Clustering",
+     "description": "[Experimental] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered."
     },
     "createDisposition": {
      "type": "string",
@@ -1063,11 +1088,12 @@
     },
     "timePartitioning": {
      "$ref": "TimePartitioning",
-     "description": "If specified, configures time-based partitioning for the destination table."
+     "description": "Time-based partitioning specification for the destination table."
     },
     "useLegacySql": {
      "type": "boolean",
-     "description": "Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false."
+     "description": "Specifies whether to use BigQuery's legacy SQL dialect for this query. The default value is true. If set to false, the query will use BigQuery's standard SQL: https://cloud.google.com/bigquery/sql-reference/ When useLegacySql is set to false, the value of flattenResults is ignored; query will be run as if flattenResults is false.",
+     "default": "true"
     },
     "useQueryCache": {
      "type": "boolean",
@@ -1748,6 +1774,10 @@
    "id": "Table",
    "type": "object",
    "properties": {
+    "clustering": {
+     "$ref": "Clustering",
+     "description": "[Experimental] Clustering specification for the table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered."
+    },
     "creationTime": {
      "type": "string",
      "description": "[Output-only] The time when this table was created, in milliseconds since the epoch.",
@@ -1836,7 +1866,7 @@
     },
     "timePartitioning": {
      "$ref": "TimePartitioning",
-     "description": "If specified, configures time-based partitioning for this table."
+     "description": "Time-based partitioning specification for this table."
     },
     "type": {
      "type": "string",
@@ -2012,6 +2042,10 @@
      "items": {
       "type": "object",
       "properties": {
+       "clustering": {
+        "$ref": "Clustering",
+        "description": "[Experimental] Clustering specification for this table, if configured."
+       },
        "creationTime": {
         "type": "string",
         "description": "The time when this table was created, in milliseconds since the epoch.",
@@ -2048,7 +2082,7 @@
        },
        "timePartitioning": {
         "$ref": "TimePartitioning",
-        "description": "The time-based partitioning for this table."
+        "description": "The time-based partitioning specification for this table, if configured."
        },
        "type": {
         "type": "string",

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/ByEZEzGIq-TNcKe0RsPdjS3d3zg\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/6T9UP_RNWkFLqUNdvXQr_m04dCw\"",
  "discoveryVersion": "v1",
  "id": "compute:alpha",
  "name": "compute",
  "version": "alpha",
- "revision": "20180329",
+ "revision": "20180419",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -15148,6 +15148,7 @@
       "INTERCONNECTS",
       "INTERNAL_ADDRESSES",
       "IN_USE_ADDRESSES",
+      "IN_USE_MAINTENANCE_WINDOWS",
       "LOCAL_SSD_TOTAL_GB",
       "NETWORKS",
       "NVIDIA_K80_GPUS",
@@ -15161,6 +15162,7 @@
       "PRIVATE_V6_ACCESS_SUBNETWORKS",
       "REGIONAL_AUTOSCALERS",
       "REGIONAL_INSTANCE_GROUP_MANAGERS",
+      "RESOURCE_POLICIES",
       "ROUTERS",
       "ROUTES",
       "SECURITY_POLICIES",
@@ -15181,6 +15183,8 @@
       "VPN_TUNNELS"
      ],
      "enumDescriptions": [
+      "",
+      "",
       "",
       "",
       "",
@@ -18733,15 +18737,13 @@
     },
     "minTlsVersion": {
      "type": "string",
-     "description": "The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2, TLS_1_3.",
+     "description": "The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.",
      "enum": [
       "TLS_1_0",
       "TLS_1_1",
-      "TLS_1_2",
-      "TLS_1_3"
+      "TLS_1_2"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""

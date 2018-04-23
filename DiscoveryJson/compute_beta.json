@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/zhhWASYwchixIK2-dOYLRSp64wg\"",
+ "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/HZKhFy06IVFqEEhwU_5FzPIumPE\"",
  "discoveryVersion": "v1",
  "id": "compute:beta",
  "name": "compute",
  "version": "beta",
- "revision": "20180329",
+ "revision": "20180419",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",
@@ -12969,6 +12969,18 @@
      "type": "string",
      "description": "IP address of the interface inside Google Cloud Platform. Only IPv4 is supported."
     },
+    "managementType": {
+     "type": "string",
+     "description": "[Output Only] Type of how the resource/configuration of the BGP peer is managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT represents an BGP peer that is automatically created for PARTNER interconnectAttachment, Google will automatically create/delete this type of BGP peer when the PARTNER interconnectAttachment is created/deleted.",
+     "enum": [
+      "MANAGED_BY_ATTACHMENT",
+      "MANAGED_BY_USER"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
+    },
     "name": {
      "type": "string",
      "description": "Name of this BGP peer. The name must be 1-63 characters long and comply with RFC1035.",
@@ -13000,6 +13012,18 @@
     "linkedVpnTunnel": {
      "type": "string",
      "description": "URI of the linked VPN tunnel. It must be in the same region as the router. Each interface can have at most one linked resource and it could either be a VPN Tunnel or an interconnect attachment."
+    },
+    "managementType": {
+     "type": "string",
+     "description": "[Output Only] Type of how the resource/configuration of the interface is managed. MANAGED_BY_USER is the default value; MANAGED_BY_ATTACHMENT represents an interface that is automatically created for PARTNER type interconnectAttachment, Google will automatically create/update/delete this type of interface when the PARTNER interconnectAttachment is created/provisioned/deleted.",
+     "enum": [
+      "MANAGED_BY_ATTACHMENT",
+      "MANAGED_BY_USER"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ]
     },
     "name": {
      "type": "string",
@@ -14326,15 +14350,13 @@
     },
     "minTlsVersion": {
      "type": "string",
-     "description": "The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2, TLS_1_3.",
+     "description": "The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.",
      "enum": [
       "TLS_1_0",
       "TLS_1_1",
-      "TLS_1_2",
-      "TLS_1_3"
+      "TLS_1_2"
      ],
      "enumDescriptions": [
-      "",
       "",
       "",
       ""
