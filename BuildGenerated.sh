@@ -104,12 +104,12 @@ if [ -z ${SKIPBUILD+x} ]; then
   dotnet new sln --name Generated
   dotnet sln Generated.sln add $CODE_GENERATION_DIR/*/*.csproj
   dotnet restore Generated.sln
-  dotnet build Generated.sln --configuration $BUILD_CONFIGURATION
+  dotnet build Generated.sln --configuration $BUILD_CONFIGURATION --no-restore
 fi
 
 if [ -z ${SKIPPACK+x} ]; then
   # Delete all generated nupkgs
   echo Deleting existing \'$NUPKG_DIR\' directory...
   rm -rf $NUPKG_DIR
-  dotnet pack Generated.sln --configuration $BUILD_CONFIGURATION --no-build --output $NUPKG_DIR
+  dotnet pack Generated.sln --configuration $BUILD_CONFIGURATION --no-restore --no-build --output $NUPKG_DIR
 fi
