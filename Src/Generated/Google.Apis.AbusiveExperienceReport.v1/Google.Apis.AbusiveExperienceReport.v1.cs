@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Abusive Experience Report API Version v1
+ *   Abusive Experience Report API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/abusive-experience-report/'>Google Abusive Experience Report API</a>
+ *          <td><a href='https://developers.google.com/abusive-experience-report/'>Abusive Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180129 (1124)
+ *      <tr><th>API Rev<td>20180419 (1204)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/abusive-experience-report/'>
  *              https://developers.google.com/abusive-experience-report/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Abusive Experience Report API can be found at
+ * The complete API documentation for using Abusive Experience Report API can be found at
  * <a href='https://developers.google.com/abusive-experience-report/'>https://developers.google.com/abusive-experience-report/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -106,7 +106,7 @@ namespace Google.Apis.AbusiveExperienceReport.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Abusive Experience Report API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Abusive Experience Report API.</summary>
         public class Scope
         {
             /// <summary>Test scope for access to the Zoo service</summary>
@@ -501,7 +501,8 @@ namespace Google.Apis.AbusiveExperienceReport.v1
 namespace Google.Apis.AbusiveExperienceReport.v1.Data
 {    
 
-    /// <summary>Response message for GetSiteSummary.</summary>
+    /// <summary>Response message for GetSiteSummary. Do not confuse with same message in
+    /// google.ads.experiencereport.v1</summary>
     public class SiteSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The status of the site reviewed for the abusive experiences.</summary>

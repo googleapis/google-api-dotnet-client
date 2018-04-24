@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180412 (1197)
+ *      <tr><th>API Rev<td>20180417 (1202)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -2433,6 +2433,10 @@ namespace Google.Apis.Dns.v1beta2.Data
     /// <summary>Limits associated with a Project.</summary>
     public class Quota : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether a black hole zone should suppress system zones for this project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blackHoleHidesSystemZones")]
+        public virtual System.Nullable<bool> BlackHoleHidesSystemZones { get; set; } 
+
         /// <summary>Maximum allowed number of DnsKeys per ManagedZone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsKeysPerManagedZone")]
         public virtual System.Nullable<int> DnsKeysPerManagedZone { get; set; } 

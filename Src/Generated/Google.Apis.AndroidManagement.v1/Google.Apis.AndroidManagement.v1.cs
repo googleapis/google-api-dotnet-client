@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/management'>Android Management API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180418 (1203)
+ *      <tr><th>API Rev<td>20180417 (1202)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/management'>
  *              https://developers.google.com/android/management</a>
@@ -2159,7 +2159,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class ApplicationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The default policy for all permissions requested by the app. If specified, this overrides the
-        /// policy-level default_permission_policy which applies to all apps.</summary>
+        /// policy-level default_permission_policy which applies to all apps. It does not override the permission_grants
+        /// which applies to all apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPermissionPolicy")]
         public virtual string DefaultPermissionPolicy { get; set; } 
 
@@ -2196,7 +2197,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string PackageName { get; set; } 
 
         /// <summary>Explicit permission grants or denials for the app. These values override the
-        /// default_permission_policy.</summary>
+        /// default_permission_policy and permission_grants which apply to all apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissionGrants")]
         public virtual System.Collections.Generic.IList<PermissionGrant> PermissionGrants { get; set; } 
 
@@ -3366,8 +3367,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("usbFileTransferDisabled")]
         public virtual System.Nullable<bool> UsbFileTransferDisabled { get; set; } 
 
-        /// <summary>Allows admins to toggle whether USB storge is enabled or disabled on user's devices. Next ID:
-        /// 114</summary>
+        /// <summary>Allows admins to toggle whether USB storge is enabled or disabled on user's devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbMassStorageEnabled")]
         public virtual System.Nullable<bool> UsbMassStorageEnabled { get; set; } 
 

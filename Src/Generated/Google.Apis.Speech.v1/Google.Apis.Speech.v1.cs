@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/speech/'>Cloud Speech API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180418 (1203)
+ *      <tr><th>API Rev<td>20180420 (1205)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/speech/'>
  *              https://cloud.google.com/speech/</a>
@@ -743,7 +743,8 @@ namespace Google.Apis.Speech.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transcript")]
         public virtual string Transcript { get; set; } 
 
-        /// <summary>Output only. A list of word-specific information for each recognized word.</summary>
+        /// <summary>Output only. A list of word-specific information for each recognized word. Note: When
+        /// enable_speaker_diarization is true, you will see all the words from the beginning of the audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("words")]
         public virtual System.Collections.Generic.IList<WordInfo> Words { get; set; } 
 
@@ -835,6 +836,13 @@ namespace Google.Apis.Speech.v1.Data
         /// This is an experimental feature and the accuracy of the time offset can vary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; } 
+
+        /// <summary>Output only. A distinct integer value is assigned for every speaker within the audio. This field
+        /// specifies which one of those speakers was detected to have spoken this word. Value ranges from '1' to
+        /// diarization_speaker_count. speaker_tag is set if enable_speaker_diarization = 'true' and only in the top
+        /// alternative.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speakerTag")]
+        public virtual System.Nullable<int> SpeakerTag { get; set; } 
 
         /// <summary>Output only. Time offset relative to the beginning of the audio, and corresponding to the start of
         /// the spoken word. This field is only set if `enable_word_time_offsets=true` and only in the top hypothesis.

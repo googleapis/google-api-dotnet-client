@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1beta
- *      <tr><th>API Rev<td>20180403 (1188)
+ *      <tr><th>API Rev<td>20180413 (1198)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
@@ -901,6 +901,10 @@ namespace Google.Apis.CloudOSLogin.v1beta.Data
         /// <summary>The path to the home directory for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homeDirectory")]
         public virtual string HomeDirectory { get; set; } 
+
+        /// <summary>The operating system type where this account applies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemType")]
+        public virtual string OperatingSystemType { get; set; } 
 
         /// <summary>Only one POSIX account can be marked as primary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]

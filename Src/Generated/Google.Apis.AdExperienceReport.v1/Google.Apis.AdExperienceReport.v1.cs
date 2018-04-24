@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Ad Experience Report API Version v1
+ *   Ad Experience Report API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/ad-experience-report/'>Google Ad Experience Report API</a>
+ *          <td><a href='https://developers.google.com/ad-experience-report/'>Ad Experience Report API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180129 (1124)
+ *      <tr><th>API Rev<td>20180420 (1205)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-experience-report/'>
  *              https://developers.google.com/ad-experience-report/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Ad Experience Report API can be found at
+ * The complete API documentation for using Ad Experience Report API can be found at
  * <a href='https://developers.google.com/ad-experience-report/'>https://developers.google.com/ad-experience-report/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -106,7 +106,7 @@ namespace Google.Apis.AdExperienceReport.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Ad Experience Report API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Ad Experience Report API.</summary>
         public class Scope
         {
             /// <summary>Test scope for access to the Zoo service</summary>
@@ -536,7 +536,8 @@ namespace Google.Apis.AdExperienceReport.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for GetSiteSummary.</summary>
+    /// <summary>Response message for GetSiteSummary. Do not confuse with same message in
+    /// google.chrome.abusiveexperiencereport.v1</summary>
     public class SiteSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Summary for the desktop review of the site.</summary>
