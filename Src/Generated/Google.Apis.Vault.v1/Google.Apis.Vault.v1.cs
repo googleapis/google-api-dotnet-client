@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Vault API Version v1
+ *   G Suite Vault API Version v1
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/vault'>Google Vault API</a>
+ *          <td><a href='https://developers.google.com/vault'>G Suite Vault API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180307 (1161)
+ *      <tr><th>API Rev<td>20180403 (1188)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/vault'>
  *              https://developers.google.com/vault</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Vault API can be found at
+ * The complete API documentation for using G Suite Vault API can be found at
  * <a href='https://developers.google.com/vault'>https://developers.google.com/vault</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.Vault.v1
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Vault API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the G Suite Vault API.</summary>
         public class Scope
         {
             /// <summary>Manage your eDiscovery data</summary>
