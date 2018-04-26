@@ -1,6 +1,4 @@
 {
-  "version": "v1",
-  "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/",
   "servicePath": "",
   "description": "Retrieves the list of AMP URLs (and equivalent AMP Cache URLs) for a given list of public URL(s).\n",
   "kind": "discovery#restDescription",
@@ -20,6 +18,10 @@
     "ampUrls": {
       "methods": {
         "batchGet": {
+          "request": {
+            "$ref": "BatchGetAmpUrlsRequest"
+          },
+          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format).",
           "response": {
             "$ref": "BatchGetAmpUrlsResponse"
           },
@@ -28,20 +30,16 @@
           "parameters": {},
           "flatPath": "v1/ampUrls:batchGet",
           "path": "v1/ampUrls:batchGet",
-          "id": "acceleratedmobilepageurl.ampUrls.batchGet",
-          "request": {
-            "$ref": "BatchGetAmpUrlsRequest"
-          },
-          "description": "Returns AMP URL(s) and equivalent\n[AMP Cache URL(s)](/amp/cache/overview#amp-cache-url-format)."
+          "id": "acceleratedmobilepageurl.ampUrls.batchGet"
         }
       }
     }
   },
   "parameters": {
     "oauth_token": {
+      "location": "query",
       "description": "OAuth 2.0 token for the current user.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "bearer_token": {
       "location": "query",
@@ -54,20 +52,20 @@
       "location": "query"
     },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
-      "location": "query"
+      "default": "true"
     },
     "fields": {
+      "location": "query",
       "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "uploadType": {
+      "location": "query",
       "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
+      "type": "string"
     },
     "$.xgafv": {
       "enumDescriptions": [
@@ -88,12 +86,6 @@
       "location": "query"
     },
     "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
       "enumDescriptions": [
         "Responses with Content-Type of application/json",
         "Media download with context-dependent Content-Type",
@@ -101,7 +93,13 @@
       ],
       "location": "query",
       "description": "Data format for response.",
-      "default": "json"
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string"
     },
     "access_token": {
       "description": "OAuth access token.",
@@ -127,12 +125,16 @@
   },
   "schemas": {
     "AmpUrlError": {
+      "description": "AMP URL Error resource for a requested URL that couldn't be found.",
+      "type": "object",
       "properties": {
         "errorMessage": {
           "description": "An optional descriptive error message.",
           "type": "string"
         },
         "errorCode": {
+          "description": "The error code of an API call.",
+          "type": "string",
           "enumDescriptions": [
             "Not specified error.",
             "Indicates the requested URL is not found in the index, possibly because\nit's unable to be found, not able to be accessed by Googlebot, or some\nother error.",
@@ -148,24 +150,27 @@
             "APPLICATION_ERROR",
             "URL_IS_VALID_AMP",
             "URL_IS_INVALID_AMP"
-          ],
-          "description": "The error code of an API call.",
-          "type": "string"
+          ]
         },
         "originalUrl": {
           "description": "The original non-AMP URL.",
           "type": "string"
         }
       },
-      "id": "AmpUrlError",
-      "description": "AMP URL Error resource for a requested URL that couldn't be found.",
-      "type": "object"
+      "id": "AmpUrlError"
     },
     "BatchGetAmpUrlsRequest": {
+      "description": "AMP URL request for a batch of URLs.",
+      "type": "object",
       "properties": {
+        "urls": {
+          "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits)).",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "lookupStrategy": {
-          "description": "The lookup_strategy being requested.",
-          "type": "string",
           "enumDescriptions": [
             "FETCH_LIVE_DOC strategy involves live document fetch of URLs not found in\nthe index. Any request URL not found in the index is crawled in realtime\nto validate if there is a corresponding AMP URL. This strategy has higher\ncoverage but with extra latency introduced by realtime crawling. This is\nthe default strategy. Applications using this strategy should set higher\nHTTP timeouts of the API calls.",
             "IN_INDEX_DOC strategy skips fetching live documents of URL(s) not found\nin index. For applications which need low latency use of IN_INDEX_DOC\nstrategy is recommended."
@@ -173,19 +178,12 @@
           "enum": [
             "FETCH_LIVE_DOC",
             "IN_INDEX_DOC"
-          ]
-        },
-        "urls": {
-          "description": "List of URLs to look up for the paired AMP URLs.\nThe URLs are case-sensitive. Up to 50 URLs per lookup\n(see [Usage Limits](/amp/cache/reference/limits)).",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
+          ],
+          "description": "The lookup_strategy being requested.",
+          "type": "string"
         }
       },
-      "id": "BatchGetAmpUrlsRequest",
-      "description": "AMP URL request for a batch of URLs.",
-      "type": "object"
+      "id": "BatchGetAmpUrlsRequest"
     },
     "BatchGetAmpUrlsResponse": {
       "description": "Batch AMP URL response.",
@@ -230,7 +228,9 @@
   },
   "protocol": "rest",
   "icons": {
-    "x32": "http://www.google.com/images/icons/product/search-32.gif",
-    "x16": "http://www.google.com/images/icons/product/search-16.gif"
-  }
+    "x16": "http://www.google.com/images/icons/product/search-16.gif",
+    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+  },
+  "version": "v1",
+  "baseUrl": "https://acceleratedmobilepageurl.googleapis.com/"
 }

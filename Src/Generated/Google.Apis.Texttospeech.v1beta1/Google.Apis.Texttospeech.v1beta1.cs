@@ -24,19 +24,19 @@
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='http://cloud.google.com/speech/text-to-speech/'>Cloud Text-to-Speech API</a>
+ *          <td><a href='http://cloud.google.com/text-to-speech/'>Cloud Text-to-Speech API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180420 (1205)
+ *      <tr><th>API Rev<td>20180425 (1210)
  *      <tr><th>API Docs
- *          <td><a href='http://cloud.google.com/speech/text-to-speech/'>
- *              http://cloud.google.com/speech/text-to-speech/</a>
+ *          <td><a href='http://cloud.google.com/text-to-speech/'>
+ *              http://cloud.google.com/text-to-speech/</a>
  *      <tr><th>Discovery Name<td>texttospeech
  *    </table>
  *
  * \section ForMoreInfo For More Information
  *
  * The complete API documentation for using Cloud Text-to-Speech API can be found at
- * <a href='http://cloud.google.com/speech/text-to-speech/'>http://cloud.google.com/speech/text-to-speech/</a>.
+ * <a href='http://cloud.google.com/text-to-speech/'>http://cloud.google.com/text-to-speech/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
  * <a href='https://developers.google.com/api-client-library/dotnet/get_started'>

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/drive/'>Drive API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180409 (1194)
+ *      <tr><th>API Rev<td>20180413 (1198)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/drive/'>
  *              https://developers.google.com/drive/</a>
@@ -6103,7 +6103,7 @@ namespace Google.Apis.Drive.v2
 
         }
 
-        /// <summary>Updates a property. This method supports patch semantics.</summary>
+        /// <summary>Updates a property.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         /// <param name="propertyKey">The key of the
@@ -6113,7 +6113,7 @@ namespace Google.Apis.Drive.v2
             return new PatchRequest(service, body, fileId, propertyKey);
         }
 
-        /// <summary>Updates a property. This method supports patch semantics.</summary>
+        /// <summary>Updates a property.</summary>
         public class PatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Property>
         {
             /// <summary>Constructs a new Patch request.</summary>

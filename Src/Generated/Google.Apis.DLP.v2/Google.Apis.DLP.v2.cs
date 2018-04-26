@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180417 (1202)
+ *      <tr><th>API Rev<td>20180424 (1209)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -2188,6 +2188,25 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
+                /// <summary>The standard list page size.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
+                public enum TypeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
+                    DLPJOBTYPEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
+                    INSPECTJOB,
+                    [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
+                    RISKANALYSISJOB,
+                }
+
                 /// <summary>Optional. Allows filtering.
                 ///
                 /// Supported syntax:
@@ -2212,25 +2231,6 @@ namespace Google.Apis.DLP.v2
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>The standard list page size.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
-                [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-                /// <summary>The type of job. Defaults to `DlpJobType.INSPECT`</summary>
-                public enum TypeEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DLP_JOB_TYPE_UNSPECIFIED")]
-                    DLPJOBTYPEUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("INSPECT_JOB")]
-                    INSPECTJOB,
-                    [Google.Apis.Util.StringValueAttribute("RISK_ANALYSIS_JOB")]
-                    RISKANALYSISJOB,
-                }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2266,24 +2266,6 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -2296,6 +2278,24 @@ namespace Google.Apis.DLP.v2
                         "type", new Google.Apis.Discovery.Parameter
                         {
                             Name = "type",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2646,15 +2646,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListInspectTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2690,18 +2690,18 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3193,6 +3193,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pubSub")]
         public virtual GooglePrivacyDlpV2PublishToPubSub PubSub { get; set; } 
 
+        /// <summary>Publish summary to Cloud Security Command Center (Alpha).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publishSummaryToCscc")]
+        public virtual GooglePrivacyDlpV2PublishSummaryToCscc PublishSummaryToCscc { get; set; } 
+
         /// <summary>Save resulting findings in a provided location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("saveFindings")]
         public virtual GooglePrivacyDlpV2SaveFindings SaveFindings { get; set; } 
@@ -3508,6 +3512,18 @@ namespace Google.Apis.DLP.v2.Data
         /// format processors are applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Message representing a path in Cloud Storage.</summary>
+    public class GooglePrivacyDlpV2CloudStoragePath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A url representing a file or path (no wildcards) in Cloud Storage. Example:
+        /// gs://[BUCKET_NAME]/dictionary.txt</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4041,6 +4057,10 @@ namespace Google.Apis.DLP.v2.Data
     /// findings because such characters are treated as whitespace.</summary>
     public class GooglePrivacyDlpV2Dictionary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Newline-delimited file of words in Cloud Storage. Only a single file is accepted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStoragePath")]
+        public virtual GooglePrivacyDlpV2CloudStoragePath CloudStoragePath { get; set; } 
+
         /// <summary>List of words or phrases to search for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wordList")]
         public virtual GooglePrivacyDlpV2WordList WordList { get; set; } 
@@ -5211,6 +5231,17 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("windowBefore")]
         public virtual System.Nullable<int> WindowBefore { get; set; } 
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action
+    /// is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security
+    /// Command Center. The action will publish count of finding instances and their info types. The summary of findings
+    /// will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms
+    /// /service-terms Only a single instance of this action can be specified. Compatible with: Inspect</summary>
+    public class GooglePrivacyDlpV2PublishSummaryToCscc : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
