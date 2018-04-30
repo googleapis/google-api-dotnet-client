@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/bigquery/'>BigQuery API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180416 (1201)
+ *      <tr><th>API Rev<td>20180422 (1207)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/bigquery/'>
  *              https://cloud.google.com/bigquery/</a>
@@ -2827,7 +2827,8 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual System.Nullable<long> LastModifiedTime { get; set; } 
 
-        /// <summary>The geographic location where the dataset should reside. The default value is US.</summary>
+        /// <summary>The geographic location where the dataset should reside. The default value is US. See details at
+        /// https://cloud.google.com/bigquery/docs/dataset-locations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
@@ -3019,7 +3020,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("computeRatioMax")]
         public virtual System.Nullable<double> ComputeRatioMax { get; set; } 
 
-        /// <summary>Stage end time in milliseconds.</summary>
+        /// <summary>Stage end time represented as milliseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endMs")]
         public virtual System.Nullable<long> EndMs { get; set; } 
 
@@ -3071,7 +3072,7 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleOutputBytesSpilled")]
         public virtual System.Nullable<long> ShuffleOutputBytesSpilled { get; set; } 
 
-        /// <summary>Stage start time in milliseconds.</summary>
+        /// <summary>Stage start time represented as milliseconds since epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startMs")]
         public virtual System.Nullable<long> StartMs { get; set; } 
 

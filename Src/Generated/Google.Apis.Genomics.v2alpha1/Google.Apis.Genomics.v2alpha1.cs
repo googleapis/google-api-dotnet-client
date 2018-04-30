@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20180404 (1189)
+ *      <tr><th>API Rev<td>20180426 (1211)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -833,6 +833,26 @@ namespace Google.Apis.Genomics.v2alpha1
 namespace Google.Apis.Genomics.v2alpha1.Data
 {    
 
+    /// <summary>Carries information about an accelerator that can be attached to a VM.</summary>
+    public class Accelerator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>How many accelerators of this type to attach.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; } 
+
+        /// <summary>The accelerator type string (eg nvidia-tesla-k80).
+        ///
+        /// Only NVIDIA GPU accelerators are currently supported.  If an NVIDIA GPU is attached, the required runtime
+        /// libraries will be made available to all containers under `/usr/local/nvidia`.  The driver version to install
+        /// must be specified using the NVIDIA driver version parameter on the virtual machine specification.  Note that
+        /// attaching a GPU increases the worker VM startup time by a few minutes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Action specifies a single action that runs a docker container.</summary>
     public class Action : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1155,6 +1175,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; } 
 
+        /// <summary>The time at which execution was completed and resources were cleaned up.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; } 
+
         /// <summary>The list of events that have happened so far during the execution of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("events")]
         public virtual System.Collections.Generic.IList<Event> Events { get; set; } 
@@ -1166,6 +1190,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>The pipeline this operation represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipeline")]
         public virtual Pipeline Pipeline { get; set; } 
+
+        /// <summary>The first time at which resources were allocated to execute the pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1506,6 +1534,10 @@ namespace Google.Apis.Genomics.v2alpha1.Data
     /// <summary>Carries information about a Compute Engine VM resource.</summary>
     public class VirtualMachine : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of accelerators to attach to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; } 
+
         /// <summary>The size of the boot disk, in gigabytes. The boot disk must be large enough to accommodate all of
         /// the docker images from each action in the pipeline at the same time. If not specified, a small but
         /// reasonable default value is used.</summary>
@@ -1557,6 +1589,12 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>The VM network configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual Network Network { get; set; } 
+
+        /// <summary>The NVIDIA driver version to use when attaching an NVIDIA GPU accelerator. The version specified
+        /// here must be compatible with the GPU libraries contained in the container being executed, and must be one of
+        /// the drivers hosted in the 'nvidia-drivers-us-public' bucket on Google Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nvidiaDriverVersion")]
+        public virtual string NvidiaDriverVersion { get; set; } 
 
         /// <summary>If true, allocate a preemptible VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]

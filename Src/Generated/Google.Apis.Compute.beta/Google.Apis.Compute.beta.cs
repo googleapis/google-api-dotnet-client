@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180419 (1204)
+ *      <tr><th>API Rev<td>20180417 (1202)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -903,7 +903,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified accelerator type. Get a list of available accelerator types by making a
+        /// <summary>Returns the specified accelerator type. Gets a list of available accelerator types by making a
         /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -914,7 +914,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, acceleratorType);
         }
 
-        /// <summary>Returns the specified accelerator type. Get a list of available accelerator types by making a
+        /// <summary>Returns the specified accelerator type. Gets a list of available accelerator types by making a
         /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.AcceleratorType>
         {
@@ -2273,7 +2273,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified autoscaler resource. Get a list of available autoscalers by making a list()
+        /// <summary>Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone for this
@@ -2284,7 +2284,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, autoscaler);
         }
 
-        /// <summary>Returns the specified autoscaler resource. Get a list of available autoscalers by making a list()
+        /// <summary>Returns the specified autoscaler resource. Gets a list of available autoscalers by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Autoscaler>
         {
@@ -3305,7 +3305,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified BackendBucket resource. Get a list of available backend buckets by making a
+        /// <summary>Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a
         /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendBucket">Name of the
@@ -3315,7 +3315,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, backendBucket);
         }
 
-        /// <summary>Returns the specified BackendBucket resource. Get a list of available backend buckets by making a
+        /// <summary>Returns the specified BackendBucket resource. Gets a list of available backend buckets by making a
         /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.BackendBucket>
         {
@@ -4311,8 +4311,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified BackendService resource. Get a list of available backend services by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services by making
+        /// a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="backendService">Name of the
         /// BackendService resource to return.</param>
@@ -4321,8 +4321,8 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, backendService);
         }
 
-        /// <summary>Returns the specified BackendService resource. Get a list of available backend services by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified BackendService resource. Gets a list of available backend services by making
+        /// a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.BackendService>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5279,7 +5279,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified disk type. Get a list of available disk types by making a list()
+        /// <summary>Returns the specified disk type. Gets a list of available disk types by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -5290,7 +5290,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, diskType);
         }
 
-        /// <summary>Returns the specified disk type. Get a list of available disk types by making a list()
+        /// <summary>Returns the specified disk type. Gets a list of available disk types by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.DiskType>
         {
@@ -5938,7 +5938,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns a specified persistent disk. Get a list of available persistent disks by making a list()
+        /// <summary>Returns a specified persistent disk. Gets a list of available persistent disks by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -5949,7 +5949,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, disk);
         }
 
-        /// <summary>Returns a specified persistent disk. Get a list of available persistent disks by making a list()
+        /// <summary>Returns a specified persistent disk. Gets a list of available persistent disks by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Disk>
         {
@@ -8470,7 +8470,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified address resource. Get a list of available addresses by making a list()
+        /// <summary>Returns the specified address resource. Gets a list of available addresses by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="address">Name of the address
@@ -8480,7 +8480,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, address);
         }
 
-        /// <summary>Returns the specified address resource. Get a list of available addresses by making a list()
+        /// <summary>Returns the specified address resource. Gets a list of available addresses by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Address>
         {
@@ -9066,7 +9066,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by
+        /// <summary>Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by
         /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="forwardingRule">Name of the
@@ -9076,7 +9076,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, forwardingRule);
         }
 
-        /// <summary>Returns the specified GlobalForwardingRule resource. Get a list of available forwarding rules by
+        /// <summary>Returns the specified GlobalForwardingRule resource. Gets a list of available forwarding rules by
         /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.ForwardingRule>
         {
@@ -9889,7 +9889,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Retrieves the specified Operations resource. Get a list of operations by making a list()
+        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="operation">Name of the Operations
@@ -9899,7 +9899,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, operation);
         }
 
-        /// <summary>Retrieves the specified Operations resource. Get a list of operations by making a list()
+        /// <summary>Retrieves the specified Operations resource. Gets a list of operations by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -10223,7 +10223,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified HealthCheck resource. Get a list of available health checks by making a
+        /// <summary>Returns the specified HealthCheck resource. Gets a list of available health checks by making a
         /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="healthCheck">Name of the HealthCheck
@@ -10233,7 +10233,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, healthCheck);
         }
 
-        /// <summary>Returns the specified HealthCheck resource. Get a list of available health checks by making a
+        /// <summary>Returns the specified HealthCheck resource. Gets a list of available health checks by making a
         /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.HealthCheck>
         {
@@ -10949,7 +10949,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified HttpHealthCheck resource. Get a list of available HTTP health checks by
+        /// <summary>Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by
         /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpHealthCheck">Name of the
@@ -10959,7 +10959,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, httpHealthCheck);
         }
 
-        /// <summary>Returns the specified HttpHealthCheck resource. Get a list of available HTTP health checks by
+        /// <summary>Returns the specified HttpHealthCheck resource. Gets a list of available HTTP health checks by
         /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.HttpHealthCheck>
         {
@@ -11675,7 +11675,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS health checks by
+        /// <summary>Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by
         /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="httpsHealthCheck">Name of the
@@ -11685,7 +11685,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, httpsHealthCheck);
         }
 
-        /// <summary>Returns the specified HttpsHealthCheck resource. Get a list of available HTTPS health checks by
+        /// <summary>Returns the specified HttpsHealthCheck resource. Gets a list of available HTTPS health checks by
         /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.HttpsHealthCheck>
         {
@@ -12512,7 +12512,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified image. Get a list of available images by making a list() request.</summary>
+        /// <summary>Returns the specified image. Gets a list of available images by making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="image">Name of the image resource to
         /// return.</param>
@@ -12521,7 +12521,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, image);
         }
 
-        /// <summary>Returns the specified image. Get a list of available images by making a list() request.</summary>
+        /// <summary>Returns the specified image. Gets a list of available images by making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Image>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -15729,7 +15729,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified instance group. Get a list of available instance groups by making a list()
+        /// <summary>Returns the specified instance group. Gets a list of available instance groups by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone where the
@@ -15740,7 +15740,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, instanceGroup);
         }
 
-        /// <summary>Returns the specified instance group. Get a list of available instance groups by making a list()
+        /// <summary>Returns the specified instance group. Gets a list of available instance groups by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.InstanceGroup>
         {
@@ -17959,7 +17959,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified Instance resource. Get a list of available instances by making a list()
+        /// <summary>Returns the specified Instance resource. Gets a list of available instances by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -17970,7 +17970,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, instance);
         }
 
-        /// <summary>Returns the specified Instance resource. Get a list of available instances by making a list()
+        /// <summary>Returns the specified Instance resource. Gets a list of available instances by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Instance>
         {
@@ -20087,8 +20087,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Starts an instance that was stopped using the using the instances().stop method. For more
-        /// information, see Restart an instance.</summary>
+        /// <summary>Starts an instance that was stopped using the instances().stop method. For more information, see
+        /// Restart an instance.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -20098,8 +20098,8 @@ namespace Google.Apis.Compute.beta
             return new StartRequest(service, project, zone, instance);
         }
 
-        /// <summary>Starts an instance that was stopped using the using the instances().stop method. For more
-        /// information, see Restart an instance.</summary>
+        /// <summary>Starts an instance that was stopped using the instances().stop method. For more information, see
+        /// Restart an instance.</summary>
         public class StartRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new Start request.</summary>
@@ -20202,8 +20202,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Starts an instance that was stopped using the using the instances().stop method. For more
-        /// information, see Restart an instance.</summary>
+        /// <summary>Starts an instance that was stopped using the instances().stop method. For more information, see
+        /// Restart an instance.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
@@ -20214,8 +20214,8 @@ namespace Google.Apis.Compute.beta
             return new StartWithEncryptionKeyRequest(service, body, project, zone, instance);
         }
 
-        /// <summary>Starts an instance that was stopped using the using the instances().stop method. For more
-        /// information, see Restart an instance.</summary>
+        /// <summary>Starts an instance that was stopped using the instances().stop method. For more information, see
+        /// Restart an instance.</summary>
         public class StartWithEncryptionKeyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
             /// <summary>Constructs a new StartWithEncryptionKey request.</summary>
@@ -21813,7 +21813,7 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Returns the details for the specified interconnect location. Get a list of available interconnect
+        /// <summary>Returns the details for the specified interconnect location. Gets a list of available interconnect
         /// locations by making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnectLocation">Name of the
@@ -21823,7 +21823,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, interconnectLocation);
         }
 
-        /// <summary>Returns the details for the specified interconnect location. Get a list of available interconnect
+        /// <summary>Returns the details for the specified interconnect location. Gets a list of available interconnect
         /// locations by making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.InterconnectLocation>
         {
@@ -22147,7 +22147,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified interconnect. Get a list of available interconnects by making a list()
+        /// <summary>Returns the specified interconnect. Gets a list of available interconnects by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnect">Name of the
@@ -22157,7 +22157,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, interconnect);
         }
 
-        /// <summary>Returns the specified interconnect. Get a list of available interconnects by making a list()
+        /// <summary>Returns the specified interconnect. Gets a list of available interconnects by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Interconnect>
         {
@@ -23886,7 +23886,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified network. Get a list of available networks by making a list()
+        /// <summary>Returns the specified network. Gets a list of available networks by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="network">Name of the network to
@@ -23896,7 +23896,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, network);
         }
 
-        /// <summary>Returns the specified network. Get a list of available networks by making a list()
+        /// <summary>Returns the specified network. Gets a list of available networks by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Network>
         {
@@ -27693,7 +27693,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified commitment resource. Get a list of available commitments by making a list()
+        /// <summary>Returns the specified commitment resource. Gets a list of available commitments by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -27704,7 +27704,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region, commitment);
         }
 
-        /// <summary>Returns the specified commitment resource. Get a list of available commitments by making a list()
+        /// <summary>Returns the specified commitment resource. Gets a list of available commitments by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Commitment>
         {
@@ -28066,7 +28066,7 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Returns the specified regional disk type. Get a list of available disk types by making a list()
+        /// <summary>Returns the specified regional disk type. Gets a list of available disk types by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">The name of the region for
@@ -28077,7 +28077,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region, diskType);
         }
 
-        /// <summary>Returns the specified regional disk type. Get a list of available disk types by making a list()
+        /// <summary>Returns the specified regional disk type. Gets a list of available disk types by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.DiskType>
         {
@@ -32260,7 +32260,7 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Returns the specified Region resource. Get a list of available regions by making a list()
+        /// <summary>Returns the specified Region resource. Gets a list of available regions by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region resource
@@ -32270,7 +32270,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region);
         }
 
-        /// <summary>Returns the specified Region resource. Get a list of available regions by making a list()
+        /// <summary>Returns the specified Region resource. Gets a list of available regions by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Region>
         {
@@ -32750,7 +32750,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified Router resource. Get a list of available routers by making a list()
+        /// <summary>Returns the specified Router resource. Gets a list of available routers by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -32761,7 +32761,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region, router);
         }
 
-        /// <summary>Returns the specified Router resource. Get a list of available routers by making a list()
+        /// <summary>Returns the specified Router resource. Gets a list of available routers by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Router>
         {
@@ -33758,7 +33758,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified Route resource. Get a list of available routes by making a list()
+        /// <summary>Returns the specified Route resource. Gets a list of available routes by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="route">Name of the Route resource to
@@ -33768,7 +33768,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, route);
         }
 
-        /// <summary>Returns the specified Route resource. Get a list of available routes by making a list()
+        /// <summary>Returns the specified Route resource. Gets a list of available routes by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Route>
         {
@@ -35245,7 +35245,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified Snapshot resource. Get a list of available snapshots by making a list()
+        /// <summary>Returns the specified Snapshot resource. Gets a list of available snapshots by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="snapshot">Name of the Snapshot
@@ -35255,7 +35255,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, snapshot);
         }
 
-        /// <summary>Returns the specified Snapshot resource. Get a list of available snapshots by making a list()
+        /// <summary>Returns the specified Snapshot resource. Gets a list of available snapshots by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Snapshot>
         {
@@ -35749,8 +35749,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified SslCertificate resource. Get a list of available SSL certificates by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making
+        /// a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="sslCertificate">Name of the
         /// SslCertificate resource to return.</param>
@@ -35759,8 +35759,8 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, sslCertificate);
         }
 
-        /// <summary>Returns the specified SslCertificate resource. Get a list of available SSL certificates by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified SslCertificate resource. Gets a list of available SSL certificates by making
+        /// a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.SslCertificate>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -36339,7 +36339,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified SSL policy resource. Get a list of available SSL policies by making a list()
+        /// <summary>Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list()
         /// request.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID for this request.</param>
@@ -36348,7 +36348,7 @@ namespace Google.Apis.Compute.beta
             return new InsertRequest(service, body, project);
         }
 
-        /// <summary>Returns the specified SSL policy resource. Get a list of available SSL policies by making a list()
+        /// <summary>Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list()
         /// request.</summary>
         public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Operation>
         {
@@ -37296,7 +37296,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified subnetwork. Get a list of available subnetworks list() request.</summary>
+        /// <summary>Returns the specified subnetwork. Gets a list of available subnetworks list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
         /// this request.</param>
@@ -37306,7 +37306,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region, subnetwork);
         }
 
-        /// <summary>Returns the specified subnetwork. Get a list of available subnetworks list() request.</summary>
+        /// <summary>Returns the specified subnetwork. Gets a list of available subnetworks list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Subnetwork>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -38447,7 +38447,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified TargetHttpProxy resource. Get a list of available target HTTP proxies by
+        /// <summary>Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by
         /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpProxy">Name of the
@@ -38457,7 +38457,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, targetHttpProxy);
         }
 
-        /// <summary>Returns the specified TargetHttpProxy resource. Get a list of available target HTTP proxies by
+        /// <summary>Returns the specified TargetHttpProxy resource. Gets a list of available target HTTP proxies by
         /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TargetHttpProxy>
         {
@@ -39063,7 +39063,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified TargetHttpsProxy resource. Get a list of available target HTTPS proxies by
+        /// <summary>Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by
         /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetHttpsProxy">Name of the
@@ -39073,7 +39073,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, targetHttpsProxy);
         }
 
-        /// <summary>Returns the specified TargetHttpsProxy resource. Get a list of available target HTTPS proxies by
+        /// <summary>Returns the specified TargetHttpsProxy resource. Gets a list of available target HTTPS proxies by
         /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TargetHttpsProxy>
         {
@@ -40160,8 +40160,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified TargetInstance resource. Get a list of available target instances by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified TargetInstance resource. Gets a list of available target instances by making
+        /// a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone scoping this
         /// request.</param>
@@ -40171,8 +40171,8 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, targetInstance);
         }
 
-        /// <summary>Returns the specified TargetInstance resource. Get a list of available target instances by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified TargetInstance resource. Gets a list of available target instances by making
+        /// a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TargetInstance>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -41132,7 +41132,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified target pool. Get a list of available target pools by making a list()
+        /// <summary>Returns the specified target pool. Gets a list of available target pools by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region scoping
@@ -41143,7 +41143,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region, targetPool);
         }
 
-        /// <summary>Returns the specified target pool. Get a list of available target pools by making a list()
+        /// <summary>Returns the specified target pool. Gets a list of available target pools by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TargetPool>
         {
@@ -42184,8 +42184,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified TargetSslProxy resource. Get a list of available target SSL proxies by making
-        /// a list() request.</summary>
+        /// <summary>Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by
+        /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetSslProxy">Name of the
         /// TargetSslProxy resource to return.</param>
@@ -42194,8 +42194,8 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, targetSslProxy);
         }
 
-        /// <summary>Returns the specified TargetSslProxy resource. Get a list of available target SSL proxies by making
-        /// a list() request.</summary>
+        /// <summary>Returns the specified TargetSslProxy resource. Gets a list of available target SSL proxies by
+        /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TargetSslProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -43124,8 +43124,8 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified TargetTcpProxy resource. Get a list of available target TCP proxies by making
-        /// a list() request.</summary>
+        /// <summary>Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by
+        /// making a list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="targetTcpProxy">Name of the
         /// TargetTcpProxy resource to return.</param>
@@ -43134,8 +43134,8 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, targetTcpProxy);
         }
 
-        /// <summary>Returns the specified TargetTcpProxy resource. Get a list of available target TCP proxies by making
-        /// a list() request.</summary>
+        /// <summary>Returns the specified TargetTcpProxy resource. Gets a list of available target TCP proxies by
+        /// making a list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TargetTcpProxy>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -43918,7 +43918,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified target VPN gateway. Get a list of available target VPN gateways by making a
+        /// <summary>Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a
         /// list() request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -43929,7 +43929,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region, targetVpnGateway);
         }
 
-        /// <summary>Returns the specified target VPN gateway. Get a list of available target VPN gateways by making a
+        /// <summary>Returns the specified target VPN gateway. Gets a list of available target VPN gateways by making a
         /// list() request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.TargetVpnGateway>
         {
@@ -44613,7 +44613,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified UrlMap resource. Get a list of available URL maps by making a list()
+        /// <summary>Returns the specified UrlMap resource. Gets a list of available URL maps by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="urlMap">Name of the UrlMap resource
@@ -44623,7 +44623,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, urlMap);
         }
 
-        /// <summary>Returns the specified UrlMap resource. Get a list of available URL maps by making a list()
+        /// <summary>Returns the specified UrlMap resource. Gets a list of available URL maps by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.UrlMap>
         {
@@ -45687,7 +45687,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified VpnTunnel resource. Get a list of available VPN tunnels by making a list()
+        /// <summary>Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="region">Name of the region for this
@@ -45698,7 +45698,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, region, vpnTunnel);
         }
 
-        /// <summary>Returns the specified VpnTunnel resource. Get a list of available VPN tunnels by making a list()
+        /// <summary>Returns the specified VpnTunnel resource. Gets a list of available VPN tunnels by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.VpnTunnel>
         {
@@ -46640,7 +46640,7 @@ namespace Google.Apis.Compute.beta
         }
 
 
-        /// <summary>Returns the specified Zone resource. Get a list of available zones by making a list()
+        /// <summary>Returns the specified Zone resource. Gets a list of available zones by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">Name of the zone resource to
@@ -46650,7 +46650,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone);
         }
 
-        /// <summary>Returns the specified Zone resource. Get a list of available zones by making a list()
+        /// <summary>Returns the specified Zone resource. Gets a list of available zones by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Zone>
         {
@@ -50661,6 +50661,41 @@ namespace Google.Apis.Compute.beta.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class HTTP2HealthCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the host header in the HTTP/2 health check request. If left empty (default value), the
+        /// IP on behalf of which this health check is performed will be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("host")]
+        public virtual string Host { get; set; } 
+
+        /// <summary>The TCP port number for the health check request. The default value is 443. Valid values are 1
+        /// through 65535.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; } 
+
+        /// <summary>Port name as defined in InstanceGroup#NamedPort#name. If both port and port_name are defined, port
+        /// takes precedence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("portName")]
+        public virtual string PortName { get; set; } 
+
+        /// <summary>Specifies the type of proxy header to append before sending data to the backend, either NONE or
+        /// PROXY_V1. The default is NONE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyHeader")]
+        public virtual string ProxyHeader { get; set; } 
+
+        /// <summary>The request path of the HTTP/2 health check request. The default value is /.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestPath")]
+        public virtual string RequestPath { get; set; } 
+
+        /// <summary>The string to match anywhere in the first 1024 bytes of the response body. If left empty (the
+        /// default value), the status code determines health. The response data can only be ASCII.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual string Response { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     public class HTTPHealthCheck : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The value of the host header in the HTTP health check request. If left empty (default value), the
@@ -50752,6 +50787,9 @@ namespace Google.Apis.Compute.beta.Data
         /// default value is 2.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("healthyThreshold")]
         public virtual System.Nullable<int> HealthyThreshold { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("http2HealthCheck")]
+        public virtual HTTP2HealthCheck Http2HealthCheck { get; set; } 
 
         [Newtonsoft.Json.JsonPropertyAttribute("httpHealthCheck")]
         public virtual HTTPHealthCheck HttpHealthCheck { get; set; } 
@@ -51521,10 +51559,10 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>A fingerprint for this request, which is essentially a hash of the metadata's contents and used for
+        /// <summary>A fingerprint for this request, which is essentially a hash of the label's contents and used for
         /// optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request
-        /// to modify or update metadata. You must always provide an up-to-date fingerprint hash in order to update or
-        /// change metadata.
+        /// to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or
+        /// change labels.
         ///
         /// To see the latest fingerprint, make get() request to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
@@ -51947,8 +51985,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("failoverAction")]
         public virtual string FailoverAction { get; set; } 
 
-        /// <summary>[Output Only] The fingerprint of the resource data. You can use this optional field for optimistic
-        /// locking when you update the resource.</summary>
+        /// <summary>Fingerprint of this resource. This field may be used in optimistic locking. It will be ignored when
+        /// inserting an InstanceGroupManager. An up-to-date fingerprint must be provided in order to update the
+        /// InstanceGroupManager or the field need to be unset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; } 
 
@@ -51995,10 +52034,9 @@ namespace Google.Apis.Compute.beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
 
-        /// <summary>[Output Only] The service account to be used as credentials for all operations performed by the
-        /// managed instance group on instances. The service accounts needs all permissions required to create and
-        /// delete instances. By default, the service account {projectNumber}@cloudservices.gserviceaccount.com is
-        /// used.</summary>
+        /// <summary>The service account to be used as credentials for all operations performed by the managed instance
+        /// group on instances. The service accounts needs all permissions required to create and delete instances. By
+        /// default, the service account {projectNumber}@cloudservices.gserviceaccount.com is used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; } 
 
@@ -53995,7 +54033,7 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Description of a planned outage on this Interconnect. Next id: 9</summary>
     public class InterconnectOutageNotification : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Iff issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be
+        /// <summary>If issue_type is IT_PARTIAL_OUTAGE, a list of the Google-side circuit IDs that will be
         /// affected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("affectedCircuits")]
         public virtual System.Collections.Generic.IList<string> AffectedCircuits { get; set; } 
@@ -55441,15 +55479,20 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
     /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
     /// permissions defined by IAM.
     ///
-    /// **Example**
+    /// **JSON Example**
     ///
     /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
     /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// **YAML Example**
+    ///
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
+    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
@@ -58260,10 +58303,10 @@ namespace Google.Apis.Compute.beta.Data
     /// <summary>A set of instance tags.</summary>
     public class Tags : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Specifies a fingerprint for this request, which is essentially a hash of the metadata's contents
-        /// and used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
-        /// every request to modify or update metadata. You must always provide an up-to-date fingerprint hash in order
-        /// to update or change metadata.
+        /// <summary>Specifies a fingerprint for this request, which is essentially a hash of the tags' contents and
+        /// used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after
+        /// every request to modify or update tags. You must always provide an up-to-date fingerprint hash in order to
+        /// update or change tags.
         ///
         /// To see the latest fingerprint, make get() request to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]

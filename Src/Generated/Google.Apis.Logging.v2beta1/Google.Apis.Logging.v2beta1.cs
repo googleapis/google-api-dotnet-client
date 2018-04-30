@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/logging/docs/'>Stackdriver Logging API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180419 (1204)
+ *      <tr><th>API Rev<td>20180424 (1209)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/logging/docs/'>
  *              https://cloud.google.com/logging/docs/</a>
@@ -1474,17 +1474,17 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1520,18 +1520,18 @@ namespace Google.Apis.Logging.v2beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1892,17 +1892,17 @@ namespace Google.Apis.Logging.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
-                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
-                /// available.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional. If present, then retrieve the next batch of results from the preceding call to
                 /// this method. pageToken must be the value of nextPageToken from the previous response. The values of
                 /// other method parameters should be identical to those in the previous call.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional. The maximum number of results to return from this request. Non-positive values
+                /// are ignored. The presence of nextPageToken in the response indicates that more results might be
+                /// available.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1938,18 +1938,18 @@ namespace Google.Apis.Logging.v2beta1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2447,6 +2447,11 @@ namespace Google.Apis.Logging.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logName")]
         public virtual string LogName { get; set; } 
 
+        /// <summary>Output only. Additional metadata about the monitored resource. Only k8s_container, k8s_pod, and
+        /// k8s_node MonitoredResources have this field populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual MonitoredResourceMetadata Metadata { get; set; } 
+
         /// <summary>Optional. Information about an operation associated with the log entry, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual LogEntryOperation Operation { get; set; } 
@@ -2486,10 +2491,11 @@ namespace Google.Apis.Logging.v2beta1.Data
 
         /// <summary>Optional. The time the event described by the log entry occurred. This time is used to compute the
         /// log entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then
-        /// Stackdriver Logging assigns it the current time.Incoming log entries should have timestamps that are no more
-        /// than the logs retention period in the past, and no more than 24 hours in the future. Log entries outside
-        /// those time boundaries will not be available when calling entries.list, but those log entries can still be
-        /// exported with LogSinks.</summary>
+        /// Stackdriver Logging assigns it the current time. Timestamps have nanosecond accuracy, but trailing zeros in
+        /// the fractional seconds might be omitted when the timestamp is displayed.Incoming log entries should have
+        /// timestamps that are no more than the logs retention period in the past, and no more than 24 hours in the
+        /// future. Log entries outside those time boundaries will not be available when calling entries.list, but those
+        /// log entries can still be exported with LogSinks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual object Timestamp { get; set; } 
 
@@ -2840,6 +2846,28 @@ namespace Google.Apis.Logging.v2beta1.Data
         /// databases in Google Cloud SQL. The maximum length of this value is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Auxiliary metadata for a MonitoredResource object. MonitoredResource objects contain the minimum set of
+    /// information to uniquely identify a monitored resource instance. There is some other useful auxiliary metadata.
+    /// Google Stackdriver Monitoring & Logging uses an ingestion pipeline to extract metadata for cloud resources of
+    /// all types , and stores the metadata in this message.</summary>
+    public class MonitoredResourceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Values for predefined system metadata labels. System labels are a kind of metadata
+        /// extracted by Google Stackdriver. Stackdriver determines what system labels are useful and how to obtain
+        /// their values. Some examples: "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System
+        /// label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-
+        /// instance", "security_group": ["a", "b", "c"], "spot_instance": false } </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemLabels")]
+        public virtual System.Collections.Generic.IDictionary<string,object> SystemLabels { get; set; } 
+
+        /// <summary>Output only. A map of user-defined metadata labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> UserLabels { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
