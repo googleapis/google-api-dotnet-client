@@ -2392,15 +2392,6 @@ namespace Google.Apis.Genomics.v1
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
-            /// 2048.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
             ///
             /// * createTime The time this job was created * events The set of event (names) that have occurred while
@@ -2422,6 +2413,15 @@ namespace Google.Apis.Genomics.v1
             /// = *` * `projectId = my-project AND labels.color = red`</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
+            /// 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -2457,6 +2457,15 @@ namespace Google.Apis.Genomics.v1
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -2469,15 +2478,6 @@ namespace Google.Apis.Genomics.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2563,12 +2563,6 @@ namespace Google.Apis.Genomics.v1
                 [Google.Apis.Util.RequestParameterAttribute("readGroupSetId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ReadGroupSetId { get; private set; }
 
-                /// <summary>The end position of the range on the reference, 0-based exclusive. If specified,
-                /// `referenceName` must also be specified. If unset or 0, defaults to the length of the
-                /// reference.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("end", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<long> End { get; set; }
-
                 /// <summary>The continuation token, which is used to page through large result sets. To get the next
                 /// page of results, set this parameter to the value of `nextPageToken` from the previous
                 /// response.</summary>
@@ -2597,6 +2591,12 @@ namespace Google.Apis.Genomics.v1
                 /// Optional.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("referenceName", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ReferenceName { get; set; }
+
+                /// <summary>The end position of the range on the reference, 0-based exclusive. If specified,
+                /// `referenceName` must also be specified. If unset or 0, defaults to the length of the
+                /// reference.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("end", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<long> End { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2628,15 +2628,6 @@ namespace Google.Apis.Genomics.v1
                             Name = "readGroupSetId",
                             IsRequired = true,
                             ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "end", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "end",
-                            IsRequired = false,
-                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -2680,6 +2671,15 @@ namespace Google.Apis.Genomics.v1
                         "referenceName", new Google.Apis.Discovery.Parameter
                         {
                             Name = "referenceName",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "end", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "end",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180419 (1204)
+ *      <tr><th>API Rev<td>20180425 (1210)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -1464,14 +1464,14 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Returns the Android Device Policy config resource.</summary>
+        /// <summary>Deprecated and unused.</summary>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual GetAndroidDevicePolicyConfigRequest GetAndroidDevicePolicyConfig(string enterpriseId)
         {
             return new GetAndroidDevicePolicyConfigRequest(service, enterpriseId);
         }
 
-        /// <summary>Returns the Android Device Policy config resource.</summary>
+        /// <summary>Deprecated and unused.</summary>
         public class GetAndroidDevicePolicyConfigRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AndroidDevicePolicyConfig>
         {
             /// <summary>Constructs a new GetAndroidDevicePolicyConfig request.</summary>
@@ -2049,9 +2049,7 @@ namespace Google.Apis.AndroidEnterprise.v1
 
         }
 
-        /// <summary>Sets the Android Device Policy config resource. EMM may use this method to enable or disable
-        /// Android Device Policy support for the specified enterprise. To learn more about managing devices and apps
-        /// with Android Device Policy, see the Android Management API.</summary>
+        /// <summary>Deprecated and unused.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="enterpriseId">The ID of the enterprise.</param>
         public virtual SetAndroidDevicePolicyConfigRequest SetAndroidDevicePolicyConfig(Google.Apis.AndroidEnterprise.v1.Data.AndroidDevicePolicyConfig body, string enterpriseId)
@@ -2059,9 +2057,7 @@ namespace Google.Apis.AndroidEnterprise.v1
             return new SetAndroidDevicePolicyConfigRequest(service, body, enterpriseId);
         }
 
-        /// <summary>Sets the Android Device Policy config resource. EMM may use this method to enable or disable
-        /// Android Device Policy support for the specified enterprise. To learn more about managing devices and apps
-        /// with Android Device Policy, see the Android Management API.</summary>
+        /// <summary>Deprecated and unused.</summary>
         public class SetAndroidDevicePolicyConfigRequest : AndroidEnterpriseBaseServiceRequest<Google.Apis.AndroidEnterprise.v1.Data.AndroidDevicePolicyConfig>
         {
             /// <summary>Constructs a new SetAndroidDevicePolicyConfig request.</summary>
@@ -7802,7 +7798,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The Android Device Policy configuration of an enterprise.</summary>
+    /// <summary>Deprecated and unused.</summary>
     public class AndroidDevicePolicyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Identifies what kind of resource this is. Value: the fixed string
@@ -7810,9 +7806,7 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
 
-        /// <summary>The state of Android Device Policy. "enabled" indicates that Android Device Policy is enabled for
-        /// the enterprise and the EMM is allowed to manage devices with Android Device Policy, while "disabled" means
-        /// that it cannot.</summary>
+        /// <summary>Deprecated and unused.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; } 
 

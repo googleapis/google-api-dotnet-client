@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180417 (1202)
+ *      <tr><th>API Rev<td>20180427 (1212)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -218,13 +218,12 @@ namespace Google.Apis.Dns.v1beta2
         [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
         public virtual System.Nullable<bool> PrettyPrint { get; set; }
 
-        /// <summary>Available to use for quota purposes for server-side applications. Can be any arbitrary string
-        /// assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.</summary>
+        /// <summary>An opaque string that represents a user for quota purposes. Must not exceed 40
+        /// characters.</summary>
         [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string QuotaUser { get; set; }
 
-        /// <summary>IP address of the site where the request originates. Use this if you want to enforce per-user
-        /// limits.</summary>
+        /// <summary>Deprecated. Please use quotaUser instead.</summary>
         [Google.Apis.Util.RequestParameterAttribute("userIp", Google.Apis.Util.RequestParameterType.Query)]
         public virtual string UserIp { get; set; }
 

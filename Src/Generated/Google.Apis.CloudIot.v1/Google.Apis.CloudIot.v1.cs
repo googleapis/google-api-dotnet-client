@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Cloud IoT API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180417 (1202)
+ *      <tr><th>API Rev<td>20180424 (1209)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -379,10 +379,196 @@ namespace Google.Apis.CloudIot.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                groups = new GroupsResource(service);
                 registries = new RegistriesResource(service);
 
             }
 
+            private readonly GroupsResource groups;
+
+            /// <summary>Gets the Groups resource.</summary>
+            public virtual GroupsResource Groups
+            {
+                get { return groups; }
+            }
+
+            /// <summary>The "groups" collection of methods.</summary>
+            public class GroupsResource
+            {
+                private const string Resource = "groups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public GroupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    devices = new DevicesResource(service);
+
+                }
+
+                private readonly DevicesResource devices;
+
+                /// <summary>Gets the Devices resource.</summary>
+                public virtual DevicesResource Devices
+                {
+                    get { return devices; }
+                }
+
+                /// <summary>The "devices" collection of methods.</summary>
+                public class DevicesResource
+                {
+                    private const string Resource = "devices";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DevicesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+
+                    }
+
+
+                    /// <summary>List devices in a device registry.</summary>
+                    /// <param name="parent">The device registry path. Required. For example, `projects/my-project/locations/us-
+                    /// central1/registries/my-registry`.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>List devices in a device registry.</summary>
+                    public class ListRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.ListDevicesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent)
+                            : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>The device registry path. Required. For example, `projects/my-project/locations/us-
+                        /// central1/registries/my-registry`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>A list of device numerical ids. If empty, it will ignore this field. This field
+                        /// cannot hold more than 10,000 entries.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
+
+                        /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
+                        /// continuation of a prior `ListDevices` call, and that the system should return the next page
+                        /// of data.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields
+                        /// `id`, and `num_id` are always returned by default, along with any other fields
+                        /// specified.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object FieldMask { get; set; }
+
+                        /// <summary>The maximum number of devices to return in the response. If this value is zero, the
+                        /// service will select a default size. A call may return fewer objects than requested, but if
+                        /// there is a non-empty `page_token`, it indicates that more entries are available.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A list of device string identifiers. If empty, it will ignore this field. For
+                        /// example, `['device0', 'device12']`. This field cannot hold more than 10,000
+                        /// entries.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("deviceIds", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> DeviceIds { get; set; }
+
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "list"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "GET"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+parent}/devices"; }
+                        }
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/groups/[^/]+$",
+                                });
+                            RequestParameters.Add(
+                                "deviceNumIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceNumIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "fieldMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "fieldMask",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "deviceIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+            }
             private readonly RegistriesResource registries;
 
             /// <summary>Gets the Registries resource.</summary>
@@ -404,6 +590,7 @@ namespace Google.Apis.CloudIot.v1
                 {
                     this.service = service;
                     devices = new DevicesResource(service);
+                    groups = new GroupsResource(service);
 
                 }
 
@@ -880,24 +1067,6 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
-                        /// continuation of a prior `ListDevices` call, and that the system should return the next page
-                        /// of data.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields
-                        /// `id`, and `num_id` are always returned by default, along with any other fields
-                        /// specified.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual object FieldMask { get; set; }
-
-                        /// <summary>The maximum number of devices to return in the response. If this value is zero, the
-                        /// service will select a default size. A call may return fewer objects than requested, but if
-                        /// there is a non-empty `page_token`, it indicates that more entries are available.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>A list of device string identifiers. If empty, it will ignore this field. For
                         /// example, `['device0', 'device12']`. This field cannot hold more than 10,000
                         /// entries.</summary>
@@ -908,6 +1077,24 @@ namespace Google.Apis.CloudIot.v1
                         /// cannot hold more than 10,000 entries.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("deviceNumIds", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual Google.Apis.Util.Repeatable<string> DeviceNumIds { get; set; }
+
+                        /// <summary>The fields of the `Device` resource to be returned in the response. The fields
+                        /// `id`, and `num_id` are always returned by default, along with any other fields
+                        /// specified.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object FieldMask { get; set; }
+
+                        /// <summary>The value returned by the last `ListDevicesResponse`; indicates that this is a
+                        /// continuation of a prior `ListDevices` call, and that the system should return the next page
+                        /// of data.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>The maximum number of devices to return in the response. If this value is zero, the
+                        /// service will select a default size. A call may return fewer objects than requested, but if
+                        /// there is a non-empty `page_token`, it indicates that more entries are available.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -943,9 +1130,18 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "deviceIds", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "deviceIds",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "deviceNumIds", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "deviceNumIds",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -961,27 +1157,18 @@ namespace Google.Apis.CloudIot.v1
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
+                                "pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "deviceIds", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "deviceIds",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "deviceNumIds", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "deviceNumIds",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1149,6 +1336,788 @@ namespace Google.Apis.CloudIot.v1
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                        }
+
+                    }
+                }
+                private readonly GroupsResource groups;
+
+                /// <summary>Gets the Groups resource.</summary>
+                public virtual GroupsResource Groups
+                {
+                    get { return groups; }
+                }
+
+                /// <summary>The "groups" collection of methods.</summary>
+                public class GroupsResource
+                {
+                    private const string Resource = "groups";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public GroupsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        devices = new DevicesResource(service);
+
+                    }
+
+                    private readonly DevicesResource devices;
+
+                    /// <summary>Gets the Devices resource.</summary>
+                    public virtual DevicesResource Devices
+                    {
+                        get { return devices; }
+                    }
+
+                    /// <summary>The "devices" collection of methods.</summary>
+                    public class DevicesResource
+                    {
+                        private const string Resource = "devices";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public DevicesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            configVersions = new ConfigVersionsResource(service);
+                            states = new StatesResource(service);
+
+                        }
+
+                        private readonly ConfigVersionsResource configVersions;
+
+                        /// <summary>Gets the ConfigVersions resource.</summary>
+                        public virtual ConfigVersionsResource ConfigVersions
+                        {
+                            get { return configVersions; }
+                        }
+
+                        /// <summary>The "configVersions" collection of methods.</summary>
+                        public class ConfigVersionsResource
+                        {
+                            private const string Resource = "configVersions";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public ConfigVersionsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+
+                            }
+
+
+                            /// <summary>Lists the last few versions of the device configuration in descending order
+                            /// (i.e.: newest first).</summary>
+                            /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/{num_id}`.</param>
+                            public virtual ListRequest List(string name)
+                            {
+                                return new ListRequest(service, name);
+                            }
+
+                            /// <summary>Lists the last few versions of the device configuration in descending order
+                            /// (i.e.: newest first).</summary>
+                            public class ListRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.ListDeviceConfigVersionsResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                                    : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                                /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                                /// central1/registries/registry0/devices/{num_id}`.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>The number of versions to list. Versions are listed in decreasing order of
+                                /// the version number. The maximum number of versions retained is 10. If this value is
+                                /// zero, it will return all the versions available.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("numVersions", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> NumVersions { get; set; }
+
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "list"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "GET"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v1/{+name}/configVersions"; }
+                                }
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$",
+                                        });
+                                    RequestParameters.Add(
+                                        "numVersions", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "numVersions",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                }
+
+                            }
+                        }
+                        private readonly StatesResource states;
+
+                        /// <summary>Gets the States resource.</summary>
+                        public virtual StatesResource States
+                        {
+                            get { return states; }
+                        }
+
+                        /// <summary>The "states" collection of methods.</summary>
+                        public class StatesResource
+                        {
+                            private const string Resource = "states";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public StatesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+
+                            }
+
+
+                            /// <summary>Lists the last few versions of the device state in descending order (i.e.:
+                            /// newest first).</summary>
+                            /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/{num_id}`.</param>
+                            public virtual ListRequest List(string name)
+                            {
+                                return new ListRequest(service, name);
+                            }
+
+                            /// <summary>Lists the last few versions of the device state in descending order (i.e.:
+                            /// newest first).</summary>
+                            public class ListRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.ListDeviceStatesResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string name)
+                                    : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+
+                                /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                                /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                                /// central1/registries/registry0/devices/{num_id}`.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>The number of states to list. States are listed in descending order of
+                                /// update time. The maximum number of states retained is 10. If this value is zero, it
+                                /// will return all the states available.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("numStates", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> NumStates { get; set; }
+
+
+                                ///<summary>Gets the method name.</summary>
+                                public override string MethodName
+                                {
+                                    get { return "list"; }
+                                }
+
+                                ///<summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod
+                                {
+                                    get { return "GET"; }
+                                }
+
+                                ///<summary>Gets the REST path.</summary>
+                                public override string RestPath
+                                {
+                                    get { return "v1/{+name}/states"; }
+                                }
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+
+                                    RequestParameters.Add(
+                                        "name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$",
+                                        });
+                                    RequestParameters.Add(
+                                        "numStates", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "numStates",
+                                            IsRequired = false,
+                                            ParameterType = "query",
+                                            DefaultValue = null,
+                                            Pattern = null,
+                                        });
+                                }
+
+                            }
+                        }
+
+                        /// <summary>Deletes a device.</summary>
+                        /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/{num_id}`.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes a device.</summary>
+                        public class DeleteRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.Empty>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/{num_id}`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "delete"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "DELETE"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Gets details about a device.</summary>
+                        /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/{num_id}`.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets details about a device.</summary>
+                        public class GetRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.Device>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/{num_id}`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The fields of the `Device` resource to be returned in the response. If the
+                            /// field mask is unset or empty, all fields are returned.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("fieldMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object FieldMask { get; set; }
+
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "get"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "GET"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$",
+                                    });
+                                RequestParameters.Add(
+                                    "fieldMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "fieldMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Modifies the configuration for the device, which is eventually sent from the Cloud
+                        /// IoT Core servers. Returns the modified configuration version and its metadata.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">The name of the device. For example, `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                        /// central1/registries/registry0/devices/{num_id}`.</param>
+                        public virtual ModifyCloudToDeviceConfigRequest ModifyCloudToDeviceConfig(Google.Apis.CloudIot.v1.Data.ModifyCloudToDeviceConfigRequest body, string name)
+                        {
+                            return new ModifyCloudToDeviceConfigRequest(service, body, name);
+                        }
+
+                        /// <summary>Modifies the configuration for the device, which is eventually sent from the Cloud
+                        /// IoT Core servers. Returns the modified configuration version and its metadata.</summary>
+                        public class ModifyCloudToDeviceConfigRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.DeviceConfig>
+                        {
+                            /// <summary>Constructs a new ModifyCloudToDeviceConfig request.</summary>
+                            public ModifyCloudToDeviceConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.ModifyCloudToDeviceConfigRequest body, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The name of the device. For example, `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/device0` or `projects/p0/locations/us-
+                            /// central1/registries/registry0/devices/{num_id}`.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudIot.v1.Data.ModifyCloudToDeviceConfigRequest Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() { return Body; }
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "modifyCloudToDeviceConfig"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "POST"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1/{+name}:modifyCloudToDeviceConfig"; }
+                            }
+
+                            /// <summary>Initializes ModifyCloudToDeviceConfig parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$",
+                                    });
+                            }
+
+                        }
+
+                        /// <summary>Updates a device.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">The resource path name. For example, `projects/p1/locations/us-
+                        /// central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-
+                        /// central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response from the service, it always
+                        /// ends in the device numeric ID.</param>
+                        public virtual PatchRequest Patch(Google.Apis.CloudIot.v1.Data.Device body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates a device.</summary>
+                        public class PatchRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.Device>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.Device body, string name)
+                                : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+
+                            /// <summary>The resource path name. For example, `projects/p1/locations/us-
+                            /// central1/registries/registry0/devices/dev0` or `projects/p1/locations/us-
+                            /// central1/registries/registry0/devices/{num_id}`. When `name` is populated as a response
+                            /// from the service, it always ends in the device numeric ID.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Only updates the `device` fields indicated by this mask. The field mask must
+                            /// not be empty, and it must not contain fields that are immutable or only set by the
+                            /// server. Mutable top-level fields: `credentials`, `blocked`, and `metadata`</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudIot.v1.Data.Device Body { get; set; }
+
+                            ///<summary>Returns the body of the request.</summary>
+                            protected override object GetBody() { return Body; }
+
+                            ///<summary>Gets the method name.</summary>
+                            public override string MethodName
+                            {
+                                get { return "patch"; }
+                            }
+
+                            ///<summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod
+                            {
+                                get { return "PATCH"; }
+                            }
+
+                            ///<summary>Gets the REST path.</summary>
+                            public override string RestPath
+                            {
+                                get { return "v1/{+name}"; }
+                            }
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+
+                                RequestParameters.Add(
+                                    "name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+/devices/[^/]+$",
+                                    });
+                                RequestParameters.Add(
+                                    "updateMask", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "updateMask",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                            }
+
+                        }
+                    }
+
+                    /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                    /// exists and does not have a policy set.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">REQUIRED: The resource for which the policy is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.CloudIot.v1.Data.GetIamPolicyRequest body, string resource)
+                    {
+                        return new GetIamPolicyRequest(service, body, resource);
+                    }
+
+                    /// <summary>Gets the access control policy for a resource. Returns an empty policy if the resource
+                    /// exists and does not have a policy set.</summary>
+                    public class GetIamPolicyRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.GetIamPolicyRequest body, string resource)
+                            : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>REQUIRED: The resource for which the policy is being requested. See the operation
+                        /// documentation for the appropriate value for this field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIot.v1.Data.GetIamPolicyRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "getIamPolicy"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+resource}:getIamPolicy"; }
+                        }
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                    /// policy.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">REQUIRED: The resource for which the policy is being specified. See the operation
+                    /// documentation for the appropriate value for this field.</param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.CloudIot.v1.Data.SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(service, body, resource);
+                    }
+
+                    /// <summary>Sets the access control policy on the specified resource. Replaces any existing
+                    /// policy.</summary>
+                    public class SetIamPolicyRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.SetIamPolicyRequest body, string resource)
+                            : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>REQUIRED: The resource for which the policy is being specified. See the operation
+                        /// documentation for the appropriate value for this field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIot.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "setIamPolicy"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+resource}:setIamPolicy"; }
+                        }
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
+                                });
+                        }
+
+                    }
+
+                    /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
+                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">REQUIRED: The resource for which the policy detail is being requested. See the operation
+                    /// documentation for the appropriate value for this field.</param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.CloudIot.v1.Data.TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(service, body, resource);
+                    }
+
+                    /// <summary>Returns permissions that a caller has on the specified resource. If the resource does
+                    /// not exist, this will return an empty set of permissions, not a NOT_FOUND error.</summary>
+                    public class TestIamPermissionsRequest : CloudIotBaseServiceRequest<Google.Apis.CloudIot.v1.Data.TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudIot.v1.Data.TestIamPermissionsRequest body, string resource)
+                            : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+
+                        /// <summary>REQUIRED: The resource for which the policy detail is being requested. See the
+                        /// operation documentation for the appropriate value for this field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudIot.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                        ///<summary>Returns the body of the request.</summary>
+                        protected override object GetBody() { return Body; }
+
+                        ///<summary>Gets the method name.</summary>
+                        public override string MethodName
+                        {
+                            get { return "testIamPermissions"; }
+                        }
+
+                        ///<summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod
+                        {
+                            get { return "POST"; }
+                        }
+
+                        ///<summary>Gets the REST path.</summary>
+                        public override string RestPath
+                        {
+                            get { return "v1/{+resource}:testIamPermissions"; }
+                        }
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+
+                            RequestParameters.Add(
+                                "resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/registries/[^/]+/groups/[^/]+$",
                                 });
                         }
 
@@ -1763,7 +2732,7 @@ namespace Google.Apis.CloudIot.v1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` or `joe@example.com`.
+        /// `alice@gmail.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.

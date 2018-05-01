@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"-iA1DTNe4s-I6JZXPt1t1Ypy8IU/Evz2S9oM3DRfQ0KDuG3Qo0esgcI\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/FPPqigwpUfcq0KjlERaD9pSts-Q\"",
  "discoveryVersion": "v1",
  "id": "dns:v2beta1",
  "name": "dns",
  "version": "v2beta1",
- "revision": "20180417",
+ "revision": "20180427",
  "title": "Google Cloud DNS API",
  "description": "Configures and serves authoritative DNS records.",
  "ownerDomain": "google.com",
@@ -1232,7 +1232,7 @@
      "id": "dns.managedZones.patch",
      "path": "{project}/managedZones/{managedZone}",
      "httpMethod": "PATCH",
-     "description": "Update an existing ManagedZone. This method supports patch semantics.",
+     "description": "Apply a partial update to an existing ManagedZone.",
      "parameters": {
       "clientOperationId": {
        "type": "string",

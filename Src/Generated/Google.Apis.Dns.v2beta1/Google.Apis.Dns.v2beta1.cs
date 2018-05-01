@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/cloud-dns'>Google Cloud DNS API</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180417 (1202)
+ *      <tr><th>API Rev<td>20180427 (1212)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/cloud-dns'>
  *              https://developers.google.com/cloud-dns</a>
@@ -1556,7 +1556,7 @@ namespace Google.Apis.Dns.v2beta1
 
         }
 
-        /// <summary>Update an existing ManagedZone. This method supports patch semantics.</summary>
+        /// <summary>Apply a partial update to an existing ManagedZone.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Identifies the project addressed by this request.</param>
         /// <param
@@ -1567,7 +1567,7 @@ namespace Google.Apis.Dns.v2beta1
             return new PatchRequest(service, body, project, managedZone);
         }
 
-        /// <summary>Update an existing ManagedZone. This method supports patch semantics.</summary>
+        /// <summary>Apply a partial update to an existing ManagedZone.</summary>
         public class PatchRequest : DnsBaseServiceRequest<Google.Apis.Dns.v2beta1.Data.Operation>
         {
             /// <summary>Constructs a new Patch request.</summary>

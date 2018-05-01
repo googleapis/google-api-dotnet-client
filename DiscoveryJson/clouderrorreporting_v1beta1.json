@@ -1,16 +1,38 @@
 {
-  "version": "v1beta1",
-  "baseUrl": "https://clouderrorreporting.googleapis.com/",
   "servicePath": "",
   "description": "Groups and counts similar errors from cloud services and applications, reports new errors, and provides access to error groups and their associated errors.\n",
   "kind": "discovery#restDescription",
   "basePath": "",
-  "documentationLink": "https://cloud.google.com/error-reporting/",
   "revision": "20180413",
+  "documentationLink": "https://cloud.google.com/error-reporting/",
   "id": "clouderrorreporting:v1beta1",
   "discoveryVersion": "v1",
   "version_module": true,
   "schemas": {
+    "ReportedErrorEvent": {
+      "description": "An error event which is reported to the Error Reporting system.",
+      "type": "object",
+      "properties": {
+        "eventTime": {
+          "type": "string",
+          "description": "[Optional] Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used.",
+          "format": "google-datetime"
+        },
+        "context": {
+          "$ref": "ErrorContext",
+          "description": "[Optional] A description of the context in which the error occurred."
+        },
+        "message": {
+          "type": "string",
+          "description": "[Required] The error message.\nIf no `context.reportLocation` is provided, the message must contain a\nheader (typically consisting of the exception type name and an error\nmessage) and an exception stack trace in one of the supported programming\nlanguages and formats.\nSupported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.\nSupported stack trace formats are:\n\n* **Java**: Must be the return value of [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).\n* **Python**: Must be the return value of [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).\n* **JavaScript**: Must be the value of [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API)\nas returned by V8.\n* **Ruby**: Must contain frames returned by [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).\n* **C#**: Must be the return value of [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).\n* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`\nand contain the result of [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).\n* **Go**: Must be the return value of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack)."
+        },
+        "serviceContext": {
+          "description": "[Required] The service context in which this error has occurred.",
+          "$ref": "ServiceContext"
+        }
+      },
+      "id": "ReportedErrorEvent"
+    },
     "ErrorContext": {
       "description": "A description of the context in which an error occurred.\nThis data should be provided by the application when reporting an error,\nunless the\nerror report has been generated automatically from Google App Engine logs.",
       "type": "object",
@@ -38,6 +60,7 @@
       "id": "ErrorContext"
     },
     "TrackingIssue": {
+      "id": "TrackingIssue",
       "description": "Information related to tracking the progress on resolving the error.",
       "type": "object",
       "properties": {
@@ -45,22 +68,12 @@
           "description": "A URL pointing to a related entry in an issue tracking system.\nExample: https://github.com/user/project/issues/4",
           "type": "string"
         }
-      },
-      "id": "TrackingIssue"
+      }
     },
     "ErrorGroupStats": {
       "description": "Data extracted for a specific group based on certain filter criteria,\nsuch as a given time period and/or service filter.",
       "type": "object",
       "properties": {
-        "group": {
-          "$ref": "ErrorGroup",
-          "description": "Group data that is independent of the filter criteria."
-        },
-        "firstSeenTime": {
-          "description": "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request.",
-          "format": "google-datetime",
-          "type": "string"
-        },
         "count": {
           "description": "Approximate total number of events in the given group that match\nthe filter criteria.",
           "format": "int64",
@@ -98,6 +111,15 @@
           "items": {
             "$ref": "TimedCount"
           }
+        },
+        "group": {
+          "$ref": "ErrorGroup",
+          "description": "Group data that is independent of the filter criteria."
+        },
+        "firstSeenTime": {
+          "description": "Approximate first occurrence that was ever seen for this group\nand which matches the given filter criteria, ignoring the\ntime_range that was specified in the request.",
+          "format": "google-datetime",
+          "type": "string"
         }
       },
       "id": "ErrorGroupStats"
@@ -126,7 +148,6 @@
       "id": "ListEventsResponse"
     },
     "TimedCount": {
-      "id": "TimedCount",
       "description": "The number of errors in a given time period.\nAll numbers are approximate since the error events are sampled\nbefore counting them.",
       "type": "object",
       "properties": {
@@ -145,7 +166,8 @@
           "format": "google-datetime",
           "type": "string"
         }
-      }
+      },
+      "id": "TimedCount"
     },
     "ErrorGroup": {
       "description": "Description of a group of similar error events.",
@@ -189,35 +211,32 @@
       "id": "ServiceContext"
     },
     "SourceLocation": {
+      "id": "SourceLocation",
       "description": "Indicates a location in the source code of the service for which errors are\nreported. `functionName` must be provided by the application when reporting\nan error, unless the error report contains a `message` with a supported\nexception stack trace. All fields are optional for the later case.",
       "type": "object",
       "properties": {
-        "filePath": {
-          "description": "The source code filename, which can include a truncated relative\npath, or a full path from a production machine.",
+        "functionName": {
+          "description": "Human-readable name of a function or method.\nThe value can include optional context like the class or package name.\nFor example, `my.package.MyClass.method` in case of Java.",
           "type": "string"
+        },
+        "filePath": {
+          "type": "string",
+          "description": "The source code filename, which can include a truncated relative\npath, or a full path from a production machine."
         },
         "lineNumber": {
           "description": "1-based. 0 indicates that the line number is unknown.",
           "format": "int32",
           "type": "integer"
-        },
-        "functionName": {
-          "description": "Human-readable name of a function or method.\nThe value can include optional context like the class or package name.\nFor example, `my.package.MyClass.method` in case of Java.",
-          "type": "string"
         }
-      },
-      "id": "SourceLocation"
+      }
     },
     "ReportErrorEventResponse": {
-      "id": "ReportErrorEventResponse",
       "description": "Response for reporting an individual error event.\nData may be added to this message in the future.",
       "type": "object",
-      "properties": {}
+      "properties": {},
+      "id": "ReportErrorEventResponse"
     },
     "HttpRequestContext": {
-      "id": "HttpRequestContext",
-      "description": "HTTP request data that is related to a reported error.\nThis data should be provided by the application when reporting an error,\nunless the\nerror report has been generated automatically from Google App Engine logs.",
-      "type": "object",
       "properties": {
         "method": {
           "description": "The type of HTTP request, such as `GET`, `POST`, etc.",
@@ -240,11 +259,14 @@
           "type": "string"
         },
         "responseStatusCode": {
+          "type": "integer",
           "description": "The HTTP response status code for the request.",
-          "format": "int32",
-          "type": "integer"
+          "format": "int32"
         }
-      }
+      },
+      "id": "HttpRequestContext",
+      "description": "HTTP request data that is related to a reported error.\nThis data should be provided by the application when reporting an error,\nunless the\nerror report has been generated automatically from Google App Engine logs.",
+      "type": "object"
     },
     "ListGroupStatsResponse": {
       "description": "Contains a set of requested error group stats.",
@@ -270,19 +292,19 @@
       "id": "ListGroupStatsResponse"
     },
     "SourceReference": {
-      "description": "A reference to a particular snapshot of the source tree used to build and\ndeploy an application.",
-      "type": "object",
       "properties": {
         "repository": {
           "description": "Optional. A URI string identifying the repository.\nExample: \"https://github.com/GoogleCloudPlatform/kubernetes.git\"",
           "type": "string"
         },
         "revisionId": {
-          "description": "The canonical and persistent identifier of the deployed revision.\nExample (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\"",
-          "type": "string"
+          "type": "string",
+          "description": "The canonical and persistent identifier of the deployed revision.\nExample (git): \"0035781c50ec7aa23385dc841529ce8a4b70db1b\""
         }
       },
-      "id": "SourceReference"
+      "id": "SourceReference",
+      "description": "A reference to a particular snapshot of the source tree used to build and\ndeploy an application.",
+      "type": "object"
     },
     "DeleteEventsResponse": {
       "description": "Response message for deleting error events.",
@@ -294,49 +316,25 @@
       "description": "An error event which is returned by the Error Reporting system.",
       "type": "object",
       "properties": {
-        "eventTime": {
-          "description": "Time when the event occurred as provided in the error report.\nIf the report did not contain a timestamp, the time the error was received\nby the Error Reporting system is used.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "context": {
-          "description": "Data about the context in which the error occurred.",
-          "$ref": "ErrorContext"
-        },
         "message": {
           "description": "The stack trace that was reported or logged by the service.",
           "type": "string"
         },
         "serviceContext": {
-          "$ref": "ServiceContext",
-          "description": "The `ServiceContext` for which this error was reported."
+          "description": "The `ServiceContext` for which this error was reported.",
+          "$ref": "ServiceContext"
+        },
+        "eventTime": {
+          "type": "string",
+          "description": "Time when the event occurred as provided in the error report.\nIf the report did not contain a timestamp, the time the error was received\nby the Error Reporting system is used.",
+          "format": "google-datetime"
+        },
+        "context": {
+          "description": "Data about the context in which the error occurred.",
+          "$ref": "ErrorContext"
         }
       },
       "id": "ErrorEvent"
-    },
-    "ReportedErrorEvent": {
-      "id": "ReportedErrorEvent",
-      "description": "An error event which is reported to the Error Reporting system.",
-      "type": "object",
-      "properties": {
-        "eventTime": {
-          "description": "[Optional] Time when the event occurred.\nIf not provided, the time when the event was received by the\nError Reporting system will be used.",
-          "format": "google-datetime",
-          "type": "string"
-        },
-        "context": {
-          "$ref": "ErrorContext",
-          "description": "[Optional] A description of the context in which the error occurred."
-        },
-        "message": {
-          "description": "[Required] The error message.\nIf no `context.reportLocation` is provided, the message must contain a\nheader (typically consisting of the exception type name and an error\nmessage) and an exception stack trace in one of the supported programming\nlanguages and formats.\nSupported languages are Java, Python, JavaScript, Ruby, C#, PHP, and Go.\nSupported stack trace formats are:\n\n* **Java**: Must be the return value of [`Throwable.printStackTrace()`](https://docs.oracle.com/javase/7/docs/api/java/lang/Throwable.html#printStackTrace%28%29).\n* **Python**: Must be the return value of [`traceback.format_exc()`](https://docs.python.org/2/library/traceback.html#traceback.format_exc).\n* **JavaScript**: Must be the value of [`error.stack`](https://github.com/v8/v8/wiki/Stack-Trace-API)\nas returned by V8.\n* **Ruby**: Must contain frames returned by [`Exception.backtrace`](https://ruby-doc.org/core-2.2.0/Exception.html#method-i-backtrace).\n* **C#**: Must be the return value of [`Exception.ToString()`](https://msdn.microsoft.com/en-us/library/system.exception.tostring.aspx).\n* **PHP**: Must start with `PHP (Notice|Parse error|Fatal error|Warning)`\nand contain the result of [`(string)$exception`](http://php.net/manual/en/exception.tostring.php).\n* **Go**: Must be the return value of [`runtime.Stack()`](https://golang.org/pkg/runtime/debug/#Stack).",
-          "type": "string"
-        },
-        "serviceContext": {
-          "$ref": "ServiceContext",
-          "description": "[Required] The service context in which this error has occurred."
-        }
-      }
     }
   },
   "icons": {
@@ -364,6 +362,7 @@
     "projects": {
       "methods": {
         "deleteEvents": {
+          "description": "Deletes all error events of a given project.",
           "response": {
             "$ref": "DeleteEventsResponse"
           },
@@ -371,69 +370,42 @@
             "projectName"
           ],
           "httpMethod": "DELETE",
+          "parameters": {
+            "projectName": {
+              "pattern": "^projects/[^/]+$",
+              "location": "path",
+              "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project\nID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
+              "required": true,
+              "type": "string"
+            }
+          },
           "scopes": [
             "https://www.googleapis.com/auth/cloud-platform"
           ],
-          "parameters": {
-            "projectName": {
-              "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project\nID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
-              "required": true,
-              "type": "string",
-              "pattern": "^projects/[^/]+$",
-              "location": "path"
-            }
-          },
           "flatPath": "v1beta1/projects/{projectsId}/events",
           "path": "v1beta1/{+projectName}/events",
-          "id": "clouderrorreporting.projects.deleteEvents",
-          "description": "Deletes all error events of a given project."
+          "id": "clouderrorreporting.projects.deleteEvents"
         }
       },
       "resources": {
         "events": {
           "methods": {
-            "report": {
-              "parameters": {
-                "projectName": {
-                  "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/events:report",
-              "id": "clouderrorreporting.projects.events.report",
-              "path": "v1beta1/{+projectName}/events:report",
-              "description": "Report an individual error event.\n\nThis endpoint accepts \u003cstrong\u003eeither\u003c/strong\u003e an OAuth token,\n\u003cstrong\u003eor\u003c/strong\u003e an\n\u003ca href=\"https://support.google.com/cloud/answer/6158862\"\u003eAPI key\u003c/a\u003e\nfor authentication. To use an API key, append it to the URL as the value of\na `key` parameter. For example:\n\u003cpre\u003ePOST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456\u003c/pre\u003e",
-              "request": {
-                "$ref": "ReportedErrorEvent"
-              },
-              "httpMethod": "POST",
-              "parameterOrder": [
-                "projectName"
-              ],
-              "response": {
-                "$ref": "ReportErrorEventResponse"
-              }
-            },
             "list": {
-              "description": "Lists the specified events.",
-              "httpMethod": "GET",
               "response": {
                 "$ref": "ListEventsResponse"
               },
               "parameterOrder": [
                 "projectName"
               ],
+              "httpMethod": "GET",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
               "parameters": {
                 "pageToken": {
+                  "location": "query",
                   "description": "[Optional] A `next_page_token` provided by a previous response.",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 },
                 "serviceFilter.service": {
                   "location": "query",
@@ -441,21 +413,154 @@
                   "type": "string"
                 },
                 "pageSize": {
+                  "location": "query",
                   "description": "[Optional] The maximum number of results to return per response.",
                   "format": "int32",
-                  "type": "integer",
-                  "location": "query"
+                  "type": "integer"
                 },
                 "serviceFilter.version": {
+                  "location": "query",
                   "description": "[Optional] The exact value to match against\n[`ServiceContext.version`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.version).",
-                  "type": "string",
-                  "location": "query"
+                  "type": "string"
                 },
                 "serviceFilter.resourceType": {
                   "location": "query",
                   "description": "[Optional] The exact value to match against\n[`ServiceContext.resource_type`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.resource_type).",
                   "type": "string"
                 },
+                "timeRange.period": {
+                  "enum": [
+                    "PERIOD_UNSPECIFIED",
+                    "PERIOD_1_HOUR",
+                    "PERIOD_6_HOURS",
+                    "PERIOD_1_DAY",
+                    "PERIOD_1_WEEK",
+                    "PERIOD_30_DAYS"
+                  ],
+                  "description": "Restricts the query to the specified time range.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "projectName": {
+                  "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project\nID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                },
+                "groupId": {
+                  "location": "query",
+                  "description": "[Required] The group for which events shall be returned.",
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/events",
+              "path": "v1beta1/{+projectName}/events",
+              "id": "clouderrorreporting.projects.events.list",
+              "description": "Lists the specified events."
+            },
+            "report": {
+              "response": {
+                "$ref": "ReportErrorEventResponse"
+              },
+              "parameterOrder": [
+                "projectName"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "projectName": {
+                  "location": "path",
+                  "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/events:report",
+              "path": "v1beta1/{+projectName}/events:report",
+              "id": "clouderrorreporting.projects.events.report",
+              "request": {
+                "$ref": "ReportedErrorEvent"
+              },
+              "description": "Report an individual error event.\n\nThis endpoint accepts \u003cstrong\u003eeither\u003c/strong\u003e an OAuth token,\n\u003cstrong\u003eor\u003c/strong\u003e an\n\u003ca href=\"https://support.google.com/cloud/answer/6158862\"\u003eAPI key\u003c/a\u003e\nfor authentication. To use an API key, append it to the URL as the value of\na `key` parameter. For example:\n\u003cpre\u003ePOST https://clouderrorreporting.googleapis.com/v1beta1/projects/example-project/events:report?key=123ABC456\u003c/pre\u003e"
+            }
+          }
+        },
+        "groups": {
+          "methods": {
+            "get": {
+              "response": {
+                "$ref": "ErrorGroup"
+              },
+              "parameterOrder": [
+                "groupName"
+              ],
+              "httpMethod": "GET",
+              "parameters": {
+                "groupName": {
+                  "description": "[Required] The group resource name. Written as\n\u003ccode\u003eprojects/\u003cvar\u003eprojectID\u003c/var\u003e/groups/\u003cvar\u003egroup_name\u003c/var\u003e\u003c/code\u003e.\nCall\n\u003ca href=\"/error-reporting/reference/rest/v1beta1/projects.groupStats/list\"\u003e\n\u003ccode\u003egroupStats.list\u003c/code\u003e\u003c/a\u003e to return a list of groups belonging to\nthis project.\n\nExample: \u003ccode\u003eprojects/my-project-123/groups/my-group\u003c/code\u003e",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/groups/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/projects/{projectsId}/groups/{groupsId}",
+              "path": "v1beta1/{+groupName}",
+              "id": "clouderrorreporting.projects.groups.get",
+              "description": "Get the specified group."
+            },
+            "update": {
+              "response": {
+                "$ref": "ErrorGroup"
+              },
+              "parameterOrder": [
+                "name"
+              ],
+              "httpMethod": "PUT",
+              "parameters": {
+                "name": {
+                  "description": "The group resource name.\nExample: \u003ccode\u003eprojects/my-project-123/groups/my-groupid\u003c/code\u003e",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/groups/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/projects/{projectsId}/groups/{groupsId}",
+              "path": "v1beta1/{+name}",
+              "id": "clouderrorreporting.projects.groups.update",
+              "description": "Replace the data for the specified group.\nFails if the group does not exist.",
+              "request": {
+                "$ref": "ErrorGroup"
+              }
+            }
+          }
+        },
+        "groupStats": {
+          "methods": {
+            "list": {
+              "flatPath": "v1beta1/projects/{projectsId}/groupStats",
+              "id": "clouderrorreporting.projects.groupStats.list",
+              "path": "v1beta1/{+projectName}/groupStats",
+              "description": "Lists the specified groups.",
+              "httpMethod": "GET",
+              "response": {
+                "$ref": "ListGroupStatsResponse"
+              },
+              "parameterOrder": [
+                "projectName"
+              ],
+              "parameters": {
                 "timeRange.period": {
                   "location": "query",
                   "enum": [
@@ -469,99 +574,22 @@
                   "description": "Restricts the query to the specified time range.",
                   "type": "string"
                 },
-                "projectName": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas `projects/` plus the\n[Google Cloud Platform project\nID](https://support.google.com/cloud/answer/6158840).\nExample: `projects/my-project-123`.",
-                  "required": true,
-                  "type": "string"
+                "alignment": {
+                  "description": "[Optional] The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`.",
+                  "type": "string",
+                  "location": "query",
+                  "enum": [
+                    "ERROR_COUNT_ALIGNMENT_UNSPECIFIED",
+                    "ALIGNMENT_EQUAL_ROUNDED",
+                    "ALIGNMENT_EQUAL_AT_END"
+                  ]
                 },
                 "groupId": {
-                  "description": "[Required] The group for which events shall be returned.",
-                  "type": "string",
-                  "location": "query"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/events",
-              "id": "clouderrorreporting.projects.events.list",
-              "path": "v1beta1/{+projectName}/events"
-            }
-          }
-        },
-        "groups": {
-          "methods": {
-            "get": {
-              "description": "Get the specified group.",
-              "response": {
-                "$ref": "ErrorGroup"
-              },
-              "parameterOrder": [
-                "groupName"
-              ],
-              "httpMethod": "GET",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "groupName": {
-                  "pattern": "^projects/[^/]+/groups/[^/]+$",
-                  "location": "path",
-                  "description": "[Required] The group resource name. Written as\n\u003ccode\u003eprojects/\u003cvar\u003eprojectID\u003c/var\u003e/groups/\u003cvar\u003egroup_name\u003c/var\u003e\u003c/code\u003e.\nCall\n\u003ca href=\"/error-reporting/reference/rest/v1beta1/projects.groupStats/list\"\u003e\n\u003ccode\u003egroupStats.list\u003c/code\u003e\u003c/a\u003e to return a list of groups belonging to\nthis project.\n\nExample: \u003ccode\u003eprojects/my-project-123/groups/my-group\u003c/code\u003e",
-                  "required": true,
+                  "repeated": true,
+                  "location": "query",
+                  "description": "[Optional] List all \u003ccode\u003eErrorGroupStats\u003c/code\u003e with these IDs.",
                   "type": "string"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/groups/{groupsId}",
-              "path": "v1beta1/{+groupName}",
-              "id": "clouderrorreporting.projects.groups.get"
-            },
-            "update": {
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The group resource name.\nExample: \u003ccode\u003eprojects/my-project-123/groups/my-groupid\u003c/code\u003e",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/groups/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/groups/{groupsId}",
-              "path": "v1beta1/{+name}",
-              "id": "clouderrorreporting.projects.groups.update",
-              "request": {
-                "$ref": "ErrorGroup"
-              },
-              "description": "Replace the data for the specified group.\nFails if the group does not exist.",
-              "response": {
-                "$ref": "ErrorGroup"
-              },
-              "parameterOrder": [
-                "name"
-              ],
-              "httpMethod": "PUT"
-            }
-          }
-        },
-        "groupStats": {
-          "methods": {
-            "list": {
-              "path": "v1beta1/{+projectName}/groupStats",
-              "id": "clouderrorreporting.projects.groupStats.list",
-              "description": "Lists the specified groups.",
-              "response": {
-                "$ref": "ListGroupStatsResponse"
-              },
-              "parameterOrder": [
-                "projectName"
-              ],
-              "httpMethod": "GET",
-              "parameters": {
+                },
                 "serviceFilter.service": {
                   "description": "[Optional] The exact value to match against\n[`ServiceContext.service`](/error-reporting/reference/rest/v1beta1/ServiceContext#FIELDS.service).",
                   "type": "string",
@@ -602,11 +630,11 @@
                   "type": "string"
                 },
                 "projectName": {
-                  "pattern": "^projects/[^/]+$",
                   "location": "path",
                   "description": "[Required] The resource name of the Google Cloud Platform project. Written\nas \u003ccode\u003eprojects/\u003c/code\u003e plus the\n\u003ca href=\"https://support.google.com/cloud/answer/6158840\"\u003eGoogle Cloud\nPlatform project ID\u003c/a\u003e.\n\nExample: \u003ccode\u003eprojects/my-project-123\u003c/code\u003e.",
                   "required": true,
-                  "type": "string"
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$"
                 },
                 "timedCountDuration": {
                   "location": "query",
@@ -615,44 +643,14 @@
                   "type": "string"
                 },
                 "pageToken": {
-                  "location": "query",
                   "description": "[Optional] A `next_page_token` provided by a previous response. To view\nadditional results, pass this token along with the identical query\nparameters as the first request.",
-                  "type": "string"
-                },
-                "timeRange.period": {
-                  "description": "Restricts the query to the specified time range.",
                   "type": "string",
-                  "location": "query",
-                  "enum": [
-                    "PERIOD_UNSPECIFIED",
-                    "PERIOD_1_HOUR",
-                    "PERIOD_6_HOURS",
-                    "PERIOD_1_DAY",
-                    "PERIOD_1_WEEK",
-                    "PERIOD_30_DAYS"
-                  ]
-                },
-                "alignment": {
-                  "location": "query",
-                  "enum": [
-                    "ERROR_COUNT_ALIGNMENT_UNSPECIFIED",
-                    "ALIGNMENT_EQUAL_ROUNDED",
-                    "ALIGNMENT_EQUAL_AT_END"
-                  ],
-                  "description": "[Optional] The alignment of the timed counts to be returned.\nDefault is `ALIGNMENT_EQUAL_AT_END`.",
-                  "type": "string"
-                },
-                "groupId": {
-                  "repeated": true,
-                  "location": "query",
-                  "description": "[Optional] List all \u003ccode\u003eErrorGroupStats\u003c/code\u003e with these IDs.",
-                  "type": "string"
+                  "location": "query"
                 }
               },
               "scopes": [
                 "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/groupStats"
+              ]
             }
           }
         }
@@ -660,10 +658,41 @@
     }
   },
   "parameters": {
+    "quotaUser": {
+      "location": "query",
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string"
+    },
+    "pp": {
+      "location": "query",
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "bearer_token": {
+      "location": "query",
+      "description": "OAuth bearer token.",
+      "type": "string"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
     "prettyPrint": {
+      "location": "query",
       "description": "Returns response with indentations and line breaks.",
       "type": "boolean",
-      "default": "true",
+      "default": "true"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
       "location": "query"
     },
     "fields": {
@@ -671,17 +700,13 @@
       "description": "Selector specifying which fields to include in a partial response.",
       "type": "string"
     },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
     "callback": {
       "description": "JSONP",
       "type": "string",
       "location": "query"
     },
     "$.xgafv": {
+      "type": "string",
       "enumDescriptions": [
         "v1 error format",
         "v2 error format"
@@ -691,8 +716,7 @@
         "1",
         "2"
       ],
-      "description": "V1 error format.",
-      "type": "string"
+      "description": "V1 error format."
     },
     "alt": {
       "type": "string",
@@ -719,32 +743,8 @@
       "description": "OAuth access token.",
       "type": "string",
       "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "pp": {
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true",
-      "location": "query"
-    },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
     }
-  }
+  },
+  "version": "v1beta1",
+  "baseUrl": "https://clouderrorreporting.googleapis.com/"
 }
