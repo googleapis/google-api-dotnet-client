@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180425 (1210)
+ *      <tr><th>API Rev<td>20180501 (1216)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -4087,8 +4087,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
-            /// "internal".</param>
+            /// name="track">The track to read or modify.</param>
             public virtual GetRequest Get(string packageName, string editId, string track)
             {
                 return new GetRequest(service, packageName, editId, track);
@@ -4118,8 +4117,7 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
-                /// "rollout" or "internal".</summary>
+                /// <summary>The track to read or modify.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4172,7 +4170,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout|internal)",
+                            Pattern = null,
                         });
                 }
 
@@ -4263,8 +4261,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
-            /// "internal".</param>
+            /// name="track">The track to read or modify.</param>
             public virtual PatchRequest Patch(Google.Apis.AndroidPublisher.v2.Data.Track body, string packageName, string editId, string track)
             {
                 return new PatchRequest(service, body, packageName, editId, track);
@@ -4296,8 +4293,7 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
-                /// "rollout" or "internal".</summary>
+                /// <summary>The track to read or modify.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4356,7 +4352,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout|internal)",
+                            Pattern = null,
                         });
                 }
 
@@ -4369,8 +4365,7 @@ namespace Google.Apis.AndroidPublisher.v2
             /// "com.spiffygame".</param>
             /// <param name="editId">Unique identifier for this edit.</param>
             /// <param
-            /// name="track">The track to read or modify. Acceptable values are: "alpha", "beta", "production", "rollout" or
-            /// "internal".</param>
+            /// name="track">The track to read or modify.</param>
             public virtual UpdateRequest Update(Google.Apis.AndroidPublisher.v2.Data.Track body, string packageName, string editId, string track)
             {
                 return new UpdateRequest(service, body, packageName, editId, track);
@@ -4401,8 +4396,7 @@ namespace Google.Apis.AndroidPublisher.v2
                 [Google.Apis.Util.RequestParameterAttribute("editId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string EditId { get; private set; }
 
-                /// <summary>The track to read or modify. Acceptable values are: "alpha", "beta", "production",
-                /// "rollout" or "internal".</summary>
+                /// <summary>The track to read or modify.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("track", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Track { get; private set; }
 
@@ -4461,7 +4455,7 @@ namespace Google.Apis.AndroidPublisher.v2
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = @"(alpha|beta|production|rollout|internal)",
+                            Pattern = null,
                         });
                 }
 
@@ -7220,6 +7214,23 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Information provided by the user when they complete the subscription cancellation flow (cancellation
+    /// reason survey).</summary>
+    public class SubscriptionCancelSurveyResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The cancellation reason the user chose in the survey. Possible values are: - Other - I don't use
+        /// this service enough - Technical issues - Cost-related reasons - I found a better app</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyReason")]
+        public virtual System.Nullable<int> CancelSurveyReason { get; set; } 
+
+        /// <summary>The customized input cancel reason from the user. Only present when cancelReason is 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userInputCancelReason")]
+        public virtual string UserInputCancelReason { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A SubscriptionDeferralInfo contains the data needed to defer a subscription purchase to a future expiry
     /// time.</summary>
     public class SubscriptionDeferralInfo : Google.Apis.Requests.IDirectResponseSchema
@@ -7252,6 +7263,11 @@ namespace Google.Apis.AndroidPublisher.v2.Data
         /// developer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelReason")]
         public virtual System.Nullable<int> CancelReason { get; set; } 
+
+        /// <summary>Information provided by the user when they complete the subscription cancellation flow
+        /// (cancellation reason survey).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyResult")]
+        public virtual SubscriptionCancelSurveyResult CancelSurveyResult { get; set; } 
 
         /// <summary>ISO 3166-1 alpha-2 billing country/region code of the user at the time the subscription was
         /// granted.</summary>

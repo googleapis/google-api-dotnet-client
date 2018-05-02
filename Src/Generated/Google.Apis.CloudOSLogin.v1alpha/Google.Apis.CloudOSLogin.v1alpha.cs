@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>Cloud OS Login API</a>
  *      <tr><th>API Version<td>v1alpha
- *      <tr><th>API Rev<td>20180413 (1198)
+ *      <tr><th>API Rev<td>20180430 (1215)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/compute/docs/oslogin/rest/'>
  *              https://cloud.google.com/compute/docs/oslogin/rest/</a>
@@ -416,6 +416,21 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The type of operating system associated with the account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("operatingSystemType", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<OperatingSystemTypeEnum> OperatingSystemType { get; set; }
+
+                /// <summary>The type of operating system associated with the account.</summary>
+                public enum OperatingSystemTypeEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("OPERATING_SYSTEM_TYPE_UNSPECIFIED")]
+                    OPERATINGSYSTEMTYPEUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("LINUX")]
+                    LINUX,
+                    [Google.Apis.Util.StringValueAttribute("WINDOWS")]
+                    WINDOWS,
+                }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -448,6 +463,15 @@ namespace Google.Apis.CloudOSLogin.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^users/[^/]+/projects/[^/]+$",
+                        });
+                    RequestParameters.Add(
+                        "operatingSystemType", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "operatingSystemType",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                 }
 

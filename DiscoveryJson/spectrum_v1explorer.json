@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/uZl_j1OdJ5YVh2iMjymfidSMdSA\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/q8qhVzTRS4IDJjmyekmPnO2A-Go\"",
  "discoveryVersion": "v1",
  "id": "spectrum:v1explorer",
  "name": "spectrum",
@@ -59,12 +59,12 @@
   },
   "quotaUser": {
    "type": "string",
-   "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
    "location": "query"
   },
   "userIp": {
    "type": "string",
-   "description": "Deprecated. Please use quotaUser instead.",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
    "location": "query"
   }
  },

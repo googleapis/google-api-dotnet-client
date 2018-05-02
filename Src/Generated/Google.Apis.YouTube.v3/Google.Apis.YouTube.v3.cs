@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/youtube/v3'>YouTube Data API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180417 (1202)
+ *      <tr><th>API Rev<td>20180430 (1215)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/youtube/v3'>
  *              https://developers.google.com/youtube/v3</a>
@@ -71,7 +71,6 @@ namespace Google.Apis.YouTube.v3
             channels = new ChannelsResource(this);
             commentThreads = new CommentThreadsResource(this);
             comments = new CommentsResource(this);
-            fanFundingEvents = new FanFundingEventsResource(this);
             guideCategories = new GuideCategoriesResource(this);
             i18nLanguages = new I18nLanguagesResource(this);
             i18nRegions = new I18nRegionsResource(this);
@@ -211,14 +210,6 @@ namespace Google.Apis.YouTube.v3
         public virtual CommentsResource Comments
         {
             get { return comments; }
-        }
-
-        private readonly FanFundingEventsResource fanFundingEvents;
-
-        /// <summary>Gets the FanFundingEvents resource.</summary>
-        public virtual FanFundingEventsResource FanFundingEvents
-        {
-            get { return fanFundingEvents; }
         }
 
         private readonly GuideCategoriesResource guideCategories;
@@ -3687,136 +3678,6 @@ namespace Google.Apis.YouTube.v3
                     {
                         Name = "part",
                         IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-            }
-
-        }
-    }
-
-    /// <summary>The "fanFundingEvents" collection of methods.</summary>
-    public class FanFundingEventsResource
-    {
-        private const string Resource = "fanFundingEvents";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public FanFundingEventsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-
-        }
-
-
-        /// <summary>Lists fan funding events for a channel.</summary>
-        /// <param name="part">The part parameter specifies the fanFundingEvent resource parts that the API response will
-        /// include. Supported values are id and snippet.</param>
-        public virtual ListRequest List(string part)
-        {
-            return new ListRequest(service, part);
-        }
-
-        /// <summary>Lists fan funding events for a channel.</summary>
-        public class ListRequest : YouTubeBaseServiceRequest<Google.Apis.YouTube.v3.Data.FanFundingEventListResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, string part)
-                : base(service)
-            {
-                Part = part;
-                InitParameters();
-            }
-
-
-            /// <summary>The part parameter specifies the fanFundingEvent resource parts that the API response will
-            /// include. Supported values are id and snippet.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("part", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Part { get; private set; }
-
-            /// <summary>The hl parameter instructs the API to retrieve localized resource metadata for a specific
-            /// application language that the YouTube website supports. The parameter value must be a language code
-            /// included in the list returned by the i18nLanguages.list method.
-            ///
-            /// If localized resource details are available in that language, the resource's snippet.localized object
-            /// will contain the localized values. However, if localized details are not available, the
-            /// snippet.localized object will contain resource details in the resource's default language.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("hl", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Hl { get; set; }
-
-            /// <summary>The maxResults parameter specifies the maximum number of items that should be returned in the
-            /// result set.</summary>
-            /// [default: 5]
-            /// [minimum: 0]
-            /// [maximum: 50]
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> MaxResults { get; set; }
-
-            /// <summary>The pageToken parameter identifies a specific page in the result set that should be returned.
-            /// In an API response, the nextPageToken and prevPageToken properties identify other pages that could be
-            /// retrieved.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-
-            ///<summary>Gets the method name.</summary>
-            public override string MethodName
-            {
-                get { return "list"; }
-            }
-
-            ///<summary>Gets the HTTP method.</summary>
-            public override string HttpMethod
-            {
-                get { return "GET"; }
-            }
-
-            ///<summary>Gets the REST path.</summary>
-            public override string RestPath
-            {
-                get { return "fanFundingEvents"; }
-            }
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-
-                RequestParameters.Add(
-                    "part", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "part",
-                        IsRequired = true,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "hl", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "hl",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "maxResults", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "maxResults",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = "5",
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
@@ -12473,115 +12334,6 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A fanFundingEvent resource represents a fan funding event on a YouTube channel. Fan funding events
-    /// occur when a user gives one-time monetary support to the channel owner.</summary>
-    public class FanFundingEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Etag of this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>The ID that YouTube assigns to uniquely identify the fan funding event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "youtube#fanFundingEvent".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The snippet object contains basic details about the fan funding event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual FanFundingEventSnippet Snippet { get; set; } 
-
-    }    
-
-    public class FanFundingEventListResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Etag of this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
-        public virtual string ETag { get; set; } 
-
-        /// <summary>Serialized EventId of the request which produced this response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; } 
-
-        /// <summary>A list of fan funding events that match the request criteria.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<FanFundingEvent> Items { get; set; } 
-
-        /// <summary>Identifies what kind of resource this is. Value: the fixed string
-        /// "youtube#fanFundingEventListResponse".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; } 
-
-        /// <summary>The token that can be used as the value of the pageToken parameter to retrieve the next page in the
-        /// result set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("pageInfo")]
-        public virtual PageInfo PageInfo { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenPagination")]
-        public virtual TokenPagination TokenPagination { get; set; } 
-
-        /// <summary>The visitorId identifies the visitor.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
-        public virtual string VisitorId { get; set; } 
-
-    }    
-
-    public class FanFundingEventSnippet : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The amount of funding in micros of fund_currency. e.g., 1 is represented</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("amountMicros")]
-        public virtual System.Nullable<ulong> AmountMicros { get; set; } 
-
-        /// <summary>Channel id where the funding event occurred.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; } 
-
-        /// <summary>The text contents of the comment left by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("commentText")]
-        public virtual string CommentText { get; set; } 
-
-        /// <summary>The date and time when the funding occurred. The value is specified in ISO 8601 (YYYY-MM-
-        /// DDThh:mm:ss.sZ) format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createdAt")]
-        public virtual string CreatedAtRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedAtRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnore]
-        public virtual System.Nullable<System.DateTime> CreatedAt
-        {
-            get
-            {
-                return Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedAtRaw);
-            }
-            set
-            {
-                CreatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-            }
-        }
-
-        /// <summary>The currency in which the fund was made. ISO 4217.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currency")]
-        public virtual string Currency { get; set; } 
-
-        /// <summary>A rendered string that displays the fund amount and currency (e.g., "$1.00"). The string is
-        /// rendered for the given language.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayString")]
-        public virtual string DisplayString { get; set; } 
-
-        /// <summary>Details about the supporter. Only filled if the event was made public by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supporterDetails")]
-        public virtual ChannelProfileDetails SupporterDetails { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>Geographical coordinates of a point, in WGS84.</summary>
     public class GeoPoint : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14804,10 +14556,6 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>Etag of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
-
-        /// <summary>The ID that YouTube assigns to uniquely identify the sponsor.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; } 
 
         /// <summary>Identifies what kind of resource this is. Value: the fixed string "youtube#sponsor".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]

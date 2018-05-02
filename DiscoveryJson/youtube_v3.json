@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/IaxHCrUR6pRgI-tHm1_F7kApyT8\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/wYfjiHBTxRV320ebhlw6wSitpfI\"",
  "discoveryVersion": "v1",
  "id": "youtube:v3",
  "name": "youtube",
  "canonicalName": "YouTube",
  "version": "v3",
- "revision": "20180417",
+ "revision": "20180430",
  "title": "YouTube Data API",
  "description": "Supports core YouTube features, such as uploading videos, creating and managing playlists, searching for content, and much more.",
  "ownerDomain": "google.com",
@@ -3305,106 +3305,6 @@
     }
    }
   },
-  "FanFundingEvent": {
-   "id": "FanFundingEvent",
-   "type": "object",
-   "description": "A fanFundingEvent resource represents a fan funding event on a YouTube channel. Fan funding events occur when a user gives one-time monetary support to the channel owner.",
-   "properties": {
-    "etag": {
-     "type": "string",
-     "description": "Etag of this resource."
-    },
-    "id": {
-     "type": "string",
-     "description": "The ID that YouTube assigns to uniquely identify the fan funding event."
-    },
-    "kind": {
-     "type": "string",
-     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#fanFundingEvent\".",
-     "default": "youtube#fanFundingEvent"
-    },
-    "snippet": {
-     "$ref": "FanFundingEventSnippet",
-     "description": "The snippet object contains basic details about the fan funding event."
-    }
-   }
-  },
-  "FanFundingEventListResponse": {
-   "id": "FanFundingEventListResponse",
-   "type": "object",
-   "properties": {
-    "etag": {
-     "type": "string",
-     "description": "Etag of this resource."
-    },
-    "eventId": {
-     "type": "string",
-     "description": "Serialized EventId of the request which produced this response."
-    },
-    "items": {
-     "type": "array",
-     "description": "A list of fan funding events that match the request criteria.",
-     "items": {
-      "$ref": "FanFundingEvent"
-     }
-    },
-    "kind": {
-     "type": "string",
-     "description": "Identifies what kind of resource this is. Value: the fixed string \"youtube#fanFundingEventListResponse\".",
-     "default": "youtube#fanFundingEventListResponse"
-    },
-    "nextPageToken": {
-     "type": "string",
-     "description": "The token that can be used as the value of the pageToken parameter to retrieve the next page in the result set."
-    },
-    "pageInfo": {
-     "$ref": "PageInfo"
-    },
-    "tokenPagination": {
-     "$ref": "TokenPagination"
-    },
-    "visitorId": {
-     "type": "string",
-     "description": "The visitorId identifies the visitor."
-    }
-   }
-  },
-  "FanFundingEventSnippet": {
-   "id": "FanFundingEventSnippet",
-   "type": "object",
-   "properties": {
-    "amountMicros": {
-     "type": "string",
-     "description": "The amount of funding in micros of fund_currency. e.g., 1 is represented",
-     "format": "uint64"
-    },
-    "channelId": {
-     "type": "string",
-     "description": "Channel id where the funding event occurred."
-    },
-    "commentText": {
-     "type": "string",
-     "description": "The text contents of the comment left by the user."
-    },
-    "createdAt": {
-     "type": "string",
-     "description": "The date and time when the funding occurred. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ) format.",
-     "format": "date-time"
-    },
-    "currency": {
-     "type": "string",
-     "description": "The currency in which the fund was made. ISO 4217."
-    },
-    "displayString": {
-     "type": "string",
-     "description": "A rendered string that displays the fund amount and currency (e.g., \"$1.00\"). The string is rendered for the given language."
-    },
-    "supporterDetails": {
-     "$ref": "ChannelProfileDetails",
-     "description": "Details about the supporter. Only filled if the event was made public by the user."
-    }
-   }
-  },
   "GeoPoint": {
    "id": "GeoPoint",
    "type": "object",
@@ -5801,10 +5701,6 @@
     "etag": {
      "type": "string",
      "description": "Etag of this resource."
-    },
-    "id": {
-     "type": "string",
-     "description": "The ID that YouTube assigns to uniquely identify the sponsor."
     },
     "kind": {
      "type": "string",
@@ -8548,54 +8444,6 @@
      },
      "scopes": [
       "https://www.googleapis.com/auth/youtube.force-ssl"
-     ]
-    }
-   }
-  },
-  "fanFundingEvents": {
-   "methods": {
-    "list": {
-     "id": "youtube.fanFundingEvents.list",
-     "path": "fanFundingEvents",
-     "httpMethod": "GET",
-     "description": "Lists fan funding events for a channel.",
-     "parameters": {
-      "hl": {
-       "type": "string",
-       "description": "The hl parameter instructs the API to retrieve localized resource metadata for a specific application language that the YouTube website supports. The parameter value must be a language code included in the list returned by the i18nLanguages.list method.\n\nIf localized resource details are available in that language, the resource's snippet.localized object will contain the localized values. However, if localized details are not available, the snippet.localized object will contain resource details in the resource's default language.",
-       "location": "query"
-      },
-      "maxResults": {
-       "type": "integer",
-       "description": "The maxResults parameter specifies the maximum number of items that should be returned in the result set.",
-       "default": "5",
-       "format": "uint32",
-       "minimum": "0",
-       "maximum": "50",
-       "location": "query"
-      },
-      "pageToken": {
-       "type": "string",
-       "description": "The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
-       "location": "query"
-      },
-      "part": {
-       "type": "string",
-       "description": "The part parameter specifies the fanFundingEvent resource parts that the API response will include. Supported values are id and snippet.",
-       "required": true,
-       "location": "query"
-      }
-     },
-     "parameterOrder": [
-      "part"
-     ],
-     "response": {
-      "$ref": "FanFundingEventListResponse"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/youtube",
-      "https://www.googleapis.com/auth/youtube.force-ssl",
-      "https://www.googleapis.com/auth/youtube.readonly"
      ]
     }
    }

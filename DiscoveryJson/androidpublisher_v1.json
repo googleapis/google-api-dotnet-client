@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/v4k3vsTwxjPbWKfdLZyypRE_mHM\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/_VuDcAMYgp0Jd8752zRUQwsELPA\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v1",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v1",
- "revision": "20180425",
+ "revision": "20180501",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -58,12 +58,12 @@
   },
   "quotaUser": {
    "type": "string",
-   "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
    "location": "query"
   },
   "userIp": {
    "type": "string",
-   "description": "Deprecated. Please use quotaUser instead.",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
    "location": "query"
   }
  },

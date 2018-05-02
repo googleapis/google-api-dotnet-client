@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/TkH1J9K6o9rjqi4wv2n2-vMkF44\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/FREAB9gX1KBAYtgo71a1Bru7WPA\"",
  "discoveryVersion": "v1",
  "id": "oauth2:v1",
  "name": "oauth2",
@@ -57,12 +57,12 @@
   },
   "quotaUser": {
    "type": "string",
-   "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
    "location": "query"
   },
   "userIp": {
    "type": "string",
-   "description": "Deprecated. Please use quotaUser instead.",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
    "location": "query"
   }
  },

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/-hyAWGar4795omTTHxjqM49pECE\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/XVXnfQuHF_-_DPz4ccvdRTau6vE\"",
  "discoveryVersion": "v1",
  "id": "appsactivity:v1",
  "name": "appsactivity",
  "version": "v1",
- "revision": "20180427",
+ "revision": "20180430",
  "title": "G Suite Activity API",
  "description": "Provides a historical view of activity.",
  "ownerDomain": "google.com",
@@ -57,12 +57,12 @@
   },
   "quotaUser": {
    "type": "string",
-   "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
+   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
    "location": "query"
   },
   "userIp": {
    "type": "string",
-   "description": "Deprecated. Please use quotaUser instead.",
+   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
    "location": "query"
   }
  },

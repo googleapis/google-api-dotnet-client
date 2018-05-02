@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/wRA9XDmxGLTzMOalelp4ZRaPVPw\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/YbuMe-B5pLNAuEnBsGhGNUnIHlc\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20180425",
+ "revision": "20180501",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -820,6 +820,22 @@
     }
    }
   },
+  "SubscriptionCancelSurveyResult": {
+   "id": "SubscriptionCancelSurveyResult",
+   "type": "object",
+   "description": "Information provided by the user when they complete the subscription cancellation flow (cancellation reason survey).",
+   "properties": {
+    "cancelSurveyReason": {
+     "type": "integer",
+     "description": "The cancellation reason the user chose in the survey. Possible values are:  \n- Other \n- I don't use this service enough \n- Technical issues \n- Cost-related reasons \n- I found a better app",
+     "format": "int32"
+    },
+    "userInputCancelReason": {
+     "type": "string",
+     "description": "The customized input cancel reason from the user. Only present when cancelReason is 0."
+    }
+   }
+  },
   "SubscriptionDeferralInfo": {
    "id": "SubscriptionDeferralInfo",
    "type": "object",
@@ -850,6 +866,10 @@
      "type": "integer",
      "description": "The reason why a subscription was canceled or is not auto-renewing. Possible values are:  \n- User canceled the subscription \n- Subscription was canceled by the system, for example because of a billing problem \n- Subscription was replaced with a new subscription \n- Subscription was canceled by the developer",
      "format": "int32"
+    },
+    "cancelSurveyResult": {
+     "$ref": "SubscriptionCancelSurveyResult",
+     "description": "Information provided by the user when they complete the subscription cancellation flow (cancellation reason survey)."
     },
     "countryCode": {
      "type": "string",
@@ -2702,9 +2722,8 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
+         "description": "The track to read or modify.",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2770,9 +2789,8 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
+         "description": "The track to read or modify.",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },
@@ -2811,9 +2829,8 @@
         },
         "track": {
          "type": "string",
-         "description": "The track to read or modify. Acceptable values are: \"alpha\", \"beta\", \"production\", \"rollout\" or \"internal\".",
+         "description": "The track to read or modify.",
          "required": true,
-         "pattern": "(alpha|beta|production|rollout|internal)",
          "location": "path"
         }
        },

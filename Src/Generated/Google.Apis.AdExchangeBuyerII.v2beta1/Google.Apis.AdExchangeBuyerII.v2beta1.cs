@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>Ad Exchange Buyer API II</a>
  *      <tr><th>API Version<td>v2beta1
- *      <tr><th>API Rev<td>20180424 (1209)
+ *      <tr><th>API Rev<td>20180430 (1215)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/ad-exchange/buyer-rest/reference/rest/'>
  *              https://developers.google.com/ad-exchange/buyer-rest/reference/rest/</a>
@@ -363,7 +363,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
             this.service = service;
             clients = new ClientsResource(service);
             creatives = new CreativesResource(service);
-            publishers = new PublishersResource(service);
 
         }
 
@@ -2267,118 +2266,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
 
             }
         }
-        private readonly PublishersResource publishers;
-
-        /// <summary>Gets the Publishers resource.</summary>
-        public virtual PublishersResource Publishers
-        {
-            get { return publishers; }
-        }
-
-        /// <summary>The "publishers" collection of methods.</summary>
-        public class PublishersResource
-        {
-            private const string Resource = "publishers";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public PublishersResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-
-            }
-
-
-            /// <summary>Lists publishers that had recent inventory matches with the requesting buyer.</summary>
-            /// <param name="accountId">Account ID of the requesting buyer.</param>
-            public virtual ListRequest List(long accountId)
-            {
-                return new ListRequest(service, accountId);
-            }
-
-            /// <summary>Lists publishers that had recent inventory matches with the requesting buyer.</summary>
-            public class ListRequest : AdExchangeBuyerIIBaseServiceRequest<Google.Apis.AdExchangeBuyerII.v2beta1.Data.ListPublishersResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, long accountId)
-                    : base(service)
-                {
-                    AccountId = accountId;
-                    InitParameters();
-                }
-
-
-                /// <summary>Account ID of the requesting buyer.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual long AccountId { get; private set; }
-
-                /// <summary>Optional environment (WEB, APP) for which to return publishers. If specified, response will
-                /// only include publishers that had recent inventory matches with the requesting buyer on the specified
-                /// platform.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<EnvironmentEnum> Environment { get; set; }
-
-                /// <summary>Optional environment (WEB, APP) for which to return publishers. If specified, response will
-                /// only include publishers that had recent inventory matches with the requesting buyer on the specified
-                /// platform.</summary>
-                public enum EnvironmentEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_UNSPECIFIED")]
-                    ENVIRONMENTUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("WEB")]
-                    WEB,
-                    [Google.Apis.Util.StringValueAttribute("APP")]
-                    APP,
-                }
-
-
-                ///<summary>Gets the method name.</summary>
-                public override string MethodName
-                {
-                    get { return "list"; }
-                }
-
-                ///<summary>Gets the HTTP method.</summary>
-                public override string HttpMethod
-                {
-                    get { return "GET"; }
-                }
-
-                ///<summary>Gets the REST path.</summary>
-                public override string RestPath
-                {
-                    get { return "v2beta1/accounts/{accountId}/publishers"; }
-                }
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-
-                    RequestParameters.Add(
-                        "accountId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "accountId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "environment", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "environment",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                }
-
-            }
-        }
     }
 
     /// <summary>The "bidders" collection of methods.</summary>
@@ -3613,16 +3500,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                         [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string FilterSetName { get; private set; }
 
-                        /// <summary>Requested page size. The server may return fewer results than requested. If
-                        /// unspecified, the server will pick an appropriate default.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
                         /// <summary>A token identifying a page of results the server should return. Typically, this is
                         /// the value of ListLosingBidsResponse.nextPageToken returned from the previous call to the
                         /// losingBids.list method.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
+
+                        /// <summary>Requested page size. The server may return fewer results than requested. If
+                        /// unspecified, the server will pick an appropriate default.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -3658,18 +3545,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                     Pattern = @"^bidders/[^/]+/accounts/[^/]+/filterSets/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "pageSize", new Google.Apis.Discovery.Parameter
+                                "pageToken", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageSize",
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
                                 });
                             RequestParameters.Add(
-                                "pageToken", new Google.Apis.Discovery.Parameter
+                                "pageSize", new Google.Apis.Discovery.Parameter
                                 {
-                                    Name = "pageToken",
+                                    Name = "pageSize",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -4654,16 +4541,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                     [Google.Apis.Util.RequestParameterAttribute("filterSetName", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string FilterSetName { get; private set; }
 
-                    /// <summary>Requested page size. The server may return fewer results than requested. If
-                    /// unspecified, the server will pick an appropriate default.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
                     /// <summary>A token identifying a page of results the server should return. Typically, this is the
                     /// value of ListFilteredBidRequestsResponse.nextPageToken returned from the previous call to the
                     /// filteredBidRequests.list method.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
+
+                    /// <summary>Requested page size. The server may return fewer results than requested. If
+                    /// unspecified, the server will pick an appropriate default.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -4699,18 +4586,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                                 Pattern = @"^bidders/[^/]+/filterSets/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "pageSize", new Google.Apis.Discovery.Parameter
+                            "pageToken", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageSize",
+                                Name = "pageToken",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "pageToken", new Google.Apis.Discovery.Parameter
+                            "pageSize", new Google.Apis.Discovery.Parameter
                             {
-                                Name = "pageToken",
+                                Name = "pageSize",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5837,16 +5724,16 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                 [Google.Apis.Util.RequestParameterAttribute("ownerName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string OwnerName { get; private set; }
 
-                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
-                /// the server will pick an appropriate default.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>A token identifying a page of results the server should return. Typically, this is the
                 /// value of ListFilterSetsResponse.nextPageToken returned from the previous call to the
                 /// accounts.filterSets.list method.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Requested page size. The server may return fewer results than requested. If unspecified,
+                /// the server will pick an appropriate default.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -5882,18 +5769,18 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1
                             Pattern = @"^bidders/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6887,18 +6774,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Response message for listing publishers that had recent inventory matches with the requesting
-    /// buyer.</summary>
-    public class ListPublishersResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of publishers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
-        public virtual System.Collections.Generic.IList<Publisher> Publisher { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
     /// <summary>@OutputOnly The Geo criteria the restriction applies to.</summary>
     public class LocationContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7018,25 +6893,6 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         /// <summary>The platforms this restriction applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platforms")]
         public virtual System.Collections.Generic.IList<string> Platforms { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The publisher ID and name contain values relevant to the requesting buyer depending on whether it is an
-    /// Ad Exchange buyer or Exchange Bidding buyer.</summary>
-    public class Publisher : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Publisher name contains: - Seller network name when the requesting buyer is an Ad Exchange buyer. -
-        /// DFP network name or AdMob publisher code when the requesting buyer is an Exchange Bidding buyer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publisherDisplayName")]
-        public virtual string PublisherDisplayName { get; set; } 
-
-        /// <summary>Publisher ID contains: - Seller network ID when the requesting buyer is an Ad Exchange buyer. See
-        /// [seller-network-ids](https://developers.google.com/ad-exchange/rtb/downloads/seller-network-ids) - DFP
-        /// network code or AdMob publisher code when the requesting buyer is an Exchange Bidding buyer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publisherId")]
-        public virtual string PublisherId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
