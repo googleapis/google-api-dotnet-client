@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/UEKDxDt-gBRW5wBq_kkcVGVpuQc\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/Wtlg-4mzMjHnNfG0K_5p3rKq3yI\"",
  "discoveryVersion": "v1",
  "id": "replicapoolupdater:v1beta1",
  "name": "replicapoolupdater",
@@ -60,12 +60,12 @@
   },
   "quotaUser": {
    "type": "string",
-   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
    "location": "query"
   },
   "userIp": {
    "type": "string",
-   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "description": "Deprecated. Please use quotaUser instead.",
    "location": "query"
   }
  },

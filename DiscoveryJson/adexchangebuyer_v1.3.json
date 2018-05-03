@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/ReOgH3U0GdRTnyRTJQfgpz7HkAc\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/_CyndOA4AbF54FgfrNcK2tPll_k\"",
  "discoveryVersion": "v1",
  "id": "adexchangebuyer:v1.3",
  "name": "adexchangebuyer",
@@ -58,12 +58,12 @@
   },
   "quotaUser": {
    "type": "string",
-   "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters. Overrides userIp if both are provided.",
+   "description": "An opaque string that represents a user for quota purposes. Must not exceed 40 characters.",
    "location": "query"
   },
   "userIp": {
    "type": "string",
-   "description": "IP address of the site where the request originates. Use this if you want to enforce per-user limits.",
+   "description": "Deprecated. Please use quotaUser instead.",
    "location": "query"
   }
  },

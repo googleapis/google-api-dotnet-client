@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v2alpha1
- *      <tr><th>API Rev<td>20180426 (1211)
+ *      <tr><th>API Rev<td>20180501 (1216)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -1032,6 +1032,16 @@ namespace Google.Apis.Genomics.v2alpha1.Data
         /// <summary>The exit status of the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitStatus")]
         public virtual System.Nullable<int> ExitStatus { get; set; } 
+
+        /// <summary>The tail end of any content written to standard error by the container. To prevent this from being
+        /// recorded if the action is known to emit large amounts of debugging noise or sensitive information, set the
+        /// DISABLE_STANDARD_ERROR_CAPTURE flag.
+        ///
+        /// Note that only a small amount of the end of the stream is captured here. The entire stream is stored in the
+        /// /google/logs directory mounted into each action, and may be copied off the machine as described
+        /// elsewhere.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stderr")]
+        public virtual string Stderr { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

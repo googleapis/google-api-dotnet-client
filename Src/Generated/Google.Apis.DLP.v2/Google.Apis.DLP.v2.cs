@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180424 (1209)
+ *      <tr><th>API Rev<td>20180501 (1216)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -1100,15 +1100,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListInspectTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1144,18 +1144,18 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3235,10 +3235,6 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>An auxiliary table contains statistical information on the relative frequency of different quasi-
-    /// identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative
-    /// frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the
-    /// corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).</summary>
     public class GooglePrivacyDlpV2AuxiliaryTable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Quasi-identifier columns. [required]</summary>
@@ -4127,6 +4123,20 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>An entity in a dataset is a field or set of fields that correspond to a single person. For example, in
+    /// medical records the `EntityId` might be a patient identifier, or for financial records it might be an account
+    /// identifier. This message is used when generalizations or analysis must take into account that multiple rows
+    /// correspond to the same entity.</summary>
+    public class GooglePrivacyDlpV2EntityId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Composite key indicating which field contains the entity identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual GooglePrivacyDlpV2FieldId Field { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Details information about an error encountered during job execution or the results of an unsuccessful
     /// activation of the JobTrigger. Output only field.</summary>
     public class GooglePrivacyDlpV2Error : Google.Apis.Requests.IDirectResponseSchema
@@ -4666,6 +4676,16 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>k-anonymity metric, used for analysis of reidentification risk.</summary>
     public class GooglePrivacyDlpV2KAnonymityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional message indicating that multiple rows might be associated to a single individual. If the
+        /// same entity_id is associated to multiple quasi-identifier tuples over distict rows, we consider the entire
+        /// collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which
+        /// the different tuples appear in the dataset is ignored, but their frequency is taken into account.
+        ///
+        /// Important note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated
+        /// with the same entity ID, some might be ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
+        public virtual GooglePrivacyDlpV2EntityId EntityId { get; set; } 
+
         /// <summary>Set of fields to compute k-anonymity over. When multiple fields are specified, they are considered
         /// a single composite key. Structs and repeated data types are not supported; however, nested fields are
         /// supported so long as they are not structs themselves or nested within a repeated field.</summary>
@@ -4733,8 +4753,8 @@ namespace Google.Apis.DLP.v2.Data
     /// <summary>Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk"
     /// in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can
     /// be done using publicly available data (like the US Census), or using a custom statistical model (indicated as
-    /// one or several BigQuery tables), or by extrapolating from the distribution of values in the input
-    /// dataset.</summary>
+    /// one or several BigQuery tables), or by extrapolating from the distribution of values in the input dataset. A
+    /// column with a semantic tag attached.</summary>
     public class GooglePrivacyDlpV2KMapEstimationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-
@@ -5658,7 +5678,6 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>A column with a semantic tag attached.</summary>
     public class GooglePrivacyDlpV2TaggedField : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
@@ -5922,910 +5941,6 @@ namespace Google.Apis.DLP.v2.Data
 
     /// <summary>Message defining a list of words or phrases to search for in the data.</summary>
     public class GooglePrivacyDlpV2WordList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every
-        /// phrase must contain at least 2 characters that are letters or digits. [required]</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("words")]
-        public virtual System.Collections.Generic.IList<string> Words { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>An auxiliary table contains statistical information on the relative frequency of different quasi-
-    /// identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative
-    /// frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the
-    /// corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).</summary>
-    public class GooglePrivacyDlpV2beta1AuxiliaryTable : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Quasi-identifier columns. [required]</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1QuasiIdField> QuasiIds { get; set; } 
-
-        /// <summary>The relative frequency column must contain a floating-point number between 0 and 1 (inclusive).
-        /// Null values are assumed to be zero. [required]</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("relativeFrequency")]
-        public virtual GooglePrivacyDlpV2beta1FieldId RelativeFrequency { get; set; } 
-
-        /// <summary>Auxiliary table location. [required]</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual GooglePrivacyDlpV2beta1BigQueryTable Table { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Options defining BigQuery table and row identifiers.</summary>
-    public class GooglePrivacyDlpV2beta1BigQueryOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>References to fields uniquely identifying rows within the table. Nested fields in the format, like
-        /// `person.birthdate.year`, are allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1FieldId> IdentifyingFields { get; set; } 
-
-        /// <summary>Complete BigQuery table reference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
-        public virtual GooglePrivacyDlpV2beta1BigQueryTable TableReference { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Message defining the location of a BigQuery table. A table is uniquely identified  by its project_id,
-    /// dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or
-    /// `..`.</summary>
-    public class GooglePrivacyDlpV2beta1BigQueryTable : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Dataset ID of the table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
-        public virtual string DatasetId { get; set; } 
-
-        /// <summary>The Google Cloud Platform project ID of the project containing the table. If omitted, project ID is
-        /// inferred from the API call.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
-
-        /// <summary>Name of the table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
-        public virtual string TableId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Compute numerical stats over an individual column, including number of distinct values and value count
-    /// distribution.</summary>
-    public class GooglePrivacyDlpV2beta1CategoricalStatsConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Field to compute categorical stats on. All column types are supported except for arrays and
-        /// structs. However, it may be more informative to use NumericalStats when the field type is supported,
-        /// depending on the data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2beta1FieldId Field { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Histogram bucket of value frequencies in the column.</summary>
-    public class GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Total number of records in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
-
-        /// <summary>Sample of value frequencies in this bucket. The total number of values returned per bucket is
-        /// capped at 20.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ValueFrequency> BucketValues { get; set; } 
-
-        /// <summary>Lower bound on the value frequency of the values in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("valueFrequencyLowerBound")]
-        public virtual System.Nullable<long> ValueFrequencyLowerBound { get; set; } 
-
-        /// <summary>Upper bound on the value frequency of the values in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("valueFrequencyUpperBound")]
-        public virtual System.Nullable<long> ValueFrequencyUpperBound { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Result of the categorical stats computation.</summary>
-    public class GooglePrivacyDlpV2beta1CategoricalStatsResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Histogram of value frequencies in the column.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("valueFrequencyHistogramBuckets")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1CategoricalStatsHistogramBucket> ValueFrequencyHistogramBuckets { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Options defining a file or a set of files (path ending with *) within a Google Cloud Storage
-    /// bucket.</summary>
-    public class GooglePrivacyDlpV2beta1CloudStorageOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("fileSet")]
-        public virtual GooglePrivacyDlpV2beta1FileSet FileSet { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A location in Cloud Storage.</summary>
-    public class GooglePrivacyDlpV2beta1CloudStoragePath : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The url, in the format of `gs://bucket/`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("path")]
-        public virtual string Path { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Custom information type provided by the user. Used to find domain-specific sensitive information
-    /// configurable to the data in question.</summary>
-    public class GooglePrivacyDlpV2beta1CustomInfoType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Dictionary-based custom info type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dictionary")]
-        public virtual GooglePrivacyDlpV2beta1Dictionary Dictionary { get; set; } 
-
-        /// <summary>Info type configuration. All custom info types must have configurations that do not conflict with
-        /// built-in info types or other custom info types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
-
-        /// <summary>Surrogate info type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("surrogateType")]
-        public virtual GooglePrivacyDlpV2beta1SurrogateType SurrogateType { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Options defining a data set within Google Cloud Datastore.</summary>
-    public class GooglePrivacyDlpV2beta1DatastoreOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The kind to process.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual GooglePrivacyDlpV2beta1KindExpression Kind { get; set; } 
-
-        /// <summary>A partition ID identifies a grouping of entities. The grouping is always by project and namespace,
-        /// however the namespace ID may be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("partitionId")]
-        public virtual GooglePrivacyDlpV2beta1PartitionId PartitionId { get; set; } 
-
-        /// <summary>Properties to scan. If none are specified, all properties will be scanned by default.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projection")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Projection> Projection { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Custom information type based on a dictionary of words or phrases. This can be used to match sensitive
-    /// information specific to the data, such as a list of employee IDs or job titles.
-    ///
-    /// Dictionary words are case-insensitive and all characters other than letters and digits in the unicode [Basic
-    /// Multilingual Plane](https://en.wikipedia.org/wiki/Plane_%28Unicode%29#Basic_Multilingual_Plane) will be replaced
-    /// with whitespace when scanning for matches, so the dictionary phrase "Sam Johnson" will match all three phrases
-    /// "sam johnson", "Sam, Johnson", and "Sam (Johnson)". Additionally, the characters surrounding any match must be
-    /// of a different type than the adjacent characters within the word, so letters must be next to non-letters and
-    /// digits next to non-digits. For example, the dictionary word "jen" will match the first three letters of the text
-    /// "jen123" but will return no matches for "jennifer".
-    ///
-    /// Dictionary words containing a large number of characters that are not letters or digits may result in unexpected
-    /// findings because such characters are treated as whitespace.</summary>
-    public class GooglePrivacyDlpV2beta1Dictionary : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of words or phrases to search for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wordList")]
-        public virtual GooglePrivacyDlpV2beta1WordList WordList { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>An entity in a dataset is a field or set of fields that correspond to a single person. For example, in
-    /// medical records the `EntityId` might be a patient identifier, or for financial records it might be an account
-    /// identifier. This message is used when generalizations or analysis must be consistent across multiple rows
-    /// pertaining to the same entity.</summary>
-    public class GooglePrivacyDlpV2beta1EntityId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Composite key indicating which field contains the entity identifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2beta1FieldId Field { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>General identifier of a data field in a storage service.</summary>
-    public class GooglePrivacyDlpV2beta1FieldId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name describing the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("columnName")]
-        public virtual string ColumnName { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Set of files to scan.</summary>
-    public class GooglePrivacyDlpV2beta1FileSet : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The url, in the format `gs:`. Trailing wildcard in the path is allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Type of information detected by the API.</summary>
-    public class GooglePrivacyDlpV2beta1InfoType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name of the information type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Max findings configuration per info type, per content item or long running operation.</summary>
-    public class GooglePrivacyDlpV2beta1InfoTypeLimit : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Type of information the findings limit applies to. Only one limit per info_type should be provided.
-        /// If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are
-        /// found but not specified in another InfoTypeLimit.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
-
-        /// <summary>Max findings limit for the given infoType.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxFindings")]
-        public virtual System.Nullable<int> MaxFindings { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Statistics regarding a specific InfoType.</summary>
-    public class GooglePrivacyDlpV2beta1InfoTypeStatistics : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Number of findings for this info type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
-
-        /// <summary>The type of finding this stat is for.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Configuration description of the scanning process. When used with redactContent only info_types and
-    /// min_likelihood are currently used.</summary>
-    public class GooglePrivacyDlpV2beta1InspectConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Custom info types provided by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customInfoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1CustomInfoType> CustomInfoTypes { get; set; } 
-
-        /// <summary>When true, excludes type information of the findings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("excludeTypes")]
-        public virtual System.Nullable<bool> ExcludeTypes { get; set; } 
-
-        /// <summary>When true, a contextual quote from the data that triggered a finding is included in the response;
-        /// see Finding.quote.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("includeQuote")]
-        public virtual System.Nullable<bool> IncludeQuote { get; set; } 
-
-        /// <summary>Configuration of findings limit given for specified info types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("infoTypeLimits")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1InfoTypeLimit> InfoTypeLimits { get; set; } 
-
-        /// <summary>Restricts what info_types to look for. The values must correspond to InfoType values returned by
-        /// ListInfoTypes or found in documentation. Empty info_types runs all enabled detectors.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("infoTypes")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1InfoType> InfoTypes { get; set; } 
-
-        /// <summary>Limits the number of findings per content item or long running operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxFindings")]
-        public virtual System.Nullable<int> MaxFindings { get; set; } 
-
-        /// <summary>Only returns findings equal or above this threshold.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
-        public virtual string MinLikelihood { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata returned within GetOperation for an inspect request.</summary>
-    public class GooglePrivacyDlpV2beta1InspectOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time which this request was started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("infoTypeStats")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1InfoTypeStatistics> InfoTypeStats { get; set; } 
-
-        /// <summary>Total size in bytes that were processed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("processedBytes")]
-        public virtual System.Nullable<long> ProcessedBytes { get; set; } 
-
-        /// <summary>The inspect config used to create the Operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestInspectConfig")]
-        public virtual GooglePrivacyDlpV2beta1InspectConfig RequestInspectConfig { get; set; } 
-
-        /// <summary>Optional location to store findings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestOutputConfig")]
-        public virtual GooglePrivacyDlpV2beta1OutputStorageConfig RequestOutputConfig { get; set; } 
-
-        /// <summary>The storage config used to create the Operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestStorageConfig")]
-        public virtual GooglePrivacyDlpV2beta1StorageConfig RequestStorageConfig { get; set; } 
-
-        /// <summary>Estimate of the number of bytes to process.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalEstimatedBytes")]
-        public virtual System.Nullable<long> TotalEstimatedBytes { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The operational data.</summary>
-    public class GooglePrivacyDlpV2beta1InspectOperationResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The server-assigned name, which is only unique within the same service that originally returns it.
-        /// If you use the default HTTP mapping, the `name` should have the format of `inspect/results/{id}`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>k-anonymity metric, used for analysis of reidentification risk.</summary>
-    public class GooglePrivacyDlpV2beta1KAnonymityConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional message indicating that each distinct entity_id should not contribute to the k-anonymity
-        /// count more than once per equivalence class. If an entity_id appears on several rows with different quasi-
-        /// identifier tuples, it will contribute to each count exactly once.
-        ///
-        /// This can lead to unexpected results. Consider a table where ID 1 is associated to quasi-identifier "foo", ID
-        /// 2 to "bar", and ID 3 to *both* quasi-identifiers "foo" and "bar" (on separate rows), and where this ID is
-        /// used as entity_id. Then, the anonymity value associated to ID 3 will be 2, even if it is the only ID to be
-        /// associated to both values "foo" and "bar".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-        public virtual GooglePrivacyDlpV2beta1EntityId EntityId { get; set; } 
-
-        /// <summary>Set of fields to compute k-anonymity over. When multiple fields are specified, they are considered
-        /// a single composite key. Structs and repeated data types are not supported; however, nested fields are
-        /// supported so long as they are not structs themselves or nested within a repeated field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1FieldId> QuasiIds { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The set of columns' values that share the same k-anonymity value.</summary>
-    public class GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Size of the equivalence class, for example number of rows with the above set of values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassSize")]
-        public virtual System.Nullable<long> EquivalenceClassSize { get; set; } 
-
-        /// <summary>Set of values defining the equivalence class. One value per quasi-identifier column in the original
-        /// KAnonymity metric message. The order is always the same as the original request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Value> QuasiIdsValues { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Histogram bucket of equivalence class sizes in the table.</summary>
-    public class GooglePrivacyDlpV2beta1KAnonymityHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Total number of records in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
-
-        /// <summary>Sample of equivalence classes in this bucket. The total number of classes returned per bucket is
-        /// capped at 20.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1KAnonymityEquivalenceClass> BucketValues { get; set; } 
-
-        /// <summary>Lower bound on the size of the equivalence classes in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassSizeLowerBound")]
-        public virtual System.Nullable<long> EquivalenceClassSizeLowerBound { get; set; } 
-
-        /// <summary>Upper bound on the size of the equivalence classes in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassSizeUpperBound")]
-        public virtual System.Nullable<long> EquivalenceClassSizeUpperBound { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Result of the k-anonymity computation.</summary>
-    public class GooglePrivacyDlpV2beta1KAnonymityResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Histogram of k-anonymity equivalence classes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassHistogramBuckets")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1KAnonymityHistogramBucket> EquivalenceClassHistogramBuckets { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk"
-    /// in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can
-    /// be done using publicly available data (like the US Census), or using a custom statistical model (indicated as
-    /// one or several BigQuery tables), or by extrapolating from the distribution of values in the input
-    /// dataset.</summary>
-    public class GooglePrivacyDlpV2beta1KMapEstimationConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-
-        /// identifiers column must appear in exactly one column of one auxiliary table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("auxiliaryTables")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1AuxiliaryTable> AuxiliaryTables { get; set; } 
-
-        /// <summary>Fields considered to be quasi-identifiers. No two columns can have the same tag.
-        /// [required]</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1TaggedField> QuasiIds { get; set; } 
-
-        /// <summary>ISO 3166-1 alpha-2 region code to use in the statistical modeling. Required if no column is tagged
-        /// with a region-specific InfoType (like US_ZIP_5) or a region code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A KMapEstimationHistogramBucket message with the following values: min_anonymity: 3 max_anonymity: 5
-    /// frequency: 42 means that there are 42 records whose quasi-identifier values correspond to 3, 4 or 5 people in
-    /// the overlying population. An important particular case is when min_anonymity = max_anonymity = 1: the frequency
-    /// field then corresponds to the number of uniquely identifiable records.</summary>
-    public class GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Number of records within these anonymity bounds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
-
-        /// <summary>Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per
-        /// bucket is capped at 20.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues> BucketValues { get; set; } 
-
-        /// <summary>Always greater than or equal to min_anonymity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxAnonymity")]
-        public virtual System.Nullable<long> MaxAnonymity { get; set; } 
-
-        /// <summary>Always positive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minAnonymity")]
-        public virtual System.Nullable<long> MinAnonymity { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A tuple of values for the quasi-identifier columns.</summary>
-    public class GooglePrivacyDlpV2beta1KMapEstimationQuasiIdValues : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The estimated anonymity for these quasi-identifier values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("estimatedAnonymity")]
-        public virtual System.Nullable<long> EstimatedAnonymity { get; set; } 
-
-        /// <summary>The quasi-identifier values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Value> QuasiIdsValues { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Result of the reidentifiability analysis. Note that these results are an estimation, not exact
-    /// values.</summary>
-    public class GooglePrivacyDlpV2beta1KMapEstimationResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn't correspond to any
-        /// such interval, the associated frequency is zero. For example, the following records: {min_anonymity: 1,
-        /// max_anonymity: 1, frequency: 17} {min_anonymity: 2, max_anonymity: 3, frequency: 42} {min_anonymity: 5,
-        /// max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or
-        /// larger than 10.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationHistogram")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1KMapEstimationHistogramBucket> KMapEstimationHistogram { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A representation of a Datastore kind.</summary>
-    public class GooglePrivacyDlpV2beta1KindExpression : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the kind.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>l-diversity metric, used for analysis of reidentification risk.</summary>
-    public class GooglePrivacyDlpV2beta1LDiversityConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity
-        /// computation. When multiple fields are specified, they are considered a single composite key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quasiIds")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1FieldId> QuasiIds { get; set; } 
-
-        /// <summary>Sensitive field for computing the l-value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveAttribute")]
-        public virtual GooglePrivacyDlpV2beta1FieldId SensitiveAttribute { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>The set of columns' values that share the same l-diversity value.</summary>
-    public class GooglePrivacyDlpV2beta1LDiversityEquivalenceClass : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Size of the k-anonymity equivalence class.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("equivalenceClassSize")]
-        public virtual System.Nullable<long> EquivalenceClassSize { get; set; } 
-
-        /// <summary>Number of distinct sensitive values in this equivalence class.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numDistinctSensitiveValues")]
-        public virtual System.Nullable<long> NumDistinctSensitiveValues { get; set; } 
-
-        /// <summary>Quasi-identifier values defining the k-anonymity equivalence class. The order is always the same as
-        /// the original request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quasiIdsValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Value> QuasiIdsValues { get; set; } 
-
-        /// <summary>Estimated frequencies of top sensitive values.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topSensitiveValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1ValueFrequency> TopSensitiveValues { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Histogram bucket of sensitive value frequencies in the table.</summary>
-    public class GooglePrivacyDlpV2beta1LDiversityHistogramBucket : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Total number of records in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketSize")]
-        public virtual System.Nullable<long> BucketSize { get; set; } 
-
-        /// <summary>Sample of equivalence classes in this bucket. The total number of classes returned per bucket is
-        /// capped at 20.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bucketValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1LDiversityEquivalenceClass> BucketValues { get; set; } 
-
-        /// <summary>Lower bound on the sensitive value frequencies of the equivalence classes in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveValueFrequencyLowerBound")]
-        public virtual System.Nullable<long> SensitiveValueFrequencyLowerBound { get; set; } 
-
-        /// <summary>Upper bound on the sensitive value frequencies of the equivalence classes in this bucket.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveValueFrequencyUpperBound")]
-        public virtual System.Nullable<long> SensitiveValueFrequencyUpperBound { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Result of the l-diversity computation.</summary>
-    public class GooglePrivacyDlpV2beta1LDiversityResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Histogram of l-diversity equivalence class sensitive value frequencies.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sensitiveValueFrequencyHistogramBuckets")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1LDiversityHistogramBucket> SensitiveValueFrequencyHistogramBuckets { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Compute numerical stats over an individual column, including min, max, and quantiles.</summary>
-    public class GooglePrivacyDlpV2beta1NumericalStatsConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp,
-        /// time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2beta1FieldId Field { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Result of the numerical stats computation.</summary>
-    public class GooglePrivacyDlpV2beta1NumericalStatsResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Maximum value appearing in the column.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
-        public virtual GooglePrivacyDlpV2beta1Value MaxValue { get; set; } 
-
-        /// <summary>Minimum value appearing in the column.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
-        public virtual GooglePrivacyDlpV2beta1Value MinValue { get; set; } 
-
-        /// <summary>List of 99 values that partition the set of field values into 100 equal sized buckets.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quantileValues")]
-        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2beta1Value> QuantileValues { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Cloud repository for storing output.</summary>
-    public class GooglePrivacyDlpV2beta1OutputStorageConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The path to a Google Cloud Storage location to store output. The bucket must already exist and the
-        /// Google APIs service account for DLP must have write permission to write to the given bucket. Results are
-        /// split over multiple csv files with each file name matching the pattern "[operation_id]_[count].csv", for
-        /// example `3094877188788974909_1.csv`. The `operation_id` matches the identifier for the Operation, and the
-        /// `count` is a counter used for tracking the number of files written.
-        ///
-        /// The CSV file(s) contain the following columns regardless of storage type scanned: - id - info_type -
-        /// likelihood - byte size of finding - quote - timestamp
-        ///
-        /// For Cloud Storage the next columns are:
-        ///
-        /// - file_path - start_offset
-        ///
-        /// For Cloud Datastore the next columns are:
-        ///
-        /// - project_id - namespace_id - path - column_name - offset
-        ///
-        /// For BigQuery the next columns are:
-        ///
-        /// - row_number - project_id - dataset_id - table_id</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("storagePath")]
-        public virtual GooglePrivacyDlpV2beta1CloudStoragePath StoragePath { get; set; } 
-
-        /// <summary>Store findings in a new table in the dataset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("table")]
-        public virtual GooglePrivacyDlpV2beta1BigQueryTable Table { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Datastore partition ID. A partition ID identifies a grouping of entities. The grouping is always by
-    /// project and namespace, however the namespace ID may be empty.
-    ///
-    /// A partition ID contains several dimensions: project ID and namespace ID.</summary>
-    public class GooglePrivacyDlpV2beta1PartitionId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If not empty, the ID of the namespace to which the entities belong.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("namespaceId")]
-        public virtual string NamespaceId { get; set; } 
-
-        /// <summary>The ID of the project to which the entities belong.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual string ProjectId { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Privacy metric to compute for reidentification risk analysis.</summary>
-    public class GooglePrivacyDlpV2beta1PrivacyMetric : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsConfig")]
-        public virtual GooglePrivacyDlpV2beta1CategoricalStatsConfig CategoricalStatsConfig { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityConfig")]
-        public virtual GooglePrivacyDlpV2beta1KAnonymityConfig KAnonymityConfig { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationConfig")]
-        public virtual GooglePrivacyDlpV2beta1KMapEstimationConfig KMapEstimationConfig { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("lDiversityConfig")]
-        public virtual GooglePrivacyDlpV2beta1LDiversityConfig LDiversityConfig { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("numericalStatsConfig")]
-        public virtual GooglePrivacyDlpV2beta1NumericalStatsConfig NumericalStatsConfig { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A representation of a Datastore property in a projection.</summary>
-    public class GooglePrivacyDlpV2beta1Projection : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The property to project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("property")]
-        public virtual GooglePrivacyDlpV2beta1PropertyReference Property { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A reference to a property relative to the Datastore kind expressions.</summary>
-    public class GooglePrivacyDlpV2beta1PropertyReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the property. If name includes "."s, it may be interpreted as a property name
-        /// path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which
-    /// column in the statistical model.</summary>
-    public class GooglePrivacyDlpV2beta1QuasiIdField : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
-        public virtual string CustomTag { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2beta1FieldId Field { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Metadata returned within the
-    /// [`riskAnalysis.operations.get`](/dlp/docs/reference/rest/v2beta1/riskAnalysis.operations/get) for risk
-    /// analysis.</summary>
-    public class GooglePrivacyDlpV2beta1RiskAnalysisOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time which this request was started.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; } 
-
-        /// <summary>Privacy metric to compute.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedPrivacyMetric")]
-        public virtual GooglePrivacyDlpV2beta1PrivacyMetric RequestedPrivacyMetric { get; set; } 
-
-        /// <summary>Input dataset to compute metrics over.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedSourceTable")]
-        public virtual GooglePrivacyDlpV2beta1BigQueryTable RequestedSourceTable { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Result of a risk analysis [`Operation`](/dlp/docs/reference/rest/v2beta1/inspect.operations)
-    /// request.</summary>
-    public class GooglePrivacyDlpV2beta1RiskAnalysisOperationResult : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("categoricalStatsResult")]
-        public virtual GooglePrivacyDlpV2beta1CategoricalStatsResult CategoricalStatsResult { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kAnonymityResult")]
-        public virtual GooglePrivacyDlpV2beta1KAnonymityResult KAnonymityResult { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kMapEstimationResult")]
-        public virtual GooglePrivacyDlpV2beta1KMapEstimationResult KMapEstimationResult { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("lDiversityResult")]
-        public virtual GooglePrivacyDlpV2beta1LDiversityResult LDiversityResult { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("numericalStatsResult")]
-        public virtual GooglePrivacyDlpV2beta1NumericalStatsResult NumericalStatsResult { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Shared message indicating Cloud storage type.</summary>
-    public class GooglePrivacyDlpV2beta1StorageConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>BigQuery options specification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryOptions")]
-        public virtual GooglePrivacyDlpV2beta1BigQueryOptions BigQueryOptions { get; set; } 
-
-        /// <summary>Google Cloud Storage options specification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageOptions")]
-        public virtual GooglePrivacyDlpV2beta1CloudStorageOptions CloudStorageOptions { get; set; } 
-
-        /// <summary>Google Cloud Datastore options specification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("datastoreOptions")]
-        public virtual GooglePrivacyDlpV2beta1DatastoreOptions DatastoreOptions { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Message for detecting output from deidentification transformations such as
-    /// [`CryptoReplaceFfxFpeConfig`](/dlp/docs/reference/rest/v2beta1/content/deidentify#CryptoReplaceFfxFpeConfig).
-    /// These types of transformations are those that perform pseudonymization, thereby producing a "surrogate" as
-    /// output. This should be used in conjunction with a field on the transformation such as `surrogate_info_type`.
-    /// This custom info type does not support the use of `detection_rules`.</summary>
-    public class GooglePrivacyDlpV2beta1SurrogateType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A column with a semantic tag attached.</summary>
-    public class GooglePrivacyDlpV2beta1TaggedField : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table
-        /// that contains statistical information on the possible values of this column (below).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customTag")]
-        public virtual string CustomTag { get; set; } 
-
-        /// <summary>Identifies the column. [required]</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("field")]
-        public virtual GooglePrivacyDlpV2beta1FieldId Field { get; set; } 
-
-        /// <summary>If no semantic tag is indicated, we infer the statistical model from the distribution of values in
-        /// the input data</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inferred")]
-        public virtual GoogleProtobufEmpty Inferred { get; set; } 
-
-        /// <summary>A column can be tagged with a InfoType to use the relevant public dataset as a statistical model of
-        /// population, if available. We currently support US ZIP codes, region codes, ages and genders.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
-        public virtual GooglePrivacyDlpV2beta1InfoType InfoType { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Set of primitive values supported by the system. Note that for the purposes of inspection or
-    /// transformation, the number of bytes considered to comprise a 'Value' is based on its representation as a UTF-8
-    /// encoded string. For example, if 'integer_value' is set to 123456789, the number of bytes would be counted as 9,
-    /// even though an int64 only holds up to 8 bytes of data.</summary>
-    public class GooglePrivacyDlpV2beta1Value : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
-        public virtual System.Nullable<bool> BooleanValue { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("dateValue")]
-        public virtual GoogleTypeDate DateValue { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("floatValue")]
-        public virtual System.Nullable<double> FloatValue { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("integerValue")]
-        public virtual System.Nullable<long> IntegerValue { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("timeValue")]
-        public virtual GoogleTypeTimeOfDay TimeValue { get; set; } 
-
-        [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
-        public virtual object TimestampValue { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>A value of a field, including its frequency.</summary>
-    public class GooglePrivacyDlpV2beta1ValueFrequency : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>How many times the value is contained in the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; } 
-
-        /// <summary>A value contained in the field in question.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual GooglePrivacyDlpV2beta1Value Value { get; set; } 
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }    
-
-    /// <summary>Message defining a list of words or phrases to search for in the data.</summary>
-    public class GooglePrivacyDlpV2beta1WordList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every
         /// phrase must contain at least 2 characters that are letters or digits. [required]</summary>

@@ -711,10 +711,6 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
 
-            /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Options for how to filter the returned billing accounts. Currently this only supports filtering
             /// for [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided reseller
             /// billing account. (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean algebra
@@ -729,6 +725,10 @@ namespace Google.Apis.Cloudbilling.v1
             /// returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
+
+            /// <summary>Requested page size. The maximum page size is 100; this is also the default.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -755,15 +755,6 @@ namespace Google.Apis.Cloudbilling.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -776,6 +767,15 @@ namespace Google.Apis.Cloudbilling.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1291,15 +1291,6 @@ namespace Google.Apis.Cloudbilling.v1
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Requested page size. Defaults to 5000.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The ISO 4217 currency code for the pricing info in the response proto. Will use the
-                /// conversion rate as of start_time. Optional. If not specified USD will be used.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string CurrencyCode { get; set; }
-
                 /// <summary>Optional exclusive end time of the time range for which the pricing versions will be
                 /// returned. Timestamps in the future are not allowed. The time range has to be within a single
                 /// calendar month in America/Los_Angeles timezone. Time range as a whole is optional. If not specified,
@@ -1319,6 +1310,15 @@ namespace Google.Apis.Cloudbilling.v1
                 /// the latest pricing will be returned (up to 12 hours old at most).</summary>
                 [Google.Apis.Util.RequestParameterAttribute("startTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object StartTime { get; set; }
+
+                /// <summary>Requested page size. Defaults to 5000.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The ISO 4217 currency code for the pricing info in the response proto. Will use the
+                /// conversion rate as of start_time. Optional. If not specified USD will be used.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("currencyCode", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CurrencyCode { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1354,24 +1354,6 @@ namespace Google.Apis.Cloudbilling.v1
                             Pattern = @"^services/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "currencyCode", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "currencyCode",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "endTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "endTime",
@@ -1393,6 +1375,24 @@ namespace Google.Apis.Cloudbilling.v1
                         "startTime", new Google.Apis.Discovery.Parameter
                         {
                             Name = "startTime",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "currencyCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "currencyCode",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

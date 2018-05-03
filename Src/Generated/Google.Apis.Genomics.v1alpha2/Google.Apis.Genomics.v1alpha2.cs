@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/genomics'>Genomics API</a>
  *      <tr><th>API Version<td>v1alpha2
- *      <tr><th>API Rev<td>20180426 (1211)
+ *      <tr><th>API Rev<td>20180501 (1216)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/genomics'>
  *              https://cloud.google.com/genomics</a>
@@ -530,6 +530,11 @@ namespace Google.Apis.Genomics.v1alpha2
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
+            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
+            /// 2048.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
             /// <summary>A string for filtering Operations. In v2alpha1, the following filter fields are supported
             ///
             /// * createTime The time this job was created * events The set of event (names) that have occurred while
@@ -555,11 +560,6 @@ namespace Google.Apis.Genomics.v1alpha2
             /// <summary>The standard list page token.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
-
-            /// <summary>The maximum number of results to return. If unspecified, defaults to 256. The maximum value is
-            /// 2048.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -595,6 +595,15 @@ namespace Google.Apis.Genomics.v1alpha2
                         Pattern = @"^operations$",
                     });
                 RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
@@ -607,15 +616,6 @@ namespace Google.Apis.Genomics.v1alpha2
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1198,6 +1198,16 @@ namespace Google.Apis.Genomics.v1alpha2.Data
         /// <summary>The exit status of the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exitStatus")]
         public virtual System.Nullable<int> ExitStatus { get; set; } 
+
+        /// <summary>The tail end of any content written to standard error by the container. To prevent this from being
+        /// recorded if the action is known to emit large amounts of debugging noise or sensitive information, set the
+        /// DISABLE_STANDARD_ERROR_CAPTURE flag.
+        ///
+        /// Note that only a small amount of the end of the stream is captured here. The entire stream is stored in the
+        /// /google/logs directory mounted into each action, and may be copied off the machine as described
+        /// elsewhere.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stderr")]
+        public virtual string Stderr { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
