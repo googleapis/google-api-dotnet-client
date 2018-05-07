@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/service-usage/'>Service Usage API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180430 (1215)
+ *      <tr><th>API Rev<td>20180503 (1218)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/service-usage/'>
  *              https://cloud.google.com/service-usage/</a>
@@ -920,6 +920,11 @@ namespace Google.Apis.ServiceUsage.v1beta1
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
+            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
+            /// `state:ENABLED` and `state:DISABLED`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>Token identifying which result to start with, which is returned by a previous list
             /// call.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -929,11 +934,6 @@ namespace Google.Apis.ServiceUsage.v1beta1
             /// default page size is 50.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>Only list services that conform to the given filter. The allowed filter strings are
-            /// `state:ENABLED` and `state:DISABLED`.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -969,6 +969,15 @@ namespace Google.Apis.ServiceUsage.v1beta1
                         Pattern = @"^[^/]+/[^/]+$",
                     });
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
@@ -981,15 +990,6 @@ namespace Google.Apis.ServiceUsage.v1beta1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1304,6 +1304,23 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for the `BatchEnableServices` method. This response message is assigned to the
+    /// `response` field of the returned Operation when that operation is done.</summary>
+    public class BatchEnableServicesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If allow_partial_success is true, and one or more services could not be enabled, this field
+        /// contains the details about each failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failures")]
+        public virtual System.Collections.Generic.IList<EnableFailure> Failures { get; set; } 
+
+        /// <summary>The new state of the services after enabling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<GoogleApiServiceusageV1Service> Services { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Billing related configuration of the service.
     ///
     /// The following example shows how to configure monitored resources and metrics for billing:
@@ -1495,6 +1512,18 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Response message for the `DisableService` method. This response message is assigned to the `response`
+    /// field of the returned Operation when that operation is done.</summary>
+    public class DisableServiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new state of the service after disabling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual GoogleApiServiceusageV1Service Service { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>`Documentation` provides the information for describing a service.
     ///
     /// Example: documentation: summary: > The Google Calendar API gives access to most calendar features. pages: -
@@ -1579,9 +1608,35 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class EnableFailure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An error message describing why the service could not be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; } 
+
+        /// <summary>The service id of a service that could not be enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
+        public virtual string ServiceId { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Request message for the `EnableService` method.</summary>
     public class EnableServiceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Response message for the `EnableService` method. This response message is assigned to the `response`
+    /// field of the returned Operation when that operation is done.</summary>
+    public class EnableServiceResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new state of the service after enabling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual GoogleApiServiceusageV1Service Service { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -1876,6 +1931,78 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         /// types: - name: google.protobuf.Int32</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("types")]
         public virtual System.Collections.Generic.IList<Type> Types { get; set; } 
+
+        /// <summary>Configuration controlling usage of this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usage")]
+        public virtual Usage Usage { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A service that is available for use by the consumer.</summary>
+    public class GoogleApiServiceusageV1Service : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The service configuration of the available service. Some fields may be filtered out of the
+        /// configuration in responses to the `ListServices` method. These fields are present only in responses to the
+        /// `GetService` method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual GoogleApiServiceusageV1ServiceConfig Config { get; set; } 
+
+        /// <summary>The resource name of the consumer and service.
+        ///
+        /// A valid name would be: - projects/123/services/serviceusage.googleapis.com</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>The resource name of the consumer.
+        ///
+        /// A valid name would be: - projects/123</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; } 
+
+        /// <summary>Whether or not the service has been enabled for use by the consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The configuration of the service.</summary>
+    public class GoogleApiServiceusageV1ServiceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of API interfaces exported by this service. Contains only the names, versions, and method
+        /// names of the interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apis")]
+        public virtual System.Collections.Generic.IList<Api> Apis { get; set; } 
+
+        /// <summary>Auth configuration. Contains only the OAuth rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authentication")]
+        public virtual Authentication Authentication { get; set; } 
+
+        /// <summary>Additional API documentation. Contains only the summary and the documentation URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentation")]
+        public virtual Documentation Documentation { get; set; } 
+
+        /// <summary>Configuration for network endpoints. Contains only the names and aliases of the
+        /// endpoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<Endpoint> Endpoints { get; set; } 
+
+        /// <summary>The DNS address at which this service is available.
+        ///
+        /// An example DNS address would be: `calendar.googleapis.com`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>Quota configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quota")]
+        public virtual Quota Quota { get; set; } 
+
+        /// <summary>The product title for this service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; } 
 
         /// <summary>Configuration controlling usage of this service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]

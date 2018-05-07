@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180411 (1196)
+ *      <tr><th>API Rev<td>20180502 (1217)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -600,6 +600,10 @@ namespace Google.Apis.CloudVideoIntelligence.v1
             }
 
 
+            /// <summary>The standard list filter.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
             /// <summary>The name of the operation's parent resource.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -611,10 +615,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
-
-            /// <summary>The standard list filter.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Filter { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -641,6 +641,15 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                 base.InitParameters();
 
                 RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "name", new Google.Apis.Discovery.Parameter
                     {
                         Name = "name",
@@ -662,15 +671,6 @@ namespace Google.Apis.CloudVideoIntelligence.v1
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -978,19 +978,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
-        /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
+        /// <summary>Output only. Approximate percentage processed thus far. Guaranteed to be 100 when fully
+        /// processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
 
-        /// <summary>Time when the request was received.</summary>
+        /// <summary>Output only. Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Time of the most recent update.</summary>
+        /// <summary>Output only. Time of the most recent update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1001,8 +1003,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Annotation results for a single video.</summary>
     public class GoogleCloudVideointelligenceV1VideoAnnotationResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed
-        /// and some may fail.</summary>
+        /// <summary>Output only. Non-streaming error only. If set, indicates an error. Note that for a single
+        /// `AnnotateVideoRequest` some videos may succeed and some may fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
@@ -1014,7 +1016,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> FrameLabelAnnotations { get; set; } 
 
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
@@ -1046,8 +1049,9 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labelDetectionConfig")]
         public virtual GoogleCloudVideointelligenceV1LabelDetectionConfig LabelDetectionConfig { get; set; } 
 
-        /// <summary>Video segments to annotate. The segments may overlap and are not required to be contiguous or span
-        /// the whole video. If unspecified, each video is treated as a single segment.</summary>
+        /// <summary>Non-streaming request only. Video segments to annotate. The segments may overlap and are not
+        /// required to be contiguous or span the whole video. If unspecified, each video is treated as a single
+        /// segment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segments")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1VideoSegment> Segments { get; set; } 
 
@@ -1371,19 +1375,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
-        /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
+        /// <summary>Output only. Approximate percentage processed thus far. Guaranteed to be 100 when fully
+        /// processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
 
-        /// <summary>Time when the request was received.</summary>
+        /// <summary>Output only. Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Time of the most recent update.</summary>
+        /// <summary>Output only. Time of the most recent update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1394,8 +1400,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Annotation results for a single video.</summary>
     public class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed
-        /// and some may fail.</summary>
+        /// <summary>Output only. Non-streaming error only. If set, indicates an error. Note that for a single
+        /// `AnnotateVideoRequest` some videos may succeed and some may fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
@@ -1407,7 +1413,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> FrameLabelAnnotations { get; set; } 
 
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
@@ -1709,19 +1716,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
-        /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
+        /// <summary>Output only. Approximate percentage processed thus far. Guaranteed to be 100 when fully
+        /// processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
 
-        /// <summary>Time when the request was received.</summary>
+        /// <summary>Output only. Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Time of the most recent update.</summary>
+        /// <summary>Output only. Time of the most recent update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1732,8 +1741,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
     /// <summary>Annotation results for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed
-        /// and some may fail.</summary>
+        /// <summary>Output only. Non-streaming error only. If set, indicates an error. Note that for a single
+        /// `AnnotateVideoRequest` some videos may succeed and some may fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
@@ -1749,7 +1758,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> FrameLabelAnnotations { get; set; } 
 
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 

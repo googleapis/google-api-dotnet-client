@@ -1,14 +1,14 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/AxDKkERbycFoL6WpWzXGeC-mqWI\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/cqLS0IwH2Is5IhWrKMNCt4VPtGQ\"",
  "discoveryVersion": "v1",
  "id": "admin:directory_v1",
  "name": "admin",
  "canonicalName": "directory",
  "version": "directory_v1",
- "revision": "20180316",
+ "revision": "20180423",
  "title": "Admin Directory API",
- "description": "The Admin SDK Directory API lets you view and manage enterprise resources such as users and groups, administrative notifications, security features, and more.",
+ "description": "Manages enterprise resources such as users and groups, administrative notifications, security features, and more.",
  "ownerDomain": "google.com",
  "ownerName": "Google",
  "packagePath": "admin",
@@ -1884,6 +1884,15 @@
    "type": "object",
    "description": "JSON template for Schema resource in Directory API.",
    "properties": {
+    "displayName": {
+     "type": "string",
+     "description": "Display name for the schema.",
+     "annotations": {
+      "required": [
+       "directory.schemas.insert"
+      ]
+     }
+    },
     "etag": {
      "type": "string",
      "description": "ETag of the resource."
@@ -1926,6 +1935,16 @@
    "type": "object",
    "description": "JSON template for FieldSpec resource for Schemas in Directory API.",
    "properties": {
+    "displayName": {
+     "type": "string",
+     "description": "Display Name of the field.",
+     "annotations": {
+      "required": [
+       "directory.schemas.insert",
+       "directory.schemas.update"
+      ]
+     }
+    },
     "etag": {
      "type": "string",
      "description": "ETag of the resource."
@@ -2777,6 +2796,10 @@
     "homeDirectory": {
      "type": "string",
      "description": "The path to the home directory for this account."
+    },
+    "operatingSystemType": {
+     "type": "string",
+     "description": "The operating system type for this account."
     },
     "primary": {
      "type": "boolean",
@@ -3730,7 +3753,7 @@
      "id": "directory.groups.list",
      "path": "groups",
      "httpMethod": "GET",
-     "description": "Retrieve all groups in a domain (paginated)",
+     "description": "Retrieve all groups of a domain or of a user given a userKey (paginated)",
      "parameters": {
       "customer": {
        "type": "string",
@@ -3749,14 +3772,43 @@
        "minimum": "1",
        "location": "query"
       },
+      "orderBy": {
+       "type": "string",
+       "description": "Column to use for sorting results",
+       "enum": [
+        "email"
+       ],
+       "enumDescriptions": [
+        "Email of the group."
+       ],
+       "location": "query"
+      },
       "pageToken": {
        "type": "string",
        "description": "Token to specify next page in the list",
        "location": "query"
       },
+      "query": {
+       "type": "string",
+       "description": "Query string search. Should be of the form \"\". Complete documentation is at https://developers.google.com/admin-sdk/directory/v1/guides/search-users",
+       "location": "query"
+      },
+      "sortOrder": {
+       "type": "string",
+       "description": "Whether to return results in ascending or descending order. Only of use when orderBy is also used",
+       "enum": [
+        "ASCENDING",
+        "DESCENDING"
+       ],
+       "enumDescriptions": [
+        "Ascending order.",
+        "Descending order."
+       ],
+       "location": "query"
+      },
       "userKey": {
        "type": "string",
-       "description": "Email or immutable ID of the user if only those groups are to be listed, the given user is a member of. If ID, it should match with id of user object",
+       "description": "Email or immutable Id of the user if only those groups are to be listed, the given user is a member of. If Id, it should match with id of user object",
        "location": "query"
       }
      },
@@ -4040,6 +4092,11 @@
        "description": "Email or immutable ID of the group",
        "required": true,
        "location": "path"
+      },
+      "includeDerivedMembership": {
+       "type": "boolean",
+       "description": "Whether to list indirect memberships. Default: false.",
+       "location": "query"
       },
       "maxResults": {
        "type": "integer",

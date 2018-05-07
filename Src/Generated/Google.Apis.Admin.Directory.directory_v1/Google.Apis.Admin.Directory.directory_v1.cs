@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>Admin Directory API</a>
  *      <tr><th>API Version<td>directory_v1
- *      <tr><th>API Rev<td>20180316 (1170)
+ *      <tr><th>API Rev<td>20180423 (1208)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/admin-sdk/directory/'>
  *              https://developers.google.com/admin-sdk/directory/</a>
@@ -2743,13 +2743,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
 
         }
 
-        /// <summary>Retrieve all groups in a domain (paginated)</summary>
+        /// <summary>Retrieve all groups of a domain or of a user given a userKey (paginated)</summary>
         public virtual ListRequest List()
         {
             return new ListRequest(service);
         }
 
-        /// <summary>Retrieve all groups in a domain (paginated)</summary>
+        /// <summary>Retrieve all groups of a domain or of a user given a userKey (paginated)</summary>
         public class ListRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.Groups>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -2775,12 +2775,46 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> MaxResults { get; set; }
 
+            /// <summary>Column to use for sorting results</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<OrderByEnum> OrderBy { get; set; }
+
+            /// <summary>Column to use for sorting results</summary>
+            public enum OrderByEnum
+            {
+                /// <summary>Email of the group.</summary>
+                [Google.Apis.Util.StringValueAttribute("email")]
+                Email,
+            }
+
             /// <summary>Token to specify next page in the list</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
-            /// <summary>Email or immutable ID of the user if only those groups are to be listed, the given user is a
-            /// member of. If ID, it should match with id of user object</summary>
+            /// <summary>Query string search. Should be of the form "". Complete documentation is at
+            /// https://developers.google.com/admin-sdk/directory/v1/guides/search-users</summary>
+            [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Query { get; set; }
+
+            /// <summary>Whether to return results in ascending or descending order. Only of use when orderBy is also
+            /// used</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
+
+            /// <summary>Whether to return results in ascending or descending order. Only of use when orderBy is also
+            /// used</summary>
+            public enum SortOrderEnum
+            {
+                /// <summary>Ascending order.</summary>
+                [Google.Apis.Util.StringValueAttribute("ASCENDING")]
+                ASCENDING,
+                /// <summary>Descending order.</summary>
+                [Google.Apis.Util.StringValueAttribute("DESCENDING")]
+                DESCENDING,
+            }
+
+            /// <summary>Email or immutable Id of the user if only those groups are to be listed, the given user is a
+            /// member of. If Id, it should match with id of user object</summary>
             [Google.Apis.Util.RequestParameterAttribute("userKey", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserKey { get; set; }
 
@@ -2836,9 +2870,36 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         Pattern = null,
                     });
                 RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "query", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "query",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sortOrder", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sortOrder",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -3336,6 +3397,10 @@ namespace Google.Apis.Admin.Directory.directory_v1
             [Google.Apis.Util.RequestParameterAttribute("groupKey", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string GroupKey { get; private set; }
 
+            /// <summary>Whether to list indirect memberships. Default: false.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeDerivedMembership", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> IncludeDerivedMembership { get; set; }
+
             /// <summary>Maximum number of results to return. Default is 200</summary>
             /// [minimum: 1]
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
@@ -3379,6 +3444,15 @@ namespace Google.Apis.Admin.Directory.directory_v1
                         Name = "groupKey",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "includeDerivedMembership", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeDerivedMembership",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -11943,6 +12017,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for Schema resource in Directory API.</summary>
     public class Schema : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Display name for the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
@@ -11968,6 +12046,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// <summary>JSON template for FieldSpec resource for Schemas in Directory API.</summary>
     public class SchemaFieldSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Display Name of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
         /// <summary>ETag of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; } 
@@ -12767,6 +12849,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         /// <summary>The path to the home directory for this account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homeDirectory")]
         public virtual string HomeDirectory { get; set; } 
+
+        /// <summary>The operating system type for this account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystemType")]
+        public virtual string OperatingSystemType { get; set; } 
 
         /// <summary>If this is user's primary account within the SystemId.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primary")]

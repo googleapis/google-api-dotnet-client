@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>Cloud Video Intelligence API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180411 (1196)
+ *      <tr><th>API Rev<td>20180502 (1217)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/video-intelligence/docs/'>
  *              https://cloud.google.com/video-intelligence/docs/</a>
@@ -549,19 +549,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
-        /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
+        /// <summary>Output only. Approximate percentage processed thus far. Guaranteed to be 100 when fully
+        /// processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
 
-        /// <summary>Time when the request was received.</summary>
+        /// <summary>Output only. Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Time of the most recent update.</summary>
+        /// <summary>Output only. Time of the most recent update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -572,8 +574,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
     /// <summary>Annotation results for a single video.</summary>
     public class GoogleCloudVideointelligenceV1VideoAnnotationResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed
-        /// and some may fail.</summary>
+        /// <summary>Output only. Non-streaming error only. If set, indicates an error. Note that for a single
+        /// `AnnotateVideoRequest` some videos may succeed and some may fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
@@ -585,7 +587,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1LabelAnnotation> FrameLabelAnnotations { get; set; } 
 
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
@@ -996,19 +999,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
-        /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
+        /// <summary>Output only. Approximate percentage processed thus far. Guaranteed to be 100 when fully
+        /// processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
 
-        /// <summary>Time when the request was received.</summary>
+        /// <summary>Output only. Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Time of the most recent update.</summary>
+        /// <summary>Output only. Time of the most recent update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1019,8 +1024,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
     /// <summary>Annotation results for a single video.</summary>
     public class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed
-        /// and some may fail.</summary>
+        /// <summary>Output only. Non-streaming error only. If set, indicates an error. Note that for a single
+        /// `AnnotateVideoRequest` some videos may succeed and some may fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
@@ -1032,7 +1037,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1beta2LabelAnnotation> FrameLabelAnnotations { get; set; } 
 
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
@@ -1334,19 +1340,21 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
     /// <summary>Annotation progress for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 
-        /// <summary>Approximate percentage processed thus far. Guaranteed to be 100 when fully processed.</summary>
+        /// <summary>Output only. Approximate percentage processed thus far. Guaranteed to be 100 when fully
+        /// processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progressPercent")]
         public virtual System.Nullable<int> ProgressPercent { get; set; } 
 
-        /// <summary>Time when the request was received.</summary>
+        /// <summary>Output only. Time when the request was received.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; } 
 
-        /// <summary>Time of the most recent update.</summary>
+        /// <summary>Output only. Time of the most recent update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; } 
 
@@ -1357,8 +1365,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
     /// <summary>Annotation results for a single video.</summary>
     public class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If set, indicates an error. Note that for a single `AnnotateVideoRequest` some videos may succeed
-        /// and some may fail.</summary>
+        /// <summary>Output only. Non-streaming error only. If set, indicates an error. Note that for a single
+        /// `AnnotateVideoRequest` some videos may succeed and some may fail.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; } 
 
@@ -1374,7 +1382,8 @@ namespace Google.Apis.CloudVideoIntelligence.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("frameLabelAnnotations")]
         public virtual System.Collections.Generic.IList<GoogleCloudVideointelligenceV1p1beta1LabelAnnotation> FrameLabelAnnotations { get; set; } 
 
-        /// <summary>Video file location in [Google Cloud Storage](https://cloud.google.com/storage/).</summary>
+        /// <summary>Output only. Video file location in [Google Cloud
+        /// Storage](https://cloud.google.com/storage/).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputUri")]
         public virtual string InputUri { get; set; } 
 

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/lEZNlk_TKPcpkzZuUbkH7l21XY4\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/Hr7nIzY8PO1dXkWa4_DKKeiqVWY\"",
  "discoveryVersion": "v1",
  "id": "compute:v1",
  "name": "compute",
  "version": "v1",
- "revision": "20180417",
+ "revision": "20180427",
  "title": "Compute Engine API",
  "description": "Creates and runs virtual machines on Google Cloud Platform.",
  "ownerDomain": "google.com",

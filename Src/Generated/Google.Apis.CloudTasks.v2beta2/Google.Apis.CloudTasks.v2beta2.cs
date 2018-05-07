@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>Cloud Tasks API</a>
  *      <tr><th>API Version<td>v2beta2
- *      <tr><th>API Rev<td>20180423 (1208)
+ *      <tr><th>API Rev<td>20180503 (1218)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/cloud-tasks/'>
  *              https://cloud.google.com/cloud-tasks/</a>
@@ -1206,24 +1206,23 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Forces a task to run now.
                     ///
+                    /// When this method is called, Cloud Tasks will dispatch the task, even if the task is already
+                    /// running, the queue has reached its RateLimits or is PAUSED.
+                    ///
                     /// This command is meant to be used for manual debugging. For example, RunTask can be used to retry
                     /// a failed task after a fix has been made or to manually force a task to be dispatched now.
-                    ///
-                    /// When this method is called, Cloud Tasks will dispatch the task to its target, even if the queue
-                    /// is PAUSED.
                     ///
                     /// The dispatched task is returned. That is, the task that is returned contains the status after
                     /// the task is dispatched but before the task is received by its target.
                     ///
-                    /// If Cloud Tasks receives a successful response from the task's handler, then the task will be
+                    /// If Cloud Tasks receives a successful response from the task's target, then the task will be
                     /// deleted; otherwise the task's schedule_time will be reset to the time that RunTask was called
-                    /// plus the retry delay specified in the queue and task's RetryConfig.
+                    /// plus the retry delay specified in the queue's RetryConfig.
                     ///
                     /// RunTask returns NOT_FOUND when it is called on a task that has already succeeded or permanently
-                    /// failed. FAILED_PRECONDITION is returned when RunTask is called on task that is dispatched or
-                    /// already running.
+                    /// failed.
                     ///
-                    /// RunTask cannot be called on pull tasks.</summary>
+                    /// RunTask cannot be called on a pull task.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">Required.
                     ///
@@ -1235,24 +1234,23 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                     /// <summary>Forces a task to run now.
                     ///
+                    /// When this method is called, Cloud Tasks will dispatch the task, even if the task is already
+                    /// running, the queue has reached its RateLimits or is PAUSED.
+                    ///
                     /// This command is meant to be used for manual debugging. For example, RunTask can be used to retry
                     /// a failed task after a fix has been made or to manually force a task to be dispatched now.
-                    ///
-                    /// When this method is called, Cloud Tasks will dispatch the task to its target, even if the queue
-                    /// is PAUSED.
                     ///
                     /// The dispatched task is returned. That is, the task that is returned contains the status after
                     /// the task is dispatched but before the task is received by its target.
                     ///
-                    /// If Cloud Tasks receives a successful response from the task's handler, then the task will be
+                    /// If Cloud Tasks receives a successful response from the task's target, then the task will be
                     /// deleted; otherwise the task's schedule_time will be reset to the time that RunTask was called
-                    /// plus the retry delay specified in the queue and task's RetryConfig.
+                    /// plus the retry delay specified in the queue's RetryConfig.
                     ///
                     /// RunTask returns NOT_FOUND when it is called on a task that has already succeeded or permanently
-                    /// failed. FAILED_PRECONDITION is returned when RunTask is called on task that is dispatched or
-                    /// already running.
+                    /// failed.
                     ///
-                    /// RunTask cannot be called on pull tasks.</summary>
+                    /// RunTask cannot be called on a pull task.</summary>
                     public class RunRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Task>
                     {
                         /// <summary>Constructs a new Run request.</summary>
@@ -1666,6 +1664,18 @@ namespace Google.Apis.CloudTasks.v2beta2
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
+                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
+                    /// syntax is the same as described in [Stackdriver's Advanced Logs
+                    /// Filters](/logging/docs/view/advanced_filters).
+                    ///
+                    /// Sample filter "app_engine_http_target: *".
+                    ///
+                    /// Note that using filters might cause fewer queues than the requested_page size to be
+                    /// returned.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
                     /// <summary>A token identifying the page of results to return.
                     ///
                     /// To request the first page results, page_token must be empty. To request the next page of
@@ -1682,18 +1692,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                     /// response to determine if more queues exist.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>`filter` can be used to specify a subset of queues. Any Queue field can be used as a
-                    /// filter and several operators as supported. For example: `<=, <, >=, >, !=, =, :`. The filter
-                    /// syntax is the same as described in [Stackdriver's Advanced Logs
-                    /// Filters](/logging/docs/view/advanced_filters).
-                    ///
-                    /// Sample filter "app_engine_http_target: *".
-                    ///
-                    /// Note that using filters might cause fewer queues than the requested_page size to be
-                    /// returned.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1729,6 +1727,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                                 Pattern = @"^projects/[^/]+/locations/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1741,15 +1748,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2380,6 +2378,10 @@ namespace Google.Apis.CloudTasks.v2beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2387,10 +2389,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2426,6 +2424,15 @@ namespace Google.Apis.CloudTasks.v2beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2438,15 +2445,6 @@ namespace Google.Apis.CloudTasks.v2beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3184,7 +3182,9 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// <summary>Rate limits.
     ///
     /// This message determines the maximum rate that tasks can be dispatched by a queue, regardless of whether the
-    /// dispatch is a first task attempt or a retry.</summary>
+    /// dispatch is a first task attempt or a retry.
+    ///
+    /// Note: The debugging command, RunTask, will run a task even if the queue has reached its RateLimits.</summary>
     public class RateLimits : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The max burst size.
@@ -3215,9 +3215,10 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
         ///
         /// If unspecified when the queue is created, Cloud Tasks will pick the default.
         ///
-        /// The maximum allowed value is 5,000. -1 indicates no limit.
+        /// The maximum allowed value is 5,000.
         ///
-        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget).
+        /// This field is output only for [pull queues](google.cloud.tasks.v2beta2.PullTarget) and always -1, which
+        /// indicates no limit. No other queue types can have `max_concurrent_tasks` set to -1.
         ///
         /// This field has the same meaning as [max_concurrent_requests in
         /// queue.yaml/xml](/appengine/docs/standard/python/config/queueref#max_concurrent_requests).</summary>

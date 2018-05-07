@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/classroom/'>Google Classroom API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180429 (1214)
+ *      <tr><th>API Rev<td>20180501 (1216)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/classroom/'>
  *              https://developers.google.com/classroom/</a>
@@ -1622,33 +1622,6 @@ namespace Google.Apis.Classroom.v1
                     [Google.Apis.Util.RequestParameterAttribute("courseWorkId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string CourseWorkId { get; private set; }
 
-                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
-                    /// the specified identifier. The identifier can be one of the following:
-                    ///
-                    /// * the numeric identifier for the user * the email address of the user * the string literal
-                    /// `"me"`, indicating the requesting user</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string UserId { get; set; }
-
-                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
-                    /// the requested value. If unspecified, submissions are returned regardless of `late`
-                    /// value.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("late", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<LateEnum> Late { get; set; }
-
-                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
-                    /// the requested value. If unspecified, submissions are returned regardless of `late`
-                    /// value.</summary>
-                    public enum LateEnum
-                    {
-                        [Google.Apis.Util.StringValueAttribute("LATE_VALUES_UNSPECIFIED")]
-                        LATEVALUESUNSPECIFIED,
-                        [Google.Apis.Util.StringValueAttribute("LATE_ONLY")]
-                        LATEONLY,
-                        [Google.Apis.Util.StringValueAttribute("NOT_LATE_ONLY")]
-                        NOTLATEONLY,
-                    }
-
                     /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent
                     /// page of results should be returned.
                     ///
@@ -1684,6 +1657,33 @@ namespace Google.Apis.Classroom.v1
                         RETURNED,
                         [Google.Apis.Util.StringValueAttribute("RECLAIMED_BY_STUDENT")]
                         RECLAIMEDBYSTUDENT,
+                    }
+
+                    /// <summary>Optional argument to restrict returned student work to those owned by the student with
+                    /// the specified identifier. The identifier can be one of the following:
+                    ///
+                    /// * the numeric identifier for the user * the email address of the user * the string literal
+                    /// `"me"`, indicating the requesting user</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("userId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string UserId { get; set; }
+
+                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
+                    /// the requested value. If unspecified, submissions are returned regardless of `late`
+                    /// value.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("late", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<LateEnum> Late { get; set; }
+
+                    /// <summary>Requested lateness value. If specified, returned student submissions are restricted by
+                    /// the requested value. If unspecified, submissions are returned regardless of `late`
+                    /// value.</summary>
+                    public enum LateEnum
+                    {
+                        [Google.Apis.Util.StringValueAttribute("LATE_VALUES_UNSPECIFIED")]
+                        LATEVALUESUNSPECIFIED,
+                        [Google.Apis.Util.StringValueAttribute("LATE_ONLY")]
+                        LATEONLY,
+                        [Google.Apis.Util.StringValueAttribute("NOT_LATE_ONLY")]
+                        NOTLATEONLY,
                     }
 
 
@@ -1729,24 +1729,6 @@ namespace Google.Apis.Classroom.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
-                            "userId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "userId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "late", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "late",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1768,6 +1750,24 @@ namespace Google.Apis.Classroom.v1
                             "states", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "states",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "userId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "userId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "late", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "late",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -3481,18 +3481,18 @@ namespace Google.Apis.Classroom.v1
                 [Google.Apis.Util.RequestParameterAttribute("courseId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string CourseId { get; private set; }
 
-                /// <summary>Maximum number of items to return. Zero means no maximum.
-                ///
-                /// The server may return fewer than the specified number of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>nextPageToken value returned from a previous list call, indicating that the subsequent page
                 /// of results should be returned.
                 ///
                 /// The list request must be otherwise identical to the one that resulted in this token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Maximum number of items to return. Zero means no maximum.
+                ///
+                /// The server may return fewer than the specified number of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -3528,18 +3528,18 @@ namespace Google.Apis.Classroom.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4201,13 +4201,6 @@ namespace Google.Apis.Classroom.v1
             }
 
 
-            /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign a
-            /// maximum.
-            ///
-            /// The server may return fewer than the specified number of results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> PageSize { get; set; }
-
             /// <summary>Restricts returned courses to those having a teacher with the specified identifier. The
             /// identifier can be one of the following:
             ///
@@ -4254,6 +4247,13 @@ namespace Google.Apis.Classroom.v1
             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string PageToken { get; set; }
 
+            /// <summary>Maximum number of items to return. Zero or unspecified indicates that the server may assign a
+            /// maximum.
+            ///
+            /// The server may return fewer than the specified number of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -4278,15 +4278,6 @@ namespace Google.Apis.Classroom.v1
             {
                 base.InitParameters();
 
-                RequestParameters.Add(
-                    "pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 RequestParameters.Add(
                     "teacherId", new Google.Apis.Discovery.Parameter
                     {
@@ -4318,6 +4309,15 @@ namespace Google.Apis.Classroom.v1
                     "pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

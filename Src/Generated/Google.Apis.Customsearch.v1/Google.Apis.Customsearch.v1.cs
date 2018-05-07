@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>CustomSearch API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180220 (1146)
+ *      <tr><th>API Rev<td>20180501 (1216)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/custom-search/v1/using_rest'>
  *              https://developers.google.com/custom-search/v1/using_rest</a>
