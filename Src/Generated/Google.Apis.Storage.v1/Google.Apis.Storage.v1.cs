@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>Cloud Storage JSON API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180404 (1189)
+ *      <tr><th>API Rev<td>20180430 (1215)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/storage/docs/json_api/'>
  *              https://developers.google.com/storage/docs/json_api/</a>
@@ -6930,8 +6930,7 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultObjectAcl")]
         public virtual System.Collections.Generic.IList<ObjectAccessControl> DefaultObjectAcl { get; set; } 
 
-        /// <summary>Encryption configuration used by default for newly inserted objects, when no encryption config is
-        /// specified.</summary>
+        /// <summary>Encryption configuration for a bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryption")]
         public virtual Bucket.EncryptionData Encryption { get; set; } 
 
@@ -7082,12 +7081,11 @@ namespace Google.Apis.Storage.v1.Data
 
         }    
 
-        /// <summary>Encryption configuration used by default for newly inserted objects, when no encryption config is
-        /// specified.</summary>
+        /// <summary>Encryption configuration for a bucket.</summary>
         public class EncryptionData
         {
             /// <summary>A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no
-            /// encryption method is specified. Limited availability; usable only by enabled projects.</summary>
+            /// encryption method is specified.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("defaultKmsKeyName")]
             public virtual string DefaultKmsKeyName { get; set; } 
 

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/iot'>Cloud IoT API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180424 (1209)
+ *      <tr><th>API Rev<td>20180501 (1216)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/iot'>
  *              https://cloud.google.com/iot</a>
@@ -486,6 +486,25 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
+                        /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` specified,
+                        /// only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` specified, all devices
+                        /// are returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("gatewayType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<GatewayTypeEnum> GatewayType { get; set; }
+
+                        /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` specified,
+                        /// only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` specified, all devices
+                        /// are returned.</summary>
+                        public enum GatewayTypeEnum
+                        {
+                            [Google.Apis.Util.StringValueAttribute("GATEWAY_TYPE_UNSPECIFIED")]
+                            GATEWAYTYPEUNSPECIFIED,
+                            [Google.Apis.Util.StringValueAttribute("GATEWAY")]
+                            GATEWAY,
+                            [Google.Apis.Util.StringValueAttribute("NON_GATEWAY")]
+                            NONGATEWAY,
+                        }
+
 
                         ///<summary>Gets the method name.</summary>
                         public override string MethodName
@@ -559,6 +578,15 @@ namespace Google.Apis.CloudIot.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "gatewayType", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "gatewayType",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1085,6 +1113,25 @@ namespace Google.Apis.CloudIot.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
+                        /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` specified,
+                        /// only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` specified, all devices
+                        /// are returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("gatewayType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<GatewayTypeEnum> GatewayType { get; set; }
+
+                        /// <summary>If `GATEWAY` is specified, only gateways are returned. If `NON_GATEWAY` specified,
+                        /// only non-gateway devices are returned. If `GATEWAY_TYPE_UNSPECIFIED` specified, all devices
+                        /// are returned.</summary>
+                        public enum GatewayTypeEnum
+                        {
+                            [Google.Apis.Util.StringValueAttribute("GATEWAY_TYPE_UNSPECIFIED")]
+                            GATEWAYTYPEUNSPECIFIED,
+                            [Google.Apis.Util.StringValueAttribute("GATEWAY")]
+                            GATEWAY,
+                            [Google.Apis.Util.StringValueAttribute("NON_GATEWAY")]
+                            NONGATEWAY,
+                        }
+
                         /// <summary>A list of device string identifiers. If empty, it will ignore this field. For
                         /// example, `['device0', 'device12']`. This field cannot hold more than 10,000
                         /// entries.</summary>
@@ -1151,6 +1198,15 @@ namespace Google.Apis.CloudIot.v1
                                 "pageSize", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "gatewayType", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "gatewayType",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,

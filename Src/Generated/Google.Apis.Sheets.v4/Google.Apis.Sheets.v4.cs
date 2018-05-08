@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/sheets/'>Google Sheets API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20180426 (1211)
+ *      <tr><th>API Rev<td>20180503 (1218)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/sheets/'>
  *              https://developers.google.com/sheets/</a>
@@ -731,11 +731,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines if the update response should include the values of the cells that were
-                /// appended. By default, responses do not include the updated values.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
-
                 /// <summary>Determines how values in the response should be rendered. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("responseValueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -798,6 +793,11 @@ namespace Google.Apis.Sheets.v4
                     FORMATTEDSTRING,
                 }
 
+                /// <summary>Determines if the update response should include the values of the cells that were
+                /// appended. By default, responses do not include the updated values.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeValuesInResponse", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> IncludeValuesInResponse { get; set; }
+
 
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.Sheets.v4.Data.ValueRange Body { get; set; }
@@ -847,15 +847,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "includeValuesInResponse",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "responseValueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseValueRenderOption",
@@ -886,6 +877,15 @@ namespace Google.Apis.Sheets.v4
                         "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "responseDateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "includeValuesInResponse", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeValuesInResponse",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1532,29 +1532,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
-
-                /// <summary>The major dimension that results should use.
-                ///
-                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
-                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
-                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
-                public enum MajorDimensionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
-                    DIMENSIONUNSPECIFIED,
-                    [Google.Apis.Util.StringValueAttribute("ROWS")]
-                    ROWS,
-                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
-                    COLUMNS,
-                }
-
                 /// <summary>How values should be represented in the output. The default render option is
                 /// ValueRenderOption.FORMATTED_VALUE.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("valueRenderOption", Google.Apis.Util.RequestParameterType.Query)]
@@ -1587,6 +1564,29 @@ namespace Google.Apis.Sheets.v4
                     SERIALNUMBER,
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
                     FORMATTEDSTRING,
+                }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("majorDimension", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<MajorDimensionEnum> MajorDimension { get; set; }
+
+                /// <summary>The major dimension that results should use.
+                ///
+                /// For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting
+                /// `range=A1:B2,majorDimension=ROWS` will return `[[1,2],[3,4]]`, whereas requesting
+                /// `range=A1:B2,majorDimension=COLUMNS` will return `[[1,3],[2,4]]`.</summary>
+                public enum MajorDimensionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("DIMENSION_UNSPECIFIED")]
+                    DIMENSIONUNSPECIFIED,
+                    [Google.Apis.Util.StringValueAttribute("ROWS")]
+                    ROWS,
+                    [Google.Apis.Util.StringValueAttribute("COLUMNS")]
+                    COLUMNS,
                 }
 
 
@@ -1632,15 +1632,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "majorDimension", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "majorDimension",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "valueRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueRenderOption",
@@ -1653,6 +1644,15 @@ namespace Google.Apis.Sheets.v4
                         "dateTimeRenderOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "dateTimeRenderOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "majorDimension", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "majorDimension",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1696,23 +1696,6 @@ namespace Google.Apis.Sheets.v4
                 [Google.Apis.Util.RequestParameterAttribute("range", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Range { get; private set; }
 
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
-
-                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
-                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
-                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
-                public enum ResponseDateTimeRenderOptionEnum
-                {
-                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
-                    SERIALNUMBER,
-                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
-                    FORMATTEDSTRING,
-                }
-
                 /// <summary>Determines if the update response should include the values of the cells that were updated.
                 /// By default, responses do not include the updated values. If the range to write was larger than than
                 /// the range actually written, the response will include all values in the requested range (excluding
@@ -1750,6 +1733,23 @@ namespace Google.Apis.Sheets.v4
                     RAW,
                     [Google.Apis.Util.StringValueAttribute("USER_ENTERED")]
                     USERENTERED,
+                }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                [Google.Apis.Util.RequestParameterAttribute("responseDateTimeRenderOption", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<ResponseDateTimeRenderOptionEnum> ResponseDateTimeRenderOption { get; set; }
+
+                /// <summary>Determines how dates, times, and durations in the response should be rendered. This is
+                /// ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is
+                /// [DateTimeRenderOption.SERIAL_NUMBER].</summary>
+                public enum ResponseDateTimeRenderOptionEnum
+                {
+                    [Google.Apis.Util.StringValueAttribute("SERIAL_NUMBER")]
+                    SERIALNUMBER,
+                    [Google.Apis.Util.StringValueAttribute("FORMATTED_STRING")]
+                    FORMATTEDSTRING,
                 }
 
 
@@ -1801,15 +1801,6 @@ namespace Google.Apis.Sheets.v4
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "responseDateTimeRenderOption",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "includeValuesInResponse", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeValuesInResponse",
@@ -1831,6 +1822,15 @@ namespace Google.Apis.Sheets.v4
                         "valueInputOption", new Google.Apis.Discovery.Parameter
                         {
                             Name = "valueInputOption",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "responseDateTimeRenderOption", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "responseDateTimeRenderOption",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2262,6 +2262,38 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The rule to add.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rule")]
         public virtual ConditionalFormatRule Rule { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Creates a group over the specified range.
+    ///
+    /// If the requested range is a superset of the range of an existing group G, then the depth of G will be
+    /// incremented and this new group G' will have the depth of that group. For example, a group [C:D, depth 1] + [B:E]
+    /// results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested range is a subset of the range of an
+    /// existing group G, then the depth of the new group G' will be one greater than the depth of G. For example, a
+    /// group [B:E, depth 1] + [C:D] results in groups [B:E, depth 1] and [C:D, depth 2]. If the requested range starts
+    /// before and ends within, or starts within and ends after, the range of an existing group G, then the range of the
+    /// existing group G will become the union of the ranges, and the new group G' will have depth one greater than the
+    /// depth of G and range as the intersection of the ranges. For example, a group [B:D, depth 1] + [C:E] results in
+    /// groups [B:E, depth 1] and [C:D, depth 2].</summary>
+    public class AddDimensionGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range over which to create a group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual DimensionRange Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of adding a group.</summary>
+    public class AddDimensionGroupResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All groups of a dimension after adding a group to that dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionGroups")]
+        public virtual System.Collections.Generic.IList<DimensionGroup> DimensionGroups { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3717,6 +3749,26 @@ namespace Google.Apis.Sheets.v4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Allows you to organize the date-time values in a source data column into buckets based on selected
+    /// parts of their date or time values. For example, consider a pivot table showing sales transactions by date:
+    ///
+    /// +----------+--------------+ | Date     | SUM of Sales | +----------+--------------+ | 1/1/2017 |      $621.14 |
+    /// | 2/3/2017 |      $708.84 | | 5/8/2017 |      $326.84 | ... +----------+--------------+ Applying a date-time
+    /// group rule with a DateTimeRuleType of YEAR_MONTH results in the following pivot table.
+    ///
+    /// +--------------+--------------+ | Grouped Date | SUM of Sales | +--------------+--------------+ | 2017-Jan     |
+    /// $53,731.78 | | 2017-Feb     |   $83,475.32 | | 2017-Mar     |   $94,385.05 | ...
+    /// +--------------+--------------+</summary>
+    public class DateTimeRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of date-time grouping to apply.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Removes the banded range with the given ID from the spreadsheet.</summary>
     public class DeleteBandingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3773,6 +3825,31 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The metadata that was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletedDeveloperMetadata")]
         public virtual System.Collections.Generic.IList<DeveloperMetadata> DeletedDeveloperMetadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Deletes a group over the specified range by decrementing the depth of the dimensions in the range.
+    ///
+    /// For example, assume the sheet has a depth-1 group over B:E and a depth-2 group over C:D. Deleting a group over
+    /// D:E would leave the sheet with a depth-1 group over B:D and a depth-2 group over C:C.</summary>
+    public class DeleteDimensionGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The range of the group to be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual DimensionRange Range { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>The result of deleting a group.</summary>
+    public class DeleteDimensionGroupResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All groups of a dimension after deleting a group from that dimension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionGroups")]
+        public virtual System.Collections.Generic.IList<DimensionGroup> DimensionGroups { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3971,6 +4048,33 @@ namespace Google.Apis.Sheets.v4.Data
         /// If left unspecified, all developer metadata visibile to the requesting project is considered.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>A group over an interval of rows or columns on a sheet, which can contain or be contained within other
+    /// groups. A group can be collapsed or expanded as a unit on the sheet.</summary>
+    public class DimensionGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if this group is collapsed. A collapsed group will remain collapsed if an overlapping group at
+        /// a shallower depth is expanded.
+        ///
+        /// collapsed == true does not imply that all dimensions within the group are hidden, since a dimension's
+        /// visibility can change independently from this group property. However, when this property is updated, all
+        /// dimensions within it will be set to hidden if collapsed == true, or set to visible if collapsed ==
+        /// false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collapsed")]
+        public virtual System.Nullable<bool> Collapsed { get; set; } 
+
+        /// <summary>The depth of the group, representing how many groups have a range that wholly contains the range of
+        /// this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("depth")]
+        public virtual System.Nullable<int> Depth { get; set; } 
+
+        /// <summary>The range over which this group exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("range")]
+        public virtual DimensionRange Range { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4406,6 +4510,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("columnCount")]
         public virtual System.Nullable<int> ColumnCount { get; set; } 
 
+        /// <summary>True if the column grouping control toggle is shown after the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnGroupControlAfter")]
+        public virtual System.Nullable<bool> ColumnGroupControlAfter { get; set; } 
+
         /// <summary>The number of columns that are frozen in the grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("frozenColumnCount")]
         public virtual System.Nullable<int> FrozenColumnCount { get; set; } 
@@ -4421,6 +4529,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The number of rows in the grid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<int> RowCount { get; set; } 
+
+        /// <summary>True if the row grouping control toggle is shown after the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowGroupControlAfter")]
+        public virtual System.Nullable<bool> RowGroupControlAfter { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5017,6 +5129,10 @@ namespace Google.Apis.Sheets.v4.Data
     /// PivotGroup that does not.</summary>
     public class PivotGroupRule : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A DateTimeRule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateTimeRule")]
+        public virtual DateTimeRule DateTimeRule { get; set; } 
+
         /// <summary>A HistogramRule.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("histogramRule")]
         public virtual HistogramRule HistogramRule { get; set; } 
@@ -5247,6 +5363,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addConditionalFormatRule")]
         public virtual AddConditionalFormatRuleRequest AddConditionalFormatRule { get; set; } 
 
+        /// <summary>Creates a group over the specified range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addDimensionGroup")]
+        public virtual AddDimensionGroupRequest AddDimensionGroup { get; set; } 
+
         /// <summary>Adds a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addFilterView")]
         public virtual AddFilterViewRequest AddFilterView { get; set; } 
@@ -5311,6 +5431,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>Deletes rows or columns in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDimension")]
         public virtual DeleteDimensionRequest DeleteDimension { get; set; } 
+
+        /// <summary>Deletes a group over the specified range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteDimensionGroup")]
+        public virtual DeleteDimensionGroupRequest DeleteDimensionGroup { get; set; } 
 
         /// <summary>Deletes an embedded object (e.g, chart, image) in a sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteEmbeddedObject")]
@@ -5420,6 +5544,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateDeveloperMetadata")]
         public virtual UpdateDeveloperMetadataRequest UpdateDeveloperMetadata { get; set; } 
 
+        /// <summary>Updates the state of the specified group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateDimensionGroup")]
+        public virtual UpdateDimensionGroupRequest UpdateDimensionGroup { get; set; } 
+
         /// <summary>Updates dimensions' properties.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateDimensionProperties")]
         public virtual UpdateDimensionPropertiesRequest UpdateDimensionProperties { get; set; } 
@@ -5463,6 +5591,10 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("addChart")]
         public virtual AddChartResponse AddChart { get; set; } 
 
+        /// <summary>A reply from adding a dimension group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addDimensionGroup")]
+        public virtual AddDimensionGroupResponse AddDimensionGroup { get; set; } 
+
         /// <summary>A reply from adding a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addFilterView")]
         public virtual AddFilterViewResponse AddFilterView { get; set; } 
@@ -5490,6 +5622,10 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>A reply from deleting a developer metadata entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteDeveloperMetadata")]
         public virtual DeleteDeveloperMetadataResponse DeleteDeveloperMetadata { get; set; } 
+
+        /// <summary>A reply from deleting a dimension group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteDimensionGroup")]
+        public virtual DeleteDimensionGroupResponse DeleteDimensionGroup { get; set; } 
 
         /// <summary>A reply from duplicating a filter view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duplicateFilterView")]
@@ -5596,6 +5732,11 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("charts")]
         public virtual System.Collections.Generic.IList<EmbeddedChart> Charts { get; set; } 
 
+        /// <summary>All column groups on this sheet, ordered by increasing range start index, then by group
+        /// depth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnGroups")]
+        public virtual System.Collections.Generic.IList<DimensionGroup> ColumnGroups { get; set; } 
+
         /// <summary>The conditional format rules in this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalFormats")]
         public virtual System.Collections.Generic.IList<ConditionalFormatRule> ConditionalFormats { get; set; } 
@@ -5627,6 +5768,11 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The protected ranges in this sheet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectedRanges")]
         public virtual System.Collections.Generic.IList<ProtectedRange> ProtectedRanges { get; set; } 
+
+        /// <summary>All row groups on this sheet, ordered by increasing range start index, then by group
+        /// depth.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowGroups")]
+        public virtual System.Collections.Generic.IList<DimensionGroup> RowGroups { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6200,6 +6346,24 @@ namespace Google.Apis.Sheets.v4.Data
         /// <summary>The updated developer metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("developerMetadata")]
         public virtual System.Collections.Generic.IList<DeveloperMetadata> DeveloperMetadata { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Updates the state of the specified group.</summary>
+    public class UpdateDimensionGroupRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The group whose state should be updated. The range and depth of the group should specify a valid
+        /// group on the sheet, and all other fields updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensionGroup")]
+        public virtual DimensionGroup DimensionGroup { get; set; } 
+
+        /// <summary>The fields that should be updated.  At least one field must be specified. The root `dimensionGroup`
+        /// is implied and should not be specified. A single `"*"` can be used as short-hand for listing every
+        /// field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual object Fields { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
