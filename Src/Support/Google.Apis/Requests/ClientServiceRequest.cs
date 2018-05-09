@@ -293,17 +293,11 @@ namespace Google.Apis.Requests
         }
 
         /// <summary>Generates the right URL for this request.</summary>
-        protected string GenerateRequestUri()
-        {
-            return CreateBuilder().BuildUri().ToString();
-        }
+        protected string GenerateRequestUri() => CreateBuilder().BuildUri().AbsoluteUri;
 
         /// <summary>Returns the body of this request.</summary>
         /// <returns>The body of this request.</returns>
-        protected virtual object GetBody()
-        {
-            return null;
-        }
+        protected virtual object GetBody() => null;
 
         #region ETag
 

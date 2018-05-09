@@ -264,7 +264,7 @@ namespace Google.Apis.Download
                 uri.Query = uri.Query.Substring(1) + "&alt=media";
             }
 
-            var request = new HttpRequestMessage(HttpMethod.Get, uri.ToString());
+            var request = new HttpRequestMessage(HttpMethod.Get, uri.Uri);
             request.Headers.Range = Range;
             if (ResponseStreamInterceptorProvider != null)
             {
