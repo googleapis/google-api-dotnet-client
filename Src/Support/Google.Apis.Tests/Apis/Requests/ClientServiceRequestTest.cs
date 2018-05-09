@@ -94,6 +94,7 @@ namespace Google.Apis.Tests.Apis.Requests
         /// <summary>A mock service request which returns <see cref="MockResponse"/>.</summary>
         class TestClientServiceRequest : ClientServiceRequest<MockResponse>
         {
+            public string OverrideRestPath { get; set; }
             /// <summary>Gets or sets a request number. It's used on concurrent tests.</summary>
             public int CallNum { get; set; }
             private string httpMethod;
@@ -105,27 +106,25 @@ namespace Google.Apis.Tests.Apis.Requests
                 this.httpMethod = httpMethod;
                 this.body = body;
                 InitParameters();
+                RequestParameters.Add("id", new Parameter
+                {
+                    Name = "id",
+                    ParameterType = "path"
+                });
             }
 
-            public override string MethodName
-            {
-                get { return httpMethod; }
-            }
+            public override string MethodName => httpMethod;
 
-            public override string RestPath
-            {
-                get { return "restPath" + CallNum; }
-            }
+            public override string RestPath => OverrideRestPath ?? "restPath" + CallNum;
 
-            public override string HttpMethod
-            {
-                get { return httpMethod; }
-            }
+            public override string HttpMethod => httpMethod;
 
-            protected override object GetBody()
-            {
-                return body;
-            }
+            protected override object GetBody() => body;
+
+            [RequestParameter("id", RequestParameterType.Path)]
+            public string Id { get; set; }
+
+            public string GenerateRequestUriPublic() => GenerateRequestUri();
         }
 
         /// <summary>A mock message handler which returns an error.</summary>
@@ -1306,6 +1305,21 @@ namespace Google.Apis.Tests.Apis.Requests
                 Assert.Throws<Exception>(() => request.Execute());
                 Assert.True(interceptor.Count > 0);
             }
+        }
+
+        [Theory]
+        [InlineData("abc", "http://www.example.com/test/abc")]
+        [InlineData(" %va/ue", "http://www.example.com/test/%20%25va%2Fue")]
+        [InlineData("foo/bar/[baz] test.txt", "http://www.example.com/test/foo%2Fbar%2F%5Bbaz%5D%20test.txt")]
+        public void GenerateRequestUri(string idValue, string expectedRequestUri)
+        {
+            var request = new TestClientServiceRequest(new MockClientService("http://www.example.com"), "POST", null)
+            {
+                OverrideRestPath = "test/{id}",
+                Id = idValue
+            };
+            string requestUri = request.GenerateRequestUriPublic();
+            Assert.Equal(expectedRequestUri, requestUri);
         }
 
     }

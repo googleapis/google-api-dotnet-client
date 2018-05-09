@@ -95,7 +95,7 @@ namespace Google.Apis.Tests.Apis.Requests
             // Verify both the URI and the string representation.
             // Required because URI equality hides some special character processing.
             Assert.Equal(new Uri(expectedRequestUri), request.RequestUri);
-            Assert.Equal(new Uri(expectedRequestUri).AbsoluteUri, request.RequestUri.AbsoluteUri);
+            Assert.Equal(expectedRequestUri, request.RequestUri.AbsoluteUri);
         }
 
         /// <summary>Verifies that a single query parameter is correctly encoded in the request URI.</summary>
@@ -223,8 +223,10 @@ namespace Google.Apis.Tests.Apis.Requests
         }
 
         /// <summary>Verifies that path parameters are URL encoded.</summary>
-        [Fact]
-        public void TestPathParameterWithUrlEncode()
+        [Theory]
+        [InlineData(" %va/ue", "http://www.example.com/test/%20%25va%2Fue")]
+        [InlineData("foo/bar/[baz] test.txt", "http://www.example.com/test/foo%2Fbar%2F%5Bbaz%5D%20test.txt")]
+        public void TestPathParameterWithUrlEncode(string idValue, string expectedRequestUri)
         {
             var builder = new RequestBuilder()
                 {
@@ -232,10 +234,13 @@ namespace Google.Apis.Tests.Apis.Requests
                     Path = "test/{id}",
                 };
 
-            builder.AddParameter(RequestParameterType.Path, "id", " %va/ue");
+            builder.AddParameter(RequestParameterType.Path, "id", idValue);
 
             var request = builder.CreateRequest();
-            Assert.Equal(new Uri("http://www.example.com/test/%20%25va%2Fue"), request.RequestUri);
+            // Verify both the URI and the string representation.
+            // Required because URI equality hides some special character processing.
+            Assert.Equal(new Uri(expectedRequestUri), request.RequestUri);
+            Assert.Equal(expectedRequestUri, request.RequestUri.AbsoluteUri);
         }
 
         /// <summary>Tests a path parameter which contains '?' with query parameter.</summary>
