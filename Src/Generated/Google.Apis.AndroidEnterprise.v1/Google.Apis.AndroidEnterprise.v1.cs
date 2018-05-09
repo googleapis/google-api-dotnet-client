@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>Google Play EMM API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180425 (1210)
+ *      <tr><th>API Rev<td>20180502 (1217)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android/work/play/emm-api'>
  *              https://developers.google.com/android/work/play/emm-api</a>
@@ -8773,11 +8773,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         public virtual MaintenanceWindow MaintenanceWindow { get; set; } 
 
         /// <summary>The availability granted to the device for the specified products. "all" gives the device access to
-        /// all products, regardless of approval status. "allApproved" entitles the device to access all products that
-        /// are approved for the enterprise. "allApproved" and "all" do not enable automatic visibility of "alpha" or
-        /// "beta" tracks. "whitelist" grants the device access the products specified in productPolicy[]. Only products
-        /// that are approved or products that were previously approved (products with revoked approval) by the
-        /// enterprise can be whitelisted. If no value is provided, the availability set at the user level is applied by
+        /// all products, regardless of approval status. "all" does not enable automatic visibility of "alpha" or "beta"
+        /// tracks. "whitelist" grants the device access the products specified in productPolicy[]. Only products that
+        /// are approved or products that were previously approved (products with revoked approval) by the enterprise
+        /// can be whitelisted. If no value is provided, the availability set at the user level is applied by
         /// default.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("productAvailabilityPolicy")]
         public virtual string ProductAvailabilityPolicy { get; set; } 

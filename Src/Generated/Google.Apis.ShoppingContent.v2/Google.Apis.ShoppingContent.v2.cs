@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/shopping-content'>Content API for Shopping</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180410 (1195)
+ *      <tr><th>API Rev<td>20180507 (1222)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/shopping-content'>
  *              https://developers.google.com/shopping-content</a>
@@ -9290,6 +9290,14 @@ namespace Google.Apis.ShoppingContent.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; } 
 
+        /// <summary>The account ID by which this merchant is known to the POS provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posExternalAccountId")]
+        public virtual string PosExternalAccountId { get; set; } 
+
+        /// <summary>The ID of POS provider. Required only for SetPosProvider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posProviderId")]
+        public virtual System.Nullable<ulong> PosProviderId { get; set; } 
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }    
@@ -9331,6 +9339,10 @@ namespace Google.Apis.ShoppingContent.v2.Data
         /// <summary>The retrieved or updated Lia settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liaSettings")]
         public virtual LiaSettings LiaSettings { get; set; } 
+
+        /// <summary>The list of POS providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posProviders")]
+        public virtual System.Collections.Generic.IList<PosProviders> PosProviders { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11416,6 +11428,38 @@ namespace Google.Apis.ShoppingContent.v2.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<PosStore> Resources { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosProviders : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Country code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; } 
+
+        /// <summary>A list of POS providers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("posProviders")]
+        public virtual System.Collections.Generic.IList<PosProvidersPosProvider> PosProvidersValue { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    public class PosProvidersPosProvider : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The display name of Pos Provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; } 
+
+        /// <summary>The full name of this POS Provider.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullName")]
+        public virtual string FullName { get; set; } 
+
+        /// <summary>The ID of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providerId")]
+        public virtual System.Nullable<ulong> ProviderId { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

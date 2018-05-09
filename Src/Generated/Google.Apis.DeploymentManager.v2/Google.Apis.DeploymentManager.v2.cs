@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/deployment-manager/'>Google Cloud Deployment Manager API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180323 (1177)
+ *      <tr><th>API Rev<td>20180503 (1218)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/deployment-manager/'>
  *              https://cloud.google.com/deployment-manager/</a>
@@ -1051,7 +1051,7 @@ namespace Google.Apis.DeploymentManager.v2
         /// <param name="project">Project ID for this request.</param>
         /// <param name="resource">Name of the resource for
         /// this request.</param>
-        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DeploymentManager.v2.Data.Policy body, string project, string resource)
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.DeploymentManager.v2.Data.GlobalSetPolicyRequest body, string project, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, resource);
         }
@@ -1060,7 +1060,7 @@ namespace Google.Apis.DeploymentManager.v2
         public class SetIamPolicyRequest : DeploymentManagerBaseServiceRequest<Google.Apis.DeploymentManager.v2.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2.Data.Policy body, string project, string resource)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.DeploymentManager.v2.Data.GlobalSetPolicyRequest body, string project, string resource)
                 : base(service)
             {
                 Project = project;
@@ -1080,7 +1080,7 @@ namespace Google.Apis.DeploymentManager.v2
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.DeploymentManager.v2.Data.Policy Body { get; set; }
+            Google.Apis.DeploymentManager.v2.Data.GlobalSetPolicyRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -2466,7 +2466,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` or `joe@example.com`.
+        /// `alice@gmail.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -2723,6 +2723,26 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }    
 
+    public class GlobalSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify
+        /// bindings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the
+        /// etag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to
+        /// a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might
+        /// reject them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; } 
+
+    }    
+
     public class ImportFile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contents of the file.</summary>
@@ -2875,7 +2895,8 @@ namespace Google.Apis.DeploymentManager.v2.Data
     /// ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Reserved for future use.</summary>
+        /// <summary>[Output Only] The value of `requestId` if you provided it in the request. Not present
+        /// otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
@@ -3073,15 +3094,20 @@ namespace Google.Apis.DeploymentManager.v2.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
     /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
     /// permissions defined by IAM.
     ///
-    /// **Example**
+    /// **JSON Example**
     ///
     /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
     /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// **YAML Example**
+    ///
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
+    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
