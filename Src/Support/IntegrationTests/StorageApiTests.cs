@@ -21,9 +21,12 @@ using Google.Apis.Services;
 using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
 using Google.Apis.Tests.Mocks;
+using Google.Apis.Upload;
 using IntegrationTests.Utils;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
 using Xunit;
 
 namespace IntegrationTests
@@ -124,6 +127,36 @@ namespace IntegrationTests
                 req3.ETagAction = Google.Apis.ETagAction.IfMatch;
                 var ex3 = Assert.Throws<GoogleApiException>(() => req3.Execute());
                 Assert.Contains("[Precondition Failed", ex3.Message);
+            }
+            finally
+            {
+                DeleteTestBuckets(client);
+            }
+        }
+
+        [Fact]
+        public void UriEscaping()
+        {
+            StorageService client = new StorageService(new BaseClientService.Initializer
+            {
+                HttpClientInitializer = Helper.GetServiceCredential().CreateScoped(StorageService.Scope.DevstorageFullControl),
+                ApplicationName = "IntegrationTest",
+            });
+            var bucket = CreateTestBucket(client);
+            try
+            {
+                const string name = "foo [baz] ";
+                var obj = new Google.Apis.Storage.v1.Data.Object { Name = name };
+                var data = "Hello test!";
+                // Upload to GCS using a name with special characters
+                var stUpload = new MemoryStream(Encoding.ASCII.GetBytes(data));
+                var progress = client.Objects.Insert(obj, bucket.Name, stUpload, "text/plain").Upload();
+                Assert.Equal(UploadStatus.Completed, progress.Status);
+                Assert.Equal(stUpload.Length, progress.BytesSent);
+                // Download the same object and verify
+                var stDownload = new MemoryStream();
+                client.Objects.Get(bucket.Name, name).Download(stDownload);
+                Assert.Equal(stUpload.ToArray(), stDownload.ToArray());
             }
             finally
             {
