@@ -13,8 +13,18 @@
     <RepositoryUrl>https://github.com/google/google-api-dotnet-client</RepositoryUrl>
     <PackageIconUrl>https://www.gstatic.com/images/branding/product/1x/google_developers_64dp.png</PackageIconUrl>
     <Description>
+{% noblank %}
+{% if api.module.name in features.clouds %}
+{% for old_api, cloud_api in features.clouds.items %}
+{% if old_api == api.module.name %}
+      This is not the recommended package for working with {% camel_case api.name %}, please use: {{ cloud_api }}
+      This is the deprecated Google APIs Client Library for working with {% camel_case api.name %} {{ api.version }}.
+{% endif %}
+{% endfor %}
+{% else %}
       Google APIs Client Library for working with {% camel_case api.name %} {{ api.version }}.
-
+{% endif %}
+{% endnoblank %}
       Supported Platforms:
       - .NET Framework 4.5+
       - NetStandard1.3, providing .NET Core support.
@@ -24,7 +34,7 @@
       - Windows 8 Apps
       - Windows Phone 8.1
       - Windows Phone Silverlight 8.0
-	  
+
       Incompatible platforms:
       - .NET Framework &lt; 4.0
       - Silverlight
