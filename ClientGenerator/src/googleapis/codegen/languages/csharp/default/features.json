@@ -6,7 +6,7 @@
   "pclSupportVersion": "1.25.0", "comment3": "Version of PCL support library.",
   "net40SupportVersion": "1.10.0", "comment4": "Version of net40 support library.",
 
-  "clouds_comment": "Defines the map of Google.Cloud packages that superseed Google.Apis packages",
+  "clouds_comment": "Defines the map of Google.Cloud packages that supercede Google.Apis packages",
   "clouds": {
     "Google.Apis.Bigquery.v2": "Google.Cloud.BigQuery.V2",
     "Google.Apis.Datastore.v1": "Google.Cloud.Datastore.V1",
