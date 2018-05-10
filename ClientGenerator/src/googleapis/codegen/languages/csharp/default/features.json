@@ -4,5 +4,21 @@
   "releaseVersion": "1.33.0", "comment1": "Version of generated package.",
   "currentSupportVersion": "1.33.0", "comment2": "Version of support library upon which to depend.",
   "pclSupportVersion": "1.25.0", "comment3": "Version of PCL support library.",
-  "net40SupportVersion": "1.10.0", "comment4": "Version of net40 support library."
+  "net40SupportVersion": "1.10.0", "comment4": "Version of net40 support library.",
+
+  "clouds_comment": "Defines the map of Google.Cloud packages that supercede Google.Apis packages",
+  "clouds": {
+    "Google.Apis.Bigquery.v2": "Google.Cloud.BigQuery.V2",
+    "Google.Apis.Datastore.v1": "Google.Cloud.Datastore.V1",
+    "Google.Apis.CloudNaturalLanguage.v1": "Google.Cloud.Language.V1",
+    "Google.Apis.Logging.v2": "Google.Cloud.Logging.V2",
+    "Google.Apis.Monitoring.v3": "Google.Cloud.Monitoring.V3",
+    "Google.Apis.Spanner.v1": "Google.Cloud.Spanner.Data",
+    "Google.Apis.Speech.v1": "Google.Cloud.Speech.V1",
+    "Google.Apis.Storage.v1": "Google.Cloud.Storage.V1",
+    "Google.Apis.Cloudtrace.v1": "Google.Cloud.Trace.V1",
+    "Google.Apis.Translate.v2": "Google.Cloud.Translation.V2",
+    "Google.Apis.CloudVideoIntelligence.v1": "Google.Cloud.VideoIntelligence.V1",
+    "Google.Apis.Vision.v1": "Google.Cloud.Vision.V1"
+  }
 }
