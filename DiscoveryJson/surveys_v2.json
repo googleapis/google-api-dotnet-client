@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/jDMvkLxpNyBiYfU6I51AArDTeDU\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/CtHMh8AGd-iuVsrrPwqP5sDQdSg\"",
  "discoveryVersion": "v1",
  "id": "surveys:v2",
  "name": "surveys",
  "canonicalName": "Surveys",
  "version": "v2",
- "revision": "20170407",
+ "revision": "20180508",
  "title": "Surveys API",
  "description": "Creates and conducts surveys, lists the surveys that an authenticated user owns, and retrieves survey results and information about specified surveys.",
  "ownerDomain": "google.com",
@@ -95,63 +95,6 @@
     "id": {
      "type": "integer",
      "format": "int32"
-    }
-   }
-  },
-  "MobileAppPanel": {
-   "id": "MobileAppPanel",
-   "type": "object",
-   "description": "Representation of an individual pre-defined panel object defining a targeted audience of opinion rewards mobile app users.",
-   "properties": {
-    "country": {
-     "type": "string",
-     "description": "Country code for the country of the users that the panel contains. Uses standard ISO 3166-1 2-character language codes. For instance, 'US' for the United States, and 'GB' for the United Kingdom. Any survey created targeting this panel must also target the corresponding country."
-    },
-    "isPublicPanel": {
-     "type": "boolean",
-     "description": "Whether or not the panel is accessible to all API users."
-    },
-    "language": {
-     "type": "string",
-     "description": "Language code that the panel can target. For instance, 'en-US'. Uses standard BCP47 language codes. See specification. Any survey created targeting this panel must also target the corresponding language."
-    },
-    "mobileAppPanelId": {
-     "type": "string",
-     "description": "Unique panel ID string. This corresponds to the mobile_app_panel_id used in Survey Insert requests."
-    },
-    "name": {
-     "type": "string",
-     "description": "Human readable name of the audience panel."
-    },
-    "owners": {
-     "type": "array",
-     "description": "List of email addresses for users who can target members of this panel. Must contain at least the address of the user making the API call for panels that are not public. This field will be empty for public panels.",
-     "items": {
-      "type": "string"
-     }
-    }
-   }
-  },
-  "MobileAppPanelsListResponse": {
-   "id": "MobileAppPanelsListResponse",
-   "type": "object",
-   "properties": {
-    "pageInfo": {
-     "$ref": "PageInfo"
-    },
-    "requestId": {
-     "type": "string",
-     "description": "Unique request ID used for logging and debugging. Please include in any error reporting or troubleshooting requests."
-    },
-    "resources": {
-     "type": "array",
-     "description": "An individual predefined panel of Opinion Rewards mobile users.",
-     "items": {
-      "$ref": "MobileAppPanel"
-     }
-    },
-    "tokenPagination": {
-     "$ref": "TokenPagination"
     }
    }
   },
@@ -307,10 +250,6 @@
       ]
      }
     },
-    "mobileAppPanelId": {
-     "type": "string",
-     "description": "Key for predefined panel that causes survey to be sent to a predefined set of Opinion Rewards App users. You must set PopulationSource to ANDROID_APP_PANEL to use this field."
-    },
     "populationSource": {
      "type": "string",
      "description": "Online population source where the respondents are sampled from."
@@ -333,7 +272,7 @@
     },
     "maxCostPerResponseNanos": {
      "type": "string",
-     "description": "Threshold to start a survey automatically if the quoted price is at most this value. When a survey has a Screener (threshold) question, it must go through an incidence pricing test to determine the final cost per response. Typically you will have to make a followup call to start the survey giving the final computed cost per response. If the survey has no threshold_answers, setting this property will return an error. By specifying this property, you indicate the max price per response you are willing to pay in advance of the incidence test. If the price turns out to be lower than the specified value, the survey will begin immediately and you will be charged at the rate determined by the incidence pricing test. If the price turns out to be greater than the specified value the survey will not be started and you will instead be notified what price was determined by the incidence test. At that point, you must raise the value of this property to be greater than or equal to that cost before attempting to start the survey again. This will immediately start the survey as long the incidence test was run within the last 21 days.",
+     "description": "*Deprecated* Threshold to start a survey automatically if the quoted price is at most this value. When a survey has a Screener (threshold) question, it must go through an incidence pricing test to determine the final cost per response. Typically you will have to make a followup call to start the survey giving the final computed cost per response. If the survey has no threshold_answers, setting this property will return an error. By specifying this property, you indicate the max price per response you are willing to pay in advance of the incidence test. If the price turns out to be lower than the specified value, the survey will begin immediately and you will be charged at the rate determined by the incidence pricing test. If the price turns out to be greater than the specified value the survey will not be started and you will instead be notified what price was determined by the incidence test. At that point, you must raise the value of this property to be greater than or equal to that cost before attempting to start the survey again. This will immediately start the survey as long the incidence test was run within the last 21 days. This will no longer be available after June 2018.",
      "format": "int64"
     },
     "nanos": {
@@ -527,7 +466,7 @@
    "properties": {
     "maxCostPerResponseNanos": {
      "type": "string",
-     "description": "Threshold to start a survey automically if the quoted prices is less than or equal to this value. See Survey.Cost for more details.",
+     "description": "*Deprecated* Threshold to start a survey automatically if the quoted prices is less than or equal to this value. See Survey.Cost for more details. This will no longer be available after June 2018.",
      "format": "int64"
     }
    }
@@ -566,92 +505,6 @@
   }
  },
  "resources": {
-  "mobileapppanels": {
-   "methods": {
-    "get": {
-     "id": "surveys.mobileapppanels.get",
-     "path": "mobileAppPanels/{panelId}",
-     "httpMethod": "GET",
-     "description": "Retrieves a MobileAppPanel that is available to the authenticated user.",
-     "parameters": {
-      "panelId": {
-       "type": "string",
-       "description": "External URL ID for the panel.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "panelId"
-     ],
-     "response": {
-      "$ref": "MobileAppPanel"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/surveys",
-      "https://www.googleapis.com/auth/surveys.readonly",
-      "https://www.googleapis.com/auth/userinfo.email"
-     ]
-    },
-    "list": {
-     "id": "surveys.mobileapppanels.list",
-     "path": "mobileAppPanels",
-     "httpMethod": "GET",
-     "description": "Lists the MobileAppPanels available to the authenticated user.",
-     "parameters": {
-      "maxResults": {
-       "type": "integer",
-       "format": "uint32",
-       "location": "query"
-      },
-      "startIndex": {
-       "type": "integer",
-       "format": "uint32",
-       "location": "query"
-      },
-      "token": {
-       "type": "string",
-       "location": "query"
-      }
-     },
-     "response": {
-      "$ref": "MobileAppPanelsListResponse"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/surveys",
-      "https://www.googleapis.com/auth/surveys.readonly",
-      "https://www.googleapis.com/auth/userinfo.email"
-     ]
-    },
-    "update": {
-     "id": "surveys.mobileapppanels.update",
-     "path": "mobileAppPanels/{panelId}",
-     "httpMethod": "PUT",
-     "description": "Updates a MobileAppPanel. Currently the only property that can be updated is the owners property.",
-     "parameters": {
-      "panelId": {
-       "type": "string",
-       "description": "External URL ID for the panel.",
-       "required": true,
-       "location": "path"
-      }
-     },
-     "parameterOrder": [
-      "panelId"
-     ],
-     "request": {
-      "$ref": "MobileAppPanel"
-     },
-     "response": {
-      "$ref": "MobileAppPanel"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/surveys",
-      "https://www.googleapis.com/auth/userinfo.email"
-     ]
-    }
-   }
-  },
   "results": {
    "methods": {
     "get": {

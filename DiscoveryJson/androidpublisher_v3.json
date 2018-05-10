@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/BkJxqosH1a00zAdsgGajyPHSOBg\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/H-o8b_fFcJw8NU8kyQ0bDCyTZEI\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v3",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v3",
- "revision": "20180502",
+ "revision": "20180504",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -178,6 +178,42 @@
     "id": {
      "type": "string",
      "description": "The ID of the edit that can be used in subsequent API calls."
+    }
+   }
+  },
+  "Bundle": {
+   "id": "Bundle",
+   "type": "object",
+   "properties": {
+    "sha1": {
+     "type": "string",
+     "description": "A sha1 hash of the upload payload, encoded as a hex string and matching the output of the sha1sum command."
+    },
+    "sha256": {
+     "type": "string",
+     "description": "A sha256 hash of the upload payload, encoded as a hex string and matching the output of the sha256sum command."
+    },
+    "versionCode": {
+     "type": "integer",
+     "description": "The version code of the Android App Bundle. As specified in the Android App Bundle's base module APK manifest file.",
+     "format": "int32"
+    }
+   }
+  },
+  "BundlesListResponse": {
+   "id": "BundlesListResponse",
+   "type": "object",
+   "properties": {
+    "bundles": {
+     "type": "array",
+     "items": {
+      "$ref": "Bundle"
+     }
+    },
+    "kind": {
+     "type": "string",
+     "description": "Identifies what kind of resource this is. Value: the fixed string \"androidpublisher#bundlesListResponse\".",
+     "default": "androidpublisher#bundlesListResponse"
     }
    }
   },
@@ -1034,12 +1070,12 @@
     },
     "userFraction": {
      "type": "number",
-     "description": "Fraction of users who are eligible to receive the release. 0 \u003c= fraction \u003c 1. To be set, release status must be IN_PROGRESS or HALTED.",
+     "description": "Fraction of users who are eligible to receive the release. 0 \u003c= fraction \u003c 1. To be set, release status must be \"inProgress\" or \"halted\".",
      "format": "double"
     },
     "versionCodes": {
      "type": "array",
-     "description": "A list of version codes of APKs that will be exposed to the users of this track when this release is rolled out.",
+     "description": "A list of all version codes of APKs that will be exposed to the users of this track when this release is rolled out. Note that this list should contain all versions you wish to be active, including those you wish to retain from previous releases.",
      "items": {
       "type": "string",
       "format": "int64"
@@ -1423,6 +1459,85 @@
          "resumable": {
           "multipart": true,
           "path": "/resumable/upload/androidpublisher/v3/applications/{packageName}/edits/{editId}/apks"
+         }
+        }
+       }
+      }
+     }
+    },
+    "bundles": {
+     "methods": {
+      "list": {
+       "id": "androidpublisher.edits.bundles.list",
+       "path": "{packageName}/edits/{editId}/bundles",
+       "httpMethod": "GET",
+       "parameters": {
+        "editId": {
+         "type": "string",
+         "description": "Unique identifier for this edit.",
+         "required": true,
+         "location": "path"
+        },
+        "packageName": {
+         "type": "string",
+         "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "packageName",
+        "editId"
+       ],
+       "response": {
+        "$ref": "BundlesListResponse"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/androidpublisher"
+       ]
+      },
+      "upload": {
+       "id": "androidpublisher.edits.bundles.upload",
+       "path": "{packageName}/edits/{editId}/bundles",
+       "httpMethod": "POST",
+       "parameters": {
+        "editId": {
+         "type": "string",
+         "description": "Unique identifier for this edit.",
+         "required": true,
+         "location": "path"
+        },
+        "packageName": {
+         "type": "string",
+         "description": "Unique identifier for the Android app that is being updated; for example, \"com.spiffygame\".",
+         "required": true,
+         "location": "path"
+        }
+       },
+       "parameterOrder": [
+        "packageName",
+        "editId"
+       ],
+       "response": {
+        "$ref": "Bundle"
+       },
+       "scopes": [
+        "https://www.googleapis.com/auth/androidpublisher"
+       ],
+       "supportsMediaUpload": true,
+       "mediaUpload": {
+        "accept": [
+         "application/octet-stream"
+        ],
+        "maxSize": "2GB",
+        "protocols": {
+         "simple": {
+          "multipart": true,
+          "path": "/upload/androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles"
+         },
+         "resumable": {
+          "multipart": true,
+          "path": "/resumable/upload/androidpublisher/v3/applications/{packageName}/edits/{editId}/bundles"
          }
         }
        }
