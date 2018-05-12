@@ -134,8 +134,19 @@ namespace Google.Apis.Auth.OAuth2.Web
             // TODO: This code should be shared between this class and AuthorizationCodeInstalledApp.
             // If the flow includes a parameter that requires a new token, if the stored token is null or it doesn't
             // have a refresh token and the access token is expired we need to retrieve a new authorization code.
-            return Flow.ShouldForceTokenRetrieval() || token == null || (token.RefreshToken == null
-                && token.IsExpired(flow.Clock));
+
+            if (token?.AccessToken == null) return true;
+
+            if (token.IsExpired(Flow.Clock) && token.RefreshToken == null) return true;
+
+            // If the current token.Scope does not include the requested scopes, then
+            // an authorization code is required. Note: prior version of this function
+            // did not recognize incremental authorization tokens (this function always
+            // returned true until an error was thrown about too many requests).
+            var scope = string.Join(" ", ((GoogleAuthorizationCodeFlow)Flow).Scopes);
+            if (scope.Equals(token.Scope)) return false;
+
+            return Flow.ShouldForceTokenRetrieval();
         }
     }
 }
