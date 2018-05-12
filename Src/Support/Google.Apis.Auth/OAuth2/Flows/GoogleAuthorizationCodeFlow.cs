@@ -43,6 +43,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets or sets the include granted scopes indicator.</summary>
         public bool? IncludeGrantedScopes { get { return includeGrantedScopes; } }
 
+        /// <summary>Gets or sets the login_hint.</summary>
+        public string LoginHint { get; set; }
+
         private readonly IEnumerable<KeyValuePair<string, string>> userDefinedQueryParams;
 
         /// <summary>Gets the user defined query parameters.</summary>
@@ -70,6 +73,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 RedirectUri = redirectUri,
                 IncludeGrantedScopes = IncludeGrantedScopes.HasValue
                     ? IncludeGrantedScopes.Value.ToString().ToLower() : null,
+                LoginHint = LoginHint,
                 UserDefinedQueryParams = UserDefinedQueryParams
             };
         }
