@@ -249,6 +249,15 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
             var token = await FetchTokenAsync(userId, authorizationCodeTokenReq, taskCancellationToken)
                 .ConfigureAwait(false);
+
+            // If the new token scope is not filled in, then fill it in using requested scopes. The token
+            // scope is used to help determine if an authorization token is required.
+            // See AuthorizationCodeWebApp.ShouldRequestAuthorizationCode(TokenResponse token).
+            if (string.IsNullOrEmpty(token.Scope))
+            {
+                token.Scope = authorizationCodeTokenReq.Scope;
+            }
+
             await StoreTokenAsync(userId, token, taskCancellationToken).ConfigureAwait(false);
             return token;
         }
