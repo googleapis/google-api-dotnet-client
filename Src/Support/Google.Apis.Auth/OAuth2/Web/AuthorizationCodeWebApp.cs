@@ -140,12 +140,11 @@ namespace Google.Apis.Auth.OAuth2.Web
             if (token.IsExpired(Flow.Clock) && token.RefreshToken == null) return true;
 
             // If the current token.Scope does not include the requested scopes, then
-            // an authorization code is required. Note: prior version of this function
-            // did not recognize incremental authorization tokens (this function always
-            // returned true until an error was thrown about too many requests).
-            var scope = string.Join(" ", ((GoogleAuthorizationCodeFlow)Flow).Scopes);
+            // an authorization code is required.
+            var scope = string.Join(" ", Flow.Scopes);
             if (scope.Equals(token.Scope)) return false;
 
+            // GoogleAuthorizationCodeFlow always returns true if IncludeGrantedScopes is true.
             return Flow.ShouldForceTokenRetrieval();
         }
     }

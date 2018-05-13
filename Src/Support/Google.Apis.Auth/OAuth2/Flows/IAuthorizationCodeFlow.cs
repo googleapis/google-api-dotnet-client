@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -37,6 +38,9 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Gets the data store used to store the credentials.</summary>
         IDataStore DataStore { get; }
 
+        /// <summary>Gets the scopes which indicate the API access your application is requesting.</summary>
+        IEnumerable<string> Scopes { get; }
+        
         /// <summary>
         /// Asynchronously loads the user's token using the flow's
         /// <see cref="Google.Apis.Util.Store.IDataStore"/>.
