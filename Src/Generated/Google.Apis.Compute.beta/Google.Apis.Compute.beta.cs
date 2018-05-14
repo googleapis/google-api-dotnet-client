@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>beta
- *      <tr><th>API Rev<td>20180427 (1212)
+ *      <tr><th>API Rev<td>20180428 (1213)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -902,8 +902,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified accelerator type. Gets a list of available accelerator types by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified accelerator type.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -913,8 +912,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, zone, acceleratorType);
         }
 
-        /// <summary>Returns the specified accelerator type. Gets a list of available accelerator types by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified accelerator type.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.AcceleratorType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -22146,7 +22144,7 @@ namespace Google.Apis.Compute.beta
 
         }
 
-        /// <summary>Returns the specified interconnect. Gets a list of available interconnects by making a list()
+        /// <summary>Returns the specified interconnect. Get a list of available interconnects by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnect">Name of the
@@ -22156,7 +22154,7 @@ namespace Google.Apis.Compute.beta
             return new GetRequest(service, project, interconnect);
         }
 
-        /// <summary>Returns the specified interconnect. Gets a list of available interconnects by making a list()
+        /// <summary>Returns the specified interconnect. Get a list of available interconnects by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Interconnect>
         {
@@ -23111,7 +23109,7 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Retrieves the list of licenses available in the specified project. This method does not get any
         /// licenses that belong to other projects, including licenses attached to publicly-available images, like
-        /// Debian 8. If you want to get a list of publicly-available licenses, use this method to make a request to the
+        /// Debian 9. If you want to get a list of publicly-available licenses, use this method to make a request to the
         /// respective image project, such as debian-cloud or windows-cloud.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
@@ -23121,7 +23119,7 @@ namespace Google.Apis.Compute.beta
 
         /// <summary>Retrieves the list of licenses available in the specified project. This method does not get any
         /// licenses that belong to other projects, including licenses attached to publicly-available images, like
-        /// Debian 8. If you want to get a list of publicly-available licenses, use this method to make a request to the
+        /// Debian 9. If you want to get a list of publicly-available licenses, use this method to make a request to the
         /// respective image project, such as debian-cloud or windows-cloud.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.LicensesListResponse>
         {
@@ -38016,7 +38014,7 @@ namespace Google.Apis.Compute.beta
         /// <param name="region">The name of the region for
         /// this request.</param>
         /// <param name="resource">Name of the resource for this request.</param>
-        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.Policy body, string project, string region, string resource)
+        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Compute.beta.Data.RegionSetPolicyRequest body, string project, string region, string resource)
         {
             return new SetIamPolicyRequest(service, body, project, region, resource);
         }
@@ -38025,7 +38023,7 @@ namespace Google.Apis.Compute.beta
         public class SetIamPolicyRequest : ComputeBaseServiceRequest<Google.Apis.Compute.beta.Data.Policy>
         {
             /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.Policy body, string project, string region, string resource)
+            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.beta.Data.RegionSetPolicyRequest body, string project, string region, string resource)
                 : base(service)
             {
                 Project = project;
@@ -38050,7 +38048,7 @@ namespace Google.Apis.Compute.beta
 
 
             /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Compute.beta.Data.Policy Body { get; set; }
+            Google.Apis.Compute.beta.Data.RegionSetPolicyRequest Body { get; set; }
 
             ///<summary>Returns the body of the request.</summary>
             protected override object GetBody() { return Body; }
@@ -48779,7 +48777,7 @@ namespace Google.Apis.Compute.beta.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` or `joe@example.com`.
+        /// `alice@gmail.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -49654,6 +49652,12 @@ namespace Google.Apis.Compute.beta.Data
         /// <summary>[Output Only] Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>[Output Only] URL of the region where the disk type resides. Only applicable for regional
+        /// resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the
+        /// request body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -55048,7 +55052,8 @@ namespace Google.Apis.Compute.beta.Data
     /// ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Reserved for future use.</summary>
+        /// <summary>[Output Only] The value of `requestId` if you provided it in the request. Not present
+        /// otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
@@ -56330,6 +56335,26 @@ namespace Google.Apis.Compute.beta.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }    
+
+    public class RegionSetPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Flatten Policy to create a backwacd compatible wire-format. Deprecated. Use 'policy' to specify
+        /// bindings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; } 
+
+        /// <summary>Flatten Policy to create a backward compatible wire-format. Deprecated. Use 'policy' to specify the
+        /// etag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; } 
+
+        /// <summary>REQUIRED: The complete policy to be applied to the 'resource'. The size of the policy is limited to
+        /// a few 10s of KB. An empty policy is in general a valid policy but certain services (like Projects) might
+        /// reject them.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; } 
+
     }    
 
     /// <summary>Commitment for a particular resource (a Commitment is composed of one or more of these).</summary>

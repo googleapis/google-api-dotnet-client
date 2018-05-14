@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>Cloud Source Repositories API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180313 (1167)
+ *      <tr><th>API Rev<td>20180430 (1215)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/source-repositories/docs/apis'>
  *              https://cloud.google.com/source-repositories/docs/apis</a>
@@ -670,16 +670,16 @@ namespace Google.Apis.CloudSourceRepositories.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>Maximum number of repositories to return; between 1 and 500. If not set or zero, defaults
+                /// to 100 at the server.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
                 /// <summary>Resume listing repositories where a prior ListReposResponse left off. This is an opaque
                 /// token that must be obtained from a recent, prior ListReposResponse's next_page_token
                 /// field.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
-
-                /// <summary>Maximum number of repositories to return; between 1 and 500. If not set or zero, defaults
-                /// to 100 at the server.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -715,6 +715,15 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
+                        "pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -723,14 +732,73 @@ namespace Google.Apis.CloudSourceRepositories.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
+                }
+
+            }
+
+            /// <summary>Updates information about a repo.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">The name of the requested repository. Values are of the form `projects//repos/`.</param>
+            public virtual PatchRequest Patch(Google.Apis.CloudSourceRepositories.v1.Data.UpdateRepoRequest body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates information about a repo.</summary>
+            public class PatchRequest : CloudSourceRepositoriesBaseServiceRequest<Google.Apis.CloudSourceRepositories.v1.Data.Repo>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSourceRepositories.v1.Data.UpdateRepoRequest body, string name)
+                    : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+
+                /// <summary>The name of the requested repository. Values are of the form `projects//repos/`.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudSourceRepositories.v1.Data.UpdateRepoRequest Body { get; set; }
+
+                ///<summary>Returns the body of the request.</summary>
+                protected override object GetBody() { return Body; }
+
+                ///<summary>Gets the method name.</summary>
+                public override string MethodName
+                {
+                    get { return "patch"; }
+                }
+
+                ///<summary>Gets the HTTP method.</summary>
+                public override string HttpMethod
+                {
+                    get { return "PATCH"; }
+                }
+
+                ///<summary>Gets the REST path.</summary>
+                public override string RestPath
+                {
+                    get { return "v1/{+name}"; }
+                }
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "name", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
                             DefaultValue = null,
-                            Pattern = null,
+                            Pattern = @"^projects/[^/]+/repos/.+$",
                         });
                 }
 
@@ -880,6 +948,134 @@ namespace Google.Apis.CloudSourceRepositories.v1
 
             }
         }
+
+        /// <summary>Returns the Cloud Source Repositories configuration of the project.</summary>
+        /// <param name="name">The name of the requested project. Values are of the form `projects/`.</param>
+        public virtual GetConfigRequest GetConfig(string name)
+        {
+            return new GetConfigRequest(service, name);
+        }
+
+        /// <summary>Returns the Cloud Source Repositories configuration of the project.</summary>
+        public class GetConfigRequest : CloudSourceRepositoriesBaseServiceRequest<Google.Apis.CloudSourceRepositories.v1.Data.ProjectConfig>
+        {
+            /// <summary>Constructs a new GetConfig request.</summary>
+            public GetConfigRequest(Google.Apis.Services.IClientService service, string name)
+                : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the requested project. Values are of the form `projects/`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "getConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}/config"; }
+            }
+
+            /// <summary>Initializes GetConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+            }
+
+        }
+
+        /// <summary>Updates the Cloud Source Repositories configuration of the project.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">The name of the requested project. Values are of the form `projects/`.</param>
+        public virtual UpdateConfigRequest UpdateConfig(Google.Apis.CloudSourceRepositories.v1.Data.UpdateProjectConfigRequest body, string name)
+        {
+            return new UpdateConfigRequest(service, body, name);
+        }
+
+        /// <summary>Updates the Cloud Source Repositories configuration of the project.</summary>
+        public class UpdateConfigRequest : CloudSourceRepositoriesBaseServiceRequest<Google.Apis.CloudSourceRepositories.v1.Data.ProjectConfig>
+        {
+            /// <summary>Constructs a new UpdateConfig request.</summary>
+            public UpdateConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSourceRepositories.v1.Data.UpdateProjectConfigRequest body, string name)
+                : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The name of the requested project. Values are of the form `projects/`.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSourceRepositories.v1.Data.UpdateProjectConfigRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "updateConfig"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "PATCH"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "v1/{+name}/config"; }
+            }
+
+            /// <summary>Initializes UpdateConfig parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+            }
+
+        }
     }
 }
 
@@ -905,7 +1101,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     /// from DATA_READ logging, and bar@gmail.com from DATA_WRITE logging.</summary>
     public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration for logging of each type of permission. Next ID: 4</summary>
+        /// <summary>The configuration for logging of each type of permission.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
         public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; } 
 
@@ -953,7 +1149,7 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// account or a service account.
         ///
         /// * `user:{emailid}`: An email address that represents a specific Google account. For example,
-        /// `alice@gmail.com` or `joe@example.com`.
+        /// `alice@gmail.com` .
         ///
         /// * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-
         /// app@appspot.gserviceaccount.com`.
@@ -1030,15 +1226,20 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
     /// <summary>Defines an Identity and Access Management (IAM) policy. It is used to specify access control policies
     /// for Cloud Platform resources.
     ///
-    /// A `Policy` consists of a list of `bindings`. A `Binding` binds a list of `members` to a `role`, where the
+    /// A `Policy` consists of a list of `bindings`. A `binding` binds a list of `members` to a `role`, where the
     /// members can be user accounts, Google groups, Google domains, and service accounts. A `role` is a named list of
     /// permissions defined by IAM.
     ///
-    /// **Example**
+    /// **JSON Example**
     ///
     /// { "bindings": [ { "role": "roles/owner", "members": [ "user:mike@example.com", "group:admins@example.com",
-    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com", ] }, { "role": "roles/viewer",
+    /// "domain:google.com", "serviceAccount:my-other-app@appspot.gserviceaccount.com" ] }, { "role": "roles/viewer",
     /// "members": ["user:sean@example.com"] } ] }
+    ///
+    /// **YAML Example**
+    ///
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com - serviceAccount:my-
+    /// other-app@appspot.gserviceaccount.com role: roles/owner - members: - user:sean@example.com role: roles/viewer
     ///
     /// For a description of IAM and its features, see the [IAM developer's
     /// guide](https://cloud.google.com/iam/docs).</summary>
@@ -1070,6 +1271,49 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
 
     }    
 
+    /// <summary>Cloud Source Repositories configuration of a project.</summary>
+    public class ProjectConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reject a Git push that contains a private key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateKeyCheck")]
+        public virtual System.Nullable<bool> EnablePrivateKeyCheck { get; set; } 
+
+        /// <summary>The name of the project. Values are of the form `projects/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; } 
+
+        /// <summary>How this project publishes a change in the repositories through Cloud Pub/Sub. Keyed by the topic
+        /// names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string,PubsubConfig> PubsubConfigs { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Configuration to publish a Cloud Pub/Sub message.</summary>
+    public class PubsubConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The format of the Cloud Pub/Sub messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageFormat")]
+        public virtual string MessageFormat { get; set; } 
+
+        /// <summary>Email address of the service account used for publishing Cloud Pub/Sub messages. This service
+        /// account needs to be in the same project as the PubsubConfig. When added, the caller needs to have
+        /// iam.serviceAccounts.actAs permission on this service account. If unspecified, it defaults to the compute
+        /// engine default service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
+        public virtual string ServiceAccountEmail { get; set; } 
+
+        /// <summary>A topic of Cloud Pub/Sub. Values are of the form `projects//topics/`. The project needs to be the
+        /// same project as this config is in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topic")]
+        public virtual string Topic { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>A repository (or repo) is a Git repository storing versioned source content.</summary>
     public class Repo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1081,6 +1325,11 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// slashes. eg, `projects/myproject/repos/name/with/slash`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>How this repository publishes a change in the repository through Cloud Pub/Sub. Keyed by the topic
+        /// names.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string,PubsubConfig> PubsubConfigs { get; set; } 
 
         /// <summary>The disk usage of the repo, in bytes. Read-only field. Size is only returned by GetRepo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
@@ -1132,6 +1381,38 @@ namespace Google.Apis.CloudSourceRepositories.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for UpdateProjectConfig.</summary>
+    public class UpdateProjectConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new configuration for the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectConfig")]
+        public virtual ProjectConfig ProjectConfig { get; set; } 
+
+        /// <summary>A FieldMask specifying which fields of the project_config to modify. Only the fields in the mask
+        /// will be modified. If no mask is provided, this request is no-op.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Request for UpdateRepo.</summary>
+    public class UpdateRepoRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new configuration for the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repo")]
+        public virtual Repo Repo { get; set; } 
+
+        /// <summary>A FieldMask specifying which fields of the repo to modify. Only the fields in the mask will be
+        /// modified. If no mask is provided, this request is no-op.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

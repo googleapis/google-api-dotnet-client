@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Cloud Functions API Version v1beta2
+ *   Cloud Functions API Version v1beta2
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://cloud.google.com/functions'>Google Cloud Functions API</a>
+ *          <td><a href='https://cloud.google.com/functions'>Cloud Functions API</a>
  *      <tr><th>API Version<td>v1beta2
- *      <tr><th>API Rev<td>20180416 (1201)
+ *      <tr><th>API Rev<td>20180420 (1205)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/functions'>
  *              https://cloud.google.com/functions</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Cloud Functions API can be found at
+ * The complete API documentation for using Cloud Functions API can be found at
  * <a href='https://cloud.google.com/functions'>https://cloud.google.com/functions</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -106,7 +106,7 @@ namespace Google.Apis.CloudFunctions.v1beta2
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Functions API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Functions API.</summary>
         public class Scope
         {
             /// <summary>View and manage your data across Google Cloud Platform services</summary>
@@ -458,14 +458,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
             }
 
 
-            /// <summary>The name of the operation's parent resource.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Name { get; set; }
-
-            /// <summary>The standard list page token.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
             /// <summary>The standard list page size.</summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -473,6 +465,14 @@ namespace Google.Apis.CloudFunctions.v1beta2
             /// <summary>The standard list filter.</summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
+
+            /// <summary>The name of the operation's parent resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>The standard list page token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
 
 
             ///<summary>Gets the method name.</summary>
@@ -499,24 +499,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 base.InitParameters();
 
                 RequestParameters.Add(
-                    "name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
                     "pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -529,6 +511,24 @@ namespace Google.Apis.CloudFunctions.v1beta2
                     "filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -1216,10 +1216,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1227,6 +1223,10 @@ namespace Google.Apis.CloudFunctions.v1beta2
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -1262,15 +1262,6 @@ namespace Google.Apis.CloudFunctions.v1beta2
                             Pattern = @"^projects/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -1283,6 +1274,15 @@ namespace Google.Apis.CloudFunctions.v1beta2
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1365,6 +1365,10 @@ namespace Google.Apis.CloudFunctions.v1beta2.Data
         /// `projects/locations/functions`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>The runtime in which the function is going to run. If empty, defaults to Node.js 6.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtime")]
+        public virtual string Runtime { get; set; } 
 
         /// <summary>Output only. The service account of the function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]

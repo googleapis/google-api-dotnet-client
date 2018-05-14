@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/76AjTMgczQBQzV19ihriNTaiz9A\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/0X5eq1A8RZv5UHZPwERUEGMzwZM\"",
  "discoveryVersion": "v1",
  "id": "analytics:v3",
  "name": "analytics",
  "version": "v3",
- "revision": "20180419",
+ "revision": "20180509",
  "title": "Google Analytics API",
  "description": "Views and manages your Google Analytics data.",
  "ownerDomain": "google.com",
@@ -3590,6 +3590,14 @@
      "description": "Time this web property was created.",
      "format": "date-time",
      "readOnly": true
+    },
+    "dataRetentionResetOnNewActivity": {
+     "type": "boolean",
+     "description": "Set to true to reset the retention period of the user identifier with each new event from that user (thus setting the expiration date to current time plus retention period).\nSet to false to delete data associated with the user identifer automatically after the rentention period.\nThis property cannot be set on insert."
+    },
+    "dataRetentionTtl": {
+     "type": "string",
+     "description": "The length of time for which user and event data is retained.\nThis property cannot be set on insert."
     },
     "defaultProfileId": {
      "type": "string",

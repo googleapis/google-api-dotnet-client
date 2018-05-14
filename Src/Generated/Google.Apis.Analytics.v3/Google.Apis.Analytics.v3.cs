@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/analytics/'>Google Analytics API</a>
  *      <tr><th>API Version<td>v3
- *      <tr><th>API Rev<td>20180419 (1204)
+ *      <tr><th>API Rev<td>20180509 (1224)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/'>
  *              https://developers.google.com/analytics/</a>
@@ -13383,6 +13383,18 @@ namespace Google.Apis.Analytics.v3.Data
                 CreatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
             }
         }
+
+        /// <summary>Set to true to reset the retention period of the user identifier with each new event from that user
+        /// (thus setting the expiration date to current time plus retention period). Set to false to delete data
+        /// associated with the user identifer automatically after the rentention period. This property cannot be set on
+        /// insert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionResetOnNewActivity")]
+        public virtual System.Nullable<bool> DataRetentionResetOnNewActivity { get; set; } 
+
+        /// <summary>The length of time for which user and event data is retained. This property cannot be set on
+        /// insert.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionTtl")]
+        public virtual string DataRetentionTtl { get; set; } 
 
         /// <summary>Default view (profile) ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultProfileId")]

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/container-engine/'>Kubernetes Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180420 (1205)
+ *      <tr><th>API Rev<td>20180427 (1212)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/container-engine/'>
  *              https://cloud.google.com/container-engine/</a>
@@ -645,6 +645,16 @@ namespace Google.Apis.Container.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
+                        /// the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ClusterId { get; set; }
+
+                        /// <summary>Deprecated. The name of the node pool. This field has been deprecated and replaced
+                        /// by the name field.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string NodePoolId { get; set; }
+
                         /// <summary>Deprecated. The Google Developers Console [project ID or project
                         /// number](https://developers.google.com/console/help/new/#projectnumber). This field has been
                         /// deprecated and replaced by the name field.</summary>
@@ -656,16 +666,6 @@ namespace Google.Apis.Container.v1
                         /// deprecated and replaced by the name field.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Zone { get; set; }
-
-                        /// <summary>Deprecated. The name of the cluster. This field has been deprecated and replaced by
-                        /// the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string ClusterId { get; set; }
-
-                        /// <summary>Deprecated. The name of the node pool. This field has been deprecated and replaced
-                        /// by the name field.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("nodePoolId", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string NodePoolId { get; set; }
 
 
                         ///<summary>Gets the method name.</summary>
@@ -701,24 +701,6 @@ namespace Google.Apis.Container.v1
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+/nodePools/[^/]+$",
                                 });
                             RequestParameters.Add(
-                                "projectId", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "projectId",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
-                                "zone", new Google.Apis.Discovery.Parameter
-                                {
-                                    Name = "zone",
-                                    IsRequired = false,
-                                    ParameterType = "query",
-                                    DefaultValue = null,
-                                    Pattern = null,
-                                });
-                            RequestParameters.Add(
                                 "clusterId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "clusterId",
@@ -731,6 +713,24 @@ namespace Google.Apis.Container.v1
                                 "nodePoolId", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "nodePoolId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "projectId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "projectId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            RequestParameters.Add(
+                                "zone", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "zone",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1395,6 +1395,11 @@ namespace Google.Apis.Container.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
+                    /// replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ClusterId { get; set; }
+
                     /// <summary>Deprecated. The Google Developers Console [project ID or project
                     /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
                     /// replaced by the name field.</summary>
@@ -1406,11 +1411,6 @@ namespace Google.Apis.Container.v1
                     /// field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Zone { get; set; }
-
-                    /// <summary>Deprecated. The name of the cluster to delete. This field has been deprecated and
-                    /// replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClusterId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1446,6 +1446,15 @@ namespace Google.Apis.Container.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
@@ -1458,15 +1467,6 @@ namespace Google.Apis.Container.v1
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "clusterId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "clusterId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1501,6 +1501,12 @@ namespace Google.Apis.Container.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>Deprecated. The Google Developers Console [project ID or project
+                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
+                    /// replaced by the name field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ProjectId { get; set; }
+
                     /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
                     /// in which the cluster resides. This field has been deprecated and replaced by the name
                     /// field.</summary>
@@ -1511,12 +1517,6 @@ namespace Google.Apis.Container.v1
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ClusterId { get; set; }
-
-                    /// <summary>Deprecated. The Google Developers Console [project ID or project
-                    /// number](https://support.google.com/cloud/answer/6158840). This field has been deprecated and
-                    /// replaced by the name field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ProjectId { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1552,6 +1552,15 @@ namespace Google.Apis.Container.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
                             });
                         RequestParameters.Add(
+                            "projectId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "zone", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "zone",
@@ -1564,15 +1573,6 @@ namespace Google.Apis.Container.v1
                             "clusterId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "clusterId",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "projectId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectId",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2637,12 +2637,6 @@ namespace Google.Apis.Container.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
-                    /// in which the cluster resides. This field has been deprecated and replaced by the name
-                    /// field.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Zone { get; set; }
-
                     /// <summary>Deprecated. The server-assigned `name` of the operation. This field has been deprecated
                     /// and replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Query)]
@@ -2653,6 +2647,12 @@ namespace Google.Apis.Container.v1
                     /// replaced by the name field.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string ProjectId { get; set; }
+
+                    /// <summary>Deprecated. The name of the Google Compute Engine [zone](/compute/docs/zones#available)
+                    /// in which the cluster resides. This field has been deprecated and replaced by the name
+                    /// field.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("zone", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Zone { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -2688,15 +2688,6 @@ namespace Google.Apis.Container.v1
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
                             });
                         RequestParameters.Add(
-                            "zone", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "zone",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
                             "operationId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "operationId",
@@ -2709,6 +2700,15 @@ namespace Google.Apis.Container.v1
                             "projectId", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "projectId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
+                            "zone", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "zone",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -6615,8 +6615,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuth")]
         public virtual MasterAuth MasterAuth { get; set; } 
 
-        /// <summary>Master authorized networks is a Beta feature. The configuration options for master authorized
-        /// networks feature.</summary>
+        /// <summary>The configuration options for master authorized networks feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("masterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig MasterAuthorizedNetworksConfig { get; set; } 
 
@@ -6723,8 +6722,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredLocations")]
         public virtual System.Collections.Generic.IList<string> DesiredLocations { get; set; } 
 
-        /// <summary>Master authorized networks is a Beta feature. The desired configuration options for master
-        /// authorized networks feature.</summary>
+        /// <summary>The desired configuration options for master authorized networks feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMasterAuthorizedNetworksConfig")]
         public virtual MasterAuthorizedNetworksConfig DesiredMasterAuthorizedNetworksConfig { get; set; } 
 
@@ -7137,10 +7135,9 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Master authorized networks is a Beta feature. Configuration options for the master authorized networks
-    /// feature. Enabled master authorized networks will disallow all external traffic to access Kubernetes master
-    /// through HTTPS except traffic from the given CIDR blocks, Google Compute Engine Public IPs and Google Prod
-    /// IPs.</summary>
+    /// <summary>Configuration options for the master authorized networks feature. Enabled master authorized networks
+    /// will disallow all external traffic to access Kubernetes master through HTTPS except traffic from the given CIDR
+    /// blocks, Google Compute Engine Public IPs and Google Prod IPs.</summary>
     public class MasterAuthorizedNetworksConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>cidr_blocks define up to 10 external networks that could access Kubernetes master through

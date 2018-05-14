@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>Compute Engine API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180427 (1212)
+ *      <tr><th>API Rev<td>20180428 (1213)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/compute/docs/reference/latest/'>
  *              https://developers.google.com/compute/docs/reference/latest/</a>
@@ -95,6 +95,8 @@ namespace Google.Apis.Compute.v1
             regionAutoscalers = new RegionAutoscalersResource(this);
             regionBackendServices = new RegionBackendServicesResource(this);
             regionCommitments = new RegionCommitmentsResource(this);
+            regionDiskTypes = new RegionDiskTypesResource(this);
+            regionDisks = new RegionDisksResource(this);
             regionInstanceGroupManagers = new RegionInstanceGroupManagersResource(this);
             regionInstanceGroups = new RegionInstanceGroupsResource(this);
             regionOperations = new RegionOperationsResource(this);
@@ -427,6 +429,22 @@ namespace Google.Apis.Compute.v1
         public virtual RegionCommitmentsResource RegionCommitments
         {
             get { return regionCommitments; }
+        }
+
+        private readonly RegionDiskTypesResource regionDiskTypes;
+
+        /// <summary>Gets the RegionDiskTypes resource.</summary>
+        public virtual RegionDiskTypesResource RegionDiskTypes
+        {
+            get { return regionDiskTypes; }
+        }
+
+        private readonly RegionDisksResource regionDisks;
+
+        /// <summary>Gets the RegionDisks resource.</summary>
+        public virtual RegionDisksResource RegionDisks
+        {
+            get { return regionDisks; }
         }
 
         private readonly RegionInstanceGroupManagersResource regionInstanceGroupManagers;
@@ -875,8 +893,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified accelerator type. Gets a list of available accelerator types by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified accelerator type.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="zone">The name of the zone for this
         /// request.</param>
@@ -886,8 +903,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, zone, acceleratorType);
         }
 
-        /// <summary>Returns the specified accelerator type. Gets a list of available accelerator types by making a
-        /// list() request.</summary>
+        /// <summary>Returns the specified accelerator type.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.AcceleratorType>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -14603,6 +14619,11 @@ namespace Google.Apis.Compute.v1
             [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Instance { get; private set; }
 
+            /// <summary>Whether to force attach the disk even if it's currently attached to another instance. This is
+            /// only available for regional disks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("forceAttach", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ForceAttach { get; set; }
+
             /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
             /// retry your request, the server will know to ignore the request if it has already been completed.
             ///
@@ -14672,6 +14693,15 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "forceAttach", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "forceAttach",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 RequestParameters.Add(
                     "requestId", new Google.Apis.Discovery.Parameter
@@ -18727,7 +18757,7 @@ namespace Google.Apis.Compute.v1
 
         }
 
-        /// <summary>Returns the specified interconnect. Gets a list of available interconnects by making a list()
+        /// <summary>Returns the specified interconnect. Get a list of available interconnects by making a list()
         /// request.</summary>
         /// <param name="project">Project ID for this request.</param>
         /// <param name="interconnect">Name of the
@@ -18737,7 +18767,7 @@ namespace Google.Apis.Compute.v1
             return new GetRequest(service, project, interconnect);
         }
 
-        /// <summary>Returns the specified interconnect. Gets a list of available interconnects by making a list()
+        /// <summary>Returns the specified interconnect. Get a list of available interconnects by making a list()
         /// request.</summary>
         public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Interconnect>
         {
@@ -19606,7 +19636,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves the list of licenses available in the specified project. This method does not get any
         /// licenses that belong to other projects, including licenses attached to publicly-available images, like
-        /// Debian 8. If you want to get a list of publicly-available licenses, use this method to make a request to the
+        /// Debian 9. If you want to get a list of publicly-available licenses, use this method to make a request to the
         /// respective image project, such as debian-cloud or windows-cloud.</summary>
         /// <param name="project">Project ID for this request.</param>
         public virtual ListRequest List(string project)
@@ -19616,7 +19646,7 @@ namespace Google.Apis.Compute.v1
 
         /// <summary>Retrieves the list of licenses available in the specified project. This method does not get any
         /// licenses that belong to other projects, including licenses attached to publicly-available images, like
-        /// Debian 8. If you want to get a list of publicly-available licenses, use this method to make a request to the
+        /// Debian 9. If you want to get a list of publicly-available licenses, use this method to make a request to the
         /// respective image project, such as debian-cloud or windows-cloud.</summary>
         public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.LicensesListResponse>
         {
@@ -24248,6 +24278,1238 @@ namespace Google.Apis.Compute.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "regionDiskTypes" collection of methods.</summary>
+    public class RegionDiskTypesResource
+    {
+        private const string Resource = "regionDiskTypes";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RegionDiskTypesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Returns the specified regional disk type. Gets a list of available disk types by making a list()
+        /// request.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="diskType">Name of the disk type to return.</param>
+        public virtual GetRequest Get(string project, string region, string diskType)
+        {
+            return new GetRequest(service, project, region, diskType);
+        }
+
+        /// <summary>Returns the specified regional disk type. Gets a list of available disk types by making a list()
+        /// request.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskType>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string diskType)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                DiskType = diskType;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the disk type to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("diskType", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string DiskType { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/diskTypes/{diskType}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "diskType", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "diskType",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves a list of regional disk types available to the specified project.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves a list of regional disk types available to the specified project.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.RegionDiskTypeList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/diskTypes"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "regionDisks" collection of methods.</summary>
+    public class RegionDisksResource
+    {
+        private const string Resource = "regionDisks";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RegionDisksResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Creates a snapshot of this regional disk.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="disk">Name of the regional persistent disk to snapshot.</param>
+        public virtual CreateSnapshotRequest CreateSnapshot(Google.Apis.Compute.v1.Data.Snapshot body, string project, string region, string disk)
+        {
+            return new CreateSnapshotRequest(service, body, project, region, disk);
+        }
+
+        /// <summary>Creates a snapshot of this regional disk.</summary>
+        public class CreateSnapshotRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new CreateSnapshot request.</summary>
+            public CreateSnapshotRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Snapshot body, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the regional persistent disk to snapshot.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.Snapshot Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "createSnapshot"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}/createSnapshot"; }
+            }
+
+            /// <summary>Initializes CreateSnapshot parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Deletes the specified regional persistent disk. Deleting a regional disk removes all the replicas
+        /// of its data permanently and is irreversible. However, deleting a disk does not delete any snapshots
+        /// previously made from the disk. You must separately delete snapshots.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="disk">Name of the regional persistent disk to delete.</param>
+        public virtual DeleteRequest Delete(string project, string region, string disk)
+        {
+            return new DeleteRequest(service, project, region, disk);
+        }
+
+        /// <summary>Deletes the specified regional persistent disk. Deleting a regional disk removes all the replicas
+        /// of its data permanently and is irreversible. However, deleting a disk does not delete any snapshots
+        /// previously made from the disk. You must separately delete snapshots.</summary>
+        public class DeleteRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the regional persistent disk to delete.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "delete"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "DELETE"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}"; }
+            }
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns a specified regional persistent disk.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        /// <param name="disk">Name of the regional persistent disk to return.</param>
+        public virtual GetRequest Get(string project, string region, string disk)
+        {
+            return new GetRequest(service, project, region, disk);
+        }
+
+        /// <summary>Returns a specified regional persistent disk.</summary>
+        public class GetRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Disk>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the regional persistent disk to return.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "get"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}"; }
+            }
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+            }
+
+        }
+
+        /// <summary>Creates a persistent regional disk in the specified project using the data included in the
+        /// request.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual InsertRequest Insert(Google.Apis.Compute.v1.Data.Disk body, string project, string region)
+        {
+            return new InsertRequest(service, body, project, region);
+        }
+
+        /// <summary>Creates a persistent regional disk in the specified project using the data included in the
+        /// request.</summary>
+        public class InsertRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Insert request.</summary>
+            public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.Disk body, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Optional. Source image to restore onto a disk.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("sourceImage", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceImage { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.Disk Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "insert"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks"; }
+            }
+
+            /// <summary>Initializes Insert parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "sourceImage", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "sourceImage",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Retrieves the list of persistent disks contained within the specified region.</summary>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">Name of the region for this
+        /// request.</param>
+        public virtual ListRequest List(string project, string region)
+        {
+            return new ListRequest(service, project, region);
+        }
+
+        /// <summary>Retrieves the list of persistent disks contained within the specified region.</summary>
+        public class ListRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.DiskList>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string project, string region)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>A filter expression that filters resources listed in the response. The expression must specify
+            /// the field name, a comparison operator, and the value that you want to use for filtering. The value must
+            /// be a string, a number, or a boolean. The comparison operator must be either =, !=, >, or <.
+            ///
+            /// For example, if you are filtering Compute Engine instances, you can exclude instances named example-
+            /// instance by specifying name != example-instance.
+            ///
+            /// You can also filter nested fields. For example, you could specify scheduling.automaticRestart = false to
+            /// include instances only if they are not scheduled for automatic restarts. You can use filtering on nested
+            /// fields to filter based on resource labels.
+            ///
+            /// To filter on multiple expressions, provide each separate expression within parentheses. For example,
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake"). By default, each expression is an
+            /// AND expression. However, you can include AND and OR expressions explicitly. For example, (cpuPlatform =
+            /// "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
+            /// true).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>The maximum number of results per page that should be returned. If the number of available
+            /// results is larger than maxResults, Compute Engine returns a nextPageToken that can be used to get the
+            /// next page of results in subsequent list requests. Acceptable values are 0 to 500, inclusive. (Default:
+            /// 500)</summary>
+            /// [default: 500]
+            /// [minimum: 0]
+            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> MaxResults { get; set; }
+
+            /// <summary>Sorts list results by a certain order. By default, results are returned in alphanumerical order
+            /// based on the resource name.
+            ///
+            /// You can also sort results in descending order based on the creation timestamp using
+            /// orderBy="creationTimestamp desc". This sorts results based on the creationTimestamp field in reverse
+            /// chronological order (newest result first). Use this to sort resources like operations so that the newest
+            /// operation is returned first.
+            ///
+            /// Currently, only sorting by name or creationTimestamp desc is supported.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OrderBy { get; set; }
+
+            /// <summary>Specifies a page token to use. Set pageToken to the nextPageToken returned by a previous list
+            /// request to get the next page of results.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "list"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks"; }
+            }
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "maxResults", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "maxResults",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = "500",
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Resizes the specified regional persistent disk.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">The project ID for this request.</param>
+        /// <param name="region">Name of the region for
+        /// this request.</param>
+        /// <param name="disk">Name of the regional persistent disk.</param>
+        public virtual ResizeRequest Resize(Google.Apis.Compute.v1.Data.RegionDisksResizeRequest body, string project, string region, string disk)
+        {
+            return new ResizeRequest(service, body, project, region, disk);
+        }
+
+        /// <summary>Resizes the specified regional persistent disk.</summary>
+        public class ResizeRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new Resize request.</summary>
+            public ResizeRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionDisksResizeRequest body, string project, string region, string disk)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Disk = disk;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>The project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the regional persistent disk.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("disk", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Disk { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionDisksResizeRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "resize"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{disk}/resize"; }
+            }
+
+            /// <summary>Initializes Resize parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "disk", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "disk",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Sets the labels on the target regional disk.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The region for this
+        /// request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual SetLabelsRequest SetLabels(Google.Apis.Compute.v1.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+        {
+            return new SetLabelsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Sets the labels on the target regional disk.</summary>
+        public class SetLabelsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.Operation>
+        {
+            /// <summary>Constructs a new SetLabels request.</summary>
+            public SetLabelsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.RegionSetLabelsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+            /// <summary>An optional request ID to identify requests. Specify a unique request ID so that if you must
+            /// retry your request, the server will know to ignore the request if it has already been completed.
+            ///
+            /// For example, consider a situation where you make an initial request and the request times out. If you
+            /// make the request again with the same request ID, the server can check if original operation with the
+            /// same request ID was received, and if so, will ignore the second request. This prevents clients from
+            /// accidentally creating duplicate commitments.
+            ///
+            /// The request ID must be a valid UUID with the exception that zero UUID is not supported
+            /// (00000000-0000-0000-0000-000000000000).</summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.RegionSetLabelsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "setLabels"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{resource}/setLabels"; }
+            }
+
+            /// <summary>Initializes SetLabels parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "requestId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "requestId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID for this request.</param>
+        /// <param name="region">The name of the region for
+        /// this request.</param>
+        /// <param name="resource">Name of the resource for this request.</param>
+        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+        {
+            return new TestIamPermissionsRequest(service, body, project, region, resource);
+        }
+
+        /// <summary>Returns permissions that a caller has on the specified resource.</summary>
+        public class TestIamPermissionsRequest : ComputeBaseServiceRequest<Google.Apis.Compute.v1.Data.TestPermissionsResponse>
+        {
+            /// <summary>Constructs a new TestIamPermissions request.</summary>
+            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Compute.v1.Data.TestPermissionsRequest body, string project, string region, string resource)
+                : base(service)
+            {
+                Project = project;
+                Region = region;
+                Resource = resource;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>The name of the region for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("region", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Region { get; private set; }
+
+            /// <summary>Name of the resource for this request.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Resource { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Compute.v1.Data.TestPermissionsRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "testIamPermissions"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{project}/regions/{region}/disks/{resource}/testIamPermissions"; }
+            }
+
+            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"(?:(?:[-a-z0-9]{1,63}\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+                    });
+                RequestParameters.Add(
+                    "region", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "region",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+                    });
+                RequestParameters.Add(
+                    "resource", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resource",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
                     });
             }
 
@@ -40525,6 +41787,17 @@ namespace Google.Apis.Compute.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual string Options { get; set; } 
 
+        /// <summary>[Output Only] URL of the region where the disk resides. Only applicable for regional resources. You
+        /// must specify this field as part of the HTTP request URL. It is not settable as a field in the request
+        /// body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
+
+        /// <summary>URLs of the zones where the disk should be replicated to. Only applicable for regional
+        /// resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
+        public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; } 
+
         /// <summary>[Output Only] Server-defined fully-qualified URL for this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; } 
@@ -40805,6 +42078,12 @@ namespace Google.Apis.Compute.v1.Data
         /// <summary>[Output Only] Name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
+
+        /// <summary>[Output Only] URL of the region where the disk type resides. Only applicable for regional
+        /// resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the
+        /// request body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("region")]
+        public virtual string Region { get; set; } 
 
         /// <summary>[Output Only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
@@ -45622,7 +46901,8 @@ namespace Google.Apis.Compute.v1.Data
     /// ==)</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Output Only] Reserved for future use.</summary>
+        /// <summary>[Output Only] The value of `requestId` if you provided it in the request. Not present
+        /// otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
         public virtual string ClientOperationId { get; set; } 
 
@@ -46327,6 +47607,87 @@ namespace Google.Apis.Compute.v1.Data
         }
     }    
 
+    public class RegionDiskTypeList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Unique identifier for the resource; defined by the server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; } 
+
+        /// <summary>A list of DiskType resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual System.Collections.Generic.IList<DiskType> Items { get; set; } 
+
+        /// <summary>[Output Only] Type of resource. Always compute#regionDiskTypeList for region disk types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>[Output Only] This token allows you to get the next page of results for list requests. If the
+        /// number of results is larger than maxResults, use the nextPageToken as a value for the query parameter
+        /// pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue
+        /// paging through the results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; } 
+
+        /// <summary>[Output Only] Server-defined URL for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
+        public virtual string SelfLink { get; set; } 
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warning")]
+        public virtual RegionDiskTypeList.WarningData Warning { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+        
+
+        /// <summary>[Output Only] Informational warning message.</summary>
+        public class WarningData
+        {
+            /// <summary>[Output Only] A warning code, if applicable. For example, Compute Engine returns
+            /// NO_RESULTS_ON_PAGE if there are no results in the response.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("code")]
+            public virtual string Code { get; set; } 
+
+            /// <summary>[Output Only] Metadata about this warning in key: value format. For example: "data": [ { "key":
+            /// "scope", "value": "zones/us-east1-d" }</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("data")]
+            public virtual System.Collections.Generic.IList<WarningData.DataData> Data { get; set; } 
+
+            /// <summary>[Output Only] A human-readable description of the warning code.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("message")]
+            public virtual string Message { get; set; } 
+
+            
+
+            public class DataData
+            {
+                /// <summary>[Output Only] A key that provides more detail on the warning being returned. For example,
+                /// for warnings where there are no results in a list request for a particular zone, this key might be
+                /// scope and the key value might be the zone name. Other examples might be a key indicating a
+                /// deprecated resource and a suggested replacement, or a warning about invalid network settings (for
+                /// example, if an instance attempts to perform IP forwarding but is not enabled for IP
+                /// forwarding).</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("key")]
+                public virtual string Key { get; set; } 
+
+                /// <summary>[Output Only] A warning data value corresponding to the key.</summary>
+                [Newtonsoft.Json.JsonPropertyAttribute("value")]
+                public virtual string Value { get; set; } 
+
+            }
+        }
+    }    
+
+    public class RegionDisksResizeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new size of the regional persistent disk, which is specified in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Contains a list of InstanceGroup resources.</summary>
     public class RegionInstanceGroupList : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -46716,6 +48077,23 @@ namespace Google.Apis.Compute.v1.Data
 
             }
         }
+    }    
+
+    public class RegionSetLabelsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The fingerprint of the previous set of labels for this resource, used to detect conflicts. The
+        /// fingerprint is initially generated by Compute Engine and changes after every request to modify or update
+        /// labels. You must always provide an up-to-date fingerprint hash in order to update or change labels. Make a
+        /// get() request to the resource to get the latest fingerprint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFingerprint")]
+        public virtual string LabelFingerprint { get; set; } 
+
+        /// <summary>The labels to set for this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }    
 
     /// <summary>Commitment for a particular resource (a Commitment is composed of one or more of these).</summary>
@@ -48043,6 +49421,10 @@ namespace Google.Apis.Compute.v1.Data
         /// field can be set only at resource creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; } 
+
+        /// <summary>Whether to enable flow logging for this subnetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableFlowLogs")]
+        public virtual System.Nullable<bool> EnableFlowLogs { get; set; } 
 
         /// <summary>Fingerprint of this resource. A hash of the contents stored in this object. This field is used in
         /// optimistic locking. This field will be ignored when inserting a Subnetwork. An up-to-date fingerprint must

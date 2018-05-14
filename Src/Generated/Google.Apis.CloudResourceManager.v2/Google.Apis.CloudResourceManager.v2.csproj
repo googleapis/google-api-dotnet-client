@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.CloudResourceManager.v2 Client Library</Title>
-    <Version>1.33.1.1217</Version>
+    <Version>1.33.1.1224</Version>
     <Authors>Google Inc.</Authors>
     <Copyright>Copyright 2017 Google Inc.</Copyright>
     <PackageTags>Google</PackageTags>
