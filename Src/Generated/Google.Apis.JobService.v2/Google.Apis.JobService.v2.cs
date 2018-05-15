@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/job-discovery/docs'>Cloud Job Discovery</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180509 (1224)
+ *      <tr><th>API Rev<td>20180514 (1229)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/job-discovery/docs'>
  *              https://cloud.google.com/job-discovery/docs</a>
@@ -436,12 +436,6 @@ namespace Google.Apis.JobService.v2
 
                 /// <summary>Optional.
                 ///
-                /// The starting point of a query result.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Optional.
-                ///
                 /// If set to `true`, only job ID, job requisition ID and language code will be returned.
                 ///
                 /// A typical use is to synchronize job repositories.
@@ -480,6 +474,12 @@ namespace Google.Apis.JobService.v2
                 [Google.Apis.Util.RequestParameterAttribute("includeJobsCount", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> IncludeJobsCount { get; set; }
 
+                /// <summary>Optional.
+                ///
+                /// The starting point of a query result.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
 
                 ///<summary>Gets the method name.</summary>
                 public override string MethodName
@@ -514,15 +514,6 @@ namespace Google.Apis.JobService.v2
                             Pattern = @"^companies/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "idsOnly", new Google.Apis.Discovery.Parameter
                         {
                             Name = "idsOnly",
@@ -553,6 +544,15 @@ namespace Google.Apis.JobService.v2
                         "includeJobsCount", new Google.Apis.Discovery.Parameter
                         {
                             Name = "includeJobsCount",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1711,6 +1711,27 @@ namespace Google.Apis.JobService.v2
 
             /// <summary>Optional.
             ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<TypeEnum> Type { get; set; }
+
+            /// <summary>Optional.
+            ///
+            /// The completion topic. The default is CompletionType.COMBINED.</summary>
+            public enum TypeEnum
+            {
+                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
+                COMPLETIONTYPEUNSPECIFIED,
+                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
+                JOBTITLE,
+                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
+                COMPANYNAME,
+                [Google.Apis.Util.StringValueAttribute("COMBINED")]
+                COMBINED,
+            }
+
+            /// <summary>Optional.
+            ///
             /// If provided, restricts completion to the specified company.</summary>
             [Google.Apis.Util.RequestParameterAttribute("companyName", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CompanyName { get; set; }
@@ -1761,27 +1782,6 @@ namespace Google.Apis.JobService.v2
             [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string LanguageCode { get; set; }
 
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<TypeEnum> Type { get; set; }
-
-            /// <summary>Optional.
-            ///
-            /// The completion topic. The default is CompletionType.COMBINED.</summary>
-            public enum TypeEnum
-            {
-                [Google.Apis.Util.StringValueAttribute("COMPLETION_TYPE_UNSPECIFIED")]
-                COMPLETIONTYPEUNSPECIFIED,
-                [Google.Apis.Util.StringValueAttribute("JOB_TITLE")]
-                JOBTITLE,
-                [Google.Apis.Util.StringValueAttribute("COMPANY_NAME")]
-                COMPANYNAME,
-                [Google.Apis.Util.StringValueAttribute("COMBINED")]
-                COMBINED,
-            }
-
 
             ///<summary>Gets the method name.</summary>
             public override string MethodName
@@ -1806,6 +1806,15 @@ namespace Google.Apis.JobService.v2
             {
                 base.InitParameters();
 
+                RequestParameters.Add(
+                    "type", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "type",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                 RequestParameters.Add(
                     "companyName", new Google.Apis.Discovery.Parameter
                     {
@@ -1846,15 +1855,6 @@ namespace Google.Apis.JobService.v2
                     "languageCode", new Google.Apis.Discovery.Parameter
                     {
                         Name = "languageCode",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                RequestParameters.Add(
-                    "type", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "type",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

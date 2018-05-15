@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>Cloud SQL Administration API</a>
  *      <tr><th>API Version<td>v1beta4
- *      <tr><th>API Rev<td>20180314 (1168)
+ *      <tr><th>API Rev<td>20180507 (1222)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/sql/docs/reference/latest'>
  *              https://cloud.google.com/sql/docs/reference/latest</a>
@@ -1356,6 +1356,88 @@ namespace Google.Apis.SQLAdmin.v1beta4
         }
 
 
+        /// <summary>Add a new trusted Certificate Authority (CA) version for the specified instance. Required to
+        /// prepare for a certificate rotation. If a CA version was previously added but never used in a certificate
+        /// rotation, this operation replaces that version. There can not be more than one CA version waiting to be
+        /// rotated in.</summary>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param
+        /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual AddServerCaRequest AddServerCa(string project, string instance)
+        {
+            return new AddServerCaRequest(service, project, instance);
+        }
+
+        /// <summary>Add a new trusted Certificate Authority (CA) version for the specified instance. Required to
+        /// prepare for a certificate rotation. If a CA version was previously added but never used in a certificate
+        /// rotation, this operation replaces that version. There can not be more than one CA version waiting to be
+        /// rotated in.</summary>
+        public class AddServerCaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new AddServerCa request.</summary>
+            public AddServerCaRequest(Google.Apis.Services.IClientService service, string project, string instance)
+                : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "addServerCa"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{project}/instances/{instance}/addServerCa"; }
+            }
+
+            /// <summary>Initializes AddServerCa parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Creates a Cloud SQL instance as a clone of the source instance. The API is not ready for Second
         /// Generation instances yet.</summary>
         /// <param name="body">The body of the request.</param>
@@ -2104,6 +2186,88 @@ namespace Google.Apis.SQLAdmin.v1beta4
 
         }
 
+        /// <summary>Lists all of the trusted Certificate Authorities (CAs) for the specified instance. There can be up
+        /// to three CAs listed: the CA that was used to sign the certificate that is currently in use, a CA that has
+        /// been added but not yet used to sign a certificate, and a CA used to sign a certificate that has previously
+        /// rotated out.</summary>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param
+        /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual ListServerCasRequest ListServerCas(string project, string instance)
+        {
+            return new ListServerCasRequest(service, project, instance);
+        }
+
+        /// <summary>Lists all of the trusted Certificate Authorities (CAs) for the specified instance. There can be up
+        /// to three CAs listed: the CA that was used to sign the certificate that is currently in use, a CA that has
+        /// been added but not yet used to sign a certificate, and a CA used to sign a certificate that has previously
+        /// rotated out.</summary>
+        public class ListServerCasRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.InstancesListServerCasResponse>
+        {
+            /// <summary>Constructs a new ListServerCas request.</summary>
+            public ListServerCasRequest(Google.Apis.Services.IClientService service, string project, string instance)
+                : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "listServerCas"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "GET"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{project}/instances/{instance}/listServerCas"; }
+            }
+
+            /// <summary>Initializes ListServerCas parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
         /// <summary>Updates settings of a Cloud SQL instance. Caution: This is not a partial update, so you must
         /// include values for all the settings that you want to retain. For partial updates, use patch.. This method
         /// supports patch semantics.</summary>
@@ -2482,6 +2646,92 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
 
             /// <summary>Initializes RestoreBackup parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "instance", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "instance",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+
+        /// <summary>Rotates the server certificate to one signed by the Certificate Authority (CA) version previously
+        /// added with the addServerCA method.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param
+        /// name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual RotateServerCaRequest RotateServerCa(Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCaRequest body, string project, string instance)
+        {
+            return new RotateServerCaRequest(service, body, project, instance);
+        }
+
+        /// <summary>Rotates the server certificate to one signed by the Certificate Authority (CA) version previously
+        /// added with the addServerCA method.</summary>
+        public class RotateServerCaRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new RotateServerCa request.</summary>
+            public RotateServerCaRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCaRequest body, string project, string instance)
+                : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.InstancesRotateServerCaRequest Body { get; set; }
+
+            ///<summary>Returns the body of the request.</summary>
+            protected override object GetBody() { return Body; }
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "rotateServerCa"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "projects/{project}/instances/{instance}/rotateServerCa"; }
+            }
+
+            /// <summary>Initializes RotateServerCa parameter list.</summary>
             protected override void InitParameters()
             {
                 base.InitParameters();
@@ -4773,12 +5023,41 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }    
 
+    /// <summary>Instances ListServerCas response.</summary>
+    public class InstancesListServerCasResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("activeVersion")]
+        public virtual string ActiveVersion { get; set; } 
+
+        /// <summary>List of server CA certificates for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("certs")]
+        public virtual System.Collections.Generic.IList<SslCert> Certs { get; set; } 
+
+        /// <summary>This is always sql#instancesListServerCas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
     /// <summary>Database instance restore backup request.</summary>
     public class InstancesRestoreBackupRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Parameters required to perform the restore backup operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreBackupContext")]
         public virtual RestoreBackupContext RestoreBackupContext { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Rotate Server CA request.</summary>
+    public class InstancesRotateServerCaRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains details about the rotate server CA operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotateServerCaContext")]
+        public virtual RotateServerCaContext RotateServerCaContext { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5177,6 +5456,22 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always sql#restoreBackupContext.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; } 
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }    
+
+    /// <summary>Instance rotate server CA context.</summary>
+    public class RotateServerCaContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>This is always sql#rotateServerCaContext.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; } 
+
+        /// <summary>The fingerprint of the next version to be rotated to. If left unspecified, will be rotated to the
+        /// most recently added server CA version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextVersion")]
+        public virtual string NextVersion { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

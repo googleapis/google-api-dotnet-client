@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>App Engine Admin API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180502 (1217)
+ *      <tr><th>API Rev<td>20180511 (1226)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/appengine/docs/admin-api/'>
  *              https://cloud.google.com/appengine/docs/admin-api/</a>
@@ -1804,6 +1804,11 @@ namespace Google.Apis.Appengine.v1
                     [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string AppsId { get; private set; }
 
+                    /// <summary>A valid IP Address. If set, only rules matching this address will be returned. The
+                    /// first returned rule will be the rule that fires on requests from this IP.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("matchingAddress", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MatchingAddress { get; set; }
+
                     /// <summary>Continuation token for fetching the next page of results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
@@ -1811,11 +1816,6 @@ namespace Google.Apis.Appengine.v1
                     /// <summary>Maximum results to return per page.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>A valid IP Address. If set, only rules matching this address will be returned. The
-                    /// first returned rule will be the rule that fires on requests from this IP.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("matchingAddress", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string MatchingAddress { get; set; }
 
 
                     ///<summary>Gets the method name.</summary>
@@ -1851,6 +1851,15 @@ namespace Google.Apis.Appengine.v1
                                 Pattern = null,
                             });
                         RequestParameters.Add(
+                            "matchingAddress", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "matchingAddress",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        RequestParameters.Add(
                             "pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
@@ -1863,15 +1872,6 @@ namespace Google.Apis.Appengine.v1
                             "pageSize", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        RequestParameters.Add(
-                            "matchingAddress", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "matchingAddress",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2104,10 +2104,6 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>The standard list page token.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -2115,6 +2111,10 @@ namespace Google.Apis.Appengine.v1
                 /// <summary>The standard list filter.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
+
+                /// <summary>The standard list page token.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2150,15 +2150,6 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
@@ -2171,6 +2162,15 @@ namespace Google.Apis.Appengine.v1
                         "filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2315,10 +2315,6 @@ namespace Google.Apis.Appengine.v1
                 [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string AppsId { get; private set; }
 
-                /// <summary>The standard list filter.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
                 /// <summary>The standard list page token.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -2326,6 +2322,10 @@ namespace Google.Apis.Appengine.v1
                 /// <summary>The standard list page size.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>The standard list filter.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -2361,15 +2361,6 @@ namespace Google.Apis.Appengine.v1
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    RequestParameters.Add(
                         "pageToken", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageToken",
@@ -2382,6 +2373,15 @@ namespace Google.Apis.Appengine.v1
                         "pageSize", new Google.Apis.Discovery.Parameter
                         {
                             Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    RequestParameters.Add(
+                        "filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3354,31 +3354,35 @@ namespace Google.Apis.Appengine.v1
                 }
 
                 /// <summary>Updates the specified Version resource. You can specify the following fields depending on
-                /// the App Engine environment and type of scaling that the version resource uses: serving_status
-                /// (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status):  For Version resources
-                /// that use basic scaling, manual scaling, or run in  the App Engine flexible environment.
+                /// the App Engine environment and type of scaling that the version resource uses:Standard environment
                 /// instance_class (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class):  For Version resources
-                /// that run in the App Engine standard environment. automatic_scaling.min_idle_instances
-                /// (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine standard environment.
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the
+                /// standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs
+                /// /admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine standard environment.
-                /// automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine flexible environment.
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                /// automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs
+                /// /admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                /// automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs
+                /// /admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                /// automaticScaling.standard_scheduler_settings.target_cpu_utilization
+                /// (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                /// automaticScaling.standard_scheduler_settings.target_throughput_utilization
+                /// (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic scaling or manual
+                /// scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)Flexible environment
+                /// serving_status (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the
+                /// flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs
+                /// /admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine flexible environment.
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine flexible environment.
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine flexible environment.</summary>
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="appsId">Part of `name`. Name of the resource to update. Example:
                 /// apps/myapp/services/default/versions/1.</param>
@@ -3391,31 +3395,35 @@ namespace Google.Apis.Appengine.v1
                 }
 
                 /// <summary>Updates the specified Version resource. You can specify the following fields depending on
-                /// the App Engine environment and type of scaling that the version resource uses: serving_status
-                /// (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status):  For Version resources
-                /// that use basic scaling, manual scaling, or run in  the App Engine flexible environment.
+                /// the App Engine environment and type of scaling that the version resource uses:Standard environment
                 /// instance_class (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class):  For Version resources
-                /// that run in the App Engine standard environment. automatic_scaling.min_idle_instances
-                /// (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine standard environment.
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.instance_class)automatic scaling in the
+                /// standard environment: automatic_scaling.min_idle_instances (https://cloud.google.com/appengine/docs
+                /// /admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.max_idle_instances (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine standard environment.
-                /// automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine flexible environment.
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
+                /// automaticScaling.standard_scheduler_settings.max_instances (https://cloud.google.com/appengine/docs
+                /// /admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                /// automaticScaling.standard_scheduler_settings.min_instances (https://cloud.google.com/appengine/docs
+                /// /admin-api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                /// automaticScaling.standard_scheduler_settings.target_cpu_utilization
+                /// (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)
+                /// automaticScaling.standard_scheduler_settings.target_throughput_utilization
+                /// (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#StandardSchedulerSettings)basic scaling or manual
+                /// scaling in the standard environment: serving_status (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)Flexible environment
+                /// serving_status (https://cloud.google.com/appengine/docs/admin-
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.serving_status)automatic scaling in the
+                /// flexible environment: automatic_scaling.min_total_instances (https://cloud.google.com/appengine/docs
+                /// /admin-api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.max_total_instances (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine flexible environment.
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.cool_down_period_sec (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine flexible environment.
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)
                 /// automatic_scaling.cpu_utilization.target_utilization (https://cloud.google.com/appengine/docs/admin-
-                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling):  For Version
-                /// resources that use automatic scaling and run in the App  Engine flexible environment.</summary>
+                /// api/reference/rest/v1/apps.services.versions#Version.FIELDS.automatic_scaling)</summary>
                 public class PatchRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -4653,12 +4661,17 @@ namespace Google.Apis.Appengine.v1.Data
 
     /// <summary>Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides
     /// tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible
-    /// environment deployments.The fields here refer to the name and configuration id of a "service" resource in the
+    /// environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the
     /// Service Management API (https://cloud.google.com/service-management/overview).</summary>
     public class EndpointsApiService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Endpoints service configuration id as specified by the Service Management API. For example
-        /// "2016-09-19r1"</summary>
+        /// <summary>Endpoints service configuration ID as specified by the Service Management API. For example
+        /// "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that
+        /// Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints
+        /// must be given the new configuration ID. The config_id field is used to give the configuration ID and is
+        /// required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this,
+        /// Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id
+        /// must be omitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configId")]
         public virtual string ConfigId { get; set; } 
 
