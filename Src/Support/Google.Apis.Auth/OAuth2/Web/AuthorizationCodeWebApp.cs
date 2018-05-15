@@ -14,13 +14,14 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2.Web
 {
@@ -57,27 +58,14 @@ namespace Google.Apis.Auth.OAuth2.Web
             public string RedirectUri { get; set; }
         }
 
-        private readonly IAuthorizationCodeFlow flow;
-        private readonly string redirectUri;
-        private readonly string state;
-
         /// <summary>Gets the authorization code flow.</summary>
-        public IAuthorizationCodeFlow Flow
-        {
-            get { return flow; }
-        }
+        public IAuthorizationCodeFlow Flow { get; private set; }
 
         /// <summary>Gets the OAuth2 callback redirect URI.</summary>
-        public string RedirectUri
-        {
-            get { return redirectUri; }
-        }
+        public string RedirectUri { get; private set; }
 
         /// <summary>Gets the state which is used to navigate back to the page that started the OAuth flow.</summary>
-        public string State
-        {
-            get { return state; }
-        }
+        public string State { get; private set; }
 
         /// <summary>
         /// Constructs a new authorization code installed application with the given flow and code receiver.
@@ -85,9 +73,9 @@ namespace Google.Apis.Auth.OAuth2.Web
         public AuthorizationCodeWebApp(IAuthorizationCodeFlow flow, string redirectUri, string state)
         {
             // TODO(peleyal): Provide a way to disable to random number in the end of the state parameter.
-            this.flow = flow;
-            this.redirectUri = redirectUri;
-            this.state = state;
+            Flow = flow;
+            RedirectUri = redirectUri;
+            State = state;
         }
 
         /// <summary>Asynchronously authorizes the web application to access user's protected data.</summary>
@@ -105,11 +93,11 @@ namespace Google.Apis.Auth.OAuth2.Web
             if (ShouldRequestAuthorizationCode(token))
             {
                 // Create an authorization code request.
-                AuthorizationCodeRequestUrl codeRequest = Flow.CreateAuthorizationCodeRequest(redirectUri);
+                AuthorizationCodeRequestUrl codeRequest = Flow.CreateAuthorizationCodeRequest(RedirectUri);
 
                 // Add a random number to the end of the state so we can indicate the original request was made by this
                 // call.
-                var oauthState = state;
+                var oauthState = State;
                 if (Flow.DataStore != null)
                 {
                     var rndString = new string('9', StateRandomLength);
@@ -122,7 +110,7 @@ namespace Google.Apis.Auth.OAuth2.Web
                 return new AuthResult { RedirectUri = codeRequest.Build().AbsoluteUri };
             }
 
-            return new AuthResult { Credential = new UserCredential(flow, userId, token) };
+            return new AuthResult { Credential = new UserCredential(Flow, userId, token) };
         }
 
         /// <summary>
@@ -132,17 +120,27 @@ namespace Google.Apis.Auth.OAuth2.Web
         public bool ShouldRequestAuthorizationCode(TokenResponse token)
         {
             // TODO: This code should be shared between this class and AuthorizationCodeInstalledApp.
-            // If the flow includes a parameter that requires a new token, if the stored token is null or it doesn't
-            // have a refresh token and the access token is expired we need to retrieve a new authorization code.
 
-            if (token?.AccessToken == null) return true;
+            // If the token or access-token is null, need to retrieve a new authorization code.
+            if (token?.AccessToken == null)
+            {
+                return true;
+            }
 
-            if (token.IsExpired(Flow.Clock) && token.RefreshToken == null) return true;
+            // Is the token is expired, and we don't have a refresh token, need to retrieve a new auth code.
+            if (token.IsExpired(Flow.Clock) && token.RefreshToken == null)
+            {
+                return true;
+            }
 
             // If the current token.Scope does not include the requested scopes, then
             // an authorization code is required.
-            var scope = string.Join(" ", Flow.Scopes);
-            if (scope.Equals(token.Scope)) return false;
+            var tokenScopes = new HashSet<string>(token.Scope.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+            if (Flow.Scopes.All(x => tokenScopes.Contains(x)))
+            {
+                // All requested scopes have already been authorized.
+                return false;
+            }
 
             // GoogleAuthorizationCodeFlow always returns true if IncludeGrantedScopes is true.
             return Flow.ShouldForceTokenRetrieval();
