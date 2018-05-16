@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/natural-language/'>Cloud Natural Language API</a>
  *      <tr><th>API Version<td>v1
- *      <tr><th>API Rev<td>20180507 (1222)
+ *      <tr><th>API Rev<td>20180514 (1229)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/natural-language/'>
  *              https://cloud.google.com/natural-language/</a>
@@ -940,7 +940,8 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
     /// Represents the input to API methods.</summary>
     public class Document : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The content of the input in string format.</summary>
+        /// <summary>The content of the input in string format. Cloud audit logging exempt since it is based on user
+        /// data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; } 
 

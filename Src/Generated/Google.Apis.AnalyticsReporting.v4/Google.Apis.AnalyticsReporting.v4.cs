@@ -19,14 +19,14 @@
 
 /**
  * \brief
- *   Google Analytics Reporting API Version v4
+ *   Analytics Reporting API Version v4
  *
  * \section ApiInfo API Version Information
  *    <table>
  *      <tr><th>API
- *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Google Analytics Reporting API</a>
+ *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>Analytics Reporting API</a>
  *      <tr><th>API Version<td>v4
- *      <tr><th>API Rev<td>20180315 (1169)
+ *      <tr><th>API Rev<td>20180515 (1230)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>
  *              https://developers.google.com/analytics/devguides/reporting/core/v4/</a>
@@ -35,7 +35,7 @@
  *
  * \section ForMoreInfo For More Information
  *
- * The complete API documentation for using Google Analytics Reporting API can be found at
+ * The complete API documentation for using Analytics Reporting API can be found at
  * <a href='https://developers.google.com/analytics/devguides/reporting/core/v4/'>https://developers.google.com/analytics/devguides/reporting/core/v4/</a>.
  *
  * For more information about the Google APIs Client Library for .NET, see
@@ -105,7 +105,7 @@ namespace Google.Apis.AnalyticsReporting.v4
         }
         #endif
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Analytics Reporting API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Analytics Reporting API.</summary>
         public class Scope
         {
             /// <summary>View and manage your Google Analytics data</summary>
@@ -1042,7 +1042,7 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         public virtual System.Collections.Generic.IList<OrderBy> OrderBys { get; set; } 
 
         /// <summary>Page size is for paging and specifies the maximum number of returned rows. Page size should be >=
-        /// 0. A query returns the default of 1,000 rows. The Analytics Core Reporting API returns a maximum of 10,000
+        /// 0. A query returns the default of 1,000 rows. The Analytics Core Reporting API returns a maximum of 100,000
         /// rows per request, no matter how many you ask for. It can also return fewer rows than requested, if there
         /// aren't as many dimension segments as you expect. For instance, there are fewer than 300 possible values for
         /// `ga:country`, so when segmenting only by country, you can't get more than 300 rows, even if you set

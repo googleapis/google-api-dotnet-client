@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/composer/'>Cloud Composer API</a>
  *      <tr><th>API Version<td>v1beta1
- *      <tr><th>API Rev<td>20180430 (1215)
+ *      <tr><th>API Rev<td>20180510 (1225)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/composer/'>
  *              https://cloud.google.com/composer/</a>
@@ -407,7 +407,7 @@ namespace Google.Apis.CloudComposer.v1beta1
 
                 /// <summary>Create a new environment.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">The parent must be of the form `projects/{projectId}/locations/{locationId}`.</param>
+                /// <param name="parent">The parent must be of the form "projects/{projectId}/locations/{locationId}".</param>
                 public virtual CreateRequest Create(Google.Apis.CloudComposer.v1beta1.Data.Environment body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -426,7 +426,7 @@ namespace Google.Apis.CloudComposer.v1beta1
                     }
 
 
-                    /// <summary>The parent must be of the form `projects/{projectId}/locations/{locationId}`.</summary>
+                    /// <summary>The parent must be of the form "projects/{projectId}/locations/{locationId}".</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -475,7 +475,7 @@ namespace Google.Apis.CloudComposer.v1beta1
 
                 /// <summary>Delete an environment.</summary>
                 /// <param name="name">The environment to delete, in the form:
-                /// `projects/{projectId}/locations/{locationId}/environments/{environmentId}`</param>
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</param>
                 public virtual DeleteRequest Delete(string name)
                 {
                     return new DeleteRequest(service, name);
@@ -494,7 +494,7 @@ namespace Google.Apis.CloudComposer.v1beta1
 
 
                     /// <summary>The environment to delete, in the form:
-                    /// `projects/{projectId}/locations/{locationId}/environments/{environmentId}`</summary>
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -537,7 +537,7 @@ namespace Google.Apis.CloudComposer.v1beta1
 
                 /// <summary>Get an existing environment.</summary>
                 /// <param name="name">The resource name of the environment to get, in the form:
-                /// `projects/{projectId}/locations/{locationId}/environments/{environmentId}`</param>
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</param>
                 public virtual GetRequest Get(string name)
                 {
                     return new GetRequest(service, name);
@@ -556,7 +556,7 @@ namespace Google.Apis.CloudComposer.v1beta1
 
 
                     /// <summary>The resource name of the environment to get, in the form:
-                    /// `projects/{projectId}/locations/{locationId}/environments/{environmentId}`</summary>
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -599,7 +599,7 @@ namespace Google.Apis.CloudComposer.v1beta1
 
                 /// <summary>List environments.</summary>
                 /// <param name="parent">List environments in the given project and location, in the form:
-                /// `projects/{projectId}/locations/{locationId}`</param>
+                /// "projects/{projectId}/locations/{locationId}"</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -618,7 +618,7 @@ namespace Google.Apis.CloudComposer.v1beta1
 
 
                     /// <summary>List environments in the given project and location, in the form:
-                    /// `projects/{projectId}/locations/{locationId}`</summary>
+                    /// "projects/{projectId}/locations/{locationId}"</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -688,7 +688,7 @@ namespace Google.Apis.CloudComposer.v1beta1
                 /// <summary>Update an environment.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">The relative resource name of the environment to update, in the form:
-                /// `projects/{projectId}/locations/{locationId}/environments/{environmentId}`</param>
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudComposer.v1beta1.Data.Environment body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -708,7 +708,7 @@ namespace Google.Apis.CloudComposer.v1beta1
 
 
                     /// <summary>The relative resource name of the environment to update, in the form:
-                    /// `projects/{projectId}/locations/{locationId}/environments/{environmentId}`</summary>
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
@@ -1146,7 +1146,7 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string,string> Labels { get; set; } 
 
         /// <summary>The resource name of the environment, in the form:
-        /// `projects/{projectId}/locations/{locationId}/environments/{environmentId}`</summary>
+        /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; } 
 
@@ -1186,16 +1186,16 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
         public virtual string GkeCluster { get; set; } 
 
-        /// <summary>The configuration used for the Container Engine cluster.</summary>
+        /// <summary>The configuration used for the Kubernetes Engine cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; } 
 
-        /// <summary>The number of nodes in the Container Engine cluster that will be used to run this
+        /// <summary>The number of nodes in the Kubernetes Engine cluster that will be used to run this
         /// environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
         public virtual System.Nullable<int> NodeCount { get; set; } 
 
-        /// <summary>The config settings for software inside the environment.</summary>
+        /// <summary>The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; } 
 
@@ -1233,59 +1233,57 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>The configuration information for the Container Engine nodes running the Apache Airflow
+    /// <summary>The configuration information for the Kubernetes Engine nodes running the Apache Airflow
     /// software.</summary>
     public class NodeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. The disk size in GB used for node VMs. Minimum is 10GB. If unspecified, defaults to
+        /// <summary>Optional. The disk size in GB used for node VMs. Minimum size is 10GB. If unspecified, defaults to
         /// 100GB. Cannot be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
         public virtual System.Nullable<int> DiskSizeGb { get; set; } 
 
         /// <summary>Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to
-        /// run the Apache Airflow software, specified as a relative resource
-        /// name](https://cloud.google.com/apis/design/resource_names#relative_resource_name). For example:
-        /// `projects/{projectId}/zones/{zoneId}`.
+        /// run the Apache Airflow software, specified as a [relative resource
+        /// name](/apis/design/resource_names#relative_resource_name). For example:
+        /// "projects/{projectId}/zones/{zoneId}".
         ///
         /// This `location` must belong to the enclosing environment's project and location. If both this field and
         /// `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are
         /// unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer
-        /// location and propagate that choice to both fields. If exactly one of this field and `nodeConfig.machineType`
-        /// is specified, the location information from the specified field will be propagated to the unspecified
-        /// field.</summary>
+        /// location, and propagate that choice to both fields. If only one field (`location` or
+        /// `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated
+        /// to the unspecified field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; } 
 
-        /// <summary>Optional. The Google Compute Engine [machine type]( /compute/docs/machine-types) used for cluster
-        /// instances, specified as a [relative resource name](
-        /// https://cloud.google.com/apis/design/resource_names#relative_resource_name). For example:
-        /// `projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}`.
+        /// <summary>Optional. The Compute Engine [machine type](/compute/docs/machine-types) used for cluster
+        /// instances, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For
+        /// example: "projects/{projectId}/zones/{zoneId}/machineTypes/{machineTypeId}".
         ///
         /// The `machineType` must belong to the enclosing environment's project and location. If both this field and
         /// `nodeConfig.location` are specified, this `machineType` must belong to the `nodeConfig.location`; if both
         /// are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud
-        /// Composer location and propagate that choice to both fields. If exactly one of this field and
+        /// Composer location, and propagate that choice to both fields. If exactly one of this field and
         /// `nodeConfig.location` is specified, the location information from the specified field will be propagated to
         /// the unspecified field.
         ///
-        /// Furthermore, if this field is unspecified, the `machineTypeId` defaults to `n1-standard-1`.</summary>
+        /// If this field is unspecified, the `machineTypeId` defaults to "n1-standard-1".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; } 
 
         /// <summary>Optional. The Compute Engine network to be used for machine communications, specified as a
-        /// [relative resource name]( https://cloud.google.com/apis/design/resource_names#relative_resource_name). For
-        /// example: `projects/{projectId}/global/networks/{networkId}`.
+        /// [relative resource name](/apis/design/resource_names#relative_resource_name). For example:
+        /// "projects/{projectId}/global/networks/{networkId}".
         ///
         /// [Shared VPC](/vpc/docs/shared-vpc) is not currently supported. The network must belong to the environment's
-        /// project. If unspecified, the "default" network ID in the environment's project is used.  If a "Custom Subnet
-        /// Network" (see [Using Subnetworks](/compute/docs/subnetworks) for more information) is provided,
-        /// `nodeConfig.subnetwork` must also be provided.</summary>
+        /// project. If unspecified, the "default" network ID in the environment's project is used.  If a [Custom Subnet
+        /// Network]((/vpc/docs/vpc#vpc_networks_and_subnets) is provided, `nodeConfig.subnetwork` must also be
+        /// provided.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; } 
 
-        /// <summary>Optional. The set of Google API scopes to be made available on all of the node VMs. If
-        /// `oauth_scopes` is empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be
-        /// updated.</summary>
+        /// <summary>Optional. The set of Google API scopes to be made available on all node VMs. If `oauth_scopes` is
+        /// empty, defaults to ["https://www.googleapis.com/auth/cloud-platform"]. Cannot be updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oauthScopes")]
         public virtual System.Collections.Generic.IList<string> OauthScopes { get; set; } 
 
@@ -1295,8 +1293,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ServiceAccount { get; set; } 
 
         /// <summary>Optional. The Compute Engine subnetwork to be used for machine communications, specified as a
-        /// [relative resource name]( https://cloud.google.com/apis/design/resource_names#relative_resource_name). For
-        /// example: `projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}`
+        /// [relative resource name](/apis/design/resource_names#relative_resource_name). For example:
+        /// "projects/{projectId}/regions/{regionId}/subnetworks/{subnetworkId}"
         ///
         /// If a subnetwork is provided, `nodeConfig.network` must also be provided, and the subnetwork must belong to
         /// the enclosing environment's project and location.</summary>
@@ -1382,30 +1380,29 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }    
 
-    /// <summary>Specifies the selection and config of software inside the environment.</summary>
+    /// <summary>Specifies the selection and configuration of software inside the environment.</summary>
     public class SoftwareConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Apache Airflow configuration properties to override.
         ///
-        /// Property keys contain the section and property name, separated by a hyphen, for example `core-
-        /// dags_are_paused_at_creation`. Sections must not contain hyphens ("-"), opening square brackets ("["),  or
-        /// closing square brackets ("]"). The name must be non-empty and must not contain an equals sign ("=") or
-        /// semicolon (";"). The section as well as the name must not contain a period ("."). Apache Airflow
-        /// configuration property names must be written in
-        /// [snake_case](https://www.google.com/url?sa=D=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSnake_case). Property
-        /// values can contain any character and be written in any lower/upper case format.
+        /// Property keys contain the section and property names, separated by a hyphen, for example "core-
+        /// dags_are_paused_at_creation". Section names must not contain hyphens ("-"), opening square brackets ("["),
+        /// or closing square brackets ("]"). The property name must not be empty and must not contain an equals sign
+        /// ("=") or semicolon (";"). Section and property names must not contain a period ("."). Apache Airflow
+        /// configuration property names must be written in [snake_case](https://en.wikipedia.org/wiki/Snake_case).
+        /// Property values can contain any character, and can be written in any lower/upper case format.
         ///
         /// Certain Apache Airflow configuration property values are [blacklisted](/composer/docs/how-to/managing
-        /// /setting-airflow-configurations#airflow_configuration_blacklists) and cannot be overridden.</summary>
+        /// /setting-airflow-configurations#airflow_configuration_blacklists), and cannot be overridden.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airflowConfigOverrides")]
         public virtual System.Collections.Generic.IDictionary<string,string> AirflowConfigOverrides { get; set; } 
 
         /// <summary>Optional. Additional environment variables to provide to the Apache Airflow scheduler, worker, and
         /// webserver processes.
         ///
-        /// Environment variable names must match the regular expression `a-zA-Z_*`. Furthermore, they cannot specify
-        /// Apache Airflow software configuration overrides (i.e., match the regular expression
-        /// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`); nor can they take any of the following reserved values:
+        /// Environment variable names must match the regular expression `a-zA-Z_*`. They cannot specify Apache Airflow
+        /// software configuration overrides (they cannot match the regular expression
+        /// `AIRFLOW__[A-Z0-9_]+__[A-Z0-9_]+`), and they cannot match any of the following reserved names:
         ///
         /// * `AIRFLOW_HOME` * `C_FORCE_ROOT` * `CONTAINER_NAME` * `DAGS_FOLDER` * `GCP_PROJECT` * `GCS_BUCKET` *
         /// `GKE_CLUSTER_NAME` * `SQL_DATABASE` * `SQL_INSTANCE` * `SQL_PASSWORD` * `SQL_PROJECT` * `SQL_REGION` *
@@ -1427,8 +1424,8 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
 
         /// <summary>Optional. Custom Python Package Index (PyPI) packages to be installed in the environment.
         ///
-        /// Keys refer to the lowercase package name such as `numpy` and values are the lowercase extras and version
-        /// specifier such as `==1.12.0`, `[devel,gcp_api]`, or `[devel]>=1.8.2, <1.9.2`. To specify a package without
+        /// Keys refer to the lowercase package name such as "numpy" and values are the lowercase extras and version
+        /// specifier such as "==1.12.0", "[devel,gcp_api]", or "[devel]>=1.8.2, <1.9.2". To specify a package without
         /// pinning it to a version specifier, use the empty string as the value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pypiPackages")]
         public virtual System.Collections.Generic.IDictionary<string,string> PypiPackages { get; set; } 
