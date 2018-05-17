@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://cloud.google.com/dlp/docs/'>Cloud Data Loss Prevention (DLP) API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180507 (1222)
+ *      <tr><th>API Rev<td>20180515 (1230)
  *      <tr><th>API Docs
  *          <td><a href='https://cloud.google.com/dlp/docs/'>
  *              https://cloud.google.com/dlp/docs/</a>
@@ -716,15 +716,15 @@ namespace Google.Apis.DLP.v2
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
-                /// size 100.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
                 /// <summary>Optional page token to continue retrieval. Comes from previous call to
                 /// `ListDeidentifyTemplates`.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>Optional size of the page, can be limited by server. If zero server returns a page of max
+                /// size 100.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
 
 
                 ///<summary>Gets the method name.</summary>
@@ -760,18 +760,18 @@ namespace Google.Apis.DLP.v2
                             Pattern = @"^organizations/[^/]+$",
                         });
                     RequestParameters.Add(
-                        "pageSize", new Google.Apis.Discovery.Parameter
+                        "pageToken", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageSize",
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
                     RequestParameters.Add(
-                        "pageToken", new Google.Apis.Discovery.Parameter
+                        "pageSize", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "pageToken",
+                            Name = "pageSize",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3283,6 +3283,9 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowsLimit")]
         public virtual System.Nullable<long> RowsLimit { get; set; } 
 
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleMethod")]
+        public virtual string SampleMethod { get; set; } 
+
         /// <summary>Complete BigQuery table reference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
         public virtual GooglePrivacyDlpV2BigQueryTable TableReference { get; set; } 
@@ -3508,6 +3511,15 @@ namespace Google.Apis.DLP.v2.Data
         /// format processors are applied.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileTypes")]
         public virtual System.Collections.Generic.IList<string> FileTypes { get; set; } 
+
+        /// <summary>Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned
+        /// is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to
+        /// 0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filesLimitPercent")]
+        public virtual System.Nullable<int> FilesLimitPercent { get; set; } 
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleMethod")]
+        public virtual string SampleMethod { get; set; } 
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3768,7 +3780,7 @@ namespace Google.Apis.DLP.v2.Data
         /// The tweak is constructed as a sequence of bytes in big endian byte order such that:
         ///
         /// - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format
-        /// followed by a single byte of value å 2</summary>
+        /// followed by a single byte of value 2</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual GooglePrivacyDlpV2FieldId Context { get; set; } 
 

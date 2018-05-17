@@ -1,857 +1,4 @@
 {
-  "ownerName": "Google",
-  "resources": {
-    "projects": {
-      "resources": {
-        "brokers": {
-          "resources": {
-            "instances": {
-              "resources": {
-                "bindings": {
-                  "methods": {
-                    "getLast_operation": {
-                      "id": "servicebroker.projects.brokers.instances.bindings.getLast_operation",
-                      "path": "v1beta1/{+name}/last_operation",
-                      "description": "Returns the state of the last operation for the binding.\nOnly last (or current) operation can be polled.",
-                      "httpMethod": "GET",
-                      "response": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__Operation"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]/service_binding/[BINDING_ID]`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/brokers/[^/]+/instances/[^/]+/bindings/[^/]+$",
-                          "location": "path"
-                        },
-                        "operation": {
-                          "description": "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value.",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "planId": {
-                          "description": "Plan id.",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "serviceId": {
-                          "location": "query",
-                          "description": "Service id.",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances/{instancesId}/bindings/{bindingsId}/last_operation"
-                    },
-                    "list": {
-                      "path": "v1beta1/{+parent}/bindings",
-                      "id": "servicebroker.projects.brokers.instances.bindings.list",
-                      "description": "Lists all the bindings in the instance.",
-                      "response": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__ListBindingsResponse"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "httpMethod": "GET",
-                      "parameters": {
-                        "pageToken": {
-                          "description": "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results.",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "pageSize": {
-                          "location": "query",
-                          "description": "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)",
-                          "format": "int32",
-                          "type": "integer"
-                        },
-                        "parent": {
-                          "description": "Parent must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/` +\n`v2/service_instances/[INSTANCE_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/instances/[INSTANCE_ID]`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/brokers/[^/]+/instances/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances/{instancesId}/bindings"
-                    }
-                  }
-                }
-              },
-              "methods": {
-                "getLast_operation": {
-                  "id": "servicebroker.projects.brokers.instances.getLast_operation",
-                  "path": "v1beta1/{+name}/last_operation",
-                  "description": "Returns the state of the last operation for the service instance.\nOnly last (or current) operation can be polled.",
-                  "httpMethod": "GET",
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "response": {
-                    "$ref": "GoogleCloudServicebrokerV1beta1__Operation"
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "planId": {
-                      "description": "Plan id.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "serviceId": {
-                      "description": "Service id.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "name": {
-                      "pattern": "^projects/[^/]+/brokers/[^/]+/instances/[^/]+$",
-                      "location": "path",
-                      "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/`+\n   `service_instances/[INSTANCE_ID]`.",
-                      "required": true,
-                      "type": "string"
-                    },
-                    "operation": {
-                      "description": "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value.",
-                      "type": "string",
-                      "location": "query"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances/{instancesId}/last_operation"
-                },
-                "list": {
-                  "response": {
-                    "$ref": "GoogleCloudServicebrokerV1beta1__ListServiceInstancesResponse"
-                  },
-                  "parameterOrder": [
-                    "parent"
-                  ],
-                  "httpMethod": "GET",
-                  "parameters": {
-                    "parent": {
-                      "description": "Parent must match `projects/[PROJECT_ID]/brokers/[BROKER_ID]`.",
-                      "required": true,
-                      "type": "string",
-                      "pattern": "^projects/[^/]+/brokers/[^/]+$",
-                      "location": "path"
-                    },
-                    "pageToken": {
-                      "description": "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results.",
-                      "type": "string",
-                      "location": "query"
-                    },
-                    "pageSize": {
-                      "location": "query",
-                      "description": "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)",
-                      "format": "int32",
-                      "type": "integer"
-                    }
-                  },
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances",
-                  "path": "v1beta1/{+parent}/instances",
-                  "id": "servicebroker.projects.brokers.instances.list",
-                  "description": "Lists all the instances in the brokers\nThis API is an extension and not part of the OSB spec.\nHence the path is a standard Google API URL."
-                },
-                "get": {
-                  "response": {
-                    "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
-                  },
-                  "parameterOrder": [
-                    "name"
-                  ],
-                  "httpMethod": "GET",
-                  "scopes": [
-                    "https://www.googleapis.com/auth/cloud-platform"
-                  ],
-                  "parameters": {
-                    "name": {
-                      "pattern": "^projects/[^/]+/brokers/[^/]+/instances/[^/]+$",
-                      "location": "path",
-                      "description": "The resource name of the instance to return.\nName must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/` +\n`v2/service_instances/[INSTANCE_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/instances/[INSTANCE_ID]`.",
-                      "required": true,
-                      "type": "string"
-                    }
-                  },
-                  "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances/{instancesId}",
-                  "path": "v1beta1/{+name}",
-                  "id": "servicebroker.projects.brokers.instances.get",
-                  "description": "Gets the given service instance from the system.\nThe API call accepts both OSB style API and standard google style API\nresource path.\ni.e. both `projects/*/brokers/*/instances/*`\n and `projects/*/brokers/*/v2/service_instances/*` are acceptable paths."
-                }
-              }
-            },
-            "v2": {
-              "resources": {
-                "service_instances": {
-                  "resources": {
-                    "service_bindings": {
-                      "methods": {
-                        "create": {
-                          "response": {
-                            "$ref": "GoogleCloudServicebrokerV1beta1__CreateBindingResponse"
-                          },
-                          "parameterOrder": [
-                            "parent",
-                            "binding_id"
-                          ],
-                          "httpMethod": "PUT",
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform"
-                          ],
-                          "parameters": {
-                            "parent": {
-                              "description": "The GCP container.\nMust match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]`.",
-                              "required": true,
-                              "type": "string",
-                              "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
-                              "location": "path"
-                            },
-                            "binding_id": {
-                              "description": "The id of the binding. Must be unique within GCP project.\nMaximum length is 64, GUID recommended.\nRequired.",
-                              "required": true,
-                              "type": "string",
-                              "pattern": "^[^/]+$",
-                              "location": "path"
-                            },
-                            "acceptsIncomplete": {
-                              "description": "See CreateServiceInstanceRequest for details.",
-                              "type": "boolean",
-                              "location": "query"
-                            }
-                          },
-                          "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/service_bindings/{service_bindingsId}",
-                          "path": "v1beta1/{+parent}/service_bindings/{+binding_id}",
-                          "id": "servicebroker.projects.brokers.v2.service_instances.service_bindings.create",
-                          "request": {
-                            "$ref": "GoogleCloudServicebrokerV1beta1__Binding"
-                          },
-                          "description": "CreateBinding generates a service binding to an existing service instance.\nSee ProviServiceInstance for async operation details."
-                        },
-                        "getLast_operation": {
-                          "httpMethod": "GET",
-                          "parameterOrder": [
-                            "name"
-                          ],
-                          "response": {
-                            "$ref": "GoogleCloudServicebrokerV1beta1__Operation"
-                          },
-                          "parameters": {
-                            "planId": {
-                              "location": "query",
-                              "description": "Plan id.",
-                              "type": "string"
-                            },
-                            "serviceId": {
-                              "description": "Service id.",
-                              "type": "string",
-                              "location": "query"
-                            },
-                            "name": {
-                              "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]/service_binding/[BINDING_ID]`.",
-                              "required": true,
-                              "type": "string",
-                              "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+/service_bindings/[^/]+$",
-                              "location": "path"
-                            },
-                            "operation": {
-                              "location": "query",
-                              "description": "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value.",
-                              "type": "string"
-                            }
-                          },
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform"
-                          ],
-                          "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/service_bindings/{service_bindingsId}/last_operation",
-                          "id": "servicebroker.projects.brokers.v2.service_instances.service_bindings.getLast_operation",
-                          "path": "v1beta1/{+name}/last_operation",
-                          "description": "Returns the state of the last operation for the binding.\nOnly last (or current) operation can be polled."
-                        },
-                        "delete": {
-                          "response": {
-                            "$ref": "GoogleCloudServicebrokerV1beta1__DeleteBindingResponse"
-                          },
-                          "parameterOrder": [
-                            "name"
-                          ],
-                          "httpMethod": "DELETE",
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform"
-                          ],
-                          "parameters": {
-                            "acceptsIncomplete": {
-                              "location": "query",
-                              "description": "See CreateServiceInstanceRequest for details.",
-                              "type": "boolean"
-                            },
-                            "name": {
-                              "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/`\n`v2/service_instances/[INSTANCE_ID]/service_bindings/[BINDING_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/`\n`/instances/[INSTANCE_ID]/bindings/[BINDING_ID]`.",
-                              "required": true,
-                              "type": "string",
-                              "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+/service_bindings/[^/]+$",
-                              "location": "path"
-                            },
-                            "planId": {
-                              "description": "The plan id of the service instance.",
-                              "type": "string",
-                              "location": "query"
-                            },
-                            "serviceId": {
-                              "location": "query",
-                              "description": "Additional query parameter hints.\nThe service id of the service instance.",
-                              "type": "string"
-                            }
-                          },
-                          "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/service_bindings/{service_bindingsId}",
-                          "path": "v1beta1/{+name}",
-                          "id": "servicebroker.projects.brokers.v2.service_instances.service_bindings.delete",
-                          "description": "Unbinds from a service instance.\nFor synchronous/asynchronous request details see CreateServiceInstance\nmethod.\nIf binding does not exist HTTP 410 status will be returned."
-                        },
-                        "get": {
-                          "response": {
-                            "$ref": "GoogleCloudServicebrokerV1beta1__GetBindingResponse"
-                          },
-                          "parameterOrder": [
-                            "name"
-                          ],
-                          "httpMethod": "GET",
-                          "scopes": [
-                            "https://www.googleapis.com/auth/cloud-platform"
-                          ],
-                          "parameters": {
-                            "name": {
-                              "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]/service_bindings`.",
-                              "required": true,
-                              "type": "string",
-                              "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+/service_bindings/[^/]+$",
-                              "location": "path"
-                            },
-                            "planId": {
-                              "location": "query",
-                              "description": "Plan id.",
-                              "type": "string"
-                            },
-                            "serviceId": {
-                              "description": "Service id.",
-                              "type": "string",
-                              "location": "query"
-                            }
-                          },
-                          "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/service_bindings/{service_bindingsId}",
-                          "path": "v1beta1/{+name}",
-                          "id": "servicebroker.projects.brokers.v2.service_instances.service_bindings.get",
-                          "description": "GetBinding returns the binding information."
-                        }
-                      }
-                    }
-                  },
-                  "methods": {
-                    "delete": {
-                      "description": "Deprovisions a service instance.\nFor synchronous/asynchronous request details see CreateServiceInstance\nmethod.\nIf service instance does not exist HTTP 410 status will be returned.",
-                      "httpMethod": "DELETE",
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "response": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__DeleteServiceInstanceResponse"
-                      },
-                      "parameters": {
-                        "acceptsIncomplete": {
-                          "location": "query",
-                          "description": "See CreateServiceInstanceRequest for details.",
-                          "type": "boolean"
-                        },
-                        "name": {
-                          "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
-                          "location": "path",
-                          "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/` +\n`v2/service_instances/[INSTANCE_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/instances/[INSTANCE_ID]`.",
-                          "required": true,
-                          "type": "string"
-                        },
-                        "planId": {
-                          "description": "The plan id of the service instance.",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "serviceId": {
-                          "location": "query",
-                          "description": "The service id of the service instance.",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}",
-                      "id": "servicebroker.projects.brokers.v2.service_instances.delete",
-                      "path": "v1beta1/{+name}"
-                    },
-                    "get": {
-                      "response": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "GET",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "name": {
-                          "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
-                          "location": "path",
-                          "description": "The resource name of the instance to return.\nName must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/` +\n`v2/service_instances/[INSTANCE_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/instances/[INSTANCE_ID]`.",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}",
-                      "path": "v1beta1/{+name}",
-                      "id": "servicebroker.projects.brokers.v2.service_instances.get",
-                      "description": "Gets the given service instance from the system.\nThe API call accepts both OSB style API and standard google style API\nresource path.\ni.e. both `projects/*/brokers/*/instances/*`\n and `projects/*/brokers/*/v2/service_instances/*` are acceptable paths."
-                    },
-                    "patch": {
-                      "description": "Updates an existing service instance.\nSee CreateServiceInstance for possible response codes.",
-                      "request": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
-                      },
-                      "response": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__UpdateServiceInstanceResponse"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "PATCH",
-                      "parameters": {
-                        "acceptsIncomplete": {
-                          "description": "See CreateServiceInstanceRequest for details.",
-                          "type": "boolean",
-                          "location": "query"
-                        },
-                        "name": {
-                          "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
-                          "location": "path",
-                          "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]`.",
-                          "required": true,
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}",
-                      "path": "v1beta1/{+name}",
-                      "id": "servicebroker.projects.brokers.v2.service_instances.patch"
-                    },
-                    "create": {
-                      "response": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__CreateServiceInstanceResponse"
-                      },
-                      "parameterOrder": [
-                        "parent",
-                        "instance_id"
-                      ],
-                      "httpMethod": "PUT",
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "parameters": {
-                        "acceptsIncomplete": {
-                          "location": "query",
-                          "description": "Value indicating that API client supports asynchronous operations. If\nBroker cannot execute the request synchronously HTTP 422 code will be\nreturned to HTTP clients along with FAILED_PRECONDITION error.\nIf true and broker will execute request asynchronously 202 HTTP code will\nbe returned.\nThis broker always requires this to be true as all mutator operations are\nasynchronous.",
-                          "type": "boolean"
-                        },
-                        "instance_id": {
-                          "description": "The id of the service instance. Must be unique within GCP project.\nMaximum length is 64, GUID recommended.\nRequired.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^[^/]+$",
-                          "location": "path"
-                        },
-                        "parent": {
-                          "description": "Parent must match `projects/[PROJECT_ID]/brokers/[BROKER_ID]`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/brokers/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}",
-                      "path": "v1beta1/{+parent}/v2/service_instances/{+instance_id}",
-                      "id": "servicebroker.projects.brokers.v2.service_instances.create",
-                      "request": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
-                      },
-                      "description": "Provisions a service instance.\nIf `request.accepts_incomplete` is false and Broker cannot execute request\nsynchronously HTTP 422 error will be returned along with\nFAILED_PRECONDITION status.\nIf `request.accepts_incomplete` is true and the Broker decides to execute\nresource asynchronously then HTTP 202 response code will be returned and a\nvalid polling operation in the response will be included.\nIf Broker executes the request synchronously and it succeeds HTTP 201\nresponse will be furnished.\nIf identical instance exists, then HTTP 200 response will be returned.\nIf an instance with identical ID but mismatching parameters exists, then\nHTTP 409 status code will be returned."
-                    },
-                    "getLast_operation": {
-                      "path": "v1beta1/{+name}/last_operation",
-                      "id": "servicebroker.projects.brokers.v2.service_instances.getLast_operation",
-                      "description": "Returns the state of the last operation for the service instance.\nOnly last (or current) operation can be polled.",
-                      "response": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__Operation"
-                      },
-                      "parameterOrder": [
-                        "name"
-                      ],
-                      "httpMethod": "GET",
-                      "parameters": {
-                        "name": {
-                          "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/`+\n   `service_instances/[INSTANCE_ID]`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
-                          "location": "path"
-                        },
-                        "operation": {
-                          "description": "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value.",
-                          "type": "string",
-                          "location": "query"
-                        },
-                        "planId": {
-                          "location": "query",
-                          "description": "Plan id.",
-                          "type": "string"
-                        },
-                        "serviceId": {
-                          "location": "query",
-                          "description": "Service id.",
-                          "type": "string"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/last_operation"
-                    }
-                  }
-                },
-                "catalog": {
-                  "methods": {
-                    "list": {
-                      "httpMethod": "GET",
-                      "response": {
-                        "$ref": "GoogleCloudServicebrokerV1beta1__ListCatalogResponse"
-                      },
-                      "parameterOrder": [
-                        "parent"
-                      ],
-                      "parameters": {
-                        "pageToken": {
-                          "location": "query",
-                          "description": "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results.",
-                          "type": "string"
-                        },
-                        "pageSize": {
-                          "description": "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. If unset or 0, all the results will be returned.",
-                          "format": "int32",
-                          "type": "integer",
-                          "location": "query"
-                        },
-                        "parent": {
-                          "description": "Parent must match `projects/[PROJECT_ID]/brokers/[BROKER_ID]`.",
-                          "required": true,
-                          "type": "string",
-                          "pattern": "^projects/[^/]+/brokers/[^/]+$",
-                          "location": "path"
-                        }
-                      },
-                      "scopes": [
-                        "https://www.googleapis.com/auth/cloud-platform"
-                      ],
-                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/catalog",
-                      "id": "servicebroker.projects.brokers.v2.catalog.list",
-                      "path": "v1beta1/{+parent}/v2/catalog",
-                      "description": "Lists all the Services registered with this broker for consumption for\ngiven service registry broker, which contains an set of services.\nNote, that Service producer API is separate from Broker API."
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "methods": {
-            "delete": {
-              "id": "servicebroker.projects.brokers.delete",
-              "path": "v1beta1/{+name}",
-              "description": "DeleteBroker deletes a Broker.",
-              "httpMethod": "DELETE",
-              "parameterOrder": [
-                "name"
-              ],
-              "response": {
-                "$ref": "GoogleProtobuf__Empty"
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "name": {
-                  "description": "The broker to delete.",
-                  "required": true,
-                  "type": "string",
-                  "pattern": "^projects/[^/]+/brokers/[^/]+$",
-                  "location": "path"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}"
-            },
-            "list": {
-              "httpMethod": "GET",
-              "parameterOrder": [
-                "parent"
-              ],
-              "response": {
-                "$ref": "GoogleCloudServicebrokerV1beta1__ListBrokersResponse"
-              },
-              "parameters": {
-                "pageToken": {
-                  "location": "query",
-                  "description": "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results.",
-                  "type": "string"
-                },
-                "pageSize": {
-                  "location": "query",
-                  "description": "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)",
-                  "format": "int32",
-                  "type": "integer"
-                },
-                "parent": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "Parent must match `projects/[PROJECT_ID]/brokers`.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "flatPath": "v1beta1/projects/{projectsId}/brokers",
-              "id": "servicebroker.projects.brokers.list",
-              "path": "v1beta1/{+parent}/brokers",
-              "description": "ListBrokers lists brokers."
-            },
-            "create": {
-              "response": {
-                "$ref": "GoogleCloudServicebrokerV1beta1__Broker"
-              },
-              "parameterOrder": [
-                "parent"
-              ],
-              "httpMethod": "POST",
-              "scopes": [
-                "https://www.googleapis.com/auth/cloud-platform"
-              ],
-              "parameters": {
-                "parent": {
-                  "pattern": "^projects/[^/]+$",
-                  "location": "path",
-                  "description": "The project in which to create broker.",
-                  "required": true,
-                  "type": "string"
-                }
-              },
-              "flatPath": "v1beta1/projects/{projectsId}/brokers",
-              "path": "v1beta1/{+parent}/brokers",
-              "id": "servicebroker.projects.brokers.create",
-              "request": {
-                "$ref": "GoogleCloudServicebrokerV1beta1__Broker"
-              },
-              "description": "CreateBroker creates a Broker."
-            }
-          }
-        }
-      }
-    },
-    "v1beta1": {
-      "methods": {
-        "setIamPolicy": {
-          "request": {
-            "$ref": "GoogleIamV1__SetIamPolicyRequest"
-          },
-          "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy.",
-          "response": {
-            "$ref": "GoogleIamV1__Policy"
-          },
-          "parameterOrder": [
-            "resource"
-          ],
-          "httpMethod": "POST",
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1beta1/{v1beta1Id}:setIamPolicy",
-          "path": "v1beta1/{+resource}:setIamPolicy",
-          "id": "servicebroker.setIamPolicy"
-        },
-        "testIamPermissions": {
-          "id": "servicebroker.testIamPermissions",
-          "path": "v1beta1/{+resource}:testIamPermissions",
-          "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
-          "request": {
-            "$ref": "GoogleIamV1__TestIamPermissionsRequest"
-          },
-          "httpMethod": "POST",
-          "parameterOrder": [
-            "resource"
-          ],
-          "response": {
-            "$ref": "GoogleIamV1__TestIamPermissionsResponse"
-          },
-          "parameters": {
-            "resource": {
-              "pattern": "^.+$",
-              "location": "path",
-              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string"
-            }
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "flatPath": "v1beta1/{v1beta1Id}:testIamPermissions"
-        },
-        "getIamPolicy": {
-          "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
-          "httpMethod": "GET",
-          "parameterOrder": [
-            "resource"
-          ],
-          "response": {
-            "$ref": "GoogleIamV1__Policy"
-          },
-          "scopes": [
-            "https://www.googleapis.com/auth/cloud-platform"
-          ],
-          "parameters": {
-            "resource": {
-              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
-              "required": true,
-              "type": "string",
-              "pattern": "^.+$",
-              "location": "path"
-            }
-          },
-          "flatPath": "v1beta1/{v1beta1Id}:getIamPolicy",
-          "id": "servicebroker.getIamPolicy",
-          "path": "v1beta1/{+resource}:getIamPolicy"
-        }
-      }
-    }
-  },
-  "parameters": {
-    "upload_protocol": {
-      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "prettyPrint": {
-      "location": "query",
-      "description": "Returns response with indentations and line breaks.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "uploadType": {
-      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-      "type": "string",
-      "location": "query"
-    },
-    "fields": {
-      "description": "Selector specifying which fields to include in a partial response.",
-      "type": "string",
-      "location": "query"
-    },
-    "$.xgafv": {
-      "enumDescriptions": [
-        "v1 error format",
-        "v2 error format"
-      ],
-      "location": "query",
-      "enum": [
-        "1",
-        "2"
-      ],
-      "description": "V1 error format.",
-      "type": "string"
-    },
-    "callback": {
-      "description": "JSONP",
-      "type": "string",
-      "location": "query"
-    },
-    "alt": {
-      "enum": [
-        "json",
-        "media",
-        "proto"
-      ],
-      "type": "string",
-      "enumDescriptions": [
-        "Responses with Content-Type of application/json",
-        "Media download with context-dependent Content-Type",
-        "Responses with Content-Type of application/x-protobuf"
-      ],
-      "location": "query",
-      "description": "Data format for response.",
-      "default": "json"
-    },
-    "key": {
-      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-      "type": "string",
-      "location": "query"
-    },
-    "access_token": {
-      "description": "OAuth access token.",
-      "type": "string",
-      "location": "query"
-    },
-    "quotaUser": {
-      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-      "type": "string",
-      "location": "query"
-    },
-    "pp": {
-      "location": "query",
-      "description": "Pretty-print response.",
-      "type": "boolean",
-      "default": "true"
-    },
-    "oauth_token": {
-      "location": "query",
-      "description": "OAuth 2.0 token for the current user.",
-      "type": "string"
-    },
-    "bearer_token": {
-      "location": "query",
-      "description": "OAuth bearer token.",
-      "type": "string"
-    }
-  },
-  "version": "v1beta1",
-  "baseUrl": "https://servicebroker.googleapis.com/",
   "kind": "discovery#restDescription",
   "description": "The Google Cloud Platform Service Broker API provides Google hosted\nimplementation of the Open Service Broker API\n(https://www.openservicebrokerapi.org/).\n",
   "servicePath": "",
@@ -863,8 +10,6 @@
   "version_module": true,
   "schemas": {
     "GoogleCloudServicebrokerV1beta1__UpdateServiceInstanceResponse": {
-      "description": "Response for the `UpdateServiceInstance()` method.",
-      "type": "object",
       "properties": {
         "operation": {
           "description": "If broker executes operation asynchronously, this is the operation ID that\ncan be polled to check the completion status of said operation.",
@@ -875,7 +20,9 @@
           "type": "string"
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__UpdateServiceInstanceResponse"
+      "id": "GoogleCloudServicebrokerV1beta1__UpdateServiceInstanceResponse",
+      "description": "Response for the `UpdateServiceInstance()` method.",
+      "type": "object"
     },
     "GoogleCloudServicebrokerV1beta1__ListBindingsResponse": {
       "properties": {
@@ -929,17 +76,7 @@
       "id": "GoogleIamV1__TestIamPermissionsResponse"
     },
     "GoogleCloudServicebrokerV1beta1__CreateBindingResponse": {
-      "description": "Response for the `CreateBinding()` method.",
-      "type": "object",
       "properties": {
-        "route_service_url": {
-          "description": "A URL to which the platform may proxy requests for the address sent with\nbind_resource.route",
-          "type": "string"
-        },
-        "description": {
-          "description": "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors",
-          "type": "string"
-        },
         "syslog_drain_url": {
           "description": "From where to read system logs.",
           "type": "string"
@@ -966,9 +103,19 @@
             },
             "type": "object"
           }
+        },
+        "route_service_url": {
+          "description": "A URL to which the platform may proxy requests for the address sent with\nbind_resource.route",
+          "type": "string"
+        },
+        "description": {
+          "description": "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors",
+          "type": "string"
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__CreateBindingResponse"
+      "id": "GoogleCloudServicebrokerV1beta1__CreateBindingResponse",
+      "description": "Response for the `CreateBinding()` method.",
+      "type": "object"
     },
     "GoogleCloudServicebrokerV1beta1__DeleteServiceInstanceResponse": {
       "description": "Response for the `DeleteServiceInstance()` method.",
@@ -988,8 +135,8 @@
     "GoogleIamV1__SetIamPolicyRequest": {
       "properties": {
         "policy": {
-          "$ref": "GoogleIamV1__Policy",
-          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them."
+          "description": "REQUIRED: The complete policy to be applied to the `resource`. The size of\nthe policy is limited to a few 10s of KB. An empty policy is a\nvalid policy but certain Cloud Platform services (such as Projects)\nmight reject them.",
+          "$ref": "GoogleIamV1__Policy"
         }
       },
       "id": "GoogleIamV1__SetIamPolicyRequest",
@@ -998,30 +145,6 @@
     },
     "GoogleCloudServicebrokerV1beta1__Service": {
       "properties": {
-        "plan_updateable": {
-          "description": "Whether the service supports upgrade/downgrade for some plans.",
-          "type": "boolean"
-        },
-        "bindable": {
-          "description": "Specifies whether instances of the service can be bound to applications.\nRequired.",
-          "type": "boolean"
-        },
-        "binding_retrievable": {
-          "description": "Whether the service provides an endpoint to get service bindings.",
-          "type": "boolean"
-        },
-        "dashboard_client": {
-          "description": "Information to activate Dashboard SSO feature.",
-          "$ref": "GoogleCloudServicebrokerV1beta1__DashboardClient"
-        },
-        "bindings_retrievable": {
-          "description": "Whether the service provides an endpoint to get service bindings.",
-          "type": "boolean"
-        },
-        "description": {
-          "description": "Textual description of the service. Required.",
-          "type": "string"
-        },
         "instances_retrievable": {
           "description": "Whether the service provides an endpoint to get service instances.",
           "type": "boolean"
@@ -1055,6 +178,30 @@
         "id": {
           "description": "ID is a globally unique identifier used to uniquely identify the service.\nID is an opaque string.",
           "type": "string"
+        },
+        "plan_updateable": {
+          "description": "Whether the service supports upgrade/downgrade for some plans.",
+          "type": "boolean"
+        },
+        "bindable": {
+          "description": "Specifies whether instances of the service can be bound to applications.\nRequired.",
+          "type": "boolean"
+        },
+        "binding_retrievable": {
+          "description": "Whether the service provides an endpoint to get service bindings.",
+          "type": "boolean"
+        },
+        "dashboard_client": {
+          "$ref": "GoogleCloudServicebrokerV1beta1__DashboardClient",
+          "description": "Information to activate Dashboard SSO feature."
+        },
+        "bindings_retrievable": {
+          "description": "Whether the service provides an endpoint to get service bindings.",
+          "type": "boolean"
+        },
+        "description": {
+          "description": "Textual description of the service. Required.",
+          "type": "string"
         }
       },
       "id": "GoogleCloudServicebrokerV1beta1__Service",
@@ -1087,6 +234,10 @@
     },
     "GoogleCloudServicebrokerV1beta1__Binding": {
       "properties": {
+        "service_id": {
+          "description": "The id of the service. Must be a valid identifier of a service\ncontained in the list from a `ListServices()` call.\nMaximum length is 64, GUID recommended.\nRequired.",
+          "type": "string"
+        },
         "createTime": {
           "description": "Output only.\nTimestamp for when the binding was created.",
           "format": "google-datetime",
@@ -1115,10 +266,6 @@
           },
           "description": "A JSON object that contains data for platform resources associated with\nthe binding to be created.",
           "type": "object"
-        },
-        "service_id": {
-          "description": "The id of the service. Must be a valid identifier of a service\ncontained in the list from a `ListServices()` call.\nMaximum length is 64, GUID recommended.\nRequired.",
-          "type": "string"
         }
       },
       "id": "GoogleCloudServicebrokerV1beta1__Binding",
@@ -1126,17 +273,7 @@
       "type": "object"
     },
     "GoogleCloudServicebrokerV1beta1__ServiceInstance": {
-      "description": "Message describing inputs to Provision and Update Service instance requests.",
-      "type": "object",
       "properties": {
-        "context": {
-          "additionalProperties": {
-            "description": "Properties of the object.",
-            "type": "any"
-          },
-          "description": "Platform specific contextual information under which the service instance\nis to be provisioned. This replaces organization_guid and space_guid.\nBut can also contain anything.\nCurrently only used for logging context information.",
-          "type": "object"
-        },
         "space_guid": {
           "description": "The identifier for the project space within the platform organization.\nRequired.",
           "type": "string"
@@ -1185,18 +322,22 @@
         "instance_id": {
           "description": "The id of the service instance. Must be unique within GCP project.\nMaximum length is 64, GUID recommended.\nRequired.",
           "type": "string"
+        },
+        "context": {
+          "additionalProperties": {
+            "description": "Properties of the object.",
+            "type": "any"
+          },
+          "description": "Platform specific contextual information under which the service instance\nis to be provisioned. This replaces organization_guid and space_guid.\nBut can also contain anything.\nCurrently only used for logging context information.",
+          "type": "object"
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
+      "id": "GoogleCloudServicebrokerV1beta1__ServiceInstance",
+      "description": "Message describing inputs to Provision and Update Service instance requests.",
+      "type": "object"
     },
     "GoogleCloudServicebrokerV1beta1__DashboardClient": {
-      "description": "Message containing information required to activate Dashboard SSO feature.",
-      "type": "object",
       "properties": {
-        "secret": {
-          "description": "A secret for the dashboard client.",
-          "type": "string"
-        },
         "id": {
           "description": "The id of the Oauth client that the dashboard will use.",
           "type": "string"
@@ -1204,13 +345,17 @@
         "redirect_uri": {
           "description": "A URI for the service dashboard.\nValidated by the OAuth token server when the dashboard requests a token.",
           "type": "string"
+        },
+        "secret": {
+          "description": "A secret for the dashboard client.",
+          "type": "string"
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__DashboardClient"
+      "id": "GoogleCloudServicebrokerV1beta1__DashboardClient",
+      "description": "Message containing information required to activate Dashboard SSO feature.",
+      "type": "object"
     },
     "GoogleCloudServicebrokerV1beta1__ListCatalogResponse": {
-      "description": "Response message for the `ListCatalog()` method.",
-      "type": "object",
       "properties": {
         "services": {
           "description": "The services available for the requested GCP project.",
@@ -1228,17 +373,17 @@
           "type": "string"
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__ListCatalogResponse"
-    },
-    "GoogleProtobuf__Empty": {
-      "properties": {},
-      "id": "GoogleProtobuf__Empty",
-      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
+      "id": "GoogleCloudServicebrokerV1beta1__ListCatalogResponse",
+      "description": "Response message for the `ListCatalog()` method.",
       "type": "object"
     },
-    "GoogleIamV1__Binding": {
-      "description": "Associates `members` with a `role`.",
+    "GoogleProtobuf__Empty": {
+      "description": "A generic empty message that you can re-use to avoid defining duplicated\nempty messages in your APIs. A typical example is to use it as the request\nor the response type of an API method. For instance:\n\n    service Foo {\n      rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty);\n    }\n\nThe JSON representation for `Empty` is empty JSON object `{}`.",
       "type": "object",
+      "properties": {},
+      "id": "GoogleProtobuf__Empty"
+    },
+    "GoogleIamV1__Binding": {
       "properties": {
         "members": {
           "description": "Specifies the identities requesting access for a Cloud Platform resource.\n`members` can have the following values:\n\n* `allUsers`: A special identifier that represents anyone who is\n   on the internet; with or without a Google account.\n\n* `allAuthenticatedUsers`: A special identifier that represents anyone\n   who is authenticated with a Google account or a service account.\n\n* `user:{emailid}`: An email address that represents a specific Google\n   account. For example, `alice@gmail.com` .\n\n\n* `serviceAccount:{emailid}`: An email address that represents a service\n   account. For example, `my-other-app@appspot.gserviceaccount.com`.\n\n* `group:{emailid}`: An email address that represents a Google group.\n   For example, `admins@example.com`.\n\n\n* `domain:{domain}`: A Google Apps domain name that represents all the\n   users of that domain. For example, `google.com` or `example.com`.\n\n",
@@ -1252,7 +397,9 @@
           "type": "string"
         }
       },
-      "id": "GoogleIamV1__Binding"
+      "id": "GoogleIamV1__Binding",
+      "description": "Associates `members` with a `role`.",
+      "type": "object"
     },
     "GoogleIamV1__TestIamPermissionsRequest": {
       "description": "Request message for `TestIamPermissions` method.",
@@ -1284,8 +431,6 @@
       "id": "GoogleCloudServicebrokerV1beta1__Operation"
     },
     "GoogleCloudServicebrokerV1beta1__CreateServiceInstanceResponse": {
-      "description": "Response for the `CreateServiceInstance()` method.",
-      "type": "object",
       "properties": {
         "operation": {
           "description": "If broker executes operation asynchronously, this is the operation ID that\ncan be polled to check the completion status of said operation.\nThis broker always will return a non-empty operation on success.",
@@ -1296,12 +441,22 @@
           "type": "string"
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__CreateServiceInstanceResponse"
+      "id": "GoogleCloudServicebrokerV1beta1__CreateServiceInstanceResponse",
+      "description": "Response for the `CreateServiceInstance()` method.",
+      "type": "object"
     },
     "GoogleCloudServicebrokerV1beta1__Plan": {
       "description": "Plan message describes a Service Plan.",
       "type": "object",
       "properties": {
+        "id": {
+          "description": "ID is a globally unique identifier used to uniquely identify the plan.\nUser must make no presumption about the format of this field.",
+          "type": "string"
+        },
+        "free": {
+          "description": "Whether the service is free.",
+          "type": "boolean"
+        },
         "description": {
           "description": "Textual description of the plan. Optional.",
           "type": "string"
@@ -1329,19 +484,13 @@
           },
           "description": "A list of metadata for a service offering.\nMetadata is an arbitrary JSON object.",
           "type": "object"
-        },
-        "id": {
-          "description": "ID is a globally unique identifier used to uniquely identify the plan.\nUser must make no presumption about the format of this field.",
-          "type": "string"
-        },
-        "free": {
-          "description": "Whether the service is free.",
-          "type": "boolean"
         }
       },
       "id": "GoogleCloudServicebrokerV1beta1__Plan"
     },
     "GoogleCloudServicebrokerV1beta1__Broker": {
+      "description": "Broker represents a consumable collection of Service Registry catalogs\nexposed as an OSB Broker.",
+      "type": "object",
       "properties": {
         "name": {
           "description": "Name of the broker in the format:\n\u003cprojects\u003e/\u003cproject-id\u003e/brokers/\u003cbroker\u003e.\nThis allows for multiple brokers per project which can be used to\nenable having custom brokers per GKE cluster, for example.",
@@ -1361,11 +510,11 @@
           "type": "string"
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__Broker",
-      "description": "Broker represents a consumable collection of Service Registry catalogs\nexposed as an OSB Broker.",
-      "type": "object"
+      "id": "GoogleCloudServicebrokerV1beta1__Broker"
     },
     "GoogleCloudServicebrokerV1beta1__GetBindingResponse": {
+      "description": "Response for the `GetBinding()` method.",
+      "type": "object",
       "properties": {
         "syslog_drain_url": {
           "description": "From where to read system logs.",
@@ -1399,11 +548,11 @@
           }
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__GetBindingResponse",
-      "description": "Response for the `GetBinding()` method.",
-      "type": "object"
+      "id": "GoogleCloudServicebrokerV1beta1__GetBindingResponse"
     },
     "GoogleCloudServicebrokerV1beta1__ListBrokersResponse": {
+      "description": "The response for the `ListBrokers()` method.",
+      "type": "object",
       "properties": {
         "brokers": {
           "description": "The list of brokers in the container.",
@@ -1417,21 +566,10 @@
           "type": "string"
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__ListBrokersResponse",
-      "description": "The response for the `ListBrokers()` method.",
-      "type": "object"
+      "id": "GoogleCloudServicebrokerV1beta1__ListBrokersResponse"
     },
     "GoogleCloudServicebrokerV1beta1__ListServiceInstancesResponse": {
-      "description": "The response for the `ListServiceInstances()` method.",
-      "type": "object",
       "properties": {
-        "instances": {
-          "description": "The list of instances in the broker.",
-          "type": "array",
-          "items": {
-            "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
-          }
-        },
         "nextPageToken": {
           "description": "This token allows you to get the next page of results for list requests.\nIf the number of results is larger than `pageSize`, use the `nextPageToken`\nas a value for the query parameter `pageToken` in the next list request.\nSubsequent list requests will have their own `nextPageToken` to continue\npaging through the results",
           "type": "string"
@@ -1439,15 +577,24 @@
         "description": {
           "description": "Used to communicate description of the response. Usually for non-standard\nerror codes.\nhttps://github.com/openservicebrokerapi/servicebroker/blob/master/spec.md#service-broker-errors",
           "type": "string"
+        },
+        "instances": {
+          "description": "The list of instances in the broker.",
+          "type": "array",
+          "items": {
+            "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
+          }
         }
       },
-      "id": "GoogleCloudServicebrokerV1beta1__ListServiceInstancesResponse"
+      "id": "GoogleCloudServicebrokerV1beta1__ListServiceInstancesResponse",
+      "description": "The response for the `ListServiceInstances()` method.",
+      "type": "object"
     }
   },
   "protocol": "rest",
   "icons": {
-    "x16": "http://www.google.com/images/icons/product/search-16.gif",
-    "x32": "http://www.google.com/images/icons/product/search-32.gif"
+    "x32": "http://www.google.com/images/icons/product/search-32.gif",
+    "x16": "http://www.google.com/images/icons/product/search-16.gif"
   },
   "canonicalName": "Service Broker",
   "auth": {
@@ -1464,5 +611,858 @@
   "name": "servicebroker",
   "batchPath": "batch",
   "fullyEncodeReservedExpansion": true,
-  "title": "Service Broker API"
+  "title": "Service Broker API",
+  "ownerName": "Google",
+  "resources": {
+    "projects": {
+      "resources": {
+        "brokers": {
+          "methods": {
+            "create": {
+              "request": {
+                "$ref": "GoogleCloudServicebrokerV1beta1__Broker"
+              },
+              "description": "CreateBroker creates a Broker.",
+              "response": {
+                "$ref": "GoogleCloudServicebrokerV1beta1__Broker"
+              },
+              "parameterOrder": [
+                "parent"
+              ],
+              "httpMethod": "POST",
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "parent": {
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path",
+                  "description": "The project in which to create broker.",
+                  "required": true,
+                  "type": "string"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/brokers",
+              "path": "v1beta1/{+parent}/brokers",
+              "id": "servicebroker.projects.brokers.create"
+            },
+            "delete": {
+              "httpMethod": "DELETE",
+              "parameterOrder": [
+                "name"
+              ],
+              "response": {
+                "$ref": "GoogleProtobuf__Empty"
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "parameters": {
+                "name": {
+                  "description": "The broker to delete.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+/brokers/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}",
+              "id": "servicebroker.projects.brokers.delete",
+              "path": "v1beta1/{+name}",
+              "description": "DeleteBroker deletes a Broker."
+            },
+            "list": {
+              "id": "servicebroker.projects.brokers.list",
+              "path": "v1beta1/{+parent}/brokers",
+              "description": "ListBrokers lists brokers.",
+              "httpMethod": "GET",
+              "parameterOrder": [
+                "parent"
+              ],
+              "response": {
+                "$ref": "GoogleCloudServicebrokerV1beta1__ListBrokersResponse"
+              },
+              "parameters": {
+                "pageToken": {
+                  "description": "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results.",
+                  "type": "string",
+                  "location": "query"
+                },
+                "pageSize": {
+                  "location": "query",
+                  "description": "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)",
+                  "format": "int32",
+                  "type": "integer"
+                },
+                "parent": {
+                  "description": "Parent must match `projects/[PROJECT_ID]/brokers`.",
+                  "required": true,
+                  "type": "string",
+                  "pattern": "^projects/[^/]+$",
+                  "location": "path"
+                }
+              },
+              "scopes": [
+                "https://www.googleapis.com/auth/cloud-platform"
+              ],
+              "flatPath": "v1beta1/projects/{projectsId}/brokers"
+            }
+          },
+          "resources": {
+            "instances": {
+              "methods": {
+                "list": {
+                  "path": "v1beta1/{+parent}/instances",
+                  "id": "servicebroker.projects.brokers.instances.list",
+                  "description": "Lists all the instances in the brokers\nThis API is an extension and not part of the OSB spec.\nHence the path is a standard Google API URL.",
+                  "response": {
+                    "$ref": "GoogleCloudServicebrokerV1beta1__ListServiceInstancesResponse"
+                  },
+                  "parameterOrder": [
+                    "parent"
+                  ],
+                  "httpMethod": "GET",
+                  "parameters": {
+                    "pageToken": {
+                      "description": "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "pageSize": {
+                      "description": "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)",
+                      "format": "int32",
+                      "type": "integer",
+                      "location": "query"
+                    },
+                    "parent": {
+                      "pattern": "^projects/[^/]+/brokers/[^/]+$",
+                      "location": "path",
+                      "description": "Parent must match `projects/[PROJECT_ID]/brokers/[BROKER_ID]`.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances"
+                },
+                "get": {
+                  "description": "Gets the given service instance from the system.\nThe API call accepts both OSB style API and standard google style API\nresource path.\ni.e. both `projects/*/brokers/*/instances/*`\n and `projects/*/brokers/*/v2/service_instances/*` are acceptable paths.",
+                  "response": {
+                    "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
+                  },
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "httpMethod": "GET",
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/brokers/[^/]+/instances/[^/]+$",
+                      "location": "path",
+                      "description": "The resource name of the instance to return.\nName must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/` +\n`v2/service_instances/[INSTANCE_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/instances/[INSTANCE_ID]`.",
+                      "required": true,
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances/{instancesId}",
+                  "path": "v1beta1/{+name}",
+                  "id": "servicebroker.projects.brokers.instances.get"
+                },
+                "getLast_operation": {
+                  "httpMethod": "GET",
+                  "parameterOrder": [
+                    "name"
+                  ],
+                  "response": {
+                    "$ref": "GoogleCloudServicebrokerV1beta1__Operation"
+                  },
+                  "scopes": [
+                    "https://www.googleapis.com/auth/cloud-platform"
+                  ],
+                  "parameters": {
+                    "name": {
+                      "pattern": "^projects/[^/]+/brokers/[^/]+/instances/[^/]+$",
+                      "location": "path",
+                      "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/`+\n   `service_instances/[INSTANCE_ID]`.",
+                      "required": true,
+                      "type": "string"
+                    },
+                    "operation": {
+                      "description": "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "planId": {
+                      "description": "Plan id.",
+                      "type": "string",
+                      "location": "query"
+                    },
+                    "serviceId": {
+                      "location": "query",
+                      "description": "Service id.",
+                      "type": "string"
+                    }
+                  },
+                  "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances/{instancesId}/last_operation",
+                  "id": "servicebroker.projects.brokers.instances.getLast_operation",
+                  "path": "v1beta1/{+name}/last_operation",
+                  "description": "Returns the state of the last operation for the service instance.\nOnly last (or current) operation can be polled."
+                }
+              },
+              "resources": {
+                "bindings": {
+                  "methods": {
+                    "list": {
+                      "response": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__ListBindingsResponse"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "pageToken": {
+                          "description": "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "pageSize": {
+                          "location": "query",
+                          "description": "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. Acceptable values are 0 to 200, inclusive. (Default: 100)",
+                          "format": "int32",
+                          "type": "integer"
+                        },
+                        "parent": {
+                          "pattern": "^projects/[^/]+/brokers/[^/]+/instances/[^/]+$",
+                          "location": "path",
+                          "description": "Parent must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/` +\n`v2/service_instances/[INSTANCE_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/instances/[INSTANCE_ID]`.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances/{instancesId}/bindings",
+                      "path": "v1beta1/{+parent}/bindings",
+                      "id": "servicebroker.projects.brokers.instances.bindings.list",
+                      "description": "Lists all the bindings in the instance."
+                    },
+                    "getLast_operation": {
+                      "id": "servicebroker.projects.brokers.instances.bindings.getLast_operation",
+                      "path": "v1beta1/{+name}/last_operation",
+                      "description": "Returns the state of the last operation for the binding.\nOnly last (or current) operation can be polled.",
+                      "httpMethod": "GET",
+                      "response": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__Operation"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/brokers/[^/]+/instances/[^/]+/bindings/[^/]+$",
+                          "location": "path",
+                          "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]/service_binding/[BINDING_ID]`.",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "operation": {
+                          "description": "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "planId": {
+                          "description": "Plan id.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "serviceId": {
+                          "description": "Service id.",
+                          "type": "string",
+                          "location": "query"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/instances/{instancesId}/bindings/{bindingsId}/last_operation"
+                    }
+                  }
+                }
+              }
+            },
+            "v2": {
+              "resources": {
+                "service_instances": {
+                  "methods": {
+                    "delete": {
+                      "httpMethod": "DELETE",
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "response": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__DeleteServiceInstanceResponse"
+                      },
+                      "parameters": {
+                        "planId": {
+                          "location": "query",
+                          "description": "The plan id of the service instance.",
+                          "type": "string"
+                        },
+                        "serviceId": {
+                          "location": "query",
+                          "description": "The service id of the service instance.",
+                          "type": "string"
+                        },
+                        "acceptsIncomplete": {
+                          "location": "query",
+                          "description": "See CreateServiceInstanceRequest for details.",
+                          "type": "boolean"
+                        },
+                        "name": {
+                          "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/` +\n`v2/service_instances/[INSTANCE_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/instances/[INSTANCE_ID]`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}",
+                      "id": "servicebroker.projects.brokers.v2.service_instances.delete",
+                      "path": "v1beta1/{+name}",
+                      "description": "Deprovisions a service instance.\nFor synchronous/asynchronous request details see CreateServiceInstance\nmethod.\nIf service instance does not exist HTTP 410 status will be returned."
+                    },
+                    "get": {
+                      "response": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "GET",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "name": {
+                          "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
+                          "location": "path",
+                          "description": "The resource name of the instance to return.\nName must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/` +\n`v2/service_instances/[INSTANCE_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/instances/[INSTANCE_ID]`.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}",
+                      "path": "v1beta1/{+name}",
+                      "id": "servicebroker.projects.brokers.v2.service_instances.get",
+                      "description": "Gets the given service instance from the system.\nThe API call accepts both OSB style API and standard google style API\nresource path.\ni.e. both `projects/*/brokers/*/instances/*`\n and `projects/*/brokers/*/v2/service_instances/*` are acceptable paths."
+                    },
+                    "patch": {
+                      "response": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__UpdateServiceInstanceResponse"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "PATCH",
+                      "parameters": {
+                        "acceptsIncomplete": {
+                          "description": "See CreateServiceInstanceRequest for details.",
+                          "type": "boolean",
+                          "location": "query"
+                        },
+                        "name": {
+                          "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
+                          "location": "path",
+                          "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]`.",
+                          "required": true,
+                          "type": "string"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}",
+                      "path": "v1beta1/{+name}",
+                      "id": "servicebroker.projects.brokers.v2.service_instances.patch",
+                      "description": "Updates an existing service instance.\nSee CreateServiceInstance for possible response codes.",
+                      "request": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
+                      }
+                    },
+                    "create": {
+                      "response": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__CreateServiceInstanceResponse"
+                      },
+                      "parameterOrder": [
+                        "parent",
+                        "instance_id"
+                      ],
+                      "httpMethod": "PUT",
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "parameters": {
+                        "parent": {
+                          "description": "Parent must match `projects/[PROJECT_ID]/brokers/[BROKER_ID]`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/brokers/[^/]+$",
+                          "location": "path"
+                        },
+                        "acceptsIncomplete": {
+                          "description": "Value indicating that API client supports asynchronous operations. If\nBroker cannot execute the request synchronously HTTP 422 code will be\nreturned to HTTP clients along with FAILED_PRECONDITION error.\nIf true and broker will execute request asynchronously 202 HTTP code will\nbe returned.\nThis broker always requires this to be true as all mutator operations are\nasynchronous.",
+                          "type": "boolean",
+                          "location": "query"
+                        },
+                        "instance_id": {
+                          "description": "The id of the service instance. Must be unique within GCP project.\nMaximum length is 64, GUID recommended.\nRequired.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^[^/]+$",
+                          "location": "path"
+                        }
+                      },
+                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}",
+                      "path": "v1beta1/{+parent}/v2/service_instances/{+instance_id}",
+                      "id": "servicebroker.projects.brokers.v2.service_instances.create",
+                      "request": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__ServiceInstance"
+                      },
+                      "description": "Provisions a service instance.\nIf `request.accepts_incomplete` is false and Broker cannot execute request\nsynchronously HTTP 422 error will be returned along with\nFAILED_PRECONDITION status.\nIf `request.accepts_incomplete` is true and the Broker decides to execute\nresource asynchronously then HTTP 202 response code will be returned and a\nvalid polling operation in the response will be included.\nIf Broker executes the request synchronously and it succeeds HTTP 201\nresponse will be furnished.\nIf identical instance exists, then HTTP 200 response will be returned.\nIf an instance with identical ID but mismatching parameters exists, then\nHTTP 409 status code will be returned."
+                    },
+                    "getLast_operation": {
+                      "path": "v1beta1/{+name}/last_operation",
+                      "id": "servicebroker.projects.brokers.v2.service_instances.getLast_operation",
+                      "description": "Returns the state of the last operation for the service instance.\nOnly last (or current) operation can be polled.",
+                      "response": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__Operation"
+                      },
+                      "parameterOrder": [
+                        "name"
+                      ],
+                      "httpMethod": "GET",
+                      "parameters": {
+                        "planId": {
+                          "description": "Plan id.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "serviceId": {
+                          "location": "query",
+                          "description": "Service id.",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/`+\n   `service_instances/[INSTANCE_ID]`.",
+                          "required": true,
+                          "type": "string",
+                          "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
+                          "location": "path"
+                        },
+                        "operation": {
+                          "description": "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value.",
+                          "type": "string",
+                          "location": "query"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/last_operation"
+                    }
+                  },
+                  "resources": {
+                    "service_bindings": {
+                      "methods": {
+                        "delete": {
+                          "response": {
+                            "$ref": "GoogleCloudServicebrokerV1beta1__DeleteBindingResponse"
+                          },
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "httpMethod": "DELETE",
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ],
+                          "parameters": {
+                            "planId": {
+                              "location": "query",
+                              "description": "The plan id of the service instance.",
+                              "type": "string"
+                            },
+                            "serviceId": {
+                              "description": "Additional query parameter hints.\nThe service id of the service instance.",
+                              "type": "string",
+                              "location": "query"
+                            },
+                            "acceptsIncomplete": {
+                              "location": "query",
+                              "description": "See CreateServiceInstanceRequest for details.",
+                              "type": "boolean"
+                            },
+                            "name": {
+                              "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+/service_bindings/[^/]+$",
+                              "location": "path",
+                              "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/`\n`v2/service_instances/[INSTANCE_ID]/service_bindings/[BINDING_ID]`\nor\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/`\n`/instances/[INSTANCE_ID]/bindings/[BINDING_ID]`.",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/service_bindings/{service_bindingsId}",
+                          "path": "v1beta1/{+name}",
+                          "id": "servicebroker.projects.brokers.v2.service_instances.service_bindings.delete",
+                          "description": "Unbinds from a service instance.\nFor synchronous/asynchronous request details see CreateServiceInstance\nmethod.\nIf binding does not exist HTTP 410 status will be returned."
+                        },
+                        "get": {
+                          "response": {
+                            "$ref": "GoogleCloudServicebrokerV1beta1__GetBindingResponse"
+                          },
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "httpMethod": "GET",
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ],
+                          "parameters": {
+                            "planId": {
+                              "location": "query",
+                              "description": "Plan id.",
+                              "type": "string"
+                            },
+                            "serviceId": {
+                              "location": "query",
+                              "description": "Service id.",
+                              "type": "string"
+                            },
+                            "name": {
+                              "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+/service_bindings/[^/]+$",
+                              "location": "path",
+                              "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]/service_bindings`.",
+                              "required": true,
+                              "type": "string"
+                            }
+                          },
+                          "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/service_bindings/{service_bindingsId}",
+                          "path": "v1beta1/{+name}",
+                          "id": "servicebroker.projects.brokers.v2.service_instances.service_bindings.get",
+                          "description": "GetBinding returns the binding information."
+                        },
+                        "create": {
+                          "response": {
+                            "$ref": "GoogleCloudServicebrokerV1beta1__CreateBindingResponse"
+                          },
+                          "parameterOrder": [
+                            "parent",
+                            "binding_id"
+                          ],
+                          "httpMethod": "PUT",
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ],
+                          "parameters": {
+                            "parent": {
+                              "description": "The GCP container.\nMust match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]`.",
+                              "required": true,
+                              "type": "string",
+                              "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+$",
+                              "location": "path"
+                            },
+                            "binding_id": {
+                              "pattern": "^[^/]+$",
+                              "location": "path",
+                              "description": "The id of the binding. Must be unique within GCP project.\nMaximum length is 64, GUID recommended.\nRequired.",
+                              "required": true,
+                              "type": "string"
+                            },
+                            "acceptsIncomplete": {
+                              "description": "See CreateServiceInstanceRequest for details.",
+                              "type": "boolean",
+                              "location": "query"
+                            }
+                          },
+                          "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/service_bindings/{service_bindingsId}",
+                          "path": "v1beta1/{+parent}/service_bindings/{+binding_id}",
+                          "id": "servicebroker.projects.brokers.v2.service_instances.service_bindings.create",
+                          "request": {
+                            "$ref": "GoogleCloudServicebrokerV1beta1__Binding"
+                          },
+                          "description": "CreateBinding generates a service binding to an existing service instance.\nSee ProviServiceInstance for async operation details."
+                        },
+                        "getLast_operation": {
+                          "httpMethod": "GET",
+                          "parameterOrder": [
+                            "name"
+                          ],
+                          "response": {
+                            "$ref": "GoogleCloudServicebrokerV1beta1__Operation"
+                          },
+                          "parameters": {
+                            "planId": {
+                              "location": "query",
+                              "description": "Plan id.",
+                              "type": "string"
+                            },
+                            "serviceId": {
+                              "description": "Service id.",
+                              "type": "string",
+                              "location": "query"
+                            },
+                            "name": {
+                              "description": "Name must match\n`projects/[PROJECT_ID]/brokers/[BROKER_ID]/v2/service_instances/[INSTANCE_ID]/service_binding/[BINDING_ID]`.",
+                              "required": true,
+                              "type": "string",
+                              "pattern": "^projects/[^/]+/brokers/[^/]+/v2/service_instances/[^/]+/service_bindings/[^/]+$",
+                              "location": "path"
+                            },
+                            "operation": {
+                              "description": "If `operation` was returned during mutation operation, this field must be\npopulated with the provided value.",
+                              "type": "string",
+                              "location": "query"
+                            }
+                          },
+                          "scopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                          ],
+                          "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/service_instances/{service_instancesId}/service_bindings/{service_bindingsId}/last_operation",
+                          "id": "servicebroker.projects.brokers.v2.service_instances.service_bindings.getLast_operation",
+                          "path": "v1beta1/{+name}/last_operation",
+                          "description": "Returns the state of the last operation for the binding.\nOnly last (or current) operation can be polled."
+                        }
+                      }
+                    }
+                  }
+                },
+                "catalog": {
+                  "methods": {
+                    "list": {
+                      "id": "servicebroker.projects.brokers.v2.catalog.list",
+                      "path": "v1beta1/{+parent}/v2/catalog",
+                      "description": "Lists all the Services registered with this broker for consumption for\ngiven service registry broker, which contains an set of services.\nNote, that Service producer API is separate from Broker API.",
+                      "httpMethod": "GET",
+                      "response": {
+                        "$ref": "GoogleCloudServicebrokerV1beta1__ListCatalogResponse"
+                      },
+                      "parameterOrder": [
+                        "parent"
+                      ],
+                      "parameters": {
+                        "parent": {
+                          "pattern": "^projects/[^/]+/brokers/[^/]+$",
+                          "location": "path",
+                          "description": "Parent must match `projects/[PROJECT_ID]/brokers/[BROKER_ID]`.",
+                          "required": true,
+                          "type": "string"
+                        },
+                        "pageToken": {
+                          "description": "Specifies a page token to use. Set `pageToken` to a `nextPageToken`\nreturned by a previous list request to get the next page of results.",
+                          "type": "string",
+                          "location": "query"
+                        },
+                        "pageSize": {
+                          "location": "query",
+                          "description": "Specifies the number of results to return per page. If there are fewer\nelements than the specified number, returns all elements.\nOptional. If unset or 0, all the results will be returned.",
+                          "format": "int32",
+                          "type": "integer"
+                        }
+                      },
+                      "scopes": [
+                        "https://www.googleapis.com/auth/cloud-platform"
+                      ],
+                      "flatPath": "v1beta1/projects/{projectsId}/brokers/{brokersId}/v2/catalog"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "v1beta1": {
+      "methods": {
+        "setIamPolicy": {
+          "response": {
+            "$ref": "GoogleIamV1__Policy"
+          },
+          "parameterOrder": [
+            "resource"
+          ],
+          "httpMethod": "POST",
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "resource": {
+              "pattern": "^.+$",
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy is being specified.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "flatPath": "v1beta1/{v1beta1Id}:setIamPolicy",
+          "path": "v1beta1/{+resource}:setIamPolicy",
+          "id": "servicebroker.setIamPolicy",
+          "request": {
+            "$ref": "GoogleIamV1__SetIamPolicyRequest"
+          },
+          "description": "Sets the access control policy on the specified resource. Replaces any\nexisting policy."
+        },
+        "testIamPermissions": {
+          "httpMethod": "POST",
+          "parameterOrder": [
+            "resource"
+          ],
+          "response": {
+            "$ref": "GoogleIamV1__TestIamPermissionsResponse"
+          },
+          "parameters": {
+            "resource": {
+              "description": "REQUIRED: The resource for which the policy detail is being requested.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string",
+              "pattern": "^.+$",
+              "location": "path"
+            }
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "flatPath": "v1beta1/{v1beta1Id}:testIamPermissions",
+          "id": "servicebroker.testIamPermissions",
+          "path": "v1beta1/{+resource}:testIamPermissions",
+          "description": "Returns permissions that a caller has on the specified resource.\nIf the resource does not exist, this will return an empty set of\npermissions, not a NOT_FOUND error.\n\nNote: This operation is designed to be used for building permission-aware\nUIs and command-line tools, not for authorization checking. This operation\nmay \"fail open\" without warning.",
+          "request": {
+            "$ref": "GoogleIamV1__TestIamPermissionsRequest"
+          }
+        },
+        "getIamPolicy": {
+          "id": "servicebroker.getIamPolicy",
+          "path": "v1beta1/{+resource}:getIamPolicy",
+          "description": "Gets the access control policy for a resource.\nReturns an empty policy if the resource exists and does not have a policy\nset.",
+          "httpMethod": "GET",
+          "parameterOrder": [
+            "resource"
+          ],
+          "response": {
+            "$ref": "GoogleIamV1__Policy"
+          },
+          "scopes": [
+            "https://www.googleapis.com/auth/cloud-platform"
+          ],
+          "parameters": {
+            "resource": {
+              "pattern": "^.+$",
+              "location": "path",
+              "description": "REQUIRED: The resource for which the policy is being requested.\nSee the operation documentation for the appropriate value for this field.",
+              "required": true,
+              "type": "string"
+            }
+          },
+          "flatPath": "v1beta1/{v1beta1Id}:getIamPolicy"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "upload_protocol": {
+      "location": "query",
+      "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+      "type": "string"
+    },
+    "prettyPrint": {
+      "location": "query",
+      "description": "Returns response with indentations and line breaks.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "uploadType": {
+      "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+      "type": "string",
+      "location": "query"
+    },
+    "fields": {
+      "location": "query",
+      "description": "Selector specifying which fields to include in a partial response.",
+      "type": "string"
+    },
+    "$.xgafv": {
+      "enum": [
+        "1",
+        "2"
+      ],
+      "description": "V1 error format.",
+      "type": "string",
+      "enumDescriptions": [
+        "v1 error format",
+        "v2 error format"
+      ],
+      "location": "query"
+    },
+    "callback": {
+      "location": "query",
+      "description": "JSONP",
+      "type": "string"
+    },
+    "alt": {
+      "description": "Data format for response.",
+      "default": "json",
+      "enum": [
+        "json",
+        "media",
+        "proto"
+      ],
+      "type": "string",
+      "enumDescriptions": [
+        "Responses with Content-Type of application/json",
+        "Media download with context-dependent Content-Type",
+        "Responses with Content-Type of application/x-protobuf"
+      ],
+      "location": "query"
+    },
+    "key": {
+      "location": "query",
+      "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+      "type": "string"
+    },
+    "access_token": {
+      "description": "OAuth access token.",
+      "type": "string",
+      "location": "query"
+    },
+    "quotaUser": {
+      "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+      "type": "string",
+      "location": "query"
+    },
+    "pp": {
+      "location": "query",
+      "description": "Pretty-print response.",
+      "type": "boolean",
+      "default": "true"
+    },
+    "oauth_token": {
+      "location": "query",
+      "description": "OAuth 2.0 token for the current user.",
+      "type": "string"
+    },
+    "bearer_token": {
+      "description": "OAuth bearer token.",
+      "type": "string",
+      "location": "query"
+    }
+  },
+  "version": "v1beta1",
+  "baseUrl": "https://servicebroker.googleapis.com/"
 }

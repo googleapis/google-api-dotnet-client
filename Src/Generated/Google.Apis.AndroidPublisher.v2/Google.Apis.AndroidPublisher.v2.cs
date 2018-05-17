@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/android-publisher'>Google Play Developer API</a>
  *      <tr><th>API Version<td>v2
- *      <tr><th>API Rev<td>20180504 (1219)
+ *      <tr><th>API Rev<td>20180515 (1230)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/android-publisher'>
  *              https://developers.google.com/android-publisher</a>
@@ -66,6 +66,7 @@ namespace Google.Apis.AndroidPublisher.v2
         {
             edits = new EditsResource(this);
             inappproducts = new InappproductsResource(this);
+            orders = new OrdersResource(this);
             purchases = new PurchasesResource(this);
             reviews = new ReviewsResource(this);
         }
@@ -132,6 +133,14 @@ namespace Google.Apis.AndroidPublisher.v2
         public virtual InappproductsResource Inappproducts
         {
             get { return inappproducts; }
+        }
+
+        private readonly OrdersResource orders;
+
+        /// <summary>Gets the Orders resource.</summary>
+        public virtual OrdersResource Orders
+        {
+            get { return orders; }
         }
 
         private readonly PurchasesResource purchases;
@@ -5639,6 +5648,117 @@ namespace Google.Apis.AndroidPublisher.v2
                     "autoConvertMissingPrices", new Google.Apis.Discovery.Parameter
                     {
                         Name = "autoConvertMissingPrices",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+            }
+
+        }
+    }
+
+    /// <summary>The "orders" collection of methods.</summary>
+    public class OrdersResource
+    {
+        private const string Resource = "orders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OrdersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+
+        }
+
+
+        /// <summary>Refund a user's subscription or in-app purchase order.</summary>
+        /// <param name="packageName">The package name of the application for which this subscription or in-app item was
+        /// purchased (for example, 'com.some.thing').</param>
+        /// <param name="orderId">The order ID provided to the user
+        /// when the subscription or in-app order was purchased.</param>
+        public virtual RefundRequest Refund(string packageName, string orderId)
+        {
+            return new RefundRequest(service, packageName, orderId);
+        }
+
+        /// <summary>Refund a user's subscription or in-app purchase order.</summary>
+        public class RefundRequest : AndroidPublisherBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Refund request.</summary>
+            public RefundRequest(Google.Apis.Services.IClientService service, string packageName, string orderId)
+                : base(service)
+            {
+                PackageName = packageName;
+                OrderId = orderId;
+                InitParameters();
+            }
+
+
+            /// <summary>The package name of the application for which this subscription or in-app item was purchased
+            /// (for example, 'com.some.thing').</summary>
+            [Google.Apis.Util.RequestParameterAttribute("packageName", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string PackageName { get; private set; }
+
+            /// <summary>The order ID provided to the user when the subscription or in-app order was
+            /// purchased.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OrderId { get; private set; }
+
+            /// <summary>Whether to revoke the purchased item. If set to true, access to the subscription or in-app item
+            /// will be terminated immediately. If the item is a recurring subscription, all future payments will also
+            /// be terminated. Consumed in-app items need to be handled by developer's app. (optional)</summary>
+            [Google.Apis.Util.RequestParameterAttribute("revoke", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> Revoke { get; set; }
+
+
+            ///<summary>Gets the method name.</summary>
+            public override string MethodName
+            {
+                get { return "refund"; }
+            }
+
+            ///<summary>Gets the HTTP method.</summary>
+            public override string HttpMethod
+            {
+                get { return "POST"; }
+            }
+
+            ///<summary>Gets the REST path.</summary>
+            public override string RestPath
+            {
+                get { return "{packageName}/orders/{orderId}:refund"; }
+            }
+
+            /// <summary>Initializes Refund parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+
+                RequestParameters.Add(
+                    "packageName", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "packageName",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "orderId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                RequestParameters.Add(
+                    "revoke", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "revoke",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

@@ -26,7 +26,7 @@
  *      <tr><th>API
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>DCM/DFA Reporting And Trafficking API</a>
  *      <tr><th>API Version<td>v3.0
- *      <tr><th>API Rev<td>20171109 (1043)
+ *      <tr><th>API Rev<td>20180514 (1229)
  *      <tr><th>API Docs
  *          <td><a href='https://developers.google.com/doubleclick-advertisers/'>
  *              https://developers.google.com/doubleclick-advertisers/</a>
@@ -2349,6 +2349,8 @@ namespace Google.Apis.Dfareporting.v3_0
                 DISPLAY,
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_INTERSTITIAL")]
                 DISPLAYINTERSTITIAL,
+                [Google.Apis.Util.StringValueAttribute("IN_STREAM_AUDIO")]
+                INSTREAMAUDIO,
                 [Google.Apis.Util.StringValueAttribute("IN_STREAM_VIDEO")]
                 INSTREAMVIDEO,
             }
@@ -9133,6 +9135,8 @@ namespace Google.Apis.Dfareporting.v3_0
                 HTML5BANNER,
                 [Google.Apis.Util.StringValueAttribute("IMAGE")]
                 IMAGE,
+                [Google.Apis.Util.StringValueAttribute("INSTREAM_AUDIO")]
+                INSTREAMAUDIO,
                 [Google.Apis.Util.StringValueAttribute("INSTREAM_VIDEO")]
                 INSTREAMVIDEO,
                 [Google.Apis.Util.StringValueAttribute("INSTREAM_VIDEO_REDIRECT")]
@@ -16356,6 +16360,8 @@ namespace Google.Apis.Dfareporting.v3_0
                 DISPLAY,
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_INTERSTITIAL")]
                 DISPLAYINTERSTITIAL,
+                [Google.Apis.Util.StringValueAttribute("IN_STREAM_AUDIO")]
+                INSTREAMAUDIO,
                 [Google.Apis.Util.StringValueAttribute("IN_STREAM_VIDEO")]
                 INSTREAMVIDEO,
             }
@@ -20122,14 +20128,18 @@ namespace Google.Apis.Dfareporting.v3_0
 
         }
 
-        /// <summary>Retrieves a list of sizes, possibly filtered.</summary>
+        /// <summary>Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally unique and may include
+        /// values not currently in use by your account. Due to this, the list of sizes returned by this method may
+        /// differ from the list seen in the Trafficking UI.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
         public virtual ListRequest List(long profileId)
         {
             return new ListRequest(service, profileId);
         }
 
-        /// <summary>Retrieves a list of sizes, possibly filtered.</summary>
+        /// <summary>Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally unique and may include
+        /// values not currently in use by your account. Due to this, the list of sizes returned by this method may
+        /// differ from the list seen in the Trafficking UI.</summary>
         public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v3_0.Data.SizesListResponse>
         {
             /// <summary>Constructs a new List request.</summary>
@@ -22938,7 +22948,7 @@ namespace Google.Apis.Dfareporting.v3_0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
         public virtual System.Nullable<long> SubaccountId { get; set; } 
 
-        /// <summary>Trafficker type of this user profile.</summary>
+        /// <summary>Trafficker type of this user profile. This is a read-only field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traffickerType")]
         public virtual string TraffickerType { get; set; } 
 
@@ -24516,7 +24526,7 @@ namespace Google.Apis.Dfareporting.v3_0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commercialId")]
         public virtual string CommercialId { get; set; } 
 
-        /// <summary>List of companion creatives assigned to an in-Stream videocreative. Acceptable values include IDs
+        /// <summary>List of companion creatives assigned to an in-Stream video creative. Acceptable values include IDs
         /// of existing flash and image creatives. Applicable to the following creative types: all VPAID and all
         /// INSTREAM_VIDEO with dynamicAssetSelection set to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("companionCreatives")]

@@ -1,11 +1,11 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/SwTzqnmyE9ystvGA83k2PbqQtvs\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/5kHvkkccKhBMEn4FJ1Eq4_8I4S4\"",
  "discoveryVersion": "v1",
  "id": "dfareporting:v2.8",
  "name": "dfareporting",
  "version": "v2.8",
- "revision": "20171109",
+ "revision": "20180514",
  "title": "DCM/DFA Reporting And Trafficking API",
  "description": "Manages your DoubleClick Campaign Manager ad campaigns and reports.",
  "ownerDomain": "google.com",
@@ -430,7 +430,7 @@
     },
     "traffickerType": {
      "type": "string",
-     "description": "Trafficker type of this user profile.",
+     "description": "Trafficker type of this user profile. This is a read-only field.",
      "enum": [
       "EXTERNAL_TRAFFICKER",
       "INTERNAL_NON_TRAFFICKER",
@@ -602,9 +602,11 @@
       "APP_INTERSTITIAL",
       "DISPLAY",
       "DISPLAY_INTERSTITIAL",
+      "IN_STREAM_AUDIO",
       "IN_STREAM_VIDEO"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -790,9 +792,11 @@
       "APP_INTERSTITIAL",
       "DISPLAY",
       "DISPLAY_INTERSTITIAL",
+      "IN_STREAM_AUDIO",
       "IN_STREAM_VIDEO"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -2227,7 +2231,7 @@
     },
     "companionCreatives": {
      "type": "array",
-     "description": "List of companion creatives assigned to an in-Stream videocreative. Acceptable values include IDs of existing flash and image creatives. Applicable to the following creative types: all VPAID and all INSTREAM_VIDEO with dynamicAssetSelection set to false.",
+     "description": "List of companion creatives assigned to an in-Stream video creative. Acceptable values include IDs of existing flash and image creatives. Applicable to the following creative types: all VPAID and all INSTREAM_VIDEO with dynamicAssetSelection set to false.",
      "items": {
       "type": "string",
       "format": "int64"
@@ -2243,9 +2247,11 @@
        "APP_INTERSTITIAL",
        "DISPLAY",
        "DISPLAY_INTERSTITIAL",
+       "IN_STREAM_AUDIO",
        "IN_STREAM_VIDEO"
       ],
       "enumDescriptions": [
+       "",
        "",
        "",
        "",
@@ -2450,6 +2456,7 @@
       "FLASH_INPAGE",
       "HTML5_BANNER",
       "IMAGE",
+      "INSTREAM_AUDIO",
       "INSTREAM_VIDEO",
       "INSTREAM_VIDEO_REDIRECT",
       "INTERNAL_REDIRECT",
@@ -2467,6 +2474,7 @@
       "VPAID_NON_LINEAR_VIDEO"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -4753,9 +4761,11 @@
       "DBM_PARTNER",
       "DCM_ACCOUNT",
       "DCM_ADVERTISER",
+      "DFP_NETWORK_CODE",
       "ENCRYPTION_ENTITY_TYPE_UNKNOWN"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -6983,9 +6993,11 @@
       "APP_INTERSTITIAL",
       "DISPLAY",
       "DISPLAY_INTERSTITIAL",
+      "IN_STREAM_AUDIO",
       "IN_STREAM_VIDEO"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -11030,9 +11042,11 @@
         "APP_INTERSTITIAL",
         "DISPLAY",
         "DISPLAY_INTERSTITIAL",
+        "IN_STREAM_AUDIO",
         "IN_STREAM_VIDEO"
        ],
        "enumDescriptions": [
+        "",
         "",
         "",
         "",
@@ -13817,6 +13831,7 @@
         "FLASH_INPAGE",
         "HTML5_BANNER",
         "IMAGE",
+        "INSTREAM_AUDIO",
         "INSTREAM_VIDEO",
         "INSTREAM_VIDEO_REDIRECT",
         "INTERNAL_REDIRECT",
@@ -13834,6 +13849,7 @@
         "VPAID_NON_LINEAR_VIDEO"
        ],
        "enumDescriptions": [
+        "",
         "",
         "",
         "",
@@ -17094,9 +17110,11 @@
         "APP_INTERSTITIAL",
         "DISPLAY",
         "DISPLAY_INTERSTITIAL",
+        "IN_STREAM_AUDIO",
         "IN_STREAM_VIDEO"
        ],
        "enumDescriptions": [
+        "",
         "",
         "",
         "",
@@ -18672,7 +18690,7 @@
      "id": "dfareporting.sizes.list",
      "path": "userprofiles/{profileId}/sizes",
      "httpMethod": "GET",
-     "description": "Retrieves a list of sizes, possibly filtered.",
+     "description": "Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally unique and may include values not currently in use by your account. Due to this, the list of sizes returned by this method may differ from the list seen in the Trafficking UI.",
      "parameters": {
       "height": {
        "type": "integer",

@@ -1,12 +1,12 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/LDFr6YaJ8-u0RqM_DYpFxlF3LR4\"",
+ "etag": "\"Zkyw9ACJZUvcYmlFaKGChzhmtnE/XQxoF7JOy3nsJu8SZk8WP6UFzd8\"",
  "discoveryVersion": "v1",
  "id": "androidpublisher:v2",
  "name": "androidpublisher",
  "canonicalName": "Android Publisher",
  "version": "v2",
- "revision": "20180504",
+ "revision": "20180515",
  "title": "Google Play Developer API",
  "description": "Lets Android application developers access their Google Play accounts.",
  "ownerDomain": "google.com",
@@ -3167,6 +3167,42 @@
      "response": {
       "$ref": "InAppProduct"
      },
+     "scopes": [
+      "https://www.googleapis.com/auth/androidpublisher"
+     ]
+    }
+   }
+  },
+  "orders": {
+   "methods": {
+    "refund": {
+     "id": "androidpublisher.orders.refund",
+     "path": "{packageName}/orders/{orderId}:refund",
+     "httpMethod": "POST",
+     "description": "Refund a user's subscription or in-app purchase order.",
+     "parameters": {
+      "orderId": {
+       "type": "string",
+       "description": "The order ID provided to the user when the subscription or in-app order was purchased.",
+       "required": true,
+       "location": "path"
+      },
+      "packageName": {
+       "type": "string",
+       "description": "The package name of the application for which this subscription or in-app item was purchased (for example, 'com.some.thing').",
+       "required": true,
+       "location": "path"
+      },
+      "revoke": {
+       "type": "boolean",
+       "description": "Whether to revoke the purchased item. If set to true, access to the subscription or in-app item will be terminated immediately. If the item is a recurring subscription, all future payments will also be terminated. Consumed in-app items need to be handled by developer's app. (optional)",
+       "location": "query"
+      }
+     },
+     "parameterOrder": [
+      "packageName",
+      "orderId"
+     ],
      "scopes": [
       "https://www.googleapis.com/auth/androidpublisher"
      ]
