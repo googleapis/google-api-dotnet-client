@@ -103,6 +103,10 @@ namespace Google.Apis.Auth.OAuth2.Flows
             /// <summary>Gets or sets the token revocation URL.</summary>
             public string RevokeTokenUrl { get; private set; }
 
+            /// <summary>Gets or sets the login_hint.
+            /// Set the parameter value to an email address or sub identifier.</summary>
+            public string LoginHint { get; set; }
+
             /// <summary>Gets or sets the optional user defined query parameters.</summary>
             public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; set; }
 

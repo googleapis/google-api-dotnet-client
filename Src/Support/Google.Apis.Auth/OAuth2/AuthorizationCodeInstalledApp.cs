@@ -15,8 +15,8 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2.Flows;
-using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Auth.OAuth2.Requests;
+using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Logging;
 using System;
 using System.Collections.Generic;
