@@ -232,7 +232,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
         /// <inheritdoc/>
         public async Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, 
-            IEnumerable<string> includedGrantedScopes, string redirectUri, CancellationToken taskCancellationToken)
+            IEnumerable<string> grantedScopes, string redirectUri, CancellationToken taskCancellationToken)
         {
             var authorizationCodeTokenReq = new AuthorizationCodeTokenRequest
             {
@@ -250,7 +250,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             if (string.IsNullOrEmpty(token.Scope))
             {
                 // Initialize tokenScopes with the included granted scopes (if any)
-                var tokenScopes = new HashSet<string>(includedGrantedScopes ?? new HashSet<string>());
+                var tokenScopes = new HashSet<string>(grantedScopes ?? new HashSet<string>());
                 // Add requested scopes
                 foreach (var scope in Scopes)
                 {
