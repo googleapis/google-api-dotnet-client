@@ -35,7 +35,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
         public string RevokeTokenUrl { get; private set; }
 
         /// <summary>Gets or sets the login_hint.</summary>
-        public string LoginHint { get; private set; }
+        public string LoginHint { get; set; }
 
         /// <summary>Gets the user defined query parameters.</summary>
         public IEnumerable<KeyValuePair<string, string>> UserDefinedQueryParams { get; private set; }
@@ -94,14 +94,8 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>An initializer class for Google authorization code flow. </summary>
         public new class Initializer : AuthorizationCodeFlow.Initializer
         {
-            /// <summary>
-            /// Gets or sets the login_hint.
-            /// Set the parameter to an email address or sub identifier.
-            /// </summary>
-            public string LoginHint { get; set; }
-
             /// <summary>Gets or sets the token revocation URL.</summary>
-            public string RevokeTokenUrl { get; private set; }
+            public string RevokeTokenUrl { get; set; }
 
             /// <summary>Gets or sets the login_hint.
             /// Set the parameter value to an email address or sub identifier.</summary>

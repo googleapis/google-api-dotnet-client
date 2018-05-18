@@ -163,7 +163,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             mock.Setup(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>())).Returns(tcs.Task);
 
             var flow = CreateFlow(httpClientFactory: mockFactory, scopes: new[] { "a" }, dataStore: mock.Object);
-            var response = flow.ExchangeCodeForTokenAsync("uSer", "c0de", "redIrect", CancellationToken.None).Result;
+            var response = flow.ExchangeCodeForTokenAsync("uSer", "c0de", new string[]{}, "redIrect", CancellationToken.None).Result;
             SubtestTokenResponse(response);
 
             mock.Verify(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>()));
