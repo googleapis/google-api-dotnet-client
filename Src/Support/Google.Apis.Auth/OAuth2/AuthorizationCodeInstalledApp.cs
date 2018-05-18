@@ -80,8 +80,16 @@ namespace Google.Apis.Auth.OAuth2
 
                 Logger.Debug("Received \"{0}\" code", response.Code);
 
+                // If include granted scopes is specified, then pass the current scopes
+                // to ExchangeCodeForTokenAsync.
+                string[] grantedScopes = null;
+                if (Flow.IncludeGrantedScopes.HasValue && Flow.IncludeGrantedScopes.Value)
+                {
+                    grantedScopes = token.Scope?.Split(new[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+                }
+
                 // Get the token based on the code.
-                token = await Flow.ExchangeCodeForTokenAsync(userId, response.Code, redirectUri,
+                token = await Flow.ExchangeCodeForTokenAsync(userId, response.Code, grantedScopes, redirectUri,
                     taskCancellationToken).ConfigureAwait(false);
             }
 
